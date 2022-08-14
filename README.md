@@ -35,8 +35,8 @@ directories.
 After installation of the tools has been done independantly, run the following:
 
 ```
-git clone --recursive https://github.com/rjridle/OpenRadHardSCL.git
-cd OpenRadHardSCL
+git clone --recursive https://github.com/stineje/sky130RHLib.git
+cd sky130RHLib
 cp .magicrc.template ~/.magicrc
 cp .xschemrc.template ~/.xschem/xschemrc
 ```
