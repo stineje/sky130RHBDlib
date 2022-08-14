@@ -1,0 +1,64 @@
+How to extract cells:
+
+1. Edit ~/projects/efabless/tech/SkyWater/EFS8A/libs.tech/magic/EFS8A.tech
+ - on line 3297 to look as such:
+ device mosfet pshort scpfet,pfet pdiff,pdiffres,pdc nwell vdd!
+ - on line 3300 to look as such:
+ device mosfet nshort scnfet,nfet ndiff,ndiffres,ndc pwell,space/w gnd!
+
+that is to say, add the vnd! and gnd! at the end of the line
+
+ - delete line 3088: "variant(sim)" and move it to line 3247
+
+ - add line 594: "units angstroms"
+
+ - starting from line 857 it should look like
+
+ layer LI allli
+    calma 67 20
+ layer LI1TXT
+    labels  allli noport
+    calma   67 16
+ layer LI1PIN
+    labels allli port
+    calma 67 5
+ layer LIRES rli
+    labels rli
+    calma 67 13
+
+2. bash extract_all
+
+3. csh clean_all
+if you want to delete all the extracted junk
+
+
+Cell List:
+
+    - AND2X1
+    - AND3X1
+    - (TODO) AO3X2
+    - (TODO) AOA4X1
+    - (TODO) AOAI4X1
+    - (TODO) AOI3X2
+    - DFFX1
+    - DFFSNX1
+    - DFFRNX1
+    - DFFSNRNX1
+    - FA
+    - HA
+    - INVX1
+    - NAND2X1
+    - NAND3X1
+    - NOR2X1
+    - (TODO) OA4X1
+    - (TODO) OAI4X1
+    - OR2X1
+    - (TODO) TMRDFFX1
+    - (TODO) TMRDFFRNX1
+    - (TODO) TMRDFFSNX1
+    - (TODO) TMRDFFSNRNX1
+    - (TODO) TRIBUFX1
+    - (TODO) VOTER3X1
+    - (TODO) VOTERN3X1
+    - XNOR2X1
+    - XOR2X1

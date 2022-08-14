@@ -1,0 +1,190 @@
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /home/hai/config/cydir/bin/lnx86/bsimtran nmos.rf nmos -p -nnpd npd_rev.pm nshort_ov_bsim3.pm ndiode_m31_iv.pm ndiode_m31_cv.pm npd.pm3 
+* Working Directory: /home/hai/models/s8/s8tee/models.3.1/cellfets/npd/combined
+* Time: Wed May 23 17:14:49 2007
+* Rule File:  nmos.rf
+* Output File:  npd.pm3
+* Input Files:
+* (1) npd_rev.pm
+* (2) nshort_ov_bsim3.pm
+* (3) ndiode_m31_iv.pm
+* (4) ndiode_m31_cv.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 NMOS Model
+
+.subckt npd d g s b l=100.0u w=100.0u ad=0 as=0 pd=0 ps=0 nrd=1 nrs=1 rdc=0.0 rsc=0.0 m=1 dtemp=0 nf=1 geo=0.0 delvto=0.0 sa=0.0 sb=0.0 sd=0.0
+.model npd_mod.0 nmos
+
++lmin = 7.5e-08   lmax = 1.505e-007   wmin = 2.095e-007   wmax = 2.105e-007   
++level      =        49                          
++scalm      =        1                           
++tnom       =        30                          
++version    =        3.2                         
++tox        =        '4.148e-009*npd_tox_mult'   
++toxm       =        4.148e-009                  
++xj = 1.2e-007   
++nch        =        1.12471e+018                
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+npd_lint_diff'            
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+npd_wint_diff'            
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++mobmod     =        1                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*
+* DIODE PARAMETERS
+*
++acm        =        12                          
++ldif       =        0                           
++hdif       =        0
++rd         =        0                           
++rs         =        0                           
++rsc        =        0                           
++rdc        =        0                           
++calcacm    =        0                           
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '0.71908+npd_vth0_diff_0'    
++k1 = 0.498   
++k2 = '-0.1068+npd_k2_diff_0'   
++k3 = '0+npd_k3_diff'   
++dvt0 = '0+npd_dvt0_diff'   
++dvt1 = '0.53+npd_dvt1_diff'   
++dvt2 = 0   
++dvt0w = 0   
++dvt1w = 0   
++dvt2w = 0   
++nlx = 0   
++w0 = 0   
++k3b = 0   
++ngate = 1e+023   
++vfb = -0.9693   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '82072+npd_vsat_diff_0'   
++ua = -1.048e-009   
++ub = 1.2106e-018   
++uc = 6.2252e-011   
++rdsw = '187.1195+npd_rdsw_diff_0'   
++prwb = 0.3   
++prwg = 0.2   
++wr = 1   
++u0 = '0.022616+npd_u0_diff_0'   
++a0 = -0.1   
++keta = -0.019632   
++a1 = 0   
++a2 = 0.99   
++ags = 0.02   
++b0 = 0   
++b1 = 0   
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.139+npd_voff_diff_0'    
++nfactor = '1.078+npd_nfactor_diff_0'    
++cit = '0+npd_cit_diff'   
++cdsc = '0+npd_cdsc_diff'   
++cdscb = '0+npd_cdscb_diff'   
++cdscd = '0+npd_cdscd_diff'   
++eta0 = 0.01   
++etab = -0.0042   
++dsub = 0   
+*
+* ROUT PARAMETERS
+*
++pclm = 0.9345125   
++pdiblc1 = 0   
++pdiblc2 = 0.024526   
++pdiblcb = 0.05573667   
++drout = 0   
++pscbe1 = 7.7384e+008   
++pscbe2 = 9.2e-021   
++pvag = 0   
++delta = 0.023   
++alpha0 = 4.1e-006   
++alpha1 = 0   
++beta0 = 17.69   
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.2357+npd_kt1_diff_0'   
++kt2 = '-0.02+npd_kt2_diff'   
++at = 31512   
++ute = -1.25   
++ua1 = 5.5e-010   
++ub1 = -2e-019   
++uc1 = -3.5e-012   
++kt1l = 0   
++prt = -8.0505   
+*
+* CAPACITANCE PARAMETERS
+*
++cj         =        '0.0013459*npd_ajunction_mult'   
++mj         =        0.44                        
++pb         =        0.729                       
++cjsw       =        '3.6001e-011*npd_pjunction_mult'   
++mjsw       =        0.0009                      
++pbsw       =        0.2                         
++cjswg      =        '2.3347e-010*npd_pjunction_mult'   
++mjswg      =        0.8000                      
++pbswg      =        0.95578                     
++tpb        =        0.0012287                   
++tpbsw      =        0                           
++tpbswg     =        0                           
++tcj        =        0.000792                    
++tcjsw      =        1e-005                      
++tcjswg     =        0                           
++js         =        0.0027500000000000003       
++jsw        =        6e-10                       
++nj         =        1.2928                      
++xti        =        2                           
++cgdo       =        '3.2e-010*npd_overlap_mult'   
++cgso       =        '3.2e-010*npd_overlap_mult'   
++cgbo       =        1e-013                      
++capmod     =        3                           
++nqsmod     =        0                           
++elm        =        0                           
++xpart      =        0                           
++cgsl       =        '0*npd_overlap_mult'        
++cgdl       =        '0*npd_overlap_mult'        
++ckappa     =        0.6                         
++cf         =        1.4067e-012                 
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '1.8739e-008+npd_dlc_diff+npd_dlc_rotweak'   
++dwc        =        '0+npd_dwc_diff'            
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        6.9                         
++noff       =        3.621                       
++voffcv     =        -0.1372                     
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*MOSFET BSIM3v3 noimod=2 noise parameters:
+*noise parameters copied from nshort.pm3
++noimod     =        2
++noia       =        '1.1737146E+41*1.6e-21'
++noib       =        '3.2036721E+25*1.6e-21'
++noic       =        '-3.7339643E+08*1.6e-21'
++em         =        4.1000000e+07
++ef         =        0.8439365
+
+minst d g s b npd_mod l=l w=w ad=ad as=as pd=pd ps=ps nrd=nrd nrs=nrs rdc=rdc rsc=rsc m=m nf=nf geo=geo delvto=delvto sa=sa sb=sb sd=sd dtemp=dtemp
+.ends

@@ -1,0 +1,2763 @@
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: pxg
+* Command Line: /home/cydev/v/4.4/bin/lnx86/bsimtran nmos_bsim4.rf nmos -p -nntvnative ntvnative_bin.pm3 ntvnative_ov.pm ndiode_nativeiv.pmd ndiode_nativecv.pmd ntvnativ_bsimtranoutput.pm3 
+* Working Directory: /home/pxg/rams/s8/models.3.1/rev_model/ntvnative/combined
+* Time: Fri May 11 11:50:03 2007
+* Rule File:  nmos_bsim4.rf
+* Output File:  ntvnativ_bsimtranoutput.pm3
+* Input Files:
+* (1) ntvnative_bin.pm3
+* (2) ntvnative_ov.pm
+* (3) ndiode_nativeiv.pmd
+* (4) ndiode_nativecv.pmd
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 NMOS Model
+
+.subckt ntvnative d g s b l=100.0u w=100.0u ad=0 as=0 pd=0 ps=0 nrd=1 nrs=1 rdc=0.0 rsc=0.0 m=1 dtemp=0 nf=1 geo=0.0 delvto=0.0 sa=0.0 sb=0.0 sd=0.0
+.model ntvnative_mod.0 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 4.95e-07  lmax = 5.05e-07  wmin = 9.995e-06  wmax = 1.0005e-05
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.0007337+ntvnative_vth0_diff_0'    
++k1 = 0.27   
++k2 = '0+ntvnative_k2_diff_0'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '116050+ntvnative_vsat_diff_0'   
++ua = '5.1975e-009+ntvnative_ua_diff_0'   
++ub = '5.727e-020+ntvnative_ub_diff_0'   
++uc = 1.3541e-010   
++rdsw = '0+ntvnative_rdsw_diff_0'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.091551+ntvnative_u0_diff_0'   
++a0 = '0.00031139121+ntvnative_a0_diff_0'   
++keta = '0.0070658+ntvnative_keta_diff_0'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_0'   
++b0 = '0+ntvnative_b0_diff_0'   
++b1 = '0+ntvnative_b1_diff_0'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_0'    
++nfactor = '2.0354+ntvnative_nfactor_diff_0'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_0'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0.017338+ntvnative_eta0_diff_0'   
++etab = 0   
++dsub = 0.59286   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_0'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 6.234e-007   
++alpha1 = 0   
++beta0 = 21.814   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_0'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_0'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.33884+ntvnative_kt1_diff_0'   
++kt2 = 0   
++at = 40500   
++ute = -1.716   
++ua1 = 1e-009   
++ub1 = -1.18e-017   
++uc1 = -3.696e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.745e-06
++sbref   = 1.74e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.1 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 4.95e-07  lmax = 5.05e-07  wmin = 9.95e-07  wmax = 1.005e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.0007337+ntvnative_vth0_diff_1'    
++k1 = 0.27   
++k2 = '0+ntvnative_k2_diff_1'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.018557   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '125130+ntvnative_vsat_diff_1'   
++ua = '4.848e-009+ntvnative_ua_diff_1'   
++ub = '5.727e-020+ntvnative_ub_diff_1'   
++uc = 1.3541e-010   
++rdsw = '0+ntvnative_rdsw_diff_1'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.087889+ntvnative_u0_diff_1'   
++a0 = '0.00031139121+ntvnative_a0_diff_1'   
++keta = '0.019064+ntvnative_keta_diff_1'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_1'   
++b0 = '0+ntvnative_b0_diff_1'   
++b1 = '0+ntvnative_b1_diff_1'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_1'    
++nfactor = '2.0354+ntvnative_nfactor_diff_1'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_1'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0.0017338+ntvnative_eta0_diff_1'   
++etab = 1e-010   
++dsub = 0.59286   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_1'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 4.8972e-007   
++alpha1 = 0.03   
++beta0 = 20.82   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_1'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_1'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.33884+ntvnative_kt1_diff_1'   
++kt2 = -0.02   
++at = 40500   
++ute = -1.716   
++ua1 = 1e-009   
++ub1 = -1.2744e-017   
++uc1 = -2.5133e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.745e-06
++sbref   = 1.74e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.2 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 5.95e-07  lmax = 6.05e-07  wmin = 9.95e-07  wmax = 1.005e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '0.068092+ntvnative_vth0_diff_2'    
++k1 = 0.33502   
++k2 = '0+ntvnative_k2_diff_2'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '118050+ntvnative_vsat_diff_2'   
++ua = '4.145e-009+ntvnative_ua_diff_2'   
++ub = '3.7798e-019+ntvnative_ub_diff_2'   
++uc = 1.3541e-010   
++rdsw = '0+ntvnative_rdsw_diff_2'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.083529+ntvnative_u0_diff_2'   
++a0 = '0.00031139121+ntvnative_a0_diff_2'   
++keta = '-0.016684+ntvnative_keta_diff_2'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_2'   
++b0 = '0+ntvnative_b0_diff_2'   
++b1 = '0+ntvnative_b1_diff_2'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_2'    
++nfactor = '0.77345+ntvnative_nfactor_diff_2'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_2'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0+ntvnative_eta0_diff_2'   
++etab = 0   
++dsub = 0.071143   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_2'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 8.3952e-007   
++alpha1 = 0.33   
++beta0 = 23   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_2'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_2'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.29818+ntvnative_kt1_diff_2'   
++kt2 = -0.02   
++at = 37260   
++ute = -1.613   
++ua1 = 1e-009   
++ub1 = -8.411e-018   
++uc1 = -2.5133e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.95e-06
++sbref   = 1.94e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.3 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 4.95e-07  lmax = 5.05e-07  wmin = 3.995e-06  wmax = 4.005e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.0007337+ntvnative_vth0_diff_3'    
++k1 = 0.27   
++k2 = '0+ntvnative_k2_diff_3'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '118050+ntvnative_vsat_diff_3'   
++ua = '5.05e-009+ntvnative_ua_diff_3'   
++ub = '5.727e-020+ntvnative_ub_diff_3'   
++uc = 1.3541e-010   
++rdsw = '0+ntvnative_rdsw_diff_3'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.087889+ntvnative_u0_diff_3'   
++a0 = '0.00031139121+ntvnative_a0_diff_3'   
++keta = '0.0070658+ntvnative_keta_diff_3'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_3'   
++b0 = '0+ntvnative_b0_diff_3'   
++b1 = '0+ntvnative_b1_diff_3'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_3'    
++nfactor = '2.0354+ntvnative_nfactor_diff_3'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_3'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0.017338+ntvnative_eta0_diff_3'   
++etab = 0   
++dsub = 0.59286   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_3'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 7.6956e-007   
++alpha1 = 0   
++beta0 = 22.396   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_3'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_3'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.33884+ntvnative_kt1_diff_3'   
++kt2 = -0.02   
++at = 40500   
++ute = -1.716   
++ua1 = 1e-009   
++ub1 = -1.2744e-017   
++uc1 = -2.5133e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.745e-06
++sbref   = 1.74e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.4 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 4.95e-07  lmax = 5.05e-07  wmin = 4.15e-07  wmax = 4.25e-07
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.022934+ntvnative_vth0_diff_4'    
++k1 = 0.30326   
++k2 = '0+ntvnative_k2_diff_4'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '133130+ntvnative_vsat_diff_4'   
++ua = '4.1034e-009+ntvnative_ua_diff_4'   
++ub = '4.971e-020+ntvnative_ub_diff_4'   
++uc = 2.1124e-011   
++rdsw = '0+ntvnative_rdsw_diff_4'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.084373+ntvnative_u0_diff_4'   
++a0 = '0.00031139121+ntvnative_a0_diff_4'   
++keta = '0.030502+ntvnative_keta_diff_4'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_4'   
++b0 = '0+ntvnative_b0_diff_4'   
++b1 = '0+ntvnative_b1_diff_4'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_4'    
++nfactor = '2.0354+ntvnative_nfactor_diff_4'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_4'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0.00020806+ntvnative_eta0_diff_4'   
++etab = 1e-010   
++dsub = 0.59286   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_4'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 5.4233e-007   
++alpha1 = 0   
++beta0 = 21.174   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_4'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_4'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.35239+ntvnative_kt1_diff_4'   
++kt2 = -0.02   
++at = 40500   
++ute = -1.5444   
++ua1 = 1e-009   
++ub1 = -9.4306e-018   
++uc1 = -1.2064e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.745e-06
++sbref   = 1.74e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.5 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 5.95e-07  lmax = 6.05e-07  wmin = 4.15e-07  wmax = 4.25e-07
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '0.007535+ntvnative_vth0_diff_5'    
++k1 = 0.33965   
++k2 = '0+ntvnative_k2_diff_5'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '127800+ntvnative_vsat_diff_5'   
++ua = '3.7751e-009+ntvnative_ua_diff_5'   
++ub = '4.4739e-020+ntvnative_ub_diff_5'   
++uc = 6.2248e-011   
++rdsw = '0+ntvnative_rdsw_diff_5'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.079311+ntvnative_u0_diff_5'   
++a0 = '0.00031139121+ntvnative_a0_diff_5'   
++keta = '0.0018301+ntvnative_keta_diff_5'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_5'   
++b0 = '0+ntvnative_b0_diff_5'   
++b1 = '0+ntvnative_b1_diff_5'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_5'    
++nfactor = '2.0354+ntvnative_nfactor_diff_5'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_5'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0.00020806+ntvnative_eta0_diff_5'   
++etab = 1e-010   
++dsub = 0.59286   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_5'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 5.3596e-007   
++alpha1 = 0   
++beta0 = 21.074   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_5'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_5'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.33884+ntvnative_kt1_diff_5'   
++kt2 = -0.02   
++at = 40500   
++ute = -1.5444   
++ua1 = 1e-009   
++ub1 = -8.6659e-018   
++uc1 = -2.5133e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.95e-06
++sbref   = 1.94e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.6 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 7.95e-07  lmax = 8.05e-07  wmin = 4.15e-07  wmax = 4.25e-07
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '0.071092+ntvnative_vth0_diff_6'    
++k1 = 0.40202   
++k2 = '0+ntvnative_k2_diff_6'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '117770+ntvnative_vsat_diff_6'   
++ua = '2.9844e-009+ntvnative_ua_diff_6'   
++ub = '3.7798e-019+ntvnative_ub_diff_6'   
++uc = 7.3121e-011   
++rdsw = '0+ntvnative_rdsw_diff_6'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.073506+ntvnative_u0_diff_6'   
++a0 = '0.00031139121+ntvnative_a0_diff_6'   
++keta = '0+ntvnative_keta_diff_6'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_6'   
++b0 = '0+ntvnative_b0_diff_6'   
++b1 = '0+ntvnative_b1_diff_6'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_6'    
++nfactor = '0.77345+ntvnative_nfactor_diff_6'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_6'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0+ntvnative_eta0_diff_6'   
++etab = 0   
++dsub = 0.071143   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_6'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 8.5632e-007   
++alpha1 = 0.09   
++beta0 = 21.989   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_6'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_6'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.30496+ntvnative_kt1_diff_6'   
++kt2 = -0.02   
++at = 28350   
++ute = -1.613   
++ua1 = 1e-009   
++ub1 = -6.8818e-018   
++uc1 = -1.3069e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 2.34e-06
++sbref   = 2.34e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.7 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 4.95e-07  lmax = 5.05e-07  wmin = 6.95e-07  wmax = 7.05e-07
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.011467+ntvnative_vth0_diff_7'    
++k1 = 0.2808   
++k2 = '0+ntvnative_k2_diff_7'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '128010+ntvnative_vsat_diff_7'   
++ua = '4.4602e-009+ntvnative_ua_diff_7'   
++ub = '8.0178e-020+ntvnative_ub_diff_7'   
++uc = 7.0413e-011   
++rdsw = '0+ntvnative_rdsw_diff_7'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.084373+ntvnative_u0_diff_7'   
++a0 = '0.00031139121+ntvnative_a0_diff_7'   
++keta = '0.019064+ntvnative_keta_diff_7'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_7'   
++b0 = '0+ntvnative_b0_diff_7'   
++b1 = '0+ntvnative_b1_diff_7'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_7'    
++nfactor = '2.0354+ntvnative_nfactor_diff_7'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_7'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0.00020806+ntvnative_eta0_diff_7'   
++etab = 1e-010   
++dsub = 0.59286   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_7'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 3.9877e-007   
++alpha1 = 0.15   
++beta0 = 20.36   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_7'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_7'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.34562+ntvnative_kt1_diff_7'   
++kt2 = -0.02   
++at = 40500   
++ute = -1.613   
++ua1 = 1e-009   
++ub1 = -1.1724e-017   
++uc1 = -2.5133e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.745e-06
++sbref   = 1.74e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+.model ntvnative_mod.8 nmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 5.95e-07  lmax = 6.05e-07  wmin = 6.95e-07  wmax = 7.05e-07
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        1.16e-008                   
++xj = 1.5e-007   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '0+ntvnative_lint_diff'      
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '0+ntvnative_wint_diff'      
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = 0   
++dwb = 0   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        0                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        0                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        0.0                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-009                      
++xn         =        3                           
++rnoia      =        0.89
++rnoib      =        0.38
++tnoia     =         6.4e6
++tnoib     =        7.2e6
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '1.16e-008*ntvnative_toxe_mult'    
++dtox       =        0                           
++ndep = 1.7e+017   
++nsd = 1e+020   
++rshg       =        0.1                         
+****
++rsh        =        '1*ntvnative_rshn_mult'     
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '0.071092+ntvnative_vth0_diff_8'    
++k1 = 0.33502   
++k2 = '0+ntvnative_k2_diff_8'   
++k3 = 0   
++dvt0 = 1e-010   
++dvt1 = 0.536   
++dvt2 = -0.05   
++dvt0w = 0   
++dvt1w = 5000000   
++dvt2w = -0.032   
++w0 = 0   
++k3b = 0   
+*NEW BSIM4 Parameters for Level 54
++phin = 0.01855708   
++lpe0 = -1e-010   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '120770+ntvnative_vsat_diff_8'   
++ua = '4.145e-009+ntvnative_ua_diff_8'   
++ub = '3.7798e-019+ntvnative_ub_diff_8'   
++uc = 1.3541e-010   
++rdsw = '0+ntvnative_rdsw_diff_8'   
++prwb = 0   
++prwg = 0   
++wr = 1   
++u0 = '0.083529+ntvnative_u0_diff_8'   
++a0 = '0.00031139121+ntvnative_a0_diff_8'   
++keta = '0.0047834+ntvnative_keta_diff_8'   
++a1 = 0   
++a2 = 0.6218093   
++ags = '0.00014554757+ntvnative_ags_diff_8'   
++b0 = '0+ntvnative_b0_diff_8'   
++b1 = '0+ntvnative_b1_diff_8'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 0   
++rdwmin     =        0                           
++rsw = 0   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.098774+ntvnative_voff_diff_8'    
++nfactor = '0.77345+ntvnative_nfactor_diff_8'    
++up = 0.0
++ud = 0.0
++lp = 1.0
++tvfbsdoff = 0.0
++tvoff = '0+ntvnative_tvoff_diff_8'
++cit = -3.3686011e-037   
++cdsc = 0   
++cdscb = -0.0001   
++cdscd = 1.5e-005   
++eta0 = '0+ntvnative_eta0_diff_8'   
++etab = 0   
++dsub = 0.071143   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = -2.9752837e-011   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = '2.8944111+ntvnative_pclm_diff_8'   
++pdiblc1 = 0.87012255   
++pdiblc2 = 0.032974   
++pdiblcb = -0.05   
++drout = 0.27268   
++pscbe1 = 4.24e+009   
++pscbe2 = 1e-008   
++pvag = 5.2718232   
++delta = 0.01   
++alpha0 = 3.498e-007   
++alpha1 = 0.35   
++beta0 = 21.582   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 10.125   
++pdits = '5.666761e-016+ntvnative_pdits_diff_8'   
++pditsl     =        0                           
++pditsd = '0+ntvnative_pditsd_diff_8'   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 0   
++bgidl = 2.3e+009   
++cgidl = 0.8   
++egidl = 0.5   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        1.16e-008                   
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.30496+ntvnative_kt1_diff_8'   
++kt2 = -0.02   
++at = 34830   
++ute = -1.6817   
++ua1 = 1e-009   
++ub1 = -9.9403e-018   
++uc1 = -2.5133e-010   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 12   
++xrcrg2 = 1   
++rbpb       =        50                          
++rbpd       =        50                          
++rbps       =        50                          
++rbdb       =        50                          
++rbsb       =        50                          
++gbmin      =        1e-012                      
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia      =        2.5e+41                   
++noib      =        0.0                  
++noic      =         0.0                   
++em         =        4.1000000E+07                    
++af         =        1                           
++ef        =        1.0                           
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        0                           
++xgl        =        0                           
++ngcon      =        1                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.5764                      
++jss        =        0.00042966                  
++jsws       =        8.040000000000001e-10       
++xtis       =        0                           
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.0019685                   
++tpbsw      =        0.001                       
++tpbswg     =        0                           
++tcj        =        0.00083                     
++tcjsw      =        0                           
++tcjswg     =        0                           
++cgdo       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgso       =        '3.2646e-010*ntvnative_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5e-011*ntvnative_overlap_mult'   
++cgdl       =        '5e-011*ntvnative_overlap_mult'   
++cf         =        0                           
++clc        =        1e-007                      
++cle        =        0.6                         
++dlc        =        '6.5233e-008+ntvnative_dlc_diff+ntvnative_dlc_rotweak'   
++dwc        =        '0+ntvnative_dwc_diff'      
++vfbcv      =        -1                          
++acde       =        0.4                         
++moin       =        15                          
++noff       =        4.00                        
++voffcv     =        -0.14208                    
++ngate      =        1e23                        
++lwc        =        0                           
++llc        =        0                           
++lwlc       =        0                           
++wlc        =        0                           
++wwc        =        0                           
++wwlc       =        0                           
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0008602*ntvnative_ajunction_mult'   
++mjs        =        0.28329                     
++pbs        =        0.66345                     
++cjsws      =        '8.5152e-011*ntvnative_pjunction_mult'   
++mjsws      =        0.057926                    
++pbsws      =        1                           
++cjswgs     =        '3.58e-011*ntvnative_pjunction_mult'   
++mjswgs     =        0.33                        
++pbswgs     =        0.2442                      
+* 
+*STRESS PARAMETERS 
+* 
++saref   = 1.95e-06
++sbref   = 1.94e-06
++wlod    = '0+ntvnative_wlod_diff'
++kvth0   = '0+ntvnative_kvth0_diff'
++lkvth0  = '0+ntvnative_lkvth0_diff'
++wkvth0  = '0+ntvnative_wkvth0_diff'
++pkvth0  = 0
++llodvth = 0
++wlodvth = 1
++stk2    = 0
++lodk2   = 1
++lodeta0 = 1
++ku0     = '0+ntvnative_ku0_diff'
++lku0    = '0+ntvnative_lku0_diff'
++wku0    = '0+ntvnative_wku0_diff'
++pku0    = 0
++llodku0 = 0
++wlodku0 = 1
++kvsat   = '0+ntvnative_kvsat_diff'
++steta0  = 0
++tku0    = 0
+******
+
+minst d g s b ntvnative_mod l=l w=w ad=ad as=as pd=pd ps=ps nrd=nrd nrs=nrs rdc=rdc rsc=rsc m=m nf=nf geo=geo delvto=delvto sa=sa sb=sb sd=sd dtemp=dtemp
+.ends

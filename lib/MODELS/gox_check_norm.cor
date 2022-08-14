@@ -1,0 +1,373 @@
+** S8 Gox Stress File
+** Equation based on Reliability Spec: 001-09864*D
+** DESIGN PARAMETERS FOR CALCULATING VOLTAGE
+** BELOW VALUES ARE DEFAULT & CAN BE OVERWRITTEN BY DESIGNERS IN THEIR *.cir FILE
+**************************************************************************
+** COPY & PASTE THESE LINES INTO YOUR CIR FILE & CHANGE VALUES TO MATCH YOUR DESIGN
+** The default gate area & lifetime values below were set to match the limits in CIT-52 at T=140oC.
+.param
++gox_lvngate_area=  4.5427e+06 $ gate area of nshort devices, units are um^2
++gox_lvpgate_area=  1.0362e+07 $ gate area of pshort/plowvt devices, units are um^2
++gox_hvngate_area=  1.0047e+10 $ gate area of nhv devices, units are um^2
++gox_hvpgate_area=  4.9798e+09 $ gate area of phv devices, units are um^2
++gox_t_lifetime =    10.00     $ lifetime requirements of circuit, units are years
+****************************************************************************
++gox_stress_temp = temper      $ temerature in oC passed from eldo *.temp statements
+
+****EQN FOR CALCULATING VOLTAGE MAGNITUDE, THIS IS INTERNAL TO MODEL
+.param
++k = 8.6e-05      $ eV/K
+****LV NMOS
++Blvn    = 2.53486e11 $ years
++BETAlvn = 1.72    $ constant
++PHIlvn  = 0.021    $ 1/oC
++EAlvn   = 0.0     $ eV
++GAMMAlvn =  8.57  $1/volt
+****LV PMOS
++Blvp     = 3.74698e11 $ years
++BETAlvp  = 1.77   $ constant
++PHIlvp   = 0.021    $ 1/oC
++EAlvp    = 0.0     $ eV
++GAMMAlvp =  8.53     $1/Volt
+****HV NMOS
++Bhvn    = 1.23255e10 $ years
++BETAhvn = 3.24    $ constant
++PHIhvn  = 0.0     $ 1/oC
++EAhvn   = 0.49   $ eV
++GAMMAhvn =  2.45    $1/Volt
+****HV PMOS
++Bhvp    = 3.47703e9 $ years
++BETAhvp = 3.91   $ constant
++PHIhvp  = 0.0     $ 1/oC
++EAhvp   = 0.53    $ eV
++GAMMAhvp =  2.24  $1/Volt
+
+****EQN FOR CALCULATING VOLTAGE MAGNITUDE, THIS IS INTERNAL TO MODEL
+****0.001 is for having limit 0.001 above target voltage to check
+****These equations are commented out because they are for gate area in units of cm^2
+.param
++cmchange = 1e-8  *Units passed in are in um^2, but equation expects cm^2
++lvnfet_abs_voltage = '(log(Blvn*(0.1/(gox_lvngate_area*cmchange))^(1/BETAlvn)*10^(-1*PHIlvn*(gox_stress_temp-25)))+(EAlvn/k)*(1/(gox_stress_temp+273)-1/298)-log(gox_t_lifetime))/GAMMAlvn + 0.001'
++lvpfet_abs_voltage = '(log(Blvp*(0.1/(gox_lvpgate_area*cmchange))^(1/BETAlvp)*10^(-1*PHIlvp*(gox_stress_temp-25)))+(EAlvp/k)*(1/(gox_stress_temp+273)-1/298)-log(gox_t_lifetime))/GAMMAlvp + 0.001'
++hvnfet_abs_voltage = '(log(Bhvn*(0.1/(gox_hvngate_area*cmchange))^(1/BETAhvn)*10^(-1*PHIhvn*(gox_stress_temp-25)))+(EAhvn/k)*(1/(gox_stress_temp+273)-1/298)-log(gox_t_lifetime))/GAMMAhvn + 0.001'
++hvpfet_abs_voltage = '(log(Bhvp*(0.1/(gox_hvpgate_area*cmchange))^(1/BETAhvp)*10^(-1*PHIhvp*(gox_stress_temp-25)))+(EAhvp/k)*(1/(gox_stress_temp+273)-1/298)-log(gox_t_lifetime))/GAMMAhvp+ 0.001'
+
++hvnfet_min = -1*hvnfet_abs_voltage    
++hvnfet_max =  hvnfet_abs_voltage
++hvpfet_min = -1*hvpfet_abs_voltage    
++hvpfet_max =  hvpfet_abs_voltage
++lvnfet_min = -1*lvnfet_abs_voltage  
++lvnfet_max =  lvnfet_abs_voltage 
++lvpfet_min = -1*lvpfet_abs_voltage  
++lvpfet_max =  lvpfet_abs_voltage 
++progfet_min =-2.201
++progfet_max = 2.201
+**
++phv_gb_min = hvpfet_min
++phv_gb_max = hvpfet_max
++phv_gd_min = hvpfet_min
++phv_gd_max = hvpfet_max
++phv_gs_min = hvpfet_min
++phv_gs_max = hvpfet_max
+*
++pvhv_gb_min = hvpfet_min
++pvhv_gb_max = hvpfet_max
++pvhv_gd_min = hvpfet_min
++pvhv_gd_max = hvpfet_max
++pvhv_gs_min = hvpfet_min
++pvhv_gs_max = hvpfet_max
+**
++nhv_gb_min = hvnfet_min
++nhv_gb_max = hvnfet_max
++nhv_gd_min = hvnfet_min
++nhv_gd_max = hvnfet_max
++nhv_gs_min = hvnfet_min
++nhv_gs_max = hvnfet_max
+*
++nvhv_gb_min = hvnfet_min
++nvhv_gb_max = hvnfet_max
++nvhv_gd_min = hvnfet_min
++nvhv_gd_max = hvnfet_max
++nvhv_gs_min = hvnfet_min
++nvhv_gs_max = hvnfet_max
+*
++pshort_gb_min = lvpfet_min
++pshort_gb_max = lvpfet_max
++pshort_gd_min = lvpfet_min
++pshort_gd_max = lvpfet_max
++pshort_gs_min = lvpfet_min
++pshort_gs_max = lvpfet_max
+*
++nshort_gb_min = lvnfet_min
++nshort_gb_max = lvnfet_max
++nshort_gd_min = lvnfet_min
++nshort_gd_max = lvnfet_max
++nshort_gs_min = lvnfet_min
++nshort_gs_max = lvnfet_max
+*
++plowvt_gb_min = lvpfet_min
++plowvt_gb_max = lvpfet_max
++plowvt_gd_min = lvpfet_min
++plowvt_gd_max = lvpfet_max
++plowvt_gs_min = lvpfet_min
++plowvt_gs_max = lvpfet_max
+*
++nshortesd_gb_min = lvnfet_min
++nshortesd_gb_max = lvnfet_max
++nshortesd_gd_min = lvnfet_min
++nshortesd_gd_max = lvnfet_max
++nshortesd_gs_min = lvnfet_min
++nshortesd_gs_max = lvnfet_max
+*
++phighvt_gb_min = lvpfet_min
++phighvt_gb_max = lvpfet_max
++phighvt_gd_min = lvpfet_min
++phighvt_gd_max = lvpfet_max
++phighvt_gs_min = lvpfet_min
++phighvt_gs_max = lvpfet_max
+*
++nlowvt_gb_min = lvnfet_min
++nlowvt_gb_max = lvnfet_max
++nlowvt_gd_min = lvnfet_min
++nlowvt_gd_max = lvnfet_max
++nlowvt_gs_min = lvnfet_min
++nlowvt_gs_max = lvnfet_max
+*
++nlvtpass_gb_min = lvnfet_min
++nlvtpass_gb_max = lvnfet_max
++nlvtpass_gd_min = lvnfet_min
++nlvtpass_gd_max = lvnfet_max
++nlvtpass_gs_min = lvnfet_min
++nlvtpass_gs_max = lvnfet_max
+*
++nhvesd_gb_min = hvnfet_min
++nhvesd_gb_max = hvnfet_max
++nhvesd_gd_min = hvnfet_min
++nhvesd_gd_max = hvnfet_max
++nhvesd_gs_min = hvnfet_min
++nhvesd_gs_max = hvnfet_max
+*
++phvesd_gb_min = hvpfet_min
++phvesd_gb_max = hvpfet_max
++phvesd_gd_min = hvpfet_min
++phvesd_gd_max = hvpfet_max
++phvesd_gs_min = hvpfet_min
++phvesd_gs_max = hvpfet_max
+*
++ntvnative_gb_min = hvnfet_min
++ntvnative_gb_max = hvnfet_max
++ntvnative_gd_min = hvnfet_min
++ntvnative_gd_max = hvnfet_max
++ntvnative_gs_min = hvnfet_min
++ntvnative_gs_max = hvnfet_max
+*
++nhvnative_gb_min = hvnfet_min
++nhvnative_gb_max = hvnfet_max
++nhvnative_gd_min = hvnfet_min
++nhvnative_gd_max = hvnfet_max
++nhvnative_gs_min = hvnfet_min
++nhvnative_gs_max = hvnfet_max
+*
++npass_gb_min = lvnfet_min
++npass_gb_max = lvnfet_max
++npass_gd_min = lvnfet_min
++npass_gd_max = lvnfet_max
++npass_gs_min = lvnfet_min
++npass_gs_max = lvnfet_max
+*
++npd_gb_min = lvnfet_min
++npd_gb_max = lvnfet_max
++npd_gd_min = lvnfet_min
++npd_gd_max = lvnfet_max
++npd_gs_min = lvnfet_min
++npd_gs_max = lvnfet_max
+*
++ppu_gb_min = lvpfet_min
++ppu_gb_max = lvpfet_max
++ppu_gd_min = lvpfet_min
++ppu_gd_max = lvpfet_max
++ppu_gs_min = lvpfet_min
++ppu_gs_max = lvpfet_max
+*
++fnpass_gb_min = progfet_min
++fnpass_gb_max = progfet_max
++fnpass_gd_min = progfet_min
++fnpass_gd_max = progfet_max
++fnpass_gs_min = progfet_min
++fnpass_gs_max = progfet_max
+*
++sonos_p_gb_min = progfet_min
++sonos_p_gb_max = progfet_max
++sonos_p_gd_min = progfet_min
++sonos_p_gd_max = progfet_max
++sonos_p_gs_min = progfet_min
++sonos_p_gs_max = progfet_max
+*
++sonos_e_gb_min = progfet_min
++sonos_e_gb_max = progfet_max
++sonos_e_gd_min = progfet_min
++sonos_e_gd_max = progfet_max
++sonos_e_gs_min = progfet_min
++sonos_e_gs_max = progfet_max
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+**Extract statements to print the critical voltage even if there is no SOA violation
+.extract label=gox_nshort_gb_max nshort_gb_max
+.extract label=gox_nshort_gb_min nshort_gb_min
+.extract label=gox_nshort_gd_max nshort_gd_max
+.extract label=gox_nshort_gd_min nshort_gd_min
+.extract label=gox_nshort_gs_max nshort_gs_max
+.extract label=gox_nshort_gs_min nshort_gs_min
+
+.extract label=gox_nshortesd_gb_max nshortesd_gb_max
+.extract label=gox_nshortesd_gb_min nshortesd_gb_min
+.extract label=gox_nshortesd_gd_max nshortesd_gd_max
+.extract label=gox_nshortesd_gd_min nshortesd_gd_min
+.extract label=gox_nshortesd_gs_max nshortesd_gs_max
+.extract label=gox_nshortesd_gs_min nshortesd_gs_min
+
+.extract label=gox_pshort_gb_max pshort_gb_max
+.extract label=gox_pshort_gb_min pshort_gb_min
+.extract label=gox_pshort_gd_max pshort_gd_max
+.extract label=gox_pshort_gd_min pshort_gd_min
+.extract label=gox_pshort_gs_max pshort_gs_max
+.extract label=gox_pshort_gs_min pshort_gs_min
+
+.extract label=gox_plowvt_gb_max plowvt_gb_max
+.extract label=gox_plowvt_gb_min plowvt_gb_min
+.extract label=gox_plowvt_gd_max plowvt_gd_max
+.extract label=gox_plowvt_gd_min plowvt_gd_min
+.extract label=gox_plowvt_gs_max plowvt_gs_max
+.extract label=gox_plowvt_gs_min plowvt_gs_min
+
+.extract label=gox_phighvt_gb_max phighvt_gb_max
+.extract label=gox_phighvt_gb_min phighvt_gb_min
+.extract label=gox_phighvt_gd_max phighvt_gd_max
+.extract label=gox_phighvt_gd_min phighvt_gd_min
+.extract label=gox_phighvt_gs_max phighvt_gs_max
+.extract label=gox_phighvt_gs_min phighvt_gs_min
+
+.extract label=gox_nlowvt_gb_max nlowvt_gb_max
+.extract label=gox_nlowvt_gb_min nlowvt_gb_min
+.extract label=gox_nlowvt_gd_max nlowvt_gd_max
+.extract label=gox_nlowvt_gd_min nlowvt_gd_min
+.extract label=gox_nlowvt_gs_max nlowvt_gs_max
+.extract label=gox_nlowvt_gs_min nlowvt_gs_min
+
+.extract label=gox_nhvesd_gb_max nhvesd_gb_max
+.extract label=gox_nhvesd_gb_min nhvesd_gb_min
+.extract label=gox_nhvesd_gd_max nhvesd_gd_max
+.extract label=gox_nhvesd_gd_min nhvesd_gd_min
+.extract label=gox_nhvesd_gs_max nhvesd_gs_max
+.extract label=gox_nhvesd_gs_min nhvesd_gs_min
+
+.extract label=gox_phvesd_gb_max phvesd_gb_max
+.extract label=gox_phvesd_gb_min phvesd_gb_min
+.extract label=gox_phvesd_gd_max phvesd_gd_max
+.extract label=gox_phvesd_gd_min phvesd_gd_min
+.extract label=gox_phvesd_gs_max phvesd_gs_max
+.extract label=gox_phvesd_gs_min phvesd_gs_min
+
+.extract label=gox_ntvnative_gb_max ntvnative_gb_max
+.extract label=gox_ntvnative_gb_min ntvnative_gb_min
+.extract label=gox_ntvnative_gd_max ntvnative_gd_max
+.extract label=gox_ntvnative_gd_min ntvnative_gd_min
+.extract label=gox_ntvnative_gs_max ntvnative_gs_max
+.extract label=gox_ntvnative_gs_min ntvnative_gs_min
+
+.extract label=gox_nhvnative_gb_max nhvnative_gb_max
+.extract label=gox_nhvnative_gb_min nhvnative_gb_min
+.extract label=gox_nhvnative_gd_max nhvnative_gd_max
+.extract label=gox_nhvnative_gd_min nhvnative_gd_min
+.extract label=gox_nhvnative_gs_max nhvnative_gs_max
+.extract label=gox_nhvnative_gs_min nhvnative_gs_min
+
+.extract label=gox_nhv_gb_max nhv_gb_max
+.extract label=gox_nhv_gb_min nhv_gb_min
+.extract label=gox_nhv_gd_max nhv_gd_max
+.extract label=gox_nhv_gd_min nhv_gd_min
+.extract label=gox_nhv_gs_max nhv_gs_max
+.extract label=gox_nhv_gs_min nhv_gs_min
+
+.extract label=gox_nvhv_gb_max nvhv_gb_max
+.extract label=gox_nvhv_gb_min nvhv_gb_min
+.extract label=gox_nvhv_gd_max nvhv_gd_max
+.extract label=gox_nvhv_gd_min nvhv_gd_min
+.extract label=gox_nvhv_gs_max nvhv_gs_max
+.extract label=gox_nvhv_gs_min nvhv_gs_min
+
+.extract label=gox_phv_gb_max phv_gb_max
+.extract label=gox_phv_gb_min phv_gb_min
+.extract label=gox_phv_gd_max phv_gd_max
+.extract label=gox_phv_gd_min phv_gd_min
+.extract label=gox_phv_gs_max phv_gs_max
+.extract label=gox_phv_gs_min phv_gs_min
+
+.extract label=gox_pvhv_gb_max pvhv_gb_max
+.extract label=gox_pvhv_gb_min pvhv_gb_min
+.extract label=gox_pvhv_gd_max pvhv_gd_max
+.extract label=gox_pvhv_gd_min pvhv_gd_min
+.extract label=gox_pvhv_gs_max pvhv_gs_max
+.extract label=gox_pvhv_gs_min pvhv_gs_min
+
+.extract label=gox_npass_gb_max npass_gb_max
+.extract label=gox_npass_gb_min npass_gb_min
+.extract label=gox_npass_gd_max npass_gd_max
+.extract label=gox_npass_gd_min npass_gd_min
+.extract label=gox_npass_gs_max npass_gs_max
+.extract label=gox_npass_gs_min npass_gs_min
+
+.extract label=gox_npd_gb_max npd_gb_max
+.extract label=gox_npd_gb_min npd_gb_min
+.extract label=gox_npd_gd_max npd_gd_max
+.extract label=gox_npd_gd_min npd_gd_min
+.extract label=gox_npd_gs_max npd_gs_max
+.extract label=gox_npd_gs_min npd_gs_min
+
+.extract label=gox_ppu_gb_max ppu_gb_max
+.extract label=gox_ppu_gb_min ppu_gb_min
+.extract label=gox_ppu_gd_max ppu_gd_max
+.extract label=gox_ppu_gd_min ppu_gd_min
+.extract label=gox_ppu_gs_max ppu_gs_max
+.extract label=gox_ppu_gs_min ppu_gs_min
+
+.extract label=gox_fnpass_gb_max fnpass_gb_max
+.extract label=gox_fnpass_gb_min fnpass_gb_min
+.extract label=gox_fnpass_gd_max fnpass_gd_max
+.extract label=gox_fnpass_gd_min fnpass_gd_min
+.extract label=gox_fnpass_gs_max fnpass_gs_max
+.extract label=gox_fnpass_gs_min fnpass_gs_min
+
+.extract label=gox_sonos_p_gb_max sonos_p_gb_max
+.extract label=gox_sonos_p_gb_min sonos_p_gb_min
+.extract label=gox_sonos_p_gd_max sonos_p_gd_max
+.extract label=gox_sonos_p_gd_min sonos_p_gd_min
+.extract label=gox_sonos_p_gs_max sonos_p_gs_max
+.extract label=gox_sonos_p_gs_min sonos_p_gs_min
+
+.extract label=gox_sonos_e_gb_max sonos_e_gb_max
+.extract label=gox_sonos_e_gb_min sonos_e_gb_min
+.extract label=gox_sonos_e_gd_max sonos_e_gd_max
+.extract label=gox_sonos_e_gd_min sonos_e_gd_min
+.extract label=gox_sonos_e_gs_max sonos_e_gs_max
+.extract label=gox_sonos_e_gs_min sonos_e_gs_min

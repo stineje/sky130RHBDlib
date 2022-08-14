@@ -1,0 +1,537 @@
+****************************************************************
+*Subckt Model to allow adition of non-linear resistor model and gate-drain capacitance model
+******* 
+* pvhv *
+*******
+.subckt pvhv d g s b  w=5.0 l=0.66 ad=0 as=0 pd=0 ps=0.0 m=1 mf=1 nrd=0 nrs=0 sa=0.28 sb=1.19 sd=0
+.param rdiff='8.900000e+003*pvhv_rdiff_mult'
+.param rdiff_tc1=2.500000e-003 
+.param rdiff_tc2=2.200000e-006
+****sb fixed value based on TDR rule depmos.6, for hardcoded number in CAD flow
+.param sb_cadfixedvalue_pvhv=1.19
+***sd intentionally left out for pvhv devices because poly-poly spacing not uniform in DE FET
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: pxg
+* Command Line: /proj/tlib/ll65h/config/cydir/bin/lnx86/bsimtran pmos_bsim4.rf pmos -p -npvhv pvhv_global.pm pvhv_cad.pm dnwdiode_pw.mod dnwdiode_pw.mod pvhv.pm3 
+* Working Directory: /home/pxg/rams/s8/models.3.5/rev_model/combined
+* Time: Thu May 13 10:22:33 2010
+* Rule File:  pmos_bsim4.rf
+* Output File:  pvhv.pm3
+* Input Files:
+* (1) pvhv_global.pm
+* (2) pvhv_cad.pm
+* (3) dnwdiode_pw.mod
+* (4) dnwdiode_pw.mod
+*copyright, Cypress Semiconductor, 2007
+*BSIM4.V5 PMOS Model
+
+****Mismatch doubler for pre-silicon model
+.param
++pvhv_mm_mult=0.9
+
+
+.model pvhv_base.0 pmos
+*
+***MODEL FLAG PARAMETERS
+*
++lmin = 0.655e-06   lmax = 0.665e-06   wmin = 4.990000e-006   wmax = 5.010000e-005   
++level      =        5.400000e+001               
++version    =        4.500000e+000               
++binunit    =        2.000000e+000               
++mobmod     =        0.000000e+000               
++capmod     =        2.000000e+000               
++igcmod     =        0.000000e+000               
++igbmod     =        0.000000e+000               
++geomod     =        0.000000e+000               
++diomod     =        1.000000e+000               
++rdsmod     =        1.000000e+000               
++rbodymod   =        1.000000e+000               
++rgatemod   =        0.000000e+000               
++permod     =        1.000000e+000               
++acnqsmod   =        0.000000e+000               
++trnqsmod   =        0.000000e+000               
++fnoimod    =        1.000000e+000               
++tnoimod    =        1.000000e+000               
+***PROCESS PARAMETERS
++toxe       =        '1.160000e-008*pvhv_toxe_mult'   
++toxm       =        1.160000e-008               
++epsrox     =        3.900000e+000               
++xj         =        1.500000e-007               
++ngate      =        1.000000e+023               
++ndep       =        1.700000e+017               
++nsd        =        1.000000e+020               
++rsh        =        '1.000000e+000*pvhv_rshp_mult'   
++rshg       =        1.000000e-001               
+***BASIC MODEL PARAMETERS
++wint       =        '0.000000e+000+pvhv_wint_diff'   
++lint       =        '3.445300e-008+pvhv_lint_diff' 
++vth0       =        '-1.043500e+000+pvhv_vth0_diff_0'   
++k1         =        6.831000e-001               
++k2         =        '-1.303200e-003+pvhv_k2_diff_0'   
++k3         =        0.000000e+000               
++k3b        =        0.000000e+000               
++w0         =        0.000000e+000               
++dvt0       =        0.000000e+000               
++dvt1       =        5.300000e-001               
++dvt2       =        -3.200000e-002              
++dvt0w      =        0.000000e+000               
++dvt1w      =        5.300000e+006               
++dvt2w      =        -3.200000e-002              
++dsub       =        '3.416000e-001+pvhv_dsub_diff_0'   
++minv       =        0.000000e+000               
++voffl      =        0.000000e+000               
++dvtp0      =        0.000000e+000               
++dvtp1      =        0.000000e+000               
++lpe0       =        '1.400000e-007+pvhv_lpe0_diff_0'   
++lpeb       =        -6.500000e-008              
++vbm        =        -3.000000e+000              
++phin       =        0.000000e+000               
++cdsc       =        2.520000e-004               
++cdscb      =        0.000000e+000               
++cdscd      =        0.000000e+000               
++cit        =        0.000000e+000               
++voff       =        '-1.372000e-001+pvhv_voff_diff_0'   
++nfactor    =        '7.100000e-001+pvhv_nfactor_diff_0'   
++eta0       =        '8.729800e-002+pvhv_eta0_diff_0'   
++etab       =        -5.000000e-002              
++u0         =        '2.707600e-002+pvhv_u0_diff_0'   
++ua         =        '2.585600e-009+pvhv_ua_diff_0'   
++ub         =        '4.595800e-019+pvhv_ub_diff_0'   
++uc         =        -1.220000e-010              
++eu         =        1.670000e+000               
++vsat       =        '7.660800e+004+pvhv_vsat_diff_0'   
++a0         =        '3.820000e-001+pvhv_a0_diff_0'   
++ags        =        '1.291200e-001+pvhv_ags_diff_0'   
++a1         =        0.000000e+000               
++a2         =        7.200000e-001               
++b0         =        '4.000000e-012+pvhv_b0_diff_0'   
++b1         =        '0.000000e+000+pvhv_b1_diff_0'   
++keta       =        '-3.321800e-002+pvhv_keta_diff_0'   
++dwg        =        0.000000e+000               
++dwb        =        0.000000e+000               
++pclm       =        '1.000000e-001+pvhv_pclm_diff_0'   
++pdiblc1    =        3.900000e-001               
++pdiblc2    =        8.600000e-003               
++pdiblcb    =        -5.400000e-005              
++drout      =        5.600000e-001               
++pvag       =        5.040000e-001               
++delta      =        8.900000e-003               
++pscbe1     =        5.088000e+008               
++pscbe2     =        6.945200e-009               
++fprout     =        0.000000e+000               
++pdits      =        '0.000000e+000+pvhv_pdits_diff_0'   
++pditsd     =        '0.000000e+000+pvhv_pditsd_diff_0'   
++pditsl     =        0.000000e+000               
+***PARAMETERS FOR ASYMMETRIC AND BIAS-DEPENDENT RDS MODEL******
++rdsw       =        '3.310200e+002+pvhv_rdsw_diff_0'   
++rsw        =        1.000000e+002               
++rdw        =        '1.000000e+001+pvhv_rdw_diff_0'   
++rdswmin    =        0.000000e+000               
++rdwmin     =        0.000000e+000               
++rswmin     =        0.000000e+000               
++prwg       =        0.000000e+000               
++prwb       =        -4.000000e-004              
++wr         =        1.000000e+000               
+***IMPACT IONIZATION CURRENT MODEL PARAMTERS******************
++alpha0     =        2.000000e-007               
++alpha1     =        1.001000e+000               
++beta0      =        1.000000e+002               
+***GIDL INDUCED DRAIN LEAKAGE MODEL PARAMETERS*****************
++agidl      =        '1.650000e-010+pvhv_agidl_diff_0'   
++bgidl      =        '5.999300e+009+pvhv_bgidl_diff_0'   
++cgidl      =        '1.394000e+000+pvhv_cgidl_diff_0'   
++egidl      =        4.920000e-002               
+***GATE DIELECTRIC TUNNELING CURRENT MODEL PARAMETERS**********
++toxref     =        1.160000e-008               
++aigbacc = '4.300000e-001+pvhv_aigbacc_diff_0'   
++bigbacc = 5.400000e-002   
++cigbacc = 7.500000e-002   
++nigbacc = '1.000000e+000+pvhv_nigbacc_diff_0'   
++aigbinv = '3.500000e-001+pvhv_aigbinv_diff_0'   
++bigbinv = 3.000000e-002   
++cigbinv = 6.000000e-003   
++eigbinv = 1.100000e+000   
++nigbinv = '3.000000e+000+pvhv_nigbinv_diff_0'   
++aigc = '4.300000e-001+pvhv_aigc_diff_0'   
++bigc = 5.400000e-002   
++cigc = 7.500000e-002   
++aigsd = '4.300000e-001+pvhv_aigsd_diff_0'   
++bigsd = '5.400000e-002+pvhv_bigsd_diff_0'   
++cigsd = 7.500000e-002   
++nigc = 1.000000e+000   
++poxedge    =        1.000000e+000               
++pigcd      =        1.000000e+000               
++ntox       =        1.000000e+000               
+***CHARGE AND CAPACITANCE MODEL PARAMETERS********************
++dlc        =        '-9.682600e-008+pvhv_dlc_diff+pvhv_dlc_rotweak'   
++dwc        =        '0.000000e+000+pvhv_dwc_diff'   
++xpart      =        0.000000e+000               
++cgso       =        '1.977100e-010*pvhv_soverlap_mult'   
++cgdo       =        '1.977100e-010*pvhv_doverlap_mult'   
++cgbo       =        0.000000e+000               
++cgdl       =        '1.117200e-012*pvhv_doverlap_mult'   
++cgsl       =        '1.152000e-012*pvhv_soverlap_mult'   
++clc        =        6.324000e-009               
++cle        =        8.910000e-001               
++cf         =        '0.000000e+000+pvhv_cf_diff'   
++ckappas    =        6.000000e-001               
++ckappad    =        6.000000e-001               
++vfbcv      =        -1.000000e+000              
++acde       =        9.129800e-001               
++moin       =        1.556200e+001               
++noff = 1.045000e+000   
++voffcv     =        -1.815100e-001              
+***HIGH-SPEED/RF MODEL PARAMETERS******************************
+
+***FLICKER AND THERMAL NOISE MODEL PARAMETERS******************
++ef         =        1.000000e+000               
++noia       =        6.250000e+041               
++noib       =        3.125000e+026               
++noic       =        8.750000e+009               
++em         =        4.100000e+007               
+***LAYOUT-DEPENDENT PARASITICS MODEL PARAMETERS****************
++xl         =        0.000000e+000               
++xw         =        0.000000e+000               
++dmcg       =        0.000000e+000               
++dmdg       =        0.000000e+000               
++dmcgt      =        0.000000e+000               
++xgw        =        0.000000e+000               
++xgl        =        0.000000e+000               
++ngcon      =        1.000000e+000               
+***ASYMMETRIC SOURCE/DRAIN JUNCTION DIODE MODEL PARAMETERS*****
++jss        =        2.148300e-005               
++jsws       =        4.020000e-012               
++jtssws     =        '4.020000e-012+pvhv_jtssws_diff_0'               
++ijthsfwd   =        1.000000e-001               
++ijthsrev   =        1.000000e-001               
++bvs        =        1.269000e+001               
++xjbvs      =        1.000000e+000               
++pbs        =        6.587000e-001               
++cjs        =        '7.754700e-004*pvhv_ajunction_mult'   
++mjs        =        3.395600e-001               
++pbsws      =        1.000000e+000               
++cjsws      =        '9.871700e-011*pvhv_pjunction_mult'   
++mjsws      =        2.467600e-001               
++pbswgs     =        3.000000e+000               
++cjswgs     =        '1.460000e-010*pvhv_pjunction_mult'   
++mjswgs     =        8.100000e-001               
+
+***TEMPERATURE DEPENDENCE PARAMETERS***************************
++tnom       =        3.000000e+001               
++kt1        =        '-4.930800e-001+pvhv_kt1_diff_0'   
++kt1l       =        1.000000e-011               
++kt2        =        5.633800e-004               
++ute        =        -1.646200e+000              
++ua1        =        1.218100e-009               
++ub1        =        -1.241200e-018              
++uc1        =        8.272000e-012               
++prt        =        0.000000e+000               
++at         =        -6.400000e+004              
++tvoff      =        '1.500000e-002+pvhv_tvoff_diff_0'   
++njs        =        1.363200e+000               
++njd        =        1.079100e+000               
++tpb        =        1.671000e-003               
++tcj        =        9.600000e-004               
++tpbsw      =        0.000000e+000               
++tcjsw      =        3.000000e-005               
++tpbswg     =        0.000000e+000               
++tcjswg     =        0.000000e+000               
++xtis       =        1.000000e+001               
++xtid       =        3.000000e+000               
+***DW AND DL PARAMETERS****************************************
++ll         =        0.000000e+000               
++wl         =        0.000000e+000               
++lln        =        1.000000e+000               
++wln        =        1.000000e+000               
++lw         =        0.000000e+000               
++ww         =        0.000000e+000               
++lwn        =        1.000000e+000               
++wwn        =        1.000000e+000               
++lwl        =        0.000000e+000               
++wwl        =        0.000000e+000               
++llc        =        0.000000e+000               
++wlc        =        0.000000e+000               
++lwc        =        0.000000e+000               
++wwc        =        0.000000e+000               
++lwlc       =        0.000000e+000               
++wwlc       =        0.000000e+000               
+***STRESS PARAMETERS*******************************************
++saref      =        0.28e-006
++sbref      =        1.19e-006
++kvth0      =        '0.0+pvhv_kvth0_diff'
++lkvth0     =        '0.0+pvhv_lkvth0_diff'
++wkvth0     =        '0.0+pvhv_wkvth0_diff'
++pkvth0     =        0
++llodvth    =        1
++wlodvth    =        1
++wlod       =        0
++stk2       =        0
++lodk2      =        1
++lodeta0    =        1
++ku0        =        '0.0+pvhv_ku0_diff'
++lku0       =        '0.0+pvhv_lku0_diff'
++wku0       =        '0.0+pvhv_wku0_diff'
++pku0       =        0
++tku0       =        0
++llodku0    =        1
++wlodku0    =        1
++kvsat      =        '0.0+pvhv_kvsat_diff'
++steta0     =        0
+***WELL PROXIMITY EFFECT PARAMETERS****************************
+******
+
+.model pvhv_base.1 pmos
+*
+***MODEL FLAG PARAMETERS
+*
++lmin = 2.15e-06   lmax = 2.17e-06   wmin = 4.990000e-006   wmax = 5.010000e-005   
++level      =        5.400000e+001               
++version    =        4.500000e+000               
++binunit    =        2.000000e+000               
++mobmod     =        0.000000e+000               
++capmod     =        2.000000e+000               
++igcmod     =        0.000000e+000               
++igbmod     =        0.000000e+000               
++geomod     =        0.000000e+000               
++diomod     =        1.000000e+000               
++rdsmod     =        1.000000e+000               
++rbodymod   =        1.000000e+000               
++rgatemod   =        0.000000e+000               
++permod     =        1.000000e+000               
++acnqsmod   =        0.000000e+000               
++trnqsmod   =        0.000000e+000               
++fnoimod    =        1.000000e+000               
++tnoimod    =        1.000000e+000               
+***PROCESS PARAMETERS
++toxe       =        '1.160000e-008*pvhv_toxe_mult'  
++toxm       =        1.160000e-008               
++epsrox     =        3.900000e+000               
++xj         =        1.500000e-007               
++ngate      =        1.000000e+023               
++ndep       =        1.700000e+017               
++nsd        =        1.000000e+020               
++rsh        =        '1.000000e+000*pvhv_rshp_mult'   
++rshg       =        1.000000e-001               
+***BASIC MODEL PARAMETERS
++wint       =        '0.000000e+000+pvhv_wint_diff' 
++lint       =        '3.445300e-008+pvhv_lint_diff'   
++vth0       =        '-1.043500e+000+pvhv_vth0_diff_1'   
++k1         =        6.831000e-001               
++k2         =        '-1.303200e-003+pvhv_k2_diff_1'   
++k3         =        0.000000e+000               
++k3b        =        0.000000e+000               
++w0         =        0.000000e+000               
++dvt0       =        0.000000e+000               
++dvt1       =        5.300000e-001               
++dvt2       =        -3.200000e-002              
++dvt0w      =        0.000000e+000               
++dvt1w      =        5.300000e+006               
++dvt2w      =        -3.200000e-002              
++dsub       =        '3.416000e-001+pvhv_dsub_diff_1'   
++minv       =        0.000000e+000               
++voffl      =        0.000000e+000               
++dvtp0      =        0.000000e+000               
++dvtp1      =        0.000000e+000               
++lpe0       =        '1.400000e-007+pvhv_lpe0_diff_1'   
++lpeb       =        -6.500000e-008              
++vbm        =        -3.000000e+000              
++phin       =        0.000000e+000               
++cdsc       =        2.520000e-004               
++cdscb      =        0.000000e+000               
++cdscd      =        0.000000e+000               
++cit        =        0.000000e+000               
++voff       =        '-1.372000e-001+pvhv_voff_diff_1'   
++nfactor    =        '7.100000e-001+pvhv_nfactor_diff_1'   
++eta0       =        '8.729800e-002+pvhv_eta0_diff_1'   
++etab       =        -5.000000e-002              
++u0         =        '2.707600e-002+pvhv_u0_diff_1'   
++ua         =        '2.585600e-009+pvhv_ua_diff_1'   
++ub         =        '4.595800e-019+pvhv_ub_diff_1'   
++uc         =        -1.220000e-010              
++eu         =        1.670000e+000               
++vsat       =        '7.660800e+004+pvhv_vsat_diff_1'   
++a0         =        '3.820000e-001+pvhv_a0_diff_1'   
++ags        =        '1.291200e-001+pvhv_ags_diff_1'   
++a1         =        0.000000e+000               
++a2         =        7.200000e-001               
++b0         =        '4.000000e-012+pvhv_b0_diff_1'   
++b1         =        '0.000000e+000+pvhv_b1_diff_1'   
++keta       =        '-3.321800e-002+pvhv_keta_diff_1'   
++dwg        =        0.000000e+000               
++dwb        =        0.000000e+000               
++pclm       =        '1.000000e-001+pvhv_pclm_diff_1'   
++pdiblc1    =        3.900000e-001               
++pdiblc2    =        8.600000e-003               
++pdiblcb    =        -5.400000e-005              
++drout      =        5.600000e-001               
++pvag       =        5.040000e-001               
++delta      =        8.900000e-003               
++pscbe1     =        5.088000e+008               
++pscbe2     =        6.945200e-009               
++fprout     =        0.000000e+000               
++pdits      =        '0.000000e+000+pvhv_pdits_diff_1'   
++pditsd     =        '0.000000e+000+pvhv_pditsd_diff_1'   
++pditsl     =        0.000000e+000               
+***PARAMETERS FOR ASYMMETRIC AND BIAS-DEPENDENT RDS MODEL******
++rdsw       =        '3.310200e+002+pvhv_rdsw_diff_1'   
++rsw        =        1.000000e+002               
++rdw        =        '1.000000e+001+pvhv_rdw_diff_1'   
++rdswmin    =        0.000000e+000               
++rdwmin     =        0.000000e+000               
++rswmin     =        0.000000e+000               
++prwg       =        0.000000e+000               
++prwb       =        -4.000000e-004              
++wr         =        1.000000e+000               
+***IMPACT IONIZATION CURRENT MODEL PARAMTERS******************
++alpha0     =        2.000000e-007               
++alpha1     =        1.001000e+000               
++beta0      =        1.000000e+002               
+***GIDL INDUCED DRAIN LEAKAGE MODEL PARAMETERS*****************
++agidl      =        '1.650000e-010+pvhv_agidl_diff_1'   
++bgidl      =        '5.999300e+009+pvhv_bgidl_diff_1'   
++cgidl      =        '1.394000e+000+pvhv_cgidl_diff_1'   
++egidl      =        4.920000e-002               
+***GATE DIELECTRIC TUNNELING CURRENT MODEL PARAMETERS**********
++toxref     =        1.160000e-008               
++aigbacc = '4.300000e-001+pvhv_aigbacc_diff_1'   
++bigbacc = 5.400000e-002   
++cigbacc = 7.500000e-002   
++nigbacc = '1.000000e+000+pvhv_nigbacc_diff_1'   
++aigbinv = '3.500000e-001+pvhv_aigbinv_diff_1'   
++bigbinv = 3.000000e-002   
++cigbinv = 6.000000e-003   
++eigbinv = 1.100000e+000   
++nigbinv = '3.000000e+000+pvhv_nigbinv_diff_1'   
++aigc = '4.300000e-001+pvhv_aigc_diff'   
++bigc = 5.400000e-002   
++cigc = 7.500000e-002   
++aigsd = '4.300000e-001+pvhv_aigsd_diff_1'   
++bigsd = '5.400000e-002+pvhv_bigsd_diff_1'   
++cigsd = 7.500000e-002   
++nigc = 1.000000e+000   
++poxedge    =        1.000000e+000               
++pigcd      =        1.000000e+000               
++ntox       =        1.000000e+000               
+***CHARGE AND CAPACITANCE MODEL PARAMETERS********************
++dlc        =        '-9.682600e-008+pvhv_dlc_diff+pvhv_dlc_rotweak'   
++dwc        =        '0.000000e+000+pvhv_dwc_diff'   
++xpart      =        0.000000e+000               
++cgso       =        '1.977100e-010*pvhv_soverlap_mult'   
++cgdo       =        '1.977100e-010*pvhv_doverlap_mult'   
++cgbo       =        0.000000e+000               
++cgdl       =        '1.117200e-012*pvhv_doverlap_mult'   
++cgsl       =        '1.152000e-012*pvhv_soverlap_mult'   
++clc        =        6.324000e-009               
++cle        =        8.910000e-001               
++cf         =        '0.000000e+000+pvhv_cf_diff'   
++ckappas    =        6.000000e-001               
++ckappad    =        6.000000e-001               
++vfbcv      =        -1.000000e+000              
++acde       =        9.129800e-001               
++moin       =        1.556200e+001               
++noff = 1.045000e+000   
++voffcv     =        -1.815100e-001              
+***HIGH-SPEED/RF MODEL PARAMETERS******************************
+
+***FLICKER AND THERMAL NOISE MODEL PARAMETERS******************
++ef         =        1.000000e+000               
++noia       =        6.250000e+041               
++noib       =        3.125000e+026               
++noic       =        8.750000e+009               
++em         =        4.100000e+007               
+***LAYOUT-DEPENDENT PARASITICS MODEL PARAMETERS****************
++xl         =        0.000000e+000               
++xw         =        0.000000e+000               
++dmcg       =        0.000000e+000               
++dmdg       =        0.000000e+000               
++dmcgt      =        0.000000e+000               
++xgw        =        0.000000e+000               
++xgl        =        0.000000e+000               
++ngcon      =        1.000000e+000               
+***ASYMMETRIC SOURCE/DRAIN JUNCTION DIODE MODEL PARAMETERS*****
++jss        =        2.148300e-005               
++jsws       =        4.020000e-012               
++jtssws     =        '4.020000e-012+pvhv_jtssws_diff_1'               
++ijthsfwd   =        1.000000e-001               
++ijthsrev   =        1.000000e-001               
++bvs        =        1.269000e+001               
++xjbvs      =        1.000000e+000               
++pbs        =        6.587000e-001               
++cjs        =        '7.754700e-004*pvhv_ajunction_mult'   
++mjs        =        3.395600e-001               
++pbsws      =        1.000000e+000               
++cjsws      =        '9.871700e-011*pvhv_pjunction_mult'   
++mjsws      =        2.467600e-001               
++pbswgs     =        3.000000e+000               
++cjswgs     =        '1.460000e-010*pvhv_pjunction_mult'   
++mjswgs     =        8.100000e-001               
+
+***TEMPERATURE DEPENDENCE PARAMETERS***************************
++tnom       =        3.000000e+001               
++kt1        =        '-4.930800e-001+pvhv_kt1_diff_1'   
++kt1l       =        1.000000e-011               
++kt2        =        5.633800e-004               
++ute        =        -1.646200e+000              
++ua1        =        1.218100e-009               
++ub1        =        -1.241200e-018              
++uc1        =        8.272000e-012               
++prt        =        0.000000e+000               
++at         =        -6.400000e+004              
++tvoff      =        '1.500000e-002+pvhv_tvoff_diff_1'   
++njs        =        1.363200e+000               
++njd        =        1.079100e+000               
++tpb        =        1.671000e-003               
++tcj        =        9.600000e-004               
++tpbsw      =        0.000000e+000               
++tcjsw      =        3.000000e-005               
++tpbswg     =        0.000000e+000               
++tcjswg     =        0.000000e+000               
++xtis       =        1.000000e+001               
++xtid       =        3.000000e+000               
+***DW AND DL PARAMETERS****************************************
++ll         =        0.000000e+000               
++wl         =        0.000000e+000               
++lln        =        1.000000e+000               
++wln        =        1.000000e+000               
++lw         =        0.000000e+000               
++ww         =        0.000000e+000               
++lwn        =        1.000000e+000               
++wwn        =        1.000000e+000               
++lwl        =        0.000000e+000               
++wwl        =        0.000000e+000               
++llc        =        0.000000e+000               
++wlc        =        0.000000e+000               
++lwc        =        0.000000e+000               
++wwc        =        0.000000e+000               
++lwlc       =        0.000000e+000               
++wwlc       =        0.000000e+000               
+***STRESS PARAMETERS*******************************************
++saref      =        0.28e-006
++sbref      =        1.19e-006
++kvth0      =        '0.0+pvhv_kvth0_diff'
++lkvth0     =        '0.0+pvhv_lkvth0_diff'
++wkvth0     =        '0.0+pvhv_wkvth0_diff'
++pkvth0     =        0
++llodvth    =        1
++wlodvth    =        1
++wlod       =        0
++stk2       =        0
++lodk2      =        1
++lodeta0    =        1
++ku0        =        '0.0+pvhv_ku0_diff'
++lku0       =        '0.0+pvhv_lku0_diff'
++wku0       =        '0.0+pvhv_wku0_diff'
++pku0       =        0
++tku0       =        0
++llodku0    =        1
++wlodku0    =        1
++kvsat      =        '0.0+pvhv_kvsat_diff'
++steta0     =        0
+***WELL PROXIMITY EFFECT PARAMETERS****************************
+******
+
+main1 d1 g s b pvhv_base  w=w l=l ad=0 as=as pd=0 ps=ps nrd=nrd nrs=nrs m=m sa=sa sb=sb_cadfixedvalue_pvhv
+rldd d d1  '(1/w)*rdiff' tc1='rdiff_tc1' tc2='rdiff_tc2' m=m
+dnw1 d b dnwdiode_pvhv area='ad/2' pj='pd/2' m=m
+dnw2 d1 b dnwdiode_pvhv area='ad/2' pj='pd/2' m=m
+.ends pvhv

@@ -1,0 +1,5004 @@
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: ovr
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF_m2.rf pmos -p -npshort_rf_base pshort_rf_base_m2_b.pm pshort_rf_base_m2_b_bsimtranout.pm 
+* Working Directory: /home/ovr/work/s8_work/models.3.2/rev_model/pshort/combined
+* Time: Mon May 12 16:28:26 2008
+* Rule File:  pmos_bsim4_RF_m2.rf
+* Output File:  pshort_rf_base_m2_b_bsimtranout.pm
+* Input Files:
+* (1) pshort_rf_base_m2_b.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.0 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.45e-07   lmax = 1.55e-07   wmin = 1.645e-06   wmax = 1.655e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.62e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.022+pshort_rf_base_m2_b_vth0_diff_0'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_0'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.784e+04+pshort_rf_base_m2_b_vsat_diff_0'   
++ua = '-2.45e-09+pshort_rf_base_m2_b_ua_diff_0'   
++ub = '2.075e-18+pshort_rf_base_m2_b_ub_diff_0'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_0'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00307+pshort_rf_base_m2_b_u0_diff_0'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_0'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_0'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_0'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_0'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.2969+pshort_rf_base_m2_b_voff_diff_0'	
++nfactor = '6.23+pshort_rf_base_m2_b_nfactor_diff_0'	
++cit = 0   
++cdsc = 0   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1799   
++etab = -0.07835   
++dsub = 0.2663   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.4678   
++pdiblc1 = 0.235   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.4527   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.05627   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.556+pshort_rf_base_m2_b_kt1_diff_0'   
++kt2 = -0.122   
++at = 4.554e+04   
++ute = -0.39   
++ua1 = 1.346e-10   
++ub1 = 4.516e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '800*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '6e-07+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        2e-12                       
++cgdo       =        '1.6e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.505e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '2.12e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '-7e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0024*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.0862                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1                           
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps1p65p18m2x4_sim.pm ps1p65xp18m2x4_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 17:09:12 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps1p65xp18m2x4_bsimtranoutput.pm
+* Input Files:
+* (1) ps1p65p18m2x4_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.1 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.75e-07  lmax = 1.85e-07  wmin = 1.645e-06  wmax = 1.655e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'   
++dtox       =        0                           
++ndep = 1.62e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.984+pshort_rf_base_m2_b_vth0_diff_1'  
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_1'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.217e+04+pshort_rf_base_m2_b_vsat_diff_1'   
++ua = '-2.37e-09+pshort_rf_base_m2_b_ua_diff_1'   
++ub = '1.99e-18+pshort_rf_base_m2_b_ub_diff_1'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_1'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00305+pshort_rf_base_m2_b_u0_diff_1'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_1'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_1'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_1'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_1'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3374+pshort_rf_base_m2_b_voff_diff_1'	
++nfactor = '5.99+pshort_rf_base_m2_b_nfactor_diff_1'   
++cit = 0   
++cdsc = 0   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1799   
++etab = -0.07835   
++dsub = 0.2663   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.4678   
++pdiblc1 = 7.656e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.5264   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.0521   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.556+pshort_rf_base_m2_b_kt1_diff_1'   
++kt2 = -0.122   
++at = 4.554e+04   
++ute = -0.39   
++ua1 = 1.346e-10   
++ub1 = 4.516e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '800*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '7e-07+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        2e-12                       
++cgdo       =        '1.7e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.505e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '2.12e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '-2e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0023*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.0862                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1                           
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps1p65p25m2x4_sim.pm ps1p65xp25m2x4_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 18:54:09 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps1p65xp25m2x4_bsimtranoutput.pm
+* Input Files:
+* (1) ps1p65p25m2x4_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.2 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 2.45e-07  lmax = 2.55e-07  wmin = 1.645e-06  wmax = 1.655e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.62e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.945+pshort_rf_base_m2_b_vth0_diff_2'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_2'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.4e+04+pshort_rf_base_m2_b_vsat_diff_2'   
++ua = '-2.199e-09+pshort_rf_base_m2_b_ua_diff_2'   
++ub = '1.855e-18+pshort_rf_base_m2_b_ub_diff_2'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_2'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.003331+pshort_rf_base_m2_b_u0_diff_2'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_2'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_2'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_2'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_2'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3104+pshort_rf_base_m2_b_voff_diff_2'	
++nfactor = '5.87+pshort_rf_base_m2_b_nfactor_diff_2'	
++cit = 0   
++cdsc = 0   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1799   
++etab = -0.07835   
++dsub = 0.3036   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.4678   
++pdiblc1 = 0.1   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.7475   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.0521   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.556+pshort_rf_base_m2_b_kt1_diff_2'   
++kt2 = -0.122   
++at = 4.554e+04   
++ute = -0.39   
++ua1 = 1.346e-10   
++ub1 = 4.516e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '800*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1e-06+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        2e-12                       
++cgdo       =        '1.4e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.505e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '2.12e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '-4e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0023*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.0862                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1                           
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: ovr
+* Command Line: /proj/tlib/ll65p/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF_m2.rf pmos -p -npshort_rf_base ps3p15m2x2_iccap_ovr.pm ps3p15m2x2_bsimtranout.pm 
+* Working Directory: /home/ovr/work/s8_work/models.3.2/rev_model/pshort/combined
+* Time: Mon Apr 14 11:45:36 2008
+* Rule File:  pmos_bsim4_RF_m2.rf
+* Output File:  ps3p15m2x2_bsimtranout.pm
+* Input Files:
+* (1) ps3p15m2x2_iccap_ovr.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.3 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.45e-07   lmax = 1.55e-07   wmin = 3.005e-06   wmax = 3.015e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.04+pshort_rf_base_m2_b_vth0_diff_3'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_3'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.2e+04+pshort_rf_base_m2_b_vsat_diff_3'   
++ua = '-2.307e-09+pshort_rf_base_m2_b_ua_diff_3'   
++ub = '1.975e-18+pshort_rf_base_m2_b_ub_diff_3'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_3'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00431+pshort_rf_base_m2_b_u0_diff_3'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_3'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_3'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_3'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_3'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3297+pshort_rf_base_m2_b_voff_diff_3'	
++nfactor = '6.012+pshort_rf_base_m2_b_nfactor_diff_3'	
++cit = 0   
++cdsc = 0.006804   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.279   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.3382   
++pdiblc1 = 0.24   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.4851   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.1   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5203+pshort_rf_base_m2_b_kt1_diff_3'   
++kt2 = -0.122   
++at = 1.916e+04   
++ute = -0.189   
++ua1 = 1.346e-10   
++ub1 = 9.851e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '400*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '8e-07+pshort_rf_base_b_xgw_diff'                       
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.555e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '4.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.52e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '6e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2                           
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0024*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.8                         
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps3p18m2x2_sim.pm ps3xp18m2x2_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 17:38:53 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps3xp18m2x2_bsimtranoutput.pm
+* Input Files:
+* (1) ps3p18m2x2_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.4 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.75e-07  lmax = 1.85e-07  wmin = 3.005e-06  wmax = 3.015e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.005+pshort_rf_base_m2_b_vth0_diff_4'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_4'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.2e+04+pshort_rf_base_m2_b_vsat_diff_4'   
++ua = '-2.197e-09+pshort_rf_base_m2_b_ua_diff_4'   
++ub = '1.859e-18+pshort_rf_base_m2_b_ub_diff_4'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_4'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00429+pshort_rf_base_m2_b_u0_diff_4'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_4'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_4'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_4'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_4'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m2_b_voff_diff_4'	
++nfactor = '6.012+pshort_rf_base_m2_b_nfactor_diff_4'	
++cit = 0   
++cdsc = 0.006804   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.279   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.2949   
++pdiblc1 = 4.4e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.4851   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.1   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.52026+pshort_rf_base_m2_b_kt1_diff_4'   
++kt2 = -0.122   
++at = 1.916e+04   
++ute = -0.189   
++ua1 = 1.346e-10   
++ub1 = 9.851e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '400*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.05e-06+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.455e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '7e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.002*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.8                         
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '2.5e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps3p25m2x2_sim.pm ps3xp25m2x2_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 17:39:11 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps3xp25m2x2_bsimtranoutput.pm
+* Input Files:
+* (1) ps3p25m2x2_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.5 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 2.45e-07  lmax = 2.55e-07  wmin = 3.005e-06  wmax = 3.015e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.976+pshort_rf_base_m2_b_vth0_diff_5'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_5'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.976e+04+pshort_rf_base_m2_b_vsat_diff_5'   
++ua = '-2.187e-09+pshort_rf_base_m2_b_ua_diff_5'   
++ub = '1.834e-18+pshort_rf_base_m2_b_ub_diff_5'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_5'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00365+pshort_rf_base_m2_b_u0_diff_5'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_5'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_5'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_5'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_5'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m2_b_voff_diff_5'	
++nfactor = '6.012+pshort_rf_base_m2_b_nfactor_diff_5'	
++cit = 0   
++cdsc = 0.0063   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.31   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5899   
++pdiblc1 = 4.4e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.5053   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.03747   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.52026+pshort_rf_base_m2_b_kt1_diff_5'   
++kt2 = -0.122   
++at = 1.916e+04   
++ute = -0.189   
++ua1 = 1.346e-10   
++ub1 = 9.851e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '400*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.2e-06+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.455e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '7e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0022*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps5p15m2x1_sim.pm ps5xp15m2x1_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 18:54:48 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps5xp15m2x1_bsimtranoutput.pm
+* Input Files:
+* (1) ps5p15m2x1_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.6 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.45e-07  lmax = 1.55e-07  wmin = 5.045e-06  wmax = 5.055e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.058+pshort_rf_base_m2_b_vth0_diff_6'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_6'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.7e+04+pshort_rf_base_m2_b_vsat_diff_6'   
++ua = '-2.311e-09+pshort_rf_base_m2_b_ua_diff_6'   
++ub = '1.91e-18+pshort_rf_base_m2_b_ub_diff_6'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_6'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.004327+pshort_rf_base_m2_b_u0_diff_6'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_6'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_6'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_6'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_6'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m2_b_voff_diff_6'	
++nfactor = '5.651+pshort_rf_base_m2_b_nfactor_diff_6'	
++cit = 0   
++cdsc = 0.0066   
++cdscb = 0   
++cdscd = 0.0039   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.298   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5309   
++pdiblc1 = 0.248   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.4188   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.07242   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.56212+pshort_rf_base_m2_b_kt1_diff_6'   
++kt2 = -0.122   
++at = 2.705e+04   
++ute = -0.3   
++ua1 = 1.346e-10   
++ub1 = 5.223e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '200*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '7.4e-07+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.505e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '1.3e-08+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0022*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps5p18m2x1_sim.pm ps5xp18m2x1_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 17:41:37 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps5xp18m2x1_bsimtranoutput.pm
+* Input Files:
+* (1) ps5p18m2x1_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.7 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.75e-07  lmax = 1.85e-07  wmin = 5.045e-06  wmax = 5.055e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.021+pshort_rf_base_m2_b_vth0_diff_7'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_7'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.84e+04+pshort_rf_base_m2_b_vsat_diff_7'   
++ua = '-2.321e-09+pshort_rf_base_m2_b_ua_diff_7'   
++ub = '1.953e-18+pshort_rf_base_m2_b_ub_diff_7'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_7'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.0037+pshort_rf_base_m2_b_u0_diff_7'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_7'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_7'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_7'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_7'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3074+pshort_rf_base_m2_b_voff_diff_7'	
++nfactor = '6.012+pshort_rf_base_m2_b_nfactor_diff_7'	
++cit = 0   
++cdsc = 0.0046   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.2663   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.4186   
++pdiblc1 = 0   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.627   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.05346   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.56212+pshort_rf_base_m2_b_kt1_diff_7'   
++kt2 = -0.122   
++at = 3.472e+04   
++ute = -0.3   
++ua1 = 1.346e-10   
++ub1 = 5.223e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '200*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.3e-06+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.505e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '1.4e-08+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0022*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps5p25m2x1_sim.pm ps5xp25m2x1_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 18:09:50 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps5xp25m2x1_bsimtranoutput.pm
+* Input Files:
+* (1) ps5p25m2x1_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m2_b.8 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 2.45e-07  lmax = 2.55e-07  wmin = 5.045e-06  wmax = 5.055e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.977+pshort_rf_base_m2_b_vth0_diff_8'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m2_b_k2_diff_8'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.708e+04+pshort_rf_base_m2_b_vsat_diff_8'   
++ua = '-2.21e-09+pshort_rf_base_m2_b_ua_diff_8'   
++ub = '1.824e-18+pshort_rf_base_m2_b_ub_diff_8'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m2_b_rdsw_diff_8'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00375+pshort_rf_base_m2_b_u0_diff_8'   
++a0 = '0.8909+pshort_rf_base_m2_b_a0_diff_8'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m2_b_ags_diff_8'   
++b0 = '0+pshort_rf_base_m2_b_b0_diff_8'   
++b1 = '0+pshort_rf_base_m2_b_b1_diff_8'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m2_b_voff_diff_8'	
++nfactor = '6.012+pshort_rf_base_m2_b_nfactor_diff_8'	
++cit = 0   
++cdsc = 0   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.298   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5899   
++pdiblc1 = 4.4e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.5264   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.0457   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5162+pshort_rf_base_m2_b_kt1_diff_8'   
++kt2 = -0.122   
++at = 4.321e+04   
++ute = -0.3   
++ua1 = 1.346e-10   
++ub1 = 5.223e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '200*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '9.9e-07+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.505e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '1e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0022*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: ovr
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF_m4.rf pmos -p -npshort_rf_base pshort_rf_base_m4_b.pm pshort_rf_base_m4_b_bsimtranout.pm 
+* Working Directory: /home/ovr/work/s8_work/models.3.2/rev_model/pshort/combined
+* Time: Mon May 12 16:38:38 2008
+* Rule File:  pmos_bsim4_RF_m4.rf
+* Output File:  pshort_rf_base_m4_b_bsimtranout.pm
+* Input Files:
+* (1) pshort_rf_base_m4_b.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m4_b.0 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.45e-07   lmax = 1.55e-07   wmin = 1.645e-06   wmax = 1.655e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                         
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.044+pshort_rf_base_m4_b_vth0_diff_0'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_0'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.908e+04+pshort_rf_base_m4_b_vsat_diff_0'   
++ua = '-2.368e-09+pshort_rf_base_m4_b_ua_diff_0'   
++ub = '1.997e-18+pshort_rf_base_m4_b_ub_diff_0'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_0'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00329+pshort_rf_base_m4_b_u0_diff_0'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_0'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_0'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_0'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_0'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.345+pshort_rf_base_m4_b_voff_diff_0'	
++nfactor = '6.36+pshort_rf_base_m4_b_nfactor_diff_0'	
++cit = 0   
++cdsc = 0.00043   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1799   
++etab = -0.07835   
++dsub = 0.2663   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5085   
++pdiblc1 = 0.12   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.379   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.05667   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5+pshort_rf_base_m4_b_kt1_diff_0'   
++kt2 = -0.122   
++at = 3.02e+04   
++ute = -0.036   
++ua1 = 1.992e-10   
++ub1 = 4.398e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '1600*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '8.2e-07+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        2e-12                       
++cgdo       =        '1.7e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.455e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '2.12e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '6e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0015*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: hai
+* Command Line: /proj/tlib/s8dia/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF.rf pmos -p -npshort_rf_base ps1p65p18m4x2_sim.pm ps1p65xp18m4x2_bsimtranoutput.pm 
+* Working Directory: /home/hai/models/s8/s8dia/models.3.2/pshort/combined/beta1
+* Time: Wed Dec 12 17:05:19 2007
+* Rule File:  pmos_bsim4_RF.rf
+* Output File:  ps1p65xp18m4x2_bsimtranoutput.pm
+* Input Files:
+* (1) ps1p65p18m4x2_sim.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m4_b.1 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.75e-07  lmax = 1.85e-07  wmin = 1.645e-06  wmax = 1.655e-06
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        25e6                        
++tnoib      =        0.0e-6                      
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.005+pshort_rf_base_m4_b_vth0_diff_1'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_1'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.808e+04+pshort_rf_base_m4_b_vsat_diff_1'   
++ua = '-2.325e-09+pshort_rf_base_m4_b_ua_diff_1'   
++ub = '1.939e-18+pshort_rf_base_m4_b_ub_diff_1'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_1'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.003126+pshort_rf_base_m4_b_u0_diff_1'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_1'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_1'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_1'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_1'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3248+pshort_rf_base_m4_b_voff_diff_1'	
++nfactor = '6.012+pshort_rf_base_m4_b_nfactor_diff_1'	
++cit = 0   
++cdsc = 0   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1799   
++etab = -0.07835   
++dsub = 0.2663   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5085   
++pdiblc1 = 4.4e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.5264   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.0457   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.570+pshort_rf_base_m4_b_kt1_diff_1'   
++kt2 = -0.122   
++at = 2.796e+04   
++ute = -0.3   
++ua1 = 1.346e-10   
++ub1 = 4.398e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '1600*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42               
++noib       =        0.0               
++noic       =        0.0               
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '9.2e-07+pshort_rf_base_b_xgw_diff'
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1
++njs        =        1.3632
++jss        =        2.1483e-05
++jsws       =        8.040000000000001e-10
++xtis       =        5.2
++bvs        =        12.69
++xjbvs      =        1
++ijthsrev   =        0.1
++ijthsfwd   =        0.1
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        2e-12                       
++cgdo       =        '1.7e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.455e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '2.12e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '6e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0015*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3.2e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+.model pshort_rf_base_m4_b.2 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 2.45e-07   lmax = 2.55e-07   wmin = 1.645e-06   wmax = 1.655e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.62e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.955+pshort_rf_base_m4_b_vth0_diff_2'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_2'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.364e+04+pshort_rf_base_m4_b_vsat_diff_2'   
++ua = '-2.199e-09+pshort_rf_base_m4_b_ua_diff_2'   
++ub = '1.855e-18+pshort_rf_base_m4_b_ub_diff_2'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_2'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.003331+pshort_rf_base_m4_b_u0_diff_2'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_2'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_2'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_2'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_2'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3104+pshort_rf_base_m4_b_voff_diff_2'	
++nfactor = '5.87+pshort_rf_base_m4_b_nfactor_diff_2'	
++cit = 0   
++cdsc = 0   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1799   
++etab = -0.07835   
++dsub = 0.3036   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.4678   
++pdiblc1 = 0.1   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.7475   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.0521   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.556+pshort_rf_base_m4_b_kt1_diff_2'   
++kt2 = -0.122   
++at = 3.598e+04   
++ute = -0.39   
++ua1 = 1.346e-10   
++ub1 = 4.516e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '1600*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.25e-06+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        2e-12                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.3e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '5.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.7e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '-4e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.002*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.0862                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '2.8e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1                           
+******
+
+* BSIMTran Version 0.1.24, Created on 4-26-2002
+* Username: ovr
+* Command Line: /proj/tlib/ll65p/config/cydir/bin/lnx86/bsimtran pmos_bsim4_RF_m4.rf pmos -p -npshort_rf_base ps3p15m4x1_iccap_ovr.pm ps3p15m4x1_bsimtranout.pm 
+* Working Directory: /home/ovr/work/s8_work/models.3.2/rev_model/pshort/combined
+* Time: Mon Apr 14 11:45:57 2008
+* Rule File:  pmos_bsim4_RF_m4.rf
+* Output File:  ps3p15m4x1_bsimtranout.pm
+* Input Files:
+* (1) ps3p15m4x1_iccap_ovr.pm
+*copyright, Cypress Semiconductor, 2002
+*BSIM3.V3 PMOS Model
+
+.model pshort_rf_base_m4_b.3 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.45e-07   lmax = 1.55e-07   wmin = 3.005e-06   wmax = 3.015e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'	
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.05+pshort_rf_base_m4_b_vth0_diff_3'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_3'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.1e+04+pshort_rf_base_m4_b_vsat_diff_3'   
++ua = '-2.307e-09+pshort_rf_base_m4_b_ua_diff_3'   
++ub = '1.975e-18+pshort_rf_base_m4_b_ub_diff_3'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_3'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00431+pshort_rf_base_m4_b_u0_diff_3'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_3'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_3'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_3'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_3'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3297+pshort_rf_base_m4_b_voff_diff_3'	
++nfactor = '6.012+pshort_rf_base_m4_b_nfactor_diff_3'	
++cit = 0   
++cdsc = 0.006804   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1612   
++etab = -0.07835   
++dsub = 0.279   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.3382   
++pdiblc1 = 0.2448   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.4366   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.1   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5515+pshort_rf_base_m4_b_kt1_diff_3'   
++kt2 = -0.122   
++at = 2.299e+04   
++ute = -0.1436   
++ua1 = 3.138e-10   
++ub1 = 4.531e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '800*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.2e-06+pshort_rf_base_b_xgw_diff'                     
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.1e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.055e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '4.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '6e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2                           
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0024*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.8                         
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '2.4e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+.model pshort_rf_base_m4_b.4 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.75e-07   lmax = 1.85e-07   wmin = 3.005e-06   wmax = 3.015e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.021+pshort_rf_base_m4_b_vth0_diff_4'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_4'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.912e+04+pshort_rf_base_m4_b_vsat_diff_4'   
++ua = '-2.219e-09+pshort_rf_base_m4_b_ua_diff_4'   
++ub = '1.915e-18+pshort_rf_base_m4_b_ub_diff_4'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_4'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.004419+pshort_rf_base_m4_b_u0_diff_4'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_4'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_4'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_4'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_4'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m4_b_voff_diff_4'	
++nfactor = '5.242+pshort_rf_base_m4_b_nfactor_diff_4'	
++cit = 0   
++cdsc = 0.006804   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.279   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.2949   
++pdiblc1 = 4.4e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.4851   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.1   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5203+pshort_rf_base_m4_b_kt1_diff_4'   
++kt2 = -0.122   
++at = 1.916e+04   
++ute = -0.189   
++ua1 = 1.346e-10   
++ub1 = 9.851e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '800*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.25e-06+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.7e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.3e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '7e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0022*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.8                         
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+.model pshort_rf_base_m4_b.5 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 2.45e-07   lmax = 2.55e-07   wmin = 3.005e-06   wmax = 3.015e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.983+pshort_rf_base_m4_b_vth0_diff_5'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_5'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.743e+04+pshort_rf_base_m4_b_vsat_diff_5'   
++ua = '-2.187e-09+pshort_rf_base_m4_b_ua_diff_5'   
++ub = '1.852e-18+pshort_rf_base_m4_b_ub_diff_5'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_5'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00365+pshort_rf_base_m4_b_u0_diff_5'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_5'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_5'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_5'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_5'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m4_b_voff_diff_5'	
++nfactor = '5.531+pshort_rf_base_m4_b_nfactor_diff_5'	
++cit = 0   
++cdsc = 0.0063   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.31   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5899   
++pdiblc1 = 4.4e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.5053   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.03747   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5203+pshort_rf_base_m4_b_kt1_diff_5'   
++kt2 = -0.122   
++at = 1.916e+04   
++ute = -0.189   
++ua1 = 1.346e-10   
++ub1 = 9.851e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '800*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.05e-06+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.155e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '7e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.002*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '2.6e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+.model pshort_rf_base_m4_b.6 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.45e-07   lmax = 1.55e-07   wmin = 5.045e-06   wmax = 5.055e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.079+pshort_rf_base_m4_b_vth0_diff_6'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_6'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.7e+04+pshort_rf_base_m4_b_vsat_diff_6'   
++ua = '-2.311e-09+pshort_rf_base_m4_b_ua_diff_6'   
++ub = '1.948e-18+pshort_rf_base_m4_b_ub_diff_6'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_6'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.004327+pshort_rf_base_m4_b_u0_diff_6'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_6'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_6'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_6'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_6'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m4_b_voff_diff_6'	
++nfactor = '6.103+pshort_rf_base_m4_b_nfactor_diff_6'	
++cit = 0   
++cdsc = 0.0066   
++cdscb = 0   
++cdscd = 0.0039   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.298   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5309   
++pdiblc1 = 0.248   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.4188   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.07242   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5621+pshort_rf_base_m4_b_kt1_diff_6'   
++kt2 = -0.122   
++at = 2.705e+04   
++ute = -0.3   
++ua1 = 1.346e-10   
++ub1 = 5.223e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '400*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '7.4e-07+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0                           
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0                           
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.52e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '1.3e-08+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0022*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '3e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+.model pshort_rf_base_m4_b.7 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 1.75e-07   lmax = 1.85e-07   wmin = 5.045e-06   wmax = 5.055e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-1.026+pshort_rf_base_m4_b_vth0_diff_7'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_7'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '7.213e+04+pshort_rf_base_m4_b_vsat_diff_7'   
++ua = '-2.328e-09+pshort_rf_base_m4_b_ua_diff_7'   
++ub = '1.953e-18+pshort_rf_base_m4_b_ub_diff_7'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_7'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.0037+pshort_rf_base_m4_b_u0_diff_7'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_7'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_7'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_7'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_7'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3074+pshort_rf_base_m4_b_voff_diff_7'	
++nfactor = '6.012+pshort_rf_base_m4_b_nfactor_diff_7'	
++cit = 0   
++cdsc = 0.0046   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.2663   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.4186   
++pdiblc1 = 0   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.627   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.05346   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5621+pshort_rf_base_m4_b_kt1_diff_7'   
++kt2 = -0.122   
++at = 3.472e+04   
++ute = -0.3   
++ua1 = 1.346e-10   
++ub1 = 5.223e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '400*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '0.85e-06+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0                           
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0                           
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.5e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1.105e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.72e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '1.4e-08+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.0017*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '2.7e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+
+.model pshort_rf_base_m4_b.8 pmos
+*
+*DC IV MOS PARAMETERS
+*
++lmin = 2.45e-07   lmax = 2.55e-07   wmin = 5.045e-06   wmax = 5.055e-06   
++level      =        54                          
++tnom       =        30                          
++version    =        4.5                       
++toxm       =        4.23e-09                    
++xj = 1.5e-07   
++lln        =        1                           
++lwn        =        1                           
++wln        =        1                           
++wwn        =        1                           
++lint       =        '-1.399e-08+pshort_rf_base_b_lint_diff'   
++ll         =        0                           
++lw         =        0                           
++lwl        =        0                           
++wint       =        '7.304e-09+pshort_rf_base_b_wint_diff'   
++wl         =        0                           
++ww         =        0                           
++wwl        =        0                           
++xl         =        0                           
++xw         =        0                           
++mobmod     =        0                           
++binunit    =        2                           
++dwg = -5.722e-09   
++dwb = -1.786e-08   
+*NEW BSIM4 Parameters(Model Selectors)
++igcmod     =        0                           
++igbmod     =        0                           
++rgatemod   =        3                           
++rbodymod   =        1                           
++trnqsmod   =        0                           
++acnqsmod   =        0                           
++fnoimod    =        1                           
++tnoimod    =        1                           
++permod     =        1                           
++geomod     =        0                           
++rdsmod     =        1                           
++tempmod    =        0                           
+*******
+*NEW BSIM4 Parameters(4.4 Version)
++lintnoi    =        -2.0e-07                           
++vfbsdoff   =        0                           
++lambda     =        0                           
++vtl        =        0                           
++lc         =        5e-09                       
++xn         =        3                           
++rnoia      =        0.69                        
++rnoib      =        0.34                        
++tnoia      =        2.5e+07                     
++tnoib      =        0                           
+*NEW BSIM4 Parameters(Process Parameters)
++epsrox     =        3.9                         
++toxe       =        '4.23e-09*pshort_rf_base_b_toxe_mult'	
++dtox       =        0                           
++ndep = 1.6e+17   
++nsd = 1e+20   
++rshg       =        '49.2+pshort_rf_base_b_rshg_diff'   
+****
++rsh        =        1                           
+*
+* THRESHOLD VOLTAGE PARAMETERS
+*
++vth0 = '-0.9895+pshort_rf_base_m4_b_vth0_diff_8'	
++k1 = 1.038   
++k2 = '-0.1734+pshort_rf_base_m4_b_k2_diff_8'   
++k3 = -15.85   
++dvt0 = 4.585   
++dvt1 = 0.294   
++dvt2 = 0.015   
++dvt0w = -4.977   
++dvt1w = 1.147e+06   
++dvt2w = -0.00896   
++w0 = 0   
++k3b = 2   
+*NEW BSIM4 Parameters for Level 54
++phin = 0   
++lpe0 = 0   
++lpeb = 0   
++vbm = -3   
++dvtp0 = 0   
++dvtp1 = 0   
+*
+* MOBILITY PARAMETERS
+*
++vsat = '6.488e+04+pshort_rf_base_m4_b_vsat_diff_8'   
++ua = '-2.21e-09+pshort_rf_base_m4_b_ua_diff_8'   
++ub = '1.851e-18+pshort_rf_base_m4_b_ub_diff_8'   
++uc = 2.523e-13   
++rdsw = '547.9+pshort_rf_base_m4_b_rdsw_diff_8'   
++prwb = -0.3235   
++prwg = 0.1376   
++wr = 1   
++u0 = '0.00375+pshort_rf_base_m4_b_u0_diff_8'   
++a0 = '0.8909+pshort_rf_base_m4_b_a0_diff_8'   
++keta = 0.0239   
++a1 = 0   
++a2 = 0.6419   
++ags = '1.25+pshort_rf_base_m4_b_ags_diff_8'   
++b0 = '0+pshort_rf_base_m4_b_b0_diff_8'   
++b1 = '0+pshort_rf_base_m4_b_b1_diff_8'   
+*NEW BSIM4 Parameters(Mobility Parameters)
++eu         =        1.67                        
++rdswmin    =        0                           
++rdw = 547.9   
++rdwmin     =        0                           
++rsw = 547.9   
++rswmin     =        0                           
+*****
+*
+* SUBTHRESHOLD CURRENT PARAMETERS
+*
++voff = '-0.3364+pshort_rf_base_m4_b_voff_diff_8'	
++nfactor = '5.892+pshort_rf_base_m4_b_nfactor_diff_8'	
++cit = 0   
++cdsc = 0   
++cdscb = 0   
++cdscd = 0   
++eta0 = 0.1874   
++etab = -0.07835   
++dsub = 0.298   
+*NEW BSIM4 Parameters(Sub-threshold parameters)
++voffl = 0   
++minv = 0   
+*****
+*
+* ROUT PARAMETERS
+*
++pclm = 0.5899   
++pdiblc1 = 4.4e-11   
++pdiblc2 = 0   
++pdiblcb = -0.0001934   
++drout = 0.5264   
++pscbe1 = 5.12e+08   
++pscbe2 = 9.477e-08   
++pvag = 0   
++delta = 0.0457   
++alpha0 = 1e-10   
++alpha1 = 1e-10   
++beta0 = 8.581   
+*NEW BSIM4 Parameters(ROUT Parameters)
++fprout = 0   
++pdits = 0   
++pditsl     =        0                           
++pditsd = 0   
+****
+*NEW BSIM4 Parameters(GATE INDUCED DRAIN LEAKAGE MODEL PARAMTERS)
++agidl = 3.016e-10   
++bgidl = 1e+09   
++cgidl = 300   
++egidl = 0.1   
+****
+*NEW BSIM4 Parameters(Gate Leakage Current Parameters)
++aigbacc = 0.43   
++bigbacc = 0.054   
++cigbacc = 0.075   
++nigbacc = 1   
++aigbinv = 0.35   
++bigbinv = 0.03   
++cigbinv = 0.006   
++eigbinv = 1.1   
++nigbinv = 3   
++aigc = 0.43   
++bigc = 0.054   
++cigc = 0.075   
++nigc = 1   
++aigsd = 0.43   
++bigsd = 0.054   
++cigsd = 0.075   
++dlcig = 0   
++poxedge = 1   
++pigcd = 1   
++ntox = 1   
++toxref     =        4.23e-09                    
+*****
+*
+* TEMPERATURE EFFECTS PARAMETERS
+*
++kt1 = '-0.5162+pshort_rf_base_m4_b_kt1_diff_8'   
++kt2 = -0.122   
++at = 3.889e+04   
++ute = -0.3   
++ua1 = 1.346e-10   
++ub1 = 5.223e-19   
++uc1 = 6.005e-13   
++kt1l = 0   
++prt = 0   
+*NEW BSIM4 Parameters(HIGH SPEED RF MODEL PARAMETERS)
++xrcrg1 = 10   
++xrcrg2 = 2   
++rbpb       =        '400*pshort_rf_base_b_rbpb_mult'   
++rbpd       =        0.001                       
++rbps       =        0.001                       
++rbdb       =        1e+05                       
++rbsb       =        1e+05                       
++gbmin      =        1e-12                       
+****
+*NEW BSIM4 Parameters(FLICKER and THERMAL NOISE PARAMETERS)
++noia       =        1.5e+42                     
++noib       =        0.0                    
++noic       =        0.0                    
++em         =        4.1e+07                     
++af         =        1                           
++ef         =        1.0                        
++kf         =        0                           
++ntnoi      =        1                           
+*****
+*NEW BSIM4 Parameters(LAYOUT DEPENDENT PARASITIC MODEL PARAMETERS)
++dmcg       =        0                           
++dmcgt      =        0                           
++dmdg       =        0                           
++xgw        =        '1.25e-06+pshort_rf_base_b_xgw_diff'   
++xgl        =        0                           
++ngcon      =        2                           
+****
+*
+*DIODE DC IV PARAMTERS
+*
+*NEW BSIM4 Parameters(DIODE DC IV parameters)
++diomod     =        1                           
++njs        =        1.363                       
++jss        =        2.148e-05                   
++jsws       =        8.04e-10                    
++xtis       =        5.2                         
++bvs        =        12.69                       
++xjbvs      =        1                           
++ijthsrev   =        0.1                         
++ijthsfwd   =        0.1                         
+*
+* DIODE and FET CAPACITANCE PARAMETERS
+*
++tpb        =        0.002039                    
++tpbsw      =        0.001246                    
++tpbswg     =        0                           
++tcj        =        0.001241                    
++tcjsw      =        0.0003736                   
++tcjswg     =        0.001                       
++cgdo       =        '1.3e-10*pshort_rf_base_b_overlap_mult'   
++cgso       =        '1e-10*pshort_rf_base_b_overlap_mult'   
++cgbo       =        0                           
++capmod     =        2                           
++xpart      =        0                           
++cgsl       =        '1.001e-11*pshort_rf_base_b_overlap_mult'   
++cgdl       =        '1.32e-10*pshort_rf_base_b_overlap_mult'   
++cf         =        1.2e-11                     
++clc        =        0                           
++cle        =        0.6                         
++dlc        =        '1e-09+pshort_rf_base_b_dlc_diff+pshort_rf_base_dlc_rotweak'   
++dwc        =        '0+pshort_rf_base_b_dwc_diff'   
++vfbcv      =        -0.1447                     
++acde       =        0.401                       
++moin       =        15                          
++noff       =        2.5                         
++voffcv     =        0.05                        
++ngate      =        1e+23                       
+*NEW BSIM4 Parameters(FET and DIODE capacitance parameters)
++ckappas    =        0.6                         
++cjs        =        '0.002*pshort_rf_base_b_ajunction_mult'   
++mjs        =        0.1362                      
++pbs        =        0.9587                      
++cjsws      =        '9.88e-11*pshort_rf_base_b_pjunction_mult'   
++mjsws      =        0.92                        
++pbsws      =        0.94                        
++cjswgs     =        '2.6e-10*pshort_rf_base_b_pjunction_mult'   
++mjswgs     =        0.12                        
++pbswgs     =        1.4                         
+******
+

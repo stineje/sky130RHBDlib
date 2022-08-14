@@ -1,0 +1,97 @@
+** S8 Gox Stress File for s8*nv derviatives
+** Must first include gox_check_norm.cor (for other s8 derivatives)
+
+.param
++progfetNV_min =-3.601
++progfetNV_max = 3.601
+*
++npassll_gb_min = lvnfet_min
++npassll_gb_max = lvnfet_max
++npassll_gd_min = lvnfet_min
++npassll_gd_max = lvnfet_max
++npassll_gs_min = lvnfet_min
++npassll_gs_max = lvnfet_max
+*
++npdll_gb_min = lvnfet_min
++npdll_gb_max = lvnfet_max
++npdll_gd_min = lvnfet_min
++npdll_gd_max = lvnfet_max
++npdll_gs_min = lvnfet_min
++npdll_gs_max = lvnfet_max
+*
++ppull_gb_min = lvpfet_min
++ppull_gb_max = lvpfet_max
++ppull_gd_min = lvpfet_min
++ppull_gd_max = lvpfet_max
++ppull_gs_min = lvpfet_min
++ppull_gs_max = lvpfet_max
+*
++nvsrnpass_gb_min = progfetNV_min
++nvsrnpass_gb_max = progfetNV_max
++nvsrnpass_gd_min = progfetNV_min
++nvsrnpass_gd_max = progfetNV_max
++nvsrnpass_gs_min = progfetNV_min
++nvsrnpass_gs_max = progfetNV_max
+*
++nvssonos_p_gb_min = progfetNV_min
++nvssonos_p_gb_max = progfetNV_max
++nvssonos_p_gd_min = progfetNV_min
++nvssonos_p_gd_max = progfetNV_max
++nvssonos_p_gs_min = progfetNV_min
++nvssonos_p_gs_max = progfetNV_max
+*
++nvssonos_e_gb_min = progfetNV_min
++nvssonos_e_gb_max = progfetNV_max
++nvssonos_e_gd_min = progfetNV_min
++nvssonos_e_gd_max = progfetNV_max
++nvssonos_e_gs_min = progfetNV_min
++nvssonos_e_gs_max = progfetNV_max
+*
+*
+*
+*
+*
+*
+*
+**Extract statements to print the critical voltage even if there is no SOA violation
+.extract label=gox_npassll_gb_max npassll_gb_max
+.extract label=gox_npassll_gb_min npassll_gb_min
+.extract label=gox_npassll_gd_max npassll_gd_max
+.extract label=gox_npassll_gd_min npassll_gd_min
+.extract label=gox_npassll_gs_max npassll_gs_max
+.extract label=gox_npassll_gs_min npassll_gs_min
+
+.extract label=gox_npdll_gb_max npdll_gb_max
+.extract label=gox_npdll_gb_min npdll_gb_min
+.extract label=gox_npdll_gd_max npdll_gd_max
+.extract label=gox_npdll_gd_min npdll_gd_min
+.extract label=gox_npdll_gs_max npdll_gs_max
+.extract label=gox_npdll_gs_min npdll_gs_min
+
+.extract label=gox_ppull_gb_max ppull_gb_max
+.extract label=gox_ppull_gb_min ppull_gb_min
+.extract label=gox_ppull_gd_max ppull_gd_max
+.extract label=gox_ppull_gd_min ppull_gd_min
+.extract label=gox_ppull_gs_max ppull_gs_max
+.extract label=gox_ppull_gs_min ppull_gs_min
+
+.extract label=gox_nvsrnpass_gb_max nvsrnpass_gb_max
+.extract label=gox_nvsrnpass_gb_min nvsrnpass_gb_min
+.extract label=gox_nvsrnpass_gd_max nvsrnpass_gd_max
+.extract label=gox_nvsrnpass_gd_min nvsrnpass_gd_min
+.extract label=gox_nvsrnpass_gs_max nvsrnpass_gs_max
+.extract label=gox_nvsrnpass_gs_min nvsrnpass_gs_min
+
+.extract label=gox_nvssonos_p_gb_max nvssonos_p_gb_max
+.extract label=gox_nvssonos_p_gb_min nvssonos_p_gb_min
+.extract label=gox_nvssonos_p_gd_max nvssonos_p_gd_max
+.extract label=gox_nvssonos_p_gd_min nvssonos_p_gd_min
+.extract label=gox_nvssonos_p_gs_max nvssonos_p_gs_max
+.extract label=gox_nvssonos_p_gs_min nvssonos_p_gs_min
+
+.extract label=gox_nvssonos_e_gb_max nvssonos_e_gb_max
+.extract label=gox_nvssonos_e_gb_min nvssonos_e_gb_min
+.extract label=gox_nvssonos_e_gd_max nvssonos_e_gd_max
+.extract label=gox_nvssonos_e_gd_min nvssonos_e_gd_min
+.extract label=gox_nvssonos_e_gs_max nvssonos_e_gs_max
+.extract label=gox_nvssonos_e_gs_min nvssonos_e_gs_min

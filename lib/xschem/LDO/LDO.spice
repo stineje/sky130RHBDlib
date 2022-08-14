@@ -1,0 +1,79 @@
+** sch_path: /home/rjridle/OpenRadHardSCL/lib/xschem/LDO/LDO.sch
+**.subckt LDO V_OUT
+*.opin V_OUT
+XM6 net2 net2 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 V_DIFF_OUT net2 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM7 net4 PLUS_FB net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM10 net3 MINUS_BIAS net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM11 net8 V_BIAS VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM13 V_COMSRC_OUT V_DIFF_OUT GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM16 net9 V_BIAS VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+V2 MINUS_BIAS GND 0.6
+V3 VDD GND 1.8
+.save  v(plus_fb)
+.save  v(minus_bias)
+.save  v(net4)
+.save  v(net3)
+.save  v(v_comsrc_out)
+Vmeas_DIFFPAIR_LEFT net3 net2 0
+.save  i(vmeas_diffpair_left)
+Vmeas_DIFFPAIR_RIGHT net4 V_DIFF_OUT 0
+.save  i(vmeas_diffpair_right)
+Vmeas_COMSRC net9 V_COMSRC_OUT 0
+.save  i(vmeas_comsrc)
+.save  v(v_bias)
+.save  v(v_bias)
+Rdv1 V_OUT PLUS_FB 10k m=1
+Rdv2 net6 GND 11k m=1
+Vmeas_RESDIV PLUS_FB net6 0
+.save  i(vmeas_resdiv)
+Vmeas_DIFFPAIR_TOP net8 net1 0
+.save  i(vmeas_diffpair_top)
+XM2 V_BIAS V_BIAS VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+I0 V_BIAS GND 3u
+Rcs net5 V_COMSRC_OUT 1k m=1
+Ccs net5 V_OUT 10p m=1
+Cload V_OUT GND 1p m=1
+XM1 V_OUT V_COMSRC_OUT VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+Rload net7 GND 10k m=1
+.save  v(v_bias)
+Vmeas_LOAD V_OUT net7 0
+.save  i(vmeas_load)
+.save  v(v_out)
+**** begin user architecture code
+
+.lib /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+
+**** end user architecture code
+**.ends
+.GLOBAL VDD
+.GLOBAL GND
+**** begin user architecture code
+
+
+.save all
+.op
+.dc V3 1 2 0.1
+
+
+**** end user architecture code
+.end

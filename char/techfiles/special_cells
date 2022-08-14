@@ -1,0 +1,23 @@
+#!/bin/bash
+
+unfinished_cells=""
+physical_cells="decap fill"
+test_cells="test final"
+
+res="s/\("
+for x in ${unfinished_cells}; do res="${res}[^ ]*${x}[^ ]*\\|"; done
+for x in ${test_cells}; do res="${res}[^ ]*${x}[^ ]*\\|"; done
+
+if [ $1 == "-lef_gen" ]
+then
+true
+fi
+
+if [ $1 == "-libchar" ]
+then
+for x in ${physical_cells}; do res="${res}[^ ]*${x}[^ ]*\\|"; done
+fi
+
+res="${res}nosuchfile\\)[^ ]*//g"
+
+echo ${res}

@@ -1,0 +1,32 @@
+* NGSPICE file created from AND3X1.ext - technology: sky130A
+
+.subckt AND3X1 Y A B C VPWR VGND
+X0 VPWR B a_277_1004# VPWR sky130_fd_pr__pfet_01v8 ad=3.36p pd=2.736u as=0 ps=0 w=2 l=0.15 M=2
+X1 VGND A a_91_75# VGND sky130_fd_pr__nfet_01v8 ad=1.3199p pd=9.67u as=0 ps=0 w=3 l=0.15
+X2 VPWR C a_277_1004# VPWR sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=2 l=0.15 M=2
+X3 a_372_182# B a_91_75# VGND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=3 l=0.15
+X4 a_277_1004# A VPWR VPWR sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=2 l=0.15 M=2
+X5 VPWR a_277_1004# Y VPWR sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=5.8u ps=4.58u w=2 l=0.15 M=2
+X6 Y a_277_1004# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.791p pd=1.57u as=0 ps=0 w=3 l=0.15
+X7 a_277_1004# C a_372_182# VGND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=3 l=0.15
+C0 VPWR C 0.30fF
+C1 A B 0.18fF
+C2 a_372_182# a_277_1004# 0.29fF
+C3 C a_277_1004# 0.26fF
+C4 Y a_372_182# 0.01fF
+C5 A VPWR 0.35fF
+C6 VPWR B 0.29fF
+C7 a_372_182# a_91_75# 0.29fF
+C8 A a_277_1004# 0.02fF
+C9 B a_277_1004# 0.12fF
+C10 A a_91_75# 0.04fF
+C11 B a_91_75# 0.05fF
+C12 VPWR a_277_1004# 2.88fF
+C13 VPWR Y 1.04fF
+C14 C a_372_182# 0.00fF
+C15 Y a_277_1004# 0.31fF
+C16 a_91_75# a_277_1004# 0.03fF
+C17 A C 0.02fF
+C18 B a_372_182# 0.03fF
+C19 B C 0.18fF
+.ends

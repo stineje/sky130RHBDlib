@@ -1,0 +1,76 @@
+#!/bin/bash
+mkdir -p magic
+
+rm -rf magic/*
+cp -rf ../magic/*.mag magic/
+cp -rf ../magic/pcells magic/
+
+if [ $# -gt 0 ]
+then
+    FILES="magic/${1}.mag"
+    echo "Extracting 1 layout: $FILES"
+else
+    FILES=$(ls magic/*.mag)
+    echo "Extracting VARIANT layouts:\n $FILES"
+    echo '# Standard Cell LEF generated in Magic' > tmp.lef
+fi
+
+PCELLS=$(ls magic/pcells/*.mag)
+
+for i in ${PCELLS}; do
+    sed -i 's/rlabel polycont\|rlabel poly\|rlabel viali\|rlabel nsubdiffcont\|rlabel psubdiffcont/rlabel locali/g' $i
+    sed -i 's/rlabel locali/rlabel metal1/g' $i
+    sed -i '/^port.*$/d' $i
+    sed -i '/rlabel.*/a port SEDTMP n' $i
+    sed -i '/vdd$/{$!{N;s/vdd\nport.*/vdd/g;tl;P;D;:l}}' $i
+    sed -i '/gnd$/{$!{N;s/gnd\nport.*/gnd/g;tl;P;D;:l}}' $i
+    sed -i -r ':a;/SEDTMP/{x;:b;s/9(_*)$/_\1/;tb;s/^(_*)$/0\1/;s/$/:0123456789/;s/([^_])(_*):.*\1(.).*/\3\2/;s/_/0/g;x;G;s/SEDTMP(.*)\n(.*)/\2\1/;ta}' $i
+    sed -i 's/\(^.*locali\|^.*metal1\|^.*cont\|^.*viali\) \(.* gnd\|.* vdd$\)/rlabel locali \2/g' $i
+    awk '!(seen[$0]++ && (/gnd/ || /vdd/))' $i > tmp.sim && mv tmp.sim $i
+done
+
+for i in ${FILES}; do
+    echo "FILE PATH = $i"
+    export CELLNAME="$(basename $i .mag)"
+    echo "CELLNAME=$CELLNAME"
+    sed -i 's/rlabel polycont\|rlabel poly\|rlabel viali\|rlabel nsubdiffcont\|rlabel psubdiffcont/rlabel locali/g' $i
+    sed -i 's/rlabel locali/rlabel metal1/g' $i
+    sed -i '/^port.*$/d' $i
+    sed -i '/rlabel.*/a port SEDTMP n' $i
+    sed -i '/vdd$/{$!{N;s/vdd\nport.*/vdd/g;tl;P;D;:l}}' $i
+    sed -i '/gnd$/{$!{N;s/gnd\nport.*/gnd/g;tl;P;D;:l}}' $i
+    sed -i -r ':a;/SEDTMP/{x;:b;s/9(_*)$/_\1/;tb;s/^(_*)$/0\1/;s/$/:0123456789/;s/([^_])(_*):.*\1(.).*/\3\2/;s/_/0/g;x;G;s/SEDTMP(.*)\n(.*)/\2\1/;ta}' $i
+    sed -i 's/\(^.*locali\|^.*metal1\|^.*cont\|^.*viali\) \(.* gnd\|.* vdd$\)/rlabel locali \2/g' $i
+    awk '!(seen[$0]++ && (/gnd/ || /vdd/))' $i > tmp.sim && mv tmp.sim $i
+
+    mv $i magic/tmp.mag
+    echo "source magic_flatten.tcl" | magic -dnull -noconsole magic/tmp.mag
+    echo "source magic_sim_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
+    cat ${CELLNAME}.ext ${CELLNAME}.res.ext > ${CELLNAME}.2.ext
+    ext2sim -R -t! -t\# ${CELLNAME}.2.ext.
+    echo "source magic_spice_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
+    cat ${CELLNAME}.lef >> tmp.lef
+    mv ${CELLNAME}.mag ../magic/flattened/
+    mv ${CELLNAME}.spice ../magic/spice/
+    mv ${CELLNAME}.gds ../magic/gds/
+    mv ${CELLNAME}.ext ../magic/ext/
+    mv ${CELLNAME}.nodes ../magic/nodes/
+    mv ${CELLNAME}.res.* ../magic/res/
+    mv ${CELLNAME}.sim ../magic/sim/
+done
+
+
+./sedLEF.sh
+echo 'VERSION 5.7 ;' >> sky130_fd_sc_rh.lef
+echo '  NOWIREEXTENSIONATPIN ON ;' >> sky130_fd_sc_rh.lef
+echo '  DIVIDERCHAR "/" ;' >> sky130_fd_sc_rh.lef
+echo '  BUSBITCHARS "[]" ;' >> sky130_fd_sc_rh.lef
+cat tmp.lef >> sky130_fd_sc_rh.lef
+echo 'END LIBRARY' >> sky130_fd_sc_rh.lef
+cp sky130_fd_sc_rh.lef ../lef/
+rm *.lef
+
+sed -i 's/w=3\.01/w=3/g' ../magic/spice/*.spice
+sed -i 's/e+[0-9][0-9]//g' ../magic/spice/*.spice
+sed -i 's/150000/0.15/g' ../magic/spice/*.spice
+

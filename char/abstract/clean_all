@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mkdir -p ../.tmp
+mv abstract_SKILL_script ../.tmp/
+mv lef_gen ../.tmp/
+mv sourceme ../.tmp/
+mv clean_all ../.tmp/
+mv Makefile ../.tmp/
+rm -rf ../abstract/*
+rm -rf .cadence*
+rm -rf .abstract*
+mv ../.tmp/* .
+rm -rf ../.tmp

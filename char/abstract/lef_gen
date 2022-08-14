@@ -1,0 +1,51 @@
+#!/bin/bash
+
+mkdir -p GDS
+
+extract=0
+gui=0
+noexit=0
+
+while test $# -gt 0
+do
+    case "$1" in
+        -extract) extract=1
+            ;;
+        -gui) gui=1
+            ;;
+        -noexit) noexit=1
+            ;;
+        -debug) noexit=1; gui=1
+            ;;
+    esac
+    shift    
+done
+
+if [ $extract -eq 1 ]
+then
+	cd ../../lib/ 
+    make magic VARIANT=${VARIANT}
+	cd -
+fi
+
+cp ../../lib/gds/*.gds GDS/
+ls GDS/* | sed ':a;N;$!ba;s/\n/ /g' | sed "`../techfiles/special_cells -lef_gen`" | sed 's/GDS\/ \|GDS\/$//g' > GDSlist
+
+if [ $noexit -eq 1 ]
+then
+    sed -i '/absExit/d' abstract_SKILL_script
+fi
+
+if [ $gui -eq 1 ]
+then
+    abstract -replay abstract_SKILL_script
+else
+    abstract -nogui -replay abstract_SKILL_script
+fi
+
+if [ $noexit -eq 1 ]
+then
+    echo "absExit()" >> abstract_SKILL_script
+fi
+
+cp sky130_osu_sc_18T_ms_rhbd.lef ../../outputs/

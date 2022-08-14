@@ -1,0 +1,39 @@
+t_rise = Time taken to rise from 10% to 90%.
+
+t_fall = Time taken to fall from 90% to 10%.
+
+Edge Rate (trf): (t_rise + t_fall )/2.
+
+High-to-Low propagation delay (tpHL): Time taken to fall from VOH to 50%.
+
+Low-to-High propagation delay (tpLH): Time taken to rise from 50% to VOL.
+
+Propagation Delay (tp): (tpHL + tpLH)/2.
+
+Contamination Delay (tcd): Minimum time from the input crossing 50% to the output crossing 50%.
+
+For 1.8V:
+
+    10% of 1.8 = 0.18V
+    90% of 1.8 = 1.62V
+
+
+INVX1:
+
+    Falling edge:
+        90% = 1.005 ns
+        10% = 1.020 ns
+        t_fall = 0.015 ns
+
+    Rising edge:
+        90% = 2.039 ns
+        10% = 2.009 ns
+        t_fall = 0.030 ns
+
+
+    edge_rate = (0.015 + 0.030)/2
+              = 0.045/2
+              = 0.0225 ns
+    
+    t_rise = 
+    t_fall = 
