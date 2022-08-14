@@ -1,0 +1,107 @@
+** sch_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/test_ff.sch
+**.subckt test_ff
+x17 net9 CLK GND GND VDD VDD net8 sky130_fd_sc_hd__and2_1
+x16 D net8 RESETB GND GND VDD VDD Q3 sky130_fd_sc_hd__dlrtp_1
+x21 net18 net19 VDD GND lvtnot W_N=0.6 L_N=0.8 W_P=0.6 L_P=0.4 m=1
+x22 net19 net11 VDD GND lvtnot W_N=0.6 L_N=0.8 W_P=0.6 L_P=0.4 m=1
+x15 net11 GND GND VDD VDD net9 sky130_fd_sc_hd__inv_1
+x20 CLK GND GND VDD VDD net10 sky130_fd_sc_hd__inv_1
+x18 net8 D RESETB GND GND VDD VDD net12 sky130_fd_sc_hd__dfrtp_1
+x23 net10 net18 VDD GND lvtnot W_N=0.6 L_N=0.8 W_P=0.6 L_P=0.4 m=1
+V1 D GND pulse 0 1.8 15n .1n .1n 19.9n 40n
+V2 CLK GND pulse 0 1.8 10n .1n .1n 9.9n 20n
+V3 VDD GND 1.8
+x5 net2 net4 GND GND VDD VDD net5 sky130_fd_sc_hd__nand2_1
+x6 net5 CLK RESETB GND GND VDD VDD net4 sky130_fd_sc_hd__nand3_1
+x7 net4 CLK net2 GND GND VDD VDD net3 sky130_fd_sc_hd__nand3_1
+x8 net3 D RESETB GND GND VDD VDD net2 sky130_fd_sc_hd__nand3_1
+x9 Q1 net3 RESETB GND GND VDD VDD QN1 sky130_fd_sc_hd__nand3_1
+x10 net4 QN1 GND GND VDD VDD Q1 sky130_fd_sc_hd__nand2_1
+V4 RESETB GND pwl 0 0 10n 0 11n 1.8
+x11 Q2 D GND GND VDD VDD net7 sky130_fd_sc_hd__xor2_1
+x13 D net6 RESETB GND GND VDD VDD Q2 sky130_fd_sc_hd__dlrtn_1
+x12 net7 CLK GND GND VDD VDD net6 sky130_fd_sc_hd__nand2_1
+x3 D DN VDD GND lvtnot W_N=1 L_N=0.15 W_P=2 L_P=0.35 m=1
+x1 D net1 DN QI QIN srlatch
+x2 QI CLK QIN Q QN srlatch
+x4 CLK net1 VDD GND lvtnot W_N=1 L_N=0.15 W_P=2 L_P=0.35 m=1
+x14 CLK D RESETB GND GND VDD VDD net13 net14 sky130_fd_sc_hd__dfrbp_1
+x19 CLK net15 VDD GND lvtnot W_N=0.6 L_N=0.8 W_P=0.6 L_P=0.4 m=1
+x24 net15 net16 VDD GND lvtnot W_N=0.6 L_N=0.8 W_P=0.6 L_P=0.4 m=1
+x25 CLK D GND GND VDD VDD net17 sky130_fd_sc_hd__dfxtp_1
+x26 D CLK RESETB GND GND VDD VDD Q4 Q4B sky130_fd_sc_hd__dlrbp_1
+**** begin user architecture code
+ .lib /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.include /home/rjridle/OpenRadHardSCL/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  sky130_tests/lvtnot.sym # of pins=2
+** sym_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/lvtnot.sym
+** sch_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/lvtnot.sch
+.subckt lvtnot  a y  VCCPIN  VSSPIN      W_N=1 L_N=0.15 W_P=2 L_P=0.35
+*.opin y
+*.ipin a
+XM2 y a VCCPIN VCCPIN sky130_fd_pr__pfet_01v8_lvt L=L_P W=W_P nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 y a VSSPIN VSSPIN sky130_fd_pr__nfet_01v8_lvt L=L_N W=W_N nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  sky130_tests/srlatch.sym # of pins=5
+** sym_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/srlatch.sym
+** sch_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/srlatch.sch
+.subckt srlatch  S CLK R Q QN
+*.ipin S
+*.ipin R
+*.opin Q
+*.opin QN
+*.ipin CLK
+x5 S CLK SN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+x1 R CLK RN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+x2 RN Q QN VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+x3 SN QN Q VCC VSS lvnand WidthN=1 LenN=0.15 WidthP=1 LenP=0.15 m=1
+.ends
+
+
+* expanding   symbol:  sky130_tests/lvnand.sym # of pins=3
+** sym_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/lvnand.sym
+** sch_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/lvnand.sch
+.subckt lvnand  A B Y  VCCPIN  VSSPIN   WidthN=1 LenN=0.15 WidthP=1 LenP=0.15
+*.ipin A
+*.ipin B
+*.opin Y
+XM1 Y B S VSSPIN sky130_fd_pr__nfet_01v8 L=LenN W=WidthN nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y A VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=LenP W=WidthP nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 Y B VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=LenP W=WidthP nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 S A VSSPIN VSSPIN sky130_fd_pr__nfet_01v8 L=LenN W=WidthN nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+**** begin user architecture code
+
+
+
+.save all
+.options savecurrents
+.tran 0.2n 100n
+
+
+**** end user architecture code
+.end

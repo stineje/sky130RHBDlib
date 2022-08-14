@@ -1,0 +1,47 @@
+** sch_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/test_INVX1.sch
+**.subckt test_INVX1
+V2 A GND pwl 0n VDD 2n VDD 2.1n GND 8n VDD 8.1n VDD 10n VDD 10.1n GND 13.9n GND 14n VDD
+V1 VDD GND 1.8
+x1 A Y INVX1 VDD VSS INVX1
+**** begin user architecture code
+
+.lib /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  sky130_tests/INVX1.sym # of pins=2
+** sym_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/INVX1.sym
+** sch_path: /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/xschem/sky130_tests/INVX1.sch
+.subckt INVX1  A Y
+*.ipin A
+*.opin Y
+XM1 Y A VSSPIN VSSPIN sky130_fd_pr__nfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y A VDDPIN VDDPIN sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 Y A VDDPIN VDDPIN sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+**** begin user architecture code
+
+
+
+vvss vss 0 dc 0
+vvdd vdd 0 pwl 0 0 10n 0 10.1n 1.8 20n 1.8 20.1n 0
+
+.control
+tran 0.01n 30n
+plot A Y vdd
+.endc
+
+
+**** end user architecture code
+.end

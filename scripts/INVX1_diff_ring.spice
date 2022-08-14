@@ -1,0 +1,14 @@
+* SPICE3 file created from INVX1_diff_ring.ext - technology: sky130A
+
+.SUBCKT INVX1 A Y
+M1000 vdd A Y vdd pshort w=2u l=0.15u
++  ad=1.1p pd=9.1u as=0.58p ps=4.58u
+M1001 Y A gnd gnd nshort w=3u l=0.15u
++  ad=0.1588p pd=1.5u as=1.16175p ps=8.02u
+M1002 Y A vdd vdd pshort w=2u l=0.15u
++  ad=0p pd=0u as=0p ps=0u
+.ENDS
+
+X0 A Y INVX1
+
+.GLOBAL gnd vdd

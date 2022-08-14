@@ -1,0 +1,17 @@
+* SPICE3 file created from buffer.ext - technology: scmos
+
+
+.subckt inverter neg in out pos
+M1000 out in pos Vdd pfet w=1.8u l=0.6u
++ ad=3.24p pd=7.2u as=3.24p ps=7.2u 
+M1001 out in neg Gnd nfet w=1.8u l=0.6u
++ ad=3.24p pd=7.2u as=3.24p ps=7.2u 
+.ends
+
+* Top level circuit buffer
+
+X0 Gnd inverter_1/in out Vdd inverter
+X1 Gnd in inverter_1/in Vdd inverter
+
+.global Vdd Gnd
+.end

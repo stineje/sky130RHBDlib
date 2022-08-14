@@ -1,0 +1,13 @@
+* C:\users\anonymous\My Documents\ENGR3426\buffer\bufferlvs.asc
+XX1 N001 Vout Vdd 0 inverter
+XX2 Vin N001 Vdd 0 inverter
+
+* block symbol definitions
+.subckt inverter in out pos neg
+MXU1 out in pos Vdd pfet W=1.8u L=0.6u
+MXU2 out in neg 0 nfet W=1.8u L=0.6u
+.ends inverter
+
+.backanno
+.global Vdd 0
+.end
