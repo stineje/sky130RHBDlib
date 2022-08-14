@@ -5,6 +5,14 @@ standard cells for the open source SkyWater 130nm process.
 
 This is currently a work in progress.
 
+<pre>
+Ryan Ridley and James E. Stine, Jr.
+james.stine@okstate.edu 
+Oklahoma State University
+School of Electrical and Computer Engineering
+VLSI Computer Architecture Research Group
+</pre>
+
 ## Open Source EDA Tools
 
 This design flow incorporates all open source tooling which allows anyone to go
