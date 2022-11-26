@@ -1,56 +1,58 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1652455925
+timestamp 1669215543
 << nwell >>
-rect 57 1463 91 1497
-rect 31 822 117 884
+rect 87 885 136 1550
+rect 31 823 190 885
+rect 87 786 136 823
 << pwell >>
-rect -34 -34 182 544
+rect -34 -34 256 544
 << psubdiff >>
-rect 34 482 114 544
-rect 34 -17 57 17
-rect 91 -17 114 17
-rect 34 -34 114 -17
+rect 34 482 188 544
+rect 34 -17 94 17
+rect 128 -17 188 17
+rect 34 -34 188 -17
 << nsubdiff >>
-rect 34 1497 114 1514
-rect 34 1463 57 1497
-rect 91 1463 114 1497
-rect 34 822 114 884
+rect 34 1497 188 1514
+rect 34 1463 94 1497
+rect 128 1463 188 1497
+rect 34 822 188 884
 << psubdiffcont >>
-rect 57 -17 91 17
+rect 94 -17 128 17
 << nsubdiffcont >>
-rect 57 1463 91 1497
+rect 94 1463 128 1497
 << locali >>
-rect 34 1497 114 1514
-rect 34 1463 57 1497
-rect 91 1463 114 1497
-rect 34 1446 114 1463
-rect 34 17 114 34
-rect 34 -17 57 17
-rect 91 -17 114 17
-rect 34 -34 114 -17
+rect 34 1497 188 1514
+rect 34 1463 94 1497
+rect 128 1463 188 1497
+rect 34 1446 188 1463
+rect 34 17 188 34
+rect 34 -17 94 17
+rect 128 -17 188 17
+rect 34 -34 188 -17
 << metal1 >>
-rect -34 1446 182 1514
-rect -34 -34 182 34
+rect 34 1446 188 1514
+rect -34 -34 256 34
 use diff_ring_side  diff_ring_side_0 pcells
 timestamp 1652319726
 transform 1 0 0 0 1 0
 box -87 -34 87 1550
 use diff_ring_side  diff_ring_side_1
 timestamp 1652319726
-transform 1 0 148 0 1 0
+transform 1 0 222 0 1 0
 box -87 -34 87 1550
 << labels >>
-rlabel metal1 -34 1446 182 1514 1 VPWR
+rlabel metal1 -34 1446 256 1514 1 VPWR
 port 1 nsew power bidirectional abutment
-rlabel metal1 -34 -34 182 34 1 VGND
+rlabel metal1 -34 -34 256 34 1 VGND
 port 2 nsew ground bidirectional abutment
-rlabel nwell 57 1463 91 1497 1 VPB
+rlabel nwell 94 1463 128 1497 1 VPB
 port 3 nsew power bidirectional
-rlabel pwell 57 -17 91 17 1 VNB
+rlabel pwell 94 -17 128 17 1 VNB
 port 4 nsew ground bidirectional
 << properties >>
+string FIXED_BBOX 0 0 222 1480
 string LEFclass CORE SPACER
 string LEFsite unithd
 string LEFsymmetry X Y R90

@@ -1,0 +1,205 @@
+#  ==============================================
+#               Required Variables
+#  ==============================================
+#  WARNING: Neither fp_file, def_files, fp_tcl_file, fp_tcl_proc are defined
+#  INFO:    netlist = ../../char/techfiles//gcd.vh
+#  INFO:    flow = mmmc
+#  INFO:    process = 180nm
+#  INFO:    library_sets = libs_tt
+#  INFO:    rc_corners = rc_typ
+#  INFO:    delay_corners = corner_tt
+#  INFO:    setup_analysis_views = hold_func
+#  INFO:    hold_analysis_views = setup_func
+#  INFO:    active_setup_views = setup_func
+#  INFO:    active_hold_views = hold_func
+#  INFO:    default_setup_view = setup_func
+#  INFO:    default_hold_view = hold_func
+#  ==============================================
+#                 Library Sets
+#  ==============================================
+#  INFO: libs_tt:
+#  INFO:    timing = 
+#  INFO:       ../../char/techfiles//gf180mcu_9T_TT_3P3_25C.ccs.lib
+#  ==============================================
+#                 LEF Files
+#  ==============================================
+#  INFO: ../../char/techfiles//gf180mcu_5LM_1TM_9K_9t_tech.lef
+#  INFO: ../../char/techfiles//gf180mcu_osu_sc_9T.lef
+#  WARNING: PAC is obsolete and will be removed in a future version. Consider using Sign-off ECO.#  ==============================================
+#                  RC Corners
+#  ==============================================
+#  INFO: rc_typ:
+#  ERROR: Variable vars(rc_typ,cap_table) or vars(rc_typ,qx_tech_file) must be defined
+#  INFO:    temperature = 25
+#  ERROR: qx_tech_file not defined for rc_typ and signoff_extraction_effort is set to medium
+#  ==============================================
+#               Delay Corners
+#  ==============================================
+#  INFO: corner_tt:
+#  INFO:    rc_corner = rc_typ
+#  INFO:    library_set = libs_tt
+#  ==============================================
+#             Constraint Modes
+#  ==============================================
+#  INFO: setup_func_mode:
+#  INFO:    pre_cts_sdc = /import/yukari1/lrburle/OSU_180/char/techfiles/gcd.sdc
+#  INFO:    Variable vars(setup_func_mode,post_cts_sdc) not defined
+#  INFO:    Variable vars(setup_func_mode,incr_cts_sdc) not defined
+#  ==============================================
+#             Analysis Views
+#  ==============================================
+#  INFO: hold_func:
+#  INFO:    delay_corner = corner_tt
+#  INFO:    constraint_mode = setup_func_mode
+#  INFO: setup_func:
+#  INFO:    delay_corner = corner_tt
+#  INFO:    constraint_mode = setup_func_mode
+#  ==============================================
+#             Recommended Variables
+#  ==============================================
+#  INFO: max_route_layer = 6
+#  INFO: filler_cells = gf180mcu_osu_sc_9T_fill_2 fill16 gf180mcu_osu_sc_9T_fill_1 fill8 gf180mcu_osu_sc_9T_fill_16 fill4 fill2 gf180mcu_osu_sc_9T_fill_4 gf180mcu_osu_sc_9T_fill_8 fill1
+#  WARNING: Recommended variable vars(tie_cells) not defined
+#  WARNING: Recommended variables dont_use_list and dont_use_file not defined
+#  WARNING: Recommended variable vars(antenna_diode) not defined
+#  ==============================================
+#                 Other Variables
+#  ==============================================
+#  INFO: Variable vars(jtag_cells) not defined
+#  INFO: Variable vars(jtag_rows) not defined
+#  INFO: Variable vars(spare_cells) not defined
+#  ==============================================
+#                 Scale Factors
+#  ==============================================
+#  INFO: rc_typ:
+#  WARNING: No scale factors set for rc corner (rc_typ)
+#  ==============================================
+#                Derating Factors
+#  ==============================================
+#  INFO: corner_tt:
+#  WARNING: No derating factors set for delay corner (corner_tt)
+#  ==============================================
+#                Plug-ins
+#  ==============================================
+#  INFO: Plug-in pre_init_tcl = PLUG/INNOVUS/pre_init.tcl
+#  INFO: Plug-in post_init_tcl = PLUG/INNOVUS/post_init.tcl
+#  INFO: Plug-in pre_place_tcl = PLUG/INNOVUS/pre_place.tcl
+#  INFO: Plug-in post_signoff_tcl = PLUG/INNOVUS/post_signoff.tcl
+#  ==============================================
+#               Type Check
+#  ==============================================
+#  ==============================================
+#               File Check
+#  ==============================================
+#  INFO: Checking design files ...
+#  INFO:    ... found 1 files
+#  INFO: Checking LEF files ...
+#  INFO:    ... found (2/2) lef files
+#  INFO: Checking library sets ...
+#  INFO:    ... found (1/1) library files
+#  INFO: Checking rc corners ...
+#  INFO:    ... found 0 files
+#  INFO: Checking constraint modes ...
+#  INFO:    ... found 1 files
+#  INFO: Checking plugin files ...
+#  INFO:    ... found 4 files
+#  =====================================================
+#                    Flow Options
+#  =====================================================
+#                    Flow = flat
+#                   Power = none
+#                  Flavor = mmmc
+#                  Effort = standard
+#  -----------------------------------------------------
+#                    Placement Options
+#  -----------------------------------------------------
+#        Place Opt Design = true
+#           Place IO Pins = true
+#  -----------------------------------------------------
+#                   Clock Tree Options
+#  -----------------------------------------------------
+#        Route Clock Nets = true
+#  -----------------------------------------------------
+#                 Optimization Options
+#  -----------------------------------------------------
+#              Enable PAC = true
+#  -----------------------------------------------------
+#                  Hold Fixing Options
+#  -----------------------------------------------------
+#                Fix Hold = postcts postroute postroute_si
+#             Ignore IOs  = false
+#  -----------------------------------------------------
+#                     Timing Options
+#  -----------------------------------------------------
+#             Enable CPPR = none
+#              Enable OCV = pre_place
+#             Enable AOCV = false
+#             Enable SOCV = false
+#               Enable SS = false
+#  -----------------------------------------------------
+#                    Routing Options
+#  -----------------------------------------------------
+#    In Route Optimization = false
+#    Litho Driven Routing = false
+#  -----------------------------------------------------
+#                   Extraction Options
+#  -----------------------------------------------------
+#    Signoff Effort Level = medium
+#  -----------------------------------------------------
+#                        DFM Options
+#  -----------------------------------------------------
+#  -----------------------------------------------------
+#                Signal Integrity Options
+#  -----------------------------------------------------
+#                 Process = 180nm
+#  -----------------------------------------------------
+#                   Multiple CPUs
+#  -----------------------------------------------------
+#      CPUs On Local Host = 1
+#  =====================================================
+#    Abort on Setup Error = 0
+#  =====================================================
+#  -----------------------------------------------------
+#                   Info Summary
+#  -----------------------------------------------------
+#  (1) Changing vars(enable_ocv) from "false" to "pre_cts"
+#  -----------------------------------------------------
+#  -----------------------------------------------------
+#                   Info Summary
+#  -----------------------------------------------------
+#  (1) Changing vars(enable_ocv) from "false" to "pre_cts"
+#  -----------------------------------------------------
+#  -----------------------------------------------------
+#                   Warning Summary
+#  -----------------------------------------------------
+#  (1) Either fp_file, def_files, fp_tcl_file, fp_tcl_proc should be defined
+#  (2) PAC is obsolete and will be removed in a future version. Consider using Sign-off ECO.
+#  (3) Recommended variable vars(tie_cells) not defined
+#  (4) Recommended variables dont_use_list and dont_use_file not defined
+#  (5) Recommended variable vars(antenna_diode) not defined
+#  (6) No scale factors set for rc corner (rc_typ)
+#  (7) No derating factors set for delay corner (corner_tt)
+#  -----------------------------------------------------
+#  -----------------------------------------------------
+#                   Info Summary
+#  -----------------------------------------------------
+#  (1) Changing vars(enable_ocv) from "false" to "pre_cts"
+#  -----------------------------------------------------
+#  -----------------------------------------------------
+#                   Warning Summary
+#  -----------------------------------------------------
+#  (1) Either fp_file, def_files, fp_tcl_file, fp_tcl_proc should be defined
+#  (2) PAC is obsolete and will be removed in a future version. Consider using Sign-off ECO.
+#  (3) Recommended variable vars(tie_cells) not defined
+#  (4) Recommended variables dont_use_list and dont_use_file not defined
+#  (5) Recommended variable vars(antenna_diode) not defined
+#  (6) No scale factors set for rc corner (rc_typ)
+#  (7) No derating factors set for delay corner (corner_tt)
+#  -----------------------------------------------------
+#  -----------------------------------------------------
+#                    Error Summary
+#  -----------------------------------------------------
+#  (1) Variable vars(rc_typ,cap_table) or vars(rc_typ,qx_tech_file) must be defined
+#  (2) qx_tech_file not defined for rc_typ and signoff_extraction_effort is set to medium
+#  -----------------------------------------------------
+

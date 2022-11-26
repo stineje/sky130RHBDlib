@@ -1,0 +1,16 @@
+# SDF extraction
+write_sdf final.sdf
+write_sdf -abstracted_model final_gls.sdf
+
+# Save Netlist
+saveNetlist -excludeLeafCell final.v
+#
+# Run DRC and Connection checks
+verifyGeometry
+verifyConnectivity -type all -noAntenna
+
+# Output GDSII
+streamOut final.gds -mapFile streamOut.map -stripes 1 -units 1000 -mode ALL
+streamOut final_merged.gds -units 2000 -mode ALL -merge ../../lib/9T/gds/*
+
+defOut -floorplan -routing final.def
