@@ -5,8 +5,6 @@ RUN_DIR=$(PWD)
 all: clean magic xschem lvs
 
 magic: clean
-	mkdir -p magic/spice
-	mkdir -p magic/gds
 	cd scripts && ./extract
 	
 xschem: clean
@@ -28,6 +26,8 @@ lvs: magic xschem
 clean:
 	rm -f spice/*.spice
 	rm -f gds/*.gds
+	rm -f lef/sky130_fd_sc_rh.lef
+	rm -f magic/flattened/*.mag
 	rm -f magic/extraction/ext/*
 	rm -f magic/extraction/nodes/*
 	rm -f magic/extraction/sim/*
