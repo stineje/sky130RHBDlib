@@ -53,15 +53,15 @@ for i in ${FILES}; do
 
     ### Extract .ext from mag file. This generates an .ext and .res.ext which 
     ### need to be combined to extract spice that includes resistances and capacitances
-    #echo "source magic_sim_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
+    echo "source magic_sim_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
+
+    ### Extract resistance info from mag.
+    #echo "source magic_res_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
     #cat ${CELLNAME}.ext ${CELLNAME}.res.ext > ${CELLNAME}.full.ext
     #ext2sim -R -t! -t\# ${CELLNAME}.full.ext
 
     #### Extract the spice
-    #echo "source magic_spice_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
-
-    ## Extract ext and SPICE
-    echo "source magic_extract.tcl" | magic -dnull -noconsole cells/${CELLNAME}.mag
+    echo "source magic_spice_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
 
 
     ### Concatenate the cells LEF to the tmp.lef
@@ -90,10 +90,9 @@ cat tmp.lef >> sky130_fd_sc_rh.lef
 echo 'END LIBRARY' >> sky130_fd_sc_rh.lef
 cp sky130_fd_sc_rh.lef ../lef/
 rm *.lef
+rm -rf cells/*
 
 ### Units in SPICE generate in absolute terms, so replace them with
 ### the units in micron. The widths can also generate incorrectly,
 ### so fix them manually.
-sed -i 's/w=3\.01/w=3/g' ../magic/spice/*.spice
-sed -i 's/e+[0-9][0-9]//g' ../magic/spice/*.spice
-sed -i 's/150000/0.15/g' ../magic/spice/*.spice
+./sedSpice.sh
