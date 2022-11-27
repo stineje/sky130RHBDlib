@@ -1,21 +1,20 @@
 #!/bin/bash
-mkdir -p magic
+mkdir -p cells/pcells
 
-rm -rf magic/*
-cp -rf ../magic/*.mag magic/
-cp -rf ../magic/pcells magic/
+cp -rf ../magic/*.mag cells/
+cp -rf ../magic/pcells/* cells/pcells/
 
 if [ $# -gt 0 ]
 then
-    FILES="magic/${1}.mag"
+    FILES="cells/${1}.mag"
     echo "Extracting 1 layout: $FILES"
 else
-    FILES=$(ls magic/*.mag)
+    FILES=$(ls cells/*.mag)
     echo "Extracting VARIANT layouts:\n $FILES"
     echo '# Standard Cell LEF generated in Magic' > tmp.lef
 fi
 
-PCELLS=$(ls magic/pcells/*.mag)
+PCELLS=$(ls cells/pcells/*.mag)
 
 for i in ${PCELLS}; do
     sed -i 's/rlabel polycont\|rlabel poly\|rlabel viali\|rlabel nsubdiffcont\|rlabel psubdiffcont/rlabel locali/g' $i
@@ -43,25 +42,45 @@ for i in ${FILES}; do
     sed -i 's/\(^.*locali\|^.*metal1\|^.*cont\|^.*viali\) \(.* gnd\|.* vdd$\)/rlabel locali \2/g' $i
     awk '!(seen[$0]++ && (/gnd/ || /vdd/))' $i > tmp.sim && mv tmp.sim $i
 
-    echo "gds; lef write" | magic -dnull -noconsole magic/${CELLNAME}.mag
-    mv $i magic/tmp.mag
-    echo "source magic_flatten.tcl" | magic -dnull -noconsole magic/tmp.mag
-    echo "source magic_sim_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
-    cat ${CELLNAME}.ext ${CELLNAME}.res.ext > ${CELLNAME}.full.ext
-    ext2sim -R -t! -t\# ${CELLNAME}.full.ext
-    echo "source magic_spice_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
+    ### Generate GDS and LEF 
+    echo "gds; lef write" | magic -dnull -noconsole cells/${CELLNAME}.mag
+
+    ### Move cell to a temp mag file
+    mv $i cells/tmp.mag
+    
+    ### Flatten temp cell and save back to CELLNAME.mag
+    echo "source magic_flatten.tcl" | magic -dnull -noconsole cells/tmp.mag
+
+    ### Extract .ext from mag file. This generates an .ext and .res.ext which 
+    ### need to be combined to extract spice that includes resistances and capacitances
+    #echo "source magic_sim_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
+    #cat ${CELLNAME}.ext ${CELLNAME}.res.ext > ${CELLNAME}.full.ext
+    #ext2sim -R -t! -t\# ${CELLNAME}.full.ext
+
+    #### Extract the spice
+    #echo "source magic_spice_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
+
+    ## Extract ext and SPICE
+    echo "source magic_extract.tcl" | magic -dnull -noconsole cells/${CELLNAME}.mag
+
+
+    ### Concatenate the cells LEF to the tmp.lef
     cat ${CELLNAME}.lef >> tmp.lef
+
+    ### Clean up
     mv ${CELLNAME}.mag ../magic/flattened/
-    mv ${CELLNAME}.spice ../magic/spice/
-    mv ${CELLNAME}.gds ../magic/gds/
-    rm ${CELLNAME}.ext ../magic/ext/
-    mv ${CELLNAME}.res.ext ../magic/ext/
-    mv ${CELLNAME}.nodes ../magic/nodes/
-    mv ${CELLNAME}.sim ../magic/sim/
-    mv ${CELLNAME}.full.sim ../magic/sim/
+    mv ${CELLNAME}.spice ../spice/
+    mv ${CELLNAME}.gds ../gds/
+    mv ${CELLNAME}.ext ../magic/extraction/ext
+    #mv ${CELLNAME}.res.ext ../magic/extraction/ext/
+    mv ${CELLNAME}.nodes ../magic/extraction/nodes/
+    mv ${CELLNAME}.sim ../magic/extraction/sim/
+    #mv ${CELLNAME}.full.sim ../magic/extraction/sim/
 done
 
 
+### After all cell LEFs have been added to tmp.LEF, remove
+### all redundant header info, then define it once at the top
 ./sedLEF.sh
 echo 'VERSION 5.7 ;' >> sky130_fd_sc_rh.lef
 echo '  NOWIREEXTENSIONATPIN ON ;' >> sky130_fd_sc_rh.lef
@@ -72,6 +91,9 @@ echo 'END LIBRARY' >> sky130_fd_sc_rh.lef
 cp sky130_fd_sc_rh.lef ../lef/
 rm *.lef
 
+### Units in SPICE generate in absolute terms, so replace them with
+### the units in micron. The widths can also generate incorrectly,
+### so fix them manually.
 sed -i 's/w=3\.01/w=3/g' ../magic/spice/*.spice
 sed -i 's/e+[0-9][0-9]//g' ../magic/spice/*.spice
 sed -i 's/150000/0.15/g' ../magic/spice/*.spice
