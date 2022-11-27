@@ -1,29 +1,29 @@
 * SPICE3 file created from MUX2X1.ext - technology: sky130A
 
 .subckt MUX2X1 Y A0 A1 S VPB VNB
-M1000 VPB.t2 a_787_383# a_661_1004.t0 pshort w=2u l=0.15u
+M1000 VPB.t2 a_787_383# a_661_1004.t2 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-M1001 VPB.t5 a_185_182.t3 a_1327_1004.t1 pshort w=2u l=0.15u
+M1001 VPB.t0 a_185_182.t3 a_1327_1004.t1 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-M1002 a_661_1004.t1 a_787_383# VPB.t1 pshort w=2u l=0.15u
+M1002 a_661_1004.t0 a_787_383# VPB.t1 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-M1003 VPB.t12 a_1453_383# a_1327_1004.t3 pshort w=2u l=0.15u
+M1003 VPB.t13 a_1453_383# a_1327_1004.t3 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-M1004 a_661_1004.t4 S VPB.t7 pshort w=2u l=0.15u
+M1004 a_661_1004.t3 S VPB.t7 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
 M1005 VPB.t8 S a_185_182.t1 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
 M1006 VNB a_661_1004.t5 a_1888_73.t0 nshort w=-1.605u l=1.765u
 +  ad=1.6781p pd=12.81u as=0p ps=0u
-M1007 a_1327_1004.t0 a_185_182.t5 VPB.t0 pshort w=2u l=0.15u
+M1007 a_1327_1004.t0 a_185_182.t5 VPB.t5 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-M1008 VPB.t4 a_1327_1004.t5 a_1993_1004.t1 pshort w=2u l=0.15u
+M1008 VPB.t3 a_1327_1004.t5 a_1993_1004.t1 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
 M1009 VNB a_185_182.t4 a_1222_73.t0 nshort w=-1.605u l=1.765u
 +  ad=0p pd=0u as=0p ps=0u
-M1010 VPB.t6 S a_661_1004.t3 pshort w=2u l=0.15u
+M1010 VPB.t6 S a_661_1004.t4 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-M1011 a_1327_1004.t2 a_1453_383# VPB.t13 pshort w=2u l=0.15u
+M1011 a_1327_1004.t2 a_1453_383# VPB.t12 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
 M1012 VPB.t10 a_661_1004.t6 a_1993_1004.t4 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
@@ -33,12 +33,12 @@ M1014 a_1993_1004.t3 a_661_1004.t7 VPB.t11 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
 M1015 a_185_182.t0 S VPB.t9 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-M1016 a_1993_1004.t0 a_1327_1004.t7 VPB.t3 pshort w=2u l=0.15u
+M1016 a_1993_1004.t0 a_1327_1004.t7 VPB.t4 pshort w=2u l=0.15u
 +  ad=0p pd=0u as=0p ps=0u
-C0 S a_787_383# 0.26fF
-C1 VPB a_1453_383# 0.07fF
-C2 VPB S 0.20fF
-C3 VPB a_787_383# 0.07fF
+C0 VPB a_787_383# 0.07fF
+C1 S a_787_383# 0.26fF
+C2 VPB a_1453_383# 0.07fF
+C3 VPB S 0.20fF
 R0 a_556_73.t0 a_556_73.n1 93.333
 R1 a_556_73.n4 a_556_73.n2 55.07
 R2 a_556_73.t0 a_556_73.n0 8.137
@@ -53,10 +53,10 @@ R10 a_661_1004.n5 a_661_1004.n4 155.763
 R11 a_661_1004.n4 a_661_1004.n3 135.047
 R12 a_661_1004.n2 a_661_1004.n1 76.002
 R13 a_661_1004.n7 a_661_1004.n6 15.218
-R14 a_661_1004.n0 a_661_1004.t0 14.282
-R15 a_661_1004.n0 a_661_1004.t1 14.282
-R16 a_661_1004.n1 a_661_1004.t3 14.282
-R17 a_661_1004.n1 a_661_1004.t4 14.282
+R14 a_661_1004.n0 a_661_1004.t2 14.282
+R15 a_661_1004.n0 a_661_1004.t0 14.282
+R16 a_661_1004.n1 a_661_1004.t4 14.282
+R17 a_661_1004.n1 a_661_1004.t3 14.282
 R18 a_661_1004.n2 a_661_1004.n0 12.85
 R19 a_661_1004.n8 a_661_1004.n7 12.014
 R20 VPB VPB.n251 126.832
@@ -76,11 +76,11 @@ R33 VPB.n85 VPB.n84 61.764
 R34 VPB.n77 VPB.t9 55.106
 R35 VPB.n65 VPB.t8 55.106
 R36 VPB.n53 VPB.t7 55.106
-R37 VPB.n141 VPB.t0 55.106
+R37 VPB.n141 VPB.t5 55.106
 R38 VPB.n108 VPB.t11 55.106
 R39 VPB.n228 VPB.t2 55.106
-R40 VPB.n123 VPB.t12 55.106
-R41 VPB.n176 VPB.t4 55.106
+R40 VPB.n123 VPB.t13 55.106
+R41 VPB.n176 VPB.t3 55.106
 R42 VPB.n173 VPB.n172 48.952
 R43 VPB.n125 VPB.n124 48.952
 R44 VPB.n37 VPB.n36 48.952
@@ -98,9 +98,9 @@ R55 VPB.n129 VPB.n128 17.801
 R56 VPB.n41 VPB.n40 17.801
 R57 VPB.n35 VPB.t1 14.282
 R58 VPB.n35 VPB.t6 14.282
-R59 VPB.n78 VPB.t13 14.282
-R60 VPB.n78 VPB.t5 14.282
-R61 VPB.n166 VPB.t3 14.282
+R59 VPB.n78 VPB.t12 14.282
+R60 VPB.n78 VPB.t0 14.282
+R61 VPB.n166 VPB.t4 14.282
 R62 VPB.n166 VPB.t10 14.282
 R63 VPB.n165 VPB.n164 13.653
 R64 VPB.n164 VPB.n163 13.653

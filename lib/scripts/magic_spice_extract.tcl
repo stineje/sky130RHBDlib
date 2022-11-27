@@ -34,6 +34,3 @@ ext2spice extresist on
 ext2spice cthresh 0.0001                                                        
 ext2spice -F -m -f spice3                                                       
 ###############################################                                 
-                                                                                
-gds                                                                             
-lef writeall

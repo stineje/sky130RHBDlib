@@ -43,20 +43,22 @@ for i in ${FILES}; do
     sed -i 's/\(^.*locali\|^.*metal1\|^.*cont\|^.*viali\) \(.* gnd\|.* vdd$\)/rlabel locali \2/g' $i
     awk '!(seen[$0]++ && (/gnd/ || /vdd/))' $i > tmp.sim && mv tmp.sim $i
 
+    echo "gds; lef write" | magic -dnull -noconsole magic/${CELLNAME}.mag
     mv $i magic/tmp.mag
     echo "source magic_flatten.tcl" | magic -dnull -noconsole magic/tmp.mag
     echo "source magic_sim_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
-    cat ${CELLNAME}.ext ${CELLNAME}.res.ext > ${CELLNAME}.2.ext
-    ext2sim -R -t! -t\# ${CELLNAME}.2.ext.
+    cat ${CELLNAME}.ext ${CELLNAME}.res.ext > ${CELLNAME}.full.ext
+    ext2sim -R -t! -t\# ${CELLNAME}.full.ext
     echo "source magic_spice_extract.tcl" | magic -dnull -noconsole ${CELLNAME}.mag
     cat ${CELLNAME}.lef >> tmp.lef
     mv ${CELLNAME}.mag ../magic/flattened/
     mv ${CELLNAME}.spice ../magic/spice/
     mv ${CELLNAME}.gds ../magic/gds/
-    mv ${CELLNAME}.ext ../magic/ext/
+    rm ${CELLNAME}.ext ../magic/ext/
+    mv ${CELLNAME}.res.ext ../magic/ext/
     mv ${CELLNAME}.nodes ../magic/nodes/
-    mv ${CELLNAME}.res.* ../magic/res/
     mv ${CELLNAME}.sim ../magic/sim/
+    mv ${CELLNAME}.full.sim ../magic/sim/
 done
 
 
@@ -73,4 +75,3 @@ rm *.lef
 sed -i 's/w=3\.01/w=3/g' ../magic/spice/*.spice
 sed -i 's/e+[0-9][0-9]//g' ../magic/spice/*.spice
 sed -i 's/150000/0.15/g' ../magic/spice/*.spice
-

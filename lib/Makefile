@@ -28,5 +28,7 @@ lvs: magic xschem
 clean:
 	rm -f magic/spice/*
 	rm -f magic/gds/*
-	rm -f magic/*.ext
+	rm -f magic/ext/*
+	rm -f magic/sim/*
+	rm -f magic/res/*
 	rm -f magic/pcells/*.ext
