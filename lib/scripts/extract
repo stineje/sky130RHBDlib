@@ -46,10 +46,10 @@ for i in ${FILES}; do
     echo "gds; lef write" | magic -dnull -noconsole cells/${CELLNAME}.mag
 
     ### Move cell to a temp mag file
-    mv $i cells/tmp.mag
+    #mv $i cells/tmp.mag
     
     ### Flatten temp cell and save back to CELLNAME.mag
-    echo "source magic_flatten.tcl" | magic -dnull -noconsole cells/tmp.mag
+    #echo "source magic_flatten.tcl" | magic -dnull -noconsole cells/tmp.mag
 
     ### Extract .ext from mag file. This generates an .ext and .res.ext which 
     ### need to be combined to extract spice that includes resistances and capacitances

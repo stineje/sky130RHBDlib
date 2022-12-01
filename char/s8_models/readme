@@ -1,0 +1,224 @@
+*****************  S8 Models.3.5 Official Release *****************************
+Date: 05/23/2017 by PED
+1)  SOA updates to DEFETs per MRS3733.  New n20zvtvhv1 and relaxed limits for other DEFETs.
+
+Date: 09/12/16
+1) QHC: Tuned FFCELL/SFCELL/SSCELL/FSCELL corner for shrunken sonos fnpass
+2) QHC: Added Monte Carlo model for Pdiff resistor 
+
+*****************  S8 Models.3.5 Official Release *****************************
+Date: 01/27/16
+1) QHC: Tuned FFCELL/SFCELL corner for shrunken sonos fnpass
+
+*****************  S8 Models.3.5 Official Release *****************************
+Date: 10/01/15
+1) PED: Changed model_oob of VPP from 20V to 40V per MRS#3191 for s8pfn
+
+Date: 09/23/15
+1) QHC: Added new HD capacitor: xcmvpp_hd5_4x2
+2) QHC: Fixed issue with mrp1 in PMC model that made it not work with extracted netlists 
+
+*****************  S8 Models.3.5 Official Release (MRS#2841,3363)*************************
+Date: 05/27/15
+1) QHC: Created various discrete bins for nlowvt/plowvt/pshort that were previously optim only.  
+2) QHC: Extracted silicon based PMC model based on new MRGA requirements 
+3) QHC: Added new VPP cell for FPG1 (xcmvpp_hd5_6p8x6p1_m1m4)
+4) QHC: Various changes for Solido compatibility (QHC-201)
+5) QHC: Changed poly resistor scaling for Eldo 2015 compatibility
+6) QHC: Removed option M53 and re-worked devices to remove "m" from sub-circuits
+
+*****************  S8 Models.3.5 Official Release (MRS#3111)******************************
+Date: 05/07/14
+1) QHC: S8S model freeze.  Added a bin to fnpass and sonos_e/p that is only allowed in s8s*
+2) QHC: Updated S8PIR, S8PFN, and S8PF PMC models
+
+*****************  S8 Models.3.5 Official Release (MRS#3013)******************************
+Date: 12/10/13
+1) QHC: SCS8HD New W/L's frozen models (nshort, phighvt)
+
+*****************  S8 Models.3.5 Official Release (MRS#2863)******************************
+Date: 09/25/13
+1) QHC: Atlas VPP stable model release
+
+*****************  S8 Models.3.5 Official Release (MRS#2899)******************************
+Date: 08/28/13
+1) QHC: Updated npnpar_polyhv model to fix convergence issue with finesim.
+2) MVO: Added temperature dependent dnwdiode_pw model OOB to prevent excessive forward bias.
+3) QHC: NLVTPASS frozen models
+4) MVO: S8TNV Calibre corner models
+5) MVO: Lowered OOB limits for forward body bias to match MRGA.   
+6) QHC: Updated fixed model map for VPP's for CAD support of Atlas VPP's 
+
+*****************  S8 Models.3.5 Official Release ****************************************
+Date: 04/10/13
+1) QHC: Frozen hrpoly model update.  Added voltage coefficient to hrpoly (MRS-2744)
+
+*****************  S8 Models.3.5 Official Release (MRS#2591)******************************
+Date: 03/06/13 
+1) QHC: Added 3LM, 4LM, and 5LM fixed model map files for VPP's to s8x.  
+2) QHC: Added symlinks to the appropriate fixed model map in all derivatives
+
+*****************  S8 Models.3.5 Official Release (MRS#2591)******************************
+Date: 11/12/12 
+1) PED: Added new VPP xcmvpp11p5x11p7_polym50p4shield for TSG5L support
+2) QHC: Added stable release of HV poly-formed emitter NPN 
+
+*****************  S8 Models.3.5 Official Release (MRS#2456)******************************
+Date: 09/20/12 
+1) QHC: Added lot/gauss param to poly tempco
+2) QHC: Updated xcmvpp5 model to latest layout
+
+*****************  S8 Models.3.5 Official Release (MRS#2456)******************************
+Date: 05/04/12 
+Updates to 04/26/12 release.  Some features were intentionally not released until now.  
+1) QHC: Added Spectre models for 7 new VPP's for Atlantis
+2) QHC: Re-ran PMC model generation on all derivatives.
+
+*****************  S8 Models.3.5 Official Release (MRS#2456)******************************
+Date: 04/26/12 
+1) QHC: Added 7 new VPP's for Atlantis
+2) MVO: Updates PMC models for S8P12-10R and S8P-5R (Amkor only), S8PIR-10R 
+3) MVO: Calibre, Synopsys model updates for S8PIR-10R 
+4) MVO: Changed delta W for RDL in S8PIR-10R
+
+*****************  S8 Models.3.5 Official Release (MRS#2283)******************************
+Date: 01/11/12 
+1) QHC: Updated flicker noise models for all periphery FETs (QHC-99)
+2) QHC: Added 7 new VPP's (3 5LM, 4 4LM)
+3) QHC: Created s8p-5r Spectre models
+4) QHC: Reduced VPP mismatch in Spectre model to be consistent with Spice
+5) MVO: Added  top level soa.cor file enabling both gox_check_nor.cor and model_oob.cor models
+6) MVO: GOX stress model updated based on PATM#27 
+
+*****************  S8 Models.3.5 Official Release (MRS#2038)******************************
+Date: 07/01/11 
+1) PED: nvhv/pvhv New Reverse Condition SOA to ensure FET not biased in model limitation region
+2) QHC: Centered and tightened xcmvpp11p5x11p7_lim5shield
+3) QHC: Added RF FETs to s8p flow 
+
+*****************  S8 Models.3.5 beta Release (MRS#2038)*******************************
+Date: 02/18/11 (Spice only b/c other sims not have subckt SOA)
+1) PED: nvhv/pvhv New Reverse Condition SOA to ensure FET not biased in model limitation region
+
+*****************  S8 Models.3.5 beta5 Release(MRS#2038)*******************************
+Date: 12/23/10
+1) QHC: Added 2 new VPP's: xcmvpp11p5x11p7_lim5shield and xcmvpp8p6x7p9_m3_lim5shield 
+2) QHC: Updated 2 VPP's to frozen: xcmvpp11p5x11p7_m5shield and xcmvpp11p5x11p7_polym5shield
+
+*****************  S8 Models.3.5 beta4 Release(MRS#1984)*******************************
+Date: 09/24/10
+1) PED: NVHV/PVHV LOD model addition (will require new cadflow and re-netlist, see TCS#2115).
+2) MVO: NVHV/PVHV Mismatch model reduction.
+3) PED: NVHV Reverse Body bias Vth model fitting improvement for nvhv l=0.7, w=20,50,60. 
+4) OVR: NVHV Gate Capacitance increase.
+5) PED: Added SPR 69419 workaround to fix Eldo 2009.2a bug that gave wrong FET Mismatch sims
+   ***SPR workaround is to add .option mc_ignore_binning to fix FET Mismatch problems
+
+*****************  S8 Models.3.5 beta3 Release(MRS#1877)*******************************
+Date: 09/17/10
+1) OVR: Updated pnppar5x model based on frz silicon data
+2) OVR: Added temp coeff monte-carlo model to pnppar5x model
+
+*****************  S8 Models.3.5 beta 2 Release *******************************
+By: QHC, MVO
+1) Added PVHV/NVHV reliability models
+2) Added new M5 shielded VPP's
+
+*****************  S8 Models.3.5 beta 1 Release *******************************
+By: PXG/PED/OVR
+1) Updated PVHV/NVHV DC/AC modelds
+
+*****************  S8 Models.3.4 Official Release *******************************
+Date: 02/25/2010
+By: QHC
+1) Removed pre-silicon nvhv from 1/22/2010 release, otherwise same as beta8
+
+*****************  S8 Models.3.4 BETA8 FOR VPP OVER MOSCAP (MRS-1844)
+Date: 02/12/2010
+By: QHC
+1) Added xcmvpp2_nhvnative10x4 and xcmvpp2_phv5x4
+
+*****************  S8 Models.3.4 ALPHA1 FOR NVHV (MRS-1802 )              *******
+Date: 01/22/2010
+By: PED
+1) Added pre-silicon nvhv model per MRS-1802.
+
+*****************  S8 Models.3.4 BETA7 (MRS-1636, MS-1767, SPR) ******************
+Date: 12/17/2009
+By: QHC, PXG, PED
+1) QHC: RF ESD diodes now have the same resistance forward and reverse and this is based on forward measurements.
+2) QHC: Tuned PNPPAR beta over temperature back to cadflow values.  Tempcos were maintained about the same.
+3) QHC: Updated phighvt varactor model to show VG and temperature dependence of biases from -1.8V to -0.8V (CMIN)
+4) QHC: Converted both varactor models to spice format. (SPR 61200) 
+5) PXG: SPR-62445 Updated Diode Leakge for fnpass/sonos(flash:0.45/0.22,latch:1/0.5)to match ndiode_nvs at temp not equal to 30C
+6) PED: MRS-1829: Reduced leakage in tt_leak.cor and leak.cor for nhvnative w/l=10/0.9um
+7) MVO: MRS-1767: Updated OOB model
+
+*****************  S8 Models.3.4 BETA6 (MRS-1636) ******************
+Date: 10/20/2009
+By: PED
+1) Added forward bias resistance modeling for ESD diode modeling 
+2) Reverted varactor changes in Beta5 back to Beta4 model results (QHC)
+
+*****************  S8 Models.3.4 BETA5 (MRS-1718) ******************
+Date: 10/09/2009
+By: QHC
+1) Implemented charge based varactor model in spice, removed Verilog-A model
+2) Added tempcos to Cmin for varactors
+
+*****************  S8 Models.3.4 BETA4 *****************************
+Date: 6/04/2009
+By: MVO
+1) Widened xcmimc
+2) Remover all NON "_b" RF FETs in s8tma-5r directory
+
+*****************  S8 Models.3.4 BETA3 *****************************
+Date: 5/08/2009
+By: QHC
+1) Added xcmimc2
+
+*****************  S8 Models.3.4 BETA2 (MRS-1550)*****************************
+Date: 4/15/2009
+By: OVR
+1) Added eval model for pnppar5x device 
+*****************  S8 Models.3.4 BETA1 *****************************
+Date: 12/17/2008
+By: PXG, MVO, QHC
+1) Updated Flash,Latch BOL Program corner
+2) Updated L=0.22 NVSSONOS program,erase corners for TBOL/BOL
+3) Added nlowvt optimization model for ss/ff/sf/fs
+4) Added phighvt optimization model for tt/ff/ss/fs/sf/leak/ttleak
+5) Updated VPP mismatch
+6) Updated nvssonos mismatch 
+
+*****************  S8 Models.3.4 ALPHA1 *****************************
+Date: 12/05/2008
+By: PXG, MVO, OVR, QHC
+1) updated Nlowvt corners(ff/ss/fs/sf) for 7/0.15,removed optimization corners for ff/ss/fs/sf
+2) updated fnpass corners
+3) updated Phighvt corners for 0.64/0.18,removed optimization corners, all corners pointing to discrete corners 
+4) VPP capacitor updated
+5) PVHV 5.0/0.66 device updated
+6) Ntvnative all W's for L=0.5 updated 
+7) Pwell resistor updated
+8) Nvsrnpass 0.3/0.22 updated 
+
+*****************  S8 Models.3.3  *****************************
+Date: 10/29/2008
+By: MVO
+1) Removed several discrete phighvt deviceses to align with MRGA AD 
+***********************
+
+*****************  S8 Models.3.3 Beta2 ***********************
+Date: 10/12/2008
+By: PXG
+1) SONOS(Flash and Latch) BOL/WBOL/FFEOL/SSEOL/TBOL/TTEOL/TTTEOL/FFTEOL/SSTEOL are added
+2) SEEPROM BOL/TBOL/WBOL/TEOL/EOL/FFTEOL/FFEOL are added
+3) Added mismatch for 1) and 2)
+***********************
+NOTE: TO GET ACCURATE MISMATCH FOR NVSSONOS, USE GMIN/GMINDC=1E-21
+**********************
+4) PMC models are updated
+*****************  S8 Models.3.3 Beta1 ***********************
+In S8tnv-5r models.3.3/s8x models.3.2 readme
+Date: 08/29/2008

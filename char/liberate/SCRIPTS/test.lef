@@ -1,0 +1,69 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+
+MACRO INVX1
+  CLASS CORE ;
+  FOREIGN INVX1 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 2.220 BY 7.400 ;
+  SYMMETRY X Y R90 ;
+  SITE unitrh ;
+  PIN VDD
+    ANTENNADIFFAREA 4.515000 ;
+    PORT
+      LAYER nwell ;
+        RECT -0.435 3.930 2.655 7.750 ;
+      LAYER li1 ;
+        RECT -0.170 7.230 2.390 7.570 ;
+        RECT -0.170 4.110 0.170 7.230 ;
+        RECT 0.590 5.185 0.760 7.230 ;
+        RECT 1.470 5.185 1.640 7.230 ;
+        RECT 2.050 4.110 2.390 7.230 ;
+      LAYER mcon ;
+        RECT 0.285 7.315 0.455 7.485 ;
+        RECT 0.655 7.315 0.825 7.485 ;
+        RECT 1.025 7.315 1.195 7.485 ;
+        RECT 1.395 7.315 1.565 7.485 ;
+        RECT 1.765 7.315 1.935 7.485 ;
+      LAYER met1 ;
+        RECT -0.170 7.230 2.390 7.570 ;
+    END
+  END VDD
+  PIN GND
+    ANTENNADIFFAREA 4.205150 ;
+    PORT
+      LAYER pwell ;
+        RECT -0.170 -0.170 2.390 2.720 ;
+      LAYER li1 ;
+        RECT -0.170 0.170 0.170 2.720 ;
+        RECT 0.545 0.620 0.715 1.750 ;
+        RECT 1.515 0.620 1.685 1.750 ;
+        RECT 0.545 0.450 1.685 0.620 ;
+        RECT 0.545 0.170 0.715 0.450 ;
+        RECT 1.030 0.170 1.200 0.450 ;
+        RECT 1.515 0.170 1.685 0.450 ;
+        RECT 2.050 0.170 2.390 2.720 ;
+        RECT -0.170 -0.170 2.390 0.170 ;
+      LAYER mcon ;
+        RECT 0.285 -0.085 0.455 0.085 ;
+        RECT 0.655 -0.085 0.825 0.085 ;
+        RECT 1.025 -0.085 1.195 0.085 ;
+        RECT 1.395 -0.085 1.565 0.085 ;
+        RECT 1.765 -0.085 1.935 0.085 ;
+      LAYER met1 ;
+        RECT -0.170 -0.170 2.390 0.170 ;
+    END
+  END GND
+  OBS
+      LAYER li1 ;
+        RECT 0.655 1.920 0.825 4.865 ;
+        RECT 1.030 4.665 1.200 7.020 ;
+        RECT 1.030 4.495 1.565 4.665 ;
+        RECT 1.395 2.165 1.565 4.495 ;
+        RECT 1.025 1.995 1.565 2.165 ;
+        RECT 1.025 0.840 1.195 1.995 ;
+  END
+END INVX1
+END LIBRARY
