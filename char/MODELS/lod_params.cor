@@ -1,0 +1,72 @@
+.param
+
+** HV NMOS STRESS PARAMS ***
++nhv_wkvth0_diff = 0.65e-6
++nhv_lkvth0_diff = 0
++nhv_kvth0_diff = 11.0e-9
++nhv_wlod_diff = 0
++nhv_ku0_diff = -4.5e-8
++nhv_lku0_diff = 0
++nhv_wku0_diff = 0.2e-6
++nhv_kvsat_diff = 0.3
+
+** HV PMOS STRESS PARAMS ***
++phv_wkvth0_diff = 0.65e-6
++phv_lkvth0_diff = 0
++phv_kvth0_diff = 3.5e-08 
++phv_wlod_diff = 0
++phv_ku0_diff = 7.0e-08
++phv_lku0_diff = 0
++phv_wku0_diff = 0
++phv_kvsat_diff = 0.4
+
+** NHVNATIVE NMOS STRESS PARAMS ***
++nhvnative_wkvth0_diff = 0.8e-6
++nhvnative_lkvth0_diff = 0
++nhvnative_kvth0_diff = -7e-9
++nhvnative_wlod_diff = 0
++nhvnative_ku0_diff = -3e-8
++nhvnative_lku0_diff = 0
++nhvnative_wku0_diff = 0.2e-6
++nhvnative_kvsat_diff = 0.4
+
+** NTVNATIVE NMOS STRESS PARAMS ***
++ntvnative_wkvth0_diff = 0.0e-6
++ntvnative_lkvth0_diff = 0
++ntvnative_kvth0_diff = -2.0e-9
++ntvnative_wlod_diff = 0
++ntvnative_ku0_diff = -3.0e-8
++ntvnative_lku0_diff = 0
++ntvnative_wku0_diff = 0.5e-6
++ntvnative_kvsat_diff = 0.3
+
+** NVHV NMOS STRESS PARAMS ***
+******lod params to put into lod cor file after I finish fitting
+.param
+*****parameters fixed copy from HVNMOS
++nvhv_wku0_diff = 0.2e-6
++nvhv_kvsat_diff      =        0.3
+*****wide/long fitting
++nvhv_kvth0_diff = 1.7057e-08
++nvhv_ku0_diff = -9.9000e-08
+*****wide/long fitting plus 20/short fitting
++nvhv_lku0_diff = 9.6975e-07
++nvhv_lkvth0_diff = 2.2691e-07
+*****wide/long fitting plus 20/short fitting plus 5/short fitting
++nvhv_wkvth0_diff = 2.3093e-06
+
+
+** PVHV PMOS STRESS PARAMS ****
+*****parameters fixed copy from HVPMOS
+.param
++pvhv_wku0_diff       =        0.0
++pvhv_kvsat_diff      =        0.4
+*****20/2.16 optimization
++pvhv_kvth0_diff = 5.2302e-09
++pvhv_ku0_diff = 2.2180e-07
+*****20/2.16 optimization + 20/short fitting
++pvhv_lku0_diff = 8.7129e-07
++pvhv_lkvth0_diff = -4.8631e-07
+*****fitting deltaW Vth from 5/short fitting
++pvhv_wkvth0_diff = 5.3980e-07
+

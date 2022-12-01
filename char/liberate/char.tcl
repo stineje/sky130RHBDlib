@@ -27,6 +27,8 @@ set_var parse_ignore_duplicate_subckt 1
 
 ## Load Spice models and subckts ##
 set spicefiles "$rundir/MODELS/include.sp"
+puts "Characterizing cells:\n"
+puts $cells
 foreach cell $cells {
     lappend spicefiles ${rundir}/NETLIST/${cell}.spice
 }
