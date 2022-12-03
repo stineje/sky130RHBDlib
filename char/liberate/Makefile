@@ -28,16 +28,16 @@ ALL_CNR = TT \
 		FS \
 		SF
 
-setup:
+setup: 
 	@mkdir -p $(VPATH) $(LOG) NETLIST LIBRARY LDB DATASHEET VERILOG
 	#@cp -r $(MODEL_PATH)/* MODELS/
 	#@echo "Running sedModels..."
 	#@cd MODELS && sh ../SCRIPTS/sedModels
-	#@cp -r $(NETLIST_PATH)/*.spice NETLIST/
-	#@echo "Running sedSpice..."
-	#@cd NETLIST && sh ../SCRIPTS/sedSpice
-	#@echo "Generating celllist..."
-	#@ls NETLIST/*.spice  | sed 's/.spice\|NETLIST\///g' > celllist
+	@cp -r $(NETLIST_PATH)/*.spice NETLIST/
+	@echo "Running sedSpice..."
+	@cd NETLIST && sh ../SCRIPTS/sedSpice
+	@echo "Generating celllist..."
+	@ls NETLIST/*.spice  | sed 's/.spice\|NETLIST\///g' > celllist
 	@touch $(VPATH)/$@
 
 
@@ -84,7 +84,7 @@ clean:
 	#-@rm -f MODELS/readme 
 	#-@rm -f MODELS/models.all 
 	#-@rm -f MODELS/include.sp
-	#-@rm -f NETLIST/*
+	-@rm -f NETLIST/*
 	-@rm -rf $(VPATH)
 	-@rm -rf altos*
 	-@rm -rf celllist

@@ -1,0 +1,124 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO BUFX1
+  CLASS CORE ;
+  FOREIGN BUFX1 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 4.440 BY 7.400 ;
+  SYMMETRY X Y R90 ;
+  SITE unitrh ;
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.771900 ;
+    PORT
+      LAYER li1 ;
+        RECT 3.250 4.665 3.420 7.020 ;
+        RECT 3.250 4.495 3.785 4.665 ;
+        RECT 3.615 2.165 3.785 4.495 ;
+        RECT 3.245 1.995 3.785 2.165 ;
+        RECT 3.245 0.840 3.415 1.995 ;
+    END
+  END Y
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.027250 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.655 1.920 0.825 4.865 ;
+    END
+  END A
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    SHAPE ABUTMENT ;
+    PORT
+      LAYER nwell ;
+        RECT -0.435 3.930 4.875 7.750 ;
+      LAYER li1 ;
+        RECT -0.170 7.230 4.610 7.570 ;
+        RECT -0.170 4.110 0.170 7.230 ;
+        RECT 0.590 5.185 0.760 7.230 ;
+        RECT 1.470 5.185 1.640 7.230 ;
+        RECT 2.050 4.110 2.390 7.230 ;
+        RECT 2.810 5.185 2.980 7.230 ;
+        RECT 3.690 5.185 3.860 7.230 ;
+        RECT 4.270 4.110 4.610 7.230 ;
+      LAYER mcon ;
+        RECT 0.285 7.315 0.455 7.485 ;
+        RECT 0.655 7.315 0.825 7.485 ;
+        RECT 1.025 7.315 1.195 7.485 ;
+        RECT 1.395 7.315 1.565 7.485 ;
+        RECT 1.765 7.315 1.935 7.485 ;
+        RECT 2.505 7.315 2.675 7.485 ;
+        RECT 2.875 7.315 3.045 7.485 ;
+        RECT 3.245 7.315 3.415 7.485 ;
+        RECT 3.615 7.315 3.785 7.485 ;
+        RECT 3.985 7.315 4.155 7.485 ;
+      LAYER met1 ;
+        RECT -0.170 7.230 4.610 7.570 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    SHAPE ABUTMENT ;
+    PORT
+      LAYER pwell ;
+        RECT -0.170 -0.170 4.610 2.720 ;
+      LAYER li1 ;
+        RECT -0.170 0.170 0.170 2.720 ;
+        RECT 0.545 0.620 0.715 1.750 ;
+        RECT 1.515 0.620 1.685 1.750 ;
+        RECT 0.545 0.450 1.685 0.620 ;
+        RECT 0.545 0.170 0.715 0.450 ;
+        RECT 1.030 0.170 1.200 0.450 ;
+        RECT 1.515 0.170 1.685 0.450 ;
+        RECT 2.050 0.170 2.390 2.720 ;
+        RECT 2.765 0.620 2.935 1.750 ;
+        RECT 3.735 0.620 3.905 1.750 ;
+        RECT 2.765 0.450 3.905 0.620 ;
+        RECT 2.765 0.170 2.935 0.450 ;
+        RECT 3.250 0.170 3.420 0.450 ;
+        RECT 3.735 0.170 3.905 0.450 ;
+        RECT 4.270 0.170 4.610 2.720 ;
+        RECT -0.170 -0.170 4.610 0.170 ;
+      LAYER mcon ;
+        RECT 0.285 -0.085 0.455 0.085 ;
+        RECT 0.655 -0.085 0.825 0.085 ;
+        RECT 1.025 -0.085 1.195 0.085 ;
+        RECT 1.395 -0.085 1.565 0.085 ;
+        RECT 1.765 -0.085 1.935 0.085 ;
+        RECT 2.505 -0.085 2.675 0.085 ;
+        RECT 2.875 -0.085 3.045 0.085 ;
+        RECT 3.245 -0.085 3.415 0.085 ;
+        RECT 3.615 -0.085 3.785 0.085 ;
+        RECT 3.985 -0.085 4.155 0.085 ;
+      LAYER met1 ;
+        RECT -0.170 -0.170 4.610 0.170 ;
+    END
+  END GND
+  OBS
+      LAYER li1 ;
+        RECT 1.030 4.665 1.200 7.020 ;
+        RECT 1.030 4.495 1.565 4.665 ;
+        RECT 1.395 2.165 1.565 4.495 ;
+        RECT 1.025 1.995 1.565 2.165 ;
+        RECT 1.025 0.840 1.195 1.995 ;
+        RECT 2.875 1.920 3.045 4.865 ;
+      LAYER mcon ;
+        RECT 1.395 2.505 1.565 2.675 ;
+        RECT 2.875 2.505 3.045 2.675 ;
+      LAYER met1 ;
+        RECT 1.365 2.675 1.595 2.705 ;
+        RECT 2.845 2.675 3.075 2.705 ;
+        RECT 1.335 2.505 3.105 2.675 ;
+        RECT 1.365 2.475 1.595 2.505 ;
+        RECT 2.845 2.475 3.075 2.505 ;
+  END
+END BUFX1
+END LIBRARY
+

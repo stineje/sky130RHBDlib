@@ -17,19 +17,16 @@ lvs: magic xschem
 	echo "Running LVS"
 	mkdir -p ./lvs/magic
 	mkdir -p ./lvs/xschem
-	rm -f ./lvs/magic/*
-	rm -f ./lvs/xschem/*
-	rm -f ./lvs/*.out
+	rm -r ./lvs/magic/*
+	rm -r ./lvs/xschem/*
+	rm -r ./lvs/*.out
 	./scripts/runlvs.sh
 	mv *.out ./lvs/
 	grep -nri 'circuits match' lvs/*.out > lvs/lvs_report.log
 	cat lvs/lvs_report.log
 
 clean:
-	rm -f spice/*.spice
-	rm -f gds/*.gds
-	rm -f lef/sky130_fd_sc_rh.lef
-	rm -f magic/flattened/*.mag
-	rm -f magic/extraction/ext/*
-	rm -f magic/extraction/nodes/*
-	rm -f magic/extraction/sim/*
+	rm -r spice/*.spice
+	rm -r gds/*.gds
+	rm -r lef/sky130_fd_sc_rh.lef
+	rm -r magic/extraction/*

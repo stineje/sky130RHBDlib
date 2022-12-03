@@ -12,12 +12,12 @@ set_var max_transition 1e-8
 
 
 ## Read cells from file
-#set fp [open "celllist"]
-#set cells [regexp -all -inline {\S+} [read $fp]]
-#close $fp
+set fp [open "celllist"]
+set cells [regexp -all -inline {\S+} [read $fp]]
+close $fp
 
 ## Set cells manually
-set cells "INVX1"
+#set cells "INVX1"
 #set cells "INVX1 NAND2X1 NOR2X1 XNOR2X1"
 #set tmrcells "TMRDFFQX1 TMRDFFSNQX1 TMRDFFRNQX1 TMRDFFSNRNQX1"
 
@@ -36,13 +36,13 @@ define_template -type constraint \
         -index_2  {0.1  0.90  1.80} \
         constraint_template
 
-set inputs  {A}
-set outputs {Y}
+set inputs  {A B C D A0 A1 S}
+set outputs {Y YN Q QN}
 set clocks  {CLK}
 set asyncs  {RN SN}
 
 define_cell \
-        -input $inputs  -output $outputs \
+        -input $inputs  -output $outputs -async $asyncs -clock $clocks\
         -constraint  constraint_template \
         -delay       delay_template \
         -power       power_template \
