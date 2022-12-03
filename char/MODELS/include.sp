@@ -1,2 +1,0 @@
-*
-.LIB 'models.sp' tt

@@ -1,16 +1,17 @@
 * SPICE3 file created from VOTERN3X1.ext - technology: sky130A
 
-.subckt VOTERN3X1 YN A B C VPB VNB
-X0 VNB B a_112_73# VNB sky130_fd_pr__nfet_01v8 ad=5.373e+11p pd=4.71e+06u as=0p ps=0u w=3e+06u l=150000u
-X1 VNB a_1027_944# a_1444_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X2 a_392_181# A a_1444_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3.01e+06u l=150000u
-X3 a_392_181# A a_881_1005# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X4 VPB B a_217_1005# VPB sky130_fd_pr__pfet_01v8 ad=1.68e+12p pd=1.368e+07u as=0p ps=0u w=2e+06u l=150000u M=2
-X5 a_881_1005# a_1027_944# a_217_1005# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X6 VPB A a_217_1005# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X7 a_392_181# A a_112_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X8 a_881_1005# B a_217_1005# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X9 a_881_1005# a_1027_944# a_392_181# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X10 a_392_181# a_1027_944# a_778_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3.01e+06u l=150000u
-X11 VNB B a_778_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
+.subckt VOTERN3X1 YN A B C VDD GND
+X0 GND B votern3x1_pcell_0/nmos_top_0/a_0_0# GND nshort w=3 l=0.15
+X1 GND B votern3x1_pcell_0/nmos_bottom_1/a_0_0# GND nshort w=3 l=0.15
+X2 GND C votern3x1_pcell_0/nmos_bottom_2/a_0_0# GND nshort w=3 l=0.15
+X3 votern3x1_pcell_0/a_805_1331# B VDD VDD pshort w=2 l=0.15
+X4 YN C votern3x1_pcell_0/nmos_bottom_1/a_0_0# GND nshort w=3 l=0.15
+X5 votern3x1_pcell_0/a_805_1331# A VDD VDD pshort w=2 l=0.15
+X6 votern3x1_pcell_0/a_893_1059# C votern3x1_pcell_0/a_805_1331# VDD pshort w=2 l=0.15
+X7 votern3x1_pcell_0/a_893_1059# B votern3x1_pcell_0/a_805_1331# VDD pshort w=2 l=0.15
+X8 YN C votern3x1_pcell_0/a_893_1059# VDD pshort w=2 l=0.15
+X9 YN A votern3x1_pcell_0/a_893_1059# VDD pshort w=2 l=0.15
+X10 YN A votern3x1_pcell_0/nmos_top_0/a_0_0# GND nshort w=3 l=0.15
+X11 YN A votern3x1_pcell_0/nmos_bottom_2/a_0_0# GND nshort w=3 l=0.15
+C0 VDD GND 18.60fF
 .ends

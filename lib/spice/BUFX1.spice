@@ -1,8 +1,9 @@
 * SPICE3 file created from BUFX1.ext - technology: sky130A
 
-.subckt BUFX1 Y A VPB VNB
-X0 VPB a_185_182# a_629_182# VPB sky130_fd_pr__pfet_01v8 ad=2.2e+12p pd=1.82e+07u as=0p ps=0u w=2e+06u l=150000u M=2
-X1 a_185_182# a_121_384# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=2.2816e+12p ps=1.62e+07u w=3e+06u l=150000u
-X2 VPB a_121_384# a_185_182# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X3 a_629_182# a_185_182# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
+.subckt BUFX1 Y A VDD GND
+X0 bufx1_0/m1_315_501# A GND GND nshort w=3 l=0.15
+X1 VDD A bufx1_0/m1_315_501# VDD pshort w=2 l=0.15
+X2 Y bufx1_0/m1_315_501# GND GND nshort w=3 l=0.15
+X3 VDD bufx1_0/m1_315_501# Y VDD pshort w=2 l=0.15
+C0 VDD GND 2.67fF
 .ends

@@ -1,26 +1,26 @@
 * SPICE3 file created from DLATCH.ext - technology: sky130A
 
-.subckt DLATCH Q D GATE VPB VNB
-X0 a_661_1004# GATE VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=7.82e+12p ps=6.382e+07u w=2e+06u l=150000u M=2
-X1 a_1771_1004# D VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X2 a_2405_182# a_1771_1004# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X3 Q a_3007_383# a_2795_1005# VPB sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=150000u M=2
-X4 a_185_182# D VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=7.6538e+12p ps=5.332e+07u w=3e+06u l=150000u
-X5 a_3461_1005# a_2405_182# a_3007_383# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X6 a_661_1004# GATE a_556_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X7 a_661_1004# a_185_182# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X8 a_1771_1004# GATE VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X9 a_2795_1005# a_1295_182# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X10 VPB Q a_3461_1005# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X11 VPB D a_185_182# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X12 VPB a_661_1004# a_1295_182# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X13 VNB GATE a_1666_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X14 a_3007_383# a_2405_182# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3.01e+06u l=150000u
-X15 Q a_1295_182# VNB VNB sky130_fd_pr__nfet_01v8 ad=3.582e+11p pd=3.15e+06u as=0p ps=0u w=3e+06u l=150000u
-X16 Q a_3007_383# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3.01e+06u l=150000u
-X17 a_1295_182# a_661_1004# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X18 a_1771_1004# D a_1666_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X19 VNB a_185_182# a_556_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X20 a_2405_182# a_1771_1004# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X21 a_3007_383# Q VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
+.subckt DLATCH Q D GATE VDD GND
+X0 m1_349_723# D GND GND nshort w=3 l=0.15
+X1 VDD D m1_349_723# VDD pshort w=2 l=0.15
+X2 m1_1459_723# and2x1_pcell_0/m1_547_649# GND GND nshort w=3 l=0.15
+X3 VDD and2x1_pcell_0/m1_547_649# m1_1459_723# VDD pshort w=2 l=0.15
+X4 GND m1_349_723# and2x1_pcell_0/nand2x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X5 and2x1_pcell_0/m1_547_649# GATE and2x1_pcell_0/nand2x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X6 VDD m1_349_723# and2x1_pcell_0/m1_547_649# VDD pshort w=2 l=0.15
+X7 VDD GATE and2x1_pcell_0/m1_547_649# VDD pshort w=2 l=0.15
+X8 m1_2569_797# and2x1_pcell_1/m1_547_649# GND GND nshort w=3 l=0.15
+X9 VDD and2x1_pcell_1/m1_547_649# m1_2569_797# VDD pshort w=2 l=0.15
+X10 GND GATE and2x1_pcell_1/nand2x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X11 and2x1_pcell_1/m1_547_649# D and2x1_pcell_1/nand2x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X12 VDD GATE and2x1_pcell_1/m1_547_649# VDD pshort w=2 l=0.15
+X13 VDD D and2x1_pcell_1/m1_547_649# VDD pshort w=2 l=0.15
+X14 VDD m1_1459_723# nor2x1_pcell_0/a_317_1331# VDD pshort w=2 l=0.15
+X15 Q m1_3087_723# nor2x1_pcell_0/a_317_1331# VDD pshort w=2 l=0.15
+X16 Q m1_1459_723# GND GND nshort w=3 l=0.15
+X17 Q m1_3087_723# GND GND nshort w=3 l=0.15
+X18 VDD Q nor2x1_pcell_1/a_317_1331# VDD pshort w=2 l=0.15
+X19 m1_3087_723# m1_2569_797# nor2x1_pcell_1/a_317_1331# VDD pshort w=2 l=0.15
+X20 m1_3087_723# Q GND GND nshort w=3 l=0.15
+X21 m1_3087_723# m1_2569_797# GND GND nshort w=3 l=0.15
 .ends

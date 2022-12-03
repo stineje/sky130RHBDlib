@@ -1,31 +1,31 @@
 * SPICE3 file created from DFFX1.ext - technology: sky130A
 
-.subckt DFFX1 Q QN D CLK VPB VNB
-X0 VPB CLK a_277_1004# VPB sky130_fd_pr__pfet_01v8 ad=1.066e+13p pd=8.666e+07u as=0p ps=0u w=2e+06u l=150000u M=2
-X1 QN Q a_3072_73# VNB sky130_fd_pr__nfet_01v8 ad=1.791e+11p pd=1.57e+06u as=0p ps=0u w=3e+06u l=150000u
-X2 VPB CLK a_147_159# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X3 QN Q VPB VPB sky130_fd_pr__pfet_01v8 ad=1.16e+12p pd=9.16e+06u as=0p ps=0u w=2e+06u l=150000u M=2
-X4 VNB a_147_159# a_91_75# VNB sky130_fd_pr__nfet_01v8 ad=1.0746e+12p pd=9.42e+06u as=0p ps=0u w=3e+06u l=150000u
-X5 VPB a_599_943# a_277_1004# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X6 VPB a_277_1004# a_599_943# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X7 Q QN VPB VPB sky130_fd_pr__pfet_01v8 ad=1.16e+12p pd=9.16e+06u as=0p ps=0u w=2e+06u l=150000u M=2
-X8 a_1845_1004# a_147_159# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X9 VPB a_147_159# Q VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X10 VNB a_599_943# a_1740_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X11 a_372_182# CLK a_91_75# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X12 a_277_1004# a_147_159# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X13 VPB a_1305_383# a_599_943# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X14 a_147_159# CLK a_2406_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X15 VPB a_599_943# a_1845_1004# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X16 VNB QN a_3738_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X17 VNB a_277_1004# a_1074_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X18 VPB a_277_1004# QN VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X19 a_1845_1004# a_147_159# a_1740_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X20 a_147_159# a_1845_1004# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X21 VNB a_277_1004# a_3072_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X22 Q a_147_159# a_3738_73# VNB sky130_fd_pr__nfet_01v8 ad=1.791e+11p pd=1.57e+06u as=0p ps=0u w=3e+06u l=150000u
-X23 a_599_943# a_1305_383# a_1074_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X24 a_277_1004# a_599_943# a_372_182# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X25 VNB a_1845_1004# a_2406_73# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-C0 VPB a_147_159# 2.41fF
+.subckt DFFX1 Q QN D CLK VDD GND
+X0 GND dffx1_pcell_0/m1_2165_649# dffx1_pcell_0/nand2x1_pcell_2/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X1 dffx1_pcell_0/m1_258_797# CLK dffx1_pcell_0/nand2x1_pcell_2/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X2 VDD dffx1_pcell_0/m1_2165_649# dffx1_pcell_0/m1_258_797# VDD pshort w=2 l=0.15
+X3 VDD CLK dffx1_pcell_0/m1_258_797# VDD pshort w=2 l=0.15
+X4 GND dffx1_pcell_0/m1_833_723# dffx1_pcell_0/nand2x1_pcell_3/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X5 QN Q dffx1_pcell_0/nand2x1_pcell_3/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X6 VDD dffx1_pcell_0/m1_833_723# QN VDD pshort w=2 l=0.15
+X7 VDD Q QN VDD pshort w=2 l=0.15
+X8 GND QN dffx1_pcell_0/nand2x1_pcell_4/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X9 Q dffx1_pcell_0/m1_258_797# dffx1_pcell_0/nand2x1_pcell_4/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X10 VDD QN Q VDD pshort w=2 l=0.15
+X11 VDD dffx1_pcell_0/m1_258_797# Q VDD pshort w=2 l=0.15
+X12 GND dffx1_pcell_0/m1_258_797# dffx1_pcell_0/nand3x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X13 dffx1_pcell_0/m1_833_723# dffx1_pcell_0/m1_685_649# dffx1_pcell_0/nand3x1_pcell_0/li_393_182# GND nshort w=3 l=0.15
+X14 dffx1_pcell_0/nand3x1_pcell_0/li_393_182# CLK dffx1_pcell_0/nand3x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X15 VDD dffx1_pcell_0/m1_258_797# dffx1_pcell_0/m1_833_723# VDD pshort w=2 l=0.15
+X16 VDD CLK dffx1_pcell_0/m1_833_723# VDD pshort w=2 l=0.15
+X17 VDD dffx1_pcell_0/m1_685_649# dffx1_pcell_0/m1_833_723# VDD pshort w=2 l=0.15
+X18 GND dffx1_pcell_0/m1_833_723# dffx1_pcell_0/nand2x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X19 dffx1_pcell_0/m1_685_649# D dffx1_pcell_0/nand2x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X20 VDD dffx1_pcell_0/m1_833_723# dffx1_pcell_0/m1_685_649# VDD pshort w=2 l=0.15
+X21 VDD D dffx1_pcell_0/m1_685_649# VDD pshort w=2 l=0.15
+X22 GND dffx1_pcell_0/m1_685_649# dffx1_pcell_0/nand2x1_pcell_1/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X23 dffx1_pcell_0/m1_2165_649# dffx1_pcell_0/m1_258_797# dffx1_pcell_0/nand2x1_pcell_1/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X24 VDD dffx1_pcell_0/m1_685_649# dffx1_pcell_0/m1_2165_649# VDD pshort w=2 l=0.15
+X25 VDD dffx1_pcell_0/m1_258_797# dffx1_pcell_0/m1_2165_649# VDD pshort w=2 l=0.15
+C0 dffx1_pcell_0/m1_258_797# VDD 2.41fF
 .ends

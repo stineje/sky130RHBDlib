@@ -1,10 +1,11 @@
 * SPICE3 file created from OR2X1.ext - technology: sky130A
 
-.subckt OR2X1 Y A B VPB VNB
-X0 a_198_181# a_164_908# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=3.0774e+12p ps=2.104e+07u w=3e+06u l=150000u
-X1 a_851_182# a_198_181# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X2 VPB a_198_181# a_851_182# VPB sky130_fd_pr__pfet_01v8 ad=1.68e+12p pd=1.368e+07u as=0p ps=0u w=2e+06u l=150000u M=2
-X3 a_131_1005# a_164_908# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X4 a_131_1005# a_343_383# a_198_181# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X5 a_198_181# a_343_383# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3.01e+06u l=150000u
+.subckt OR2X1 Y A B VDD GND
+X0 Y or2x1_pcell_0/m1_547_649# GND GND nshort w=3 l=0.15
+X1 VDD or2x1_pcell_0/m1_547_649# Y VDD pshort w=2 l=0.15
+X2 VDD A or2x1_pcell_0/nor2x1_pcell_0/a_317_1331# VDD pshort w=2 l=0.15
+X3 or2x1_pcell_0/m1_547_649# B or2x1_pcell_0/nor2x1_pcell_0/a_317_1331# VDD pshort w=2 l=0.15
+X4 or2x1_pcell_0/m1_547_649# A GND GND nshort w=3 l=0.15
+X5 or2x1_pcell_0/m1_547_649# B GND GND nshort w=3 l=0.15
+C0 VDD GND 3.18fF
 .ends

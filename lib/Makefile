@@ -2,10 +2,12 @@
 
 RUN_DIR=$(PWD)
 
+defualt: magic
+
 all: clean magic xschem lvs
 
 magic: clean
-	cd scripts && ./extract
+	cd scripts && sh extract.sh
 	
 xschem: clean
 	echo "(TODO) make xschem"

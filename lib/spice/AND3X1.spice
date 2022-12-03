@@ -1,12 +1,13 @@
 * SPICE3 file created from AND3X1.ext - technology: sky130A
 
-.subckt AND3X1 Y A B C VPB VNB
-X0 VPB a_342_166# a_277_1004# VPB sky130_fd_pr__pfet_01v8 ad=3.36e+12p pd=2.736e+07u as=0p ps=0u w=2e+06u l=150000u M=2
-X1 VNB a_147_159# a_91_75# VNB sky130_fd_pr__nfet_01v8 ad=1.3199e+12p pd=9.67e+06u as=0p ps=0u w=3e+06u l=150000u
-X2 VPB a_599_943# a_277_1004# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X3 a_372_182# a_342_166# a_91_75# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X4 a_277_1004# a_147_159# VPB VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X5 VPB a_277_1004# a_1147_182# VPB sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=150000u M=2
-X6 a_1147_182# a_277_1004# VNB VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
-X7 a_277_1004# a_599_943# a_372_182# VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3e+06u l=150000u
+.subckt AND3X1 Y A B C VDD GND
+X0 Y and3x1_pcell_0/m1_867_649# GND GND nshort w=3 l=0.15
+X1 VDD and3x1_pcell_0/m1_867_649# Y VDD pshort w=2 l=0.15
+X2 GND A and3x1_pcell_0/nand3x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X3 and3x1_pcell_0/m1_867_649# C and3x1_pcell_0/nand3x1_pcell_0/li_393_182# GND nshort w=3 l=0.15
+X4 and3x1_pcell_0/nand3x1_pcell_0/li_393_182# B and3x1_pcell_0/nand3x1_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
+X5 VDD A and3x1_pcell_0/m1_867_649# VDD pshort w=2 l=0.15
+X6 VDD B and3x1_pcell_0/m1_867_649# VDD pshort w=2 l=0.15
+X7 VDD C and3x1_pcell_0/m1_867_649# VDD pshort w=2 l=0.15
+C0 VDD GND 5.50fF
 .ends
