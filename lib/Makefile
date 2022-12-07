@@ -26,7 +26,7 @@ lvs: magic xschem
 	cat lvs/lvs_report.log
 
 clean:
-	rm -r spice/*.spice
-	rm -r gds/*.gds
-	rm -r lef/sky130_fd_sc_rh.lef
-	rm -r magic/extraction/*
+	rm -rf spice/*.spice
+	rm -rf gds/*.gds
+	rm -rf lef/sky130_fd_sc_rh.lef
+	rm -rf magic/extraction/*

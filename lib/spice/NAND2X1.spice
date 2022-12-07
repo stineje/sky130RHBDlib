@@ -1,8 +1,8 @@
 * SPICE3 file created from NAND2X1.ext - technology: sky130A
 
 .subckt NAND2X1 Y A B VDD GND
-X0 GND A nand2x_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
-X1 Y B nand2x_pcell_0/nmos_bottom_0/a_0_0# GND nshort w=3 l=0.15
-X2 VDD A Y VDD pshort w=2 l=0.15
-X3 VDD B Y VDD pshort w=2 l=0.15
+X0 VDD B Y VDD pshort w=2 l=0.15 M=2
+X1 GND A a_112_73 GND nshort w=3 l=0.15
+X2 Y A VDD VDD pshort w=2 l=0.15 M=2
+X3 Y B a_112_73 GND nshort w=3 l=0.15
 .ends

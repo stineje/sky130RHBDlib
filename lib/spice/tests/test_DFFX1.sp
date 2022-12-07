@@ -6,7 +6,7 @@ V3 CLK GND pulse 0 1.8 0 1p 1p 5n 10n
 x1 Q QN D CLK VDD GND DFFX1
 **** begin user architecture code
 
-.lib /home/rjridle/OpenRadHardSCL/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.lib /home/rjridle/sky130RHBDlib/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 .inc DFFX1.spice
 
 .control

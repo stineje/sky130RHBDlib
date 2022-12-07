@@ -24,7 +24,13 @@ for i in ${FILES}; do
 
     ### Generate GDS, LEF, and SPICE
     echo "gds; lef write" | magic -dnull -noconsole cells/${CELLNAME}.mag >> extract.log 2>&1
-    echo "extract; ext2spice scale off; ext2spice -m" | magic -dnull -noconsole cells/${CELLNAME}.mag >> extract.log 2>&1
+
+    mv cells/${CELLNAME}.mag cells/tmp.mag
+    echo "source magic_flatten.tcl" | magic -dnull -noconsole cells/tmp.mag >> extract.log 2>&1
+
+    echo "extract; ext2spice scale off; ext2spice -t# -t! -m" | magic -dnull -noconsole ${CELLNAME}.mag >> extract.log 2>&1
+
+    mv ${CELLNAME}.mag ../magic/flattened/
 
     ### Concatenate the cells LEF to the tmp.lef
     cat ${CELLNAME}.lef >> tmp.lef
@@ -39,10 +45,9 @@ echo "[INFO] Cleaning SPICE files..."
 ### Units in SPICE generate in absolute terms, so replace them with
 ### the units in micron. The widths can also generate incorrectly,
 ### so fix them manually.
-sed -i 's/ad=.* w=/w=/g' *.spice
-sed -i 's/w=3.*/w=3 l=0.15/g' *.spice
-sed -i 's/w=2.*/w=2 l=0.15/g' *.spice
-sed -i 's/^.option scale=5000u//g' *.spice
+sed -i 's/ad=.* w=3.*/w=3 l=0.15/g' *.spice
+sed -i 's/ad=.* w=2.*/w=2 l=0.15 M=2/g' *.spice
+sed -i 's/^.option scale.*//g' *.spice
 sed -i -e 's/sky130_fd_pr__nfet_01v8/nshort/g' -e 's/sky130_fd_pr__pfet_01v8/pshort/g' *.spice
 
 
@@ -63,7 +68,7 @@ echo "[INFO] Moving everything to proper directory..."
 ### Clean up
 mv *.spice ../spice/
 mv *.gds ../gds/
-mv cells/*.ext ../magic/extraction/
+mv *.ext ../magic/extraction/
 mv sky130_fd_sc_rh.lef ../lef/
 echo "[LOG]"
 mv --backup=numbered --suffix=.bak --verbose extract.log ../log/
