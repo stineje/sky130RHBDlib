@@ -1,0 +1,48 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+Design : riscv
+Version: M-2016.12-SP1
+Date   : Thu Jul 16 13:16:34 2020
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: rf_reg[30][0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: rf_reg[30][0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                0.000000   0.000000
+  clock network delay (propagated)     0.000000   0.000000
+  rf_reg[30][0]/CLK (DFFPOSX1)         0.000000 # 0.000000 r
+  rf_reg[30][0]/Q (DFFPOSX1)           0.214915   0.214915 r
+  U19049/Y (NAND2X1)                   0.065286   0.280201 f
+  U19050/Y (OAI21X1)                   0.088794   0.368994 r
+  rf_reg[30][0]/D (DFFPOSX1)           0.000000   0.368994 r
+  data arrival time                               0.368994
+
+  clock clk (rise edge)                0.000000   0.000000
+  clock network delay (propagated)     0.000000   0.000000
+  clock uncertainty                    1.000000   1.000000
+  rf_reg[30][0]/CLK (DFFPOSX1)         0.000000   1.000000 r
+  library hold time                    -0.088759  0.911241
+  data required time                              0.911241
+  -----------------------------------------------------------
+  data required time                              0.911241
+  data arrival time                               -0.368994
+  -----------------------------------------------------------
+  slack (VIOLATED)                                -0.542247
+
+
+1

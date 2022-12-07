@@ -1,0 +1,51 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : riscv
+Version: M-2016.12-SP1
+Date   : Thu Jul 16 13:16:35 2020
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /classes/ecen4303F19/osu_soc_3.0/lib/ami05/lib/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 22.333611 mW   (77%)
+  Net Switching Power  = 6.546500 mW   (23%)
+                         ---------
+Total Dynamic Power    = 28.880110 mW  (100%)
+
+Cell Leakage Power     =   1.3558 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+memory           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+black_box        0.000000          0.000000          0.000000          0.000000  (   0.00%)
+clock_network    0.000000          0.000000          0.000000          0.000000  (   0.00%)
+register        16.472122        1.383461e-02        249.103363         16.486216
+                                                                                 (  57.08%)
+sequential       0.000000          0.000000          0.000000          0.000000  (   0.00%)
+combinational    5.861489          6.532715        1.106716e+03         12.395265
+                                                                                 (  42.92%)
+--------------------------------------------------------------------------------------------------
+Total           22.333611 mW       6.546550 mW     1.355820e+03 nW      28.881481 mW
+1

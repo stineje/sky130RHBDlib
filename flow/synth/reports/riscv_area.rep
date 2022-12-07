@@ -1,0 +1,70 @@
+ 
+****************************************
+Report : area
+Design : riscv
+Version: M-2016.12-SP1
+Date   : Thu Jul 16 13:16:35 2020
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /classes/ecen4303F19/osu_soc_3.0/lib/ami05/lib/osu05_stdcells.db)
+
+Number of ports:                          163
+Number of nets:                         15620
+Number of cells:                        15192
+Number of combinational cells:          14168
+Number of sequential cells:              1024
+Number of macros/black boxes:               0
+Number of buf/inv:                       2553
+Number of references:                      23
+
+Combinational area:            3813723.000000
+Buf/Inv area:                   384768.000000
+Noncombinational area:          884736.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:               4698459.000000
+Total area:                 undefined
+
+The above information was reported from the logical library. The following are from the physical library:
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area                Local cell area
+                                  ---------------------  --------------------------------- 
+Hierarchical cell                 Absolute      Percent  Combi-        Noncombi-    Black-
+                                  Total         Total    national      national     boxes   Design
+--------------------------------  ------------  -------  ------------  -----------  ------  ---------
+riscv                             4698459.0000    100.0  3813723.0000  884736.0000  0.0000  riscv
+--------------------------------  ------------  -------  ------------  -----------  ------  ---------
+Total                                                    3813723.0000  884736.0000  0.0000
+
+
+Area of detected synthetic parts
+--------------------------------
+  No DW parts to report!
+
+Estimated area of ungrouped synthetic parts
+-------------------------------------------
+                                          Estimated  Perc. of
+  Module               Implem.  Count          Area cell area
+  -------------------- -------  ----- ------------- ---------
+  DP_OP_504J1_122_7128     str      1    53232.9153      1.1%
+  DW01_add             apparch      2    68094.0000      1.4%
+  DW01_sub             apparch      1    38439.0000      0.8%
+  DW_cmp               apparch      4    89811.0000      1.9%
+  DW_div_tc                cla      1  1011861.0000     21.5%
+  DW_leftsh               astr      1    59121.0000      1.3%
+  DW_mult_uns          apparch      1   641961.0000     13.7%
+  DW_rightsh              astr      1    69003.0000      1.5%
+  -------------------- -------  ----- ------------- ---------
+  DP_OP Subtotal:                   1    53232.9153      1.1%
+  Total:                           12  2031522.9153     43.2%
+
+Subtotal of datapath(DP_OP) cell area:  53232.9153  1.1%  (estimated)
+Total synthetic cell area:              2031522.9153  43.2%  (estimated)
+
+1
