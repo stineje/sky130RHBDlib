@@ -1,0 +1,32 @@
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+Design : top
+Version: V-2023.12-SP3
+Date   : Wed Nov 13 13:22:59 2024
+****************************************
+
+Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
+Wire Load Model Mode: top
+
+  Startpoint: ir/tdo (internal pin)
+  Endpoint: tdo (output port clocked by vclk)
+  Path Group: (none)
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  ir/tdo (instruction_register)        0.000000   0.000000 f
+  U34761/Y (NOR2X1)                    0.057482   0.057482 r
+  U35108/Y (NOR2X1)                    0.064741   0.122223 f
+  tdo (out)                            0.000000   0.122223 f
+  data arrival time                               0.122223
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

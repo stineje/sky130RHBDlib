@@ -1,0 +1,354 @@
+// File: NAND2X1.spi.pex
+// Created: Tue Oct 15 15:49:51 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// Nominal Temperature: 30C
+// Circuit Temperature: 30C
+// 
+simulator lang=spectre
+subckt PM_NAND2X1\%GND ( 1 9 13 16 26 30 )
+c37 ( 30 0 ) capacitor c=0.0208404f //x=0.99 //y=0.865
+c38 ( 29 0 ) capacitor c=0.00440095f //x=1.18 //y=0
+c39 ( 26 0 ) capacitor c=0.259161f //x=2.59 //y=0
+c40 ( 16 0 ) capacitor c=0.179504f //x=0.74 //y=0
+c41 ( 13 0 ) capacitor c=0.0426751f //x=1.095 //y=0
+c42 ( 9 0 ) capacitor c=0.146058f //x=2.59 //y=0
+r43 (  24 26 ) resistor r=26.5322 //w=0.357 //l=0.74 //layer=li \
+ //thickness=0.1 //x=1.85 //y=0 //x2=2.59 //y2=0
+r44 (  22 29 ) resistor r=2.94794 //w=0.34 //l=0.085 //layer=li \
+ //thickness=0.1 //x=1.265 //y=0 //x2=1.18 //y2=0
+r45 (  22 24 ) resistor r=20.9748 //w=0.357 //l=0.585 //layer=li \
+ //thickness=0.1 //x=1.265 //y=0 //x2=1.85 //y2=0
+r46 (  17 29 ) resistor r=4.11603 //w=0.68 //l=0.17 //layer=li //thickness=0.1 \
+ //x=1.18 //y=0.17 //x2=1.18 //y2=0
+r47 (  17 30 ) resistor r=53.7326 //w=0.187 //l=0.785 //layer=li \
+ //thickness=0.1 //x=1.18 //y=0.17 //x2=1.18 //y2=0.955
+r48 (  13 29 ) resistor r=2.94794 //w=0.34 //l=0.085 //layer=li \
+ //thickness=0.1 //x=1.095 //y=0 //x2=1.18 //y2=0
+r49 (  13 16 ) resistor r=12.7283 //w=0.357 //l=0.355 //layer=li \
+ //thickness=0.1 //x=1.095 //y=0 //x2=0.74 //y2=0
+r50 (  9 26 ) resistor r=4.65 //w=0.17 //l=0.34 //layer=mcon //count=2 \
+ //x=2.59 //y=0 //x2=2.59 //y2=0
+r51 (  7 24 ) resistor r=3.1 //w=0.17 //l=0.51 //layer=mcon //count=3 //x=1.85 \
+ //y=0 //x2=1.85 //y2=0
+r52 (  7 9 ) resistor r=0.307309 //w=0.301 //l=0.74 //layer=m1 \
+ //thickness=0.36 //x=1.85 //y=0 //x2=2.59 //y2=0
+r53 (  3 16 ) resistor r=3.1 //w=0.17 //l=0.51 //layer=mcon //count=3 //x=0.74 \
+ //y=0 //x2=0.74 //y2=0
+r54 (  1 7 ) resistor r=0.0768272 //w=0.301 //l=0.185 //layer=m1 \
+ //thickness=0.36 //x=1.665 //y=0 //x2=1.85 //y2=0
+r55 (  1 3 ) resistor r=0.384136 //w=0.301 //l=0.925 //layer=m1 \
+ //thickness=0.36 //x=1.665 //y=0 //x2=0.74 //y2=0
+ends PM_NAND2X1\%GND
+
+subckt PM_NAND2X1\%VDD ( 1 9 21 29 44 47 48 49 50 )
+c35 ( 50 0 ) capacitor c=0.0383753f //x=2.405 //y=5.02
+c36 ( 49 0 ) capacitor c=0.0243052f //x=1.525 //y=5.02
+c37 ( 48 0 ) capacitor c=0.053196f //x=0.655 //y=5.02
+c38 ( 47 0 ) capacitor c=0.243792f //x=2.59 //y=7.4
+c39 ( 45 0 ) capacitor c=0.00591168f //x=1.67 //y=7.4
+c40 ( 44 0 ) capacitor c=0.24846f //x=0.74 //y=7.4
+c41 ( 29 0 ) capacitor c=0.0285035f //x=2.465 //y=7.4
+c42 ( 21 0 ) capacitor c=0.0286367f //x=1.585 //y=7.4
+c43 ( 9 0 ) capacitor c=0.153489f //x=2.59 //y=7.4
+r44 (  33 47 ) resistor r=4.11603 //w=0.68 //l=0.17 //layer=li //thickness=0.1 \
+ //x=2.55 //y=7.23 //x2=2.55 //y2=7.4
+r45 (  33 50 ) resistor r=33.1979 //w=0.187 //l=0.485 //layer=li \
+ //thickness=0.1 //x=2.55 //y=7.23 //x2=2.55 //y2=6.745
+r46 (  30 45 ) resistor r=2.94794 //w=0.34 //l=0.085 //layer=li \
+ //thickness=0.1 //x=1.755 //y=7.4 //x2=1.67 //y2=7.4
+r47 (  30 32 ) resistor r=3.40616 //w=0.357 //l=0.095 //layer=li \
+ //thickness=0.1 //x=1.755 //y=7.4 //x2=1.85 //y2=7.4
+r48 (  29 47 ) resistor r=2.94794 //w=0.34 //l=0.085 //layer=li \
+ //thickness=0.1 //x=2.465 //y=7.4 //x2=2.55 //y2=7.4
+r49 (  29 32 ) resistor r=22.0504 //w=0.357 //l=0.615 //layer=li \
+ //thickness=0.1 //x=2.465 //y=7.4 //x2=1.85 //y2=7.4
+r50 (  23 45 ) resistor r=4.11603 //w=0.68 //l=0.17 //layer=li //thickness=0.1 \
+ //x=1.67 //y=7.23 //x2=1.67 //y2=7.4
+r51 (  23 49 ) resistor r=33.1979 //w=0.187 //l=0.485 //layer=li \
+ //thickness=0.1 //x=1.67 //y=7.23 //x2=1.67 //y2=6.745
+r52 (  22 44 ) resistor r=2.94794 //w=0.34 //l=0.085 //layer=li \
+ //thickness=0.1 //x=0.875 //y=7.4 //x2=0.79 //y2=7.4
+r53 (  21 45 ) resistor r=2.94794 //w=0.34 //l=0.085 //layer=li \
+ //thickness=0.1 //x=1.585 //y=7.4 //x2=1.67 //y2=7.4
+r54 (  21 22 ) resistor r=25.4566 //w=0.357 //l=0.71 //layer=li \
+ //thickness=0.1 //x=1.585 //y=7.4 //x2=0.875 //y2=7.4
+r55 (  15 44 ) resistor r=4.11603 //w=0.68 //l=0.17 //layer=li //thickness=0.1 \
+ //x=0.79 //y=7.23 //x2=0.79 //y2=7.4
+r56 (  15 48 ) resistor r=56.4706 //w=0.187 //l=0.825 //layer=li \
+ //thickness=0.1 //x=0.79 //y=7.23 //x2=0.79 //y2=6.405
+r57 (  9 47 ) resistor r=4.65 //w=0.17 //l=0.34 //layer=mcon //count=2 \
+ //x=2.59 //y=7.4 //x2=2.59 //y2=7.4
+r58 (  7 32 ) resistor r=3.1 //w=0.17 //l=0.51 //layer=mcon //count=3 //x=1.85 \
+ //y=7.4 //x2=1.85 //y2=7.4
+r59 (  7 9 ) resistor r=0.307309 //w=0.301 //l=0.74 //layer=m1 \
+ //thickness=0.36 //x=1.85 //y=7.4 //x2=2.59 //y2=7.4
+r60 (  3 44 ) resistor r=3.1 //w=0.17 //l=0.51 //layer=mcon //count=3 //x=0.74 \
+ //y=7.4 //x2=0.74 //y2=7.4
+r61 (  1 7 ) resistor r=0.0768272 //w=0.301 //l=0.185 //layer=m1 \
+ //thickness=0.36 //x=1.665 //y=7.4 //x2=1.85 //y2=7.4
+r62 (  1 3 ) resistor r=0.384136 //w=0.301 //l=0.925 //layer=m1 \
+ //thickness=0.36 //x=1.665 //y=7.4 //x2=0.74 //y2=7.4
+ends PM_NAND2X1\%VDD
+
+subckt PM_NAND2X1\%A ( 1 2 3 4 5 6 7 9 21 22 23 24 25 26 27 31 33 36 37 47 )
+c55 ( 47 0 ) capacitor c=0.0667949f //x=1.11 //y=4.7
+c56 ( 37 0 ) capacitor c=0.0318948f //x=1.445 //y=1.21
+c57 ( 36 0 ) capacitor c=0.0187384f //x=1.445 //y=0.865
+c58 ( 33 0 ) capacitor c=0.0141798f //x=1.29 //y=1.365
+c59 ( 31 0 ) capacitor c=0.0149844f //x=1.29 //y=0.71
+c60 ( 27 0 ) capacitor c=0.0860049f //x=0.915 //y=1.915
+c61 ( 26 0 ) capacitor c=0.0229722f //x=0.915 //y=1.52
+c62 ( 25 0 ) capacitor c=0.0234352f //x=0.915 //y=1.21
+c63 ( 24 0 ) capacitor c=0.0199343f //x=0.915 //y=0.865
+c64 ( 23 0 ) capacitor c=0.110275f //x=1.45 //y=6.02
+c65 ( 22 0 ) capacitor c=0.154305f //x=1.01 //y=6.02
+c66 ( 9 0 ) capacitor c=0.116968f //x=1.11 //y=2.08
+r67 (  45 47 ) resistor r=20.6867 //w=0.233 //l=0.1 //layer=ply \
+ //thickness=0.18 //x=1.01 //y=4.7 //x2=1.11 //y2=4.7
+r68 (  38 47 ) resistor r=70.3348 //w=0.233 //l=0.414367 //layer=ply \
+ //thickness=0.18 //x=1.45 //y=4.865 //x2=1.11 //y2=4.7
+r69 (  37 49 ) resistor r=45.1352 //w=0.168 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=1.445 //y=1.21 //x2=1.405 //y2=1.365
+r70 (  36 48 ) resistor r=45.1352 //w=0.168 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=1.445 //y=0.865 //x2=1.405 //y2=0.71
+r71 (  36 37 ) resistor r=176.904 //w=0.094 //l=0.345 //layer=ply \
+ //thickness=0.18 //x=1.445 //y=0.865 //x2=1.445 //y2=1.21
+r72 (  34 44 ) resistor r=10.701 //w=0.21 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=1.07 //y=1.365 //x2=0.955 //y2=1.365
+r73 (  33 49 ) resistor r=5.52526 //w=0.168 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=1.29 //y=1.365 //x2=1.405 //y2=1.365
+r74 (  32 43 ) resistor r=5.52526 //w=0.168 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=1.07 //y=0.71 //x2=0.955 //y2=0.71
+r75 (  31 48 ) resistor r=5.52526 //w=0.168 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=1.29 //y=0.71 //x2=1.405 //y2=0.71
+r76 (  31 32 ) resistor r=112.809 //w=0.094 //l=0.22 //layer=ply \
+ //thickness=0.18 //x=1.29 //y=0.71 //x2=1.07 //y2=0.71
+r77 (  28 45 ) resistor r=13.0941 //w=0.233 //l=0.165 //layer=ply \
+ //thickness=0.18 //x=1.01 //y=4.865 //x2=1.01 //y2=4.7
+r78 (  27 42 ) resistor r=34.8111 //w=0.27 //l=0.264953 //layer=ply \
+ //thickness=0.18 //x=0.915 //y=1.915 //x2=1.11 //y2=2.08
+r79 (  26 44 ) resistor r=39.5823 //w=0.21 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=0.915 //y=1.52 //x2=0.955 //y2=1.365
+r80 (  26 27 ) resistor r=202.543 //w=0.094 //l=0.395 //layer=ply \
+ //thickness=0.18 //x=0.915 //y=1.52 //x2=0.915 //y2=1.915
+r81 (  25 44 ) resistor r=39.5823 //w=0.21 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=0.915 //y=1.21 //x2=0.955 //y2=1.365
+r82 (  24 43 ) resistor r=45.1352 //w=0.168 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=0.915 //y=0.865 //x2=0.955 //y2=0.71
+r83 (  24 25 ) resistor r=176.904 //w=0.094 //l=0.345 //layer=ply \
+ //thickness=0.18 //x=0.915 //y=0.865 //x2=0.915 //y2=1.21
+r84 (  23 38 ) resistor r=592.245 //w=0.094 //l=1.155 //layer=ply \
+ //thickness=0.18 //x=1.45 //y=6.02 //x2=1.45 //y2=4.865
+r85 (  22 28 ) resistor r=592.245 //w=0.094 //l=1.155 //layer=ply \
+ //thickness=0.18 //x=1.01 //y=6.02 //x2=1.01 //y2=4.865
+r86 (  21 33 ) resistor r=56.4043 //w=0.094 //l=0.11 //layer=ply \
+ //thickness=0.18 //x=1.18 //y=1.365 //x2=1.29 //y2=1.365
+r87 (  21 34 ) resistor r=56.4043 //w=0.094 //l=0.11 //layer=ply \
+ //thickness=0.18 //x=1.18 //y=1.365 //x2=1.07 //y2=1.365
+r88 (  19 47 ) resistor r=152 //w=0.17 //l=0.17 //layer=licon //count=1 \
+ //x=1.11 //y=4.7 //x2=1.11 //y2=4.7
+r89 (  9 42 ) resistor r=152 //w=0.17 //l=0.17 //layer=licon //count=1 \
+ //x=1.11 //y=2.08 //x2=1.11 //y2=2.08
+r90 (  7 19 ) resistor r=17.7968 //w=0.187 //l=0.26 //layer=li //thickness=0.1 \
+ //x=1.11 //y=4.44 //x2=1.11 //y2=4.7
+r91 (  6 7 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.11 //y=4.07 //x2=1.11 //y2=4.44
+r92 (  5 6 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.11 //y=3.7 //x2=1.11 //y2=4.07
+r93 (  4 5 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.11 //y=3.33 //x2=1.11 //y2=3.7
+r94 (  3 4 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.11 //y=2.96 //x2=1.11 //y2=3.33
+r95 (  2 3 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.11 //y=2.59 //x2=1.11 //y2=2.96
+r96 (  1 2 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.11 //y=2.22 //x2=1.11 //y2=2.59
+r97 (  1 9 ) resistor r=9.58289 //w=0.187 //l=0.14 //layer=li //thickness=0.1 \
+ //x=1.11 //y=2.22 //x2=1.11 //y2=2.08
+ends PM_NAND2X1\%A
+
+subckt PM_NAND2X1\%B ( 1 2 3 4 5 6 7 8 10 21 22 23 24 25 26 31 33 35 41 42 44 \
+ 45 48 )
+c62 ( 48 0 ) capacitor c=0.034715f //x=1.88 //y=4.7
+c63 ( 45 0 ) capacitor c=0.0279499f //x=1.85 //y=1.915
+c64 ( 44 0 ) capacitor c=0.0437302f //x=1.85 //y=2.08
+c65 ( 42 0 ) capacitor c=0.0429696f //x=2.415 //y=1.25
+c66 ( 41 0 ) capacitor c=0.0192208f //x=2.415 //y=0.905
+c67 ( 35 0 ) capacitor c=0.0158629f //x=2.26 //y=1.405
+c68 ( 33 0 ) capacitor c=0.0157803f //x=2.26 //y=0.75
+c69 ( 31 0 ) capacitor c=0.0366192f //x=2.255 //y=4.79
+c70 ( 26 0 ) capacitor c=0.0205163f //x=1.885 //y=1.56
+c71 ( 25 0 ) capacitor c=0.0168481f //x=1.885 //y=1.25
+c72 ( 24 0 ) capacitor c=0.0174783f //x=1.885 //y=0.905
+c73 ( 23 0 ) capacitor c=0.15358f //x=2.33 //y=6.02
+c74 ( 22 0 ) capacitor c=0.110281f //x=1.89 //y=6.02
+c75 ( 10 0 ) capacitor c=0.0822126f //x=1.85 //y=2.08
+c76 ( 8 0 ) capacitor c=0.00453889f //x=1.85 //y=4.535
+r77 (  50 51 ) resistor r=32.4568 //w=0.214 //l=0.075 //layer=ply \
+ //thickness=0.18 //x=1.88 //y=4.79 //x2=1.88 //y2=4.865
+r78 (  48 50 ) resistor r=20.271 //w=0.214 //l=0.09 //layer=ply \
+ //thickness=0.18 //x=1.88 //y=4.7 //x2=1.88 //y2=4.79
+r79 (  44 45 ) resistor r=52.7279 //w=0.214 //l=0.165 //layer=ply \
+ //thickness=0.18 //x=1.85 //y=2.08 //x2=1.85 //y2=1.915
+r80 (  42 55 ) resistor r=45.1352 //w=0.168 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=2.415 //y=1.25 //x2=2.375 //y2=1.405
+r81 (  41 54 ) resistor r=45.1352 //w=0.168 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=2.415 //y=0.905 //x2=2.375 //y2=0.75
+r82 (  41 42 ) resistor r=176.904 //w=0.094 //l=0.345 //layer=ply \
+ //thickness=0.18 //x=2.415 //y=0.905 //x2=2.415 //y2=1.25
+r83 (  36 53 ) resistor r=10.701 //w=0.21 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=2.04 //y=1.405 //x2=1.925 //y2=1.405
+r84 (  35 55 ) resistor r=5.52526 //w=0.168 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=2.26 //y=1.405 //x2=2.375 //y2=1.405
+r85 (  34 52 ) resistor r=5.52526 //w=0.168 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=2.04 //y=0.75 //x2=1.925 //y2=0.75
+r86 (  33 54 ) resistor r=5.52526 //w=0.168 //l=0.115 //layer=ply \
+ //thickness=0.18 //x=2.26 //y=0.75 //x2=2.375 //y2=0.75
+r87 (  33 34 ) resistor r=112.809 //w=0.094 //l=0.22 //layer=ply \
+ //thickness=0.18 //x=2.26 //y=0.75 //x2=2.04 //y2=0.75
+r88 (  32 50 ) resistor r=16.5046 //w=0.27 //l=0.135 //layer=ply \
+ //thickness=0.18 //x=2.015 //y=4.79 //x2=1.88 //y2=4.79
+r89 (  31 38 ) resistor r=26.9307 //w=0.15 //l=0.106066 //layer=ply \
+ //thickness=0.18 //x=2.255 //y=4.79 //x2=2.33 //y2=4.865
+r90 (  31 32 ) resistor r=123.064 //w=0.094 //l=0.24 //layer=ply \
+ //thickness=0.18 //x=2.255 //y=4.79 //x2=2.015 //y2=4.79
+r91 (  26 53 ) resistor r=39.5823 //w=0.21 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=1.885 //y=1.56 //x2=1.925 //y2=1.405
+r92 (  26 45 ) resistor r=182.032 //w=0.094 //l=0.355 //layer=ply \
+ //thickness=0.18 //x=1.885 //y=1.56 //x2=1.885 //y2=1.915
+r93 (  25 53 ) resistor r=39.5823 //w=0.21 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=1.885 //y=1.25 //x2=1.925 //y2=1.405
+r94 (  24 52 ) resistor r=45.1352 //w=0.168 //l=0.173853 //layer=ply \
+ //thickness=0.18 //x=1.885 //y=0.905 //x2=1.925 //y2=0.75
+r95 (  24 25 ) resistor r=176.904 //w=0.094 //l=0.345 //layer=ply \
+ //thickness=0.18 //x=1.885 //y=0.905 //x2=1.885 //y2=1.25
+r96 (  23 38 ) resistor r=592.245 //w=0.094 //l=1.155 //layer=ply \
+ //thickness=0.18 //x=2.33 //y=6.02 //x2=2.33 //y2=4.865
+r97 (  22 51 ) resistor r=592.245 //w=0.094 //l=1.155 //layer=ply \
+ //thickness=0.18 //x=1.89 //y=6.02 //x2=1.89 //y2=4.865
+r98 (  21 35 ) resistor r=56.4043 //w=0.094 //l=0.11 //layer=ply \
+ //thickness=0.18 //x=2.15 //y=1.405 //x2=2.26 //y2=1.405
+r99 (  21 36 ) resistor r=56.4043 //w=0.094 //l=0.11 //layer=ply \
+ //thickness=0.18 //x=2.15 //y=1.405 //x2=2.04 //y2=1.405
+r100 (  20 48 ) resistor r=152 //w=0.17 //l=0.17 //layer=licon //count=1 \
+ //x=1.88 //y=4.7 //x2=1.88 //y2=4.7
+r101 (  10 44 ) resistor r=152 //w=0.17 //l=0.17 //layer=licon //count=1 \
+ //x=1.85 //y=2.08 //x2=1.85 //y2=2.08
+r102 (  8 20 ) resistor r=11.4737 //w=0.186 //l=0.172337 //layer=li \
+ //thickness=0.1 //x=1.85 //y=4.535 //x2=1.865 //y2=4.7
+r103 (  7 8 ) resistor r=6.50267 //w=0.187 //l=0.095 //layer=li \
+ //thickness=0.1 //x=1.85 //y=4.44 //x2=1.85 //y2=4.535
+r104 (  6 7 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.85 //y=4.07 //x2=1.85 //y2=4.44
+r105 (  5 6 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.85 //y=3.7 //x2=1.85 //y2=4.07
+r106 (  4 5 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.85 //y=3.33 //x2=1.85 //y2=3.7
+r107 (  3 4 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.85 //y=2.96 //x2=1.85 //y2=3.33
+r108 (  2 3 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.85 //y=2.59 //x2=1.85 //y2=2.96
+r109 (  1 2 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=1.85 //y=2.22 //x2=1.85 //y2=2.59
+r110 (  1 10 ) resistor r=9.58289 //w=0.187 //l=0.14 //layer=li \
+ //thickness=0.1 //x=1.85 //y=2.22 //x2=1.85 //y2=2.08
+ends PM_NAND2X1\%B
+
+subckt PM_NAND2X1\%Y ( 1 2 3 4 5 6 7 14 15 26 28 29 39 40 42 43 )
+c59 ( 43 0 ) capacitor c=0.0220291f //x=1.965 //y=5.02
+c60 ( 42 0 ) capacitor c=0.0217503f //x=1.085 //y=5.02
+c61 ( 40 0 ) capacitor c=0.0084702f //x=1.96 //y=0.905
+c62 ( 39 0 ) capacitor c=0.00427536f //x=2.11 //y=5.2
+c63 ( 29 0 ) capacitor c=0.00781917f //x=2.235 //y=1.655
+c64 ( 28 0 ) capacitor c=0.0167625f //x=2.505 //y=1.655
+c65 ( 26 0 ) capacitor c=0.017841f //x=2.505 //y=5.2
+c66 ( 15 0 ) capacitor c=0.00387264f //x=1.315 //y=5.2
+c67 ( 14 0 ) capacitor c=0.0222171f //x=2.025 //y=5.2
+c68 ( 1 0 ) capacitor c=0.133595f //x=2.59 //y=2.22
+r69 (  28 30 ) resistor r=7.15173 //w=0.17 //l=0.120208 //layer=li \
+ //thickness=0.1 //x=2.505 //y=1.655 //x2=2.59 //y2=1.74
+r70 (  28 29 ) resistor r=18.4813 //w=0.187 //l=0.27 //layer=li \
+ //thickness=0.1 //x=2.505 //y=1.655 //x2=2.235 //y2=1.655
+r71 (  27 39 ) resistor r=5.4201 //w=0.17 //l=0.085 //layer=li //thickness=0.1 \
+ //x=2.195 //y=5.2 //x2=2.11 //y2=5.2
+r72 (  26 31 ) resistor r=7.15173 //w=0.17 //l=0.120208 //layer=li \
+ //thickness=0.1 //x=2.505 //y=5.2 //x2=2.59 //y2=5.115
+r73 (  26 27 ) resistor r=21.2193 //w=0.187 //l=0.31 //layer=li \
+ //thickness=0.1 //x=2.505 //y=5.2 //x2=2.195 //y2=5.2
+r74 (  22 29 ) resistor r=7.15173 //w=0.17 //l=0.120208 //layer=li \
+ //thickness=0.1 //x=2.15 //y=1.57 //x2=2.235 //y2=1.655
+r75 (  22 40 ) resistor r=39.016 //w=0.187 //l=0.57 //layer=li //thickness=0.1 \
+ //x=2.15 //y=1.57 //x2=2.15 //y2=1
+r76 (  16 39 ) resistor r=1.40859 //w=0.34 //l=0.085 //layer=li \
+ //thickness=0.1 //x=2.11 //y=5.285 //x2=2.11 //y2=5.2
+r77 (  16 43 ) resistor r=30.1176 //w=0.187 //l=0.44 //layer=li \
+ //thickness=0.1 //x=2.11 //y=5.285 //x2=2.11 //y2=5.725
+r78 (  14 39 ) resistor r=5.4201 //w=0.17 //l=0.085 //layer=li //thickness=0.1 \
+ //x=2.025 //y=5.2 //x2=2.11 //y2=5.2
+r79 (  14 15 ) resistor r=48.5989 //w=0.187 //l=0.71 //layer=li \
+ //thickness=0.1 //x=2.025 //y=5.2 //x2=1.315 //y2=5.2
+r80 (  8 15 ) resistor r=7.15173 //w=0.17 //l=0.120208 //layer=li \
+ //thickness=0.1 //x=1.23 //y=5.285 //x2=1.315 //y2=5.2
+r81 (  8 42 ) resistor r=30.1176 //w=0.187 //l=0.44 //layer=li //thickness=0.1 \
+ //x=1.23 //y=5.285 //x2=1.23 //y2=5.725
+r82 (  7 31 ) resistor r=46.2032 //w=0.187 //l=0.675 //layer=li \
+ //thickness=0.1 //x=2.59 //y=4.44 //x2=2.59 //y2=5.115
+r83 (  6 7 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=2.59 //y=4.07 //x2=2.59 //y2=4.44
+r84 (  5 6 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=2.59 //y=3.7 //x2=2.59 //y2=4.07
+r85 (  4 5 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=2.59 //y=3.33 //x2=2.59 //y2=3.7
+r86 (  3 4 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=2.59 //y=2.96 //x2=2.59 //y2=3.33
+r87 (  2 3 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=2.59 //y=2.59 //x2=2.59 //y2=2.96
+r88 (  1 2 ) resistor r=25.3262 //w=0.187 //l=0.37 //layer=li //thickness=0.1 \
+ //x=2.59 //y=2.22 //x2=2.59 //y2=2.59
+r89 (  1 30 ) resistor r=32.8556 //w=0.187 //l=0.48 //layer=li //thickness=0.1 \
+ //x=2.59 //y=2.22 //x2=2.59 //y2=1.74
+ends PM_NAND2X1\%Y
+
+subckt PM_NAND2X1\%noxref_6 ( 1 5 9 10 13 17 29 )
+c42 ( 29 0 ) capacitor c=0.0642544f //x=0.56 //y=0.365
+c43 ( 17 0 ) capacitor c=0.00722223f //x=2.635 //y=0.615
+c44 ( 13 0 ) capacitor c=0.0154622f //x=2.55 //y=0.53
+c45 ( 10 0 ) capacitor c=0.0092508f //x=1.665 //y=1.495
+c46 ( 9 0 ) capacitor c=0.006761f //x=1.665 //y=0.615
+c47 ( 5 0 ) capacitor c=0.0255599f //x=1.58 //y=1.58
+c48 ( 1 0 ) capacitor c=0.0113547f //x=0.695 //y=1.495
+r49 (  17 29 ) resistor r=3.57586 //w=0.17 //l=0.125 //layer=li \
+ //thickness=0.1 //x=2.635 //y=0.615 //x2=2.635 //y2=0.49
+r50 (  17 29 ) resistor r=18.139 //w=0.187 //l=0.265 //layer=li \
+ //thickness=0.1 //x=2.635 //y=0.615 //x2=2.635 //y2=0.88
+r51 (  14 29 ) resistor r=3.57586 //w=0.17 //l=0.103078 //layer=li \
+ //thickness=0.1 //x=1.75 //y=0.53 //x2=1.665 //y2=0.49
+r52 (  14 29 ) resistor r=27.3797 //w=0.187 //l=0.4 //layer=li //thickness=0.1 \
+ //x=1.75 //y=0.53 //x2=2.15 //y2=0.53
+r53 (  13 29 ) resistor r=3.57586 //w=0.17 //l=0.103078 //layer=li \
+ //thickness=0.1 //x=2.55 //y=0.53 //x2=2.635 //y2=0.49
+r54 (  13 29 ) resistor r=27.3797 //w=0.187 //l=0.4 //layer=li //thickness=0.1 \
+ //x=2.55 //y=0.53 //x2=2.15 //y2=0.53
+r55 (  10 29 ) resistor r=3.57586 //w=0.17 //l=0.125 //layer=li \
+ //thickness=0.1 //x=1.665 //y=1.495 //x2=1.665 //y2=1.62
+r56 (  10 29 ) resistor r=42.0963 //w=0.187 //l=0.615 //layer=li \
+ //thickness=0.1 //x=1.665 //y=1.495 //x2=1.665 //y2=0.88
+r57 (  9 29 ) resistor r=3.57586 //w=0.17 //l=0.125 //layer=li //thickness=0.1 \
+ //x=1.665 //y=0.615 //x2=1.665 //y2=0.49
+r58 (  9 29 ) resistor r=18.139 //w=0.187 //l=0.265 //layer=li //thickness=0.1 \
+ //x=1.665 //y=0.615 //x2=1.665 //y2=0.88
+r59 (  6 29 ) resistor r=3.57586 //w=0.17 //l=0.103078 //layer=li \
+ //thickness=0.1 //x=0.78 //y=1.58 //x2=0.695 //y2=1.62
+r60 (  6 29 ) resistor r=27.3797 //w=0.187 //l=0.4 //layer=li //thickness=0.1 \
+ //x=0.78 //y=1.58 //x2=1.18 //y2=1.58
+r61 (  5 29 ) resistor r=3.57586 //w=0.17 //l=0.103078 //layer=li \
+ //thickness=0.1 //x=1.58 //y=1.58 //x2=1.665 //y2=1.62
+r62 (  5 29 ) resistor r=27.3797 //w=0.187 //l=0.4 //layer=li //thickness=0.1 \
+ //x=1.58 //y=1.58 //x2=1.18 //y2=1.58
+r63 (  1 29 ) resistor r=3.57586 //w=0.17 //l=0.125 //layer=li //thickness=0.1 \
+ //x=0.695 //y=1.495 //x2=0.695 //y2=1.62
+r64 (  1 29 ) resistor r=42.0963 //w=0.187 //l=0.615 //layer=li \
+ //thickness=0.1 //x=0.695 //y=1.495 //x2=0.695 //y2=0.88
+ends PM_NAND2X1\%noxref_6
+

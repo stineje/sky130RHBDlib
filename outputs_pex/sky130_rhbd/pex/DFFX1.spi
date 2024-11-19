@@ -1,0 +1,111 @@
+// File: DFFX1.spi
+// Created: Tue Oct 15 15:48:13 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/DFFX1.pex.spice"
+subckt DFFX1 (  GND VDD CLK QN Q D )
+// 
+// D	D
+// Q	Q
+// QN	QN
+// CLK	CLK
+// VDD	VDD
+// GND	GND
+M0_noxref ( N_GND_M0_noxref_d N_noxref_8_M0_noxref_g N_noxref_10_M0_noxref_s \
+ noxref_222 ) NMOS l=0.163119 w=2.35104 m=1
+M1_noxref ( N_noxref_11_M1_noxref_d N_CLK_M1_noxref_g N_noxref_10_M0_noxref_s \
+ noxref_222 ) NMOS l=0.160516 w=2.29447 m=1
+M2_noxref ( N_noxref_6_M2_noxref_d N_noxref_3_M2_noxref_g \
+ N_noxref_11_M2_noxref_s noxref_222 ) NMOS l=0.163346 w=2.31104 m=1
+M3_noxref ( N_GND_M3_noxref_d N_noxref_6_M3_noxref_g N_noxref_13_M3_noxref_s \
+ noxref_222 ) NMOS l=0.163119 w=2.35104 m=1
+M4_noxref ( N_noxref_3_M4_noxref_d N_D_M4_noxref_g N_noxref_13_M3_noxref_s \
+ noxref_222 ) NMOS l=0.163346 w=2.31104 m=1
+M5_noxref ( N_GND_M5_noxref_d N_noxref_3_M5_noxref_g N_noxref_14_M5_noxref_s \
+ noxref_222 ) NMOS l=0.163119 w=2.35104 m=1
+M6_noxref ( N_noxref_4_M6_noxref_d N_noxref_8_M6_noxref_g \
+ N_noxref_14_M5_noxref_s noxref_222 ) NMOS l=0.163346 w=2.31104 m=1
+M7_noxref ( N_GND_M7_noxref_d N_noxref_4_M7_noxref_g N_noxref_15_M7_noxref_s \
+ noxref_222 ) NMOS l=0.163119 w=2.35104 m=1
+M8_noxref ( N_noxref_8_M8_noxref_d N_CLK_M8_noxref_g N_noxref_15_M7_noxref_s \
+ noxref_222 ) NMOS l=0.163346 w=2.31104 m=1
+M9_noxref ( N_GND_M9_noxref_d N_noxref_6_M9_noxref_g N_noxref_16_M9_noxref_s \
+ noxref_222 ) NMOS l=0.163119 w=2.35104 m=1
+M10_noxref ( N_QN_M10_noxref_d N_Q_M10_noxref_g N_noxref_16_M9_noxref_s \
+ noxref_222 ) NMOS l=0.163346 w=2.31104 m=1
+M11_noxref ( N_GND_M11_noxref_d N_QN_M11_noxref_g N_noxref_17_M11_noxref_s \
+ noxref_222 ) NMOS l=0.163119 w=2.35104 m=1
+M12_noxref ( N_Q_M12_noxref_d N_noxref_8_M12_noxref_g N_noxref_17_M11_noxref_s \
+ noxref_222 ) NMOS l=0.163346 w=2.31104 m=1
+M13_noxref ( N_noxref_6_M13_noxref_d N_noxref_8_M13_noxref_g \
+ N_VDD_M13_noxref_s noxref_220 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M14_noxref ( N_VDD_M14_noxref_d N_noxref_8_M14_noxref_g \
+ N_noxref_6_M13_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M15_noxref ( N_noxref_6_M15_noxref_d N_CLK_M15_noxref_g N_VDD_M14_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M16_noxref ( N_VDD_M16_noxref_d N_CLK_M16_noxref_g N_noxref_6_M15_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M17_noxref ( N_noxref_6_M17_noxref_d N_noxref_3_M17_noxref_g \
+ N_VDD_M16_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M18_noxref ( N_VDD_M18_noxref_d N_noxref_3_M18_noxref_g \
+ N_noxref_6_M17_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+M19_noxref ( N_noxref_3_M19_noxref_d N_noxref_6_M19_noxref_g \
+ N_VDD_M19_noxref_s noxref_220 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M20_noxref ( N_VDD_M20_noxref_d N_noxref_6_M20_noxref_g \
+ N_noxref_3_M19_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M21_noxref ( N_noxref_3_M21_noxref_d N_D_M21_noxref_g N_VDD_M20_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M22_noxref ( N_VDD_M22_noxref_d N_D_M22_noxref_g N_noxref_3_M21_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+M23_noxref ( N_noxref_4_M23_noxref_d N_noxref_3_M23_noxref_g \
+ N_VDD_M23_noxref_s noxref_220 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M24_noxref ( N_VDD_M24_noxref_d N_noxref_3_M24_noxref_g \
+ N_noxref_4_M23_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M25_noxref ( N_noxref_4_M25_noxref_d N_noxref_8_M25_noxref_g \
+ N_VDD_M24_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M26_noxref ( N_VDD_M26_noxref_d N_noxref_8_M26_noxref_g \
+ N_noxref_4_M25_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+M27_noxref ( N_noxref_8_M27_noxref_d N_noxref_4_M27_noxref_g \
+ N_VDD_M27_noxref_s noxref_220 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M28_noxref ( N_VDD_M28_noxref_d N_noxref_4_M28_noxref_g \
+ N_noxref_8_M27_noxref_d noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M29_noxref ( N_noxref_8_M29_noxref_d N_CLK_M29_noxref_g N_VDD_M28_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M30_noxref ( N_VDD_M30_noxref_d N_CLK_M30_noxref_g N_noxref_8_M29_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+M31_noxref ( N_QN_M31_noxref_d N_noxref_6_M31_noxref_g N_VDD_M31_noxref_s \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M32_noxref ( N_VDD_M32_noxref_d N_noxref_6_M32_noxref_g N_QN_M31_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M33_noxref ( N_QN_M33_noxref_d N_Q_M33_noxref_g N_VDD_M32_noxref_d noxref_220 \
+ ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M34_noxref ( N_VDD_M34_noxref_d N_Q_M34_noxref_g N_QN_M33_noxref_d noxref_220 \
+ ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+M35_noxref ( N_Q_M35_noxref_d N_QN_M35_noxref_g N_VDD_M35_noxref_s noxref_220 \
+ ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M36_noxref ( N_VDD_M36_noxref_d N_QN_M36_noxref_g N_Q_M35_noxref_d noxref_220 \
+ ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M37_noxref ( N_Q_M37_noxref_d N_noxref_8_M37_noxref_g N_VDD_M36_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M38_noxref ( N_VDD_M38_noxref_d N_noxref_8_M38_noxref_g N_Q_M37_noxref_d \
+ noxref_220 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/DFFX1.pxi.spice"
+// 
+ends DFFX1
+// 
+// 

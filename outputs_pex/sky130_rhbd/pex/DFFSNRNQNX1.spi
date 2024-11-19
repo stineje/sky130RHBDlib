@@ -1,0 +1,144 @@
+// File: DFFSNRNQNX1.spi
+// Created: Tue Oct 15 15:47:20 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/DFFSNRNQNX1.pex.spice"
+subckt DFFSNRNQNX1 (  GND VDD CLK RN QN SN D )
+// 
+// D	D
+// SN	SN
+// QN	QN
+// RN	RN
+// CLK	CLK
+// VDD	VDD
+// GND	GND
+M0_noxref ( N_GND_M0_noxref_d N_D_M0_noxref_g N_noxref_13_M0_noxref_s \
+ noxref_269 ) NMOS l=0.163119 w=2.35104 m=1
+M1_noxref ( N_noxref_14_M1_noxref_d N_RN_M1_noxref_g N_noxref_13_M0_noxref_s \
+ noxref_269 ) NMOS l=0.160516 w=2.29447 m=1
+M2_noxref ( N_noxref_3_M2_noxref_d N_noxref_6_M2_noxref_g \
+ N_noxref_14_M2_noxref_s noxref_269 ) NMOS l=0.163346 w=2.31104 m=1
+M3_noxref ( N_GND_M3_noxref_d N_noxref_3_M3_noxref_g N_noxref_15_M3_noxref_s \
+ noxref_269 ) NMOS l=0.163119 w=2.35104 m=1
+M4_noxref ( N_noxref_16_M4_noxref_d N_CLK_M4_noxref_g N_noxref_15_M3_noxref_s \
+ noxref_269 ) NMOS l=0.160516 w=2.29447 m=1
+M5_noxref ( N_noxref_6_M5_noxref_d N_noxref_10_M5_noxref_g \
+ N_noxref_16_M5_noxref_s noxref_269 ) NMOS l=0.163346 w=2.31104 m=1
+M6_noxref ( N_GND_M6_noxref_d N_noxref_3_M6_noxref_g N_noxref_17_M6_noxref_s \
+ noxref_269 ) NMOS l=0.163119 w=2.35104 m=1
+M7_noxref ( N_noxref_18_M7_noxref_d N_SN_M7_noxref_g N_noxref_17_M6_noxref_s \
+ noxref_269 ) NMOS l=0.160516 w=2.29447 m=1
+M8_noxref ( N_noxref_4_M8_noxref_d N_noxref_10_M8_noxref_g \
+ N_noxref_18_M8_noxref_s noxref_269 ) NMOS l=0.163346 w=2.31104 m=1
+M9_noxref ( N_GND_M9_noxref_d N_noxref_4_M9_noxref_g N_noxref_19_M9_noxref_s \
+ noxref_269 ) NMOS l=0.163119 w=2.35104 m=1
+M10_noxref ( N_noxref_20_M10_noxref_d N_CLK_M10_noxref_g \
+ N_noxref_19_M9_noxref_s noxref_269 ) NMOS l=0.160516 w=2.29447 m=1
+M11_noxref ( N_noxref_10_M11_noxref_d N_RN_M11_noxref_g \
+ N_noxref_20_M11_noxref_s noxref_269 ) NMOS l=0.163346 w=2.31104 m=1
+M12_noxref ( N_GND_M12_noxref_d N_noxref_6_M12_noxref_g \
+ N_noxref_21_M12_noxref_s noxref_269 ) NMOS l=0.163119 w=2.35104 m=1
+M13_noxref ( N_noxref_22_M13_noxref_d N_RN_M13_noxref_g \
+ N_noxref_21_M12_noxref_s noxref_269 ) NMOS l=0.160516 w=2.29447 m=1
+M14_noxref ( N_QN_M14_noxref_d N_noxref_11_M14_noxref_g \
+ N_noxref_22_M14_noxref_s noxref_269 ) NMOS l=0.163346 w=2.31104 m=1
+M15_noxref ( N_GND_M15_noxref_d N_QN_M15_noxref_g N_noxref_23_M15_noxref_s \
+ noxref_269 ) NMOS l=0.163119 w=2.35104 m=1
+M16_noxref ( N_noxref_24_M16_noxref_d N_SN_M16_noxref_g \
+ N_noxref_23_M15_noxref_s noxref_269 ) NMOS l=0.160516 w=2.29447 m=1
+M17_noxref ( N_noxref_11_M17_noxref_d N_noxref_10_M17_noxref_g \
+ N_noxref_24_M17_noxref_s noxref_269 ) NMOS l=0.163346 w=2.31104 m=1
+M18_noxref ( N_noxref_3_M18_noxref_d N_D_M18_noxref_g N_VDD_M18_noxref_s \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M19_noxref ( N_VDD_M19_noxref_d N_D_M19_noxref_g N_noxref_3_M18_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M20_noxref ( N_noxref_3_M20_noxref_d N_RN_M20_noxref_g N_VDD_M19_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M21_noxref ( N_VDD_M21_noxref_d N_RN_M21_noxref_g N_noxref_3_M20_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M22_noxref ( N_noxref_3_M22_noxref_d N_noxref_6_M22_noxref_g \
+ N_VDD_M21_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M23_noxref ( N_VDD_M23_noxref_d N_noxref_6_M23_noxref_g \
+ N_noxref_3_M22_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+M24_noxref ( N_noxref_6_M24_noxref_d N_noxref_3_M24_noxref_g \
+ N_VDD_M24_noxref_s noxref_267 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M25_noxref ( N_VDD_M25_noxref_d N_noxref_3_M25_noxref_g \
+ N_noxref_6_M24_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M26_noxref ( N_noxref_6_M26_noxref_d N_CLK_M26_noxref_g N_VDD_M25_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M27_noxref ( N_VDD_M27_noxref_d N_CLK_M27_noxref_g N_noxref_6_M26_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M28_noxref ( N_noxref_6_M28_noxref_d N_noxref_10_M28_noxref_g \
+ N_VDD_M27_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M29_noxref ( N_VDD_M29_noxref_d N_noxref_10_M29_noxref_g \
+ N_noxref_6_M28_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+M30_noxref ( N_noxref_4_M30_noxref_d N_noxref_3_M30_noxref_g \
+ N_VDD_M30_noxref_s noxref_267 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M31_noxref ( N_VDD_M31_noxref_d N_noxref_3_M31_noxref_g \
+ N_noxref_4_M30_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M32_noxref ( N_noxref_4_M32_noxref_d N_SN_M32_noxref_g N_VDD_M31_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M33_noxref ( N_VDD_M33_noxref_d N_SN_M33_noxref_g N_noxref_4_M32_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M34_noxref ( N_noxref_4_M34_noxref_d N_noxref_10_M34_noxref_g \
+ N_VDD_M33_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M35_noxref ( N_VDD_M35_noxref_d N_noxref_10_M35_noxref_g \
+ N_noxref_4_M34_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+M36_noxref ( N_noxref_10_M36_noxref_d N_noxref_4_M36_noxref_g \
+ N_VDD_M36_noxref_s noxref_267 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M37_noxref ( N_VDD_M37_noxref_d N_noxref_4_M37_noxref_g \
+ N_noxref_10_M36_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M38_noxref ( N_noxref_10_M38_noxref_d N_CLK_M38_noxref_g N_VDD_M37_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M39_noxref ( N_VDD_M39_noxref_d N_CLK_M39_noxref_g N_noxref_10_M38_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M40_noxref ( N_noxref_10_M40_noxref_d N_RN_M40_noxref_g N_VDD_M39_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M41_noxref ( N_VDD_M41_noxref_d N_RN_M41_noxref_g N_noxref_10_M40_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+M42_noxref ( N_QN_M42_noxref_d N_noxref_6_M42_noxref_g N_VDD_M42_noxref_s \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M43_noxref ( N_VDD_M43_noxref_d N_noxref_6_M43_noxref_g N_QN_M42_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M44_noxref ( N_QN_M44_noxref_d N_RN_M44_noxref_g N_VDD_M43_noxref_d noxref_267 \
+ ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M45_noxref ( N_VDD_M45_noxref_d N_RN_M45_noxref_g N_QN_M44_noxref_d noxref_267 \
+ ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M46_noxref ( N_QN_M46_noxref_d N_noxref_11_M46_noxref_g N_VDD_M45_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M47_noxref ( N_VDD_M47_noxref_d N_noxref_11_M47_noxref_g N_QN_M46_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+M48_noxref ( N_noxref_11_M48_noxref_d N_QN_M48_noxref_g N_VDD_M48_noxref_s \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M49_noxref ( N_VDD_M49_noxref_d N_QN_M49_noxref_g N_noxref_11_M48_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M50_noxref ( N_noxref_11_M50_noxref_d N_SN_M50_noxref_g N_VDD_M49_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M51_noxref ( N_VDD_M51_noxref_d N_SN_M51_noxref_g N_noxref_11_M50_noxref_d \
+ noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M52_noxref ( N_noxref_11_M52_noxref_d N_noxref_10_M52_noxref_g \
+ N_VDD_M51_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M53_noxref ( N_VDD_M53_noxref_d N_noxref_10_M53_noxref_g \
+ N_noxref_11_M52_noxref_d noxref_267 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/DFFSNRNQNX1.pxi.spice"
+// 
+ends DFFSNRNQNX1
+// 
+// 

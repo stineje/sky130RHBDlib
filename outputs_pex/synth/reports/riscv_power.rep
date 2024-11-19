@@ -1,0 +1,57 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : riscv
+Version: V-2023.12-SP3
+Date   : Fri Oct 18 14:30:20 2024
+****************************************
+
+
+Library(s) Used:
+
+    sky130_rhbd_tt_1P8_25C.ccs (File: /home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/sky130_rhbd_tt_1P8_25C.ccs.db)
+
+
+Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.8  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  = 17.154217  W  (100%)
+  Net Switching Power  = 7.620588 mW    (0%)
+                         ---------
+Total Dynamic Power    = 17.161839  W  (100%)
+
+Cell Leakage Power     =  94.6611 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+memory           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+black_box        0.000000          0.000000          0.000000          0.000000  (   0.00%)
+clock_network  1.620161e+04          0.000000          0.000000        1.620161e+04
+                                                                                 (  94.40%)  i
+register        60.892578        8.572769e-02        3.195911e+04         61.008522
+                                                                                 (   0.36%)
+sequential       0.000000          0.000000          0.000000          0.000000  (   0.00%)
+combinational  891.718750          7.535007        6.270204e+04        899.315063
+                                                                                 (   5.24%)
+--------------------------------------------------------------------------------------------------
+Total          1.715422e+04 mW       7.620735 mW     9.466115e+04 nW     1.716193e+04 mW
+1

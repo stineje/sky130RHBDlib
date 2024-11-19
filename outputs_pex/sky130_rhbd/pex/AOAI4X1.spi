@@ -1,0 +1,60 @@
+// File: AOAI4X1.spi
+// Created: Tue Oct 15 15:45:10 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/AOAI4X1.pex.spice"
+subckt AOAI4X1 (  GND VDD A B C D YN )
+// 
+// YN	YN
+// D	D
+// C	C
+// B	B
+// A	A
+// VDD	VDD
+// GND	GND
+M0_noxref ( N_GND_M0_noxref_d N_A_M0_noxref_g N_noxref_7_M0_noxref_s \
+ noxref_119 ) NMOS l=0.163119 w=2.35104 m=1
+M1_noxref ( N_noxref_3_M1_noxref_d N_B_M1_noxref_g N_noxref_7_M0_noxref_s \
+ noxref_119 ) NMOS l=0.163346 w=2.31104 m=1
+M2_noxref ( N_noxref_4_M2_noxref_d N_noxref_3_M2_noxref_g N_GND_M2_noxref_s \
+ noxref_119 ) NMOS l=0.163346 w=2.31104 m=1
+M3_noxref ( N_noxref_4_M3_noxref_d N_C_M3_noxref_g N_GND_M2_noxref_s \
+ noxref_119 ) NMOS l=0.163129 w=2.31397 m=1
+M4_noxref ( N_GND_M4_noxref_d N_noxref_4_M4_noxref_g N_noxref_12_M4_noxref_s \
+ noxref_119 ) NMOS l=0.163119 w=2.35104 m=1
+M5_noxref ( N_YN_M5_noxref_d N_D_M5_noxref_g N_noxref_12_M4_noxref_s \
+ noxref_119 ) NMOS l=0.163346 w=2.31104 m=1
+M6_noxref ( N_noxref_3_M6_noxref_d N_A_M6_noxref_g N_VDD_M6_noxref_s \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M7_noxref ( N_VDD_M7_noxref_d N_A_M7_noxref_g N_noxref_3_M6_noxref_d \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M8_noxref ( N_noxref_3_M8_noxref_d N_B_M8_noxref_g N_VDD_M7_noxref_d \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M9_noxref ( N_VDD_M9_noxref_d N_B_M9_noxref_g N_noxref_3_M8_noxref_d \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+M10_noxref ( N_VDD_M10_noxref_d N_noxref_3_M10_noxref_g \
+ N_noxref_9_M10_noxref_s noxref_117 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M11_noxref ( N_noxref_9_M11_noxref_d N_noxref_3_M11_noxref_g \
+ N_VDD_M10_noxref_d noxref_117 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M12_noxref ( N_noxref_4_M12_noxref_d N_C_M12_noxref_g N_noxref_9_M11_noxref_d \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M13_noxref ( N_noxref_9_M13_noxref_d N_C_M13_noxref_g N_noxref_4_M12_noxref_d \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+M14_noxref ( N_YN_M14_noxref_d N_noxref_4_M14_noxref_g N_VDD_M14_noxref_s \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M15_noxref ( N_VDD_M15_noxref_d N_noxref_4_M15_noxref_g N_YN_M14_noxref_d \
+ noxref_117 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M16_noxref ( N_YN_M16_noxref_d N_D_M16_noxref_g N_VDD_M15_noxref_d noxref_117 \
+ ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
+M17_noxref ( N_VDD_M17_noxref_d N_D_M17_noxref_g N_YN_M16_noxref_d noxref_117 \
+ ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/AOAI4X1.pxi.spice"
+// 
+ends AOAI4X1
+// 
+// 
