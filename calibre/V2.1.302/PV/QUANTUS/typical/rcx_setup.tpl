@@ -1,0 +1,1 @@
+../../TechgenInputAndCompFiles/.quantus_rcx_setup.tpl

@@ -1,0 +1,189 @@
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// This file includes SVRF/TVF Technology licensed by Siemens Industry Software Inc. and its affiliates ("SISW".
+// "SVRF/TVF Technology" means SISW's Standard Verification Rule Format ("SVRF") and Tcl Verification Format
+// ("TVF") proprietary languages for expressing process rules.  SVRF/TVF Technology constitutes or contains trade
+// secrets and confidential information of SISW, and any use is subject to the terms and conditions of the SISW
+// End-User License Agreement, which may be viewed at https://www.sw.siemens.com/en-US/swterms/base/eula/ and the
+// EDA Supplemental Terms which may be viewed at https://www.sw.siemens.com/en-US/sw-terms/supplements/ .
+// SVRF/TVF Technology may be used solely with SISW software products, by your company's employees and on-site
+// contractors, excluding EDA Competitors, who are under obligations of confidentiality and whose job performance
+// requires access for your internal business purposes.
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ********************************************************
+// Copyright (c) 2020 by SkyWater Technology
+// SkyWater Confidential Information
+// ********************************************************
+
+/// New 3/9/2020 JAG
+
+// ********************************************************
+// Begin control statements
+// ********************************************************
+
+#DEFINE PEX
+#DEFINE SKIP_EXTRACTING_DNWELL_DIODES
+#DEFINE SKIP_CHECKING_DNWELL_DIODE_PARAMETERS
+
+UNIT CAPACITANCE ff
+TEXT DEPTH PRIMARY
+PORT DEPTH PRIMARY
+
+INCLUDE $PDK_HOME/PV/Calibre/PEX/typical/rules.C
+INCLUDE $PDK_HOME/PV/Calibre/PEX/typical/rules.R
+
+//# Source info
+//SOURCE PRIMARY       "top_cell"
+SOURCE SYSTEM SPICE
+//SOURCE PATH          "top_cell.cdl"
+
+//LVS FILTER R(cds_thru) SHORT SOURCE	       
+//LVS FILTER R(cds_thru) SHORT LAYOUT	       
+
+//LVS FILTER Dpar                    OPEN  SOURCE
+//LVS FILTER Dpar                    OPEN  LAYOUT
+//LVS FILTER Dpar(DNWDIODE_PW)                    OPEN  SOURCE
+//LVS FILTER Dpar(DNWDIODE_PW)                    OPEN  LAYOUT
+
+//LVS FILTER Probe                   OPEN  SOURCE
+//LVS FILTER Probe                   OPEN  LAYOUT
+
+LVS Filter icecap 	open source
+
+//LVS Filter s8fmlt_iref_termx  open source
+///LVS Filter s8fmlt_neg_termx   open source
+//LVS Filter s8fmlt_termx       open source
+//LVS Filter s8fmlt_vdac_termx  open source
+
+//# diff/tap devices
+
+//LVS FILTER diff_dev                OPEN  SOURCE
+//LVS FILTER diff_dev                OPEN  LAYOUT
+//LVS FILTER tap_dev                 OPEN  SOURCE
+//LVS FILTER tap_dev                 OPEN  LAYOUT
+
+//# dummy device to prevent empty cells from becoming subckt primitives
+
+//LVS FILTER cad_dummy_open_device   OPEN  SOURCE
+//LVS FILTER cad_dummy_open_device   OPEN  LAYOUT
+
+//# Look further
+LVS SIGNATURE MAXIMUM              ALL
+
+//# Be thorough in resolving ambiguity
+LVS PROPERTY RESOLUTION MAXIMUM    ALL
+
+//# Interpret devices and arguments strictly
+LVS STRICT    SUBTYPES             YES
+LVS SPICE     STRICT WL            YES
+LVS SPICE     SLASH IS SPACE       NO
+LVS COMPARE   CASE                 NO
+
+//# allows exact m-factor comparison
+LVS SPICE     REPLICATE  DEVICES   YES
+
+//# Should help out in making an IP spice/verilog
+//# flow accurate and strict.
+LVS SPICE     PREFER     PINS      YES
+LVS SPICE     OVERRIDE   GLOBALS   YES
+LVS SPICE     REDEFINE   PARAM     YES
+
+LVS SPICE ALLOW INLINE PARAMETERS  NO
+
+//# expanding would flatten most cells during comparison
+LVS EXPAND    SEED   PROMOTIONS    NO
+LVS DISCARD   PINS   BY DEVICE    YES
+
+//# Cypress methodology will require setting this on a per-model basis
+//# using LVS REDUCE component(model)
+LVS REDUCE PARALLEL RESISTORS      NO
+LVS REDUCE SERIES   RESISTORS      NO
+LVS REDUCE PARALLEL CAPACITORS     NO
+LVS REDUCE SERIES   CAPACITORS     NO
+LVS REDUCE PARALLEL DIODES         YES
+//LVS REDUCE PARALLEL BIPOLAR        NO
+//LVS REDUCE PARALLEL MOS            NO
+LVS REDUCE SERIES   MOS            NO
+
+//# Allows recoginition of logic gates.  Should be NONE for good dspf.
+LVS RECOGNIZE GATES                NONE
+
+LVS IGNORE PORTS                   NO
+LVS CHECK  PORT   NAMES            YES
+
+//# Don't use these nets as initial bind points (convenience)
+//# n<number>
+LVS NON USER NAME NET "^n[0-9]*$"
+//# net<number>
+LVS NON USER NAME NET "^net[0-9]*$"
+
+//# This gets disabled anyway because we have
+//# MASK SVDB DIRECTORY "$PDK_HOME/PEX/xRC/svdb" QUERY XRC
+//# By forcibly disabling it, we turn off a warning
+LVS PUSH     DEVICES               NO
+
+LVS EXECUTE ERC YES
+
+ERC RESULTS DATABASE "erc.db" ASCII
+
+ERC CELL NAME YES ALL CELL SPACE XFORM
+//# For now, RFI is needed for xErrorSum. Will eventually change.
+ERC CHECK TEXT COMMENTS RFI
+ERC SUMMARY REPORT "erc.rep"
+
+MASK SVDB DIRECTORY "svdb" QUERY XRC
+LVS REPORT "lvs.rep"
+//# report detailed SCONNECT conflicts
+LVS REPORT OPTION S
+//# disable warning about missing smashed mosfets
+LVS REPORT OPTION F
+//# give report on source passthroughs, same as layout does by default
+LVS REPORT OPTION SP
+//# maximum short isolation
+LVS ISOLATE SHORTS YES BY LAYER CELL ALL 
+
+
+//# while the training on this seems safe enough, the documentation still
+//# makes it sound like the nets get connected regardless of VIRTUAL CONNECT NAME,
+//# so I will not use this directly
+//#VIRTUAL CONNECT COLON YES
+//# I think this is a little safer, and exactly what assura seems to do.  I know
+//# this will not connect the disjoint labels without VIRTUAL CONNECT NAME
+LAYOUT RENAME TEXT "/:.*//"
+
+//# go ahead and report if nets are virtually connected
+VIRTUAL CONNECT REPORT YES
+
+//# -join
+VIRTUAL CONNECT NAME "?"
+
+//# Expand Pcells
+EXPAND CELL "*$$*"
+
+// Include the Calibre LVS rules file
+INCLUDE "$PDK_HOME/PV/Calibre/LVS/calibre_lvs.rul"
+
+// Invoke the appropriate PEX files based on the desired process to execute
+#IFDEF "PEX_PROCESS" HRHC
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/hrhc/rules.C"
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/hrhc/rules.R"
+#ENDIF
+
+#IFDEF "PEX_PROCESS" HRLC
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/hrlc/rules.C"
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/hrlc/rules.R"
+#ENDIF
+
+#IFDEF "PEX_PROCESS" Typical
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/typical/rules.C"
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/typical/rules.R"
+#ENDIF
+
+#IFDEF "PEX_PROCESS" LRHC
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/lrhc/rules.C"
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/lrhc/rules.R"
+#ENDIF
+
+#IFDEF "PEX_PROCESS" LRLC
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/lrlc/rules.C"
+   INCLUDE "$PDK_HOME/PV/Calibre/PEX/lrlc/rules.R"
+#ENDIF

@@ -1,0 +1,1610 @@
+<H1>S130 Models Vs. Specs</H1><H3>
+   version:1.01.00
+ , flow: common </H3><H2>Updated: 04/12/2022</H2>
+<table border=2>
+<tr><td><font color=blue>Warning criteria</font></td><td><font color=blue>Warning tolerance</font></td></tr>
+<tr><td>VT</td><td>5 mV (Corners to Etest: slow-fast and fast-slow)</td></tr>
+<tr><td>Idsat</td><td>10%</td></tr>
+<tr><td>Ron</td><td>3%</td></tr>
+<tr><td>BJT Beta</td><td>1%</td></tr>
+<tr><td>Capacitance</td><td>1%</td></tr>
+<tr><td>Resistors</td><td>1%</td></tr>
+<tr><td>Breakdown</td><td>1%</td></tr>
+<tr><td>Vsat</td><td>1%</td></tr>
+<tr><td>dW</td><td>1%</td></tr>
+<tr><td>Idss</td><td>USL</td></tr>
+</table><br>
+Note: capacitance values are in fF
+<table border=2><tr><td>No.</td><td><font color=blue>Model Acronym</font></td><td><font color=blue>E-Test Name</font></td><td><font color=blue>Corner Type</font></td>
+<td><font color=blue>Specs</font></td><td><font color=blue>Model Corner </font></td>
+<td><font color=blue>Deviation</font></td>
+<td><font color=blue>Description</font></td>
+<tr><td>1</td>
+<th rowspan=3>cj_dnw_sub_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>40.41</td></tr><tr><td>2</td>
+<td>Low</td><td></td><td>32.63</td></tr><tr><td>3</td>
+<td>High</td><td></td><td>48.12</td></tr><tr><td>4</td>
+<th rowspan=3>cj_dnw_sub_defet_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>34.71</td></tr><tr><td>5</td>
+<td>Low</td><td></td><td>28.03</td></tr><tr><td>6</td>
+<td>High</td><td></td><td>41.34</td></tr><tr><td>7</td>
+<th rowspan=3>cj_ipw_dnw_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>53.21</td></tr><tr><td>8</td>
+<td>Low</td><td></td><td>41.95</td></tr><tr><td>9</td>
+<td>High</td><td></td><td>64.44</td></tr><tr><td>10</td>
+<th rowspan=3>cj_ipw_dnw_defet_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>39.94</td></tr><tr><td>11</td>
+<td>Low</td><td></td><td>31.49</td></tr><tr><td>12</td>
+<td>High</td><td></td><td>48.37</td></tr><tr><td>13</td>
+<th rowspan=3>cj_nsd_pw_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>136.44</td></tr><tr><td>14</td>
+<td>Low</td><td></td><td>114.21</td></tr><tr><td>15</td>
+<td>High</td><td></td><td>156.65</td></tr><tr><td>16</td>
+<th rowspan=3>cj_nsd_pw_defet_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>136.44</td></tr><tr><td>17</td>
+<td>Low</td><td></td><td>114.21</td></tr><tr><td>18</td>
+<td>High</td><td></td><td>156.65</td></tr><tr><td>19</td>
+<th rowspan=3>cj_nsd_pw_lvt_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>122.45</td></tr><tr><td>20</td>
+<td>Low</td><td></td><td>102.49</td></tr><tr><td>21</td>
+<td>High</td><td></td><td>140.59</td></tr><tr><td>22</td>
+<th rowspan=3>cj_nsd_pw_nat_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>86.51</td></tr><tr><td>23</td>
+<td>Low</td><td></td><td>72.41</td></tr><tr><td>24</td>
+<td>High</td><td></td><td>99.32</td></tr><tr><td>25</td>
+<th rowspan=3>cj_nsd_pw_v5_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>88.53</td></tr><tr><td>26</td>
+<td>Low</td><td></td><td>74.10</td></tr><tr><td>27</td>
+<td>High</td><td></td><td>101.64</td></tr><tr><td>28</td>
+<th rowspan=3>cj_nw_ipw_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>32.29</td></tr><tr><td>29</td>
+<td>Low</td><td></td><td>27.84</td></tr><tr><td>30</td>
+<td>High</td><td></td><td>36.59</td></tr><tr><td>31</td>
+<th rowspan=3>cj_nw_sub_photo_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>40.67</td></tr><tr><td>32</td>
+<td>Low</td><td></td><td>37.82</td></tr><tr><td>33</td>
+<td>High</td><td></td><td>43.21</td></tr><tr><td>34</td>
+<th rowspan=3>cj_psd_nw_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>80.78</td></tr><tr><td>35</td>
+<td>Low</td><td></td><td>75.12</td></tr><tr><td>36</td>
+<td>High</td><td></td><td>85.83</td></tr><tr><td>37</td>
+<th rowspan=3>cj_psd_nw_hvt_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>78.32</td></tr><tr><td>38</td>
+<td>Low</td><td></td><td>72.83</td></tr><tr><td>39</td>
+<td>High</td><td></td><td>83.22</td></tr><tr><td>40</td>
+<th rowspan=3>cj_psd_nw_lvt_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>80.78</td></tr><tr><td>41</td>
+<td>Low</td><td></td><td>75.12</td></tr><tr><td>42</td>
+<td>High</td><td></td><td>85.83</td></tr><tr><td>43</td>
+<th rowspan=3>cj_psd_nw_v5_W1_L1</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>81.80</td></tr><tr><td>44</td>
+<td>Low</td><td></td><td>76.07</td></tr><tr><td>45</td>
+<td>High</td><td></td><td>86.92</td></tr><tr><td>46</td>
+<th rowspan=3>cjd_nmos_de_iso_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>400.83</td></tr><tr><td>47</td>
+<td>Low</td><td></td><td>335.84</td></tr><tr><td>48</td>
+<td>High</td><td></td><td>470.96</td></tr><tr><td>49</td>
+<th rowspan=3>cjd_nmos_de_nat_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>276.38</td></tr><tr><td>50</td>
+<td>Low</td><td></td><td>257.55</td></tr><tr><td>51</td>
+<td>High</td><td></td><td>284.40</td></tr><tr><td>52</td>
+<th rowspan=3>cjd_nmos_de_v12_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>121.21</td></tr><tr><td>53</td>
+<td>Low</td><td></td><td>112.18</td></tr><tr><td>54</td>
+<td>High</td><td></td><td>133.95</td></tr><tr><td>55</td>
+<th rowspan=3>cjd_nmos_de_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>171.77</td></tr><tr><td>56</td>
+<td>Low</td><td></td><td>148.79</td></tr><tr><td>57</td>
+<td>High</td><td></td><td>200.22</td></tr><tr><td>58</td>
+<th rowspan=3>cjd_nmos_de_zvt_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>230.82</td></tr><tr><td>59</td>
+<td>Low</td><td></td><td>268.65</td></tr><tr><td>60</td>
+<td>High</td><td></td><td>189.16</td></tr><tr><td>61</td>
+<th rowspan=3>cjd_pmos_de_v12_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>144.15</td></tr><tr><td>62</td>
+<td>Low</td><td></td><td>117.15</td></tr><tr><td>63</td>
+<td>High</td><td></td><td>171.01</td></tr><tr><td>64</td>
+<th rowspan=3>cjd_pmos_de_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>208.85</td></tr><tr><td>65</td>
+<td>Low</td><td></td><td>170.80</td></tr><tr><td>66</td>
+<td>High</td><td></td><td>246.71</td></tr><tr><td>67</td>
+<th rowspan=3>cjs_nmos_de_iso_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>89.65</td></tr><tr><td>68</td>
+<td>Low</td><td></td><td>81.00</td></tr><tr><td>69</td>
+<td>High</td><td></td><td>97.49</td></tr><tr><td>70</td>
+<th rowspan=3>cjs_nmos_de_nat_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>131.55</td></tr><tr><td>71</td>
+<td>Low</td><td></td><td>145.82</td></tr><tr><td>72</td>
+<td>High</td><td></td><td>100.69</td></tr><tr><td>73</td>
+<th rowspan=3>cjs_nmos_de_v12_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>35.89</td></tr><tr><td>74</td>
+<td>Low</td><td></td><td>30.64</td></tr><tr><td>75</td>
+<td>High</td><td></td><td>37.79</td></tr><tr><td>76</td>
+<th rowspan=3>cjs_nmos_de_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>49.29</td></tr><tr><td>77</td>
+<td>Low</td><td></td><td>45.19</td></tr><tr><td>78</td>
+<td>High</td><td></td><td>52.85</td></tr><tr><td>79</td>
+<th rowspan=3>cjs_nmos_de_zvt_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>169.74</td></tr><tr><td>80</td>
+<td>Low</td><td></td><td>224.52</td></tr><tr><td>81</td>
+<td>High</td><td></td><td>115.25</td></tr><tr><td>82</td>
+<th rowspan=3>cjs_pmos_de_v12_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>40.75</td></tr><tr><td>83</td>
+<td>Low</td><td></td><td>36.59</td></tr><tr><td>84</td>
+<td>High</td><td></td><td>44.53</td></tr><tr><td>85</td>
+<th rowspan=3>cjs_pmos_de_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>51.39</td></tr><tr><td>86</td>
+<td>Low</td><td></td><td>50.13</td></tr><tr><td>87</td>
+<td>High</td><td></td><td>52.74</td></tr><tr><td>88</td>
+<th rowspan=3>cjsub_nmos_de_iso_v20_W60</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>216.51</td></tr><tr><td>89</td>
+<td>Low</td><td></td><td>174.82</td></tr><tr><td>90</td>
+<td>High</td><td></td><td>257.84</td></tr><tr><td>91</td>
+<th rowspan=3>cm3m4</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>2.64</td></tr><tr><td>92</td>
+<td>Low</td><td></td><td>1.98</td></tr><tr><td>93</td>
+<td>High</td><td></td><td>3.46</td></tr><tr><td>94</td>
+<th rowspan=3>cm4m5</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>2.64</td></tr><tr><td>95</td>
+<td>Low</td><td></td><td>1.98</td></tr><tr><td>96</td>
+<td>High</td><td></td><td>3.46</td></tr><tr><td>97</td>
+<th rowspan=3>cpoly_sub</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>1.06e-01</td></tr><tr><td>98</td>
+<td>Low</td><td></td><td>8.59e-02</td></tr><tr><td>99</td>
+<td>High</td><td></td><td>1.26e-01</td></tr><tr><td>100</td>
+<th rowspan=3>ddnw_sub_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>16.65</td></tr><tr><td>101</td>
+<td>Low</td><td></td><td>15.80</td></tr><tr><td>102</td>
+<td>High</td><td></td><td>17.65</td></tr><tr><td>103</td>
+<th rowspan=3>ddnw_sub_defet_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>29.70</td></tr><tr><td>104</td>
+<td>Low</td><td></td><td>28.19</td></tr><tr><td>105</td>
+<td>High</td><td></td><td>31.48</td></tr><tr><td>106</td>
+<th rowspan=3>dipw_dnw_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>16.08</td></tr><tr><td>107</td>
+<td>Low</td><td></td><td>14.71</td></tr><tr><td>108</td>
+<td>High</td><td></td><td>17.68</td></tr><tr><td>109</td>
+<th rowspan=3>dipw_dnw_defet_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>25.70</td></tr><tr><td>110</td>
+<td>Low</td><td></td><td>23.53</td></tr><tr><td>111</td>
+<td>High</td><td></td><td>28.24</td></tr><tr><td>112</td>
+<th rowspan=3>dnsd_pw_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>11.40</td></tr><tr><td>113</td>
+<td>Low</td><td></td><td>9.33</td></tr><tr><td>114</td>
+<td>High</td><td></td><td>14.89</td></tr><tr><td>115</td>
+<th rowspan=3>dnsd_pw_defet_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>11.40</td></tr><tr><td>116</td>
+<td>Low</td><td></td><td>9.33</td></tr><tr><td>117</td>
+<td>High</td><td></td><td>14.89</td></tr><tr><td>118</td>
+<th rowspan=3>dnsd_pw_esd_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>11.39</td></tr><tr><td>119</td>
+<td>Low</td><td></td><td>9.32</td></tr><tr><td>120</td>
+<td>High</td><td></td><td>14.87</td></tr><tr><td>121</td>
+<th rowspan=3>dnsd_pw_esd_v5_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.32</td></tr><tr><td>122</td>
+<td>Low</td><td></td><td>10.09</td></tr><tr><td>123</td>
+<td>High</td><td></td><td>16.09</td></tr><tr><td>124</td>
+<th rowspan=3>dnsd_pw_lvt_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>11.60</td></tr><tr><td>125</td>
+<td>Low</td><td></td><td>9.49</td></tr><tr><td>126</td>
+<td>High</td><td></td><td>15.14</td></tr><tr><td>127</td>
+<th rowspan=3>dnsd_pw_nat_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.39</td></tr><tr><td>128</td>
+<td>Low</td><td></td><td>10.14</td></tr><tr><td>129</td>
+<td>High</td><td></td><td>16.17</td></tr><tr><td>130</td>
+<th rowspan=3>dnsd_pw_v5_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.33</td></tr><tr><td>131</td>
+<td>Low</td><td></td><td>10.10</td></tr><tr><td>132</td>
+<td>High</td><td></td><td>16.10</td></tr><tr><td>133</td>
+<th rowspan=3>dnw_ipw_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>16.55</td></tr><tr><td>134</td>
+<td>Low</td><td></td><td>13.74</td></tr><tr><td>135</td>
+<td>High</td><td></td><td>20.67</td></tr><tr><td>136</td>
+<th rowspan=3>dnw_sub_photo_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>16.58</td></tr><tr><td>137</td>
+<td>Low</td><td></td><td>18.43</td></tr><tr><td>138</td>
+<td>High</td><td></td><td>15.18</td></tr><tr><td>139</td>
+<th rowspan=3>dpsd_nw_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.34</td></tr><tr><td>140</td>
+<td>Low</td><td></td><td>13.72</td></tr><tr><td>141</td>
+<td>High</td><td></td><td>11.29</td></tr><tr><td>142</td>
+<th rowspan=3>dpsd_nw_esd_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.33</td></tr><tr><td>143</td>
+<td>Low</td><td></td><td>13.71</td></tr><tr><td>144</td>
+<td>High</td><td></td><td>11.28</td></tr><tr><td>145</td>
+<th rowspan=3>dpsd_nw_esd_v5_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.33</td></tr><tr><td>146</td>
+<td>Low</td><td></td><td>13.71</td></tr><tr><td>147</td>
+<td>High</td><td></td><td>11.28</td></tr><tr><td>148</td>
+<th rowspan=3>dpsd_nw_hvt_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.45</td></tr><tr><td>149</td>
+<td>Low</td><td></td><td>13.84</td></tr><tr><td>150</td>
+<td>High</td><td></td><td>11.39</td></tr><tr><td>151</td>
+<th rowspan=3>dpsd_nw_lvt_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.34</td></tr><tr><td>152</td>
+<td>Low</td><td></td><td>13.72</td></tr><tr><td>153</td>
+<td>High</td><td></td><td>11.29</td></tr><tr><td>154</td>
+<th rowspan=3>dpsd_nw_v5_BV</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>12.34</td></tr><tr><td>155</td>
+<td>Low</td><td></td><td>13.72</td></tr><tr><td>156</td>
+<td>High</td><td></td><td>11.29</td></tr><tr><td>157</td>
+<th>nmos_ILEAK_nom</th><th>(N/A)</th><td>High</td><td></td><td>-1.13e+01</td></tr><tr><td>158</td>
+<th>nmos</th><th>ILKN15</th><td>High</td><td>-10.28</td><td>-11.2018</td><td><font color=black>9.0</font> %</td></font><th>Size:7/0.15, Short Channel Off Current, Id @ Vd=1.95V, Vg=Vs=Vb=0V</th></tr>
+<tr><td>159</td>
+<th rowspan=5>nmos</th><th rowspan=5>VTXNSN15</th><td>Nom</td><td>0.7383</td><td>0.737</td><td><font color=black>-1.3</font> mV</td></font><th rowspan=5>Size:0.42/0.15, Narrow/Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>160</td>
+<td>ff</td><td></td><td>0.685</td><td></td></font></tr>
+<tr><td>161</td>
+<td>Low</td><td>0.6248</td><td>0.626</td><td><font color=black>0.8</font> mV</td></font></tr>
+<tr><td>162</td>
+<td>ss</td><td></td><td>0.810</td><td></td></font></tr>
+<tr><td>163</td>
+<td>High</td><td>0.8517</td><td>0.848</td><td><font color=black>-3.7</font> mV</td></font></tr>
+<tr><td>164</td>
+<th rowspan=5>nmos</th><th rowspan=5>IDSNSN15</th><td>Nom</td><td>0.186</td><td>0.1842</td><td><font color=black>-1.0</font> %</td></font><th rowspan=5>Size:0.42/0.15, Narrow/Short Channel Drive Current, Id @ Vd=Vg=1.8V, Vs=Vb=0V</th></tr>
+<tr><td>165</td>
+<td>fs</td><td></td><td>1.44e-01</td></tr><tr><td>166</td>
+<td>Low</td><td>0.137</td><td>0.1337</td><td><font color=black>-2.4</font> %</td></font></tr>
+<tr><td>167</td>
+<td>sf</td><td></td><td>2.33e-01</td></tr><tr><td>168</td>
+<td>High</td><td>0.235</td><td>0.2478</td><td><font color=black>5.5</font> %</td></font></tr>
+<tr><td>169</td>
+<th rowspan=5>nmos</th><th rowspan=5>VTXNN42</th><td>Nom</td><td>0.55</td><td>0.550</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size:0.42/8, Narrow/Long Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>170</td>
+<td>ff</td><td></td><td>0.521</td><td></td></font></tr>
+<tr><td>171</td>
+<td>Low</td><td>0.51</td><td>0.508</td><td><font color=black>-1.6</font> mV</td></font></tr>
+<tr><td>172</td>
+<td>ss</td><td></td><td>0.579</td><td></td></font></tr>
+<tr><td>173</td>
+<td>High</td><td>0.59</td><td>0.592</td><td><font color=black>1.5</font> mV</td></font></tr>
+<tr><td>174</td>
+<th rowspan=5>nmos_W1000_L20_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.539</td></tr><tr><td>175</td>
+<td>ff</td><td></td><td>0.519</td></tr><tr><td>176</td>
+<td>Low</td><td></td><td>0.513</td></tr><tr><td>177</td>
+<td>ss</td><td></td><td>0.558</td></tr><tr><td>178</td>
+<td>High</td><td></td><td>0.564</td></tr><tr><td>179</td>
+<th rowspan=5>nmos</th><th rowspan=5>VTXNS15</th><td>Nom</td><td>0.6996</td><td>0.700</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size:7/0.15, Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>180</td>
+<td>ff</td><td></td><td>0.685</td><td></td></font></tr>
+<tr><td>181</td>
+<td>Low</td><td>0.6608</td><td>0.660</td><td><font color=black>-0.3</font> mV</td></font></tr>
+<tr><td>182</td>
+<td>ss</td><td></td><td>0.722</td><td></td></font></tr>
+<tr><td>183</td>
+<td>High</td><td>0.7385</td><td>0.735</td><td><font color=black>-3.3</font> mV</td></font></tr>
+<tr><td>184</td>
+<th rowspan=5>nmos</th><th rowspan=5>IDSNS15</th><td>Nom</td><td>3.51</td><td>3.5096</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:7/0.15, Short Channel Drive Current, Id @ Vd=Vg=1.8V, Vs=Vb=0V</th></tr>
+<tr><td>185</td>
+<td>fs</td><td></td><td>3.24</td></tr><tr><td>186</td>
+<td>Low</td><td>3.039</td><td>3.0248</td><td><font color=black>-0.5</font> %</td></font></tr>
+<tr><td>187</td>
+<td>sf</td><td></td><td>4.06</td></tr><tr><td>188</td>
+<td>High</td><td>3.981</td><td>4.3483</td><td><font color=black>9.2</font> %</td></font></tr>
+<tr><td>189</td>
+<th rowspan=5>nmos</th><th rowspan=5>VTXNL</th><td>Nom</td><td>0.5412</td><td>0.541</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size: 7/8, Long Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>190</td>
+<td>ff</td><td></td><td>0.521</td><td></td></font></tr>
+<tr><td>191</td>
+<td>Low</td><td>0.5154</td><td>0.515</td><td><font color=black>-0.8</font> mV</td></font></tr>
+<tr><td>192</td>
+<td>ss</td><td></td><td>0.562</td><td></td></font></tr>
+<tr><td>193</td>
+<td>High</td><td>0.567</td><td>0.568</td><td><font color=black>0.8</font> mV</td></font></tr>
+<tr><td>194</td>
+<th rowspan=5>nmos_de_iso_v20_W1000_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.817</td></tr><tr><td>195</td>
+<td>ff</td><td></td><td>0.687</td></tr><tr><td>196</td>
+<td>Low</td><td></td><td>0.639</td></tr><tr><td>197</td>
+<td>ss</td><td></td><td>0.948</td></tr><tr><td>198</td>
+<td>High</td><td></td><td>0.997</td></tr><tr><td>199</td>
+<th rowspan=5>nmos_de_iso_v20</th><th rowspan=5>VTXN20VHVISO1</th><td>Nom</td><td>0.8171</td><td>0.817</td><td><font color=black>-0.6</font> mV</td></font><th rowspan=5>Size:2*30/1.5, peak-gm VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>200</td>
+<td>ff</td><td></td><td>0.686</td><td></td></font></tr>
+<tr><td>201</td>
+<td>Low</td><td>0.6372</td><td>0.638</td><td><font color=black>0.4</font> mV</td></font></tr>
+<tr><td>202</td>
+<td>ss</td><td></td><td>0.947</td><td></td></font></tr>
+<tr><td>203</td>
+<td>High</td><td>0.9981</td><td>0.997</td><td><font color=black>-1.4</font> mV</td></font></tr>
+<tr><td>204</td>
+<th rowspan=5>nmos_de_iso_v20</th><th rowspan=5>ID5N20VHVISO1</th><td>Nom</td><td>1.498</td><td>1.4267</td><td><font color=black>-4.8</font> %</td></font><th rowspan=5>Size:2*30/1.5, linear current at Vd=0.5, Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>205</td>
+<td>fs</td><td></td><td>8.47e-01</td></tr><tr><td>206</td>
+<td>Low</td><td>0.8033</td><td>1.1742</td><td><font color=red>46.2</font> %</td></font></tr>
+<tr><td>207</td>
+<td>sf</td><td></td><td>2.45</td></tr><tr><td>208</td>
+<td>High</td><td>2.526</td><td>1.6188</td><td><font color=red>-35.9</font> %</td></font></tr>
+<tr><td>209</td>
+<th rowspan=5>nmos_de_iso_v20</th><th rowspan=5>IDLN20VHVISO1</th><td>Nom</td><td>0.3334</td><td>0.3148</td><td><font color=black>-5.6</font> %</td></font><th rowspan=5>Size:2*30/1.5, linear current, Id @ Vd=0.1V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>210</td>
+<td>fs</td><td></td><td>1.85e-01</td></tr><tr><td>211</td>
+<td>Low</td><td>0.1732</td><td>0.2550</td><td><font color=red>47.2</font> %</td></font></tr>
+<tr><td>212</td>
+<td>sf</td><td></td><td>5.35e-01</td></tr><tr><td>213</td>
+<td>High</td><td>0.5718</td><td>0.3675</td><td><font color=red>-35.7</font> %</td></font></tr>
+<tr><td>214</td>
+<th rowspan=5>nmos_de_iso_v20</th><th rowspan=5>IDSN20VHVISO1</th><td>Nom</td><td>15.32</td><td>15.3536</td><td><font color=black>0.2</font> %</td></font><th rowspan=5>Size:2*30/1.5, saturation current, Id @ Vd=20, Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>215</td>
+<td>fs</td><td></td><td>10.58</td></tr><tr><td>216</td>
+<td>Low</td><td>11.32</td><td>14.6653</td><td><font color=red>29.6</font> %</td></font></tr>
+<tr><td>217</td>
+<td>sf</td><td></td><td>24.16</td></tr><tr><td>218</td>
+<td>High</td><td>19.32</td><td>14.2249</td><td><font color=red>-26.4</font> %</td></font></tr>
+<tr><td>219</td>
+<th rowspan=5>nmos_de_iso_v20</th><th rowspan=5>RDSN20VHVISO1</th><td>Nom</td><td>333.7</td><td>350.9887</td><td><font color=black>5.2</font> %</td></font><th rowspan=5>Size:2*30/1.5, RDS on resistance, Vd/Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>220</td>
+<td>ff</td><td></td><td>309.3313</td><td></td></font></tr>
+<tr><td>221</td>
+<td>Low</td><td>197.9</td><td>204.5097</td><td><font color=black>3.3</font> %</td></font></tr>
+<tr><td>222</td>
+<td>ss</td><td></td><td>426.4374</td><td></td></font></tr>
+<tr><td>223</td>
+<td>High</td><td>622.4</td><td>590.7767</td><td><font color=black>-5.1</font> %</td></font></tr>
+<tr><td>224</td>
+<th rowspan=5>nmos_de_iso_v20</th><th rowspan=5>VTBN20VHVISO1</th><td>Nom</td><td>1.817</td><td>1.817</td><td><font color=black>0.1</font> mV</td></font><th rowspan=5>Size:2*30/1.5, peak-gm VT under Reverse Bias, Vd=0.1, Vs=0V, Vb=-5V</th></tr>
+<tr><td>225</td>
+<td>ff</td><td></td><td>1.608</td><td></td></font></tr>
+<tr><td>226</td>
+<td>Low</td><td>1.567</td><td>1.566</td><td><font color=black>-0.8</font> mV</td></font></tr>
+<tr><td>227</td>
+<td>ss</td><td></td><td>2.030</td><td></td></font></tr>
+<tr><td>228</td>
+<td>High</td><td>2.069</td><td>2.068</td><td><font color=black>-0.8</font> mV</td></font></tr>
+<tr><td>229</td>
+<th rowspan=5>nmos_de_nat_v20_W1000_L1_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.249</td></tr><tr><td>230</td>
+<td>ff</td><td></td><td>0.126</td></tr><tr><td>231</td>
+<td>Low</td><td></td><td>0.071</td></tr><tr><td>232</td>
+<td>ss</td><td></td><td>0.373</td></tr><tr><td>233</td>
+<td>High</td><td></td><td>0.430</td></tr><tr><td>234</td>
+<th rowspan=5>nmos_de_nat_v20</th><th rowspan=5>VTXN20VHV1L</th><td>Nom</td><td>0.246</td><td>0.249</td><td><font color=black>2.5</font> mV</td></font><th rowspan=5>Size:2*30/1.5, peak-gm VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>235</td>
+<td>ff</td><td></td><td>0.125</td><td></td></font></tr>
+<tr><td>236</td>
+<td>Low</td><td>0.0676</td><td>0.069</td><td><font color=black>1.9</font> mV</td></font></tr>
+<tr><td>237</td>
+<td>ss</td><td></td><td>0.373</td><td></td></font></tr>
+<tr><td>238</td>
+<td>High</td><td>0.4276</td><td>0.429</td><td><font color=black>1.8</font> mV</td></font></tr>
+<tr><td>239</td>
+<th rowspan=5>nmos_de_nat_v20</th><th rowspan=5>ID5N20VHV1L</th><td>Nom</td><td>1.612</td><td>1.5533</td><td><font color=black>-3.6</font> %</td></font><th rowspan=5>Size:2*30/1.5, linear current at Vd=0.5, Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>240</td>
+<td>fs</td><td></td><td>1.14</td></tr><tr><td>241</td>
+<td>Low</td><td>1.082</td><td>1.3774</td><td><font color=red>27.3</font> %</td></font></tr>
+<tr><td>242</td>
+<td>sf</td><td></td><td>2.20</td></tr><tr><td>243</td>
+<td>High</td><td>2.18</td><td>1.7034</td><td><font color=red>-21.9</font> %</td></font></tr>
+<tr><td>244</td>
+<th rowspan=5>nmos_de_nat_v20</th><th rowspan=5>IDLN20VHV1L</th><td>Nom</td><td>0.3638</td><td>0.3487</td><td><font color=black>-4.2</font> %</td></font><th rowspan=5>Size:2*30/1.5, linear current, Id @ Vd=0.1V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>245</td>
+<td>fs</td><td></td><td>2.60e-01</td></tr><tr><td>246</td>
+<td>Low</td><td>0.246</td><td>0.3088</td><td><font color=red>25.5</font> %</td></font></tr>
+<tr><td>247</td>
+<td>sf</td><td></td><td>4.82e-01</td></tr><tr><td>248</td>
+<td>High</td><td>0.4872</td><td>0.3846</td><td><font color=red>-21.1</font> %</td></font></tr>
+<tr><td>249</td>
+<th rowspan=5>nmos_de_nat_v20</th><th rowspan=5>IDSN20VHV1L</th><td>Nom</td><td>14.44</td><td>14.1946</td><td><font color=black>-1.7</font> %</td></font><th rowspan=5>Size:2*30/1.5, saturation current, Id @ Vd=20, Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>250</td>
+<td>fs</td><td></td><td>10.37</td></tr><tr><td>251</td>
+<td>Low</td><td>10.1</td><td>12.9676</td><td><font color=red>28.4</font> %</td></font></tr>
+<tr><td>252</td>
+<td>sf</td><td></td><td>21.49</td></tr><tr><td>253</td>
+<td>High</td><td>18.8</td><td>14.7851</td><td><font color=red>-21.4</font> %</td></font></tr>
+<tr><td>254</td>
+<th rowspan=5>nmos_de_nat_v20</th><th rowspan=5>RDSN20VHV1L</th><td>Nom</td><td>310.2</td><td>322.4143</td><td><font color=black>3.9</font> %</td></font><th rowspan=5>Size:2*30/1.5, RDS on resistance, Vd/Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>255</td>
+<td>ff</td><td></td><td>293.9986</td><td></td></font></tr>
+<tr><td>256</td>
+<td>Low</td><td>229.4</td><td>227.5171</td><td><font color=black>-0.8</font> %</td></font></tr>
+<tr><td>257</td>
+<td>ss</td><td></td><td>363.5795</td><td></td></font></tr>
+<tr><td>258</td>
+<td>High</td><td>462</td><td>437.6294</td><td><font color=black>-5.3</font> %</td></font></tr>
+<tr><td>259</td>
+<th rowspan=5>nmos_de_nat_v20</th><th rowspan=5>VTBN20VHV1L</th><td>Nom</td><td>0.6321</td><td>0.636</td><td><font color=black>4.1</font> mV</td></font><th rowspan=5>Size:2*30/1.5, peak-gm VT under Reverse Bias, Ib @ Vd=20V, Vg=1.5V, Vs=Vb=0</th></tr>
+<tr><td>260</td>
+<td>ff</td><td></td><td>0.481</td><td></td></font></tr>
+<tr><td>261</td>
+<td>Low</td><td>0.436</td><td>0.426</td><td><font color=red>-10.3</font> mV</td></font></tr>
+<tr><td>262</td>
+<td>ss</td><td></td><td>0.794</td><td></td></font></tr>
+<tr><td>263</td>
+<td>High</td><td>0.8534</td><td>0.848</td><td><font color=red>-5.1</font> mV</td></font></tr>
+<tr><td>264</td>
+<th rowspan=5>nmos_de_v12_W100_L2p2_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.766</td></tr><tr><td>265</td>
+<td>ff</td><td></td><td>0.678</td></tr><tr><td>266</td>
+<td>Low</td><td></td><td>0.614</td></tr><tr><td>267</td>
+<td>ss</td><td></td><td>0.855</td></tr><tr><td>268</td>
+<td>High</td><td></td><td>0.920</td></tr><tr><td>269</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>RDSNVHV20P00P7D</th><td>Nom</td><td>458.5</td><td>461.2188</td><td><font color=black>0.6</font> %</td></font><th rowspan=5>Size:w/l=20/0.7, in DNW RDS on resistance, Vd/Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>270</td>
+<td>ff</td><td></td><td>376.6324</td><td></td></font></tr>
+<tr><td>271</td>
+<td>Low</td><td>270.3</td><td>264.5416</td><td><font color=black>-2.1</font> %</td></font></tr>
+<tr><td>272</td>
+<td>ss</td><td></td><td>581.7954</td><td></td></font></tr>
+<tr><td>273</td>
+<td>High</td><td>828.2</td><td>762.1745</td><td><font color=black>-8.0</font> %</td></font></tr>
+<tr><td>274</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>VTXNVHV20P00P7D</th><td>Nom</td><td>0.7423</td><td>0.742</td><td><font color=black>-0.1</font> mV</td></font><th rowspan=5>Size:w/l=20/0.7, in DNW peak-gm VT, MaxGM Vth at Vd=0.1, Vs=Vb=0V</th></tr>
+<tr><td>275</td>
+<td>ff</td><td></td><td>0.640</td><td></td></font></tr>
+<tr><td>276</td>
+<td>Low</td><td>0.5612</td><td>0.560</td><td><font color=black>-0.9</font> mV</td></font></tr>
+<tr><td>277</td>
+<td>ss</td><td></td><td>0.845</td><td></td></font></tr>
+<tr><td>278</td>
+<td>High</td><td>0.9234</td><td>0.925</td><td><font color=black>1.7</font> mV</td></font></tr>
+<tr><td>279</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>IDSNVHV20P00P7D</th><td>Nom</td><td>8.969</td><td>8.9814</td><td><font color=black>0.1</font> %</td></font><th rowspan=5>Size:w/l=20/0.7, in DNW sat current, Id @ Vd=10V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>280</td>
+<td>fs</td><td></td><td>6.62</td></tr><tr><td>281</td>
+<td>Low</td><td>6.43</td><td>6.7798</td><td><font color=black>5.4</font> %</td></font></tr>
+<tr><td>282</td>
+<td>sf</td><td></td><td>11.61</td></tr><tr><td>283</td>
+<td>High</td><td>11.51</td><td>11.3075</td><td><font color=black>-1.8</font> %</td></font></tr>
+<tr><td>284</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>RDSNVHV20P02P2D</th><td>Nom</td><td>703.8</td><td>706.4785</td><td><font color=black>0.4</font> %</td></font><th rowspan=5>Size:w/l=20/2.2, in DNW RDS on resistance, Vd/Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>285</td>
+<td>ff</td><td></td><td>591.5818</td><td></td></font></tr>
+<tr><td>286</td>
+<td>Low</td><td>499.3</td><td>478.0813</td><td><font color=black>-4.2</font> %</td></font></tr>
+<tr><td>287</td>
+<td>ss</td><td></td><td>864.3507</td><td></td></font></tr>
+<tr><td>288</td>
+<td>High</td><td>1099</td><td>1047.0866</td><td><font color=black>-4.7</font> %</td></font></tr>
+<tr><td>289</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>VTXNVHV20P02P2D</th><td>Nom</td><td>0.7668</td><td>0.766</td><td><font color=black>-0.6</font> mV</td></font><th rowspan=5>Size:w/l=20/2.2, in DNW peak-gm VT, MaxGM Vth at Vd=0.1, Vs=Vb=0V</th></tr>
+<tr><td>290</td>
+<td>ff</td><td></td><td>0.677</td><td></td></font></tr>
+<tr><td>291</td>
+<td>Low</td><td>0.615</td><td>0.613</td><td><font color=black>-1.7</font> mV</td></font></tr>
+<tr><td>292</td>
+<td>ss</td><td></td><td>0.855</td><td></td></font></tr>
+<tr><td>293</td>
+<td>High</td><td>0.9191</td><td>0.920</td><td><font color=black>0.5</font> mV</td></font></tr>
+<tr><td>294</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>VTXNVHV5P000P70</th><td>Nom</td><td>0.7477</td><td>0.747</td><td><font color=black>-0.7</font> mV</td></font><th rowspan=5>Size:w/l=5/0.7, peak-gm VT, MaxGM Vth at Vd=0.1, Vs=Vb=0V</th></tr>
+<tr><td>295</td>
+<td>ff</td><td></td><td>0.644</td><td></td></font></tr>
+<tr><td>296</td>
+<td>Low</td><td>0.5663</td><td>0.565</td><td><font color=black>-1.1</font> mV</td></font></tr>
+<tr><td>297</td>
+<td>ss</td><td></td><td>0.851</td><td></td></font></tr>
+<tr><td>298</td>
+<td>High</td><td>0.9285</td><td>0.930</td><td><font color=black>1.6</font> mV</td></font></tr>
+<tr><td>299</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>IDSNVHV5P000P70</th><td>Nom</td><td>2.302</td><td>2.2943</td><td><font color=black>-0.3</font> %</td></font><th rowspan=5>Size:w/l=5/0.7, sat current, Id @ Vd=10V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>300</td>
+<td>fs</td><td></td><td>1.69</td></tr><tr><td>301</td>
+<td>Low</td><td>1.624</td><td>1.7157</td><td><font color=black>5.6</font> %</td></font></tr>
+<tr><td>302</td>
+<td>sf</td><td></td><td>2.97</td></tr><tr><td>303</td>
+<td>High</td><td>2.981</td><td>2.9127</td><td><font color=black>-2.3</font> %</td></font></tr>
+<tr><td>304</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>VTXNVHV5P002P20</th><td>Nom</td><td>0.773</td><td>0.772</td><td><font color=black>-0.6</font> mV</td></font><th rowspan=5>Size:w/l=5/2.2, peak-gm VT, MaxGM Vth at Vd=0.1, Vs=Vb=0V</th></tr>
+<tr><td>305</td>
+<td>ff</td><td></td><td>0.683</td><td></td></font></tr>
+<tr><td>306</td>
+<td>Low</td><td>0.6211</td><td>0.619</td><td><font color=black>-1.8</font> mV</td></font></tr>
+<tr><td>307</td>
+<td>ss</td><td></td><td>0.862</td><td></td></font></tr>
+<tr><td>308</td>
+<td>High</td><td>0.9252</td><td>0.926</td><td><font color=black>0.9</font> mV</td></font></tr>
+<tr><td>309</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>VTBNVHV5P002P20</th><td>Nom</td><td>1.8185</td><td>1.818</td><td><font color=black>-0.5</font> mV</td></font><th rowspan=5>Size:w/l=5/2.2, peak-gm VT at Body Bias, MaxGM Vth at Vd=0.1, Vs=0, Vb=-5V</th></tr>
+<tr><td>310</td>
+<td>ff</td><td></td><td>1.684</td><td></td></font></tr>
+<tr><td>311</td>
+<td>Low</td><td>1.6013</td><td>1.602</td><td><font color=black>0.4</font> mV</td></font></tr>
+<tr><td>312</td>
+<td>ss</td><td></td><td>1.953</td><td></td></font></tr>
+<tr><td>313</td>
+<td>High</td><td>2.0362</td><td>2.034</td><td><font color=black>-1.7</font> mV</td></font></tr>
+<tr><td>314</td>
+<th rowspan=5>nmos_de_v12</th><th rowspan=5>VTXNVHV60P00P70</th><td>Nom</td><td>0.7412</td><td>0.741</td><td><font color=black>-0.1</font> mV</td></font><th rowspan=5>Size:w/l=60/0.7, peak-gm VT, MaxGM Vth at Vd=0.1, Vs=Vb=0V</th></tr>
+<tr><td>315</td>
+<td>ff</td><td></td><td>0.639</td><td></td></font></tr>
+<tr><td>316</td>
+<td>Low</td><td>0.5601</td><td>0.559</td><td><font color=black>-1.3</font> mV</td></font></tr>
+<tr><td>317</td>
+<td>ss</td><td></td><td>0.844</td><td></td></font></tr>
+<tr><td>318</td>
+<td>High</td><td>0.9223</td><td>0.924</td><td><font color=black>1.9</font> mV</td></font></tr>
+<tr><td>319</td>
+<th rowspan=5>nmos_de_v20_W1000_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.823</td></tr><tr><td>320</td>
+<td>ff</td><td></td><td>0.698</td></tr><tr><td>321</td>
+<td>Low</td><td></td><td>0.645</td></tr><tr><td>322</td>
+<td>ss</td><td></td><td>0.949</td></tr><tr><td>323</td>
+<td>High</td><td></td><td>1.003</td></tr><tr><td>324</td>
+<th rowspan=5>nmos_de_v20</th><th rowspan=5>VTXN20VHV1</th><td>Nom</td><td>0.8231</td><td>0.822</td><td><font color=black>-1.2</font> mV</td></font><th rowspan=5>Size:2*30/1.5, peak-gm VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>325</td>
+<td>ff</td><td></td><td>0.698</td><td></td></font></tr>
+<tr><td>326</td>
+<td>Low</td><td>0.6432</td><td>0.644</td><td><font color=black>0.4</font> mV</td></font></tr>
+<tr><td>327</td>
+<td>ss</td><td></td><td>0.948</td><td></td></font></tr>
+<tr><td>328</td>
+<td>High</td><td>1.004</td><td>1.003</td><td><font color=black>-1.1</font> mV</td></font></tr>
+<tr><td>329</td>
+<th rowspan=5>nmos_de_v20</th><th rowspan=5>ID5N20VHV1</th><td>Nom</td><td>1.528</td><td>1.4500</td><td><font color=black>-5.1</font> %</td></font><th rowspan=5>Size:2*30/1.5, linear current at Vd=0.5, Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>330</td>
+<td>fs</td><td></td><td>9.41e-01</td></tr><tr><td>331</td>
+<td>Low</td><td>0.8892</td><td>1.2107</td><td><font color=red>36.2</font> %</td></font></tr>
+<tr><td>332</td>
+<td>sf</td><td></td><td>2.49</td></tr><tr><td>333</td>
+<td>High</td><td>2.556</td><td>1.7187</td><td><font color=red>-32.8</font> %</td></font></tr>
+<tr><td>334</td>
+<th rowspan=5>nmos_de_v20</th><th rowspan=5>IDLN20VHV1</th><td>Nom</td><td>0.3326</td><td>0.3153</td><td><font color=black>-5.2</font> %</td></font><th rowspan=5>Size:2*30/1.5, linear current, Id @ Vd=0.1V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>335</td>
+<td>fs</td><td></td><td>2.02e-01</td></tr><tr><td>336</td>
+<td>Low</td><td>0.1903</td><td>0.2603</td><td><font color=red>36.8</font> %</td></font></tr>
+<tr><td>337</td>
+<td>sf</td><td></td><td>5.47e-01</td></tr><tr><td>338</td>
+<td>High</td><td>0.5709</td><td>0.3825</td><td><font color=red>-33.0</font> %</td></font></tr>
+<tr><td>339</td>
+<th rowspan=5>nmos_de_v20</th><th rowspan=5>IDSN20VHV1</th><td>Nom</td><td>13.34</td><td>12.5586</td><td><font color=black>-5.9</font> %</td></font><th rowspan=5>Size:2*30/1.5, saturation current, Id @ Vd=20, Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>340</td>
+<td>fs</td><td></td><td>9.27</td></tr><tr><td>341</td>
+<td>Low</td><td>9.335</td><td>11.7462</td><td><font color=red>25.8</font> %</td></font></tr>
+<tr><td>342</td>
+<td>sf</td><td></td><td>18.64</td></tr><tr><td>343</td>
+<td>High</td><td>17.34</td><td>12.5593</td><td><font color=red>-27.6</font> %</td></font></tr>
+<tr><td>344</td>
+<th rowspan=5>nmos_de_v20</th><th rowspan=5>RDSN20VHV1</th><td>Nom</td><td>327.2</td><td>345.3591</td><td><font color=black>5.5</font> %</td></font><th rowspan=5>Size:2*30/1.5, RDS on resistance, Vd/Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>345</td>
+<td>ff</td><td></td><td>298.8338</td><td></td></font></tr>
+<tr><td>346</td>
+<td>Low</td><td>195.6</td><td>201.4002</td><td><font color=black>3.0</font> %</td></font></tr>
+<tr><td>347</td>
+<td>ss</td><td></td><td>413.5757</td><td></td></font></tr>
+<tr><td>348</td>
+<td>High</td><td>562.3</td><td>531.7636</td><td><font color=black>-5.4</font> %</td></font></tr>
+<tr><td>349</td>
+<th rowspan=5>nmos_de_v20</th><th rowspan=5>VTBN20VHV1</th><td>Nom</td><td>1.823</td><td>1.822</td><td><font color=black>-1.1</font> mV</td></font><th rowspan=5>Size:2*30/1.5, peak-gm VT under Reverse Bias, Vd=0.1, Vs=0V, Vb=-5V</th></tr>
+<tr><td>350</td>
+<td>ff</td><td></td><td>1.619</td><td></td></font></tr>
+<tr><td>351</td>
+<td>Low</td><td>1.573</td><td>1.572</td><td><font color=black>-0.5</font> mV</td></font></tr>
+<tr><td>352</td>
+<td>ss</td><td></td><td>2.029</td><td></td></font></tr>
+<tr><td>353</td>
+<td>High</td><td>2.075</td><td>2.074</td><td><font color=black>-1.3</font> mV</td></font></tr>
+<tr><td>354</td>
+<th rowspan=5>nmos_de_zvt_v20_W1000_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>-0.122</td></tr><tr><td>355</td>
+<td>ff</td><td></td><td>-0.210</td></tr><tr><td>356</td>
+<td>Low</td><td></td><td>-0.222</td></tr><tr><td>357</td>
+<td>ss</td><td></td><td>-0.036</td></tr><tr><td>358</td>
+<td>High</td><td></td><td>-0.022</td></tr><tr><td>359</td>
+<th rowspan=5>nmos_de_zvt_v20</th><th rowspan=5>VTXNZVT1</th><td>Nom</td><td>-0.1224</td><td>-0.123</td><td><font color=black>-0.8</font> mV</td></font><th rowspan=5>Size:2*30/5.5, peak-gm VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>360</td>
+<td>ff</td><td></td><td>-0.211</td><td></td></font></tr>
+<tr><td>361</td>
+<td>Low</td><td>-0.2228</td><td>-0.223</td><td><font color=black>-0.3</font> mV</td></font></tr>
+<tr><td>362</td>
+<td>ss</td><td></td><td>-0.037</td><td></td></font></tr>
+<tr><td>363</td>
+<td>High</td><td>-0.0228</td><td>-0.023</td><td><font color=black>-0.1</font> mV</td></font></tr>
+<tr><td>364</td>
+<th rowspan=5>nmos_de_zvt_v20</th><th rowspan=5>ID5NZVT1</th><td>Nom</td><td>1.368</td><td>1.3260</td><td><font color=black>-3.1</font> %</td></font><th rowspan=5>Size:2*30/5.5, linear current at Vds=0.5, Vgs=5V, Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>365</td>
+<td>fs</td><td></td><td>9.07e-01</td></tr><tr><td>366</td>
+<td>Low</td><td>0.8477</td><td>1.1198</td><td><font color=red>32.1</font> %</td></font></tr>
+<tr><td>367</td>
+<td>sf</td><td></td><td>1.91</td></tr><tr><td>368</td>
+<td>High</td><td>1.84</td><td>1.5003</td><td><font color=red>-18.5</font> %</td></font></tr>
+<tr><td>369</td>
+<th rowspan=5>nmos_de_zvt_v20</th><th rowspan=5>IDLNZVT1</th><td>Nom</td><td>0.282</td><td>0.2727</td><td><font color=black>-3.3</font> %</td></font><th rowspan=5>Size:2*30/5.5, linear current at Vds=0.1, Vgs=5V, Id @ Vd=0.1V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>370</td>
+<td>fs</td><td></td><td>1.91e-01</td></tr><tr><td>371</td>
+<td>Low</td><td>0.18</td><td>0.2339</td><td><font color=red>30.0</font> %</td></font></tr>
+<tr><td>372</td>
+<td>sf</td><td></td><td>3.89e-01</td></tr><tr><td>373</td>
+<td>High</td><td>0.3777</td><td>0.3072</td><td><font color=red>-18.7</font> %</td></font></tr>
+<tr><td>374</td>
+<th rowspan=5>nmos_de_zvt_v20</th><th rowspan=5>IDSNZVT1</th><td>Nom</td><td>12.79</td><td>13.4795</td><td><font color=black>5.4</font> %</td></font><th rowspan=5>Size:2*30/5.5, linear current at Vds=20, Vgs=5V, Id @ Vd=20, Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>375</td>
+<td>fs</td><td></td><td>8.08</td></tr><tr><td>376</td>
+<td>Low</td><td>8.366</td><td>8.0334</td><td><font color=black>-4.0</font> %</td></font></tr>
+<tr><td>377</td>
+<td>sf</td><td></td><td>15.91</td></tr><tr><td>378</td>
+<td>High</td><td>17.38</td><td>15.7577</td><td><font color=black>-9.3</font> %</td></font></tr>
+<tr><td>379</td>
+<th rowspan=5>nmos_de_zvt_v20</th><th rowspan=5>RDSNZVT1</th><td>Nom</td><td>365.5</td><td>377.6665</td><td><font color=black>3.3</font> %</td></font><th rowspan=5>Size:2*30/5.5, RDS on resistance, Vd/Id @ Vd=0.5V, Vg=5V, Vs=Vb=0V</th></tr>
+<tr><td>380</td>
+<td>ff</td><td></td><td>333.7998</td><td></td></font></tr>
+<tr><td>381</td>
+<td>Low</td><td>271.7</td><td>261.9612</td><td><font color=black>-3.6</font> %</td></font></tr>
+<tr><td>382</td>
+<td>ss</td><td></td><td>447.1574</td><td></td></font></tr>
+<tr><td>383</td>
+<td>High</td><td>589.8</td><td>551.8512</td><td><font color=black>-6.4</font> %</td></font></tr>
+<tr><td>384</td>
+<th rowspan=5>nmos_de_zvt_v20</th><th rowspan=5>VTBNZVT1</th><td>Nom</td><td>-0.0496</td><td>-0.050</td><td><font color=black>-0.3</font> mV</td></font><th rowspan=5>Size:2*30/5.5, peak-gm VT under Reverse Bias, Vd=0.1, Vs=0V, Vb=-2.5V</th></tr>
+<tr><td>385</td>
+<td>ff</td><td></td><td>-0.140</td><td></td></font></tr>
+<tr><td>386</td>
+<td>Low</td><td>-0.1611</td><td>-0.148</td><td><font color=red>12.7</font> mV</td></font></tr>
+<tr><td>387</td>
+<td>ss</td><td></td><td>0.039</td><td></td></font></tr>
+<tr><td>388</td>
+<td>High</td><td>0.095</td><td>0.049</td><td><font color=red>-46.0</font> mV</td></font></tr>
+<tr><td>389</td>
+<th rowspan=5>nmos_esd</th><th rowspan=5>VTXNESDLVS</th><td>Nom</td><td>0.6416</td><td>0.637</td><td><font color=red>-5.1</font> mV</td></font><th rowspan=5>Size:20.35/0.165, VT 20.35/0.165, Vd=0.1 Vb=0</th></tr>
+<tr><td>390</td>
+<td>ff</td><td></td><td>0.601</td><td></td></font></tr>
+<tr><td>391</td>
+<td>Low</td><td>0.5706</td><td>0.567</td><td><font color=black>-4.0</font> mV</td></font></tr>
+<tr><td>392</td>
+<td>ss</td><td></td><td>0.673</td><td></td></font></tr>
+<tr><td>393</td>
+<td>High</td><td>0.7125</td><td>0.706</td><td><font color=red>-6.0</font> mV</td></font></tr>
+<tr><td>394</td>
+<th rowspan=5>nmos_esd_W5p4_L1p8_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.643</td></tr><tr><td>395</td>
+<td>ff</td><td></td><td>0.606</td></tr><tr><td>396</td>
+<td>Low</td><td></td><td>0.574</td></tr><tr><td>397</td>
+<td>ss</td><td></td><td>0.682</td></tr><tr><td>398</td>
+<td>High</td><td></td><td>0.713</td></tr><tr><td>399</td>
+<th rowspan=5>nmos_esd_W5p4_L1p8_idsat_SPOT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>2.02</td></tr><tr><td>400</td>
+<td>fs</td><td></td><td>1.76</td></tr><tr><td>401</td>
+<td>Low</td><td></td><td>1.79</td></tr><tr><td>402</td>
+<td>sf</td><td></td><td>2.30</td></tr><tr><td>403</td>
+<td>High</td><td></td><td>2.28</td></tr><tr><td>404</td>
+<th rowspan=5>nmos_esd</th><th rowspan=5>IDSNESDLVS</th><td>Nom</td><td>8.145</td><td>8.0621</td><td><font color=black>-1.0</font> %</td></font><th rowspan=5>Size:20.35/0.165, Id 20.35/0.165, Vd=1.8 Vg=1.8 Vb=0</th></tr>
+<tr><td>405</td>
+<td>fs</td><td></td><td>7.02</td></tr><tr><td>406</td>
+<td>Low</td><td>7.216</td><td>7.1536</td><td><font color=black>-0.9</font> %</td></font></tr>
+<tr><td>407</td>
+<td>sf</td><td></td><td>9.14</td></tr><tr><td>408</td>
+<td>High</td><td>9.075</td><td>9.0399</td><td><font color=black>-0.4</font> %</td></font></tr>
+<tr><td>409</td>
+<th rowspan=5>nmos_esd_nat_v5_W1000_L0p9_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.080</td></tr><tr><td>410</td>
+<td>ff</td><td></td><td>0.055</td></tr><tr><td>411</td>
+<td>Low</td><td></td><td>0.037</td></tr><tr><td>412</td>
+<td>ss</td><td></td><td>0.105</td></tr><tr><td>413</td>
+<td>High</td><td></td><td>0.123</td></tr><tr><td>414</td>
+<th rowspan=5>nmos_esd_nat_v5_W1000_L0p9_idsat_SPOT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>573.54</td></tr><tr><td>415</td>
+<td>fs</td><td></td><td>544.89</td></tr><tr><td>416</td>
+<td>Low</td><td></td><td>553.51</td></tr><tr><td>417</td>
+<td>sf</td><td></td><td>599.80</td></tr><tr><td>418</td>
+<td>High</td><td></td><td>593.90</td></tr><tr><td>419</td>
+<th rowspan=5>nmos_esd_nat_v5_W1000_L4_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.116</td></tr><tr><td>420</td>
+<td>ff</td><td></td><td>0.092</td></tr><tr><td>421</td>
+<td>Low</td><td></td><td>0.074</td></tr><tr><td>422</td>
+<td>ss</td><td></td><td>0.140</td></tr><tr><td>423</td>
+<td>High</td><td></td><td>0.159</td></tr><tr><td>424</td>
+<th rowspan=5>nmos_esd_nat_v5_W1000_L4_idsat_SPOT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>231.79</td></tr><tr><td>425</td>
+<td>fs</td><td></td><td>210.42</td></tr><tr><td>426</td>
+<td>Low</td><td></td><td>221.73</td></tr><tr><td>427</td>
+<td>sf</td><td></td><td>252.77</td></tr><tr><td>428</td>
+<td>High</td><td></td><td>242.09</td></tr><tr><td>429</td>
+<th rowspan=5>nmos_esd_nat_v5_W10_L0p9_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.083</td></tr><tr><td>430</td>
+<td>ff</td><td></td><td>0.058</td></tr><tr><td>431</td>
+<td>Low</td><td></td><td>0.040</td></tr><tr><td>432</td>
+<td>ss</td><td></td><td>0.108</td></tr><tr><td>433</td>
+<td>High</td><td></td><td>0.126</td></tr><tr><td>434</td>
+<th rowspan=5>nmos_esd_nat_v5_W10_L0p9_idsat_SPOT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>5.63</td></tr><tr><td>435</td>
+<td>fs</td><td></td><td>5.35</td></tr><tr><td>436</td>
+<td>Low</td><td></td><td>5.41</td></tr><tr><td>437</td>
+<td>sf</td><td></td><td>5.88</td></tr><tr><td>438</td>
+<td>High</td><td></td><td>5.85</td></tr><tr><td>439</td>
+<th rowspan=5>nmos_esd_nat_v5_W10_L2_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.121</td></tr><tr><td>440</td>
+<td>ff</td><td></td><td>0.096</td></tr><tr><td>441</td>
+<td>Low</td><td></td><td>0.078</td></tr><tr><td>442</td>
+<td>ss</td><td></td><td>0.145</td></tr><tr><td>443</td>
+<td>High</td><td></td><td>0.163</td></tr><tr><td>444</td>
+<th rowspan=5>nmos_esd_nat_v5_W10_L2_idsat_SPOT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>3.64</td></tr><tr><td>445</td>
+<td>fs</td><td></td><td>3.36</td></tr><tr><td>446</td>
+<td>Low</td><td></td><td>3.48</td></tr><tr><td>447</td>
+<td>sf</td><td></td><td>3.90</td></tr><tr><td>448</td>
+<td>High</td><td></td><td>3.80</td></tr><tr><td>449</td>
+<th rowspan=5>nmos_esd_nat_v5_W10_L4_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.118</td></tr><tr><td>450</td>
+<td>ff</td><td></td><td>0.094</td></tr><tr><td>451</td>
+<td>Low</td><td></td><td>0.075</td></tr><tr><td>452</td>
+<td>ss</td><td></td><td>0.142</td></tr><tr><td>453</td>
+<td>High</td><td></td><td>0.161</td></tr><tr><td>454</td>
+<th rowspan=5>nmos_esd_nat_v5_W10_L4_idsat_SPOT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>2.28</td></tr><tr><td>455</td>
+<td>fs</td><td></td><td>2.07</td></tr><tr><td>456</td>
+<td>Low</td><td></td><td>2.17</td></tr><tr><td>457</td>
+<td>sf</td><td></td><td>2.48</td></tr><tr><td>458</td>
+<td>High</td><td></td><td>2.39</td></tr><tr><td>459</td>
+<th rowspan=5>nmos_esd_v5</th><th rowspan=5>VTXNESDHVS55</th><td>Nom</td><td>0.8115</td><td>0.811</td><td><font color=black>-0.8</font> mV</td></font><th rowspan=5>Size:21.5 / 0.55, Vt - W=21.5 / L=0.55, Vd=0.1 Vb=0</th></tr>
+<tr><td>460</td>
+<td>ff</td><td></td><td>0.774</td><td></td></font></tr>
+<tr><td>461</td>
+<td>Low</td><td>0.7522</td><td>0.750</td><td><font color=black>-2.3</font> mV</td></font></tr>
+<tr><td>462</td>
+<td>ss</td><td></td><td>0.847</td><td></td></font></tr>
+<tr><td>463</td>
+<td>High</td><td>0.8708</td><td>0.871</td><td><font color=black>0.7</font> mV</td></font></tr>
+<tr><td>464</td>
+<th rowspan=5>nmos_esd_v5_W30_L1_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.801</td></tr><tr><td>465</td>
+<td>ff</td><td></td><td>0.765</td></tr><tr><td>466</td>
+<td>Low</td><td></td><td>0.740</td></tr><tr><td>467</td>
+<td>ss</td><td></td><td>0.837</td></tr><tr><td>468</td>
+<td>High</td><td></td><td>0.861</td></tr><tr><td>469</td>
+<th rowspan=5>nmos_esd_v5_W30_L1_idsat_SPOT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>11.55</td></tr><tr><td>470</td>
+<td>fs</td><td></td><td>10.78</td></tr><tr><td>471</td>
+<td>Low</td><td></td><td>10.91</td></tr><tr><td>472</td>
+<td>sf</td><td></td><td>12.28</td></tr><tr><td>473</td>
+<td>High</td><td></td><td>12.19</td></tr><tr><td>474</td>
+<th rowspan=5>nmos_esd_v5</th><th rowspan=5>IDSNESDHVS55</th><td>Nom</td><td>11.46</td><td>11.5980</td><td><font color=black>1.2</font> %</td></font><th rowspan=5>Size:21.5 / 0.55, Idsat - W=21.5 / L=0.55, Vd=5 Vg=5 Vb=0</th></tr>
+<tr><td>475</td>
+<td>fs</td><td></td><td>10.79</td></tr><tr><td>476</td>
+<td>Low</td><td>10.57</td><td>10.8897</td><td><font color=black>3.0</font> %</td></font></tr>
+<tr><td>477</td>
+<td>sf</td><td></td><td>12.37</td></tr><tr><td>478</td>
+<td>High</td><td>12.35</td><td>12.3103</td><td><font color=black>-0.3</font> %</td></font></tr>
+<tr><td>479</td>
+<th rowspan=5>nmos_lvt</th><th rowspan=5>VTXNSN15L</th><td>Nom</td><td>0.6396</td><td>0.639</td><td><font color=black>-1.0</font> mV</td></font><th rowspan=5>Size:0.42/0.15, Narrow/Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>480</td>
+<td>ff</td><td></td><td>0.565</td><td></td></font></tr>
+<tr><td>481</td>
+<td>Low</td><td>0.5292</td><td>0.528</td><td><font color=black>-0.9</font> mV</td></font></tr>
+<tr><td>482</td>
+<td>ss</td><td></td><td>0.713</td><td></td></font></tr>
+<tr><td>483</td>
+<td>High</td><td>0.75</td><td>0.749</td><td><font color=black>-1.1</font> mV</td></font></tr>
+<tr><td>484</td>
+<th rowspan=5>nmos_lvt</th><th rowspan=5>VTXNN42L</th><td>Nom</td><td>0.4847</td><td>0.484</td><td><font color=black>-0.5</font> mV</td></font><th rowspan=5>Size:0.42/1, Narrow/Long Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>485</td>
+<td>ff</td><td></td><td>0.452</td><td></td></font></tr>
+<tr><td>486</td>
+<td>Low</td><td>0.4397</td><td>0.443</td><td><font color=black>3.6</font> mV</td></font></tr>
+<tr><td>487</td>
+<td>ss</td><td></td><td>0.516</td><td></td></font></tr>
+<tr><td>488</td>
+<td>High</td><td>0.5296</td><td>0.525</td><td><font color=black>-4.3</font> mV</td></font></tr>
+<tr><td>489</td>
+<th rowspan=5>nmos_lvt_W1000_L20_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.436</td></tr><tr><td>490</td>
+<td>ff</td><td></td><td>0.414</td></tr><tr><td>491</td>
+<td>Low</td><td></td><td>0.412</td></tr><tr><td>492</td>
+<td>ss</td><td></td><td>0.459</td></tr><tr><td>493</td>
+<td>High</td><td></td><td>0.461</td></tr><tr><td>494</td>
+<th rowspan=5>nmos_lvt</th><th rowspan=5>VTXNS15L</th><td>Nom</td><td>0.6114</td><td>0.611</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size:7/0.15, Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>495</td>
+<td>ff</td><td></td><td>0.560</td><td></td></font></tr>
+<tr><td>496</td>
+<td>Low</td><td>0.55641125</td><td>0.555</td><td><font color=black>-1.2</font> mV</td></font></tr>
+<tr><td>497</td>
+<td>ss</td><td></td><td>0.658</td><td></td></font></tr>
+<tr><td>498</td>
+<td>High</td><td>0.66641125</td><td>0.668</td><td><font color=black>1.1</font> mV</td></font></tr>
+<tr><td>499</td>
+<th rowspan=5>nmos_lvt</th><th rowspan=5>IDSNS15L</th><td>Nom</td><td>4.008</td><td>4.0078</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:7/0.15, Short Channel Drive Current, Id @ Vd=Vg=1.8V, Vs=Vb=0V</th></tr>
+<tr><td>500</td>
+<td>fs</td><td></td><td>3.74</td></tr><tr><td>501</td>
+<td>Low</td><td>3.527312</td><td>3.5041</td><td><font color=black>-0.7</font> %</td></font></tr>
+<tr><td>502</td>
+<td>sf</td><td></td><td>4.27</td></tr><tr><td>503</td>
+<td>High</td><td>4.48930618182</td><td>4.6840</td><td><font color=black>4.3</font> %</td></font></tr>
+<tr><td>504</td>
+<th rowspan=5>nmos_lvt</th><th rowspan=5>VTXNLL</th><td>Nom</td><td>0.4399</td><td>0.440</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size: 7/8, Long Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>505</td>
+<td>ff</td><td></td><td>0.417</td><td></td></font></tr>
+<tr><td>506</td>
+<td>Low</td><td>0.4151</td><td>0.414</td><td><font color=black>-0.7</font> mV</td></font></tr>
+<tr><td>507</td>
+<td>ss</td><td></td><td>0.463</td><td></td></font></tr>
+<tr><td>508</td>
+<td>High</td><td>0.4647</td><td>0.465</td><td><font color=black>0.8</font> mV</td></font></tr>
+<tr><td>509</td>
+<th rowspan=5>nmos_nat_v3</th><th rowspan=5>VTXNSN50NTH</th><td>Nom</td><td>-0.046</td><td>-0.047</td><td><font color=black>-0.6</font> mV</td></font><th rowspan=5>Size:0.42/0.50, Narrow/Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>510</td>
+<td>ff</td><td></td><td>-0.094</td><td></td></font></tr>
+<tr><td>511</td>
+<td>Low</td><td>-0.142</td><td>-0.143</td><td><font color=black>-0.6</font> mV</td></font></tr>
+<tr><td>512</td>
+<td>ss</td><td></td><td>0.000</td><td></td></font></tr>
+<tr><td>513</td>
+<td>High</td><td>0.05</td><td>0.048</td><td><font color=black>-1.6</font> mV</td></font></tr>
+<tr><td>514</td>
+<th rowspan=5>nmos_nat_v3</th><th rowspan=5>IDSNSN50NTH</th><td>Nom</td><td>0.2203</td><td>0.2229</td><td><font color=black>1.2</font> %</td></font><th rowspan=5>Size:0.42/0.50, Narrow/Short Channel Drive Current, Id @ Vd=Vg=3.0V, Vs=Vb=0V</th></tr>
+<tr><td>515</td>
+<td>fs</td><td></td><td>1.59e-01</td></tr><tr><td>516</td>
+<td>Low</td><td>0.1644</td><td>0.1801</td><td><font color=black>9.6</font> %</td></font></tr>
+<tr><td>517</td>
+<td>sf</td><td></td><td>2.55e-01</td></tr><tr><td>518</td>
+<td>High</td><td>0.2762</td><td>0.2681</td><td><font color=black>-2.9</font> %</td></font></tr>
+<tr><td>519</td>
+<th rowspan=5>nmos_nat_v3_W100_L0p9_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.008</td></tr><tr><td>520</td>
+<td>ff</td><td></td><td>-0.023</td></tr><tr><td>521</td>
+<td>Low</td><td></td><td>-0.050</td></tr><tr><td>522</td>
+<td>ss</td><td></td><td>0.039</td></tr><tr><td>523</td>
+<td>High</td><td></td><td>0.065</td></tr><tr><td>524</td>
+<th rowspan=5>nmos_nat_v3</th><th rowspan=5>VTXNS50NTH</th><td>Nom</td><td>-0.029</td><td>-0.029</td><td><font color=black>0.0</font> mV</td></font><th rowspan=5>Size:10/0.50, Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>525</td>
+<td>ff</td><td></td><td>-0.066</td><td></td></font></tr>
+<tr><td>526</td>
+<td>Low</td><td>-0.089</td><td>-0.089</td><td><font color=black>0.0</font> mV</td></font></tr>
+<tr><td>527</td>
+<td>ss</td><td></td><td>0.008</td><td></td></font></tr>
+<tr><td>528</td>
+<td>High</td><td>0.031</td><td>0.031</td><td><font color=black>-0.2</font> mV</td></font></tr>
+<tr><td>529</td>
+<th rowspan=5>nmos_nat_v3</th><th rowspan=5>IDSNS50NTH</th><td>Nom</td><td>4.823</td><td>4.8193</td><td><font color=black>-0.1</font> %</td></font><th rowspan=5>Size:10/0.50, Short Channel Drive Current, Id @ Vd=Vg=3.0V, Vs=Vb=0V</th></tr>
+<tr><td>530</td>
+<td>fs</td><td></td><td>4.59</td></tr><tr><td>531</td>
+<td>Low</td><td>4.357</td><td>4.6075</td><td><font color=black>5.7</font> %</td></font></tr>
+<tr><td>532</td>
+<td>sf</td><td></td><td>5.02</td></tr><tr><td>533</td>
+<td>High</td><td>5.291</td><td>5.0329</td><td><font color=black>-4.9</font> %</td></font></tr>
+<tr><td>534</td>
+<th rowspan=5>nmos_nat_v3_W10_L0p8_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.006</td></tr><tr><td>535</td>
+<td>ff</td><td></td><td>-0.025</td></tr><tr><td>536</td>
+<td>Low</td><td></td><td>0.047</td></tr><tr><td>537</td>
+<td>ss</td><td></td><td>0.038</td></tr><tr><td>538</td>
+<td>High</td><td></td><td>0.065</td></tr><tr><td>539</td>
+<th rowspan=5>nmos_nat_v5</th><th rowspan=5>VTXNSN90NVH</th><td>Nom</td><td>0.0752</td><td>0.075</td><td><font color=black>-0.1</font> mV</td></font><th rowspan=5>Size:0.42/0.90, Narrow/Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>540</td>
+<td>ff</td><td></td><td>0.040</td><td></td></font></tr>
+<tr><td>541</td>
+<td>Low</td><td>-0.0021</td><td>-0.006</td><td><font color=black>-3.7</font> mV</td></font></tr>
+<tr><td>542</td>
+<td>ss</td><td></td><td>0.107</td><td></td></font></tr>
+<tr><td>543</td>
+<td>High</td><td>0.1521</td><td>0.148</td><td><font color=black>-4.6</font> mV</td></font></tr>
+<tr><td>544</td>
+<th rowspan=5>nmos_nat_v5</th><th rowspan=5>IDSNSN90NVH</th><td>Nom</td><td>0.2711</td><td>0.2701</td><td><font color=black>-0.4</font> %</td></font><th rowspan=5>Size:0.42/0.90, Narrow/Short Channel Drive Current, Id @ Vd=Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>545</td>
+<td>fs</td><td></td><td>2.14e-01</td></tr><tr><td>546</td>
+<td>Low</td><td>0.216</td><td>0.2277</td><td><font color=black>5.4</font> %</td></font></tr>
+<tr><td>547</td>
+<td>sf</td><td></td><td>3.16e-01</td></tr><tr><td>548</td>
+<td>High</td><td>0.3252</td><td>0.3150</td><td><font color=black>-3.1</font> %</td></font></tr>
+<tr><td>549</td>
+<th rowspan=5>nmos_nat_v5_W100_L25_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.104</td></tr><tr><td>550</td>
+<td>ff</td><td></td><td>0.081</td></tr><tr><td>551</td>
+<td>Low</td><td></td><td>0.064</td></tr><tr><td>552</td>
+<td>ss</td><td></td><td>0.127</td></tr><tr><td>553</td>
+<td>High</td><td></td><td>0.144</td></tr><tr><td>554</td>
+<th rowspan=5>nmos_nat_v5</th><th rowspan=5>VTXNS90NVH</th><td>Nom</td><td>0.0968</td><td>0.097</td><td><font color=black>0.0</font> mV</td></font><th rowspan=5>Size:10/0.90, Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>555</td>
+<td>ff</td><td></td><td>0.067</td><td></td></font></tr>
+<tr><td>556</td>
+<td>Low</td><td>0.0436</td><td>0.043</td><td><font color=black>-0.3</font> mV</td></font></tr>
+<tr><td>557</td>
+<td>ss</td><td></td><td>0.127</td><td></td></font></tr>
+<tr><td>558</td>
+<td>High</td><td>0.1499</td><td>0.150</td><td><font color=black>0.1</font> mV</td></font></tr>
+<tr><td>559</td>
+<th rowspan=5>nmos_nat_v5</th><th rowspan=5>IDSNS90NVH</th><td>Nom</td><td>5.819</td><td>5.8184</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:10/0.90, Short Channel Drive Current, Id @ Vd=Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>560</td>
+<td>fs</td><td></td><td>5.52</td></tr><tr><td>561</td>
+<td>Low</td><td>5.558</td><td>5.5876</td><td><font color=black>0.5</font> %</td></font></tr>
+<tr><td>562</td>
+<td>sf</td><td></td><td>6.10</td></tr><tr><td>563</td>
+<td>High</td><td>6.069</td><td>6.0543</td><td><font color=black>-0.2</font> %</td></font></tr>
+<tr><td>564</td>
+<th rowspan=5>nmos_nat_v5</th><th rowspan=5>VTXNLNVH</th><td>Nom</td><td>0.1213</td><td>0.121</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size:10/4, Long Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>565</td>
+<td>ff</td><td></td><td>0.097</td><td></td></font></tr>
+<tr><td>566</td>
+<td>Low</td><td>0.0786</td><td>0.079</td><td><font color=black>0.0</font> mV</td></font></tr>
+<tr><td>567</td>
+<td>ss</td><td></td><td>0.145</td><td></td></font></tr>
+<tr><td>568</td>
+<td>High</td><td>0.1639</td><td>0.164</td><td><font color=black>0.0</font> mV</td></font></tr>
+<tr><td>569</td>
+<th rowspan=5>nmos_v5</th><th rowspan=5>VTXNSN50H</th><td>Nom</td><td>0.7812</td><td>0.781</td><td><font color=black>-0.4</font> mV</td></font><th rowspan=5>Size:0.42/0.50, Narrow/Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>570</td>
+<td>ff</td><td></td><td>0.709</td><td></td></font></tr>
+<tr><td>571</td>
+<td>Low</td><td>0.6251</td><td>0.624</td><td><font color=black>-0.8</font> mV</td></font></tr>
+<tr><td>572</td>
+<td>ss</td><td></td><td>0.851</td><td></td></font></tr>
+<tr><td>573</td>
+<td>High</td><td>0.9374</td><td>0.937</td><td><font color=black>-0.2</font> mV</td></font></tr>
+<tr><td>574</td>
+<th rowspan=5>nmos_v5</th><th rowspan=5>IDSNSN50H</th><td>Nom</td><td>0.2877</td><td>0.2866</td><td><font color=black>-0.4</font> %</td></font><th rowspan=5>Size:0.42/0.50, Narrow/Short Channel Drive Current, Id @ Vd=Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>575</td>
+<td>fs</td><td></td><td>2.44e-01</td></tr><tr><td>576</td>
+<td>Low</td><td>0.2232</td><td>0.2351</td><td><font color=black>5.3</font> %</td></font></tr>
+<tr><td>577</td>
+<td>sf</td><td></td><td>3.31e-01</td></tr><tr><td>578</td>
+<td>High</td><td>0.3523</td><td>0.3435</td><td><font color=black>-2.5</font> %</td></font></tr>
+<tr><td>579</td>
+<th rowspan=5>nmos_v5</th><th rowspan=5>VTXNN42H</th><td>Nom</td><td>0.8127</td><td>0.812</td><td><font color=black>-1.1</font> mV</td></font><th rowspan=5>Size:0.42/20, Narrow/Long Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>580</td>
+<td>ff</td><td></td><td>0.772</td><td></td></font></tr>
+<tr><td>581</td>
+<td>Low</td><td>0.7429</td><td>0.740</td><td><font color=black>-2.4</font> mV</td></font></tr>
+<tr><td>582</td>
+<td>ss</td><td></td><td>0.850</td><td></td></font></tr>
+<tr><td>583</td>
+<td>High</td><td>0.8826</td><td>0.883</td><td><font color=black>0.2</font> mV</td></font></tr>
+<tr><td>584</td>
+<th rowspan=5>nmos_v5_W1000_L20_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>0.813</td></tr><tr><td>585</td>
+<td>ff</td><td></td><td>0.785</td></tr><tr><td>586</td>
+<td>Low</td><td></td><td>0.773</td></tr><tr><td>587</td>
+<td>ss</td><td></td><td>0.842</td></tr><tr><td>588</td>
+<td>High</td><td></td><td>0.854</td></tr><tr><td>589</td>
+<th rowspan=5>nmos_v5</th><th rowspan=5>VTXNS50H</th><td>Nom</td><td>0.8218</td><td>0.822</td><td><font color=black>0.0</font> mV</td></font><th rowspan=5>Size:20/0.50, Short Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>590</td>
+<td>ff</td><td></td><td>0.766</td><td></td></font></tr>
+<tr><td>591</td>
+<td>Low</td><td>0.7109</td><td>0.713</td><td><font color=black>1.8</font> mV</td></font></tr>
+<tr><td>592</td>
+<td>ss</td><td></td><td>0.878</td><td></td></font></tr>
+<tr><td>593</td>
+<td>High</td><td>0.9326</td><td>0.931</td><td><font color=black>-1.7</font> mV</td></font></tr>
+<tr><td>594</td>
+<th rowspan=5>nmos_v5</th><th rowspan=5>IDSNS50H</th><td>Nom</td><td>12.1</td><td>12.0854</td><td><font color=black>-0.1</font> %</td></font><th rowspan=5>Size:20/0.50, Short Channel Drive Current, Id @ Vd=Vg=5.0V, Vs=Vb=0V</th></tr>
+<tr><td>595</td>
+<td>fs</td><td></td><td>10.39</td></tr><tr><td>596</td>
+<td>Low</td><td>11.1</td><td>10.7300</td><td><font color=black>-3.3</font> %</td></font></tr>
+<tr><td>597</td>
+<td>sf</td><td></td><td>13.80</td></tr><tr><td>598</td>
+<td>High</td><td>13.1</td><td>13.5108</td><td><font color=black>3.1</font> %</td></font></tr>
+<tr><td>599</td>
+<th rowspan=5>nmos_v5</th><th rowspan=5>VTXNLH</th><td>Nom</td><td>0.8113</td><td>0.811</td><td><font color=black>0.0</font> mV</td></font><th rowspan=5>Size: 7/8, Long Channel VT, Vd=0.1V, Vs=Vb=0V</th></tr>
+<tr><td>600</td>
+<td>ff</td><td></td><td>0.781</td><td></td></font></tr>
+<tr><td>601</td>
+<td>Low</td><td>0.7665</td><td>0.767</td><td><font color=black>0.1</font> mV</td></font></tr>
+<tr><td>602</td>
+<td>ss</td><td></td><td>0.842</td><td></td></font></tr>
+<tr><td>603</td>
+<td>High</td><td>0.8561</td><td>0.856</td><td><font color=black>-0.0</font> mV</td></font></tr>
+<tr><td>604</td>
+<th rowspan=5>npn_1x1</th><th rowspan=5>BFNPN1X1_10P0</th><td>Nom</td><td>37.5</td><td>37.4992</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1x1 um2, NPN Forward Current Gain (Ic/Ib), Force Ie=10 uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>605</td>
+<td>ff</td><td></td><td>19.1877</td><td></td></font></tr>
+<tr><td>606</td>
+<td>Low</td><td>18.14</td><td>19.1877</td><td><font color=black>5.8</font> %</td></font></tr>
+<tr><td>607</td>
+<td>ss</td><td></td><td>62.4631</td><td></td></font></tr>
+<tr><td>608</td>
+<td>High</td><td>56.93</td><td>62.4631</td><td><font color=black>9.7</font> %</td></font></tr>
+<tr><td>609</td>
+<th rowspan=5>npn_1x1</th><th rowspan=5>VBENPN1X1_10P0</th><td>Nom</td><td>0.7745</td><td>0.7751</td><td><font color=black>0.1</font> %</td></font><th rowspan=5>Size:1x1 um2, NPN Emitter-Base Voltage, Force Ie = 10uA, Vc=Vb=0, Measure Vbe</th></tr>
+<tr><td>610</td>
+<td>fs</td><td></td><td>7.75e-01</td></tr><tr><td>611</td>
+<td>Low</td><td>0.7645</td><td>0.7805</td><td><font color=black>2.1</font> %</td></font></tr>
+<tr><td>612</td>
+<td>sf</td><td></td><td>7.75e-01</td></tr><tr><td>613</td>
+<td>High</td><td>0.7845</td><td>0.7689</td><td><font color=black>-2.0</font> %</td></font></tr>
+<tr><td>614</td>
+<th rowspan=5>npn_1x1</th><th rowspan=5>BFNPN1X1_1P0</th><td>Nom</td><td>36.72</td><td>36.7145</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1x1 um2, NPN Forward Current Gain (Ic/Ib), Force Ie= 1uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>615</td>
+<td>ff</td><td></td><td>19.1036</td><td></td></font></tr>
+<tr><td>616</td>
+<td>Low</td><td>17.97</td><td>19.1036</td><td><font color=black>6.3</font> %</td></font></tr>
+<tr><td>617</td>
+<td>ss</td><td></td><td>59.5850</td><td></td></font></tr>
+<tr><td>618</td>
+<td>High</td><td>55.38</td><td>59.5850</td><td><font color=black>7.6</font> %</td></font></tr>
+<tr><td>619</td>
+<th rowspan=5>npn_1x1</th><th rowspan=5>VBENPN1X1_1P0</th><td>Nom</td><td>0.712</td><td>0.7119</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1x1 um2, NPN Emitter-Base Voltage, Force Ie = 1uA, Vc=Vb=0, Measure Vbe</th></tr>
+<tr><td>620</td>
+<td>fs</td><td></td><td>7.12e-01</td></tr><tr><td>621</td>
+<td>Low</td><td>0.702</td><td>0.7174</td><td><font color=black>2.2</font> %</td></font></tr>
+<tr><td>622</td>
+<td>sf</td><td></td><td>7.12e-01</td></tr><tr><td>623</td>
+<td>High</td><td>0.722</td><td>0.7055</td><td><font color=black>-2.3</font> %</td></font></tr>
+<tr><td>624</td>
+<th rowspan=5>npn_1x1_v5</th><th rowspan=5>BFNPNPOLY_P316</th><td>Nom</td><td>106.98</td><td>106.9438</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1.97 um2, NPN Forward Current Gain (Ic/Ib), Force Ie = 0.316uA, Vc=Vb=0, Measure Ib</th></tr>
+<tr><td>625</td>
+<td>ff</td><td></td><td>56.0224</td><td></td></font></tr>
+<tr><td>626</td>
+<td>Low</td><td>55.94</td><td>56.0224</td><td><font color=black>0.1</font> %</td></font></tr>
+<tr><td>627</td>
+<td>ss</td><td></td><td>157.9635</td><td></td></font></tr>
+<tr><td>628</td>
+<td>High</td><td>500</td><td>157.9635</td><td><font color=red>-68.4</font> %</td></font></tr>
+<tr><td>629</td>
+<th rowspan=5>npn_1x1_v5</th><th rowspan=5>VBENPNPOLY_P316</th><td>Nom</td><td>0.6452</td><td>0.6452</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1.97 um2, NPN Emitter-Base Voltage, Force Ie = 0.316uA, Vc=Vb=0, Measure Vbe</th></tr>
+<tr><td>630</td>
+<td>fs</td><td></td><td>6.45e-01</td></tr><tr><td>631</td>
+<td>Low</td><td>0.6312</td><td>0.6504</td><td><font color=black>3.0</font> %</td></font></tr>
+<tr><td>632</td>
+<td>sf</td><td></td><td>6.45e-01</td></tr><tr><td>633</td>
+<td>High</td><td>0.6591</td><td>0.6393</td><td><font color=black>-3.0</font> %</td></font></tr>
+<tr><td>634</td>
+<th rowspan=5>npn_1x1_v5</th><th rowspan=5>BFNPNPOLY_3P16</th><td>Nom</td><td>125.28</td><td>125.2657</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1.97 um2, NPN Forward Current Gain (Ic/Ib), Force Ie = 3.16uA, Vc=Vb=0, Measure Ib</th></tr>
+<tr><td>635</td>
+<td>ff</td><td></td><td>59.9786</td><td></td></font></tr>
+<tr><td>636</td>
+<td>Low</td><td>62.37</td><td>59.9786</td><td><font color=black>-3.8</font> %</td></font></tr>
+<tr><td>637</td>
+<td>ss</td><td></td><td>208.8607</td><td></td></font></tr>
+<tr><td>638</td>
+<td>High</td><td>500</td><td>208.8607</td><td><font color=red>-58.2</font> %</td></font></tr>
+<tr><td>639</td>
+<th rowspan=5>npn_1x1_v5</th><th rowspan=5>VBENPNPOLY_3P16</th><td>Nom</td><td>0.7073</td><td>0.7073</td><td><font color=black>0.0</font> %</td></font><th rowspan=5>Size:1.97 um2, NPN Emitter-Base Voltage, Force Ie = 3.16uA, Vc=Vb=0, Measure Vbe</th></tr>
+<tr><td>640</td>
+<td>fs</td><td></td><td>7.07e-01</td></tr><tr><td>641</td>
+<td>Low</td><td>0.6933</td><td>0.7125</td><td><font color=black>2.8</font> %</td></font></tr>
+<tr><td>642</td>
+<td>sf</td><td></td><td>7.07e-01</td></tr><tr><td>643</td>
+<td>High</td><td>0.7213</td><td>0.7015</td><td><font color=black>-2.7</font> %</td></font></tr>
+<tr><td>644</td>
+<th rowspan=5>npn_1x2</th><th rowspan=5>BFNPN1X2_17P5</th><td>Nom</td><td>35.14</td><td>35.1393</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1x2 um2, NPN Forward Current Gain (Ic/Ib), Force Ie=17.5 uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>645</td>
+<td>ff</td><td></td><td>17.9689</td><td></td></font></tr>
+<tr><td>646</td>
+<td>Low</td><td>16.98</td><td>17.9689</td><td><font color=black>5.8</font> %</td></font></tr>
+<tr><td>647</td>
+<td>ss</td><td></td><td>58.5962</td><td></td></font></tr>
+<tr><td>648</td>
+<td>High</td><td>53.37</td><td>58.5962</td><td><font color=black>9.8</font> %</td></font></tr>
+<tr><td>649</td>
+<th rowspan=5>npn_1x2</th><th rowspan=5>VBENPN1X2_17P5</th><td>Nom</td><td>0.7745</td><td>0.7753</td><td><font color=black>0.1</font> %</td></font><th rowspan=5>Size:1x2 um2, NPN Emitter-Base Voltage, Force Ie = 17.5 uA, Vc=Vb=0, Measure Vbe</th></tr>
+<tr><td>650</td>
+<td>fs</td><td></td><td>7.75e-01</td></tr><tr><td>651</td>
+<td>Low</td><td>0.7645</td><td>0.7806</td><td><font color=black>2.1</font> %</td></font></tr>
+<tr><td>652</td>
+<td>sf</td><td></td><td>7.75e-01</td></tr><tr><td>653</td>
+<td>High</td><td>0.7845</td><td>0.7692</td><td><font color=black>-2.0</font> %</td></font></tr>
+<tr><td>654</td>
+<th rowspan=5>npn_1x2</th><th rowspan=5>BFNPN1X2_1P75</th><td>Nom</td><td>34.57</td><td>34.5729</td><td><font color=black>0.0</font> %</td></font><th rowspan=5>Size:1x2 um2, NPN Forward Current Gain (Ic/Ib), Force Ie=1.75 uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>655</td>
+<td>ff</td><td></td><td>17.9566</td><td></td></font></tr>
+<tr><td>656</td>
+<td>Low</td><td>16.89</td><td>17.9566</td><td><font color=black>6.3</font> %</td></font></tr>
+<tr><td>657</td>
+<td>ss</td><td></td><td>56.2624</td><td></td></font></tr>
+<tr><td>658</td>
+<td>High</td><td>52.2</td><td>56.2624</td><td><font color=black>7.8</font> %</td></font></tr>
+<tr><td>659</td>
+<th rowspan=5>npn_1x2</th><th rowspan=5>VBENPN1X2_1P75</th><td>Nom</td><td>0.712</td><td>0.7117</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:1x2 um2, NPN Emitter-Base Voltage, Force Ie = 1.75 uA, Vc=Vb=0, Measure Vbe</th></tr>
+<tr><td>660</td>
+<td>fs</td><td></td><td>7.12e-01</td></tr><tr><td>661</td>
+<td>Low</td><td>0.702</td><td>0.7172</td><td><font color=black>2.2</font> %</td></font></tr>
+<tr><td>662</td>
+<td>sf</td><td></td><td>7.12e-01</td></tr><tr><td>663</td>
+<td>High</td><td>0.722</td><td>0.7053</td><td><font color=black>-2.3</font> %</td></font></tr>
+<tr><td>664</td>
+<th rowspan=5>pmos</th><th rowspan=5>VTXPSN15S</th><td>Nom</td><td>-0.705</td><td>-0.701</td><td><font color=black>4.4</font> mV</td></font><th rowspan=5>Size:0.42/0.15, Narrow/Short Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>665</td>
+<td>ff</td><td></td><td>-0.618</td><td></td></font></tr>
+<tr><td>666</td>
+<td>Low</td><td>-0.8559</td><td>-0.855</td><td><font color=black>1.4</font> mV</td></font></tr>
+<tr><td>667</td>
+<td>ss</td><td></td><td>-0.774</td><td></td></font></tr>
+<tr><td>668</td>
+<td>High</td><td>-0.5542</td><td>-0.553</td><td><font color=black>1.7</font> mV</td></font></tr>
+<tr><td>669</td>
+<th rowspan=5>pmos</th><th rowspan=5>IDSPSN15S</th><td>Nom</td><td>0.07828</td><td>0.0764</td><td><font color=black>-2.4</font> %</td></font><th rowspan=5>Size:0.42/0.15, Narrow/Short Channel Drive Current, Id @ Vd=Vg=-1.8V, Vs=Vb=0V</th></tr>
+<tr><td>670</td>
+<td>fs</td><td></td><td>1.06e-01</td></tr><tr><td>671</td>
+<td>Low</td><td>0.04823</td><td>0.0559</td><td><font color=red>15.9</font> %</td></font></tr>
+<tr><td>672</td>
+<td>sf</td><td></td><td>5.03e-02</td></tr><tr><td>673</td>
+<td>High</td><td>0.1083</td><td>0.1035</td><td><font color=black>-4.4</font> %</td></font></tr>
+<tr><td>674</td>
+<th rowspan=5>pmos</th><th rowspan=5>VTXPN42S</th><td>Nom</td><td>-0.9406</td><td>-0.940</td><td><font color=black>1.0</font> mV</td></font><th rowspan=5>Size:0.42/8, Narrow/Long Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>675</td>
+<td>ff</td><td></td><td>-0.915</td><td></td></font></tr>
+<tr><td>676</td>
+<td>Low</td><td>-0.9846</td><td>-0.988</td><td><font color=black>-3.4</font> mV</td></font></tr>
+<tr><td>677</td>
+<td>ss</td><td></td><td>-0.983</td><td></td></font></tr>
+<tr><td>678</td>
+<td>High</td><td>-0.895</td><td>-0.892</td><td><font color=black>3.2</font> mV</td></font></tr>
+<tr><td>679</td>
+<th rowspan=5>pmos_W1000_L20_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>-0.877</td></tr><tr><td>680</td>
+<td>ff</td><td></td><td>-0.839</td></tr><tr><td>681</td>
+<td>Low</td><td></td><td>-0.940</td></tr><tr><td>682</td>
+<td>ss</td><td></td><td>-0.912</td></tr><tr><td>683</td>
+<td>High</td><td></td><td>-0.814</td></tr><tr><td>684</td>
+<th rowspan=5>pmos</th><th rowspan=5>VTXPS15S</th><td>Nom</td><td>-0.7813</td><td>-0.781</td><td><font color=black>0.3</font> mV</td></font><th rowspan=5>Size:7/0.15, Short Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>685</td>
+<td>ff</td><td></td><td>-0.721</td><td></td></font></tr>
+<tr><td>686</td>
+<td>Low</td><td>-0.8576</td><td>-0.859</td><td><font color=black>-0.9</font> mV</td></font></tr>
+<tr><td>687</td>
+<td>ss</td><td></td><td>-0.835</td><td></td></font></tr>
+<tr><td>688</td>
+<td>High</td><td>-0.705</td><td>-0.704</td><td><font color=black>0.7</font> mV</td></font></tr>
+<tr><td>689</td>
+<th rowspan=5>pmos</th><th rowspan=5>IDSPS15S</th><td>Nom</td><td>1.347</td><td>1.3444</td><td><font color=black>-0.2</font> %</td></font><th rowspan=5>Size:7/0.15, Short Channel Drive Current, Id @ Vd=Vg=-1.8V, Vs=Vb=0V</th></tr>
+<tr><td>690</td>
+<td>fs</td><td></td><td>1.71</td></tr><tr><td>691</td>
+<td>Low</td><td>0.9174</td><td>1.0709</td><td><font color=red>16.7</font> %</td></font></tr>
+<tr><td>692</td>
+<td>sf</td><td></td><td>9.68e-01</td></tr><tr><td>693</td>
+<td>High</td><td>1.777</td><td>1.6284</td><td><font color=black>-8.4</font> %</td></font></tr>
+<tr><td>694</td>
+<th rowspan=5>pmos</th><th rowspan=5>VTXPLS</th><td>Nom</td><td>-1.0498</td><td>-1.050</td><td><font color=black>0.0</font> mV</td></font><th rowspan=5>Size: 7/8, Long Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>695</td>
+<td>ff</td><td></td><td>-1.035</td><td></td></font></tr>
+<tr><td>696</td>
+<td>Low</td><td>-1.0858</td><td>-1.086</td><td><font color=black>-0.5</font> mV</td></font></tr>
+<tr><td>697</td>
+<td>ss</td><td></td><td>-1.064</td><td></td></font></tr>
+<tr><td>698</td>
+<td>High</td><td>-1.0137</td><td>-1.013</td><td><font color=black>0.5</font> mV</td></font></tr>
+<tr><td>699</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>RDSPVHV20P00P66</th><td>Nom</td><td>757.1</td><td>760.6033</td><td><font color=black>0.5</font> %</td></font><th rowspan=5>Size:w/l=20/0.66, RDS on resistance, Vd/Id @ Vd=-0.5V, Vg=-5V, Vs=Vb=0V</th></tr>
+<tr><td>700</td>
+<td>ff</td><td></td><td>635.8534</td><td></td></font></tr>
+<tr><td>701</td>
+<td>Low</td><td>482.9</td><td>450.3272</td><td><font color=black>-6.7</font> %</td></font></tr>
+<tr><td>702</td>
+<td>ss</td><td></td><td>936.6669</td><td></td></font></tr>
+<tr><td>703</td>
+<td>High</td><td>1279</td><td>1265.2421</td><td><font color=black>-1.1</font> %</td></font></tr>
+<tr><td>704</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>VTXPVHV20P00P66</th><td>Nom</td><td>-1.1048</td><td>-1.107</td><td><font color=black>-1.7</font> mV</td></font><th rowspan=5>Size:w/l=20/0.66, peak-gm VT, MaxGM Vth at Vd=-0.1, Vs=Vb=0V</th></tr>
+<tr><td>705</td>
+<td>ff</td><td></td><td>-1.027</td><td></td></font></tr>
+<tr><td>706</td>
+<td>Low</td><td>-1.2353</td><td>-1.238</td><td><font color=black>-2.6</font> mV</td></font></tr>
+<tr><td>707</td>
+<td>ss</td><td></td><td>-1.186</td><td></td></font></tr>
+<tr><td>708</td>
+<td>High</td><td>-0.9753</td><td>-0.975</td><td><font color=black>-0.2</font> mV</td></font></tr>
+<tr><td>709</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>IDSPVHV20P00P66</th><td>Nom</td><td>4.911</td><td>4.7505</td><td><font color=black>-3.3</font> %</td></font><th rowspan=5>Size:w/l=20/0.66, sat current, Id @ Vd=-10V, Vg=-5V, Vs=Vb=0V</th></tr>
+<tr><td>710</td>
+<td>fs</td><td></td><td>5.94</td></tr><tr><td>711</td>
+<td>Low</td><td>3.505</td><td>4.0989</td><td><font color=red>16.9</font> %</td></font></tr>
+<tr><td>712</td>
+<td>sf</td><td></td><td>3.63</td></tr><tr><td>713</td>
+<td>High</td><td>6.393</td><td>5.4629</td><td><font color=red>-14.5</font> %</td></font></tr>
+<tr><td>714</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>RDSPVHV20P02P20</th><td>Nom</td><td>1409</td><td>1466.0499</td><td><font color=black>4.0</font> %</td></font><th rowspan=5>Size:w/l=20/2.2, RDS on resistance, Vd/Id @ Vd=-0.5V, Vg=-5V, Vs=Vb=0V</th></tr>
+<tr><td>715</td>
+<td>ff</td><td></td><td>1263.7925</td><td></td></font></tr>
+<tr><td>716</td>
+<td>Low</td><td>1016</td><td>1052.0541</td><td><font color=black>3.5</font> %</td></font></tr>
+<tr><td>717</td>
+<td>ss</td><td></td><td>1733.7384</td><td></td></font></tr>
+<tr><td>718</td>
+<td>High</td><td>2167</td><td>2102.0823</td><td><font color=black>-3.0</font> %</td></font></tr>
+<tr><td>719</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>VTXPVHV20P02P20</th><td>Nom</td><td>-1.0984</td><td>-1.099</td><td><font color=black>-0.9</font> mV</td></font><th rowspan=5>Size:w/l=20/2.2, peak-gm VT, MaxGM Vth at Vd=-0.1, Vs=Vb=0V</th></tr>
+<tr><td>720</td>
+<td>ff</td><td></td><td>-1.021</td><td></td></font></tr>
+<tr><td>721</td>
+<td>Low</td><td>-1.2292</td><td>-1.230</td><td><font color=black>-0.7</font> mV</td></font></tr>
+<tr><td>722</td>
+<td>ss</td><td></td><td>-1.177</td><td></td></font></tr>
+<tr><td>723</td>
+<td>High</td><td>-0.9675</td><td>-0.968</td><td><font color=black>-0.8</font> mV</td></font></tr>
+<tr><td>724</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>IDSPVHV20P02P20</th><td>Nom</td><td>1.902</td><td>1.7883</td><td><font color=black>-6.0</font> %</td></font><th rowspan=5>Size:w/l=20/2.2, sat current, Id @ Vd=-10V, Vg=-5V, Vs=Vb=0V</th></tr>
+<tr><td>725</td>
+<td>fs</td><td></td><td>2.21</td></tr><tr><td>726</td>
+<td>Low</td><td>1.343</td><td>1.5420</td><td><font color=red>14.8</font> %</td></font></tr>
+<tr><td>727</td>
+<td>sf</td><td></td><td>1.40</td></tr><tr><td>728</td>
+<td>High</td><td>2.448</td><td>2.0585</td><td><font color=red>-15.9</font> %</td></font></tr>
+<tr><td>729</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>VTBPVHV50P00P66</th><td>Nom</td><td>-2.068</td><td>-2.069</td><td><font color=black>-1.4</font> mV</td></font><th rowspan=5>Size:w/l=50/0.66, peak-gm VT, MaxGM Vth at Vd=-0.1, Vs=0, Vb=5V</th></tr>
+<tr><td>730</td>
+<td>ff</td><td></td><td>-1.951</td><td></td></font></tr>
+<tr><td>731</td>
+<td>Low</td><td>-2.2531</td><td>-2.250</td><td><font color=black>2.8</font> mV</td></font></tr>
+<tr><td>732</td>
+<td>ss</td><td></td><td>-2.188</td><td></td></font></tr>
+<tr><td>733</td>
+<td>High</td><td>-1.884</td><td>-1.889</td><td><font color=black>-4.7</font> mV</td></font></tr>
+<tr><td>734</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>RDSPVHV5P000P66</th><td>Nom</td><td>3029</td><td>3042.4017</td><td><font color=black>0.4</font> %</td></font><th rowspan=5>Size:w/l=5/0.66, RDS on resistance, Vd/Id @ Vd=-0.5V, Vg=-5V, Vs=Vb=0V</th></tr>
+<tr><td>735</td>
+<td>ff</td><td></td><td>2535.9231</td><td></td></font></tr>
+<tr><td>736</td>
+<td>Low</td><td>1923</td><td>1800.9245</td><td><font color=black>-6.3</font> %</td></font></tr>
+<tr><td>737</td>
+<td>ss</td><td></td><td>3756.3528</td><td></td></font></tr>
+<tr><td>738</td>
+<td>High</td><td>5133</td><td>5061.4699</td><td><font color=black>-1.4</font> %</td></font></tr>
+<tr><td>739</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>VTXPVHV5P000P66</th><td>Nom</td><td>-1.1048</td><td>-1.107</td><td><font color=black>-1.7</font> mV</td></font><th rowspan=5>Size:w/l=5/0.66, peak-gm VT, MaxGM Vth at Vd=-0.1, Vs=Vb=0V</th></tr>
+<tr><td>740</td>
+<td>ff</td><td></td><td>-1.026</td><td></td></font></tr>
+<tr><td>741</td>
+<td>Low</td><td>-1.2355</td><td>-1.239</td><td><font color=black>-3.4</font> mV</td></font></tr>
+<tr><td>742</td>
+<td>ss</td><td></td><td>-1.186</td><td></td></font></tr>
+<tr><td>743</td>
+<td>High</td><td>-0.9752</td><td>-0.975</td><td><font color=black>0.7</font> mV</td></font></tr>
+<tr><td>744</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>IDLPVHV5P000P66</th><td>Nom</td><td>0.03348</td><td>0.0334</td><td><font color=black>-0.3</font> %</td></font><th rowspan=5>Size:w/l=5/0.66, linear current, Id @ Vd=-0.1V, Vg=-5V, Vs=Vb=0V</th></tr>
+<tr><td>745</td>
+<td>fs</td><td></td><td>5.72e-02</td></tr><tr><td>746</td>
+<td>Low</td><td>0.01967</td><td>0.0270</td><td><font color=red>37.1</font> %</td></font></tr>
+<tr><td>747</td>
+<td>sf</td><td></td><td>1.99e-02</td></tr><tr><td>748</td>
+<td>High</td><td>0.05303</td><td>0.0401</td><td><font color=red>-24.4</font> %</td></font></tr>
+<tr><td>749</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>VTXPVHV5P002P20</th><td>Nom</td><td>-1.0984</td><td>-1.099</td><td><font color=black>-0.9</font> mV</td></font><th rowspan=5>Size:w/l=5/2.2, peak-gm VT, MaxGM Vth at Vd=-0.1, Vs=Vb=0V</th></tr>
+<tr><td>750</td>
+<td>ff</td><td></td><td>-1.021</td><td></td></font></tr>
+<tr><td>751</td>
+<td>Low</td><td>-1.2293</td><td>-1.230</td><td><font color=black>-0.9</font> mV</td></font></tr>
+<tr><td>752</td>
+<td>ss</td><td></td><td>-1.177</td><td></td></font></tr>
+<tr><td>753</td>
+<td>High</td><td>-0.9674</td><td>-0.968</td><td><font color=black>-0.6</font> mV</td></font></tr>
+<tr><td>754</td>
+<th rowspan=5>pmos_de_v12</th><th rowspan=5>VTBPVHV5P002P20</th><td>Nom</td><td>-2.1001</td><td>-2.101</td><td><font color=black>-1.0</font> mV</td></font><th rowspan=5>Size:w/l=5/2.2, peak-gm VT, MaxGM Vth at Vd=-0.1, Vs=0, Vb=5V</th></tr>
+<tr><td>755</td>
+<td>ff</td><td></td><td>-1.984</td><td></td></font></tr>
+<tr><td>756</td>
+<td>Low</td><td>-2.2842</td><td>-2.283</td><td><font color=black>1.3</font> mV</td></font></tr>
+<tr><td>757</td>
+<td>ss</td><td></td><td>-2.219</td><td></td></font></tr>
+<tr><td>758</td>
+<td>High</td><td>-1.9161</td><td>-1.919</td><td><font color=black>-2.8</font> mV</td></font></tr>
+<tr><td>759</td>
+<th rowspan=5>pmos_de_v20_W1000_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>-1.041</td></tr><tr><td>760</td>
+<td>ff</td><td></td><td>-0.909</td></tr><tr><td>761</td>
+<td>Low</td><td></td><td>-1.242</td></tr><tr><td>762</td>
+<td>ss</td><td></td><td>-1.176</td></tr><tr><td>763</td>
+<td>High</td><td></td><td>-0.842</td></tr><tr><td>764</td>
+<th rowspan=5>pmos_de_v20</th><th rowspan=5>VTXP20VHV1</th><td>Nom</td><td>-1.043</td><td>-1.041</td><td><font color=black>2.2</font> mV</td></font><th rowspan=5>Size:2*30/0.5, peak-gm VT, Vd=-0.1V, Vs=Vb=0V; Pinouts:D-6, S-5, G-2, B-3, Psub-1</th></tr>
+<tr><td>765</td>
+<td>ff</td><td></td><td>-0.908</td><td></td></font></tr>
+<tr><td>766</td>
+<td>Low</td><td>-1.243</td><td>-1.241</td><td><font color=black>1.8</font> mV</td></font></tr>
+<tr><td>767</td>
+<td>ss</td><td></td><td>-1.176</td><td></td></font></tr>
+<tr><td>768</td>
+<td>High</td><td>-0.8429</td><td>-0.842</td><td><font color=black>1.1</font> mV</td></font></tr>
+<tr><td>769</td>
+<th rowspan=5>pmos_de_v20</th><th rowspan=5>ID5P20VHV1</th><td>Nom</td><td>1.286</td><td>1.1746</td><td><font color=black>-8.7</font> %</td></font><th rowspan=5>Size:2*30/0.5, linear current at Vd=0.5, Id @ Vd=-0.5V, Vg=-5V, Vs=Vb=0V; Pinouts:D-6, S-5, G-2, B-3, Psub-1</th></tr>
+<tr><td>770</td>
+<td>fs</td><td></td><td>1.78</td></tr><tr><td>771</td>
+<td>Low</td><td>0.7691</td><td>0.9855</td><td><font color=red>28.1</font> %</td></font></tr>
+<tr><td>772</td>
+<td>sf</td><td></td><td>8.10e-01</td></tr><tr><td>773</td>
+<td>High</td><td>1.805</td><td>1.3785</td><td><font color=red>-23.6</font> %</td></font></tr>
+<tr><td>774</td>
+<th rowspan=5>pmos_de_v20</th><th rowspan=5>IDLP20VHV1</th><td>Nom</td><td>0.26</td><td>0.2371</td><td><font color=black>-8.8</font> %</td></font><th rowspan=5>Size:2*30/0.5, linear current, Id @ Vd=-0.1V, Vg=-5V, Vs=Vb=0V; Pinouts:D-6, S-5, G-2, B-3, Psub-1</th></tr>
+<tr><td>775</td>
+<td>fs</td><td></td><td>3.61e-01</td></tr><tr><td>776</td>
+<td>Low</td><td>0.156</td><td>0.1989</td><td><font color=red>27.5</font> %</td></font></tr>
+<tr><td>777</td>
+<td>sf</td><td></td><td>1.63e-01</td></tr><tr><td>778</td>
+<td>High</td><td>0.364</td><td>0.2782</td><td><font color=red>-23.6</font> %</td></font></tr>
+<tr><td>779</td>
+<th rowspan=5>pmos_de_v20</th><th rowspan=5>IDSP20VHV1</th><td>Nom</td><td>11.6</td><td>11.5907</td><td><font color=black>-0.1</font> %</td></font><th rowspan=5>Size:2*30/0.5, saturation current, Id @ Vd=-20, Vg=-5.0V, Vs=Vb=0V; Pinouts:D-6, S-5, G-2, B-3, Psub-1</th></tr>
+<tr><td>780</td>
+<td>fs</td><td></td><td>16.32</td></tr><tr><td>781</td>
+<td>Low</td><td>6.94</td><td>9.4163</td><td><font color=red>35.7</font> %</td></font></tr>
+<tr><td>782</td>
+<td>sf</td><td></td><td>7.34</td></tr><tr><td>783</td>
+<td>High</td><td>16.2</td><td>14.0635</td><td><font color=red>-13.2</font> %</td></font></tr>
+<tr><td>784</td>
+<th rowspan=5>pmos_de_v20</th><th rowspan=5>RDSP20VHV1</th><td>Nom</td><td>388.9</td><td>425.6641</td><td><font color=black>9.5</font> %</td></font><th rowspan=5>Size:2*30/0.5, RDS on resistance, Vd/Id @ Vd=-0.5V, Vg=-5V, Vs=Vb=0V; Pinouts:D-6, S-5, G-2, B-3, Psub-1</th></tr>
+<tr><td>785</td>
+<td>ff</td><td></td><td>362.7159</td><td></td></font></tr>
+<tr><td>786</td>
+<td>Low</td><td>277</td><td>280.8474</td><td><font color=black>1.4</font> %</td></font></tr>
+<tr><td>787</td>
+<td>ss</td><td></td><td>507.3789</td><td></td></font></tr>
+<tr><td>788</td>
+<td>High</td><td>650.1</td><td>617.1765</td><td><font color=black>-5.1</font> %</td></font></tr>
+<tr><td>789</td>
+<th rowspan=5>pmos_de_v20</th><th rowspan=5>VTBP20VHV1</th><td>Nom</td><td>-1.588</td><td>-1.586</td><td><font color=black>2.4</font> mV</td></font><th rowspan=5>Size:2*30/0.5, peak-gm VT under Reverse Bias, Vd=-0.1, Vs=0V, Vb=+2.5V; Pinouts:D-6, S-5, G-2, B-3, Psub-1</th></tr>
+<tr><td>790</td>
+<td>ff</td><td></td><td>-1.392</td><td></td></font></tr>
+<tr><td>791</td>
+<td>Low</td><td>-1.845</td><td>-1.846</td><td><font color=black>-0.6</font> mV</td></font></tr>
+<tr><td>792</td>
+<td>ss</td><td></td><td>-1.784</td><td></td></font></tr>
+<tr><td>793</td>
+<td>High</td><td>-1.331</td><td>-1.327</td><td><font color=black>4.2</font> mV</td></font></tr>
+<tr><td>794</td>
+<th rowspan=5>pmos_esd_v5</th><th rowspan=5>VTXPESDHVS55</th><td>Nom</td><td>-0.9767</td><td>-0.977</td><td><font color=black>-0.2</font> mV</td></font><th rowspan=5>Size:21.5 / 0.55, phvesd Vt - W=21.5 / L=0.55, Vd=0.1 Vb=0</th></tr>
+<tr><td>795</td>
+<td>ff</td><td></td><td>-0.918</td><td></td></font></tr>
+<tr><td>796</td>
+<td>Low</td><td>-1.0763</td><td>-1.077</td><td><font color=black>-1.2</font> mV</td></font></tr>
+<tr><td>797</td>
+<td>ss</td><td></td><td>-1.036</td><td></td></font></tr>
+<tr><td>798</td>
+<td>High</td><td>-0.877</td><td>-0.876</td><td><font color=black>0.7</font> mV</td></font></tr>
+<tr><td>799</td>
+<th rowspan=5>pmos_esd_v5</th><th rowspan=5>IDSPESDHVS55</th><td>Nom</td><td>5.609</td><td>5.8003</td><td><font color=black>3.4</font> %</td></font><th rowspan=5>Size:21.5 / 0.55, phvesd Idsat - W=21.5 / L=0.55, Vd=5 Vg=5 Vb=0</th></tr>
+<tr><td>800</td>
+<td>fs</td><td></td><td>6.54</td></tr><tr><td>801</td>
+<td>Low</td><td>5.025</td><td>5.1912</td><td><font color=black>3.3</font> %</td></font></tr>
+<tr><td>802</td>
+<td>sf</td><td></td><td>5.07</td></tr><tr><td>803</td>
+<td>High</td><td>6.192</td><td>6.4393</td><td><font color=black>4.0</font> %</td></font></tr>
+<tr><td>804</td>
+<th rowspan=5>pmos_hvt</th><th rowspan=5>VTXPSN15</th><td>Nom</td><td>-0.8191</td><td>-0.819</td><td><font color=black>0.5</font> mV</td></font><th rowspan=5>Size:0.42/0.15, Narrow/Short Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>805</td>
+<td>ff</td><td></td><td>-0.709</td><td></td></font></tr>
+<tr><td>806</td>
+<td>Low</td><td>-0.9514</td><td>-0.954</td><td><font color=black>-2.2</font> mV</td></font></tr>
+<tr><td>807</td>
+<td>ss</td><td></td><td>-0.922</td><td></td></font></tr>
+<tr><td>808</td>
+<td>High</td><td>-0.6775</td><td>-0.673</td><td><font color=black>4.4</font> mV</td></font></tr>
+<tr><td>809</td>
+<th rowspan=5>pmos_hvt</th><th rowspan=5>IDSPSN15</th><td>Nom</td><td>0.05811</td><td>0.0557</td><td><font color=black>-4.2</font> %</td></font><th rowspan=5>Size:0.42/0.15, Narrow/Short Channel Drive Current, Id @ Vd=Vg=-1.8V, Vs=Vb=0V</th></tr>
+<tr><td>810</td>
+<td>fs</td><td></td><td>8.00e-02</td></tr><tr><td>811</td>
+<td>Low</td><td>0.03568</td><td>0.0387</td><td><font color=black>8.5</font> %</td></font></tr>
+<tr><td>812</td>
+<td>sf</td><td></td><td>3.64e-02</td></tr><tr><td>813</td>
+<td>High</td><td>0.08055</td><td>0.0769</td><td><font color=black>-4.6</font> %</td></font></tr>
+<tr><td>814</td>
+<th rowspan=5>pmos_hvt</th><th rowspan=5>VTXPN42</th><td>Nom</td><td>-1.0129</td><td>-1.012</td><td><font color=black>0.6</font> mV</td></font><th rowspan=5>Size:0.42/8, Narrow/Long Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>815</td>
+<td>ff</td><td></td><td>-0.985</td><td></td></font></tr>
+<tr><td>816</td>
+<td>Low</td><td>-1.0556</td><td>-1.057</td><td><font color=black>-1.5</font> mV</td></font></tr>
+<tr><td>817</td>
+<td>ss</td><td></td><td>-1.038</td><td></td></font></tr>
+<tr><td>818</td>
+<td>High</td><td>-0.9593</td><td>-0.960</td><td><font color=black>-0.6</font> mV</td></font></tr>
+<tr><td>819</td>
+<th rowspan=5>pmos_hvt_W1000_L20_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>-0.961</td></tr><tr><td>820</td>
+<td>ff</td><td></td><td>-0.907</td></tr><tr><td>821</td>
+<td>Low</td><td></td><td>-1.020</td></tr><tr><td>822</td>
+<td>ss</td><td></td><td>-1.013</td></tr><tr><td>823</td>
+<td>High</td><td></td><td>-0.891</td></tr><tr><td>824</td>
+<th rowspan=5>pmos_hvt</th><th rowspan=5>VTXPS15</th><td>Nom</td><td>-0.8881</td><td>-0.892</td><td><font color=black>-4.0</font> mV</td></font><th rowspan=5>Size:7/0.15, Short Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>825</td>
+<td>ff</td><td></td><td>-0.841</td><td></td></font></tr>
+<tr><td>826</td>
+<td>Low</td><td>-0.9625</td><td>-0.961</td><td><font color=black>1.8</font> mV</td></font></tr>
+<tr><td>827</td>
+<td>ss</td><td></td><td>-0.954</td><td></td></font></tr>
+<tr><td>828</td>
+<td>High</td><td>-0.8137</td><td>-0.814</td><td><font color=black>0.2</font> mV</td></font></tr>
+<tr><td>829</td>
+<th rowspan=5>pmos_hvt</th><th rowspan=5>IDSPS15</th><td>Nom</td><td>1.003</td><td>0.9795</td><td><font color=black>-2.3</font> %</td></font><th rowspan=5>Size:7/0.15, Short Channel Drive Current, Id @ Vd=Vg=-1.8V, Vs=Vb=0V</th></tr>
+<tr><td>830</td>
+<td>fs</td><td></td><td>1.26</td></tr><tr><td>831</td>
+<td>Low</td><td>0.6966</td><td>0.7797</td><td><font color=red>11.9</font> %</td></font></tr>
+<tr><td>832</td>
+<td>sf</td><td></td><td>7.21e-01</td></tr><tr><td>833</td>
+<td>High</td><td>1.309</td><td>1.1227</td><td><font color=red>-14.2</font> %</td></font></tr>
+<tr><td>834</td>
+<th rowspan=5>pmos_hvt</th><th rowspan=5>VTXPL</th><td>Nom</td><td>-1.1065</td><td>-1.107</td><td><font color=black>-0.3</font> mV</td></font><th rowspan=5>Size: 7/8, Long Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>835</td>
+<td>ff</td><td></td><td>-1.083</td><td></td></font></tr>
+<tr><td>836</td>
+<td>Low</td><td>-1.1414</td><td>-1.141</td><td><font color=black>0.8</font> mV</td></font></tr>
+<tr><td>837</td>
+<td>ss</td><td></td><td>-1.131</td><td></td></font></tr>
+<tr><td>838</td>
+<td>High</td><td>-1.0668</td><td>-1.067</td><td><font color=black>-0.3</font> mV</td></font></tr>
+<tr><td>839</td>
+<th rowspan=5>pmos_lvt</th><th rowspan=5>VTCPSN35L</th><td>Nom</td><td>-0.5045</td><td>-0.505</td><td><font color=black>-0.5</font> mV</td></font><th rowspan=5>Size:0.42/0.35, constant current Vt - W=0.42 / L=0.35, Id=600nA/square, Vd=0.1V, Vs=0V, Vb=0V</th></tr>
+<tr><td>840</td>
+<td>ff</td><td></td><td>-0.355</td><td></td></font></tr>
+<tr><td>841</td>
+<td>Low</td><td>-0.6929</td><td>-0.696</td><td><font color=black>-3.0</font> mV</td></font></tr>
+<tr><td>842</td>
+<td>ss</td><td></td><td>-0.659</td><td></td></font></tr>
+<tr><td>843</td>
+<td>High</td><td>-0.3161</td><td>-0.317</td><td><font color=black>-0.7</font> mV</td></font></tr>
+<tr><td>844</td>
+<th rowspan=5>pmos_lvt</th><th rowspan=5>VTCPN42L</th><td>Nom</td><td>-0.6302</td><td>-0.630</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size:0.42/8, constant current Vt - W=0.42 / L=8, Id=600nA/square, Vd=0.1V, Vs=0V, Vb=0V</th></tr>
+<tr><td>845</td>
+<td>ff</td><td></td><td>-0.517</td><td></td></font></tr>
+<tr><td>846</td>
+<td>Low</td><td>-0.7774</td><td>-0.778</td><td><font color=black>-0.2</font> mV</td></font></tr>
+<tr><td>847</td>
+<td>ss</td><td></td><td>-0.748</td><td></td></font></tr>
+<tr><td>848</td>
+<td>High</td><td>-0.4829</td><td>-0.483</td><td><font color=black>-0.4</font> mV</td></font></tr>
+<tr><td>849</td>
+<th rowspan=5>pmos_lvt_W1000_L20_IVT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>-0.650</td></tr><tr><td>850</td>
+<td>ff</td><td></td><td>-0.564</td></tr><tr><td>851</td>
+<td>Low</td><td></td><td>-0.782</td></tr><tr><td>852</td>
+<td>ss</td><td></td><td>-0.738</td></tr><tr><td>853</td>
+<td>High</td><td></td><td>-0.518</td></tr><tr><td>854</td>
+<th rowspan=5>pmos_lvt</th><th rowspan=5>VTCPS35L</th><td>Nom</td><td>-0.533</td><td>-0.533</td><td><font color=black>-0.1</font> mV</td></font><th rowspan=5>Size:7/0.35, constant current Vt - W=7 / L=0.35, Id=600nA/square , Vd=0.1V, Vs=0V, Vb=0V</th></tr>
+<tr><td>855</td>
+<td>ff</td><td></td><td>-0.422</td><td></td></font></tr>
+<tr><td>856</td>
+<td>Low</td><td>-0.6826</td><td>-0.686</td><td><font color=black>-3.2</font> mV</td></font></tr>
+<tr><td>857</td>
+<td>ss</td><td></td><td>-0.646</td><td></td></font></tr>
+<tr><td>858</td>
+<td>High</td><td>-0.3835</td><td>-0.380</td><td><font color=black>3.2</font> mV</td></font></tr>
+<tr><td>859</td>
+<th rowspan=5>pmos_lvt</th><th rowspan=5>IDSPS35L</th><td>Nom</td><td>1.22</td><td>1.2185</td><td><font color=black>-0.1</font> %</td></font><th rowspan=5>Size:7/0.35, Short Channel Drive Current, Id @ Vd=Vg=-1.8V, Vs=Vb=0V</th></tr>
+<tr><td>860</td>
+<td>fs</td><td></td><td>1.54</td></tr><tr><td>861</td>
+<td>Low</td><td>0.9989</td><td>0.9692</td><td><font color=black>-3.0</font> %</td></font></tr>
+<tr><td>862</td>
+<td>sf</td><td></td><td>9.12e-01</td></tr><tr><td>863</td>
+<td>High</td><td>1.441</td><td>1.4885</td><td><font color=black>3.3</font> %</td></font></tr>
+<tr><td>864</td>
+<th rowspan=5>pmos_lvt</th><th rowspan=5>VTCPLL</th><td>Nom</td><td>-0.6511</td><td>-0.651</td><td><font color=black>0.0</font> mV</td></font><th rowspan=5>Size: 7/8, constant current Vt - W=7 / L=8, Id=600nA/square , Vd=0.1V, Vs=0V, Vb=0V</th></tr>
+<tr><td>865</td>
+<td>ff</td><td></td><td>-0.563</td><td></td></font></tr>
+<tr><td>866</td>
+<td>Low</td><td>-0.7845</td><td>-0.785</td><td><font color=black>-0.1</font> mV</td></font></tr>
+<tr><td>867</td>
+<td>ss</td><td></td><td>-0.741</td><td></td></font></tr>
+<tr><td>868</td>
+<td>High</td><td>-0.5176</td><td>-0.518</td><td><font color=black>-0.1</font> mV</td></font></tr>
+<tr><td>869</td>
+<th rowspan=5>pmos_v5</th><th rowspan=5>VTXPSN50H</th><td>Nom</td><td>-0.8311</td><td>-0.831</td><td><font color=black>0.5</font> mV</td></font><th rowspan=5>Size:0.42/0.50, Narrow/Short Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>870</td>
+<td>ff</td><td></td><td>-0.753</td><td></td></font></tr>
+<tr><td>871</td>
+<td>Low</td><td>-0.9669</td><td>-0.968</td><td><font color=black>-0.7</font> mV</td></font></tr>
+<tr><td>872</td>
+<td>ss</td><td></td><td>-0.908</td><td></td></font></tr>
+<tr><td>873</td>
+<td>High</td><td>-0.6952</td><td>-0.694</td><td><font color=black>1.6</font> mV</td></font></tr>
+<tr><td>874</td>
+<th rowspan=5>pmos_v5</th><th rowspan=5>IDSPSN50H</th><td>Nom</td><td>0.1526</td><td>0.1506</td><td><font color=black>-1.3</font> %</td></font><th rowspan=5>Size:0.42/0.50, Narrow/Short Channel Drive Current, Id @ Vd=Vg=-5.0V, Vs=Vb=0V</th></tr>
+<tr><td>875</td>
+<td>fs</td><td></td><td>1.77e-01</td></tr><tr><td>876</td>
+<td>Low</td><td>0.1156</td><td>0.1245</td><td><font color=black>7.7</font> %</td></font></tr>
+<tr><td>877</td>
+<td>sf</td><td></td><td>1.25e-01</td></tr><tr><td>878</td>
+<td>High</td><td>0.1897</td><td>0.1803</td><td><font color=black>-5.0</font> %</td></font></tr>
+<tr><td>879</td>
+<th rowspan=5>pmos_v5</th><th rowspan=5>VTXPN42H</th><td>Nom</td><td>-0.932466994595</td><td>-0.928</td><td><font color=black>4.4</font> mV</td></font><th rowspan=5>Size:0.42/20, Narrow/Long Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>880</td>
+<td>ff</td><td></td><td>-0.891</td><td></td></font></tr>
+<tr><td>881</td>
+<td>Low</td><td>-0.998561718546</td><td>-0.994</td><td><font color=black>4.7</font> mV</td></font></tr>
+<tr><td>882</td>
+<td>ss</td><td></td><td>-0.964</td><td></td></font></tr>
+<tr><td>883</td>
+<td>High</td><td>-0.866372270643</td><td>-0.862</td><td><font color=black>4.1</font> mV</td></font></tr>
+<tr><td>884</td>
+<th rowspan=5>pmos_v5_W1000_L20_VT</th><th rowspan=5>(N/A)</th><td>Nom</td><td></td><td>-1.030</td></tr><tr><td>885</td>
+<td>ff</td><td></td><td>-0.983</td></tr><tr><td>886</td>
+<td>Low</td><td></td><td>-1.111</td></tr><tr><td>887</td>
+<td>ss</td><td></td><td>-1.078</td></tr><tr><td>888</td>
+<td>High</td><td></td><td>-0.950</td></tr><tr><td>889</td>
+<th rowspan=5>pmos_v5</th><th rowspan=5>VTXPS50H</th><td>Nom</td><td>-0.9544</td><td>-0.954</td><td><font color=black>0.0</font> mV</td></font><th rowspan=5>Size:20/0.50, Short Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>890</td>
+<td>ff</td><td></td><td>-0.898</td><td></td></font></tr>
+<tr><td>891</td>
+<td>Low</td><td>-1.049</td><td>-1.050</td><td><font color=black>-1.3</font> mV</td></font></tr>
+<tr><td>892</td>
+<td>ss</td><td></td><td>-1.010</td><td></td></font></tr>
+<tr><td>893</td>
+<td>High</td><td>-0.8593</td><td>-0.858</td><td><font color=black>0.9</font> mV</td></font></tr>
+<tr><td>894</td>
+<th rowspan=5>pmos_v5</th><th rowspan=5>IDSPS50H</th><td>Nom</td><td>6.83</td><td>6.8238</td><td><font color=black>-0.1</font> %</td></font><th rowspan=5>Size:20/0.50, Short Channel Drive Current, Id @ Vd=Vg=-5.0V, Vs=Vb=0V</th></tr>
+<tr><td>895</td>
+<td>fs</td><td></td><td>8.03</td></tr><tr><td>896</td>
+<td>Low</td><td>6.07</td><td>5.9041</td><td><font color=black>-2.7</font> %</td></font></tr>
+<tr><td>897</td>
+<td>sf</td><td></td><td>5.63</td></tr><tr><td>898</td>
+<td>High</td><td>7.59</td><td>7.8267</td><td><font color=black>3.1</font> %</td></font></tr>
+<tr><td>899</td>
+<th rowspan=5>pmos_v5</th><th rowspan=5>VTXPLH</th><td>Nom</td><td>-1.027</td><td>-1.027</td><td><font color=black>-0.0</font> mV</td></font><th rowspan=5>Size: 7/8, Long Channel VT, Vd=-0.1V, Vs=Vb=0V</th></tr>
+<tr><td>900</td>
+<td>ff</td><td></td><td>-0.980</td><td></td></font></tr>
+<tr><td>901</td>
+<td>Low</td><td>-1.107</td><td>-1.107</td><td><font color=black>-0.2</font> mV</td></font></tr>
+<tr><td>902</td>
+<td>ss</td><td></td><td>-1.074</td><td></td></font></tr>
+<tr><td>903</td>
+<td>High</td><td>-0.9473</td><td>-0.947</td><td><font color=black>0.5</font> mV</td></font></tr>
+<tr><td>904</td>
+<th rowspan=5>pnp</th><th rowspan=5>BF0P68_0P5</th><td>Nom</td><td>14.29</td><td>14.2888</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:Ae=0.4624 um2, PNP Forward Current Gain (Ic/Ib), Force Ie=0.5uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>905</td>
+<td>ff</td><td></td><td>12.2584</td><td></td></font></tr>
+<tr><td>906</td>
+<td>Low</td><td>7.51</td><td>7.6528</td><td><font color=black>1.9</font> %</td></font></tr>
+<tr><td>907</td>
+<td>ss</td><td></td><td>17.0773</td><td></td></font></tr>
+<tr><td>908</td>
+<td>High</td><td>21.02</td><td>22.3987</td><td><font color=black>6.6</font> %</td></font></tr>
+<tr><td>909</td>
+<th rowspan=5>pnp</th><th rowspan=5>VBE0P68_0P5</th><td>Nom</td><td>0.718016143498</td><td>0.7180</td><td><font color=black>0.0</font> %</td></font><th rowspan=5>Size:Ae=0.4624 um2, PNP Emitter-Base Voltage, Force Ie = 0.5uA, Vc=Vb=0, Measure Veb</th></tr>
+<tr><td>910</td>
+<td>fs</td><td></td><td>7.19e-01</td></tr><tr><td>911</td>
+<td>Low</td><td>0.712017577677</td><td>0.7223</td><td><font color=black>1.4</font> %</td></font></tr>
+<tr><td>912</td>
+<td>sf</td><td></td><td>7.17e-01</td></tr><tr><td>913</td>
+<td>High</td><td>0.724014709318</td><td>0.7131</td><td><font color=black>-1.5</font> %</td></font></tr>
+<tr><td>914</td>
+<th rowspan=5>pnp</th><th rowspan=5>BF0P68_5</th><td>Nom</td><td>12.58</td><td>12.5751</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:Ae=0.4624 um2, PNP Forward Current Gain (Ic/Ib), Force Ie=5uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>915</td>
+<td>ff</td><td></td><td>10.7289</td><td></td></font></tr>
+<tr><td>916</td>
+<td>Low</td><td>6.59</td><td>6.6911</td><td><font color=black>1.5</font> %</td></font></tr>
+<tr><td>917</td>
+<td>ss</td><td></td><td>15.1526</td><td></td></font></tr>
+<tr><td>918</td>
+<td>High</td><td>18.59</td><td>20.0017</td><td><font color=black>7.6</font> %</td></font></tr>
+<tr><td>919</td>
+<th rowspan=5>pnp</th><th rowspan=5>VBE0P68_5</th><td>Nom</td><td>0.784727713004</td><td>0.7850</td><td><font color=black>0.0</font> %</td></font><th rowspan=5>Size:Ae=0.4624 um2, PNP Emitter-Base Voltage, Force Ie = 5uA, Vc=Vb=0, Measure Veb</th></tr>
+<tr><td>920</td>
+<td>fs</td><td></td><td>7.86e-01</td></tr><tr><td>921</td>
+<td>Low</td><td>0.779043602383</td><td>0.7893</td><td><font color=black>1.3</font> %</td></font></tr>
+<tr><td>922</td>
+<td>sf</td><td></td><td>7.83e-01</td></tr><tr><td>923</td>
+<td>High</td><td>0.790411823626</td><td>0.7800</td><td><font color=black>-1.3</font> %</td></font></tr>
+<tr><td>924</td>
+<th rowspan=5>pnp_5x</th><th rowspan=5>BF3P4_0P1</th><td>Nom</td><td>13.2017556</td><td>13.2003</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:Ae=11.56 um2, PNP Forward Current Gain (Ic/Ib), Force Ie=0.1uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>925</td>
+<td>ff</td><td></td><td>11.2283</td><td></td></font></tr>
+<tr><td>926</td>
+<td>Low</td><td>5.93143868</td><td>6.4217</td><td><font color=black>8.3</font> %</td></font></tr>
+<tr><td>927</td>
+<td>ss</td><td></td><td>15.8023</td><td></td></font></tr>
+<tr><td>928</td>
+<td>High</td><td>20.200056</td><td>21.1829</td><td><font color=black>4.9</font> %</td></font></tr>
+<tr><td>929</td>
+<th rowspan=5>pnp_5x</th><th rowspan=5>VBE3P4_0P1</th><td>Nom</td><td>0.612922681</td><td>0.6129</td><td><font color=black>0.0</font> %</td></font><th rowspan=5>Size:Ae=11.56 um2, PNP Emitter-Base Voltage, Force Ie = 0.1uA, Vc=Vb=0, Measure Veb</th></tr>
+<tr><td>930</td>
+<td>fs</td><td></td><td>6.14e-01</td></tr><tr><td>931</td>
+<td>Low</td><td>0.608665587</td><td>0.6171</td><td><font color=black>1.4</font> %</td></font></tr>
+<tr><td>932</td>
+<td>sf</td><td></td><td>6.11e-01</td></tr><tr><td>933</td>
+<td>High</td><td>0.617185141</td><td>0.6081</td><td><font color=black>-1.5</font> %</td></font></tr>
+<tr><td>934</td>
+<th rowspan=5>pnp_5x</th><th rowspan=5>BF3P4_10</th><td>Nom</td><td>14.6479153</td><td>14.6479</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:Ae=11.56 um2, PNP Forward Current Gain (Ic/Ib), Force Ie=10uA, Measure Ib, Vc=Vb=0</th></tr>
+<tr><td>935</td>
+<td>ff</td><td></td><td>11.9790</td><td></td></font></tr>
+<tr><td>936</td>
+<td>Low</td><td>6.09986129</td><td>6.5620</td><td><font color=black>7.6</font> %</td></font></tr>
+<tr><td>937</td>
+<td>ss</td><td></td><td>18.5170</td><td></td></font></tr>
+<tr><td>938</td>
+<td>High</td><td>23.1006449</td><td>26.1983</td><td><font color=red>13.4</font> %</td></font></tr>
+<tr><td>939</td>
+<th rowspan=5>pnp_5x</th><th rowspan=5>VBE3P4_10</th><td>Nom</td><td>0.735125182</td><td>0.7351</td><td><font color=black>-0.0</font> %</td></font><th rowspan=5>Size:Ae=11.56 um2, PNP Emitter-Base Voltage, Force Ie = 10uA, Vc=Vb=0, Measure Veb</th></tr>
+<tr><td>940</td>
+<td>fs</td><td></td><td>7.36e-01</td></tr><tr><td>941</td>
+<td>Low</td><td>0.730837804</td><td>0.7393</td><td><font color=black>1.2</font> %</td></font></tr>
+<tr><td>942</td>
+<td>sf</td><td></td><td>7.33e-01</td></tr><tr><td>943</td>
+<td>High</td><td>0.739314332</td><td>0.7302</td><td><font color=black>-1.2</font> %</td></font></tr>
+<tr><td>944</td>
+<th rowspan=3>rdn</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>119.80</td></tr><tr><td>945</td>
+<td>Low</td><td></td><td>108.30</td></tr><tr><td>946</td>
+<td>High</td><td></td><td>131.19</td></tr><tr><td>947</td>
+<th rowspan=3>rdp</th><th rowspan=3>(N/A)</th><td>Nom</td><td></td><td>196.92</td></tr><tr><td>948</td>
+<td>Low</td><td></td><td>166.68</td></tr><tr><td>949</td>
+<td>High</td><td></td><td>226.89</td></tr><tr><td>950</td>
+<th rowspan=3>rli</th><th rowspan=3>RSLIW</th><td>Nom</td><td>12.2</td><td>12.2201</td><td><font color=black>0.2</font> %</td></font><th rowspan=3>Size:2.6/ 830, LI1 sheet resistance-wide, Cal from V/I @ I = 50uA</th></tr>
+<tr><td>951</td>
+<td>Low</td><td>9.5</td><td>9.4653</td><td><font color=black>-0.4</font> %</td></font></tr>
+<tr><td>952</td>
+<td>High</td><td>14.8</td><td>14.8171</td><td><font color=black>0.1</font> %</td></font></tr>
+<tr><td>953</td>
+<th rowspan=3>rm1</th><th rowspan=3>RSM1</th><td>Nom</td><td>0.125</td><td>0.1259</td><td><font color=black>0.7</font> %</td></font><th rowspan=3>Size:W = 2.6, M1 sheet resistance, V/ I @ I= 1mA</th></tr>
+<tr><td>954</td>
+<td>Low</td><td>0.105</td><td>0.1056</td><td><font color=black>0.5</font> %</td></font></tr>
+<tr><td>955</td>
+<td>High</td><td>0.145</td><td>0.1466</td><td><font color=black>1.1</font> %</td></font></tr>
+<tr><td>956</td>
+<th rowspan=3>rm2</th><th rowspan=3>RSM2</th><td>Nom</td><td>0.125</td><td>0.1259</td><td><font color=black>0.7</font> %</td></font><th rowspan=3>Size:W = 2.6, M2 sheet resistance, V/ I @ I=1mA</th></tr>
+<tr><td>957</td>
+<td>Low</td><td>0.105</td><td>0.1056</td><td><font color=black>0.5</font> %</td></font></tr>
+<tr><td>958</td>
+<td>High</td><td>0.145</td><td>0.1466</td><td><font color=black>1.1</font> %</td></font></tr>
+<tr><td>959</td>
+<th rowspan=3>rm3</th><th rowspan=3>RSM3</th><td>Nom</td><td>0.047</td><td>0.0468</td><td><font color=black>-0.5</font> %</td></font><th rowspan=3>Size:W = 1.5, M3 sheet resistance, V/ I @ I=1mA</th></tr>
+<tr><td>960</td>
+<td>Low</td><td>0.038</td><td>0.0380</td><td><font color=black>-0.0</font> %</td></font></tr>
+<tr><td>961</td>
+<td>High</td><td>0.056</td><td>0.0564</td><td><font color=black>0.7</font> %</td></font></tr>
+<tr><td>962</td>
+<th rowspan=3>rm4</th><th rowspan=3>RSM4</th><td>Nom</td><td>0.047</td><td>0.0468</td><td><font color=black>-0.5</font> %</td></font><th rowspan=3>Size:w= 1.5, M4 sheet resistance, V/ I @ I=1mA</th></tr>
+<tr><td>963</td>
+<td>Low</td><td>0.038</td><td>0.0380</td><td><font color=black>-0.0</font> %</td></font></tr>
+<tr><td>964</td>
+<td>High</td><td>0.056</td><td>0.0564</td><td><font color=black>0.7</font> %</td></font></tr>
+<tr><td>965</td>
+<th rowspan=3>rm5</th><th rowspan=3>RSM5</th><td>Nom</td><td>0.0285</td><td>0.0286</td><td><font color=black>0.3</font> %</td></font><th rowspan=3>Size:w= 2.4um L=353.4um, M5 sheet resistance, V/ I @ I=1mA</th></tr>
+<tr><td>966</td>
+<td>Low</td><td>0.0212</td><td>0.0213</td><td><font color=black>0.4</font> %</td></font></tr>
+<tr><td>967</td>
+<td>High</td><td>0.0358</td><td>0.0359</td><td><font color=black>0.2</font> %</td></font></tr>
+<tr><td>968</td>
+<th rowspan=3>rndiff</th><th rowspan=3>RSN</th><td>Nom</td><td>120</td><td>119.8408</td><td><font color=black>-0.1</font> %</td></font><th rowspan=3>Size:12.8/320.73, N+ diffusion sheet resistance, V/I @ V=0.1 V/25 square</th></tr>
+<tr><td>969</td>
+<td>Low</td><td>108</td><td>108.2368</td><td><font color=black>0.2</font> %</td></font></tr>
+<tr><td>970</td>
+<td>High</td><td>132</td><td>131.3637</td><td><font color=black>-0.5</font> %</td></font></tr>
+<tr><td>971</td>
+<th rowspan=3>rndiff_v5</th><th rowspan=3>RSNH</th><td>Nom</td><td>114</td><td>113.8488</td><td><font color=black>-0.1</font> %</td></font><th rowspan=3>Size:12.8/320.67, HV N+ diffusion sheet resistance, V/I @ V=0.1 V/25 square</th></tr>
+<tr><td>972</td>
+<td>Low</td><td>102</td><td>102.8249</td><td><font color=black>0.8</font> %</td></font></tr>
+<tr><td>973</td>
+<td>High</td><td>126</td><td>124.7955</td><td><font color=black>-1.0</font> %</td></font></tr>
+<tr><td>974</td>
+<th rowspan=3>rnwell</th><th rowspan=3>RSNW</th><td>Nom</td><td>1700</td><td>1700.0000</td><td><font color=black>0.0</font> %</td></font><th rowspan=3>Size:24.505/24.87, N-Well sheet resistance, V/I @ V=0.1 V/1 square</th></tr>
+<tr><td>975</td>
+<td>Low</td><td>1240</td><td>1241.1170</td><td><font color=black>0.1</font> %</td></font></tr>
+<tr><td>976</td>
+<td>High</td><td>2160</td><td>2158.0577</td><td><font color=black>-0.1</font> %</td></font></tr>
+<tr><td>977</td>
+<th rowspan=3>rpdiff</th><th rowspan=3>RSP</th><td>Nom</td><td>197</td><td>196.9385</td><td><font color=black>-0.0</font> %</td></font><th rowspan=3>Size:12.8/320.67, P+ diffusion sheet resistance, V/I @ V=1.0 V/25 square</th></tr>
+<tr><td>978</td>
+<td>Low</td><td>166</td><td>166.5334</td><td><font color=black>0.3</font> %</td></font></tr>
+<tr><td>979</td>
+<td>High</td><td>228</td><td>227.1305</td><td><font color=black>-0.4</font> %</td></font></tr>
+<tr><td>980</td>
+<th rowspan=3>rpdiff_v5</th><th rowspan=3>RSPH</th><td>Nom</td><td>191</td><td>191.0303</td><td><font color=black>0.0</font> %</td></font><th rowspan=3>Size:12.8/320.67, HV P+ diffusion sheet resistance, V/I @ V=0.1 V/25 square</th></tr>
+<tr><td>981</td>
+<td>Low</td><td>160</td><td>161.5374</td><td><font color=black>1.0</font> %</td></font></tr>
+<tr><td>982</td>
+<td>High</td><td>222</td><td>220.3166</td><td><font color=black>-0.8</font> %</td></font></tr>
+<tr><td>983</td>
+<th rowspan=3>rpoly</th><th rowspan=3>RSGPVDP</th><td>Nom</td><td>48.2</td><td>48.3564</td><td><font color=black>0.3</font> %</td></font><th rowspan=3>Size:42653, poly sheet resistance, with PNIT, Force 8.5mA. Four Point measurement</th></tr>
+<tr><td>984</td>
+<td>Low</td><td>42.2</td><td>42.2273</td><td><font color=black>0.1</font> %</td></font></tr>
+<tr><td>985</td>
+<td>High</td><td>55.8</td><td>55.7927</td><td><font color=black>-0.0</font> %</td></font></tr>
+<tr><td>986</td>
+<th rowspan=3>rpoly_hp2K</th><th rowspan=3>URSPGPVDP</th><td>Nom</td><td>2000</td><td>1979.0761</td><td><font color=black>-1.0</font> %</td></font><th rowspan=3>Size:W/L=10/10, P+ poly sheet resistance, 2000 ohm/sq, Force 1.5mA. Four Point measurement</th></tr>
+<tr><td>987</td>
+<td>Low</td><td>1700</td><td>1683.5822</td><td><font color=black>-1.0</font> %</td></font></tr>
+<tr><td>988</td>
+<td>High</td><td>2300</td><td>2274.1199</td><td><font color=black>-1.1</font> %</td></font></tr>
+<tr><td>989</td>
+<th rowspan=3>rpoly_hp2K</th><th rowspan=3>URP5P73X20SQ</th><td>Nom</td><td>40975</td><td>39929.0020</td><td><font color=black>-2.6</font> %</td></font><th rowspan=3>Size:W/L=5.73/114.6, P+ poly resistor, 2K ohm/sq, V/I @ V=2V</th></tr>
+<tr><td>990</td>
+<td>Low</td><td>34840.7272727</td><td>33966.7140</td><td><font color=black>-2.5</font> %</td></font></tr>
+<tr><td>991</td>
+<td>High</td><td>47102.739726</td><td>45882.2063</td><td><font color=black>-2.6</font> %</td></font></tr>
+<tr><td>992</td>
+<th rowspan=3>rpoly_hp</th><th rowspan=3>RP5P73X1SQ</th><td>Nom</td><td>395.3</td><td>397.8356</td><td><font color=black>0.6</font> %</td></font><th rowspan=3>Size:W/L=5.73/5.73, P+ poly resistor, V/I @ V=2V</th></tr>
+<tr><td>993</td>
+<td>Low</td><td>339</td><td>341.0642</td><td><font color=black>0.6</font> %</td></font></tr>
+<tr><td>994</td>
+<td>High</td><td>451.7</td><td>451.2664</td><td><font color=black>-0.1</font> %</td></font></tr>
+<tr><td>995</td>
+<th rowspan=3>rpwell</th><th rowspan=3>RPWELL10</th><td>Nom</td><td>4600</td><td>4599.5460</td><td><font color=black>-0.0</font> %</td></font><th rowspan=3>Size:W/L = 2.65/10.7, P-Well sheet resistance, L = 10.7um, V/I*W/L @ Vpwr1=0.1V, Vpwr2=0V, Vdnw=5V, Vsub=0V</th></tr>
+<tr><td>996</td>
+<td>Low</td><td>3379</td><td>3374.9285</td><td><font color=black>-0.1</font> %</td></font></tr>
+<tr><td>997</td>
+<td>High</td><td>5821</td><td>5845.8598</td><td><font color=black>0.4</font> %</td></font></tr>
+<tr><td>998</td>
+<th rowspan=3>rpwell</th><th rowspan=3>RPWELL159</th><td>Nom</td><td>4400</td><td>4400.7217</td><td><font color=black>0.0</font> %</td></font><th rowspan=3>Size:W/L = 2.65/159.0, P-Well sheet resistance, L = 159.0um, V/I*W/L @ Vpwr1=0.1V, Vpwr2=0V, Vdnw=5V, Vsub=0V</th></tr>
+<tr><td>999</td>
+<td>Low</td><td>3232</td><td>3229.0407</td><td><font color=black>-0.1</font> %</td></font></tr>
+<tr><td>1000</td>
+<td>High</td><td>5568</td><td>5593.1611</td><td><font color=black>0.5</font> %</td></font></tr>

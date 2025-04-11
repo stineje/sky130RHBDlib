@@ -1,0 +1,31 @@
+// 
+// $Id: CYverilog 1 2018/01/29 21:02:55 GMT jszemiot Exp $
+// 
+// verilog
+// 
+// Copyright (c) 1999 by Cypress Semiconductor
+// 
+// Date  : Sep 08, 1999
+// Author: David Roberts/CAD (dlr) @ CSDC
+// 
+// Description:
+// 
+// Revision History:
+// 
+// 
+// 
+//NOTE
+// Cypress CAD modified for the verilog netlister switch list.
+// Default template for verilog
+// Note:
+//      Please remember to replace Top Cell Library, Cell, and View
+//      fields with the actual names used by your design.
+//END_NOTE
+
+config CYverilog;
+design \myLib .myCell:myView;
+
+viewlist verilog, schematic, functional, rtl, rtlsch, behavioral, symbol;
+stoplist verilog, symbol;
+
+endconfig

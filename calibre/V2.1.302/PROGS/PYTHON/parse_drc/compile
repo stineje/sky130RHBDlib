@@ -1,0 +1,7 @@
+#!/bin/bash
+
+/bin/rm -rf build
+python3 setup.py build
+if [ ! -f parse_drc ]; then
+  /bin/ln -s build/exe.linux-x86_64-3.6/parse_drc . 
+fi

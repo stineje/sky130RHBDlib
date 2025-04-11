@@ -1,0 +1,120 @@
+** sch_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/test_SRELATACH.sch
+.subckt test_SRELATACH
+
+V2 R GND pwl 0n 1.8 4.9n 1.8 5n 0 16n 0 16.1n 1.8 24.9n 1.8 25n 0
+V1 VDD GND 1.8
+V3 S GND pwl 0n 0 10n 0 10.1n 1.8 14.9n 1.8 15n 0 26n 0 26.1n 1.8
+V4 E GND pulse 0 1.8 0 1p 1p 5n 10n
+x1 Q QN S R E VDD GND SRELATCH
+**** begin user architecture code
+
+.lib /import/yukari1/pdk/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+
+**** end user architecture code
+.ends
+
+* expanding   symbol:  SRELATCH.sym # of pins=5
+** sym_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/SRELATCH.sym
+** sch_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/SRELATCH.sch
+.subckt SRELATCH Q QN S R E VDD VSS
+*.PININFO S:I R:I QN:O Q:O E:I
+x1 net1 S E VDD VSS AND2X1
+x2 net2 E R VDD VSS AND2X1
+x3 QN net1 Q VDD VSS NOR2X1
+x4 Q QN net2 VDD VSS NOR2X1
+.ends
+
+
+* expanding   symbol:  AND2X1.sym # of pins=3
+** sym_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/AND2X1.sym
+** sch_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/AND2X1.sch
+.subckt AND2X1 Y A B VDD VSS
+*.PININFO Y:O A:I B:I
+x1 net1 A B VDD VSS NAND2X1
+x2 Y net1 VDD VSS INVX1
+.ends
+
+
+* expanding   symbol:  NOR2X1.sym # of pins=3
+** sym_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/NOR2X1.sym
+** sch_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/NOR2X1.sch
+.subckt NOR2X1 Y A B VDD VSS
+*.PININFO Y:O A:I B:I
+XM1 Y A VSS VSS NMOS L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 A VDD VDD PMOS L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM3 Y B VSS VSS NMOS L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 Y B net1 VDD PMOS L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+.ends
+
+
+* expanding   symbol:  NAND2X1.sym # of pins=3
+** sym_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/NAND2X1.sym
+** sch_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/NAND2X1.sch
+.subckt NAND2X1 Y A B VDD VSS
+*.PININFO Y:O A:I B:I
+XM1 Y A VDD VDD PMOS L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM5 Y B net1 VSS NMOS L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y B VDD VDD PMOS L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM3 net1 A VSS VSS NMOS L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  INVX1.sym # of pins=2
+** sym_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/INVX1.sym
+** sch_path: /home/zwils11/Documents/OSU_SKY130_FLOW/layout/xschem/sky130_rhbd/INVX1.sch
+.subckt INVX1 Y A VDD VSS
+*.PININFO Y:O A:I
+XM1 Y A VSS VSS NMOS L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y A VDD VDD PMOS L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+.ends
+
+.GLOBAL VDD
+.GLOBAL GND
+**** begin user architecture code
+
+
+.control
+tran 0.01n 50n
+plot Q
+plot QN
+plot S
+plot R
+plot E
+plot E Q QN
+.endc
+
+
+**** end user architecture code
+.subckt NMOS d g s b
+.ends
+
+.subckt NMOS_LVT d g s b
+.ends
+
+.subckt PMOS d g s b
+.ends
+
+.subckt PMOS_HVT d g s b
+.ends
+.end

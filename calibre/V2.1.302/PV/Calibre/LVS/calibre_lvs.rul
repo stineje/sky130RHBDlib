@@ -1,0 +1,1916 @@
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// This file includes SVRF/TVF Technology licensed by Siemens Industry Software Inc. and its affiliates ("SISW".
+// "SVRF/TVF Technology" means SISW's Standard Verification Rule Format ("SVRF") and Tcl Verification Format
+// ("TVF") proprietary languages for expressing process rules.  SVRF/TVF Technology constitutes or contains trade
+// secrets and confidential information of SISW, and any use is subject to the terms and conditions of the SISW
+// End-User License Agreement, which may be viewed at https://www.sw.siemens.com/en-US/swterms/base/eula/ and the
+// EDA Supplemental Terms which may be viewed at https://www.sw.siemens.com/en-US/sw-terms/supplements/ .
+// SVRF/TVF Technology may be used solely with SISW software products, by your company's employees and on-site
+// contractors, excluding EDA Competitors, who are under obligations of confidentiality and whose job performance
+// requires access for your internal business purposes.
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ********************************************************
+// Copyright (c) 2020 by SkyWater Technology
+// SkyWater Confidential Information
+// ********************************************************
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// =========================
+// Comments / Update Section
+// =========================
+//
+// ========== ======== ========================================================
+// Date       Modifier Notes
+// ========== ======== ========================================================
+//  3/09/2020  JAG     Totally revamped LVS rules file for S130 process
+//  7/21/2020  JAG     Added connection from M5 to RDL
+//  8/12/2020  JAG     Changed LVS RECOGNIZE GATES TO NONE
+//  8/19/2020   RY     Add PEX commands enclosed in a PEX switch
+//  8/26/2020   RY     Removed unnecessary commands from the Connect
+//                       definition section
+//  8/28/2020  JAG     Added 20v drn extended devices and removed copy connects
+//  8/31/2020  JAG     Finished 20v nmos drn ext iso
+//  9/11/2020  JAG     Added ptub recognition/devices for rpoly_hp/rpoly_hs
+//        	       Added ptub recognition/devices for rndiff/rndiff_5v
+//  9/17/2020  JAG     Added logic for breaking up pwell by substrateCut
+//  9/18/2020  JAG     Changed pwell to pwell_all for all devices and removed
+//                       text/drawing and pwelltt from label deck
+//                       to make areaid/substrateCut work for all devices
+//  9/22/2020  JAG     Removed PORT LAYER POLYGON commands - unneeded and
+//                       causes issues per SS
+// 	       JAG     Redefined pwell_all as NOT ptub
+//  9/23/2020  JAG     Re-enabled pwell pins and labels as ports
+//  9/24/2020  JAG     Added LAYOUT INPUT EXCEPTION SEVERITY METRIC_RULE_FILE
+//                       to prevent warning in transcript window
+//  9/28/2020  JAG     Added support for diff pins and labels
+// 10/12/2020   RY     Removed the PRECISION 1000 command and replaced it with
+//			 LAYOUT USE DATABASE PRECISION YES and LVS REPORT UNITS
+//			 NO commands
+// 10/21/2020  JAG     Changed serp. resistor calculation to increase accuracy
+//                       of L extraction
+// 11/10/2020  JAG     Added fuse as a resistor
+//
+// -----
+// Q4.02
+// -----
+// 12/01/2020  JAG     Changed via to via1, li1 to li, licon1 to licon
+// 12/18/2020  JAG     Added device remove in LVS_exclude/dwg shapes
+// 01/08/2021  JAG     Changed model name of li res to rli (from rl1)
+// 01/12/2021  JAG     Or'd in _fill layers to diff, poly, li and m1-5
+//                      keeping it connectivity for QRC/PEX
+//                      but remove it from device recognition for LVS
+// 02/19/2021  JAG     Rewrote pwell_all after finding issues in IO LIB
+// 02/21/2021  JAG     Added nmos_esd 1.8v device
+//             JAG     Changed definition of gate to use poly/gate layer
+//                      when present.
+// 03/02/2021  JAG     Increased upad_rec size down/up value from 2 to 3 to ensure
+//                      to remove corner chamfers
+//
+// 03/16/2021  JAG     Updated pnp/npn recognition to handle shared collectors
+// 03/21/2021  JAG     Added difftt to TEXT LAYER statement
+// 03/28/2021   RY     Renamed the perimeter parameter name for all bipolar
+// 		        devices from 'pj' to 'p'
+// 04/04/2021	RY     Removed PEX switch and block of code
+//
+// 06/15/2021  JAG     Added "INNER" to several HOLE satements to account
+//                      for ptub formation in dnwell in nwell holes which
+//                      have one or more nwell guard bands surrouding them.
+// 07/02/2021  JAG     Fuse is no longer suported but left in LVS code
+////////////////////////////////////////////////////////////////////////////////
+
+// ********************************************************
+// Begin control statements
+// ********************************************************
+
+LVS SPICE ALLOW Unquoted Strings YES 
+LAYOUT ALLOW DUPLICATE CELL YES
+LAYOUT INPUT EXCEPTION SEVERITY DUPLICATE_CELL 3
+
+LAYOUT USE DATABASE PRECISION YES
+LVS REPORT UNITS NO
+
+UNIT LENGTH m
+LAYOUT INPUT EXCEPTION SEVERITY METRIC_RULE_FILE 0
+
+// SOURCE SYSTEM SPICE
+
+MASK SVDB DIRECTORY "svdb" QUERY XRC CCI NOPINLOC IXF NXF SLPH
+
+LVS REPORT OPTION NONE
+LVS REPORT MAXIMUM 50
+
+LVS RECOGNIZE GATES NONE
+
+LVS ABORT ON SOFTCHK NO
+LVS ABORT ON SUPPLY ERROR YES
+LVS IGNORE PORTS NO
+LVS SHOW SEED PROMOTIONS NO
+LVS SHOW SEED PROMOTIONS MAXIMUM 50
+LVS CHECK PORT NAMES YES
+
+LVS ISOLATE SHORTS NO
+
+VIRTUAL CONNECT COLON NO
+VIRTUAL CONNECT REPORT NO
+
+// ********************************************************
+// End control statements
+// ********************************************************
+
+// ********************************************************
+// Begin filter statements
+// ********************************************************
+
+// insert required filter options here (such as Dpar when added)
+LVS FILTER icecap OPEN SOURCE
+
+// ********************************************************
+// END filter statements
+// ********************************************************
+
+// ********************************************************
+// Begin layer definitions
+// ********************************************************
+
+LAYER nwell_i			1000
+   LAYER MAP 64 DATATYPE 20 	1000 // nwell drawing
+
+////LAYER tunm  1001
+////   LAYER MAP 80 DATATYPE 20 1001 // tunm drawing
+
+LAYER diff_i  			1002
+   LAYER MAP 65 DATATYPE 20	1002 // diff drawing
+
+LAYER poly_i			1004
+   LAYER MAP 66 DATATYPE 20	1004 // poly drawing
+
+LAYER lvtn_i			1005
+   LAYER MAP 125 DATATYPE 44 	1005 // lvtn drawing
+
+LAYER hvtp_i			1006
+   LAYER MAP 78 DATATYPE 44 	1006 // hvtp drawing
+
+LAYER npc_i			1007
+   LAYER MAP 95 DATATYPE 20	1007 // npc drawing
+
+LAYER nsdm_i			1008
+   LAYER MAP 93 DATATYPE 44	1008 // nsdm drawing
+
+LAYER psdm_i			1009
+   LAYER MAP 94 DATATYPE 20	1009 // psdm drawing
+
+LAYER mcon_i			1010
+   LAYER MAP 67 DATATYPE 44	1010 // mcon drawing
+
+LAYER met1_i			1011
+   LAYER MAP 68 DATATYPE 20	1011 // met1 drawing
+
+LAYER m1res_i			1212
+   LAYER MAP 68 DATATYPE 13	1212 // met1 res
+
+LAYER via1_i			1012
+   LAYER MAP 68 DATATYPE 44	1012 // via1 drawing
+
+LAYER met2_i			1013
+   LAYER MAP 69 DATATYPE 20	1013 // met2 drawing
+
+LAYER m2res_i			1214
+   LAYER MAP 69 DATATYPE 13	1214 // met2 res
+
+LAYER via2_i			1014
+   LAYER MAP 69 DATATYPE 44	1014 // via2 drawing
+
+LAYER met3_i			1015
+   LAYER MAP 70 DATATYPE 20	1015 // met3 drawing
+
+LAYER m3res_i			1216
+   LAYER MAP 70 DATATYPE 13 	1216 // met3 res
+
+LAYER via3i_i			1016
+   LAYER MAP 70 DATATYPE 44	1016 // via3 drawing
+
+LAYER met4_i			1017
+   LAYER MAP 71 DATATYPE 20 	1017 // met4 drawing
+
+LAYER m4res_i			1218
+   LAYER MAP 71 DATATYPE 13	1218 // met4 res
+
+LAYER via4i_i			1018
+   LAYER MAP 71 DATATYPE 44 	1018 // via4 drawing
+
+LAYER met5_i			1019
+   LAYER MAP 72 DATATYPE 20 	1019 // met5 drawing
+
+LAYER m5res_i			1220
+   LAYER MAP 72 DATATYPE 13 	1220 // met5 res
+
+LAYER pad_i			1020
+   LAYER MAP 76 DATATYPE 20 	1020 // pad drawing
+
+LAYER licon_i			1021
+   LAYER MAP 66 DATATYPE 44 	1021 // licon drawing
+
+LAYER li_ii			1022
+   LAYER MAP 67 DATATYPE 20 	1022 // li drawing
+
+LAYER lires_i			1223
+   LAYER MAP 67 DATATYPE 13 	1223 // li res
+
+LAYER pnp_i			1023
+   LAYER MAP 82 DATATYPE 44 	1023 // pnp drawing
+
+LAYER npn_i			1024
+   LAYER MAP 82 DATATYPE 20 	1024 // npn drawing
+
+LAYER v5_i			1025
+   LAYER MAP 75 DATATYPE 20 	1025 // hvi drawing
+
+LAYER ldntm_i			1026
+   LAYER MAP 11 DATATYPE 44 	1026 // ldntm drawing
+
+LAYER capacitor_i		1027
+   LAYER MAP 82 DATATYPE 64 	1027 // capacitor drawing
+
+LAYER ncm_i			1028
+   LAYER MAP 92 DATATYPE 44 	1028 // ncm drawing
+
+LAYER rdl_i			1029
+   LAYER MAP 74 DATATYPE 20 	1029 // rdl drawing
+
+LAYER rpm_i			1030
+   LAYER MAP 86 DATATYPE 20 	1030 // rpm drawing
+
+LAYER inductor_i		1031
+   LAYER MAP 82 DATATYPE 24 	1031 // inductor drawing
+
+LAYER pmm_i			1032
+   LAYER MAP 85 DATATYPE 44 	1032 // pmm drawing
+
+LAYER ubm_i			1033
+   LAYER MAP 127 DATATYPE 21 	1033 // ubm drawing
+
+LAYER bump_i			1034
+   LAYER MAP 127 DATATYPE 22 	1034 // bump drawing
+
+////LAYER cviam  1035
+////   LAYER MAP 105 DATATYPE 20 1035 // cviam drawing
+
+////LAYER cmm1  1036
+////   LAYER MAP 62 DATATYPE 20 1036 // cmm1 drawing
+
+////LAYER cmm2  1037
+////   LAYER MAP 105 DATATYPE 44 1037 // cmm2 drawing
+
+////LAYER cmm3  1038
+////   LAYER MAP 107 DATATYPE 20 1038 // cmm3 drawing
+
+////LAYER metop1  1039
+////   LAYER MAP 70 DATATYPE 32 1039 // met3 option1
+
+////LAYER metop2  1040
+////   LAYER MAP 70 DATATYPE 33 1040 // met3 option2
+
+////LAYER metop3  1041
+////   LAYER MAP 70 DATATYPE 34 1041 // met3 option3
+
+////LAYER metop4  1042
+////   LAYER MAP 70 DATATYPE 35 1042 // met3 option4
+
+////LAYER metop5  1043
+////   LAYER MAP 70 DATATYPE 36 1043 // met3 option5
+
+////LAYER metop6  1044
+////   LAYER MAP 70 DATATYPE 37 1044 // met3 option6
+
+////LAYER metop7  1045
+////   LAYER MAP 70 DATATYPE 38 1045 // met3 option7
+
+////LAYER metop8  1046
+////   LAYER MAP 70 DATATYPE 39 1046 // met3 option8
+
+LAYER dnwell_i			1047
+   LAYER MAP 64 DATATYPE 18 	1047 // dnwell drawing
+
+LAYER DiodeID_i			1048
+   LAYER MAP 81 DATATYPE 23 	1048 // areaid diode
+
+LAYER ESDID_i			1049
+   LAYER MAP 81 DATATYPE 19 	1049 // areaid esd
+
+LAYER ENID_i			1050
+   LAYER MAP 81 DATATYPE 57 	1050 // areaid extendedDrain
+
+LAYER COREID_i			1051
+   LAYER MAP 81 DATATYPE 2 	1051 // areaid core
+
+LAYER SEALID_i			1052
+   LAYER MAP 81 DATATYPE 1 	1052 // areaid seal
+
+LAYER FRAMEID_i			1053
+   LAYER MAP 81 DATATYPE 3 	1053 // areaid frame
+
+LAYER LVID_i			1054
+   LAYER MAP 81 DATATYPE 60 	1054 // areaid lvNative
+
+LAYER STDCID_i			1055
+   LAYER MAP 81 DATATYPE 4 	1055 // areaid standardc
+
+LAYER localSub_i		1056
+   LAYER MAP 81 DATATYPE 53 	1056 // areaid substrateCut
+
+LAYER PHdiodeID_i		1057
+   LAYER MAP 81 DATATYPE 81 	1057 // areaid photo
+
+LAYER diffres_i			1060
+   LAYER MAP 65 DATATYPE 13	1060 // diff res
+
+LAYER fuse_i			1062
+   LAYER MAP 71 DATATYPE 17 	1062 // met4 fuse
+
+LAYER padCenter_i		1063
+   LAYER MAP 81 DATATYPE 20 	1063 // padCenter drawing
+
+LAYER LVS_exclude		1064
+   LAYER MAP 84 DATATYPE 44 	1064 // LVS_exclude drawing
+
+LAYER polyres_i			1065
+   LAYER MAP 66 DATATYPE 13 	1065 // poly res
+
+LAYER pwres_i			1075
+   LAYER MAP 64 DATATYPE 13 	1075 // pwell res
+
+LAYER padtt			1077 1078
+   LAYER MAP 76 TEXTTYPE 20 	1077 // pad drawing
+   LAYER MAP 76 TEXTTYPE 5 	1078 // pad label
+
+LAYER rdltt			1079 1080
+   LAYER MAP 74 TEXTTYPE 20 	1079 // rdl drawing
+   LAYER MAP 74 TEXTTYPE 5 	1080 // rdl label
+
+LAYER met5tt			1082 
+   LAYER MAP 72 TEXTTYPE 5 	1082 // met5 label
+
+LAYER met4tt			1085 
+   LAYER MAP 71 TEXTTYPE 5 	1085 // met4 label
+
+LAYER met3tt			1088 
+   LAYER MAP 70 TEXTTYPE 5 	1088 // met3 label
+
+LAYER met2tt			1091 
+   LAYER MAP 69 TEXTTYPE 5 	1091 // met2 label
+
+LAYER met1tt			1094 
+   LAYER MAP 68 TEXTTYPE 5 	1094 // met1 label
+
+LAYER litt			1097 
+   LAYER MAP 67 TEXTTYPE 5 	1097 // li label
+
+LAYER polytt			1100 
+   LAYER MAP 66 TEXTTYPE 5 	1100 // poly label
+
+LAYER difftt			1103 
+   LAYER MAP 65 TEXTTYPE 6 	1103 // diff label
+
+LAYER pwelltt			1105
+   LAYER MAP 64 TEXTTYPE 59 	1105 // pwell label
+
+LAYER pwellisott		1106
+   LAYER MAP 44 TEXTTYPE 5 	1106 // pwelliso label
+
+LAYER nwelltt			1108 
+   LAYER MAP 64 TEXTTYPE 5 	1108 // nwell label
+
+//LAYER textdraw			1110
+//   LAYER MAP 83 TEXTTYPE 44 	1110 // text drawing
+
+LAYER pwell_pin			1111
+   LAYER MAP 122 DATATYPE 16 	1111 // pwell pin
+
+LAYER pwelliso_pin		1112
+   LAYER MAP 44 DATATYPE 16 	1112 // pwelliso pin
+
+LAYER nwell_pin			1113
+   LAYER MAP 64 DATATYPE 16 	1113 // nwell pin
+
+LAYER diff_pin			1114
+   LAYER MAP 65 DATATYPE 16 	1114 // diff pin
+
+LAYER poly_pin			1115
+   LAYER MAP 66 DATATYPE 16 	1115 // poly pin
+
+LAYER li_pin			1116
+   LAYER MAP 67 DATATYPE 16 	1116 // li pin
+
+LAYER met1_pin			1117
+   LAYER MAP 68 DATATYPE 16 	1117 // met1 pin
+
+LAYER met2_pin			1118
+   LAYER MAP 69 DATATYPE 16 	1118 // met2 pin
+
+LAYER met3_pin			1119
+   LAYER MAP 70 DATATYPE 16 	1119 // met3 pin
+
+LAYER met4_pin			1120
+   LAYER MAP 71 DATATYPE 16 	1120 // met4 pin
+
+LAYER met5_pin			1121
+   LAYER MAP 72 DATATYPE 16 	1121 // met5 pin
+
+LAYER rdl_pin			1122
+   LAYER MAP 74 DATATYPE 16 	1122 // rdl pin
+
+LAYER pad_pin			1123
+   LAYER MAP 76 DATATYPE 16 	1123 // pad pin
+
+LAYER pwellpt_i			1124
+   LAYER MAP 122 TEXTTYPE 16 	1124 // pwell pin
+   LAYER MAP 122 TEXTTYPE 0 	1124 // pwell pin
+
+LAYER pwellisopt_i		1125
+   LAYER MAP 44 TEXTTYPE 16 	1125 // pwelliso pin
+   LAYER MAP 44 TEXTTYPE 0 	1125 // pwelliso pin
+
+LAYER nwellpt_i			1126
+   LAYER MAP 64 TEXTTYPE 16 	1126 // nwell pin
+   LAYER MAP 64 TEXTTYPE 0 	1126 // nwell pin
+
+LAYER diffpt_i			1127
+   LAYER MAP 65 TEXTTYPE 16 	1127 // diff pin
+   LAYER MAP 65 TEXTTYPE 0 	1127 // diff pin
+
+LAYER polypt_i			1128
+   LAYER MAP 66 TEXTTYPE 16 	1128 // poly pin
+   LAYER MAP 66 TEXTTYPE 0 	1128 // poly pin
+
+LAYER lipt_i			1129
+   LAYER MAP 67 TEXTTYPE 16 	1129 // li pin
+   LAYER MAP 67 TEXTTYPE 0 	1129 // li pin
+
+LAYER met1pt_i			1130
+   LAYER MAP 68 TEXTTYPE 16 	1130 // met1 pin
+   LAYER MAP 68 TEXTTYPE 0 	1130 // met1 pin
+
+LAYER met2pt_i			1131
+   LAYER MAP 69 TEXTTYPE 16 	1131 // met2 pin
+   LAYER MAP 69 TEXTTYPE 0 	1131 // met2 pin
+
+LAYER met3pt_i			1132
+   LAYER MAP 70 TEXTTYPE 16 	1132 // met3 pin
+   LAYER MAP 70 TEXTTYPE 0 	1132 // met3 pin
+
+LAYER met4pt_i			1133
+   LAYER MAP 71 TEXTTYPE 16 	1133 // met4 pin
+   LAYER MAP 71 TEXTTYPE 0 	1133 // met4 pin
+
+LAYER met5pt_i			1134
+   LAYER MAP 72 TEXTTYPE 16 	1134 // met5 pin
+   LAYER MAP 72 TEXTTYPE 0 	1134 // met5 pin
+
+LAYER rdlpt_i			1135
+   LAYER MAP 74 TEXTTYPE 16 	1135 // rdl pin
+   LAYER MAP 74 TEXTTYPE 0 	1135 // rdl pin
+
+LAYER padpt_i			1136
+   LAYER MAP 76 TEXTTYPE 16 	1136 // pad pin
+   LAYER MAP 76 TEXTTYPE 0 	1136 // pad pin
+
+////LAYER met5probe  1137
+////   LAYER MAP 72 TEXTTYPE 25 1137 // met5 probe
+
+////LAYER met4probe  1138
+////   LAYER MAP 71 TEXTTYPE 25 1138 // met4 probe
+
+////LAYER met3probe  1139
+////   LAYER MAP 70 TEXTTYPE 25 1139 // met3 probe
+
+////LAYER met2probe  1140
+////   LAYER MAP 69 TEXTTYPE 25 1140 // met2 probe
+
+////LAYER met1probe  1141
+////   LAYER MAP 68 TEXTTYPE 25 1141 // met1 probe
+
+////LAYER liprobe  1142
+////   LAYER MAP 67 TEXTTYPE 25 1142 // li probe
+
+////LAYER polyprobe  1143
+////   LAYER MAP 66 TEXTTYPE 25 1143 // poly probe
+
+////LAYER fomWaffDrop  1152
+////   LAYER MAP 22 DATATYPE 24 1152 // cfom waffleDrop
+
+LAYER moduleCutAREA_i		1153
+   LAYER MAP 81 DATATYPE 10 	1153 // areaid moduleCut
+
+LAYER indLabel_i		1154
+   LAYER MAP 82 TEXTTYPE 25 	1154 // inductor label
+
+LAYER indTerm1_i		1155
+   LAYER MAP 82 DATATYPE 26 	1155 // inductor term1
+
+LAYER indTerm2_i		1156
+   LAYER MAP 82 DATATYPE 27 	1156 // inductor term2
+
+LAYER indTerm3_i		1157
+   LAYER MAP 82 DATATYPE 28 	1157 // inductor term3
+
+LAYER capm_i			1158
+   LAYER MAP 89 DATATYPE 44 	1158 // capm drawing
+
+LAYER cap2m_i			1159
+   LAYER MAP 97 DATATYPE 44 	1159 // cap2m drawing
+
+LAYER urpm_i			1160
+   LAYER MAP 79 DATATYPE 20 	1160 // urpm drawing
+
+LAYER EXTDRAIN20_i		1161
+   LAYER MAP 81 DATATYPE 58 	1161 // extd20v drawing
+
+LAYER pwbm_i			1162
+   LAYER MAP 19 DATATYPE 44 	1162 // pwbm drawing
+
+LAYER pwde_i			1163
+   LAYER MAP 124 DATATYPE 20 	1163 // pwbm drawing
+
+LAYER LOWVTID_i			1164
+   LAYER MAP 81 DATATYPE 108 	1164 // areaid low_vt drawing
+
+LAYER v20_i			1165
+   LAYER MAP 74 DATATYPE 22 	1165 // uhvi drawing
+
+LAYER v12_i			1166
+   LAYER MAP 74 DATATYPE 21 	1166 // uhvi drawing
+
+LAYER padLength_i		1167
+   LAYER MAP 81 DATATYPE 67 	1167 // pad length marker
+
+LAYER etest_i			1168
+   LAYER MAP 81 DATATYPE 101 	1168 // pad e_test marker
+
+LAYER thkox_i			1169
+   LAYER MAP 75 DATATYPE 21 	1169 // thick oxide
+
+LAYER poly_fill			1170
+   LAYER MAP 66 DATATYPE 99	1170 // poly fill
+
+LAYER diff_fill			1171
+   LAYER MAP 65 DATATYPE 99	1171 // diff fill
+
+LAYER li_fill			1172
+   LAYER MAP 67 DATATYPE 99 	1172 // li fill
+
+LAYER met1_fill			1173
+   LAYER MAP 68 DATATYPE 99	1173 // met1 fill
+
+LAYER met2_fill			1174
+   LAYER MAP 69 DATATYPE 99	1174 // met2 fill
+
+LAYER met3_fill			1175
+   LAYER MAP 70 DATATYPE 99	1175 // met3 fill
+
+LAYER met4_fill			1176
+   LAYER MAP 71 DATATYPE 99	1176 // met4 fill
+
+LAYER met5_fill			1177
+   LAYER MAP 72 DATATYPE 99	1177 // met5 fill
+
+LAYER poly_gate			1178
+   LAYER MAP 66 DATATYPE 9	1178 // poly_gate
+
+boundary = EXTENT DRAWN ORIGINAL
+
+LAYOUT BASE LAYER diff_i poly_i pnp_i npn_i nsdm_i psdm_i thkox_i v5_i v12_i v20_i lvtn_i hvtp_i
+
+// ********************************************************
+// End layer definitions
+// ********************************************************
+
+// ********************************************************
+// Remove "LVS_exclude" from layer definitions:
+// ********************************************************
+nwell = nwell_i NOT LVS_exclude
+diff = (diff_i NOT LVS_exclude) OR diff_fill
+poly = (poly_i NOT LVS_exclude) OR poly_fill
+lvtn = lvtn_i NOT LVS_exclude
+hvtp = hvtp_i NOT LVS_exclude
+npc = npc_i NOT LVS_exclude
+nsdm = nsdm_i NOT LVS_exclude
+psdm = psdm_i NOT LVS_exclude
+mcon = mcon_i NOT LVS_exclude
+met1 = (met1_i NOT LVS_exclude) NOT met1_fill
+m1res = m1res_i NOT LVS_exclude
+via1 = via1_i NOT LVS_exclude
+met2 = (met2_i NOT LVS_exclude) NOT met2_fill
+m2res = m2res_i NOT LVS_exclude
+via2 = via2_i NOT LVS_exclude
+met3 = (met3_i NOT LVS_exclude) NOT met3_fill
+m3res = m3res_i NOT LVS_exclude
+via3i = via3i_i NOT LVS_exclude
+met4 = (met4_i NOT LVS_exclude) NOT met4_fill
+m4res = m4res_i NOT LVS_exclude
+via4i = via4i_i NOT LVS_exclude
+met5 = (met5_i NOT LVS_exclude) NOT met5_fill
+m5res = m5res_i NOT LVS_exclude
+pad = pad_i NOT LVS_exclude
+licon = licon_i NOT LVS_exclude
+li_i = (li_ii NOT LVS_exclude) OR li_fill
+lires = (lires_i NOT LVS_exclude) NOT li_fill
+pnp = pnp_i NOT LVS_exclude
+npn = npn_i NOT LVS_exclude
+v5 = v5_i NOT LVS_exclude
+ldntm = ldntm_i NOT LVS_exclude
+capacitor = capacitor_i NOT LVS_exclude
+ncm = ncm_i NOT LVS_exclude
+rdl = rdl_i NOT LVS_exclude
+rpm = rpm_i NOT LVS_exclude
+inductor = inductor_i NOT LVS_exclude
+pmm = pmm_i NOT LVS_exclude
+ubm = ubm_i NOT LVS_exclude
+bump = bump_i NOT LVS_exclude
+dnwell = dnwell_i NOT LVS_exclude
+DiodeID = DiodeID_i NOT LVS_exclude
+ESDID = ESDID_i NOT LVS_exclude
+ENID = ENID_i NOT LVS_exclude
+COREID = COREID_i NOT LVS_exclude
+SEALID = SEALID_i NOT LVS_exclude
+FRAMEID = FRAMEID_i NOT LVS_exclude
+LVID = LVID_i NOT LVS_exclude
+STDCID = STDCID_i NOT LVS_exclude
+localSub = localSub_i NOT LVS_exclude
+PHdiodeID = PHdiodeID_i NOT LVS_exclude
+diffres = diffres_i NOT LVS_exclude
+fuse = fuse_i NOT LVS_exclude
+padCenter = padCenter_i NOT LVS_exclude
+polyres = polyres_i NOT LVS_exclude
+pwres = pwres_i NOT LVS_exclude
+pwellpt = pwellpt_i NOT LVS_exclude
+pwellisopt = pwellisopt_i NOT LVS_exclude
+nwellpt = nwellpt_i NOT LVS_exclude
+diffpt = diffpt_i NOT LVS_exclude
+polypt = polypt_i NOT LVS_exclude
+lipt = lipt_i NOT LVS_exclude
+met1pt = met1pt_i NOT LVS_exclude
+met2pt = met2pt_i NOT LVS_exclude
+met3pt = met3pt_i NOT LVS_exclude
+met4pt = met4pt_i NOT LVS_exclude
+met5pt = met5pt_i NOT LVS_exclude
+rdlpt = rdlpt_i NOT LVS_exclude
+padpt = padpt_i NOT LVS_exclude
+moduleCutAREA = moduleCutAREA_i NOT LVS_exclude
+indLabel = indLabel_i NOT LVS_exclude
+indTerm1 = indTerm1_i NOT LVS_exclude
+indTerm2 = indTerm2_i NOT LVS_exclude
+indTerm3 = indTerm3_i NOT LVS_exclude
+capm = capm_i NOT LVS_exclude
+cap2m = cap2m_i NOT LVS_exclude
+urpm = urpm_i NOT LVS_exclude
+EXTDRAIN20 = EXTDRAIN20_i NOT LVS_exclude
+pwbm = pwbm_i NOT LVS_exclude
+pwde = pwde_i NOT LVS_exclude
+LOWVTID = LOWVTID_i NOT LVS_exclude
+v20 = v20_i NOT LVS_exclude
+v12 = v12_i NOT LVS_exclude
+padLength = padLength_i NOT LVS_exclude
+etest = etest_i NOT LVS_exclude
+thkox = thkox_i NOT LVS_exclude
+
+// ********************************************************
+// Begin layer boolean operations 
+// ********************************************************
+
+// PAD:
+  // BOND PAD:
+  pad_rec1 = (pad AND met5) NOT etest
+  pad_rec2 = SIZE pad_rec1 BY -20
+  pad_rec = SIZE pad_rec2 BY 20 
+
+  // MICRO-PROBE PAD:
+  upad_rec0 = pad WITH TEXT "u-test"
+  upad_rec1 = (upad_rec0 AND met5) AND etest
+  upad_rec2 = SIZE upad_rec1 BY -3
+  upad_rec = SIZE upad_rec2 BY 3 
+
+  // ETEST PROBE PAD:
+  epad_rec0 = pad WITH TEXT "e-test"
+  epad_rec1 = (epad_rec0 AND met5) AND etest
+  epad_rec2 = SIZE epad_rec1 BY -15
+  epad_rec = SIZE epad_rec2 BY 15
+
+// WELLS:
+substrateCutDonut1 = SIZE localSub BY 0.005
+substrateCutDonut2 = SIZE localSub BY -0.005
+substrateCutDonut = substrateCutDonut1 NOT substrateCutDonut2
+
+pwell = (boundary NOT (localSub OR nwell)) NOT (OR ((HOLES nwell) AND dnwell) substrateCutDonut)
+ptub_a = (SIZE ((HOLES nwell INNER) AND dnwell) BY -0.005) NOT (OR pwres pwell pwbm) 
+ptub_b = SIZE ((SIZE ((HOLES nwell INNER) AND dnwell) BY -0.005) NOT pwell) BY 0.005  // for sub diode of pwres
+ptub_c = (SIZE ((SIZE ((HOLES nwell INNER) AND dnwell) BY -0.005) NOT (OR pwres pwell)) BY 0.005) NOT pwres // for sub diode of pwres
+ptub_in_pwres = SIZE ((((HOLES nwell INNER) AND dnwell) INTERACT pwres) NOT (diff INTERACT pwres)) BY 0.005
+ptub = COPY ptub_a 
+"debug.ptub" {COPY ptub}
+"debug.nwell.holes" {COPY (HOLES nwell) }
+//pwell_all_a = (boundary NOT (OR ptub substrateCutDonut)) OR ptub
+pwell_all_a = (SIZE boundary BY 0.005) NOT substrateCutDonut
+pwell_all = pwell_all_a NOT ptub
+
+//pwell_all = ptub OR ((boundary INTERACT substrateCutDonut) NOT substrateCutDonut)
+// TAPS:
+ptubtap_1 = (diff and psdm) AND (ptub NOT nwell)
+ptap_1 = ((((diff AND psdm) NOT nwell) NOT ptub) NOT ptubtap) NOT pwbm
+ntap_1 = (diff AND nsdm) AND nwell
+
+// MOS: 
+nsd1 = ((diff and nsdm) NOT nwell) NOT gate
+psd1 = ((diff and psdm) AND nwell) NOT gate
+
+// for IO libs with chamferred poly over diff:
+//gate = diff AND poly
+gate = diff AND ((poly NOT INTERACT poly_gate) OR (poly AND poly_gate))
+
+// nominal (1.8v) ngate:
+ngate_nom_pw = ((gate AND nsdm) AND pwell_all) NOT (OR diff_fill poly_fill v5 v12 v20 lvtn ESDID LVID npn pnp thkox)
+
+ngate_nom_pt = ((gate AND nsdm) AND ptub) NOT (OR diff_fill poly_fill v5 v12 v20 lvtn ESDID LVID npn pnp thkox)
+
+// nominal (1.8v) esd ngate:
+ngate_nom_esd_pt = (((((gate AND nsdm) NOT v5) AND ESDID) AND ptub) NOT thkox) NOT (OR diff_fill poly_fill v12 v20 lvtn LVID pnp npn)
+
+ngate_nom_esd_pw = (((((gate AND nsdm) NOT v5) AND ESDID) AND pwell_all) NOT thkox) NOT (OR diff_fill poly_fill v12 v20 lvtn LVID pnp npn)
+
+// low voltage threshold ngate:
+ngate_lvt_pw = (((gate AND nsdm) AND lvtn) AND pwell_all) NOT (OR diff_fill poly_fill v5 v12 v20 ESDID LVID npn pnp thkox)
+
+ngate_lvt_pt = (((gate AND nsdm) AND lvtn) AND ptub) NOT (OR diff_fill poly_fill v5 v12 v20 ESDID LVID pnp npn thkox)
+
+// 5v ngate:
+ngate_v5_pw = ((((gate AND nsdm) AND v5) AND thkox) AND pwell_all) NOT (OR diff_fill poly_fill v12 v20 lvtn ESDID LVID pnp npn)
+
+ngate_v5_pt = ((((gate AND nsdm) AND v5) AND thkox) AND ptub) NOT (OR diff_fill poly_fill v12 v20 lvtn ESDID LVID pnp npn)
+
+// 12v ngate:
+ngate_v12_pw = ((((gate AND nsdm) AND v12) AND pwell_all) AND thkox) NOT (OR diff_fill poly_fill v5 v20 lvtn ESDID LVID pnp npn ENID)
+
+ngate_v12_pt = ((((gate AND nsdm) AND v12) AND ptub) AND thkox) NOT (OR diff_fill poly_fill v5 v20 lvtn ESDID LVID pnp npn ENID)
+
+// 20v ngate:
+pwbm_holes = HOLES pwbm
+
+ngate_v20a = (((((gate AND nsdm) AND v20) NOT dnwell) AND thkox) AND lvtn) NOT (OR diff_fill poly_fill v5 v12 ESDID LVID pnp npn)
+
+ngate_v20_iso_rec = (((((gate AND nsdm) AND v20) AND dnwell) AND thkox) NOT lvtn) NOT (OR diff_fill poly_fill ngate_v20a v5 v12 ESDID LVID pnp npn)
+ngate_v20_iso_sub = ((HOLES pwbm) INTERACT ngate_v20_iso_rec) AND dnwell
+ngate_v20_iso_sub_cont = (psdm AND diff) AND ngate_v20_iso_sub
+ngate_v20_iso_gate = COPY ngate_v20_iso_rec
+
+ngate_v20 = OR ngate_v20a ngate_v20_iso_rec
+
+nsd_20v = (diff AND nsdm) NOT ngate_v20 
+
+nsd_20v_src_1 = EXPAND EDGE ((nsd_20v NOT ngate_v20) COINCIDENT EDGE ENID) OUTSIDE BY 0.05
+
+nsd_20v_src = (nsd_20v NOT ngate_v20) TOUCH nsd_20v_src_1 == 3
+
+ngate_v20_nat = ((lvtn ENCLOSE nsdm) AND ngate_v20) NOT pwbm
+
+nsd_20v_nat_drn = ((ENID INTERACT ngate_v20_nat) NOT ngate_v20_nat) NOT nsd_20v_src
+
+nsd_20v_drn = (((ENID INTERACT ngate_v20) NOT ngate_v20) NOT nsd_20v_src) NOT nsd_20v_nat_drn
+
+ngate_v20_zvt = (((lvtn CUT nsdm) NOT (lvtn ENCLOSE nsdm)) AND ngate_v20) NOT (OR ngate_v20_iso_rec ngate_v20_nat)
+ngate_v20_nom = ngate_v20 NOT (poly INTERACT (OR ngate_v20_nat ngate_v20_zvt ngate_v20_iso_rec))
+
+ngate_de_20v_iso_gate_conn = ngate_v20_iso_rec AND poly
+ngate_de_20v_nom_gate_conn = ngate_v20_nom AND poly
+ngate_de_20v_zvt_gate_conn = ngate_v20_zvt AND poly
+ngate_de_20v_nat_gate_conn = ngate_v20_nat AND poly
+
+// 5v esd native ngate:
+ngate_esd_nat_5v_pw = ((((((gate AND nsdm) AND v5) AND lvtn) AND ESDID) AND pwell_all) AND thkox) NOT (OR diff_fill poly_fill v12 v20 LVID pnp npn)
+
+ngate_esd_nat_5v_pt = ((((((gate AND nsdm) AND v5) AND lvtn) AND ESDID) AND ptub) AND thkox) NOT (OR diff_fill poly_fill v12 v20 LVID pnp npn)
+
+// 5v esd ngate:
+ngate_esd_5v_pw = (((((gate AND nsdm) AND v5) AND ESDID) AND pwell_all) AND thkox) NOT (OR diff_fill poly_fill v12 v20 lvtn LVID pnp npn)
+
+ngate_esd_5v_pt = (((((gate AND nsdm) AND v5) AND ESDID) AND ptub) AND thkox) NOT (OR diff_fill poly_fill v12 v20 lvtn LVID pnp npn)
+
+// 3v native ngate:
+ngate_nat_3v_pw = ((((((gate and nsdm) AND LVID) AND lvtn) AND v5) AND pwell_all) AND thkox) NOT (OR diff_fill poly_fill v12 v20 ESDID pnp npn)
+
+ngate_nat_3v_pt = (((((gate and nsdm) AND LVID) AND lvtn) AND v5) AND ptub) NOT (OR diff_fill poly_fill v12 v20 ESDID pnp npn)
+
+// 5v native ngate:
+ngate_nat_5v_pw = (((((gate and nsdm) AND lvtn) AND v5) AND pwell_all) AND thkox) NOT (OR diff_fill poly_fill v12 v20 ESDID LVID pnp npn)
+
+ngate_nat_5v_pt = (((((gate and nsdm) AND lvtn) AND v5) AND ptub) AND thkox) NOT (OR diff_fill poly_fill v12 v20 ESDID LVID pnp npn)
+
+// 12v extended drain ngate:
+ngate_de_12v_pw = (((((gate and nsdm) AND v12) AND ENID) NOT nwell) AND thkox) NOT (OR diff_fill poly_fill v5 v20 ESDID LVID pnp npn)
+
+ngate_de_12v_gate_conn = ngate_de_12v_pw AND poly
+
+nsrc_de_12v = nsd1 INTERACT ngate_de_12v_pw
+
+// 12v ngate:
+ndrn_de_12v = ((((ENID ENCLOSE ntap_1) INTERACT ngate_de_12v_pw) NOT ngate_de_12v_pw) NOT nsrc_de_12v) AND nwell
+
+// nominal (1.8v) pgate:
+pgate_nom = (gate and psdm) NOT (OR diff_fill poly_fill v5 v12 v20 lvtn ESDID hvtp LVID npn pnp ENID thkox)
+
+// nominal (1.8v) low voltage threshold pgate:
+pgate_lvt = ((gate AND psdm) AND lvtn) NOT (OR diff_fill poly_fill v5 v12 v20 ESDID hvtp LVID npn pnp ENID thkox)
+
+// nominal (1.8v) high voltage threshold pgate:
+pgate_hvt = ((gate AND psdm) AND hvtp) NOT (OR diff_fill poly_fill v5 v12 v20 ESDID lvtn LVID npn pnp ENID thkox)
+
+// 5v pgate:
+pgate_v5 = (((gate AND psdm) AND v5) AND thkox) NOT (OR diff_fill poly_fill v12 v20 lvtn ESDID hvtp LVID npn pnp ENID)
+
+// 12v pgate:
+pgate_v12 = (((gate AND psdm) AND v12) AND thkox) NOT (OR v5 v20 lvtn ESDID hvtp LVID npn pnp ENID) 
+
+// 5v esd pgate:
+pgate_esd_v5 = ((((gate and psdm) AND v5) AND ESDID) AND thkox) NOT (OR diff_fill poly_fill v12 v20 LVID npn pnp ENID) 
+
+// 12v extended drain pgate:
+pgate_de_12v_pw = (((((gate and psdm) AND v12) AND ENID) AND nwell) AND thkox) NOT (OR diff_fill poly_fill v5 v20 ESDID LVID pnp npn)
+
+psrc_de_12v = psd1 INTERACT pgate_de_12v_pw
+
+pdrn_de_12v = ((((ENID ENCLOSE ptap_1) ENCLOSE pgate_de_12v_pw) NOT pgate_de_12v_pw) NOT psrc_de_12v) NOT nwell
+
+pgate_de_12v_gate_conn = pgate_de_12v_pw AND poly
+
+// 20v extended drain pgate:
+pgate_de_20v = (((((poly NOT poly_fill) AND v20) AND thkox) AND (diff NOT diff_fill)) AND psdm) NOT lvtn
+pgate_de_20v_conn = COPY pgate_de_20v
+
+psd_20v = (diff AND psdm) NOT pgate_de_20v 
+
+psd_20v_src_1 = EXPAND EDGE ((psd_20v NOT pgate_de_20v) COINCIDENT EDGE ENID) OUTSIDE BY 0.05
+
+psrc_de_20v = (psd_20v NOT pgate_de_20v) TOUCH psd_20v_src_1 == 3
+
+pdrn_de_20v = (ENID INTERACT pgate_de_20v) NOT (OR pgate_de_20v psrc_de_20v)
+
+// TAPS and TUBS:
+
+ntap = ntap_1 NOT (ntap_1 INTERACT (ENID INTERACT (OR diff_fill ngate_de_12v_pw ngate_nat_5v_pt pgate_de_12v_pw)))
+
+ptap = ptap_1 NOT (ptap_1 INTERACT (OR diff_fill pgate_de_12v_pw ngate_de_12v_pw pdrn_de_20v ngate_v20_iso_sub)) 
+ptubtap = (ptubtap_1 NOT ((SIZE ptubtap_1 BY 0.005) TOUCH (pgate_de_12v_pw OR ngate_de_12v_pw))) NOT (pwbm OR diff_fill)
+
+// RES:
+
+// high precision/high sheet:
+pwres_rec	= (pwres AND psdm) AND ((HOLES nwell) AND dnwell)
+pwres_term	= ((psdm NOT pwres) ENCLOSE diff) TOUCH pwres_rec == 1
+
+hp_poly_1       = (poly NOT poly_fill) AND polyres 
+hp_poly_2       = hp_poly_1 AND npc
+hp_poly_3       = hp_poly_2 AND psdm
+hp_poly         = hp_poly_3 AND rpm
+hp_poly_nw      = hp_poly AND nwell
+hp_poly_pw      = (hp_poly AND pwell_all) NOT nwell
+hp_poly_pt      = hp_poly AND ptub
+
+hs_poly_1       = (poly NOT poly_fill) AND polyres 
+hs_poly_2       = hs_poly_1 AND npc
+hs_poly_3       = hs_poly_2 AND psdm
+hs_poly         = hs_poly_3 AND urpm
+hs_poly_nw      = hs_poly AND nwell
+hs_poly_pw      = (hs_poly AND pwell_all) NOT nwell
+hs_poly_pt      = hs_poly AND ptub
+
+// std poly:
+rpoly_rec	= (poly AND polyres) NOT (OR poly_fill hp_poly hs_poly)
+
+// pdiff:
+rpdiff_res_1	= (psdm AND (diff NOT diff_fill)) AND diffres
+rpdiff_nom	= (rpdiff_res_1 AND nwell) NOT (OR diff_fill thkox v5 v12 v20)	
+rpdiff_5v	= (((rpdiff_res_1 AND nwell) AND V5) AND thkox) NOT (OR diff_fill v12 v20)	
+
+// ndiff:
+rndiff_res_1	= (nsdm AND (diff NOT diff_fill)) AND diffres
+rndiff_nom_pw	= (rndiff_res_1 AND pwell_all) NOT (OR thkox v5 v12 v20)
+rndiff_nom_pt	= (rndiff_res_1 AND ptub) NOT (OR thkox v5 v12 v20)
+rndiff_5v_pw	= (((rndiff_res_1 AND pwell_all) AND v5) AND thkox) NOT (OR v12 v20)
+rndiff_5v_pt	= (((rndiff_res_1 AND ptub) AND v5) AND thkox) NOT (OR v12 v20)	
+
+
+// DIO:
+//   N+ DIO:
+dnsd_pw         =  ((((diodeID AND nsdm) NOT nwell) AND diff) NOT (OR diff_fill ESDID v5 v12 v20 lvtn hvtp LVID)) AND pwell_all
+
+dnsd_pt         =  ((((diodeID AND nsdm) NOT nwell) AND diff) NOT (OR diff_fill ESDID v5 v12 v20 lvtn hvtp LVID)) AND ptub
+
+dnsd_pw_esd     =  (((((diodeID AND nsdm) NOT nwell) AND diff) AND ESDID) NOT (OR diff_fill v5 v12 v20 lvtn hvtp LVID)) AND pwell_all
+
+dnsd_pt_esd     =  (((((diodeID AND nsdm) NOT nwell) AND diff) AND ESDID) NOT (OR diff_fill v5 v12 v20 lvtn hvtp LVID)) AND ptub
+
+dnsd_pw_esd_v5  =  (((((((diodeID AND nsdm) NOT nwell) AND diff) AND ESDID) AND v5) AND thkox) NOT (OR diff_fill v12 v20 lvtn hvtp LVID)) AND pwell_all
+
+dnsd_pt_esd_v5  =  (((((((diodeID AND nsdm) NOT nwell) AND diff) AND ESDID) AND v5) AND thkox) NOT (OR diff_fill v12 v20 lvtn hvtp LVID)) AND ptub
+
+
+dnsd_pw_lvt     =  (((((diodeID AND nsdm) NOT nwell) AND diff) AND lvtn) NOT (OR ESDID v5 v12 v20 hvtp LVID)) AND pwell_all
+
+dnsd_pt_lvt     =  (((((diodeID AND nsdm) NOT nwell) AND diff) AND lvtn) NOT (OR ESDID v5 v12 v20 hvtp LVID)) AND ptub
+
+dnsd_pw_nat     =  ((((((diodeID AND nsdm) NOT nwell) AND diff) AND LVID) AND lvtn) NOT (OR diff_fill ESDID v5 v12 v20 hvtp)) AND pwell_all
+
+dnsd_pt_nat     =  ((((((diodeID AND nsdm) NOT nwell) AND diff) AND LVID) AND lvtn) NOT (OR diff_fill ESDID v5 v12 v20 hvtp)) AND ptub
+
+dnsd_pw_v5      =  ((((((diodeID AND nsdm) NOT nwell) AND diff) AND v5) AND thkox) NOT (OR diff_fill v12 v20 lvtn hvtp ESDID LVID)) AND pwell_all
+
+dnsd_pt_v5      =  ((((((diodeID AND nsdm) NOT nwell) AND diff) AND v5) AND thkox) NOT (OR diff_fill v12 v20 lvtn hvtp ESDID LVID)) AND ptub
+
+//   P+ DIO:
+dpsd_nw         =  (((diodeID AND psdm) AND nwell) AND diff) NOT (OR diff_fill thkox v5 v12 v20 lvtn hvtp ESDID LVID)
+
+dpsd_nw_esd     =  ((((diodeID AND psdm) AND nwell) AND diff) AND ESDID) NOT (OR diff_fill thkox v5 v12 v20 lvtn hvtp LVID)
+
+dpsd_nw_esd_v5  =  ((((((diodeID AND psdm) AND nwell) AND diff) AND ESDID) AND v5) AND thkox) NOT (OR diff_fill v12 v20 lvtn hvtp LVID)
+
+dpsd_nw_hvt     =  ((((diodeID AND psdm) AND nwell) AND diff) AND hvtp) NOT (OR diff_fill thkox v5 v12 v20 lvtn ESDID LVID)
+
+dpsd_nw_lvt     =  ((((diodeID AND psdm) AND nwell) AND diff) AND lvtn) NOT (OR diff_fill thkox v5 v12 v20 hvtp ESDID LVID)
+
+dpsd_nw_v5      =  (((((diodeID AND psdm) AND nwell) AND diff) AND v5) AND thkox) NOT (OR diff_fill v12 v20 lvtn hvtp ESDID LVID)
+
+// WELL DIODES associated with deep nwell
+// uses a fall-thru mechanism to insure highest voltage diode is formed when multiple voltage markers are present:
+
+// 20v:
+//dnw_sub_v20 = ((dnwell NOT (dnwell INTERACT (OR npn pnp))) INTERACT v20) NOT INTERACT (dnwell INTERACT ngate_v20_iso_rec)
+dnw_sub_v20 = (dnwell NOT (dnwell INTERACT (OR npn pnp))) INTERACT v20 
+dpw_dnw_v20 = ((((HOLES nwell) AND dnwell) NOT (dnwell INTERACT (OR npn pnp pwres))) INTERACT v20) NOT pwbm
+dpw_dnw_v20_pwres = (((((HOLES nwell) AND dnwell) NOT (dnwell INTERACT (OR npn pnp))) INTERACT v20) INTERACT pwres) NOT pwres
+
+// 12v:
+dnw_sub_v12 = (((dnwell NOT (dnwell INTERACT (OR npn pnp))) INTERACT v12) NOT INTERACT dnw_sub_v20) NOT INTERACT (dnwell INTERACT ngate_v20_iso_rec)
+dpw_dnw_v12 = ((((HOLES nwell) AND dnwell) NOT (dnwell INTERACT (OR npn pnp pwres))) INTERACT v12) NOT INTERACT dpw_dnw_v20
+dpw_dnw_v12_pwres = ((((((HOLES nwell) AND dnwell) NOT (dnwell INTERACT (OR npn pnp))) INTERACT v12) NOT INTERACT dpw_dnw_v20) INTERACT pwres) NOT pwres
+
+// 5v:
+dnw_sub_v5 = (((dnwell NOT (dnwell INTERACT (OR npn pnp))) INTERACT v5) NOT INTERACT (OR dnw_sub_v20 dnw_sub_v12)) NOT INTERACT (dnwell INTERACT ngate_v20_iso_rec)
+dpw_dnw_v5 = ((((HOLES nwell) AND dnwell) NOT (dnwell INTERACT (OR npn pnp pwres))) INTERACT v5) NOT INTERACT (OR dpw_dnw_v20 dpw_dnw_v12)
+dpw_dnw_v5_pwres = ((((((HOLES nwell) AND dnwell) NOT (dnwell INTERACT (OR npn pnp))) INTERACT v5) NOT INTERACT (OR dpw_dnw_v20 dpw_dnw_v12)) INTERACT pwres) NOT pwres
+
+// 1.8v:
+dnw_sub_nom = ((dnwell NOT (dnwell INTERACT (OR npn pnp))) NOT INTERACT (OR dnw_sub_v20 dnw_sub_v12 dnw_sub_v5)) NOT INTERACT (dnwell INTERACT ngate_v20_iso_rec)
+dpw_dnw_nom = ((((HOLES nwell INNER) AND dnwell) NOT (dnwell INTERACT (OR npn pnp pwres))) NOT INTERACT (OR dpw_dnw_v20 dpw_dnw_v12 dpw_dnw_v5)) NOT pwbm
+dpw_dnw_nom_pwres = (((((HOLES nwell INNER) AND dnwell) NOT (dnwell INTERACT (OR npn pnp))) NOT INTERACT (OR dpw_dnw_v20 dpw_dnw_v12 dpw_dnw_v5)) INTERACT pwres) NOT pwres
+
+// CAP:
+cap_34 = (met3 AND met4) AND capm
+cap_45 = (met4 AND met5) AND cap2m
+// remove the vias in the capacitors so as not to short the metals in
+// the caps
+via3 = via3i NOT cap_34
+via4 = via4i NOT cap_45
+
+// BIPOLAR:
+donut_nw = HOLES nwell
+dnw_over_nw_hole = dnwell ENCLOSE donut_nw
+npn_1a = ((nwell or (HOLES nwell)) ENCLOSE dnw_over_nw_hole) INTERACT npn
+npn_1 = HOLES (diff AND npn_1a)
+npn_ndiff =  ((npn AND (diff NOT diff_fill)) AND nsdm) INSIDE npn_1
+npn_ndiff_oct_1 = EXPAND EDGE (ANGLE npn_ndiff == 45) OUTSIDE BY 0.005 
+npn_ndiff_oct = (VERTEX == 8 npn_ndiff) INTERACT npn_ndiff_oct_1 == 4
+npn_emit = npn_ndiff NOT nwell
+
+npn_1x1_rec = (npn_1 ENCLOSE ((AREA npn_emit >= 0) AND (AREA npn_emit < 2))) NOT (OR diff_fill thkox v5 v12 v20)
+npn_1x2_rec = (npn_1 ENCLOSE (AREA npn_emit >= 2)) NOT (OR diff_fill thkox v5 v12 v20)
+npn_1x1_rec_v5 = (npn_1 ENCLOSE npn_ndiff_oct) AND (thkox AND v5)
+
+pnp_rec_1x_a = (pnp INTERACT (RECTANGLE (pnp AND diff) == 0.68 ASPECT == 1)) NOT (OR diff_fill thkox v5 v12 v20)
+pnp_rec_1x = HOLES (diff AND pnp_rec_1x_a)
+pnp_rec_5x_a = (pnp INTERACT (RECTANGLE (pnp AND diff) == 3.4 ASPECT == 1)) NOT (OR diff_fill thkox v5 v12 v20) 
+pnp_rec_5x = HOLES (diff AND pnp_rec_5x_a)
+
+// FUSE:
+// (no longer supported but remains in code for future use)
+m4fuse = (met4 NOT met4_fill) AND fuse
+
+// ********************************************************
+// End layer boolean operations 
+// ********************************************************
+
+// ********************************************************
+// Begin connect statements
+// ********************************************************
+
+// break connective layers by resistors:
+
+m1 = met1 NOT m1res
+m2 = met2 NOT m2res
+m3 = met3 NOT m3res
+m4 = met4 NOT (OR m4res fuse)
+m5 = met5 NOT m5res
+li = li_i NOT lires
+ply = poly NOT polyres
+nsd = nsd1 NOT diffres
+psd = psd1 NOT diffres
+
+CONNECT rdl pad
+CONNECT m5 pad
+CONNECT m5 m4 BY via4
+CONNECT m4 m3 BY via3
+CONNECT m3 m2 BY via2
+CONNECT m2 m1 BY via1
+CONNECT m1 li BY mcon
+CONNECT li ply BY licon
+CONNECT li nsd BY licon
+CONNECT li psd BY licon
+CONNECT li ntap BY licon
+CONNECT li ptap BY licon
+CONNECT li ptubtap BY licon
+CONNECT li pwres_term BY licon
+CONNECT li nsrc_de_12v BY licon
+CONNECT li nsd_20v_src BY licon
+CONNECT li nsd_20v_drn BY licon
+CONNECT li nsd_20v_nat_drn BY licon
+CONNECT li psrc_de_20v BY licon
+CONNECT li pdrn_de_20v BY licon
+CONNECT li ndrn_de_12v BY licon
+CONNECT li psrc_de_12v BY licon
+CONNECT li pdrn_de_12v BY licon
+CONNECT ply ngate_de_12v_pw BY ngate_de_12v_gate_conn
+CONNECT ply pgate_de_12v_pw BY pgate_de_12v_gate_conn
+CONNECT ply ngate_v20_iso_gate BY ngate_de_20v_iso_gate_conn
+CONNECT ply ngate_v20_nom BY ngate_de_20v_nom_gate_conn
+CONNECT ply ngate_v20_zvt BY ngate_de_20v_zvt_gate_conn
+CONNECT ply ngate_v20_nat BY ngate_de_20v_nat_gate_conn
+CONNECT ply pgate_de_20v BY pgate_de_20v_conn
+CONNECT li ngate_v20_iso_sub BY ngate_v20_iso_sub_cont
+
+SCONNECT ntap nwell 
+LVS SOFTCHK nwell UPPER
+LVS SOFTCHK nwell LOWER
+
+SCONNECT ptap pwell 
+LVS SOFTCHK pwell UPPER
+LVS SOFTCHK pwell LOWER
+
+SCONNECT ptap pwell_all 
+LVS SOFTCHK pwell_all UPPER
+LVS SOFTCHK pwell_all LOWER
+
+SCONNECT ptubtap ptub 
+LVS SOFTCHK ptub UPPER
+LVS SOFTCHK ptub LOWER
+        
+SCONNECT nwell dnwell
+LVS SOFTCHK dnwell UPPER
+LVS SOFTCHK dnwell LOWER
+
+// ********************************************************
+// End connect statements
+// ********************************************************
+
+// PINS/LABELS:
+
+TEXT LAYER met1tt met2tt met3tt met4tt met5tt rdltt difftt litt polytt nwelltt 
+
+PORT LAYER TEXT rdltt
+ATTACH rdltt rdl
+ATTACH "rdl_pin" rdl
+
+PORT LAYER TEXT met5tt
+ATTACH met5tt m5
+ATTACH "met5_pin" m5
+
+PORT LAYER TEXT met4tt
+ATTACH met4tt m4
+ATTACH "met4_pin" m4
+
+PORT LAYER TEXT met3tt
+ATTACH met3tt m3
+ATTACH "met3_pin" m3
+
+PORT LAYER TEXT met2tt
+ATTACH met2tt m2
+ATTACH "met2_pin" m2
+
+PORT LAYER TEXT met1tt
+ATTACH met1tt m1
+ATTACH "met1_pin" m1
+
+PORT LAYER TEXT litt
+ATTACH litt li
+ATTACH "li_pin" li
+
+PORT LAYER TEXT polytt
+ATTACH polytt ply
+ATTACH "poly_pin" ply
+
+PORT LAYER TEXT difftt
+ATTACH difftt nsd
+ATTACH difftt psd
+ATTACH difftt ntap
+ATTACH difftt ptap
+ATTACH "diff_pin" psd
+ATTACH "diff_pin" nsd
+ATTACH "diff_pin" ptap
+ATTACH "diff_pin" ntap
+
+PORT LAYER TEXT pwelltt
+ATTACH pwelltt pwell_all
+ATTACH "pwell_pin" pwell_all
+
+PORT LAYER TEXT nwelltt
+ATTACH nwelltt nwell
+ATTACH "nwell_pin" nwell
+
+
+// ************
+// DEVICES:
+// ************
+
+// ********************************************************
+// Begin device declarations
+// ********************************************************
+
+// ************
+//    PAD
+// ************
+
+DEVICE pad_bond pad_rec m5(pin0) <padLength>
+   CMACRO PAD_PARAMS pad_rec padLength
+   CMACRO TRACE_PAD_PROPS pad_bond
+   CMACRO PAD_PARALLEL pad_bond
+
+DEVICE pad_microprobe upad_rec m5(pin0) <padLength>
+   CMACRO PAD_PARAMS upad_rec padLength
+   CMACRO TRACE_PAD_PROPS pad_microprobe
+   CMACRO PAD_PARALLEL pad_microprobe
+
+DEVICE pad_probe epad_rec m5(pin0) <padLength>
+   CMACRO PAD_PARAMS epad_rec padLength
+   CMACRO TRACE_PAD_PROPS pad_probe
+   CMACRO PAD_PARALLEL pad_probe
+
+// ************
+//    MOS:
+// ************
+
+// ************
+//      NMOS:
+// ************
+
+DEVICE MN(nmos) ngate_nom_pw ply nsd nsd pwell_all 
+DEVICE MN(nmos) ngate_nom_pw ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_nom_pw nsd
+
+DEVICE MN(nmos_esd) ngate_nom_esd_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_nom_esd_pw nsd
+
+DEVICE MN(nmos_esd) ngate_nom_esd_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_nom_esd_pt nsd
+
+DEVICE MN(nmos) ngate_nom_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_nom_pt nsd
+
+DEVICE MN(nmos_lvt) ngate_lvt_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_lvt_pw nsd
+
+DEVICE MN(nmos_lvt) ngate_lvt_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_lvt_pt nsd
+
+DEVICE MN(nmos_v5) ngate_v5_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_v5_pw nsd
+
+DEVICE MN(nmos_v5) ngate_v5_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_v5_pt nsd
+
+DEVICE MN(nmos_v12) ngate_v12_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_v12_pw nsd
+
+DEVICE MN(nmos_v12) ngate_v12_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_v12_pt nsd
+
+// Custom device since this is a 5 terminal MOS:
+DEVICE nmos_de_iso_v20 ngate_v20_iso_rec nsd_20v_src(src) ngate_v20_iso_gate(gate) nsd_20v_drn(drn) pwell_all(b) ngate_v20_iso_sub(sub)
+    [
+    PROPERTY w , l , m
+    m = 1
+    a = area( ngate_v20_iso_rec ) 
+    w = perimeter_coincide( ngate_v20_iso_rec, nsd_20v_src ) 
+    l = a / w 
+    AS = area( nsd_20v_src ) * 0.5
+    PS = perimeter( nsd_20v_src ) * 0.5
+    AD = area( nsd_20v_drn ) * 0.5
+    PD = perimeter( nsd_20v_drn ) * 0.5
+    nrs = 0
+    nrd = 0
+    ]
+
+LVS REDUCE nmos_de_iso_v20 PARALLEL YES 
+	[ effective w, l, m
+		p = sum( w * l )  // Sum of Wi * Li 
+		q = sum( w / l )  // Sum of Wi / Li 
+		w = sqrt( p * q ) // Effective W 
+		l = sqrt( p / q ) // Effective L 
+		m = sum( m )
+	]
+	TRACE PROPERTY nmos_de_iso_v20 l l 0
+	TRACE PROPERTY nmos_de_iso_v20 w w 0
+	TRACE PROPERTY nmos_de_iso_v20 m m 0
+
+DEVICE MN(nmos_de_nat_v20) ngate_v20_nat ngate_v20_nat nsd_20v_src nsd_20v_nat_drn pwell_all
+    [
+    PROPERTY w , l , m
+    m = 1
+    a = area( ngate_v20_nat )
+    w = perimeter_coincide( ngate_v20_nat, nsd_20v_src )
+    l = a / w
+    AS = area( nsd_20v_src ) * 0.5
+    PS = perimeter( nsd_20v_src ) * 0.5
+    AD = area( nsd_20v_nat_drn ) * 0.5
+    PD = perimeter( nsd_20v_nat_drn ) * 0.5
+    nrs = 0
+    nrd = 0
+    ]
+
+DEVICE MN(nmos_de_zvt_v20) ngate_v20_zvt ngate_v20_zvt nsd_20v_src nsd_20v_drn pwell_all
+    [
+    PROPERTY w , l , m
+    m = 1
+    a = area( ngate_v20_zvt )
+    w = perimeter_coincide( ngate_v20_zvt, nsd_20v_src )
+    l = a / w
+    AS = area( nsd_20v_src ) * 0.5
+    PS = perimeter( nsd_20v_src ) * 0.5
+    AD = area( nsd_20v_drn ) * 0.5
+    PD = perimeter( nsd_20v_drn ) * 0.5
+    nrs = 0
+    nrd = 0
+    ]
+
+DEVICE MN(nmos_de_v20) ngate_v20_nom ngate_v20_nom nsd_20v_src nsd_20v_drn pwell_all
+    [
+    PROPERTY w , l , m
+    m = 1
+    a = area( ngate_v20_nom )
+    w = perimeter_coincide( ngate_v20_nom, nsd_20v_src )
+    l = a / w
+    AS = area( nsd_20v_src ) * 0.5
+    PS = perimeter( nsd_20v_src ) * 0.5
+    AD = area( nsd_20v_drn ) * 0.5
+    PD = perimeter( nsd_20v_drn ) * 0.5
+    nrs = 0
+    nrd = 0
+    ]
+
+DEVICE MN(nmos_esd_nat_v5) ngate_esd_nat_5v_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_esd_nat_5v_pw nsd
+
+DEVICE MN(nmos_esd_nat_v5) ngate_esd_nat_5v_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_esd_nat_5v_pt nsd
+
+DEVICE MN(nmos_esd_v5) ngate_esd_5v_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_esd_5v_pw nsd
+
+DEVICE MN(nmos_esd_v5) ngate_esd_5v_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_esd_5v_pt nsd
+	    
+DEVICE MN(nmos_nat_v3) ngate_nat_3v_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_nat_3v_pw nsd
+	    
+DEVICE MN(nmos_nat_v3) ngate_nat_3v_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_nat_3v_pt nsd
+
+DEVICE MN(nmos_nat_v5) ngate_nat_5v_pw ply nsd nsd pwell_all 
+	CMACRO MOS_PARAMS ngate_nat_5v_pw nsd
+
+DEVICE MN(nmos_nat_v5) ngate_nat_5v_pt ply nsd nsd ptub 
+	CMACRO MOS_PARAMS ngate_nat_5v_pt nsd
+
+DEVICE MN(nmos_de_v12) ngate_de_12v_pw ngate_de_12v_pw(G) nsrc_de_12v(S) ndrn_de_12v(D) pwell_all
+    [
+    PROPERTY w , l , m
+    m = 1
+    a = area( ngate_de_12v_pw )
+    w = perimeter_coincide( ngate_de_12v_pw, nsrc_de_12v )
+    l = a / w
+    AS = area( nsrc_de_12v ) * 0.5
+    PS = perimeter( nsrc_de_12v ) * 0.5
+    AD = area( nsrc_de_12v ) * 0.5
+    PD = perimeter( nsrc_de_12v ) * 0.5
+    nrs = 0
+    nrd = 0
+    ]
+
+	TRACE PROPERTY MN l l 0
+	TRACE PROPERTY MN w w 0
+	TRACE PROPERTY MN m m 0
+
+// ************
+//      PMOS:
+// ************
+
+DEVICE MP(pmos) pgate_nom ply psd psd nwell 
+	CMACRO MOS_PARAMS pgate_nom psd
+
+DEVICE MP(pmos_lvt) pgate_lvt ply psd psd nwell 
+	CMACRO MOS_PARAMS pgate_lvt psd
+
+DEVICE MP(pmos_hvt) pgate_hvt ply psd psd nwell
+	CMACRO MOS_PARAMS pgate_hvt psd
+
+DEVICE MP(pmos_v5) pgate_v5 ply psd psd nwell 
+	CMACRO MOS_PARAMS pgate_v5 psd
+
+DEVICE MP(pmos_v12) pgate_v12 ply psd psd nwell 
+	CMACRO MOS_PARAMS pgate_v12 psd
+
+DEVICE MP(pmos_de_v20) pgate_de_20v pgate_de_20v psrc_de_20v pdrn_de_20v nwell 
+//	CMACRO MOS_PARAMS pgate_v20 psd
+
+DEVICE MP(pmos_esd_v5) pgate_esd_v5 ply psd psd nwell 
+	CMACRO MOS_PARAMS pgate_esd_v5 psd
+
+DEVICE MP(pmos_de_v12) pgate_de_12v_pw pgate_de_12v_pw(G) psrc_de_12v(S) pdrn_de_12v(D) nwell
+    [
+    PROPERTY w , l , m
+    m = 1
+    a = area( pgate_de_12v_pw )
+    w = perimeter_coincide( pgate_de_12v_pw, psrc_de_12v )
+    l = a / w
+    AS = area( psrc_de_12v ) * 0.5
+    PS = perimeter( psrc_de_12v ) * 0.5 - w
+    AD = area( psrc_de_12v ) * 0.5
+    PD = perimeter( psrc_de_12v ) * 0.5 - w
+    nrs = 0
+    nrd = 0
+    ]
+
+	TRACE PROPERTY MP l l 0
+	TRACE PROPERTY MP w w 0
+	TRACE PROPERTY MP m m 0
+
+LVS REDUCE PARALLEL MOS YES 
+	[ effective w, l, m
+		p = sum( w * l )  // Sum of Wi * Li 
+		q = sum( w / l )  // Sum of Wi / Li 
+		w = sqrt( p * q ) // Effective W 
+		l = sqrt( p / q ) // Effective L 
+		m = sum( m )
+	]
+
+LVS REDUCE SPLIT GATES YES SAME ORDER 
+	[ effective w, l, m
+		p = sum( w * l )  // Sum of Wi * Li 
+		q = sum( w / l )  // Sum of Wi / Li 
+		w = sqrt( p * q ) // Effective W 
+		l = sqrt( p / q ) // Effective L 
+		m = sum( m )  
+	]
+
+// ************
+//    RES:
+// ************
+
+// metal:
+DEVICE R(rli) lires li(POS) li(NEG) ("POS" "NEG") 
+	CMACRO RES_PARAMS lires li 
+	TRACE PROPERTY R(rli) l l 0
+	TRACE PROPERTY R(rli) w w 0
+	TRACE PROPERTY R(rli) m m 0
+
+DEVICE R(rm1) m1res m1(POS) m1(NEG) ("POS" "NEG") 
+	CMACRO RES_PARAMS m1res m1 
+	TRACE PROPERTY R(rm1) l l 0
+	TRACE PROPERTY R(rm1) w w 0
+	TRACE PROPERTY R(rm1) m m 0
+
+DEVICE R(rm2) m2res m2(POS) m2(NEG) ("POS" "NEG") 
+	CMACRO RES_PARAMS m2res m2 
+	TRACE PROPERTY R(rm2) l l 0
+	TRACE PROPERTY R(rm2) w w 0
+	TRACE PROPERTY R(rm2) m m 0
+
+DEVICE R(rm3) m3res m3(POS) m3(NEG) ("POS" "NEG") 
+	CMACRO RES_PARAMS m3res m3 
+	TRACE PROPERTY R(rm3) l l 0
+	TRACE PROPERTY R(rm3) w w 0
+	TRACE PROPERTY R(rm3) m m 0
+
+DEVICE R(rm4) m4res m4(POS) m4(NEG) ("POS" "NEG") 
+	CMACRO RES_PARAMS m4res m4 
+	TRACE PROPERTY R(rm4) l l 0
+	TRACE PROPERTY R(rm4) w w 0
+	TRACE PROPERTY R(rm4) m m 0
+
+DEVICE R(rm5) m5res m5(POS) m5(NEG) ("POS" "NEG") 
+	CMACRO RES_PARAMS m5res m5 
+	TRACE PROPERTY R(rm5) l l 0
+	TRACE PROPERTY R(rm5) w w 0
+	TRACE PROPERTY R(rm5) m m 0
+
+// high precision:
+DEVICE R(rpoly_hp_pw) hp_poly_pw ply(POS) ply(NEG) pwell_all(SUB) ("POS" "NEG") 
+	CMACRO CALC_RES_BENT_PARAMS hp_poly_pw ply 
+	CMACRO TRACE_SERP_RES_PROPS rpoly_hp_pw l w m segments
+
+DEVICE R(rpoly_hp_pw) hp_poly_pt ply(POS) ply(NEG) ptub(SUB) ("POS" "NEG") 
+	CMACRO CALC_RES_BENT_PARAMS hp_poly_pt ply 
+	CMACRO TRACE_SERP_RES_PROPS rpoly_hp_pt l w m segments
+
+DEVICE R(rpoly_hp_nw) hp_poly_nw ply(POS) ply(NEG) nwell(SUB) ("POS" "NEG") 
+	CMACRO CALC_RES_BENT_PARAMS hp_poly_nw ply 
+	CMACRO TRACE_SERP_RES_PROPS rpoly_hp_nw l w m segments
+
+	// high sheet rho:
+DEVICE R(rpoly_hp2K_pw) hs_poly_pw ply(POS) ply(NEG) pwell_all(SUB) ("POS" "NEG") 
+	CMACRO CALC_RES_BENT_PARAMS hs_poly_pw ply 
+	CMACRO TRACE_SERP_RES_PROPS hs_poly_pw l w m segments
+
+DEVICE R(rpoly_hp2K_pw) hs_poly_pt ply(POS) ply(NEG) ptub(SUB) ("POS" "NEG") 
+	CMACRO CALC_RES_BENT_PARAMS hs_poly_pt ply 
+	CMACRO TRACE_SERP_RES_PROPS rpoly_hp2K_pw l w m segments
+
+DEVICE R(rpoly_hp2K_nw) hs_poly_nw ply(POS) ply(NEG) nwell(SUB) ("POS" "NEG")
+	CMACRO CALC_RES_BENT_PARAMS hs_poly_nw ply 
+	CMACRO TRACE_SERP_RES_PROPS rpoly_hp2K_nw l w m segments
+
+	// std poly:
+DEVICE R(rpoly) rpoly_rec ply(POS) ply(NEG) ("POS" "NEG")
+	CMACRO RES_PARAMS rpoly_rec ply
+	TRACE PROPERTY r(rpoly) l l 0
+	TRACE PROPERTY r(rpoly) w w 0
+	TRACE PROPERTY r(rpoly) m m 0
+
+	// diff res:
+DEVICE R(rpdiff) rpdiff_nom psd(POS) psd(NEG) nwell(SUB) ("POS" "NEG")
+	CMACRO RES_PARAMS rpdiff_nom psd 
+	TRACE PROPERTY R(rpdiff) l l 0
+	TRACE PROPERTY R(rpdiff) w w 0
+	TRACE PROPERTY R(rpdiff) m m 0
+
+DEVICE R(rndiff) rndiff_nom_pw nsd(POS) nsd(NEG) pwell_all(SUB) ("POS" "NEG")
+	CMACRO RES_PARAMS rndiff_nom_pw nsd 
+
+DEVICE R(rndiff) rndiff_nom_pt nsd(POS) nsd(NEG) ptub(SUB) ("POS" "NEG")
+	CMACRO RES_PARAMS rndiff_nom_pt nsd 
+
+	TRACE PROPERTY R(rndiff) l l 0
+	TRACE PROPERTY R(rndiff) w w 0
+	TRACE PROPERTY R(rndiff) m m 0
+
+DEVICE R(rpdiff_v5) rpdiff_5v psd(POS) psd(NEG) nwell(SUB) ("POS" "NEG")
+	CMACRO RES_PARAMS rpdiff_5v psd 
+	TRACE PROPERTY R(rpdiff_v5) l l 0
+	TRACE PROPERTY R(rpdiff_v5) w w 0
+	TRACE PROPERTY R(rpdiff_v5) m m 0
+
+DEVICE R(rndiff_v5) rndiff_5v_pw nsd(POS) nsd(NEG) pwell_all(SUB) ("POS" "NEG")
+	CMACRO RES_PARAMS rndiff_5v_pw nsd 
+
+DEVICE R(rndiff_v5) rndiff_5v_pt nsd(POS) nsd(NEG) ptub(SUB) ("POS" "NEG")
+	CMACRO RES_PARAMS rndiff_5v_pt nsd 
+
+	TRACE PROPERTY R(rndiff_v5) l l 0
+	TRACE PROPERTY R(rndiff_v5) w w 0
+	TRACE PROPERTY R(rndiff_v5) m m 0
+
+// pwell res:
+DEVICE R(rpwell) pwres_rec pwres_term(POS) pwres_term(NEG) dnwell(SUB) ("POS" "NEG")
+        CMACRO RES_PARAMS pwres_rec pwres_term
+	TRACE PROPERTY R(rpwell) l l 0
+	TRACE PROPERTY R(rpwell) w w 0
+	TRACE PROPERTY R(rpwell) m m 0
+
+LVS REDUCE R PARALLEL YES [
+   TOLERANCE w 1.0
+   l 1.0
+
+   EFFECTIVE m , w , l, segments
+   m = SUM( m )
+   w = SUM( (w * m) ) 
+   l = SUM( (l * m) ) / m
+   segments = 1
+   ]
+
+// fuse as a res:
+// (no longer supported but remains in code for future use)
+DEVICE R(fuse_m4) m4fuse m4(POS) m4(NEG) ("POS" "NEG") 
+        CMACRO RES_PARAMS m4fuse m4
+	TRACE PROPERTY R(fuse_m4) l l 0
+	TRACE PROPERTY R(fuse_m4) w w 0
+
+LVS REDUCE R SERIES POS NEG NO
+
+// ************
+//    DIO:
+// ************
+DEVICE D(dnsd_pw) dnsd_pw pwell_all nsd
+	CMACRO DIO_PARAMS dnsd_pw 
+DEVICE D(dnsd_pw) dnsd_pt ptub nsd
+	CMACRO DIO_PARAMS dnsd_pt 
+	TRACE PROPERTY D(dnsd_pw) a a 0
+	TRACE PROPERTY D(dnsd_pw) p p 0
+	TRACE PROPERTY D(dnsd_pw) m m 0
+
+DEVICE D(dnsd_pw_esd) dnsd_pw_esd pwell_all nsd
+	CMACRO DIO_PARAMS dnsd_pw_esd 
+DEVICE D(dnsd_pw_esd) dnsd_pt_esd ptub nsd
+	CMACRO DIO_PARAMS dnsd_pt_esd 
+	TRACE PROPERTY D(dnsd_pw_esd) a a 0
+	TRACE PROPERTY D(dnsd_pw_esd) p p 0
+	TRACE PROPERTY D(dnsd_pw_esd) m m 0
+
+DEVICE D(dnsd_pw_esd_v5) dnsd_pw_esd_v5 pwell_all nsd
+	CMACRO DIO_PARAMS dnsd_pw_esd_v5 
+DEVICE D(dnsd_pw_esd_v5) dnsd_pt_esd_v5 ptub nsd
+	CMACRO DIO_PARAMS dnsd_pt_esd_v5 
+	TRACE PROPERTY D(dnsd_pw_esd_v5) a a 0
+	TRACE PROPERTY D(dnsd_pw_esd_v5) p p 0
+	TRACE PROPERTY D(dnsd_pw_esd_v5) m m 0
+
+DEVICE D(dnsd_pw_lvt) dnsd_pw_lvt pwell_all nsd
+	CMACRO DIO_PARAMS dnsd_pw_lvt 
+DEVICE D(dnsd_pw_lvt) dnsd_pt_lvt ptub nsd
+	CMACRO DIO_PARAMS dnsd_pt_lvt 
+	TRACE PROPERTY D(dnsd_pw_lvt) a a 0
+	TRACE PROPERTY D(dnsd_pw_lvt) p p 0
+	TRACE PROPERTY D(dnsd_pw_lvt) m m 0
+
+DEVICE D(dnsd_pw_nat) dnsd_pw_nat pwell_all nsd
+	CMACRO DIO_PARAMS dnsd_pw_nat 
+DEVICE D(dnsd_pw_nat) dnsd_pt_nat ptub nsd
+	CMACRO DIO_PARAMS dnsd_pt_nat 
+	TRACE PROPERTY D(dnsd_pw_nat) a a 0
+	TRACE PROPERTY D(dnsd_pw_nat) p p 0
+	TRACE PROPERTY D(dnsd_pw_nat) m m 0
+
+DEVICE D(dnsd_pw_v5) dnsd_pw_v5 pwell_all nsd
+	CMACRO DIO_PARAMS dnsd_pw_v5 
+DEVICE D(dnsd_pw_v5) dnsd_pt_v5 ptub nsd
+	CMACRO DIO_PARAMS dnsd_pt_v5 
+	TRACE PROPERTY D(dnsd_pw_v5) a a 0
+	TRACE PROPERTY D(dnsd_pw_v5) p p 0
+	TRACE PROPERTY D(dnsd_pw_v5) m m 0
+
+DEVICE D(dpsd_nw) dpsd_nw psd nwell
+	CMACRO DIO_PARAMS dpsd_nw 
+	TRACE PROPERTY D(dpsd_nw) a a 0
+	TRACE PROPERTY D(dpsd_nw) p p 0
+	TRACE PROPERTY D(dpsd_nw) m m 0
+
+DEVICE D(dpsd_nw_esd) dpsd_nw_esd psd nwell
+	CMACRO DIO_PARAMS dpsd_nw_esd 
+	TRACE PROPERTY D(dpsd_nw_esd) a a 0
+	TRACE PROPERTY D(dpsd_nw_esd) p p 0
+	TRACE PROPERTY D(dpsd_nw_esd) m m 0
+
+DEVICE D(dpsd_nw_esd_v5) dpsd_nw_esd_v5 psd nwell
+	CMACRO DIO_PARAMS dpsd_nw_esd_v5 
+	TRACE PROPERTY D(dpsd_nw_esd_v5) a a 0
+	TRACE PROPERTY D(dpsd_nw_esd_v5) p p 0
+	TRACE PROPERTY D(dpsd_nw_esd_v5) m m 0
+
+DEVICE D(dpsd_nw_hvt) dpsd_nw_hvt psd nwell
+	CMACRO DIO_PARAMS dpsd_nw_hvt 
+	TRACE PROPERTY D(dpsd_nw_hvt) a a 0
+	TRACE PROPERTY D(dpsd_nw_hvt) p p 0
+	TRACE PROPERTY D(dpsd_nw_hvt) m m 0
+
+DEVICE D(dpsd_nw_lvt) dpsd_nw_lvt psd nwell
+	CMACRO DIO_PARAMS dpsd_nw_lvt 
+	TRACE PROPERTY D(dpsd_nw_lvt) a a 0
+	TRACE PROPERTY D(dpsd_nw_lvt) p p 0
+	TRACE PROPERTY D(dpsd_nw_lvt) m m 0
+
+DEVICE D(dpsd_nw_v5) dpsd_nw_v5 psd nwell
+	CMACRO DIO_PARAMS dpsd_nw_v5 
+	TRACE PROPERTY D(dpsd_nw_v5) a a 0
+	TRACE PROPERTY D(dpsd_nw_v5) p p 0
+	TRACE PROPERTY D(dpsd_nw_v5) m m 0
+
+// well diodes associated with deep nwell 
+#IFNDEF SKIP_EXTRACTING_DNWELL_DIODES
+
+  DEVICE D(ddnw_sub) dnw_sub_nom pwell_all dnwell
+  	CMACRO DIO_PARAMS dnw_sub_nom 
+
+  DEVICE D(dipw_dnw) dpw_dnw_nom ptub dnwell
+  	CMACRO DIO_PARAMS dpw_dnw_nom
+
+  DEVICE D(dipw_dnw) dpw_dnw_nom_pwres ptub dnwell <ptub_b> <ptub_c> <pwres> 
+  	CMACRO PWRES_DIO_PARAMS dpw_dnw_nom_pwres ptub_b ptub_c pwres
+
+  DEVICE D(ddnw_sub_v5) dnw_sub_v5 pwell_all dnwell
+  	CMACRO DIO_PARAMS dnw_sub_v5 
+
+  DEVICE D(dipw_dnw_v5) dpw_dnw_v5 ptub dnwell
+  	CMACRO DIO_PARAMS dpw_dnw_v5 
+
+  DEVICE D(dipw_dnw_v5) dpw_dnw_v5_pwres ptub dnwell <ptub_b> <ptub_c> <pwres> 
+  	CMACRO PWRES_DIO_PARAMS dpw_dnw_v5_pwres ptub_b ptub_c pwres
+
+  DEVICE D(ddnw_sub_v12) dnw_sub_v12 pwell_all dnwell
+  	CMACRO DIO_PARAMS dnw_sub_v12 
+
+  DEVICE D(dipw_dnw_v12) dpw_dnw_v12 ptub dnwell
+  	CMACRO DIO_PARAMS dpw_dnw_v12 
+
+  DEVICE D(dipw_dnw_v12) dpw_dnw_v12_pwres ptub dnwell <ptub_b> <ptub_c> <pwres> 
+  	CMACRO PWRES_DIO_PARAMS dpw_dnw_v12_pwres ptub_b ptub_c pwres
+
+  DEVICE D(ddnw_sub_v20) dnw_sub_v20 pwell_all dnwell
+  	CMACRO DIO_PARAMS dnw_sub_v20 
+
+  DEVICE D(dipw_dnw_v20) dpw_dnw_v20 ptub dnwell
+  	CMACRO DIO_PARAMS dpw_dnw_v20 
+
+  DEVICE D(dipw_dnw_v20) dpw_dnw_v20_pwres ptub dnwell <ptub_b> <ptub_c> <pwres> 
+  	CMACRO PWRES_DIO_PARAMS dpw_dnw_v20_pwres ptub_b ptub_c pwres
+
+	#IFNDEF SKIP_CHECKING_DNWELL_DIODE_PARAMETERS
+	   TRACE PROPERTY D(ddnw_sub) a a 0.005
+	   TRACE PROPERTY D(ddnw_sub) p p 0.005
+	   TRACE PROPERTY D(dipw_dnw) a a 0.005
+	   TRACE PROPERTY D(dipw_dnw) p p 0.005
+	   TRACE PROPERTY D(ddnw_sub_v5) a a 0.005
+	   TRACE PROPERTY D(ddnw_sub_v5) p p 0.005
+	   TRACE PROPERTY D(dipw_dnw_v5) a a 0.005
+	   TRACE PROPERTY D(dipw_dnw_v5) p p 0.005
+	   TRACE PROPERTY D(ddnw_sub_v12) a a 0.005
+	   TRACE PROPERTY D(ddnw_sub_v12) p p 0.005
+	   TRACE PROPERTY D(dipw_dnw_v12) a a 0.005
+	   TRACE PROPERTY D(dipw_dnw_v12) p p 0.005
+	   TRACE PROPERTY D(ddnw_sub_v20) a a 0.005
+	   TRACE PROPERTY D(ddnw_sub_v20) p p 0.005
+	   TRACE PROPERTY D(dipw_dnw_v20) a a 0.005
+	   TRACE PROPERTY D(dipw_dnw_v20) p p 0.005
+	#ENDIF
+#ENDIF
+
+// Note: no tolerance specified - always
+// combine parallel diodes regardless
+// of whether they are the same size:
+LVS REDUCE D PARALLEL YES [
+   EFFECTIVE a , p, m
+   a = SUM( a ) 
+   p = SUM( p ) 
+   m = SUM( m )
+   ]
+
+LVS REDUCE D SERIES POS NEG NO
+
+// ************
+//    CAP:
+// ************
+
+DEVICE C(cm3m4) cap_34 m4(POS) m3(NEG) [
+	  PROPERTY a, p
+	  a = area(cap_34)
+	  p = perimeter(cap_34)
+	]
+
+DEVICE C(cm4m5) cap_45 m5(POS) m4(NEG) [
+	  PROPERTY a, p
+	  a = area(cap_45)
+	  p = perimeter(cap_45)
+	]
+
+LVS REDUCE C PARALLEL YES [
+	    TOLERANCE a 1.0
+		      p 1.0
+	    EFFECTIVE a , p, m
+	    a = SUM( a ) 
+	    p = SUM( p ) 
+	    m = SUM( m )
+	    ]
+
+	TRACE PROPERTY C a a 0
+	TRACE PROPERTY C p p 0
+	TRACE PROPERTY C m m 0
+
+// ************
+//   BIPOLAR:
+// ************
+
+DEVICE Q(npn_1x1) npn_1x1_rec nwell(C) ptubtap(B) nsd(E) pwell_all(S) [
+          PROPERTY a, p 
+          a = area( E )
+          p = perimeter( E )
+         ]
+
+DEVICE Q(npn_1x1_v5) npn_1x1_rec_v5 nwell(C) ptubtap(B) nsd(E) pwell_all(S) [
+          PROPERTY a, p
+          a = area( E )
+          p = perimeter( E )
+         ]
+
+DEVICE Q(npn_1x2) npn_1x2_rec nwell(C) ptubtap(B) nsd(E) pwell_all(S) [
+          PROPERTY a, p
+          a = area( E )
+          p = perimeter( E )
+         ]
+
+DEVICE Q(pnp) pnp_rec_1x ptap(C) ntap(B) psd(E) pwell_all(S) [
+          PROPERTY  a, p
+          a = area( E )
+          p = perimeter( E )
+         ]
+
+DEVICE Q(pnp_5x) pnp_rec_5x ptap(C) ntap(B) psd(E) pwell_all(S) [
+          PROPERTY  a, p
+          a = area( E )
+          p = perimeter( E ) 
+         ]
+
+	TRACE PROPERTY Q m m 0
+	TRACE PROPERTY Q a a 0
+	TRACE PROPERTY Q p p 0
+
+        LVS REDUCE Q PARALLEL YES [
+           TOLERANCE a 1
+                     p 1
+           EFFECTIVE a , p , m
+           m = SUM( m )
+           a = SUM( a )
+           p = SUM( (p * m) ) / m
+           ]
+
+// ********************************************************
+// End device declarations
+// ********************************************************
+
+// ********************************************************
+// Begin Macro definitions
+// ********************************************************
+
+DMACRO MOS_PARAMS rec_layer src_drn {
+    [
+    PROPERTY w, l, m, AS, AD, PS, PD, nrd, nrs
+    m = 1
+    a = area( rec_layer )
+    w = perimeter_coincide( rec_layer, src_drn ) * 0.5
+    l = a / w
+    AS = area( src_drn ) * 0.5
+    PS = perimeter( src_drn ) * 0.5 - w
+    AD = area( src_drn ) * 0.5
+    PD = perimeter( src_drn ) * 0.5 - w
+    nrs = 0
+    nrd = 0
+    ]
+}
+
+DMACRO RES_PARAMS rec_layer term_layer {
+    [
+    PROPERTY l, w, m, segments
+    a = area( rec_layer ) 
+    w = perimeter_coincide( rec_layer, term_layer ) * 0.5 
+    l = a / w
+    m = 1
+    segments = 1
+    ]
+}
+
+DMACRO DIO_PARAMS rec_layer {
+    [
+    PROPERTY a, p, m
+    p = perimeter( rec_layer )
+    a = area( rec_layer )
+    m = 1
+    ]
+}
+
+DMACRO PWRES_DIO_PARAMS rec_layer pt_b pt_c pw_r {
+    [
+    PROPERTY w, l, a, p
+    w = perimeter_coincide( pw_r, pt_c ) 
+    l = (area(pt_b) / w) / 2
+    a = l * w
+    p = 2 * l + w 
+    ]
+}
+
+DMACRO CALC_RES_BENT_PARAMS rec_layer term_layer {
+    [
+    PROPERTY l, w, m, segments
+    dev_perim = perimeter( rec_layer ) * 0.5
+    w = perimeter_coincide( rec_layer , term_layer ) * 0.5
+    nbend = bends(rec_layer)
+    segments =  1 + bends( rec_layer ) / 2
+    l = dev_perim - (w * (1 + (nbend * 0.5))) - (w * nbend * 0.5) + (w * 1.414 * nbend * 0.5)
+    m = 1
+    ]
+}
+
+DMACRO TRACE_SERP_RES_PROPS rec_layer l w m segments {
+TRACE PROPERTY R(rec_layer) [
+   PROPERTY l, w, m, segments
+tolerance_l = 5
+tolerance_w = 1
+tolerance_m = 0
+tolerance_s = 0
+
+lay_l = layout_numeric_value(l)
+src_l = source_numeric_value(l)
+
+lay_w = layout_numeric_value(w)
+src_w = source_numeric_value(w)
+
+lay_m = layout_numeric_value(m)
+src_m = source_numeric_value(m)
+
+lay_s = layout_numeric_value(segments)
+src_s = source_numeric_value(segments)
+
+//L property
+
+if (src_l != 0) {
+    diff = ABS (lay_l - src_l )
+    discrepency = 100 * diff / src_l
+} else if (lay_l != 0 ) {
+    diff = ABS (lay_l - src_l )
+    discrepency = 100 * diff / lay_l
+}
+
+// if the resistor is serpentine (segments > 1) change
+// tolerance to 5%:
+if (lay_s > 1) {
+    tolerance_l = 5
+     } else { tolerance_l = 1}
+
+    if ( discrepency > tolerance_l ) {
+        report_numeric_discrepancy(l, discrepency)
+    }
+
+//W property
+if (src_w != 0) {
+    diff = ABS (lay_w - src_w )
+    discrepency = 100 * diff / src_w
+} else if (lay_w != 0 ) {
+    diff = ABS (lay_w - src_w )
+    discrepency = 100 * diff / lay_w
+}
+    if ( discrepency > tolerance_w ) {
+        report_numeric_discrepancy(w, discrepency)
+    }
+
+//M property
+if (src_m != 0) {
+    diff = ABS (lay_m - src_m )
+    discrepency = 100 * diff / src_m
+} else if (lay_m != 0 ) {
+    diff = ABS (lay_m - src_m )
+    discrepency = 100 * diff / lay_m
+}
+    if ( discrepency > tolerance_m ) {
+        report_numeric_discrepancy(m, discrepency)
+    }
+
+//Segments property
+if (src_s != 0) {
+    diff = ABS (lay_s - src_s )
+    discrepency = 100 * diff / src_s
+} else if (lay_s != 0 ) {
+    diff = ABS (lay_s - src_s )
+    discrepency = 100 * diff / lay_s
+}
+    if ( discrepency > tolerance_s ) {
+        report_numeric_discrepancy(segments, discrepency)
+    }
+]
+}
+
+// calulate pad params
+DMACRO PAD_PARAMS rec_lay pad_len {
+    [
+    PROPERTY w , l , m
+    m = 1
+    a = area( rec_lay )
+    l = ( perimeter_inside( pad_len, rec_lay)) / 2 
+    w = a / l 
+    ]
+}
+
+// pad trace props
+DMACRO TRACE_PAD_PROPS model_name {  
+TRACE PROPERTY model_name l l 0
+TRACE PROPERTY model_name w w 0
+TRACE PROPERTY model_name m m 0
+}
+
+// combine parallel pads
+DMACRO PAD_PARALLEL type {
+LVS REDUCE type PARALLEL YES [
+   TOLERANCE w 0
+             l 0
+   EFFECTIVE m, l, w
+   	     m = sum( m )
+             l = sum( l )
+             w = sum( w )
+     
+  ]
+}
+
+// ********************************************************
+// End Macro definitions
+// ********************************************************

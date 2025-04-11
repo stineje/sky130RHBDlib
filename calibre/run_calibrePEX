@@ -1,0 +1,101 @@
+#!/bin/bash
+export RUNSET_DIR=$(cd ./V2.1.302/PV/Calibre/PEX/; pwd)
+export PDK_HOME=$(cd ./V2.1.302/; pwd)
+export JOB_HOME=$(cd ../layout/$1/gds/; pwd)
+export PEX_HANDLE=".pex.spice"
+export PXI_HANDLE=".pxi.spice"
+export FILE_OUT=./output
+export PEX_PROCESS="Typical"
+#export SOURCE_FILES=$(cd ./source_files/; pwd)
+#export SOURCE_FILES=$(cd ../layout/$1/spice/; pwd)
+export SOURCE_FILES=$(cd ./$1/; pwd)
+export LAYOUT_PATTERN="*"
+export PWD=$(pwd)
+
+export LOG
+export JOB_NAME  
+export JOB_HOME
+
+echo -e "RUNSET_DIR=$RUNSET_DIR\nPDK_HOME=$PDK_HOME\nJOB_HOME=$JOB_HOME\nSOURCE_FILES=$SOURCE_FILES"
+
+#Sets the LOG variable and creates the log directory if it doesn't exist.
+if [ ! -d "$FILE_OUT/log" ]; then
+    mkdir -p $FILE_OUT/log
+    LOG=$FILE_OUT/log
+else
+    LOG=$FILE_OUT/log
+fi
+
+#Removes the outputs if the script is run again. Otherwise it creates the output directory and all of its subdirectories
+if [ ! -d "$FILE_OUT" ]; then
+    echo "Making output directory...."
+    mkdir -p $FILE_OUT/{report,ext,spice}
+else
+    echo "Building Directories...."
+    mkdir -p $FILE_OUT/{report,ext,spice}
+fi
+
+# If the input argument $1 doesn't exist, then it sets the input variable to all of the gds files in
+# the JOB_HOME directory. Else, it assumes that the $1 input is the name of the gds file to be used.
+#if [ ! -z "$1" ]; then
+#	export i=$(echo $1 | cut -f 1 -d '.') #i is used as the input variable 
+#else 
+	export i="$(basename -s .gds $(ls $JOB_HOME/$LAYOUT_PATTERN))" #i is used as the input variable
+#fi
+
+#Loops through the input gds files. If no user input is supplied, all gds files are put through the PEX process. 
+for JOB_NAME in $i ; do 
+    #Checks to make sure the file supplied exists. If not, then it exits the bash script.
+    if [ ! -e $JOB_HOME/$JOB_NAME.gds ]; then echo "Did not find '$JOB_HOME/$JOB_NAME'"
+        exit 1
+    fi
+
+    echo -e "\nexport JOB_HOME='$JOB_HOME'"
+    echo -e "export JOB_NAME='$JOB_NAME'"
+    echo -e "====================================="
+
+    set -x #Turns on debugging
+    echo $PDK_HOME
+
+    calibre -gui -pex -runset $RUNSET_DIR/s130_pex_runset -batch > $LOG/s130_pex_runset.log 2>&1
+
+    set +x #Turns off debugging
+done #End of the loop
+
+#The two loops immediately below will go through the produced PEX and PXI files and correct their naming convention before moving them to the specified path
+for file in ./*.pxi; do
+    NAME_1="$(basename "$file")"
+    NAME_2=${NAME_1%.*}
+    NAME_3=${NAME_2%.*} #USED FOR PXI FILES ONLY
+    BASE=${NAME_3%.*}
+    mv $NAME_1 $BASE$PXI_HANDLE
+done
+
+for file in ./*.pex; do
+    NAME_1="$(basename "$file")"
+    NAME_2=${NAME_1%.*}
+    BASE=${NAME_2%.*}
+    mv $NAME_1 $BASE$PEX_HANDLE
+done
+
+# The following sed lines make adjustments to the .spi files to ensure proper operation in liberate
+# characterization. 
+sed -i 's/\.spi\.pex/\.pex\.spice/g' *.spi
+sed -i 's/\.spi\..*\.pxi/\.pxi\.spice/g' *.spi
+sed -i "s|include \"|include \""$PWD"\/"$1"_output\/spice\/|g" *.spi
+
+mkdir $FILE_OUT/spice
+mkdir $FILE_OUT/report
+
+mv *.spice  $FILE_OUT/spice
+mv *.report $FILE_OUT/report
+
+echo "Moving output files to ./output"
+mv -v *.ext $FILE_OUT/ext/
+mv -fv svdb/ $FILE_OUT
+mv -v *.spi $FILE_OUT/spice/
+mv -v _calibre_pex.rul_ $FILE_OUT/
+mv -v _calibre_probe_file_ $FILE_OUT/
+mv -v *.shorts $FILE_OUT/
+
+exit 0

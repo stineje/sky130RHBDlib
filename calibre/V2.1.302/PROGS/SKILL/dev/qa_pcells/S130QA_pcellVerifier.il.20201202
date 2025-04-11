@@ -1,0 +1,2126 @@
+/*==============================================================================
+Function Name : S130QA_pcellVerif()
+Title         : S130 QA - Pcell Verification LVS/DRC
+Author        : Madek Graham
+Date          : 09/09/2020
+Revision      : 1.0
+Description   : This tool will create a layout and/or schematic view for the
+                lib/cell choosen on the form.  It will then place a number of
+                instances of the pcell choosen in those views with the pcell
+                parameters varied based on which parameters are enabled and
+                their set values on the form.  Next it will run the desired
+                verification using the desired tool and use the rule decks from
+                the form.  All the run data is placed in the root run directory
+                under the cell name and type of run (lvs/drc).
+                A report (QAPcellVerif_[cell].report) is created in your work
+                area and displayed in a terminal window which summarizes the
+                results of the run(s) performed.
+Lint Score    : 97 (toggle_callback = -3)
+Procedures    : S130QA_pcellVerif
+                laQAPcellGUI
+                S130QA_PcVerifCreateAndRun
+                S130QA_PcVerifMain
+                S130QA_PcVerifUpdateForm
+                S130QA_PcVerifCreateParamFields
+                S130QA_PcVerifCreateMatrix
+                S130QA_PcVerifCalculatePlacements
+                toggle_callback
+                S130QA_PcVerifGetCdfParams
+                S130QA_PcVerifGetParameterValues
+                S130QA_PcVerifCreateLayPins
+                S130QA_PcVerifWireUpInst
+                S130QA_PcVerifMergeBBoxes
+                S130QA_PcVerifCaution
+                S130QA_createCDL
+                S130QA_createGDS
+                S130QA_createLVSPVSheader
+                S130QA_createDRCPVSheader
+                S130QA_createLVSCALheader
+                S130QA_getLVSResults
+                S130QA_createDRCCALheader
+                S130QA_getDRCResults
+                S130QA_unixCmd
+                S130QA_PcVerifHelp
+
+Env Vars used : PDK_HOME (for updating callback script)
+
+================================================================================
+Modification history :
+
+
+==============================================================================*/
+
+unless( fboundp('CCSinvokeInstCdfCallbacks)
+  loadi( strcat( getShellEnvVar("PDK_HOME") "/PROGS/SKILL/menu_tools/CCSinvokeCdfCallbacks.il"))
+)
+
+;----------------------------------------------------------------------
+; FOR Adding to library manager
+;----------------------------------------------------------------------
+procedure( laQAPcellGUI(@rest args)
+  S130QA_pcellVerif()
+)
+
+;----------------------------------------------------------------------
+; Create main form
+;----------------------------------------------------------------------
+procedure( S130QA_pcellVerif(@optional
+          (libmgrSel if( isCallable('ddsGetLibManLCV) then
+            ddsGetLibManLCV() else nil )) )
+  let( (S130QA_pcellVerifForm adjColumns baseFields cellList
+        cellBrowse columns defCalDRCRules defCalLVSRules defPcellLib
+        defPvsDRCRules defPvsLVSRules defRunDir drcRuleBrowse
+        drcRuleFile formWidth info1 info2 info3 info4 info5 info6
+        lvsRuleBrowse lvsRuleFile mainCell mainLib numPlacements
+        overwriteRD paramFieldCoords pcellLibName pcellName runDir
+        runDirBrowse runTool runType spacing infoFrame cellFrame verifFrame 
+        libChoices defLib defCell )
+
+    printf("QA PCELL: Gathering information for Pcell Verification Form...\n")
+    system("sleep 1") ; try to counter race issues with skill code these days
+
+    libChoices = sort( setof( lib ddGetLibList()
+        (lib->name != defPcellLib && !rexMatchp("^scs" lib->name) && lib->cells &&
+        !rexMatchp(car(getInstallPath()) lib->readpath)) )~>name nil)
+    if( libmgrSel then
+      defLib  = nth(0 libmgrSel) || car(libChoices)
+      defCell = nth(1 libmgrSel) || ""
+    else
+      defLib  = car(libChoices)
+      defCell = ""
+    ); if libmgrSel
+
+    defPcellLib = "S130"
+
+    defCalDRCRules = strcat( getShellEnvVar("PDK_HOME") "/PV/Calibre/DRC/calibre_drc.rul")
+    defCalLVSRules = strcat( getShellEnvVar("PDK_HOME") "/PV/Calibre/LVS/calibre_lvs.rul")
+    defPvsDRCRules = strcat( getShellEnvVar("PDK_HOME") "/PV/PVS/DRC/pvs_drc.rul")
+    defPvsLVSRules = strcat( getShellEnvVar("PDK_HOME") "/PV/PVS/LVS/pvs_lvs.rul")
+    defRunDir = strcat( "/sim/" getShellEnvVar("USER") "/QApcell/")
+    unless( isDir(defRunDir)
+      unless( createDirHier(defRunDir)
+        defRunDir = strcat( getWorkingDir() "/QApcells/" )
+      ); unless they can't create the defRunDir
+    ); unless defRunDir doesn't exist
+
+
+    ; set up the form coordinates for the params so they always line up
+    ; first item is the starting Y coord, the following are the X coord
+    ; for the 5 possible fields that will be on the form (x:width)
+    ;--------------------------------------------------
+    formWidth = 750
+    ;paramFieldCoords = list( startY Iterate+Name Min Max Steps Choices)
+    paramFieldCoords =  list( 375 25:220 245:100 355:100 465:100 245:370)
+
+    ; Gather list of cells with layouts that have parameters to test
+    ;--------------------------------------------------
+    ; takes too long so just hard coding the cells
+    ;layCells = setof( cell ddGetObj(libName)->cells (member("layout" cell~>views~>name) &&
+    ;  cdfGetBaseCellCDF(cell)~>parameters && !rexMatchp("^[np][np][np]" cell->name)))~>name
+    ;layCells = sort( layCells nil )
+    cellList = list("cm3m4" "cm4m5" "dnsd_pw" "dnsd_pw_esd" "dnsd_pw_esd_v5"
+      "dnsd_pw_lvt" "dnsd_pw_nat" "dnsd_pw_v5" "dpsd_nw" "dpsd_nw_esd" "dpsd_nw_esd_v5"
+      "dpsd_nw_hvt" "dpsd_nw_lvt" "dpsd_nw_v5" "nmos" "nmos_de_v12" "nmos_esd_nat_v5"
+      "nmos_esd_v5" "nmos_lvt" "nmos_nat_v3" "nmos_nat_v5" "nmos_v5" "pad_bond"
+      "pad_microprobe" "pad_probe" "pmos" "pmos_de_v12" "pmos_esd_v5" "pmos_hvt" "pmos_lvt"
+      "pmos_v5" "rndiff" "rndiff_v5" "rpdiff" "rpdiff_v5" "rpoly" "rpoly_hp" "rpoly_hp2K"
+      "rpwell")
+
+    infoFrame = hiCreateFrameField(
+      ?name       'infoFrame
+      ?labelText  "Information"
+    )
+    info1 = hiCreateLabel( 
+      ?name 'info1 
+      ?justification  'center
+      ?labelText "<div style='text-decoration: font-weight:bold;'>*** Library S130 Pcell testing ONLY. ***</div>"
+    )
+    info2 = hiCreateLabel( 
+      ?name 'info2
+      ?justification  'center
+      ?labelText "<div style='color: #ff0000;'>*** ANY OBJECTS IN THE PLACEMENT CELL WILL BE DELETED! ***</div>"
+    )
+    info3 = hiCreateLabel( 
+      ?name 'info3 
+      ?justification  'center
+      ?labelText "This will create/edit the schematic or layout view. It will place instances of the"
+    )
+    info4 = hiCreateLabel( 
+      ?name 'info4
+      ?justification  'center
+      ?labelText "chosen Pcell with a number of iterations based on the parameters you desire to vary."
+    )
+    info5 = hiCreateLabel( 
+      ?name 'info5
+      ?justification  'center
+      ?labelText "<div style='color: #0000ff;'>Only Pcells with editable parameters that can be varied are available.</dif>"
+    )
+    info6 = hiCreateLabel( 
+      ?name 'info6
+      ?justification  'center
+      ?labelText "<div style='text-decoration: font-weight:bold;color: #ff0000;'>*** Number of Placements > 5k may cause low memory/session crash or take forever ***</div>"
+    )
+    cellFrame = hiCreateFrameField(
+      ?name       'cellFrame
+      ?labelText  "Cell to place Pcell variants in"
+    )
+    mainLib = hiCreateCyclicField(
+      ?name    'mainLib
+      ?prompt  "Library:"
+      ?defValue defLib
+      ?choices libChoices
+    )
+    mainCell = hiCreateStringField(
+      ?name     'mainCell
+      ?prompt   "Cell:"
+      ?defValue defCell
+    )
+    cellBrowse = hiCreateFormButton(
+      ?name 'cellBrowse
+      ?buttonText "..."
+      ?callback "ddsSyncWithForm( hiGetCurrentForm() 'cellname 'mainLib 'mainCell )"
+    )
+    verifFrame = hiCreateFrameField(
+      ?name       'verifFrame
+      ?labelText  "Verification"
+    )
+    runType = hiCreateRadioField(
+      ?name       'runType
+      ?prompt     "Run:"
+      ?defValue   "DRC & LVS"
+      ?choices    list( "DRC & LVS" "DRC" "LVS" )
+    )
+    runTool = hiCreateRadioField(
+      ?name       'runTool
+      ?prompt     "Tool:"
+      ?defValue   "Calibre"
+      ?choices    list("Calibre" "PVS")
+      ?callback   list(
+                    strcat("{hiGetCurrentForm()->lvsRuleFile->value = \"" defCalLVSRules "\""
+                            " hiGetCurrentForm()->drcRuleFile->value = \"" defCalDRCRules "\"}")
+                    strcat("{hiGetCurrentForm()->lvsRuleFile->value = \"" defPvsLVSRules "\""
+                            " hiGetCurrentForm()->drcRuleFile->value = \"" defPvsDRCRules "\"}")
+                  )
+    )
+    lvsRuleFile = hiCreateStringField(
+      ?name     'lvsRuleFile
+      ?prompt   "LVS Rules:"
+      ?defValue defCalLVSRules
+      ?callback "{unless( isFile(hiGetCurrentForm()->lvsRuleFile->value)
+                    warn(\"The LVS rule file %s doesn't exist.  Try again\" 
+                      hiGetCurrentForm()->lvsRuleFile->value)
+                )}"
+    )
+    lvsRuleBrowse = hiCreateFormButton(
+      ?name 'lvsRuleBrowse
+      ?buttonText "..."
+      ?callback "ddsFileBrowseCB( hiGetCurrentForm()
+        'lvsRuleFile \"*\" 'existingFile \"Find the LVS Rules File\")"
+    )
+    drcRuleFile = hiCreateStringField(
+      ?name     'drcRuleFile
+      ?prompt   "DRC Rules:"
+      ?defValue defCalDRCRules
+      ?callback "{unless( isFile(hiGetCurrentForm()->drcRuleFile->value)
+                    warn(\"The DRC rule file %s doesn't exist.  Try again\" 
+                      hiGetCurrentForm()->drcRuleFile->value)
+                )}"
+    )
+    drcRuleBrowse = hiCreateFormButton(
+      ?name 'drcRuleBrowse
+      ?buttonText "..."
+      ?callback "ddsFileBrowseCB( hiGetCurrentForm()
+        'drcRuleFile \"*\" 'existingFile \"Find the DRC Rules File\")"
+    )
+    runDir = hiCreateStringField(
+      ?name     'runDir
+      ?prompt   "Root Run Directory:"
+      ?value    defRunDir
+      ?callback "{ if( isDir(hiGetCurrentForm()->runDir->value) then
+                    unless( isWritable(hiGetCurrentForm()->runDir->value)
+                      warn(\"You don't have permission to write to %s\"
+                        hiGetCurrentForm()->runDir->value))
+                  else
+                    unless( isWritable( strcat( hiGetCurrentForm()->runDir->value \"/..\" ))
+                      warn(\"You don't have permission to create %s\"
+                        hiGetCurrentForm()->runDir->value)
+                  ))
+                }"
+    )
+    runDirBrowse = hiCreateFormButton(
+      ?name 'runDirBrowse
+      ?buttonText "..."
+      ?callback "ddsFileBrowseCB( hiGetCurrentForm()
+        'runDir \"*\" 'directoryOnly \"Choose the Root Run Directory\")"
+    )
+    overwriteRD = hiCreateBooleanButton(
+      ?name           'overwriteRD
+      ?buttonText     "<div style='color: #ff0000;'>Overwrite Run data?</div>"
+      ?defValue       nil
+      ?buttonLocation 'left
+    )
+    pcellLibName = hiCreateStringField(
+      ?name       'pcellLibName
+      ?prompt     "Library:"
+      ?defValue   defPcellLib
+      ?enabled    nil
+      ?invisible  t
+    )
+    pcellName = hiCreateCyclicField(
+      ?name     'pcellName
+      ?prompt   "Place Pcell:"
+      ?choices  cellList
+      ?callback "{
+                  S130QA_PcVerifUpdateForm( hiGetCurrentForm() paramFieldCoords )
+                  S130QA_PcVerifCalculatePlacements( hiGetCurrentForm() )
+                }"
+    )
+    numPlacements = hiCreateIntField(
+      ?name     'numPlacements
+      ?prompt   "Number of Placements:"
+      ?defValue 0
+      ?editable nil
+      ?callback "{unless( hiGetCurrentForm()->adjColumns->value
+                  hiGetCurrentForm()->columns->value = ceiling( sqrt( hiGetCurrentForm()->numPlacements->value )) 
+                )
+                S130QA_PcVerifCaution(hiGetCurrentForm()->numPlacements->value)
+                }"
+    )
+    spacing = hiCreateFloatField(
+      ?name     'spacing
+      ?prompt   "Spacing:"
+      ?defValue 10.0
+      ?callback "{
+                  S130Round(hiGetCurrentForm()->spacing->value 0.005)
+                  unless( plusp(hiGetCurrentForm()->spacing->value)
+                    warn(\"Placement spacing should be a positive value - setting to default value\")
+                    hiGetCurrentForm()->spacing->value = hiGetCurrentForm()->spacing->defValue
+                  )
+                }"
+    )
+    columns = hiCreateIntField(
+      ?name     'columns
+      ?prompt   "Columns:"
+      ?defValue 10
+      ?editable nil
+      ?callback "{
+                  when( hiGetCurrentForm()->numPlacements->value > 0
+                    unless( plusp(hiGetCurrentForm()->columns->value)
+                      warn(\"Columns should be a positive value - setting to default value\")
+                      hiGetCurrentForm()->columns->value = hiGetCurrentForm()->columns->defValue
+                    )
+                  )
+                }"
+    )
+    adjColumns = hiCreateBooleanButton(
+      ?name        'adjColumns
+      ?buttonText  "Adjust columns"
+      ?buttonLocation 'left
+      ?defValue    nil
+      ?callback "{
+                  if( hiGetCurrentForm()->adjColumns->value then
+                    hiGetCurrentForm()->columns->editable = t
+                  else
+                    hiGetCurrentForm()->columns->editable = nil
+                    hiGetCurrentForm()->columns->value = ceiling( sqrt( hiGetCurrentForm()->numPlacements->value )) 
+                  )
+                }"
+    )
+
+    baseFields = list(
+      list( infoFrame         5:  5  735:125  10 )
+      list( info1             0: 15  formWidth:20 )
+      list( info2             0: 30  formWidth:20 )
+      list( info3             0: 45  formWidth:20 )
+      list( info4             0: 60  formWidth:20 )
+      list( info5             0: 80  formWidth:20 )
+      list( info6             0:100  formWidth:20 )
+
+      list( cellFrame         5:135  735: 50  10 )
+      list( mainLib          15:150  300: 30   60 )
+      list( mainCell        320:145  320: 30   40 )
+      list( cellBrowse      650:148   30: 25   30 )
+
+      list( verifFrame        5:195  735:145  10 )
+      list( runType          45:205  150: 30   30 )
+      list( runTool         355:205  320: 30   40 )
+      list( lvsRuleFile      15:235  685: 30   65 )
+      list( lvsRuleBrowse   705:238   30: 25   30 )
+      list( drcRuleFile      15:265  685: 30   65 )
+      list( drcRuleBrowse   705:268   30: 25   30 )
+      list( runDir           15:295  525: 30  125 )
+      list( runDirBrowse    545:298   30: 25   30 )
+      list( overwriteRD     585:298  130: 30   20 )
+
+      list( pcellLibName     10:345  200: 30  50 )
+      list( pcellName        10:345  200: 30  85 )
+      list( numPlacements    15:375  210: 30 140 )
+      list( spacing         290:375  100: 30  55 )
+      list( columns         400:375  100: 30  55 )
+      list( adjColumns      505:375   80: 30   0 )
+    )
+
+    ; Create main form
+    ; ++++++++++++++++++++++++++++++++++++++++++++++++++
+    printf("QA PCELL: Creating Form...\n")
+    S130QA_pcellVerifForm = hiCreateAppForm(
+      ?name       'S130QA_pcellVerifForm
+      ?formTitle  "S130 QA: Pcell Verification Tool"
+      ?fields     baseFields
+      ?initialSize list( formWidth 900 )
+      ?callback  "{
+        if( blankstrp(hiGetCurrentForm()->mainCell->value) then
+          warn(\"Please provide a valid cell name\n\")
+        else
+          S130QA_PcVerifCreateAndRun( hiGetCurrentForm()
+          hiGetCurrentForm()->mainLib->value hiGetCurrentForm()->mainCell->value
+          hiGetCurrentForm()->runType->value hiGetCurrentForm()->runTool->value
+          hiGetCurrentForm()->lvsRuleFile->value hiGetCurrentForm()->drcRuleFile->value
+          hiGetCurrentForm()->runDir->value hiGetCurrentForm()->overwriteRD->value
+          hiGetCurrentForm()->pcellLibName->value hiGetCurrentForm()->pcellName->value
+          hiGetCurrentForm()->columns->value hiGetCurrentForm()->spacing->value )
+        )}"
+      ?buttonLayout 'OKCancelApply
+      ?help ""
+    )
+
+    ;help
+    putprop( 'S130QA_pcellVerifForm "S130QA_PcVerifHelp()" 'hiHelpAction)
+
+    S130QA_PcVerifUpdateForm( S130QA_pcellVerifForm paramFieldCoords )
+    hiDisplayForm( S130QA_pcellVerifForm 50:100 )
+
+  ); let
+); procedure S130QA__pcellVerif
+
+;-----------------------------
+; procedure S130QA_PcVerifCreateAndRun
+;-----------------------------
+procedure( S130QA_PcVerifCreateAndRun( QAform library cell runType
+  runTool lvsRules drcRules runDir overWriteRD pcellLib pcellName cols spacing )
+  prog(( overwriteCell schCV layCV cellRunDir lvsRunDir
+         drcRunDir lvsStatus lvsErrors drcStatus drcErrors temp pcellResultsFile 
+         pcellResultsPort userKill )
+
+    when( ddGetObj(library cell "layout") || ddGetObj(library cell "schematic")
+      overwriteCell = hiDisplayAppDBox(
+        ?name         'overwriteCell
+        ?dboxBanner   "*** CAUTION CAUTION CAUTION ***" 
+        ?dboxText     strcat( "\n"
+          "The cell you are putting placements\n"
+          "exists.  Are you sure you want to\n"
+          "recreate it?\n"
+        )
+        ?dialogType   5
+        ?dialogStyle  'modal
+        ?buttonLayout 'YesNo
+      ); end hiDisplayAppDBox
+      unless( overwriteCell
+        printf("QA PCELL: Stopping program, cell %L exists\n" cell )
+        return()
+      ); when overwrite
+
+    ); when main cell exists
+
+    ; create/overwrite main cell views
+    when( rexMatchp("LVS" runType)
+      unless( schCV = dbOpenCellViewByType(library cell "schematic" "schematic" "w")
+        error("The schemtatic view for cell %L cannot be created/edited!\n" cell )
+      ); unless sch can't be created or edited
+    ); when LVS
+    unless( layCV = dbOpenCellViewByType(library cell "layout" "maskLayout" "w")
+      error("The layout view for cell %L cannot be created/edited!\n" cell )
+    ); unless lay can't be created or edited
+
+    userKill = nil 
+
+    ; place the cells in the schematic
+    when( schCV
+      deOpenCellView(library cell "schematic" "schematic" nil "a")
+      printf("QA PCELL: Creating the schematic...\n")
+      userKill = S130QA_PcVerifMain( pcellLib pcellName
+        S130QA_PcVerifGetCdfParams( pcellLib pcellName )
+        cols fix(spacing*0.20)
+        S130QA_PcVerifGetParameterValues( QAform ) schCV )
+      when( dbIsId(schCV)
+        dbSave(schCV)
+        dbPurge(schCV)
+      )
+      ; stop it all if the user stopped the placements
+      when( userKill
+        warn("Due to stopping the placements, the program was be stopped")
+        return()
+      ); when userKill
+    ); when schematic
+
+    ; place the cells in the layout
+    when( layCV
+      deOpenCellView(library cell "layout" "maskLayout" nil "a")
+      leSetInstSelectable( t )
+      leSetLayerValid(list("pwell" "pin") t)
+      leSetLayerValid(list("pwell" "label") t)
+      leSetLayerValid(list("nwell" "pin") t)
+      leSetLayerValid(list("nwell" "label") t)
+      leSetLayerValid(list("areaid" "substrateCut") t)
+      leSetAllLayerVisible(t)
+      leSetAllLayerSelectable(t)
+      printf("QA PCELL: Creating the layout...\n")
+      userKill = S130QA_PcVerifMain( pcellLib pcellName
+        S130QA_PcVerifGetCdfParams( pcellLib pcellName )
+        cols spacing
+        S130QA_PcVerifGetParameterValues( QAform ) layCV )
+      when( dbIsId(schCV)
+        dbSave(layCV)
+        dbPurge(layCV)
+      )
+      ; stop it all if the user stopped the placements
+      when( userKill
+        warn("Due to stopping the placements, the program was be stopped")
+        return()
+      ); when userKill
+      deOpenCellView(library cell "layout" "maskLayout" nil "r")
+    ); when layout
+
+
+    when( schCV
+      deOpenCellView(library cell "schematic" "schematic" nil "r")
+    ); when schematic
+
+    ; create the run folders
+    cellRunDir = strcat( runDir "/" cell )
+    rexCompile("//")
+    cellRunDir = rexReplace( cellRunDir "/" 0 )
+    lvsRunDir = strcat(cellRunDir "/lvs" )
+    drcRunDir = strcat(cellRunDir "/drc" )
+
+    ; create GDS
+    unless( isDir(cellRunDir)
+      unless( createDirHier(cellRunDir)
+        error("QA PCELL: Unable to create the cell run directory %L" cellRunDir)
+      )
+    )
+    S130QA_createGDS(library cell cellRunDir)
+
+    ; run LVS
+    when( rexMatchp("LVS" runType)
+      when( isDir(lvsRunDir) && overWriteRD
+        system(strcat("rm -rf " lvsRunDir))
+      ); when lvsRunDir exists
+
+      if( isDir(lvsRunDir) then
+        warn("%L exists and choice to overwrite data is off;\n  LVS for cell %L not being ran" lvsRunDir cell )
+        lvsStatus = "DID NOT RUN"
+      else
+        unless( createDirHier(lvsRunDir)
+          error("QA PCELL: Unable to create LVS run directory %L" lvsRunDir)
+        )
+
+        S130QA_createCDL(library cell lvsRunDir)
+
+        printf("QA PCELL: Running %s LVS on %s\n" runType cell)
+        printf("QA PCELL:   If you desire to see the LVS transcript, view %s/lvs.log\n" lvsRunDir)
+        case( runTool
+          ("Calibre"
+            S130QA_createLVSCALheader(cell lvsRunDir lvsRules)
+            system( strcat("cd " lvsRunDir "; calibre -lvs -flatten -ixf -nxf -wait 5 cal.header.rul > " lvsRunDir "/lvs.log"))
+          )
+          ("PVS"
+            S130QA_createLVSPVSheader( lvsRunDir )
+            system( strcat("cd " lvsRunDir "; pvs -lvs -gds ../" cell ".gds -top_cell " cell " -source_cdl "
+              cell ".cdl -log pvsrun.log -source_top_cell " cell " pvs.header.rul " lvsRules " > " lvsRunDir "/lvs.log"))
+          )
+        ); case runType
+        temp = S130QA_getLVSResults( cell lvsRunDir runTool )
+        lvsStatus = nth(0 temp)
+        if( nth(1 temp) then
+          lvsErrors = buildString(nth(1 temp) ", ")
+        else
+          lvsErrors = ""
+        ); when errors
+        printf("QA PCELL: LVS Result for %s:  %s\n" cell lvsStatus)
+      ); if lvsRunDir exists
+    ); when runType lvs
+
+    ; run DRC
+    when( rexMatchp("DRC" runType)
+      when( isDir(drcRunDir) && overWriteRD
+        system(strcat("rm -rf " drcRunDir))
+      ); when drcRunDir exists
+
+      if( isDir(drcRunDir) then
+        warn("%L exists and choice to overwrite data is off;\n  DRC for cell %L not being ran" drcRunDir cell )
+        drcStatus = "DID NOT RUN"
+      else
+        unless( createDirHier(drcRunDir)
+          error("QA PCELL: Unable to create DRC run directory %L" drcRunDir)
+        )
+
+        printf("QA PCELL: Running %s DRC on %s\n" runType cell)
+        printf("QA PCELL:   If you desire to see the DRC transcript, view %s/drc.log\n" drcRunDir)
+        case( runTool
+          ("Calibre"
+            S130QA_createDRCCALheader(cell drcRunDir drcRules)
+            system( strcat("cd " drcRunDir "; calibre -drc -wait 5 cal.header.rul > " drcRunDir "/drc.log"))
+          )
+          ("PVS"
+            S130QA_createDRCPVSheader( drcRunDir )
+            system( strcat("cd " drcRunDir "; pvs -drc -gds ../" cell ".gds -top_cell " cell
+              " -log pvsrun.log -run_dir " drcRunDir " -ascrdb " cell ".drc.results pvs.header.rul " drcRules
+              " > " drcRunDir "/drc.log"))
+          )
+        ); case runType
+        temp = S130QA_getDRCResults( cell drcRunDir runTool )
+        drcStatus = nth(0 temp)
+        drcErrors = nth(1 temp)||list()
+        printf("QA PCELL: DRC Result for %s:  %s\n" cell drcStatus)
+      ); if drcRunDir exists
+    ); when runType drc
+
+    ; create the report
+    pcellResultsFile = sprintf(nil "%s/QAPcellVerif_%s.report" getWorkingDir() cell)
+    printf("QA PCELL: all runs complete, creating report %s\n" pcellResultsFile )
+    pcellResultsPort = outfile(pcellResultsFile)
+    fprintf(pcellResultsPort "=======================================================\n")
+    fprintf(pcellResultsPort "Report created on %s\n" getCurrentTime())
+    fprintf(pcellResultsPort "=======================================================\n")
+    fprintf(pcellResultsPort "  LIBRARY:    %s\n" library)
+    fprintf(pcellResultsPort "  CELL:       %s\n" cell)
+    fprintf(pcellResultsPort "  PCELL:      %s\n" QAform->pcellName->value)
+    fprintf(pcellResultsPort "  PLACEMENTS: %d\n" QAform->numPlacements->value)
+    fprintf(pcellResultsPort "  TOOL:       %s\n" runTool)
+    fprintf(pcellResultsPort "  ROOT DIR:   %s\n" cellRunDir)
+
+    when( rexMatchp("LVS" runType)
+      fprintf(pcellResultsPort "=======================================================\n")
+      fprintf(pcellResultsPort "LVS RUN DIR:  %s\n" lvsRunDir)
+      fprintf(pcellResultsPort "LVS RESULTS:  %s\n" lvsStatus )
+      when( length(lvsErrors) > 0
+        fprintf(pcellResultsPort "\t Errors:  %s\n" lvsErrors )
+      ); when lvsErrors
+    ); when lvs
+
+    when( rexMatchp("DRC" runType)
+      fprintf(pcellResultsPort "=======================================================\n")
+      fprintf(pcellResultsPort "DRC RUN DIR:  %s\n" drcRunDir)
+      fprintf(pcellResultsPort "DRC RESULTS:  %s\n" drcStatus )
+      when( length(drcErrors) > 0
+        fprintf(pcellResultsPort "\t Errors\n" )
+        fprintf(pcellResultsPort "\t------------------\n" )
+        foreach( drcErr drcErrors
+          fprintf(pcellResultsPort "\t%s\n" drcErr )
+        ); foreach drcErr
+      ); when drcErrors
+    ); when drc
+
+    fprintf(pcellResultsPort "========================= EOF =========================\n")
+    close(pcellResultsPort)
+    shell(strcat("gnome-terminal -- vim -R " pcellResultsFile " +1" ))
+
+  ); prog
+); procedure S130QA_PcVerifCreateAndRun
+
+;-----------------------------
+; procedure S130QA_PcVerifMain
+;-----------------------------
+procedure( S130QA_PcVerifMain( libName testCellName cellAllParams cols cellSpacing formParams
+           cellId )
+  prog( ( cellX cellY col testCellId grid iKey inst iterRange iterStep iterSteps
+        iterations labelH labelX labelY maxIter minIter paramList paramName rowId
+        paramType paramIterValues placementGrid row cellLib cellName viewName viewType 
+        rows iter stopTheMadness iterations iteration markers progBox )
+
+    ; to help with memory issues
+    envSetVal("layout" "startLevel" 'int 0)
+    envSetVal("layout" "stopLevel" 'int 0)
+    gc()
+
+    cellLib  = cellId->libName
+    cellName = cellId->cellName
+    viewName = cellId->viewName
+    viewType = cellId->cellViewType
+
+    ; delete anything in the cell for a clean slate
+    dbReopen(cellId "w")
+
+    grid = techGetMfgGridResolution(techGetTechFile(ddGetObj(libName)))
+
+    ; get the master cellview and set variables for specific views
+    ;-----------------------------
+    case( cellId->cellViewType
+      ("schematic"
+        testCellId = dbOpenCellViewByType( ddGetObj(libName) testCellName "symbol" "" "r")
+        placementGrid = 0.0625
+        labelX = 2.0
+        labelY = -1.0
+        labelH = 0.25
+      )
+      ("maskLayout"
+        testCellId = dbOpenCellViewByType( ddGetObj(libName) testCellName "layout" "" "r")
+        placementGrid = 0.005
+        labelX = 5.0
+        labelY = -10.0
+        labelH = 2.0
+      )
+    )
+
+    printf("QA PCELL: Start %s\n" getCurrentTime() )
+
+    ; figure out steps for each parameter
+    ;-----------------------------
+    paramIterValues = makeTable('paramValuesTable)
+
+    printf("QA PCELL: Creating value(s) list for each parameters...\n" )
+    foreach( test formParams
+      paramName = nth(0 test)
+      when( cellAllParams[paramName]
+        case( nth(0 cellAllParams[paramName])
+          ("float" 
+            minIter = nth(2 test)
+            maxIter = nth(3 test)
+            iterSteps = if( nth(4 test)-2 > 0 then nth(4 test)-2 else 0 )
+            iterRange = maxIter - minIter
+            iterStep = round( (iterRange/(iterSteps+1))/grid )*grid
+            paramIterValues[paramName] = list( minIter )
+            when( iterSteps > 0
+              for( i 1 iterSteps
+                paramIterValues[paramName] = cons( minIter + i*iterStep paramIterValues[paramName] )
+                i = i+1
+              ); for i
+            ); when iterSteps > 0
+            paramIterValues[paramName] = cons( maxIter paramIterValues[paramName] )
+            paramIterValues[paramName] = reverse(paramIterValues[paramName])
+          )
+          ("int"
+            minIter = nth(2 test)
+            maxIter = nth(3 test)
+            iterSteps = if( nth(4 test)-2 > 0 then nth(4 test)-2 else 0 )
+            iterRange = maxIter - minIter
+            iterStep = int(iterRange/(iterSteps+1))
+            paramIterValues[paramName] = list( minIter )
+            when( iterSteps > 0
+              for( i 1 iterSteps
+                paramIterValues[paramName] = cons( minIter + i*iterStep paramIterValues[paramName] )
+                i = i+1
+              ); for i
+            ); when iterSteps > 0
+            paramIterValues[paramName] = cons( maxIter paramIterValues[paramName] )
+            paramIterValues[paramName] = reverse(paramIterValues[paramName])
+          )
+          ("string" 
+            minIter = evalstring(nth(2 test))
+            maxIter = evalstring(nth(3 test))
+            iterSteps = if( nth(4 test)-2 > 0 then nth(4 test)-2 else 0 )
+            iterRange = maxIter - minIter
+            iterStep = round( (iterRange/(iterSteps+1))/grid )*grid
+            paramIterValues[paramName] = list( sprintf(nil "%L" minIter) )
+            when( iterSteps > 0
+              for( i 1 iterSteps
+                paramIterValues[paramName] = cons( sprintf(nil "%L" minIter + i*iterStep) paramIterValues[paramName] )
+                i = i+1
+              ); for i
+            ); when iterSteps > 0
+            paramIterValues[paramName] = cons( sprintf(nil "%L" maxIter) paramIterValues[paramName] )
+            paramIterValues[paramName] = reverse(paramIterValues[paramName])
+          )
+          ("boolean"
+            paramIterValues[paramName] = list( "TRUE" "FALSE" )
+          )
+          ("cyclic"
+            paramIterValues[paramName] = cddr(test)
+          )
+        )
+      ); when
+    ); foreach
+
+    ; create the labels that show what params were used &&
+    ; build the list of iterations
+    ;-----------------------------
+    dbCreateLabel( cellId list("text" "drawing") labelX:labelY strcat("Pcell placed: " testCellName)
+      "upperLeft" "R0" "stick" labelH)
+    labelY = labelY - 1.5*labelH
+    dbCreateLabel( cellId list("text" "drawing") labelX:labelY
+      "Parameters (name type [min max #steps || choices]):" "upperLeft" "R0" "stick" labelH)
+    iterations = ncons(nil)
+    printf("QA PCELL: Creating matrix of parameters (speed based on number of iterations)...\n")
+    foreach(param formParams
+      iKey = car(param)
+      labelY = labelY - 1.5*labelH
+      dbCreateLabel( cellId list("text" "drawing") labelX:labelY sprintf(nil "  %L" param) "upperLeft" "R0" "stick" labelH)
+      when( paramIterValues[iKey]
+        printf("             adding %L to the matrix...\n" iKey)
+        iterations = S130QA_PcVerifCreateMatrix( iterations paramIterValues[iKey] )
+      ); when param exists
+    ); foreach param
+    dbCreateLabel( cellId list("text" "drawing") labelX:labelY-1.5*labelH sprintf(nil "Number of placements: %d" length(iterations)) "upperLeft" "R0" "stick" labelH)
+
+    ; Memory management
+    ; turn the iterations into an array as they are much faster than lists
+    iterations = listToVector(iterations)
+    ; reallocate a variable and remove the big list from memory
+    paramIterValues = length(iterations)
+
+    col = row = 1
+    cellX = cellY = 0.0
+
+    ; create row cells to keep memory use down
+    when( viewType == "maskLayout"
+      printf("QA PCELL: Deleting previously built row cells...\n")
+      foreach( rowCell setof( view ddGetObj(cellLib cellName)->views
+        rexMatchp("layout_row" view->name)) ddDeleteObj(rowCell)
+      ); foreach row cell 
+      rowId = dbOpenCellViewByType(cellLib cellName sprintf(nil "zzz_%s_row%d"
+        viewName row) viewType "w")
+    ); when layout
+
+    ; place each iteration of the device - the memory hog
+    ;-----------------------------
+    printf("QA PCELL: Placing cell %L in %L view with %d parameter iterations in %L...\n" testCellName
+      viewName paramIterValues cellId->cellName )
+
+    stopTheMadness = nil
+    rows = paramIterValues/cols
+    when( mod(paramIterValues cols) > 0 rows = rows + 1 )
+
+    hiDisplayProgressBox(
+      ?name 'progBox
+      ?banner strcat("Building the " viewName)
+      ?text   sprintf(nil "Placing row %d of %d" row rows ) 
+      ?callback "stopTheMadness = t"
+      ?totalSteps rows
+      ?autoClose nil
+    )
+    hiSetProgressButtonText(progBox "STOP!")
+
+    iter = 0
+    while( iter < paramIterValues
+
+      ; memory free up ??
+      foreach( bag dbGetOpenBags() dbPurgeBag(bag) )
+
+      ; kill switch
+      if( stopTheMadness then
+        when( dbIsId(rowId) dbSave(rowId))
+        iter = paramIterValues
+        return(t)
+      else
+
+        ; set progress bar
+        hiSetProgressAndText(progBox row sprintf(nil "Placing row %d of %d" row rows ) )
+
+        iteration = iterations[iter]
+        ; make a paramlist for the instance placed
+        paramList = list()
+        for( i 0 length(iteration)-1
+          paramName = car(nth(i formParams))
+          paramType = nth(0 cellAllParams[paramName])
+          when( paramType == "cyclic" paramType = "string" )
+          paramList = cons( list( paramName paramType nth(i iteration)) paramList )
+          i = i+1
+        ); for iteration
+        paramList = reverse(paramList)
+
+        ; need to set the calc methods for various cells so it only uses w/l
+        cond(
+          ; fixed sized mosfets
+          ( rexMatchp("^[np]mos" testCellName) &&
+            !(rexMatchp("mos_esd" testCellName) || rexMatchp("v20" testCellName)) 
+            paramList = cons( list("useFixedWL" "boolean" nil) paramList )
+          )
+          ; mimcaps
+          ( member(testCellName list("cm3m4" "cm4m5"))
+            paramList = cons( list("calcMethod" "string" "Width & Length") paramList )
+          )
+          ; diff diodes
+          ( rexMatchp("^d[np]sd" testCellName)
+            paramList = cons( list("calcMethod" "string" "Width & Length") paramList )
+          )
+          ; pwell resistor
+          ( testCellName == "rpwell"
+            paramList = cons( list("rCalcMethod" "string" "Length") paramList )
+          )
+          ; poly & diff resistors
+          ( testCellName == "rpoly" || rexMatchp("^rpoly_hp" testCellName) || rexMatchp("^r[np]diff" testCellName)
+            paramList = cons( list("rCalcMethod" "string" "Segment Length") paramList )
+          )
+        ); cond
+
+        dbSave(cellId)
+
+        ; test
+        ;printf("%L\n" paramList)
+        ;printf("%s %L\n" testCellId->cellName paramList)
+
+        if( viewType == "maskLayout" then
+          inst = dbCreateExtParamInst( rowId testCellId sprintf(nil "I%d" iter) cellX:0 "R0" 1 paramList t)
+          CCSinvokeInstCdfCallbacks(inst)
+          ; create pins and labels
+          S130QA_PcVerifCreateLayPins( rowId inst ?prefix inst->name )
+          ; create a substrate iso rect over the inst for LVS
+          dbCreateRect( rowId list("areaid" "substrateCut") 
+            list( leftEdge(inst->bBox)-0.01:bottomEdge(inst->bBox)-0.01
+            rightEdge(inst->bBox)+0.01:topEdge(inst->bBox)+0.01 ) )
+          dbPurge(testCellId)
+          testCellId = dbOpenCellViewByType( ddGetObj(libName) testCellName "layout" "" "r")
+        else
+          inst = dbCreateExtParamInst( cellId testCellId sprintf(nil "I%d" iter) cellX:cellY "R0" 1 paramList t)
+          CCSinvokeInstCdfCallbacks(inst)
+          S130QA_PcVerifWireUpInst( cellId inst )
+          dbPurge(testCellId)
+          testCellId = dbOpenCellViewByType( ddGetObj(libName) testCellName "symbol" "" "r")
+        ); if view layout
+
+        ; get new coords
+        if( col < cols && iter != paramIterValues-1 then
+          cellX = ceiling(xCoord(upperRight(inst->bBox))/placementGrid)*placementGrid + cellSpacing
+          cellY = cellY
+          col = col + 1
+        else
+          printf("QA PCELL: ...done with row %d of %d rows in %s\n" row rows viewName )
+          if( viewType == "maskLayout" then
+            dbSave(rowId)
+            dbCreateInst( cellId rowId sprintf(nil "Irow%d" row) 0:cellY "R0" 1 )
+            cellY = cellY + ceiling((yCoord(upperRight(rowId->bBox)) - yCoord(lowerLeft(rowId->bBox)))/
+              placementGrid)*placementGrid + cellSpacing
+            dbPurge(rowId)
+            ; clean up the garbage
+            gc()
+            foreach( cv setof( dbs dbGetOpenCellViews()
+              (dbs->cellName == cellName && dbs->viewName != viewName))
+              dbPurge(cv)
+            )
+          else
+            cellY = cellY + ceiling((yCoord(upperRight(inst->bBox)) - yCoord(lowerLeft(inst->bBox)))/
+              placementGrid)*placementGrid + cellSpacing
+          )
+          dbSave(cellId)
+          cellX = 0.0
+          col = 1
+          row = row + 1
+          ; create the next row cell
+          when( viewType == "maskLayout" && iter < paramIterValues-1
+            rowId = dbOpenCellViewByType(cellLib cellName sprintf(nil "zzz_%s_row%d" viewName row) viewType "w")
+          ); when layout
+        ); if col < cols
+
+        iter = iter + 1
+      ); if stopTheMadness
+    ); while iter
+
+    hiCancelProgressBox( progBox )
+
+    ; for memory reasons, even though local
+    unbindVar(iterations)
+
+    case( viewType
+      ( "maskLayout" 
+        ; create the pins and labels for the row cells
+        printf("QA PCELL: Creating top level pins and labels in %s...\n" viewName)
+        foreach( inst cellId->instances
+          S130QA_PcVerifCreateLayPins( cellId inst )
+        ); foreach inst
+      ); layout
+      ( "schematic" 
+        ; Run schematic check and Save
+        printf("QA PCELL: Check & Saving %s...\n" cellName)
+        when(and( !dbIsConnCurrent(cellId) schCheck(cellId) )
+          if(dbGetDatabaseType()=="CDBA" then
+            markers = setof(lpp cellId~>lpps and(lpp~>layerName=="marker"
+              member(lpp~>purpose '("error" "warning"))))
+            foreach(type markers
+              foreach(shape type~>shapes dbDeleteObject(shape))
+            )
+            t
+          else
+            markers = setof(marker cellId~>markers
+              member(marker~>severity list("error" "warning")))
+            foreach(type markers dbDeleteObject(type))
+          t
+          ); if CDBA
+        ); when not current and schCheck
+      ); schematic
+    ); case
+
+    dbSave(cellId)
+    printf("QA PCELL: Placement complete %s\n" getCurrentTime() )
+    return(nil)
+
+  ); prog
+); procedure S130QA_PcVerifMain
+
+;-----------------------------
+; procedure S130QA_PcVerifUpdateForm
+;-----------------------------
+procedure( S130QA_PcVerifUpdateForm( QAform paramFieldCoords )
+  let( (libName testCellName cellAllParams paramList paramFields )
+
+    libName  = QAform->pcellLibName->value
+    testCellName = QAform->pcellName->value
+    printf( "QA PCELL: Updating form for pcell %s\n" testCellName )
+
+    ; get param cdf info
+    cellAllParams = S130QA_PcVerifGetCdfParams( libName testCellName )
+
+    ; remove existing param# fields from the form
+    hiDeleteFields( QAform setof( pfield QAform->fieldList rexMatchp("^param[0-9]" sprintf(nil "%L" pfield))) )
+
+    ; paramList is a list of lists with param, min, & max, or param, choices
+    ; if the list has 3 length - float, 2 length - cyclic, 1 length - boolean
+    cond(
+      ; 12V de fet devices
+      ( testCellName == "pmos_de_v12"
+        paramList = list(
+          list("l" evalstring(strcat(testCellName "->minL")) evalstring(strcat(testCellName "->maxL")))
+          list("nf" 2 20)
+          list("gateCnt" nth(2 cellAllParams["gateCnt"]))
+          list("gateCntExt" 0.0 10.0)
+          list("tapLeft")
+          list("tapRight")
+          list("tapTop")
+          list("tapBottom")
+        )
+      )
+      ( testCellName == "nmos_de_v12"
+        paramList = list(
+          list("fw" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("l" evalstring(strcat(testCellName "->minL")) evalstring(strcat(testCellName "->maxL")))
+          list("nf" 2 20)
+          list("gateCnt" nth(2 cellAllParams["gateCnt"]))
+          list("gateCntExt" 0.0 10.0)
+          list("tapLeft")
+          list("tapRight")
+          list("tapTop")
+          list("tapBottom")
+        )
+      )
+      ; standard fets
+      ( rexMatchp("^[np]mos" testCellName) && !rexMatchp("^[np]mos_de" testCellName)
+        paramList = list(
+          list("fw" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("l" evalstring(strcat(testCellName "->minL")) evalstring(strcat(testCellName "->maxL")))
+          list("nf" 1 100)
+          list("fingerSP" evalstring(strcat(testCellName "->minFingerSP")) evalstring(strcat(testCellName "->maxFingerSP")))
+          list("gateCnt" nth(2 cellAllParams["gateCnt"]))
+          list("gateCntExt" 0.0 10.0)
+          list("tapLeft")
+          list("tapRight")
+          list("tapTop")
+          list("tapBottom")
+        )
+      )
+      ; mimcaps
+      ( member(testCellName list("cm3m4" "cm4m5"))
+        paramList = list(
+          list("w" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("l" evalstring(strcat(testCellName "->minL")) evalstring(strcat(testCellName "->maxL")))
+        )
+      )
+      ; diff diodes
+      ( rexMatchp("^d[np]sd" testCellName)
+        paramList = list(
+          list("w" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("l" evalstring(strcat(testCellName "->minL")) evalstring(strcat(testCellName "->maxL")))
+          list("dioCont")
+          list("tapLeft")
+          list("tapRight")
+          list("tapTop")
+          list("tapBottom")
+        )
+      )
+      ; poly resistor
+      ( testCellName == "rpoly"
+        paramList = list(
+          list("rType" nth(2 cellAllParams["rType"]))
+          list("segL" evalstring(strcat(testCellName "->minL")) evalstring(strcat(testCellName "->maxL")))
+          list("segW" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("segments" 1 50)
+          list("segmentSP" evalstring(strcat(testCellName "->resLay->minSP")) 50.0)
+          list("contRows" 1 10)
+          list("metCont")
+        )
+      )
+      ; poly hp resistors
+      ; hard coded values - early pcell
+      ( rexMatchp("^rpoly_hp" testCellName)
+        paramList = list(
+          list("rType" nth(2 cellAllParams["rType"]))
+          list("segL" 5.0 evalstring(strcat(testCellName "->maxL")) )
+          list("segW" 0.33 100)
+          list("segments" 1 50)
+          list("segmentSP" 0.21 2.0)
+          list("contRows" 1 5)
+          list("metCont")
+          list("wellType" nth(2 cellAllParams["wellType"]))
+          list("vType" nth(2 cellAllParams["vType"]))
+          list("tapLeft")
+          list("tapRight")
+          list("tapTop")
+          list("tapBottom")
+        )
+      )
+      ; diff resistors
+      ( rexMatchp("^r[np]diff" testCellName)
+        paramList = list(
+          list("rType" nth(2 cellAllParams["rType"]))
+          list("segL" evalstring(strcat(testCellName "->minL")) evalstring(strcat(testCellName "->maxL")))
+          list("segW" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("segments" 1 50)
+          list("segmentSP" evalstring(strcat(testCellName "->minSegSP")) evalstring(strcat(testCellName "->maxSegSP")) )
+          list("contRows" 1 10)
+          list("metCont")
+          list("tapLeft")
+          list("tapRight")
+          list("tapTop")
+          list("tapBottom")
+        )
+      )
+      ; pwell resistor
+      ( testCellName == "rpwell"
+        paramList = list(
+          ;list("w" evalstring(strcat(testCellName "->rules->minW")) evalstring(strcat(testCellName "->rules->maxW")))
+          list("l" evalstring(strcat(testCellName "->rules->minL")) evalstring(strcat(testCellName "->rules->maxL")))
+          list("nwTapCnt" nth(2 cellAllParams["nwTapCnt"]))
+        )
+      )
+      ; sealring
+      ( testCellName == "sealring"
+        paramList = list(
+          list("w" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("l" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("extraCut" 0.0 S130Round(evalstring(strcat(testCellName "->minW"))*0.25 0.005))
+        )
+      )
+      ; pads
+      ( testCellName == "pad_bond" || testCellName == "pad_microprobe"
+        paramList = list(
+          list("w" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+          list("l" evalstring(strcat(testCellName "->minW")) evalstring(strcat(testCellName "->maxW")))
+        )
+      )
+      ( testCellName == "pad_probe"
+        paramList = list(
+          list("padSize" nth(2 cellAllParams["padSize"]))
+        )
+      )
+    ); cond
+
+    paramFields = S130QA_PcVerifCreateParamFields( paramList paramFieldCoords cellAllParams )
+
+    hiAddFields( QAform paramFields )
+    foreach( paramPrompt setof( pfield QAform->fieldList rexMatchp("^param[0-9]+Prompt" sprintf(nil "%L" pfield)))
+      evalstring(strcat("QAform->" paramPrompt "->hiToolTip = \"Click to enable the iteration of this parameter\""))
+    ); foreach paramPrompt
+    ; set the first choice to be enabled and the tool tip for cyclic choices
+    foreach( paramCyclic setof( pfield QAform->fieldList rexMatchp("^param[0-9]+Cyclic" sprintf(nil "%L" pfield)))
+      evalstring(strcat("QAform->" paramCyclic "->"
+        symbolToString(evalstring(strcat("car(QAform->" paramCyclic "->_toggleItems)")))
+        "->value = t"))
+      evalstring(strcat("QAform->" paramCyclic "->hiToolTip = \"Enable any that you want to apply\""))
+    ); foreach paramCyclic
+
+  ); let
+); procedure S130QA_PcVerifUpdateForm
+
+;-----------------------------
+; procedure S130QA_PcVerifCreateParamFields
+;-----------------------------
+procedure( S130QA_PcVerifCreateParamFields( paramList paramFieldCoords cellAllParams )
+  let( (paramNum paramFields yCoord promptX promptW minX minW
+        maxX maxW stepX stepW cyclicX cyclicW paramPrompt
+        paramName paramType paramCyclic paramMin paramMax paramSteps)
+
+    paramNum = 1
+    paramFields = list()
+    yCoord = nth(0 paramFieldCoords)
+    promptX = xCoord(nth(1 paramFieldCoords))
+    promptW = yCoord(nth(1 paramFieldCoords))
+    minX    = xCoord(nth(2 paramFieldCoords))
+    minW    = yCoord(nth(2 paramFieldCoords))
+    maxX    = xCoord(nth(3 paramFieldCoords))
+    maxW    = yCoord(nth(3 paramFieldCoords))
+    stepX   = xCoord(nth(4 paramFieldCoords))
+    stepW   = yCoord(nth(4 paramFieldCoords))
+    cyclicX = xCoord(nth(5 paramFieldCoords))
+    cyclicW = yCoord(nth(5 paramFieldCoords))
+
+    foreach( param paramList
+
+      ; create the param enable boolean
+      paramPrompt = hiCreateBooleanButton(
+        ?name        stringToSymbol(sprintf(nil "param%dPrompt" paramNum))
+        ?buttonText  nth(1 cellAllParams[nth(0 param)]) 
+        ?buttonLocation 'left
+        ?defValue    nil
+        ?callback    "S130QA_PcVerifCalculatePlacements( hiGetCurrentForm() )"
+      )
+      paramFields = append1( paramFields list(paramPrompt promptX:yCoord+paramNum*30 promptW:30 20) )
+      ; create invisible field for the parameter name
+      paramName =   hiCreateStringField(
+        ?name       stringToSymbol(sprintf(nil "param%dName" paramNum))
+        ?prompt     sprintf(nil "param%dName" paramNum)
+        ?defValue   nth(0 param) 
+        ?invisible  t
+      )
+      paramFields = append1( paramFields list(paramName promptX:yCoord+paramNum*30 promptW:30 20) )
+
+      case( length(param)
+        (1
+          paramType =   hiCreateStringField(
+            ?name       stringToSymbol(sprintf(nil "param%dType" paramNum))
+            ?prompt     sprintf(nil "param%dType" paramNum)
+            ?value      "boolean" 
+            ?invisible  t
+          )
+          paramFields = append1( paramFields list(paramType promptX:yCoord+paramNum*30 promptW:30 20) )
+        )
+        (2
+          paramType =   hiCreateStringField(
+            ?name       stringToSymbol(sprintf(nil "param%dType" paramNum))
+            ?prompt     sprintf(nil "param%dType" paramNum)
+            ?value      "cyclic" 
+            ?invisible  t
+          )
+          paramFields = append1( paramFields list(paramType promptX:yCoord+paramNum*30 promptW:30 20) )
+          paramCyclic = hiCreateToggleField(
+            ?name      stringToSymbol(sprintf(nil "param%dCyclic" paramNum))
+            ;?choices   mapcar( 'ncons mapcar( 'stringToSymbol nth(2 cellAllParams[nth(0 param)])))
+            ?choices   nth(2 cellAllParams[nth(0 param)])
+            ?callback  list((getd 'toggle_callback))
+          )
+          paramFields = append1( paramFields list(paramCyclic cyclicX:yCoord+paramNum*30 cyclicW:30 0) )
+        )
+        (3
+          case( nth(0 cellAllParams[nth(0 param)]) 
+            ("float"
+              paramType =   hiCreateStringField(
+                ?name       stringToSymbol(sprintf(nil "param%dType" paramNum))
+                ?prompt     sprintf(nil "param%dType" paramNum)
+                ?value      "float" 
+                ?invisible  t
+              )
+              paramFields = append1( paramFields list(paramType promptX:yCoord+paramNum*30 promptW:30 20) )
+              paramMin = hiCreateFloatField(
+                ?name     stringToSymbol(sprintf(nil "param%dMin" paramNum))
+                ?prompt   "Min:"
+                ?defValue nth(1 param)
+                ?range    nth(1 param):nth(2 param)
+              )
+              paramMax = hiCreateFloatField(
+                ?name     stringToSymbol(sprintf(nil "param%dMax" paramNum))
+                ?prompt   "Max:"
+                ?defValue nth(2 param)
+                ?range    nth(1 param):nth(2 param)
+              )
+            )
+            ("string"
+              paramType =   hiCreateStringField(
+                ?name       stringToSymbol(sprintf(nil "param%dType" paramNum))
+                ?prompt     sprintf(nil "param%dType" paramNum)
+                ?value      "string" 
+                ?invisible  t
+              )
+              paramFields = append1( paramFields list(paramType promptX:yCoord+paramNum*30 promptW:30 20) )
+              paramMin = hiCreateStringField(
+                ?name     stringToSymbol(sprintf(nil "param%dMin" paramNum))
+                ?prompt   "Min:"
+                ?defValue sprintf(nil "%L" nth(1 param))
+              )
+              paramMax = hiCreateStringField(
+                ?name     stringToSymbol(sprintf(nil "param%dMax" paramNum))
+                ?prompt   "Max:"
+                ?defValue sprintf(nil "%L" nth(2 param))
+              )
+            )
+            ("int"
+              paramType =   hiCreateStringField(
+                ?name       stringToSymbol(sprintf(nil "param%dType" paramNum))
+                ?prompt     sprintf(nil "param%dType" paramNum)
+                ?value      "int" 
+                ?invisible  t
+              )
+              paramFields = append1( paramFields list(paramType promptX:yCoord+paramNum*30 promptW:30 20) )
+              paramMin = hiCreateIntField(
+                ?name     stringToSymbol(sprintf(nil "param%dMin" paramNum))
+                ?prompt   "Min:"
+                ?defValue nth(1 param)
+                ?range    nth(1 param):nth(2 param)
+                ?callback    "S130QA_PcVerifCalculatePlacements( hiGetCurrentForm() )"
+              )
+              paramMax = hiCreateIntField(
+                ?name     stringToSymbol(sprintf(nil "param%dMax" paramNum))
+                ?prompt   "Max:"
+                ?defValue nth(2 param)
+                ?range    nth(1 param):nth(2 param)
+                ?callback    "S130QA_PcVerifCalculatePlacements( hiGetCurrentForm() )"
+              )
+            )
+          ); case paramtype
+          paramSteps = hiCreateIntField(
+            ?name     stringToSymbol(sprintf(nil "param%dSteps" paramNum))
+            ?prompt   "Steps:"
+            ?defValue 2
+            ?range    2:500
+            ?callback  "S130QA_PcVerifCalculatePlacements( hiGetCurrentForm() )"
+          )
+          paramFields = append1( paramFields list(paramMin minX:yCoord+paramNum*30 minW:30 25) )
+          paramFields = append1( paramFields list(paramMax maxX:yCoord+paramNum*30 maxW:30 25) )
+          paramFields = append1( paramFields list(paramSteps stepX:yCoord+paramNum*30 stepW:30 40) )
+        )
+      ); case length(param)
+
+      paramNum = paramNum + 1
+    ); foreach param
+    paramFields
+
+  ); let
+); procedure S130QA_PcVerifCreateParamFields
+
+;-----------------------------
+; procedure S130QA_PcVerifCreateMatrix
+;   combines the lists to build all the iterations
+;-----------------------------
+procedure( S130QA_PcVerifCreateMatrix( list1 list2 )
+  let( (matrix)
+    matrix = list()
+    foreach( item1 list1
+      foreach( item2 list2
+        unless( listp(item1) item1 = list(item1) )
+        unless( listp(item2) item2 = list(item2) )
+        unless( member(append(item1 item2) matrix)
+          matrix = cons( append( item1 item2 ) matrix )
+        ); unless
+      ); foreach list2
+    ); foreach list1
+    reverse(matrix)
+  ); let
+); procedure S130QA_PcVerifCreateMatrix
+
+;-----------------------------
+; procedure S130QA_PcVerifCalculatePlacements
+;-----------------------------
+procedure( S130QA_PcVerifCalculatePlacements( QAform )
+  let( (numParams numPlacements temp )
+    numParams = length(setof( pfield QAform->fieldList rexMatchp("^param[0-9]+Name" sprintf(nil "%L" pfield))))
+    numPlacements = 1
+    for( i 1 numParams
+      when( evalstring(sprintf(nil "QAform->param%dPrompt->value" i))
+        cond(
+          ; parameters with steps
+          ( evalstring(sprintf(nil "QAform->param%dSteps" i))
+            when( "int" == evalstring(sprintf(nil "QAform->param%dType->value" i))
+              temp = evalstring(sprintf(nil "QAform->param%dSteps" i))
+              when( temp->value > 1 +
+                    abs(evalstring(sprintf(nil "QAform->param%dMax->value" i)) -
+                    evalstring(sprintf(nil "QAform->param%dMin->value" i)))
+                warn(strcat(
+                  "The steps for integer type params need to be no more\n"
+                  "than the difference between the min and max values."))
+                printf("QA PCELL: Changing step value for %s\n"
+                  evalstring(sprintf(nil "QAform->param%dPrompt->prompt" i)))
+                temp->value = 1 +
+                    abs(evalstring(sprintf(nil "QAform->param%dMax->value" i)) -
+                    evalstring(sprintf(nil "QAform->param%dMin->value" i)))
+              ); when
+            ); when integer param
+            numPlacements = numPlacements * evalstring(sprintf(nil "QAform->param%dSteps->value" i))
+          )
+          ; cyclic parameters
+          ( evalstring(sprintf(nil "QAform->param%dCyclic" i))
+            numPlacements = numPlacements *
+              length( setof( temp evalstring(sprintf(nil "hiGetCurrentForm()->param%dCyclic->value" i )) temp == t ))
+          )
+          ; boolean parameters
+          ( t
+            numPlacements = numPlacements * 2
+          )
+        ); cond
+      ); when param is enabled
+    ); for
+    when( numPlacements == 1 numPlacements = 0 )
+    QAform->numPlacements->value = numPlacements
+
+  ); let
+); procedure S130QA_PcVerifCalculatePlacements
+
+defun( toggle_callback (field scope item value "ogsg")
+  S130QA_PcVerifCalculatePlacements( hiGetCurrentForm() )
+)
+
+;-----------------------------
+; procedure S130QA_PcVerifGetCdfParams
+;-----------------------------
+procedure( S130QA_PcVerifGetCdfParams( libName cellName )
+  let( (cellAllParams choices tchoice paramType)
+    cellAllParams = makeTable('allParamTable)
+    foreach( param cdfGetBaseCellCDF(ddGetObj( libName cellName ))~>parameters
+      ; need to fix any choices due to those that start with a number break toggle fields
+      choices = list()
+      foreach( choice param->choices
+        tchoice = choice
+        ; find any '.' as they mess up toggles too - change them to 'p'
+        rexCompile("\\.")
+        when( rexExecute(choice) tchoice = rexReplace(choice "p" 0) )
+        choices = append1(choices list( concat("toggle" tchoice) choice ))
+      ); foreach choice
+
+      ; remove any leading or trailing spaces from the prompt
+      rexCompile("^ *\\(.*[^ ]\\) *$")
+      rexExecute(param->prompt)
+
+      ; change radio types to be cyclic for code to handle them properly
+      paramType = param->paramType
+      when( paramType == "radio" paramType = "cyclic" )
+
+      cellAllParams[param->name] = list( paramType rexSubstitute("\\1") choices )
+
+    ); foreach param
+    cellAllParams
+  ); let
+); procedure S130QA_PcVerifGetCdfParams
+
+;-----------------------------
+; procedure S130QA_PcVerifGetParameterValues
+;-----------------------------
+procedure( S130QA_PcVerifGetParameterValues( QAform )
+  let( (testParamList numParams)
+    testParamList = list()
+    numParams = length(setof( pfield QAform->fieldList rexMatchp("^param[0-9]+Name" sprintf(nil "%L" pfield))))
+    for( i 1 numParams
+      let( (param)
+        when( evalstring(sprintf(nil "QAform->param%dPrompt->value" i))
+          param = list( evalstring(sprintf(nil "QAform->param%dName->value" i))
+                        evalstring(sprintf(nil "QAform->param%dType->value" i)) )
+          cond(
+            ; parameters with steps
+            ( evalstring(sprintf(nil "QAform->param%dSteps" i))
+              param = append1( param evalstring(sprintf(nil "QAform->param%dMin->value" i)))
+              param = append1( param evalstring(sprintf(nil "QAform->param%dMax->value" i)))
+              param = append1( param evalstring(sprintf(nil "QAform->param%dSteps->value" i)))
+            )
+            ; cyclic parameters
+            ( evalstring(sprintf(nil "QAform->param%dCyclic" i))
+              foreach( cparam evalstring(sprintf(nil "QAform->param%dCyclic->_toggleItems" i))
+                when( evalstring(sprintf(nil "QAform->param%dCyclic->%s->value" i symbolToString(cparam)))
+                  param = append1( param
+                    evalstring(sprintf(nil "QAform->param%dCyclic->%s->prompt" i symbolToString(cparam))) )
+                ); when cyclic param is enabled
+              ); foreach cparam
+            )
+          ); cond
+          testParamList = append1( testParamList param )
+        ); when param is enabled
+        i = i + 1
+      ); let
+    ); for
+    testParamList
+  ); let
+); procedure S130QA_PcVerifGetParameterValues
+
+;-----------------------------
+; Create Layout Pins
+;-----------------------------
+procedure( S130QA_PcVerifCreateLayPins(cv inst @key (prefix nil) (suffix nil))
+  let(( newName newNet newTerm newFig newPin labelId )
+   
+    foreach( terminal inst~>master~>terminals
+      newName = terminal->net->name
+
+      when( prefix && stringp(prefix) sprintf(newName "%s_%s" prefix newName) )
+      when( suffix && stringp(suffix) sprintf(newName "%s_%s" newName suffix) )
+
+      unless( dbFindNetByName(cv newName) newNet = dbMakeNet(cv newName) )
+      unless( dbFindTermByName(cv newName) newTerm = dbCreateTerm(newNet newName
+        terminal->direction) )
+
+      foreach( pin terminal~>pins
+        newPin = nil
+        foreach( fig pin~>figs || list(pin~>fig)
+          unless( fig->objType == "path" || fig == nil
+            newFig = dbCopyFig(fig cv inst~>transform)
+            ;labelId = dbCopyFig(car(fig->children) cv inst~>transform)
+            ;labelId->theLabel = newName
+            labelId = dbCreateLabel( cv list(car(fig->lpp) "label")
+              dbTransformPoint(car(fig->children)->xy inst->transform) newName car(fig->children)->justify
+              car(fig->children)->orient "stick" car(fig->children)->height )
+            leAttachFig(labelId newFig)
+            if( newPin then
+              dbAddFigToPin(newPin newFig)
+            else
+              newPin = dbCreatePin(newNet newFig nil newTerm)
+              newPin~>accessDir = pin~>accessDir
+            ); if newPin
+          ); unless path due to rod paths with pin info on them
+        ); foreach fig
+      ); foreach pin
+
+    ); foreach terminal
+  ); let
+); procedure S130QA_PcVerifCreateLayPins
+
+;-----------------------------
+; Wire up Instances
+;-----------------------------
+procedure( S130QA_PcVerifWireUpInst( cv inst @key (termL 0.125) )
+  prog( (iopin ipin opin numTerms termBbox maxY minY maxX minX top bot rht lft
+    direction name point pin orient point2 )
+    iopin  = dbOpenCellViewByType( "basic" "iopin" "symbolr" "" "r")
+    ipin   = dbOpenCellViewByType( "basic" "ipin" "symbol" "" "r")
+    opin   = dbOpenCellViewByType( "basic" "opin" "symbol" "" "r")
+
+    numTerms = length(inst->master->terminals)
+    termBbox = dbTransformBBox( car( nth( 0 inst->master->terminals )~>pins)~>fig~>bBox inst->transform )
+
+    for( i 1 numTerms-1
+      termBbox = S130QA_PcVerifMergeBBoxes( termBbox dbTransformBBox(
+        car( nth( i inst->master->terminals )~>pins)~>fig~>bBox inst->transform ) )
+    )
+
+    maxY = max( yCoord( nth(0 termBbox)) yCoord( nth(1 termBbox) ) )
+    minY = min( yCoord( nth(0 termBbox)) yCoord( nth(1 termBbox) ) )
+    maxX = max( xCoord( nth(0 termBbox)) xCoord( nth(1 termBbox) ) )
+    minX = min( xCoord( nth(0 termBbox)) xCoord( nth(1 termBbox) ) )
+    top = maxY-0.05 
+    bot = minY+0.05 
+    rht = maxX-0.05 
+    lft = minX+0.05 
+
+    foreach( term inst->master->terminals
+      direction = term->direction
+      name = term->name
+      point = centerBox( dbTransformBBox( car(term->pins)->fig->bBox inst->transform ) )
+
+      case( direction
+        ("inputOutput" pin = iopin )
+        ("input"       pin = ipin )
+        ("output"      pin = opin )
+      ); case direction
+      ; test
+      ;printf( "%s : %s : %L : %s\n" name direction point pin )
+
+      ; making each pin to be named instName_termName
+      name = strcat(inst->name "_" name)
+
+      cond(
+        ; bottom pins
+        ( yCoord(point) < bot && xCoord(point) < rht && xCoord(point) > lft
+          orient = "R90"
+          point2 = list( xCoord(point) yCoord(point) - termL)
+          schCreateWire( cv "draw" nil list( point point2 ) 0.0625 0.0625 0 )
+          schCreatePin( cv pin name direction nil point2 orient )
+        )
+        ; top pins
+        ( yCoord(point) > top && xCoord(point) < rht && xCoord(point) > lft
+          orient = "R270"
+          point2 = list( xCoord(point) yCoord(point) + termL)
+          schCreateWire( cv "draw" nil list( point point2 ) 0.0625 0.0625 0 )
+          schCreatePin( cv pin name direction nil point2 orient )
+        )
+        ; left pins
+        ( xCoord(point) < lft
+          if( direction == "input" then orient = "R0" else orient = "MY")
+          point2 = list( xCoord(point) - termL yCoord(point))
+          schCreateWire( cv "draw" nil list( point point2 ) 0.0625 0.0625 0 )
+          schCreatePin( cv pin name direction nil point2 orient )
+        )
+        ; right pins
+        ( xCoord(point) > rht
+          if( direction == "output" then orient = "R0" else orient = "MY")
+          point2 = list( xCoord(point) + termL yCoord(point))
+          schCreateWire( cv "draw" nil list( point point2 ) 0.0625 0.0625 0 )
+          schCreatePin( cv pin name direction nil point2 orient )
+        )
+      ); cond
+    ); foreach term
+  ); prog
+); procedure S130QA_PcVerifWireUpInst
+
+procedure( S130QA_PcVerifMergeBBoxes(bBox1 bBox2)
+  let( (newBbox ll1 ur1 ll2 ur2 llX llY urX urY)
+    cond(
+      (! isBBox(bBox1) newBbox = bBox2 )
+      (! isBBox(bBox2) newBbox = bBox1 )
+      (t
+        ll1 = car(bBox1)
+        ur1 = cadr(bBox1)
+        ll2 = car(bBox2)
+        ur2 = cadr(bBox2)
+        llX = if( car(ll1) >= car(ll2)   then car(ll2) else car(ll1))
+        llY = if( cadr(ll1) >= cadr(ll2) then cadr(ll2) else cadr(ll1))
+        urX = if( car(ur1) >= car(ur2)   then car(ur1) else car(ur2))
+        urY = if( cadr(ur1) >= cadr(ur2) then cadr(ur1) else cadr(ur2))
+        newBbox = list(list(llX llY) list(urX urY))
+      )
+    ); cond
+    newBbox
+  ); let
+); procedure S130QA_PcVerifMergeBBoxes
+
+;-----------------------------
+; procedure S130QA_PcVerifCaution
+;-----------------------------
+procedure( S130QA_PcVerifCaution(numIters)
+
+  cond(
+    (numIters > 5e3
+      hiDisplayAppDBox(
+        ?name         'pcv_iterationWarning
+        ?dboxBanner   "*** WARNING WARNING ***" 
+        ?dboxText     strcat( "\n"
+          "WHOA!  Be careful with this.\n"
+          "Placing > 5k or more cells can\n"
+          "take forever or crash your session!\n"
+        )
+        ?dialogType   1
+        ?dialogStyle  'modal
+        ?buttonLayout 'UserDefined
+        ?buttons      list("Dare to be brave")
+      ); end hiDisplayAppDBox
+    ); > 5k
+    (numIters > 1e3
+      hiDisplayAppDBox(
+        ?name         'pcv_iterationWarning
+        ?dboxBanner   "*** CAUTION CAUTION ***" 
+        ?dboxText     strcat( "\n"
+          "Placing > 1k or more cells can\n"
+          "take a while so be prepared.\n"
+        )
+        ?dialogType   1
+        ?dialogStyle  'modal
+        ?buttonLayout 'UserDefined
+        ?buttons      list("Breaktime!")
+      ); end hiDisplayAppDBox
+    ); > 1k
+  ); cond
+  t
+
+); procedure S130QA_PcVerifCaution
+
+;-----------------------------
+; Create CDL
+;-----------------------------
+procedure( S130QA_createCDL( library cellName verifDir )
+  prog( ( cdloutTemplateFile cdloutTemplatePort cdlCid )
+
+    ; create cdl
+    ; ++++++++++++++++++++++++++++++++++++++++++++++++++
+    ; create cdlout template file
+    cdloutTemplateFile = strcat( verifDir "/cdlout." cellName ".template")
+    cdloutTemplatePort = outfile( cdloutTemplateFile )
+    fprintf( cdloutTemplatePort 
+"simLibName = \"%s\"\n
+simCellName = \"%s\"\n
+simViewName = \"schematic\"\n
+simSimulator = \"auCdl\"\n
+simNotIncremental = 'nil\n
+simReNetlistAll = 't\n
+simViewList = '(\"auCdl\" \"schematic\")\n
+simStopList = '(\"auCdl\")\n
+hnlNetlistFileName = \"%s.cdl\"\n
+resistorModel = \"\"\n
+shortRES = 0.0\n
+preserveRES = 't\n
+checkRESVAL = 't\n
+checkRESSIZE = 'nil\n
+preserveCAP = 't\n
+checkCAPVAL = 't\n
+checkCAPAREA = 'nil\n
+checkCAPPERI = 'nil\n
+preserveDIO = 't\n
+checkDIOAREA = 't\n
+checkDIOPERI = 't\n
+simPrintInhConnAttributes = 'nil\n
+checkScale = \"micron\"\n
+checkLDD = 'nil\n
+pinMAP = 'nil\n
+shrinkFACTOR = 0.0\n
+displayPININFO = 't\n
+preserveALL = 't\n
+setEQUIV = \"\"\n
+incFILE = \"\"\n
+auCdlDefNetlistProc = \"ansCdlSubcktCall\"\n
+simRunDir = \".\"\n" 
+      library cellName cellName
+    )
+    close( cdloutTemplatePort )
+
+    when( isFile("si.env") || isLink("si.env") system( "rm -f si.env" ) )
+    when( isFile(".running") || isLink(".running") system( "rm -f .running" ) )
+    system( strcat( "ln -s " cdloutTemplateFile " si.env" ) )  
+
+    ; export CDL
+    printf( "QA PCELL: Exporting CDL file for %s" cellName )
+    printf( "..." )
+    unless( cdlCid = ipcBatchProcess( "si -batch -command netlist" "" strcat( verifDir "/" cellName ".cdlOut.log") )
+      warn( "QA PCELL: ** ERROR:  %s CDL export failed.\n" cellName )
+    ); end unless cdlCid
+    ipcWaitForProcess( cdlCid )
+    ;printf( "(process %L)... " cdlCid )
+    ipcWait( cdlCid )
+    printf( "completed\n" )
+    sh( strcat( "mv " cellName ".cdl " verifDir ) )  
+
+  ); end prog
+); end procedure S130QA_createCDL
+
+;-----------------------------
+; Create GDS
+;-----------------------------
+procedure( S130QA_createGDS( library cellName verifDir )
+  prog( ( gdsoutTemplateFile gdsoutTemplatePort gdsCid temp )
+
+    ; create gds
+    ; ++++++++++++++++++++++++++++++++++++++++++++++++++
+    gdsoutTemplateFile = strcat( verifDir "/strmout." cellName ".template")
+    gdsoutTemplatePort = outfile( gdsoutTemplateFile )
+    fprintf( gdsoutTemplatePort 
+"runDir                             \"%s\"\n
+library                            \"%s\"\n
+topCell                            \"%s\"\n
+view                               \"layout\"\n
+strmFile                           \"%s.gds\"\n
+logFile                            \"%s.strmOut.log\"\n
+strmTextNS                         \"cdba\"\n
+case                               \"preserve\"\n
+#cellListFile                       \"\"\n
+#cellMap                            \"\"\n
+#cellNamePrefix                     \"\"\n
+#cellNameSuffix                     \"\"\n
+convertDot                         \"node\"\n
+convertPcellPin                    \"geometry\"\n
+#convertPin                         \"geometryAndText\"\n
+#fontMap                            \"\"\n
+#hierDepth                          \"32767\"\n
+labelCase                          \"preserve\"\n
+#labelDepth                         \"1\"\n
+labelMap                           \"\"\n
+#maxVertices                        \"200\"\n
+#noInfo                             \"\"\n
+#noOutputUnplacedInst\n
+#noWarn                             \"\"\n
+#objectMap                          \"\"\n
+outputDir                          \"%s\"\n
+#pinAttNum                          \"\"\n
+#propMap                            \"\"\n
+#refLibList                         \"\"\n
+#strmVersion                        \"5\"\n
+#subMasterSeparator                 \"_CDNS_\"\n
+summaryFile                        \"%s.strmOut.summary\"\n
+#techLib                            \"\"\n
+#userSkillFile                      \"\"\n
+#viaMap                             \"\"\n
+#warnToErr                          \"\"\n"
+      verifDir library cellName cellName cellName verifDir cellName
+    )
+    close( gdsoutTemplatePort )
+
+    ; export GDS
+    temp = strcat( "strmout -templateFile " gdsoutTemplateFile )
+    printf("QA PCELL: Exporting GDS file for %s" cellName )
+    printf( "..." )
+    unless( gdsCid = ipcBatchProcess( temp "" strcat( verifDir "/" cellName ".strmOut.log") )
+      warn( "\nQA PCELL: ** ERROR:  %s GDS export failed.\n" cellName )
+    ); end unless gdsCid
+    ipcWaitForProcess( gdsCid )
+    ;printf( "(process %L)... " gdsCid )
+    ipcWait( gdsCid )
+    printf( "completed.\n" )
+
+  ); end prog
+); end procedure S130QA_createGDS
+
+;-----------------------------
+; Create PVS LVS Header file
+;-----------------------------
+procedure( S130QA_createLVSPVSheader( verifDir )
+  let( (ruleFile rulePort)
+    ruleFile = sprintf(nil "%s/pvs.header.rul" verifDir )
+    rulePort = outfile(ruleFile)
+    fprintf( rulePort
+"// +++ CUSTOMIZATION SETTINGS +++\n
+virtual_connect -name ?\n
+#define \"SKIP_EXTRACTING_DNWELL_DIODES\"\n
+#undefine \"SKIP_CHECK_DNWELL_DIODE_PARAMETERS\"\n
+\n"
+    )
+    close(rulePort)
+
+  ); let
+); procedure S130QA_createLVSPVSheader
+
+;-----------------------------
+; Create PVS DRC Header file
+;-----------------------------
+procedure( S130QA_createDRCPVSheader( verifDir )
+  let( (ruleFile rulePort)
+    ruleFile = sprintf(nil "%s/pvs.header.rul" verifDir )
+    rulePort = outfile(ruleFile)
+    fprintf( rulePort
+"// +++ CUSTOMIZATION SETTINGS +++\n
+\n
+#define \"SKIP_ANTENNA_CHECKS\"\n
+#define \"SKIP_DENSITY_CHECKS\"\n
+#undefine \"GENERATE_LOCAL_DENSITY\"\n
+#undefine \"GENERATE_PREDICTIVE_FILL\"\n
+#define \"SKIP_RECOMMENDED_CHECKS\"\n
+#define \"SKIP_LATCHUP_CHECKS\"\n
+#define \"SKIP_SOFT_CONNECT_CHECKS\"\n
+#define \"SKIP_STRESS_CHECKS\"\n
+#undefine \"SAVE_CONSTRUCTION_LAYERS\"\n
+\n"
+    )
+
+    close(rulePort)
+
+  ); let
+); procedure S130QA_createDRCPVSheader
+
+;-----------------------------
+; Create Calibre LVS Header file
+;-----------------------------
+procedure( S130QA_createLVSCALheader( cellName verifDir calLVSdeck)
+  let( (ruleFile rulePort)
+    ruleFile = sprintf(nil "%s/cal.header.rul" verifDir )
+    rulePort = outfile(ruleFile)
+    fprintf( rulePort
+"// +++ CUSTOMIZATION SETTINGS START +++\n
+\n
+#define \"SKIP_EXTRACTING_DNWELL_DIODES\"\n
+#undefine \"SKIP_CHECK_DNWELL_DIODE_PARAMETERS\"\n
+\n
+// +++ CUSTOMIZATION SETTINGS END +++\n
+\n
+LAYOUT PATH  \"../%s.gds\"\n
+LAYOUT PRIMARY \"%s\"\n
+LAYOUT SYSTEM GDSII\n
+\n
+SOURCE PATH \"%s.cdl\"\n
+SOURCE PRIMARY \"%s\"\n
+SOURCE SYSTEM SPICE\n
+\n
+MASK SVDB DIRECTORY \"svdb\" QUERY XRC CCI NOPINLOC IXF NXF SLPH\n
+\n
+LVS REPORT \"%s.lvs.report\"\n
+\n
+LVS REPORT OPTION NONE\n
+LVS FILTER UNUSED OPTION NONE SOURCE\n
+LVS FILTER UNUSED OPTION NONE LAYOUT\n
+LVS REPORT MAXIMUM 50\n
+\n
+LVS RECOGNIZE GATES ALL\n
+\n
+LVS ABORT ON SOFTCHK NO\n
+LVS ABORT ON SUPPLY ERROR YES\n
+LVS IGNORE PORTS NO\n
+LVS SHOW SEED PROMOTIONS NO\n
+LVS SHOW SEED PROMOTIONS MAXIMUM 50\n
+\n
+LVS ISOLATE SHORTS NO\n
+\n
+VIRTUAL CONNECT COLON NO\n
+VIRTUAL CONNECT REPORT NO\n
+VIRTUAL CONNECT NAME ?\n
+\n
+LVS EXECUTE ERC YES\n
+ERC RESULTS DATABASE \"%s.erc.results\"\n
+ERC SUMMARY REPORT \"%s.erc.summary\" REPLACE HIER\n
+ERC CELL NAME YES CELL SPACE XFORM\n
+ERC MAXIMUM RESULTS 1000\n
+ERC MAXIMUM VERTEX 4096\n
+\n
+DRC ICSTATION YES\n
+\n
+INCLUDE \"%s\"\n"
+    cellName cellName cellName cellName cellName cellName
+    cellName calLVSdeck )
+
+    close(rulePort)
+
+  ); let
+); procedure S130QA_createLVSCALheader
+
+;-----------------------------
+; Get LVS Match results
+;-----------------------------
+procedure( S130QA_getLVSResults( cellName verifDir runTool )
+  let( (resultsFile passCmd passResult failCmd failResult noRunCmd noRunResult
+        lvsStatus resultsPort nextLine lvsError lvsErrors )
+
+    lvsStatus = "N/A"
+    lvsErrors = list()
+
+    case( runTool
+      ("Calibre"
+        resultsFile = strcat(verifDir "/" cellName ".lvs.report")
+        if( isFile(resultsFile) then
+          passCmd = sprintf(nil "grep -c '#     CORRECT     #' %s" resultsFile)
+          passResult = evalstring(S130QA_unixCmd(passCmd)) 
+          failCmd = sprintf(nil "grep -c '#     INCORRECT     #' %s" resultsFile)
+          failResult = evalstring(S130QA_unixCmd(failCmd)) 
+          noRunCmd = sprintf(nil "grep -c '#     NOT COMPARED     #' %s" resultsFile)
+          noRunResult = evalstring(S130QA_unixCmd(noRunCmd)) 
+          if( noRunResult > 0 then
+            lvsStatus = "** NOT COMPARED **"
+          else
+            cond(
+              ;( rexMatchp("_pass$" cellName) && passResult > 0 lvsStatus = "PASS" )
+              ;( rexMatchp("_pass$" cellName) && failResult > 0 lvsStatus = "FAIL" )
+              ;( rexMatchp("_fail$" cellName) && passResult > 0 lvsStatus = "FAIL" )
+              ;( rexMatchp("_fail$" cellName) && failResult > 0 lvsStatus = "PASS" )
+              ( passResult > 0 lvsStatus = "CORRECT" )
+              ( failResult > 0 lvsStatus = "INCORRECT" )
+            ); cond
+            resultsPort = infile(resultsFile)
+            when( resultsPort 
+              while( gets( nextLine resultsPort ) 
+                rexCompile("Error: +.*\\( (see below)\\).")
+                nextLine = rexReplace( nextLine "" 1)
+                rexCompile("Error: +\\(.*\\).")
+                when( rexExecute(nextLine)
+                  lvsError = rexSubstitute("\\1")
+                  unless( member(lvsError lvsErrors)
+                    lvsErrors = append1(lvsErrors lvsError)
+                  )
+                ); when error found
+              ); while resultsPort 
+              close( resultsPort ) 
+            ); when resultsPort
+          ); if noRunResult
+        else
+          lvsStatus = "** FAILED TO RUN **"
+        ); if resultsFile
+      )
+      ("PVS"
+        resultsFile = strcat(verifDir "/" cellName ".lvsrpt.cls")
+        if( isFile(resultsFile) then
+          passCmd = sprintf(nil "grep -c 'Run Result *: *MATCH' %s" resultsFile)
+          passResult = evalstring( S130QA_unixCmd(passCmd) ) 
+          failCmd = sprintf(nil "grep -c 'Run Result *: *MISMATCH' %s" resultsFile)
+          failResult = evalstring( S130QA_unixCmd(failCmd) ) 
+          cond(
+            ;( rexMatchp("_pass$" cellName) && passResult > 0 lvsStatus = "PASS" )
+            ;( rexMatchp("_pass$" cellName) && failResult > 0 lvsStatus = "FAIL" )
+            ;( rexMatchp("_fail$" cellName) && passResult > 0 lvsStatus = "FAIL" )
+            ;( rexMatchp("_fail$" cellName) && failResult > 0 lvsStatus = "PASS" )
+            ( passResult > 0 lvsStatus = "MATCH" )
+            ( failResult > 0 lvsStatus = "MISMATCH" )
+          ); cond
+          resultsPort = infile(resultsFile)
+          when( resultsPort 
+            while( gets( nextLine resultsPort ) 
+              rexCompile("# *\\(.*\\) MISMATCHES")
+              when( rexExecute(nextLine)
+                lvsError = rexSubstitute("\\1")
+                unless( member(lvsError lvsErrors)
+                  lvsErrors = append1(lvsErrors lvsError)
+                )
+              ); when error found
+            ); while resultsPort 
+            close( resultsPort ) 
+          ); when resultsPort
+        else
+          lvsStatus = "** FAILED TO RUN **"
+        ); if resultFile
+      )
+    ); case runType
+
+    list( lvsStatus lvsErrors )
+
+  ); let
+); procedure S130QA_getLVSResults
+
+;-----------------------------
+; Create Calibre DRC Header file
+;-----------------------------
+procedure( S130QA_createDRCCALheader( cellName verifDir calDRCdeck)
+  let( (ruleFile rulePort)
+    ruleFile = sprintf(nil "%s/cal.header.rul" verifDir )
+    rulePort = outfile(ruleFile)
+    fprintf( rulePort
+"// +++ CUSTOMIZATION SETTINGS START +++\n
+\n
+#define \"SKIP_ANTENNA_CHECKS\"\n
+#define \"SKIP_DENSITY_CHECKS\"\n
+#undefine \"GENERATE_LOCAL_DENSITY\"\n
+#undefine \"GENERATE_PREDICTIVE_FILL\"\n
+#define \"SKIP_RECOMMENDED_CHECKS\"\n
+#define \"SKIP_LATCHUP_CHECKS\"\n
+#define \"SKIP_SOFT_CONNECT_CHECKS\"\n
+#define \"SKIP_STRESS_CHECKS\"\n
+#undefine \"SAVE_CONSTRUCTION_LAYERS\"\n
+\n
+// +++ CUSTOMIZATION SETTINGS END +++\n
+\n
+LAYOUT PATH  \"../%s.gds\"\n
+LAYOUT PRIMARY \"%s\"\n
+LAYOUT SYSTEM GDSII\n
+\n
+DRC RESULTS DATABASE \"%s.drc.results\" ASCII\n
+DRC MAXIMUM RESULTS ALL\n
+DRC MAXIMUM VERTEX 4096\n
+\n
+DRC CELL NAME YES CELL SPACE XFORM\n
+DRC SUMMARY REPORT \"%s.drc.summary\" REPLACE\n
+DRC CHECK TEXT COMMENTS\n
+\n
+VIRTUAL CONNECT COLON NO\n
+VIRTUAL CONNECT REPORT NO\n
+\n
+DRC ICSTATION YES\n
+\n
+INCLUDE \"%s\"\n"
+    cellName cellName cellName cellName calDRCdeck )
+
+    close(rulePort)
+
+  ); let
+); procedure S130QA_createDRCCALheader
+
+;-----------------------------
+; Get DRC Match results
+;-----------------------------
+procedure( S130QA_getDRCResults( cellName verifDir runTool )
+  let( (resultsFile passCmd passResult failCmd failResult
+        drcStatus resultsPort nextLine drcError drcErrors temp )
+
+    drcStatus = "N/A"
+    drcErrors = list()
+
+    case( runTool
+      ("Calibre"
+        resultsFile = strcat(verifDir "/" cellName ".drc.summary")
+        if( isFile(resultsFile) then
+          passCmd = sprintf(nil "grep -c '^TOTAL DRC Results Generated: *0$' %s" resultsFile)
+          passResult = evalstring(S130QA_unixCmd(passCmd)) 
+          failCmd = sprintf(nil "grep -c '^TOTAL DRC Results Generated: *[1-9]' %s" resultsFile)
+          failResult = evalstring(S130QA_unixCmd(failCmd)) 
+          cond(
+            ;( rexMatchp("_pass$" cellName) && passResult > 0 drcStatus = "PASS" )
+            ;( rexMatchp("_pass$" cellName) && failResult > 0 drcStatus = "FAIL" )
+            ;( rexMatchp("_fail$" cellName) && passResult > 0 drcStatus = "FAIL" )
+            ;( rexMatchp("_fail$" cellName) && failResult > 0 drcStatus = "PASS" )
+            ( passResult > 0 drcStatus = "CORRECT" )
+            ( failResult > 0 drcStatus = "INCORRECT" )
+          ); cond
+          resultsPort = infile(resultsFile)
+          when( resultsPort 
+            while( gets( nextLine resultsPort ) 
+              temp = pcreCompile("RULECHECK (\\S+).* TOTAL Result Count = ([1-9]\\d*)$")
+              when( pcreExecute(temp nextLine)
+                drcError = pcreSubstitute("\\1: \\2")
+                unless( member(drcError drcErrors)
+                  drcErrors = cons(drcError drcErrors)
+                )
+              ); when error found
+            ); while resultsPort 
+            close( resultsPort ) 
+          ); when resultsPort
+        else
+          drcStatus = "** FAILED TO RUN **"
+        ); if resultsFile
+      )
+      ("PVS"
+        resultsFile = strcat(verifDir "/result.sum")
+        if( isFile(resultsFile) then
+          passCmd = sprintf(nil "grep -c '^Total DRC Results *: *0' %s" resultsFile)
+          passResult = evalstring(S130QA_unixCmd(passCmd)) 
+          failCmd = sprintf(nil "grep -c '^Total DRC Results *: *[1-9]' %s" resultsFile)
+          failResult = evalstring(S130QA_unixCmd(failCmd)) 
+          cond(
+            ;( rexMatchp("_pass$" cellName) && passResult > 0 drcStatus = "PASS" )
+            ;( rexMatchp("_pass$" cellName) && failResult > 0 drcStatus = "FAIL" )
+            ;( rexMatchp("_fail$" cellName) && passResult > 0 drcStatus = "FAIL" )
+            ;( rexMatchp("_fail$" cellName) && failResult > 0 drcStatus = "PASS" )
+            ( passResult > 0 drcStatus = "MATCH" )
+            ( failResult > 0 drcStatus = "MISMATCH" )
+          ); cond
+          resultsPort = infile(resultsFile)
+          when( resultsPort 
+            while( gets( nextLine resultsPort ) 
+              temp = pcreCompile("RULECHECK (\\S+).* Total Result *([1-9]\\d*) ")
+              when( pcreExecute(temp nextLine)
+                drcError = pcreSubstitute("\\1: \\2")
+                unless( member(drcError drcErrors)
+                  drcErrors = cons(drcError drcErrors)
+                )
+              ); when error found
+            ); while resultsPort 
+            close( resultsPort ) 
+          ); when resultsPort
+        else
+          drcStatus = "** FAILED TO RUN **"
+        ); if resultFile
+      )
+    ); case runType
+
+    list( drcStatus drcErrors )
+
+  ); let
+); procedure S130QA_getDRCResults
+
+;-----------------------------
+; Run UNIX command and return results
+;-----------------------------
+procedure( S130QA_unixCmd( cmd )
+  prog( (id out results)
+    id = ipcBeginProcess(cmd)
+    ipcWaitForProcess(id)
+    out = ipcReadProcess(id 10)
+    results = car(parseString(out "\n"))
+    ipcKillProcess(id)
+    return(results)
+  ); prog
+); procedure S130QA_unixCmd
+
+;-----------------------------
+; procedure S130QA_PcVerifHelp
+;-----------------------------
+procedure( S130QA_PcVerifHelp()
+
+  hiDisplayAppDBox(
+    ?name         'formHelp
+    ?dboxBanner   "*** S130 QA Tool Help ***" 
+    ?dboxText     strcat( 
+      "====================================================================================================\n"
+      "\n" 
+      "CAUTION:  HIGH NUMBER OF PLACEMENTS > 5K CAN TAKE A LONG TIME TO COMPLETE, AND COULD\n"
+      "          ALSO CAUSE MEMORY ISSUES, EVEN CRASH YOUR CADENCE SESSION\n"
+      "\n" 
+      "====================================================================================================\n"
+      "\n" 
+      "This tool will create a layout and/or schematic view for the lib/cell choosen on the form.\n"
+      "It will then place a number of instances of the pcell choosen in those views with the pcell\n"
+      "parameters varied based on which parameters are enabled and their set values on the form.\n"
+      "\n"
+      "Next it will run the desired verification using the desired tool and use the rule decks\n"
+      "from the form.  All the run data is placed in the root run directory under the cell name\n"
+      "and type of run (lvs/drc).\n"
+      "\n" 
+      "A report (QAPcellVerif_[cell].report) is created in your work area and displayed in a\n"
+      "terminal window which summarizes the results of the run(s) performed.\n"
+      "\n" 
+      "----------------------------------------------------------------------------------------------------\n"
+      "\n" 
+      "Pcell Variations:\n"
+      "\n" 
+      "Choose which pcell you would like to test from the \"Place Pcell\" pulldown\n"
+      "The checkbox to the left of the parameter name enables or disables the use of the\n"
+      "parameter to create variants for it.\n"
+      "\n"
+      "For parameters that values can be entered, there will be a min, max, and step field\n"
+      "  to fill in.\n"
+      "For parameters that choices can be made (pulldowns & radio buttons), all choices will\n"
+      "  be avaible to choose; check the box next to those you want to test.\n"
+      "For boolean parameters, there are no choices other than enabling it, which till toggle\n"
+      "  them on and off in the variations.\n"
+      "\n"
+      "====================================================================================================\n"
+      "\n"
+    )
+    ?dialogType   3
+    ?dialogStyle  'modeless
+    ?buttonLayout 'UserDefined
+    ?buttons      list("Thanks!")
+  ); end hiDisplayAppDBox
+
+); procedure S130QA_PcVerifHelp
+
+/*==================================  EOF  ===================================*/

@@ -1,0 +1,45 @@
+*pexRulesFile: $PDK_HOME/PV/Calibre/PEX/calibre_pex.rul
+*pexRunDir: ./
+*pexLayoutPaths: $JOB_HOME/$JOB_NAME.gds
+*pexLayoutPrimary: $JOB_NAME 
+*pexLayoutLibrary: myLib
+*pexLayoutView: layout
+*pexLayoutGetFromViewer: 1
+*pexSourcePath: $SOURCE_FILES/$JOB_NAME.spice
+*pexSourcePrimary: $JOB_NAME 
+*pexSourceLibrary: myLib
+*pexSourceView: schematic
+*pexSourceGetFromViewer: 1
+*pexPexExtractSelectedNets: 1
+*pexReportFile: $JOB_NAME.lvs.report
+*pexPexNetlistFile: $JOB_NAME.spi
+*pexPexNetlistFormat: SPECTRE
+*pexPexNetlistNetmodelFile: $JOB_HOME/../../models/models.scs
+*pexPexReportFile: $JOB_NAME.pex.report
+*pexCalibreViewCellMapFile: $PDK_HOME/PV/Calibre/PEX/calibreView.cellmap
+*pexCalibreViewCellMapFileEnabled: 1
+*pexPexRlocation: 1
+*pexPexRwidth: 1
+*pexPexRlength: 1
+*pexPexRlayer: 1
+*pexPexRthickness: 1
+*pexPexRactual: 1
+*pexPexRviaCount: 1
+*pexPexClocation: 1
+*pexSVDBnopinloc: 1
+*pexSVDBcci: 1
+*pexSVDBtxref: 1
+*pexStartRVE: 1
+*pexRunHierLVS: 0
+*cmnShowOptions: 1
+*cmnDontWaitForLicense: 0
+*cmnSpecifyLicenseWaitTime: 1
+*cmnLicenseWaitTime: 30
+*cmnUseCBforRVE: 0
+*cmnRunHier: 2
+*cmnSlaveHosts: {use {}} {hostName {}} {cpuCount {}} {a32a64 {}} {rsh {}} {maxMem {}} {workingDir {}} {layerDir {}} {mgcLibPath {}} {launchName {}}
+*cmnLSFSlaveTbl: {use 1} {totalCpus 1} {minCpus 1} {architecture {{}}} {minMemory {{}}} {resourceOptions {{}}} {submitOptions {{}}}
+*cmnGridSlaveTbl: {use 1} {totalCpus 1} {minCpus 1} {architecture {{}}} {minMemory {{}}} {resourceOptions {{}}} {submitOptions {{}}}
+*cmnFDILayoutLibrary: myLib
+*cmnFDILayoutView: layout
+*cmnFDIDEFLayoutPath: $JOB_NAME.def

@@ -1,0 +1,66 @@
+*
+* Techgen(tm) Tech file Generator.
+* FullVersion        : 20.1.2-p025
+* BuildNumber        : 025 
+* IRBuildNumber      : 025 
+* VersionDate        : Thu Sep 3 13:54:09 PDT 2020
+* Bitness            : 64-bit
+* 
+*
+process s130
+*
+*| temp_reference 30
+*| auto_reorder_off true
+*
+deposition
+*step #  material   p/n                 name        thick    diel.   side     bot     angle
+step  1  substrate                       FOX       0.3984  3.9
+step  1  substrate            N_SOURCE_DRAIN       0.2784  3.9
+step  2  metal                           ply       0.166  s,w:0.21,0.15,0,-0.01365:0.21,1.5,0,-0.01365:2.1,0.15,0,-0.01365:2.1,1.5,0,-0.01365 0,0  
+step  3  dielectric n                    IOX       0   3.9   sidewall(0.006)   0   auto_angle
+step  4  dielectric n                  SPNIT       0.1134   7.5   sidewall(0.0395)   0   auto_angle
+step  5  dielectric p                    PSG       0.4294  3.9
+step  6  metal                            li       0.0895  s,w:0.17,0.17,-0.0081,0.0155:0.17,1.7,-0.0081,0.0155:1.7,0.17,-0.0081,0.0155:1.7,1.7,-0.0081,0.0155 0.0034,-0.0034  
+step  7  dielectric n                   LINT       0.0698   7.3   sidewall(0.056537)   0.0698   auto_angle
+step  8  dielectric p                  NILD2       0.3593  3.9
+step  9  metal                            m1       0.3389  s,w:0.14,0.14,-0.0072,-0.01075:0.14,1.4,-0.0072,-0.01075:1.4,0.14,-0.0072,-0.01075:1.4,1.4,-0.0072,-0.01075 0,0  
+step 10  dielectric n                NILD3_C       0   3.3   sidewall(0.04)   0   auto_angle
+step 11  dielectric p                  NILD3       0.3818  4.5
+step 12  metal                            m2       0.3389  s,w:0.14,0.14,-0.0072,-0.01075:0.14,1.4,-0.0072,-0.01075:1.4,0.14,-0.0072,-0.01075:1.4,1.4,-0.0072,-0.01075 0,0  
+step 13  dielectric n                NILD4_C       0   3.3   sidewall(0.04)   0   auto_angle
+step 14  dielectric p                  NILD4       0.5326  4.2
+step 15  metal                            m3       0.789  s,w:0.3,0.3,-0.0112,0.01025:0.3,3,-0.0112,0.01025:3,0.3,-0.0112,0.01025:3,3,-0.0112,0.01025 0,0  
+step 16  dielectric p                  NILD5       0.5  4
+step 17  metal                            m4       0.789  s,w:0.3,0.3,-0.0112,0.01025:0.3,3,-0.0112,0.01025:3,0.3,-0.0112,0.01025:3,3,-0.0112,0.01025 0,0  
+step 18  dielectric p                  NILD6       0.652  4.15
+step 19  metal                            m5       1.1718  s,w:1.6,0.8,-0.05,0.0145:1.6,8,-0.05,0.0145:16,0.8,-0.05,0.0145:16,8,-0.05,0.0145 0.0246,-0.0246  
+step 20  dielectric n                  TOPOX       0.0991   3.9   sidewall(0.077032)   0   auto_angle
+step 21  dielectric n                 TOPNIT       0.6157   7.5   sidewall(0.36278)   0.3247   auto_angle
+step 22  dielectric p                    PI1       5.3806  2.94
+step 23  metal                           rdl       3.3  s,w:5,10,0,0.35:5,100,0,0.35:50,10,0,0.35:50,100,0,0.35 0,0  
+step 24  dielectric p                    PI2       5.7  2.94
+step 25  dielectric p                   MOLD       40  3.6
+step 26  dielectric p                    air       40  1
+enddeposition
+
+metal_variations auto_comb
+layer ply w  0.15 
+layer ply s  0.21 
+layer li w  0.17 
+layer li s  0.17 
+layer m1 w  0.14 
+layer m1 s  0.14 
+layer m2 w  0.14 
+layer m2 s  0.14 
+layer m3 w  0.3 
+layer m3 s  0.3 
+layer m4 w  0.3 
+layer m4 s  0.3 
+layer m5 w  0.8 
+layer m5 s  1.6 
+layer rdl w  10 
+layer rdl s  5 
+endmetal_variations
+
+endprocess
+

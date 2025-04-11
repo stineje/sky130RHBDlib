@@ -1,0 +1,63 @@
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# This file includes SVRF/TVF Technology licensed by Siemens Industry Software Inc. and its affiliates ("SISW".
+# "SVRF/TVF Technology" means SISW's Standard Verification Rule Format ("SVRF") and Tcl Verification Format
+# ("TVF") proprietary languages for expressing process rules.  SVRF/TVF Technology constitutes or contains trade
+# secrets and confidential information of SISW, and any use is subject to the terms and conditions of the SISW
+# End-User License Agreement, which may be viewed at https://www.sw.siemens.com/en-US/swterms/base/eula/ and the
+# EDA Supplemental Terms which may be viewed at https://www.sw.siemens.com/en-US/sw-terms/supplements/ .
+# SVRF/TVF Technology may be used solely with SISW software products, by your company's employees and on-site
+# contractors, excluding EDA Competitors, who are under obligations of confidentiality and whose job performance
+# requires access for your internal business purposes.
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+CUSTOM::SETWINGEOM 650x320
+
+
+
+CUSTOM::LABEL -prompt "DRC RUN SETTINGS" -tool DRC
+
+CUSTOM::DEFINE -name "SKIP_ANTENNA_CHECKS" -boolean 1 -select 1 -enable 1 -prompt "SKIP DRC ANTENNA CHECKS?" -tool DRC
+
+#CUSTOM::DEFINE -name "SKIP_DENSITY_CHECKS" -boolean 1 -select 1 -enable 1 -prompt "SKIP DRC DENSITY CHECKS?" -tool DRC
+
+#CUSTOM::DEFINE -name "GENERATE_LOCAL_DENSITY" -boolean 1 -select 0 -enable 1 -prompt "  DENSITY - GENERATE LOCAL FILL RESULTS CHECKS?" -tool DRC
+
+#CUSTOM::DEFINE -name "GENERATE_PREDICTIVE_FILL" -boolean 1 -select 0 -enable 1 -prompt "  DENSITY - GENERATE PREDICTIVE FILL BEFORE DENSITY CHECKS?" -tool DRC
+
+set _masterDefines [CUSTOM::DEFINE -name "SKIP_DENSITY_CHECKS" -boolean 1 -select 1 -enable 1 -prompt "SKIP DRC DENSITY CHECKS?" -tool DRC]
+CUSTOM::DEFINE -name "GENERATE_LOCAL_DENSITY" -boolean 1 -select 0 -enable 1 -prompt "  DENSITY - GENERATE LOCAL FILL RESULTS CHECKS?" -tool DRC -master $_masterDefines -master_select 0
+set _masterDefines [CUSTOM::DEFINE -name "GENERATE_PREDICTIVE_FILL" -boolean 1 -select 0 -enable 1 -prompt "  DENSITY - GENERATE PREDICTIVE FILL BEFORE DENSITY CHECKS?" -tool DRC -master $_masterDefines -master_select 0]
+CUSTOM::DEFINE -name "CREATE_GDS_FILE" -boolean 1 -select 1 -enable 1 -prompt "    CREATE fill.gds FROM PREDICITIVE FILL" -tool DRC -master $_masterDefines -master_select 1
+
+CUSTOM::DEFINE -name "SKIP_RECOMMENDED_CHECKS" -boolean 1 -select 1 -enable 1 -prompt "SKIP DRC RECOMMENDED CHECKS?" -tool DRC
+
+CUSTOM::DEFINE -name "SKIP_LATCHUP_CHECKS" -boolean 1 -select 1 -enable 1 -prompt "SKIP DRC LATCHUP CHECKS?" -tool DRC
+
+CUSTOM::DEFINE -name "SKIP_STRESS_CHECKS" -boolean 1 -select 1 -enable 1 -prompt "SKIP STRESS CHECKS?" -tool DRC
+
+CUSTOM::DEFINE -name "SKIP_ILLEGAL_DEVICE_CHECKS" -boolean 1 -select 0 -enable 1 -prompt "SKIP ILLEGAL DEVICE CHECKS?" -tool DRC
+
+CUSTOM::DEFINE -name "SAVE_CONSTRUCTION_LAYERS" -boolean 1 -select 0 -enable 1 -prompt "SAVE CONSTRUCTION LAYERS?" -tool DRC
+
+
+
+CUSTOM::LABEL -prompt "LVS RUN SETTINGS" -tool LVS
+
+CUSTOM::DEFINE -name "SKIP_EXTRACTING_DNWELL_DIODES" -boolean 1 -select 0 -enable 1 -prompt "SKIP EXTRACTING DEEP NWELL DIODES?" -tool LVS
+
+CUSTOM::DEFINE -name "SKIP_CHECKING_DNWELL_DIODE_PARAMETERS" -boolean 1 -select 0 -enable 1 -prompt "SKIP CHECKING DEEP NWELL DIODE PARAMETERS?" -tool LVS
+
+
+
+CUSTOM::LABEL -prompt "PEX RUN SETTINGS" -tool PEX
+
+CUSTOM::DEFINE -name "PEX_PROCESS" -prompt "Choose one of the following processes:" -choices {"HRHC" "HRLC" "Typical" "LRHC" "LRLC"} -initval Typical -tool PEX
+
+#CUSTOM::DEFINE -name "HRLC" -boolean 1 -select 0 -enable 1 -prompt "High Resistance, Low Capacitance" -tool PEX
+
+#CUSTOM::DEFINE -name "Typical" -boolean 1 -select 1 -enable 1 -prompt "Typical" -tool PEX
+
+#CUSTOM::DEFINE -name "LRHC" -boolean 1 -select 0 -enable 1 -prompt "Low Resistance, High Capacitance" -tool PEX
+
+#CUSTOM::DEFINE -name "LRLC" -boolean 1 -select 0 -enable 1 -prompt "Low Resistance, Low Capacitance" -tool PEX
+

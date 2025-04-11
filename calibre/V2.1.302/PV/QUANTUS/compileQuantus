@@ -1,0 +1,112 @@
+#!/bin/csh -f
+
+################################################################################
+#
+# ----------------------------------
+# EXT/Quantus PEX Compilation Script
+# ----------------------------------
+#
+# Compiles and generates the necessary files used by EXT/Quantus for the
+# specified corner, where corner can be one of the following selections:
+#
+#   hrhc    = high resistance, high capacitance (worst-case scenario)
+#   hrlc    = high resistance, low capacitance
+#   typical = nominal scenario (default)
+#   lrhc    = low resistance, high capacitance
+#   lrlc    = low resistance, low capacitance (best-case scenario)
+#
+# Example: compile hrhc
+#
+################################################################################
+
+#--------------------------------------------------
+# Check if a correct corner selection was specified
+#--------------------------------------------------
+if ( $#argv == 0 ) then
+    echo ""
+    echo "ERROR: No corner specified."
+    echo "Usage: compile <corner> where <corner> = hrhc, hrlc, typical, lrhc or lrlc"
+    echo "Example: compile hrhc"
+    echo ""
+    exit
+else
+    if !( ( $argv == "hrhc" ) || ( $argv == "hrlc" ) || ( $argv == "typical" ) || ( $argv == "lrhc" ) || ( $argv == "lrlc" ) ) then
+       echo ""
+       echo "ERROR: Corner "$1" is not a valid selection."
+       echo "   Valid selections are: hrhc, hrlc, typical, lrhc or lrlc"
+       echo ""
+       exit
+    endif
+endif
+
+#----------------------------------------
+# Correct corner was specified so proceed
+#----------------------------------------
+set timestamp = `/bin/date +"%e%b%Y.%H.%M.%S"`
+  
+#----------------------------------------------
+# Rename existing corner directory just in case
+#----------------------------------------------
+if ( -d $1 ) then
+   echo ""
+   echo "Warning: Directory for corner $1 already exists"
+   echo "Renaming directory $1 to $1.$timestamp"
+   /bin/mv $1 $1.$timestamp
+   echo ""
+endif
+
+#--------------------------------------------------------------
+# Delete the temporary compilation directory if it still exists
+#--------------------------------------------------------------
+if ( -d $1.CompDir ) then
+   /bin/rm -fr $1.CompDir
+endif
+
+#--------------------------------------------------------------
+# Create the temporary compilation and final corner directories
+#--------------------------------------------------------------
+mkdir $1.CompDir
+mkdir $1
+
+#--------------------------------------------------------------------------
+# Copy the necessary input file, descend into the compilation directory and
+# begin the work
+#--------------------------------------------------------------------------
+cd $1.CompDir
+/bin/cp ../../InputAndCompFiles/layer_setup .
+/bin/cp ../../InputAndCompFiles/lvsfile .
+/bin/cp ../../InputAndCompFiles/ict/$1.ict .
+../../InputAndCompFiles/techgen.si.cmd $1
+../../InputAndCompFiles/techgen.comp.cmd $1
+
+#-------------------------------------------------------------
+# Move the necessary files into the specified corner directory
+#-------------------------------------------------------------
+/bin/cp ../../InputAndCompFiles/.quantus_rcx_setup.tpl ../$1/.rcx_setup.tpl
+/bin/mv auxinfo ../$1
+/bin/mv cap_coeff.dat ../$1
+/bin/mv caps2d ../$1
+/bin/mv capsw3d ../$1
+/bin/cp ../../InputAndCompFiles/displayMapFile ../$1
+/bin/cp ../../InputAndCompFiles/*.trp ../$1
+/bin/mv paxfile_coeff ../$1
+/bin/mv procfile ../$1
+/bin/mv qrcTechFile ../$1
+/bin/mv RCXdspfINIT ../$1
+/bin/mv rcxfs.dat ../$1
+/bin/mv RCXspiceINIT ../$1
+
+#--------------------------------------------------------------------
+# Delete the temporary compilation directory as it's no longer needed
+#--------------------------------------------------------------------
+cd ..
+/bin/rm -fr $1.CompDir
+
+#------------------
+# That's all folks!
+#------------------
+echo ""
+if ( -d $1.$timestamp ) then
+  echo "Remember to delete the renamed $1.$timestamp directory!"
+  echo ""
+endif

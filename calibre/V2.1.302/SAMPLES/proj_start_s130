@@ -1,0 +1,50 @@
+#!/bin/bash
+
+export PDK_HOME="/pdk/home/path"
+export PROJECT="s130_project"
+export PROJ_HOME="/home/$USER/projects/proj_s130"
+export PDFVIEWER="/usr/bin/evince"
+
+export MGLS_LICENSE_FILE="port@license_server" 
+export MGC_HOME="/mentor/path"
+export PATH="$MGC_HOME/bin:$PATH"
+
+export CDS_LIC_FILE="port@license_server"
+export CDS_SW_DIR="/cadence/path"
+export SPECTREHOME="`readlink -f $CDS_SW_DIR/SPECTRE/17.10.488`"
+export PATH="$SPECTREHOME/tools.lnx86/bin:$PATH"
+export PATH="$SPECTREHOME/tools.lnx86/spectre/bin:$PATH"
+export INCISIVEHOME="`readlink -f $CDS_SW_DIR/INCISIVE/15.20.076`"
+export PATH="$INCISIVEHOME/tools.lnx86/bin:$PATH"
+export ICHOME="`readlink -f $CDS_SW_DIR/IC/6.18.130`"
+export PATH="$ICHOME/tools.lnx86/bin:$ICHOME/tools.lnx86/dfII/bin:$PATH"
+export PVSHOME="`readlink -f $CDS_SW_DIR/PVS/19.12.003`"
+export PATH="$PVSHOME/tools.lnx86/bin:$PATH"
+export XCELIUMHOME="`readlink -f $CDS_SW_DIR/XCELIUM/18.09.010`"
+export PATH="$XCELIUMHOME/tools.lnx86/bin:$PATH"
+
+export MGC_CALIBRE_DRC_RUNSET_FILE="$PDK_HOME/PV/Calibre/DRC/s130_drc_runset"
+export MGC_CALIBRE_LVS_RUNSET_FILE="$PDK_HOME/PV/Calibre/LVS/s130_lvs_runset"
+export MGC_CALIBRE_PEX_RUNSET_FILE="$PDK_HOME/PV/Calibre/PEX/s130_pex_runset"
+export MGC_CALIBRE_CUSTOMIZATION_FILE="$PDK_HOME/PV/Calibre/set_calibre_custom_switches"
+
+export PVSUI_DEFAULT_SETTING="$PDK_HOME/PV/PVS/.cds_pvsui"
+
+export QRC_HOME="`readlink -f $CDS_SW_DIR/QUANTUS/20.12`"
+export PATH="$QRC_HOME/tools.lnx86/bin:$PATH"
+
+export SW_PROCESS="s130"
+export METAL_STACK="S130"
+export SW_PDK_ROOT="/pdk/path"
+export SW_IP_HOME="$SW_PDK_ROOT/$SW_PROCESS"
+
+export CDS_PROJECT="$PDK_HOME/PROGS/SKILL"
+
+# Sets CDL netlisting as Analog by default; important for calibre
+export CDS_Netlisting_Mode=Analog
+# Use 64 bit executables
+export CDS_AUTO_64BIT=ALL 
+# Fixes compilation error with veriloga in spectre (compile from disk instead of shared memory)
+export CDS_AHDL_PIPEBUILD_C_FLOW=NO
+
+virtuoso

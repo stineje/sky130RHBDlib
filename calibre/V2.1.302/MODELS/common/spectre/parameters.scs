@@ -1,0 +1,351 @@
+simulator lang=spectre
+* ==============================
+section fet_tt
+   parameters sw_tox_lv_corner = 4.148e-09 + corner_factor*0.0
+   parameters sw_tox_hv_corner = 1.16e-08 + corner_factor*0.0
+   parameters sw_polycd = 0.0 + corner_factor*0.0
+   parameters sw_activecd = 0.0 + corner_factor*0.0
+   parameters sw_nw_rs_mult = 1.0 + corner_factor*0.0
+   parameters sw_pmos_de_rd_mult = 1.0 + corner_factor*0.0
+   parameters sw_nsd_pw_cj = 0.00135 + corner_factor*0.0
+   parameters sw_psd_nw_cj = 0.0007408 + corner_factor*0.0
+   parameters sw_nw_pw_cj = 9e-05 + corner_factor*0.0
+   parameters sw_pw_dnw_cj = 0.0003824 + corner_factor*0.0
+   parameters sw_dnw_sub_cj = 7.743e-05 + corner_factor*0.0
+   parameters sw_nldd = 1.0 + corner_factor*0.0
+   parameters sw_vth0_nmos = 0.0 + corner_factor*0.0
+   parameters sw_u0_nmos = 1.0 + corner_factor*0.0
+   parameters sw_vsat_nmos = 1.0 + corner_factor*0.0
+   parameters sw_vth0_nmos_lvt = 0.0 + corner_factor*0.0
+   parameters sw_u0_nmos_lvt = 1.0 + corner_factor*0.0
+   parameters sw_vth0_nmos_v5 = 0.0 + corner_factor*0.0
+   parameters sw_u0_nmos_v5 = 1.0 + corner_factor*0.0
+   parameters sw_vsat_nmos_v5 = 1.0 + corner_factor*0.0
+   parameters sw_vth0_nmos_nat = 0.0 + corner_factor*0.0
+   parameters sw_u0_nmos_nat = 1.0 + corner_factor*0.0
+   parameters sw_vth0_nmos_zvt = 0.0 + corner_factor*0.0
+   parameters sw_u0_nmos_zvt = 1.0 + corner_factor*0.0
+   parameters sw_vth0_nmos_de_v12 = 0.0 + corner_factor*0.0
+   parameters sw_u0_nmos_de_v12 = 1.0 + corner_factor*0.0
+   parameters sw_vsat_nmos_de_v12 = 1.0 + corner_factor*0.0
+   parameters sw_vth0_pmos = 0.0 + corner_factor*0.0
+   parameters sw_u0_pmos = 1.0 + corner_factor*0.0
+   parameters sw_vsat_pmos = 1.0 + corner_factor*0.0
+   parameters sw_vth0_pmos_lvt = 0.0 + corner_factor*0.0
+   parameters sw_u0_pmos_lvt = 1.0 + corner_factor*0.0
+   parameters sw_vth0_pmos_hvt = 0.0 + corner_factor*0.0
+   parameters sw_u0_pmos_hvt = 1.0 + corner_factor*0.0
+   parameters sw_vsat_pmos_hvt = 1.0 + corner_factor*0.0
+   parameters sw_vth0_nat_v5 = -0.0105 + corner_factor*0.0
+   parameters sw_vth0_pmos_v5 = 0.0 + corner_factor*0.0
+   parameters sw_u0_pmos_v5 = 1.0 + corner_factor*0.0
+   parameters sw_vsat_pmos_v5 = 1.0 + corner_factor*0.0
+   parameters sw_vth0_pmos_de_v12 = 0.0 + corner_factor*0.0
+   parameters sw_u0_pmos_de_v12 = 1.0 + corner_factor*0.0
+   parameters sw_vsat_pmos_de_v12 = 1.0 + corner_factor*0.0
+endsection fet_tt
+
+* ==============================
+section fet_ff
+   parameters sw_tox_lv_corner = 4.148e-09 + corner_factor*-1.479999999999999e-10
+   parameters sw_tox_hv_corner = 1.16e-08 + corner_factor*-4.999999999999995e-10
+   parameters sw_polycd = 0.0 + corner_factor*-5.5e-09
+   parameters sw_activecd = 0.0 + corner_factor*-2.25e-08
+   parameters sw_nw_rs_mult = 1.0 + corner_factor*-0.19999999999999996
+   parameters sw_pmos_de_rd_mult = 1.0 + corner_factor*-0.19999999999999996
+   parameters sw_nsd_pw_cj = 0.00135 + corner_factor*-0.00022000000000000014
+   parameters sw_psd_nw_cj = 0.0007408 + corner_factor*-5.1900000000000015e-05
+   parameters sw_nw_pw_cj = 9e-05 + corner_factor*-1.2400000000000003e-05
+   parameters sw_pw_dnw_cj = 0.0003824 + corner_factor*-8.090000000000001e-05
+   parameters sw_dnw_sub_cj = 7.743e-05 + corner_factor*-1.4909999999999991e-05
+   parameters sw_nldd = 1.0 + corner_factor*-0.19999999999999996
+   parameters sw_vth0_nmos = 0.0 + corner_factor*-0.015
+   parameters sw_u0_nmos = 1.0 + corner_factor*0.020000000000000018
+   parameters sw_vsat_nmos = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vth0_nmos_lvt = 0.0 + corner_factor*-0.019
+   parameters sw_u0_nmos_lvt = 1.0 + corner_factor*0.030000000000000027
+   parameters sw_vth0_nmos_v5 = 0.0 + corner_factor*-0.02
+   parameters sw_u0_nmos_v5 = 1.0 + corner_factor*0.030000000000000027
+   parameters sw_vsat_nmos_v5 = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vth0_nmos_nat = 0.0 + corner_factor*-0.02
+   parameters sw_u0_nmos_nat = 1.0 + corner_factor*0.030000000000000027
+   parameters sw_vth0_nmos_zvt = 0.0 + corner_factor*-0.02
+   parameters sw_u0_nmos_zvt = 1.0 + corner_factor*0.030000000000000027
+   parameters sw_vth0_nmos_de_v12 = 0.0 + corner_factor*-0.08
+   parameters sw_u0_nmos_de_v12 = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vsat_nmos_de_v12 = 1.0 + corner_factor*0.25
+   parameters sw_vth0_pmos = 0.0 + corner_factor*0.01
+   parameters sw_u0_pmos = 1.0 + corner_factor*0.050000000000000044
+   parameters sw_vsat_pmos = 1.0 + corner_factor*0.1499999999999999
+   parameters sw_vth0_pmos_lvt = 0.0 + corner_factor*0.09
+   parameters sw_u0_pmos_lvt = 1.0 + corner_factor*0.07000000000000006
+   parameters sw_vth0_pmos_hvt = 0.0 + corner_factor*0.02
+   parameters sw_u0_pmos_hvt = 1.0 + corner_factor*0.07000000000000006
+   parameters sw_vsat_pmos_hvt = 1.0 + corner_factor*0.19999999999999996
+   parameters sw_vth0_nat_v5 = -0.0105 + corner_factor*-0.007639999999999999
+   parameters sw_vth0_pmos_v5 = 0.0 + corner_factor*0.04
+   parameters sw_u0_pmos_v5 = 1.0 + corner_factor*0.07000000000000006
+   parameters sw_vsat_pmos_v5 = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vth0_pmos_de_v12 = 0.0 + corner_factor*0.07
+   parameters sw_u0_pmos_de_v12 = 1.0 + corner_factor*0.07000000000000006
+   parameters sw_vsat_pmos_de_v12 = 1.0 + corner_factor*0.10000000000000009
+endsection fet_ff
+
+* ==============================
+section fet_ss
+   parameters sw_tox_lv_corner = 4.148e-09 + corner_factor*1.5199999999999948e-10
+   parameters sw_tox_hv_corner = 1.16e-08 + corner_factor*5.000000000000012e-10
+   parameters sw_polycd = 0.0 + corner_factor*5.5e-09
+   parameters sw_activecd = 0.0 + corner_factor*2.25e-08
+   parameters sw_nw_rs_mult = 1.0 + corner_factor*0.30000000000000004
+   parameters sw_pmos_de_rd_mult = 1.0 + corner_factor*0.30000000000000004
+   parameters sw_nsd_pw_cj = 0.00135 + corner_factor*0.00019999999999999987
+   parameters sw_psd_nw_cj = 0.0007408 + corner_factor*4.629999999999999e-05
+   parameters sw_nw_pw_cj = 9e-05 + corner_factor*1.1999999999999994e-05
+   parameters sw_pw_dnw_cj = 0.0003824 + corner_factor*8.069999999999996e-05
+   parameters sw_dnw_sub_cj = 7.743e-05 + corner_factor*1.4780000000000004e-05
+   parameters sw_nldd = 1.0 + corner_factor*0.19999999999999996
+   parameters sw_vth0_nmos = 0.0 + corner_factor*0.015
+   parameters sw_u0_nmos = 1.0 + corner_factor*-0.020000000000000018
+   parameters sw_vsat_nmos = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vth0_nmos_lvt = 0.0 + corner_factor*0.019
+   parameters sw_u0_nmos_lvt = 1.0 + corner_factor*-0.030000000000000027
+   parameters sw_vth0_nmos_v5 = 0.0 + corner_factor*0.02
+   parameters sw_u0_nmos_v5 = 1.0 + corner_factor*-0.030000000000000027
+   parameters sw_vsat_nmos_v5 = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vth0_nmos_nat = 0.0 + corner_factor*0.02
+   parameters sw_u0_nmos_nat = 1.0 + corner_factor*-0.030000000000000027
+   parameters sw_vth0_nmos_zvt = 0.0 + corner_factor*0.02
+   parameters sw_u0_nmos_zvt = 1.0 + corner_factor*-0.030000000000000027
+   parameters sw_vth0_nmos_de_v12 = 0.0 + corner_factor*0.08
+   parameters sw_u0_nmos_de_v12 = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vsat_nmos_de_v12 = 1.0 + corner_factor*-0.25
+   parameters sw_vth0_pmos = 0.0 + corner_factor*-0.01
+   parameters sw_u0_pmos = 1.0 + corner_factor*-0.050000000000000044
+   parameters sw_vsat_pmos = 1.0 + corner_factor*-0.15000000000000002
+   parameters sw_vth0_pmos_lvt = 0.0 + corner_factor*-0.09
+   parameters sw_u0_pmos_lvt = 1.0 + corner_factor*-0.06999999999999995
+   parameters sw_vth0_pmos_hvt = 0.0 + corner_factor*-0.02
+   parameters sw_u0_pmos_hvt = 1.0 + corner_factor*-0.06999999999999995
+   parameters sw_vsat_pmos_hvt = 1.0 + corner_factor*-0.19999999999999996
+   parameters sw_vth0_nat_v5 = -0.0105 + corner_factor*0.02441
+   parameters sw_vth0_pmos_v5 = 0.0 + corner_factor*-0.04
+   parameters sw_u0_pmos_v5 = 1.0 + corner_factor*-0.06999999999999995
+   parameters sw_vsat_pmos_v5 = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vth0_pmos_de_v12 = 0.0 + corner_factor*-0.07
+   parameters sw_u0_pmos_de_v12 = 1.0 + corner_factor*-0.06999999999999995
+   parameters sw_vsat_pmos_de_v12 = 1.0 + corner_factor*-0.09999999999999998
+endsection fet_ss
+
+* ==============================
+section fet_fs
+   parameters sw_tox_lv_corner = 4.148e-09 + corner_factor*0.0
+   parameters sw_tox_hv_corner = 1.16e-08 + corner_factor*0.0
+   parameters sw_polycd = 0.0 + corner_factor*0.0
+   parameters sw_activecd = 0.0 + corner_factor*0.0
+   parameters sw_nw_rs_mult = 1.0 + corner_factor*0.8999999999999999
+   parameters sw_pmos_de_rd_mult = 1.0 + corner_factor*-0.6
+   parameters sw_nsd_pw_cj = 0.00135 + corner_factor*0.0002899999999999999
+   parameters sw_psd_nw_cj = 0.0007408 + corner_factor*-7.289999999999998e-05
+   parameters sw_nw_pw_cj = 9e-05 + corner_factor*1.799999999999999e-05
+   parameters sw_pw_dnw_cj = 0.0003824 + corner_factor*0.0001161
+   parameters sw_dnw_sub_cj = 7.743e-05 + corner_factor*2.047e-05
+   parameters sw_nldd = 1.0 + corner_factor*0.30000000000000004
+   parameters sw_vth0_nmos = 0.0 + corner_factor*0.027
+   parameters sw_u0_nmos = 1.0 + corner_factor*-0.050000000000000044
+   parameters sw_vsat_nmos = 1.0 + corner_factor*-0.15000000000000002
+   parameters sw_vth0_nmos_lvt = 0.0 + corner_factor*0.027
+   parameters sw_u0_nmos_lvt = 1.0 + corner_factor*-0.050000000000000044
+   parameters sw_vth0_nmos_v5 = 0.0 + corner_factor*0.045
+   parameters sw_u0_nmos_v5 = 1.0 + corner_factor*-0.050000000000000044
+   parameters sw_vsat_nmos_v5 = 1.0 + corner_factor*-0.15000000000000002
+   parameters sw_vth0_nmos_nat = 0.0 + corner_factor*0.0426
+   parameters sw_u0_nmos_nat = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vth0_nmos_zvt = 0.0 + corner_factor*0.0426
+   parameters sw_u0_nmos_zvt = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vth0_nmos_de_v12 = 0.0 + corner_factor*0.159
+   parameters sw_u0_nmos_de_v12 = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vsat_nmos_de_v12 = 1.0 + corner_factor*-0.25
+   parameters sw_vth0_pmos = 0.0 + corner_factor*0.037
+   parameters sw_u0_pmos = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vsat_pmos = 1.0 + corner_factor*0.3999999999999999
+   parameters sw_vth0_pmos_lvt = 0.0 + corner_factor*0.155
+   parameters sw_u0_pmos_lvt = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vth0_pmos_hvt = 0.0 + corner_factor*0.04
+   parameters sw_u0_pmos_hvt = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vsat_pmos_hvt = 1.0 + corner_factor*0.30000000000000004
+   parameters sw_vth0_nat_v5 = -0.0105 + corner_factor*0.031240000000000004
+   parameters sw_vth0_pmos_v5 = 0.0 + corner_factor*0.08
+   parameters sw_u0_pmos_v5 = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vsat_pmos_v5 = 1.0 + corner_factor*0.19999999999999996
+   parameters sw_vth0_pmos_de_v12 = 0.0 + corner_factor*0.134
+   parameters sw_u0_pmos_de_v12 = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vsat_pmos_de_v12 = 1.0 + corner_factor*0.30000000000000004
+endsection fet_fs
+
+* ==============================
+section fet_sf
+   parameters sw_tox_lv_corner = 4.148e-09 + corner_factor*0.0
+   parameters sw_tox_hv_corner = 1.16e-08 + corner_factor*0.0
+   parameters sw_polycd = 0.0 + corner_factor*0.0
+   parameters sw_activecd = 0.0 + corner_factor*0.0
+   parameters sw_nw_rs_mult = 1.0 + corner_factor*-0.5800000000000001
+   parameters sw_pmos_de_rd_mult = 1.0 + corner_factor*1.0
+   parameters sw_nsd_pw_cj = 0.00135 + corner_factor*-0.00031000000000000016
+   parameters sw_psd_nw_cj = 0.0007408 + corner_factor*6.729999999999996e-05
+   parameters sw_nw_pw_cj = 9e-05 + corner_factor*-1.770000000000001e-05
+   parameters sw_pw_dnw_cj = 0.0003824 + corner_factor*-0.0001137
+   parameters sw_dnw_sub_cj = 7.743e-05 + corner_factor*-2.1659999999999993e-05
+   parameters sw_nldd = 1.0 + corner_factor*-0.30000000000000004
+   parameters sw_vth0_nmos = 0.0 + corner_factor*-0.027
+   parameters sw_u0_nmos = 1.0 + corner_factor*0.050000000000000044
+   parameters sw_vsat_nmos = 1.0 + corner_factor*0.1499999999999999
+   parameters sw_vth0_nmos_lvt = 0.0 + corner_factor*-0.027
+   parameters sw_u0_nmos_lvt = 1.0 + corner_factor*0.050000000000000044
+   parameters sw_vth0_nmos_v5 = 0.0 + corner_factor*-0.045
+   parameters sw_u0_nmos_v5 = 1.0 + corner_factor*0.050000000000000044
+   parameters sw_vsat_nmos_v5 = 1.0 + corner_factor*0.1499999999999999
+   parameters sw_vth0_nmos_nat = 0.0 + corner_factor*-0.0426
+   parameters sw_u0_nmos_nat = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vth0_nmos_zvt = 0.0 + corner_factor*-0.0426
+   parameters sw_u0_nmos_zvt = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vth0_nmos_de_v12 = 0.0 + corner_factor*-0.159
+   parameters sw_u0_nmos_de_v12 = 1.0 + corner_factor*0.10000000000000009
+   parameters sw_vsat_nmos_de_v12 = 1.0 + corner_factor*0.25
+   parameters sw_vth0_pmos = 0.0 + corner_factor*-0.037
+   parameters sw_u0_pmos = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vsat_pmos = 1.0 + corner_factor*-0.4
+   parameters sw_vth0_pmos_lvt = 0.0 + corner_factor*-0.149
+   parameters sw_u0_pmos_lvt = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vth0_pmos_hvt = 0.0 + corner_factor*-0.034
+   parameters sw_u0_pmos_hvt = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vsat_pmos_hvt = 1.0 + corner_factor*-0.35
+   parameters sw_vth0_nat_v5 = -0.0105 + corner_factor*-0.014739999999999998
+   parameters sw_vth0_pmos_v5 = 0.0 + corner_factor*-0.08
+   parameters sw_u0_pmos_v5 = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vsat_pmos_v5 = 1.0 + corner_factor*-0.19999999999999996
+   parameters sw_vth0_pmos_de_v12 = 0.0 + corner_factor*-0.134
+   parameters sw_u0_pmos_de_v12 = 1.0 + corner_factor*-0.09999999999999998
+   parameters sw_vsat_pmos_de_v12 = 1.0 + corner_factor*-0.30000000000000004
+endsection fet_sf
+
+* ==============================
+section res_nom
+   parameters sw_rpoly_hp_rs = 325.0 + corner_factor*0.0
+   parameters sw_rpoly_hp2K_rs = 2000.0 + corner_factor*0.0
+   parameters sw_poly_head_res = 1.0 + corner_factor*0.0
+   parameters sw_rm1_rs = 0.124 + corner_factor*0.0
+   parameters sw_rm2_rs = 0.124 + corner_factor*0.0
+   parameters sw_rm3_rs = 0.046 + corner_factor*0.0
+   parameters sw_rm4_rs = 0.046 + corner_factor*0.0
+   parameters sw_rm5_rs = 0.0275 + corner_factor*0.0
+   parameters sw_m1_dw = 0.0 + corner_factor*0.0
+   parameters sw_m2_dw = 0.0 + corner_factor*0.0
+   parameters sw_m3_dw = 0.0 + corner_factor*0.0
+   parameters sw_m4_dw = 0.0 + corner_factor*0.0
+   parameters sw_m5_dw = 0.0 + corner_factor*0.0
+   parameters sw_rcvia = 4.5 + corner_factor*0.0
+   parameters sw_rcvia2 = 3.41 + corner_factor*0.0
+   parameters sw_rcvia3 = 3.41 + corner_factor*0.0
+   parameters sw_rcvia4 = 3.41 + corner_factor*0.0
+   parameters sw_rcl1 = 9.3 + corner_factor*0.0
+   parameters sw_rl1 = 12.3 + corner_factor*0.0
+   parameters sw_rl1_dw = 0.0 + corner_factor*0.0
+   parameters sw_rnw = 1700.0 + corner_factor*0.0
+   parameters sw_rp1 = 48.2 + corner_factor*0.0
+   parameters sw_rcn = 182.0 + corner_factor*0.0
+   parameters sw_rcp1 = 145.0 + corner_factor*0.0
+   parameters sw_rdn = 120.0 + corner_factor*0.0
+   parameters sw_rdp = 197.0 + corner_factor*0.0
+   parameters sw_pw_rs = 3816.0 + corner_factor*0.0
+endsection res_nom
+
+* ==============================
+section res_low
+   parameters sw_rpoly_hp_rs = 325.0 + corner_factor*-48.0
+   parameters sw_rpoly_hp2K_rs = 2000.0 + corner_factor*-300.0
+   parameters sw_poly_head_res = 1.0 + corner_factor*-0.125
+   parameters sw_rm1_rs = 0.124 + corner_factor*-0.019000000000000003
+   parameters sw_rm2_rs = 0.124 + corner_factor*-0.019000000000000003
+   parameters sw_rm3_rs = 0.046 + corner_factor*-0.006999999999999999
+   parameters sw_rm4_rs = 0.046 + corner_factor*-0.006999999999999999
+   parameters sw_rm5_rs = 0.0275 + corner_factor*-0.005500000000000001
+   parameters sw_m1_dw = 0.0 + corner_factor*2.5e-08
+   parameters sw_m2_dw = 0.0 + corner_factor*2.5e-08
+   parameters sw_m3_dw = 0.0 + corner_factor*6.5e-08
+   parameters sw_m4_dw = 0.0 + corner_factor*6.5e-08
+   parameters sw_m5_dw = 0.0 + corner_factor*1.7e-07
+   parameters sw_rcvia = 4.5 + corner_factor*-2.5
+   parameters sw_rcvia2 = 3.41 + corner_factor*-2.037
+   parameters sw_rcvia3 = 3.41 + corner_factor*-2.037
+   parameters sw_rcvia4 = 3.41 + corner_factor*-2.037
+   parameters sw_rcl1 = 9.3 + corner_factor*-7.700000000000001
+   parameters sw_rl1 = 12.3 + corner_factor*-2.700000000000001
+   parameters sw_rl1_dw = 0.0 + corner_factor*2e-08
+   parameters sw_rnw = 1700.0 + corner_factor*-460.0
+   parameters sw_rp1 = 48.2 + corner_factor*-6.100000000000001
+   parameters sw_rcn = 182.0 + corner_factor*-112.0
+   parameters sw_rcp1 = 145.0 + corner_factor*-84.0
+   parameters sw_rdn = 120.0 + corner_factor*-12.0
+   parameters sw_rdp = 197.0 + corner_factor*-31.0
+   parameters sw_pw_rs = 3816.0 + corner_factor*-1016.0
+endsection res_low
+
+* ==============================
+section res_high
+   parameters sw_rpoly_hp_rs = 325.0 + corner_factor*45.0
+   parameters sw_rpoly_hp2K_rs = 2000.0 + corner_factor*300.0
+   parameters sw_poly_head_res = 1.0 + corner_factor*0.125
+   parameters sw_rm1_rs = 0.124 + corner_factor*0.01899999999999999
+   parameters sw_rm2_rs = 0.124 + corner_factor*0.01899999999999999
+   parameters sw_rm3_rs = 0.046 + corner_factor*0.006999999999999999
+   parameters sw_rm4_rs = 0.046 + corner_factor*0.006999999999999999
+   parameters sw_rm5_rs = 0.0275 + corner_factor*0.0045000000000000005
+   parameters sw_m1_dw = 0.0 + corner_factor*-2.5e-08
+   parameters sw_m2_dw = 0.0 + corner_factor*-2.5e-08
+   parameters sw_m3_dw = 0.0 + corner_factor*-6.5e-08
+   parameters sw_m4_dw = 0.0 + corner_factor*-6.5e-08
+   parameters sw_m5_dw = 0.0 + corner_factor*-1.7e-07
+   parameters sw_rcvia = 4.5 + corner_factor*7.35
+   parameters sw_rcvia2 = 3.41 + corner_factor*3.213
+   parameters sw_rcvia3 = 3.41 + corner_factor*3.213
+   parameters sw_rcvia4 = 3.41 + corner_factor*3.213
+   parameters sw_rcl1 = 9.3 + corner_factor*9.309999999999999
+   parameters sw_rl1 = 12.3 + corner_factor*2.5
+   parameters sw_rl1_dw = 0.0 + corner_factor*-2e-08
+   parameters sw_rnw = 1700.0 + corner_factor*460.0
+   parameters sw_rp1 = 48.2 + corner_factor*7.399999999999999
+   parameters sw_rcn = 182.0 + corner_factor*114.0
+   parameters sw_rcp1 = 145.0 + corner_factor*84.0
+   parameters sw_rdn = 120.0 + corner_factor*12.0
+   parameters sw_rdp = 197.0 + corner_factor*31.0
+   parameters sw_pw_rs = 3816.0 + corner_factor*1034.0
+endsection res_high
+
+* ==============================
+section cap_nom
+   parameters sw_fox_cap = 1.0 + corner_factor*0.0
+   parameters sw_fox_poly_cap = 1.0 + corner_factor*0.0
+   parameters sw_li_cap = 1.0 + corner_factor*0.0
+   parameters sw_cap_mim_ca = 2e-15 + corner_factor*0.0
+   parameters sw_cap_mim_dw = 1.5e-07 + corner_factor*0.0
+endsection cap_nom
+
+* ==============================
+section cap_low
+   parameters sw_fox_cap = 1.0 + corner_factor*-0.18999999999999995
+   parameters sw_fox_poly_cap = 1.0 + corner_factor*-0.18999999999999995
+   parameters sw_li_cap = 1.0 + corner_factor*-0.61
+   parameters sw_cap_mim_ca = 2e-15 + corner_factor*-2.2000000000000002e-16
+   parameters sw_cap_mim_dw = 1.5e-07 + corner_factor*-9.499999999999999e-08
+endsection cap_low
+
+* ==============================
+section cap_high
+   parameters sw_fox_cap = 1.0 + corner_factor*0.18999999999999995
+   parameters sw_fox_poly_cap = 1.0 + corner_factor*0.18999999999999995
+   parameters sw_li_cap = 1.0 + corner_factor*1.5499999999999998
+   parameters sw_cap_mim_ca = 2e-15 + corner_factor*2.299999999999998e-16
+   parameters sw_cap_mim_dw = 1.5e-07 + corner_factor*9.499999999999999e-08
+endsection cap_high
+

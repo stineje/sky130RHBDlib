@@ -1,0 +1,3142 @@
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// This file includes SVRF/TVF Technology licensed by Siemens Industry Software Inc. and its affiliates ("SISW".
+// "SVRF/TVF Technology" means SISW's Standard Verification Rule Format ("SVRF") and Tcl Verification Format
+// ("TVF") proprietary languages for expressing process rules.  SVRF/TVF Technology constitutes or contains trade
+// secrets and confidential information of SISW, and any use is subject to the terms and conditions of the SISW
+// End-User License Agreement, which may be viewed at https://www.sw.siemens.com/en-US/swterms/base/eula/ and the
+// EDA Supplemental Terms which may be viewed at https://www.sw.siemens.com/en-US/sw-terms/supplements/ .
+// SVRF/TVF Technology may be used solely with SISW software products, by your company's employees and on-site
+// contractors, excluding EDA Competitors, who are under obligations of confidentiality and whose job performance
+// requires access for your internal business purposes.
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+/// -*- c++ -*-
+/// luRes: by vun on Oct 11 10:17:39 2017 
+/// Copyright (c) 2017 by Cypress Semiconductor
+/// Cypress Confidential Information
+
+/// Tolerance for round-off errors on skew edges
+DRC TOLERANCE FACTOR 0.001
+
+DRC INCREMENTAL CONNECT YES
+
+/// Begin layer definitions
+LAYER dnwell  1000
+   LAYER MAP 64 DATATYPE 18 1000 // dnwell drawing
+
+LAYER nwell  1001
+   LAYER MAP 64 DATATYPE 20 1001 // nwell drawing
+
+LAYER tunm  1002
+   LAYER MAP 80 DATATYPE 20 1002 // tunm drawing
+
+LAYER diffi  1003
+   LAYER MAP 65 DATATYPE 20 1003 // diff drawing
+
+LAYER tapi  1004
+   LAYER MAP 65 DATATYPE 44 1004 // tap drawing
+
+LAYER poly  1005
+   LAYER MAP 66 DATATYPE 20 1005 // poly drawing
+
+LAYER lvtn  1006
+   LAYER MAP 125 DATATYPE 44 1006 // lvtn drawing
+
+LAYER hvtp  1007
+   LAYER MAP 78 DATATYPE 44 1007 // hvtp drawing
+
+LAYER npc  1008
+   LAYER MAP 95 DATATYPE 20 1008 // npc drawing
+
+LAYER nsdm  1009
+   LAYER MAP 93 DATATYPE 44 1009 // nsdm drawing
+
+LAYER psdm  1010
+   LAYER MAP 94 DATATYPE 20 1010 // psdm drawing
+
+LAYER pad  1011
+   LAYER MAP 76 DATATYPE 20 1011 // pad drawing
+
+LAYER pnp  1012
+   LAYER MAP 82 DATATYPE 44 1012 // pnp drawing
+
+LAYER npn  1013
+   LAYER MAP 82 DATATYPE 20 1013 // npn drawing
+
+LAYER hvi  1014
+   LAYER MAP 75 DATATYPE 20 1014 // hvi drawing
+
+LAYER mcon  1015
+   LAYER MAP 67 DATATYPE 44 1015 // mcon drawing
+
+LAYER met1  1016
+   LAYER MAP 68 DATATYPE 20 1016 // met1 drawing
+
+LAYER met2  1017
+   LAYER MAP 69 DATATYPE 20 1017 // met2 drawing
+
+LAYER met3  1018
+   LAYER MAP 70 DATATYPE 20 1018 // met3 drawing
+
+LAYER via  1019
+   LAYER MAP 68 DATATYPE 44 1019 // via drawing
+
+LAYER via2  1020
+   LAYER MAP 69 DATATYPE 44 1020 // via2 drawing
+
+LAYER li1  1021
+   LAYER MAP 67 DATATYPE 20 1021 // li1 drawing
+
+LAYER licon1  1022
+   LAYER MAP 66 DATATYPE 44 1022 // licon1 drawing
+
+LAYER ldntm  1023
+   LAYER MAP 11 DATATYPE 44 1023 // ldntm drawing
+
+LAYER capacitor  1024
+   LAYER MAP 82 DATATYPE 64 1024 // capacitor drawing
+
+LAYER ncm  1025
+   LAYER MAP 92 DATATYPE 44 1025 // ncm drawing
+
+LAYER via3  1026
+   LAYER MAP 70 DATATYPE 44 1026 // via3 drawing
+
+LAYER met4  1027
+   LAYER MAP 71 DATATYPE 20 1027 // met4 drawing
+
+LAYER via4  1028
+   LAYER MAP 71 DATATYPE 44 1028 // via4 drawing
+
+LAYER met5  1029
+   LAYER MAP 72 DATATYPE 20 1029 // met5 drawing
+
+LAYER rdl  1030
+   LAYER MAP 74 DATATYPE 20 1030 // rdl drawing
+
+LAYER pmm  1031
+   LAYER MAP 85 DATATYPE 44 1031 // pmm drawing
+
+LAYER metop1  1032
+   LAYER MAP 70 DATATYPE 32 1032 // met3 option1
+
+LAYER metop2  1033
+   LAYER MAP 70 DATATYPE 33 1033 // met3 option2
+
+LAYER metop3  1034
+   LAYER MAP 70 DATATYPE 34 1034 // met3 option3
+
+LAYER metop4  1035
+   LAYER MAP 70 DATATYPE 35 1035 // met3 option4
+
+LAYER metop5  1036
+   LAYER MAP 70 DATATYPE 36 1036 // met3 option5
+
+LAYER metop6  1037
+   LAYER MAP 70 DATATYPE 37 1037 // met3 option6
+
+LAYER metop7  1038
+   LAYER MAP 70 DATATYPE 38 1038 // met3 option7
+
+LAYER metop8  1039
+   LAYER MAP 70 DATATYPE 39 1039 // met3 option8
+
+LAYER metal4  1027
+   // 1027 -> met4 drawing
+
+LAYER met4res  1040
+   LAYER MAP 71 DATATYPE 13 1040 // met4 res
+
+LAYER met4tt  1041 1042 1043
+   LAYER MAP 71 TEXTTYPE 20 1041 // met4 drawing
+   LAYER MAP 71 TEXTTYPE 5 1042 // met4 label
+   LAYER MAP 71 TEXTTYPE 23 1043 // met4 net
+
+LAYER met4_pin  1044
+   LAYER MAP 71 DATATYPE 16 1044 // met4 pin
+
+LAYER met4pt  1045
+   LAYER MAP 71 TEXTTYPE 16 1045 // met4 pin
+   LAYER MAP 71 TEXTTYPE 0 1045 // met4 pin
+
+LAYER met4probe  1046
+   LAYER MAP 71 TEXTTYPE 25 1046 // met4 probe
+
+LAYER m4_short  1047
+   LAYER MAP 71 DATATYPE 15 1047 // met4 short
+
+LAYER metal5  1029
+   // 1029 -> met5 drawing
+
+LAYER met5res  1048
+   LAYER MAP 72 DATATYPE 13 1048 // met5 res
+
+LAYER met5tt  1049 1050 1051
+   LAYER MAP 72 TEXTTYPE 20 1049 // met5 drawing
+   LAYER MAP 72 TEXTTYPE 5 1050 // met5 label
+   LAYER MAP 72 TEXTTYPE 23 1051 // met5 net
+
+LAYER met5_pin  1052
+   LAYER MAP 72 DATATYPE 16 1052 // met5 pin
+
+LAYER met5pt  1053
+   LAYER MAP 72 TEXTTYPE 16 1053 // met5 pin
+   LAYER MAP 72 TEXTTYPE 0 1053 // met5 pin
+
+LAYER met5probe  1054
+   LAYER MAP 72 TEXTTYPE 25 1054 // met5 probe
+
+LAYER m5_short  1055
+   LAYER MAP 72 DATATYPE 15 1055 // met5 short
+
+LAYER rdllayer  1030
+   // 1030 -> rdl drawing
+
+LAYER rdlres  1056
+   LAYER MAP 74 DATATYPE 13 1056 // rdl res
+
+LAYER rdltt  1057 1058
+   LAYER MAP 74 TEXTTYPE 20 1057 // rdl drawing
+   LAYER MAP 74 TEXTTYPE 5 1058 // rdl label
+
+LAYER rdl_pin  1059
+   LAYER MAP 74 DATATYPE 16 1059 // rdl pin
+
+LAYER rdlpt  1060
+   LAYER MAP 74 TEXTTYPE 16 1060 // rdl pin
+   LAYER MAP 74 TEXTTYPE 0 1060 // rdl pin
+
+LAYER rd_short  1061
+   LAYER MAP 74 DATATYPE 15 1061 // rdl short
+
+LAYER metal1  1016
+   // 1016 -> met1 drawing
+
+LAYER metal2  1017
+   // 1017 -> met2 drawing
+
+LAYER metal3  1018
+   // 1018 -> met3 drawing
+
+LAYER paddg  1011
+   // 1011 -> pad drawing
+
+LAYER diffTap  1003 1004
+   // 1003 -> diff drawing
+   // 1004 -> tap drawing
+
+LAYER capdraw  1024
+   // 1024 -> capacitor drawing
+
+LAYER polyGate  1062
+   LAYER MAP 66 DATATYPE 9 1062 // poly gate
+
+LAYER polyModel  1063
+   LAYER MAP 66 TEXTTYPE 83 1063 // poly model
+
+LAYER diffcut  1064
+   LAYER MAP 65 DATATYPE 14 1064 // diff cut
+
+LAYER fuse  1065
+   LAYER MAP 70 DATATYPE 17 1065 // met3 fuse
+
+LAYER padCenter  1066
+   LAYER MAP 81 DATATYPE 20 1066 // padCenter drawing
+
+LAYER prune  1067
+   LAYER MAP 84 DATATYPE 44 1067 // prune drawing
+
+LAYER polycut  1068
+   LAYER MAP 66 DATATYPE 14 1068 // poly cut
+
+LAYER li1cut  1069
+   LAYER MAP 67 DATATYPE 14 1069 // li1 cut
+
+LAYER met1cut  1070
+   LAYER MAP 68 DATATYPE 14 1070 // met1 cut
+
+LAYER met2cut  1071
+   LAYER MAP 69 DATATYPE 14 1071 // met2 cut
+
+LAYER met3cut  1072
+   LAYER MAP 70 DATATYPE 14 1072 // met3 cut
+
+LAYER pwcut  1073
+   LAYER MAP 64 DATATYPE 14 1073 // pwell cut
+
+LAYER DiodeID  1074
+   LAYER MAP 81 DATATYPE 23 1074 // areaid diode
+
+LAYER ESDID  1075
+   LAYER MAP 81 DATATYPE 19 1075 // areaid esd
+
+LAYER ENID  1076
+   LAYER MAP 81 DATATYPE 57 1076 // areaid extendedDrain
+
+LAYER COREID  1077
+   LAYER MAP 81 DATATYPE 2 1077 // areaid core
+
+LAYER SEALID  1078
+   LAYER MAP 81 DATATYPE 1 1078 // areaid seal
+
+LAYER FRAMEID  1079
+   LAYER MAP 81 DATATYPE 3 1079 // areaid frame
+
+LAYER LVID  1080
+   LAYER MAP 81 DATATYPE 60 1080 // areaid lvNative
+
+LAYER STDCID  1081
+   LAYER MAP 81 DATATYPE 4 1081 // areaid standardc
+
+LAYER localSub  1082
+   LAYER MAP 81 DATATYPE 53 1082 // areaid substrateCut
+
+LAYER PHdiodeID  1083
+   LAYER MAP 81 DATATYPE 81 1083 // areaid photo
+
+LAYER padtt  1084 1085
+   LAYER MAP 76 TEXTTYPE 20 1084 // pad drawing
+   LAYER MAP 76 TEXTTYPE 5 1085 // pad label
+
+LAYER met3tt  1086 1087 1088
+   LAYER MAP 70 TEXTTYPE 20 1086 // met3 drawing
+   LAYER MAP 70 TEXTTYPE 5 1087 // met3 label
+   LAYER MAP 70 TEXTTYPE 23 1088 // met3 net
+
+LAYER met2tt  1089 1090 1091
+   LAYER MAP 69 TEXTTYPE 20 1089 // met2 drawing
+   LAYER MAP 69 TEXTTYPE 5 1090 // met2 label
+   LAYER MAP 69 TEXTTYPE 23 1091 // met2 net
+
+LAYER met1tt  1092 1093 1094
+   LAYER MAP 68 TEXTTYPE 20 1092 // met1 drawing
+   LAYER MAP 68 TEXTTYPE 5 1093 // met1 label
+   LAYER MAP 68 TEXTTYPE 23 1094 // met1 net
+
+LAYER li1tt  1095 1096 1097
+   LAYER MAP 67 TEXTTYPE 20 1095 // li1 drawing
+   LAYER MAP 67 TEXTTYPE 5 1096 // li1 label
+   LAYER MAP 67 TEXTTYPE 23 1097 // li1 net
+
+LAYER polytt  1098 1099 1100
+   LAYER MAP 66 TEXTTYPE 20 1098 // poly drawing
+   LAYER MAP 66 TEXTTYPE 5 1099 // poly label
+   LAYER MAP 66 TEXTTYPE 23 1100 // poly net
+
+LAYER difftt  1101 1102 1103
+   LAYER MAP 65 TEXTTYPE 20 1101 // diff drawing
+   LAYER MAP 65 TEXTTYPE 6 1102 // diff label
+   LAYER MAP 65 TEXTTYPE 23 1103 // diff net
+
+LAYER pwelltt  1104
+   LAYER MAP 64 TEXTTYPE 59 1104 // pwell label
+
+LAYER pwellisott  1105
+   LAYER MAP 44 TEXTTYPE 5 1105 // pwelliso label
+
+LAYER nwelltt  1106 1107 1108
+   LAYER MAP 64 TEXTTYPE 20 1106 // nwell drawing
+   LAYER MAP 64 TEXTTYPE 5 1107 // nwell label
+   LAYER MAP 84 TEXTTYPE 23 1108 // nwell net
+
+LAYER textlabel  1109
+   LAYER MAP 83 TEXTTYPE 44 1109 // text drawing
+
+LAYER pwell_pin  1110
+   LAYER MAP 122 DATATYPE 16 1110 // pwell pin
+
+LAYER pwelliso_pin  1111
+   LAYER MAP 44 DATATYPE 16 1111 // pwelliso pin
+
+LAYER nwell_pin  1112
+   LAYER MAP 64 DATATYPE 16 1112 // nwell pin
+
+LAYER diff_pin  1113
+   LAYER MAP 65 DATATYPE 16 1113 // diff pin
+
+LAYER poly_pin  1114
+   LAYER MAP 66 DATATYPE 16 1114 // poly pin
+
+LAYER li1_pin  1115
+   LAYER MAP 67 DATATYPE 16 1115 // li1 pin
+
+LAYER met1_pin  1116
+   LAYER MAP 68 DATATYPE 16 1116 // met1 pin
+
+LAYER met2_pin  1117
+   LAYER MAP 69 DATATYPE 16 1117 // met2 pin
+
+LAYER met3_pin  1118
+   LAYER MAP 70 DATATYPE 16 1118 // met3 pin
+
+LAYER pad_pin  1119
+   LAYER MAP 76 DATATYPE 16 1119 // pad pin
+
+LAYER pwellpt  1120
+   LAYER MAP 122 TEXTTYPE 16 1120 // pwell pin
+   LAYER MAP 122 TEXTTYPE 0 1120 // pwell pin
+
+LAYER pwellisopt  1121
+   LAYER MAP 44 TEXTTYPE 16 1121 // pwelliso pin
+   LAYER MAP 44 TEXTTYPE 0 1121 // pwelliso pin
+
+LAYER nwellpt  1122
+   LAYER MAP 64 TEXTTYPE 16 1122 // nwell pin
+   LAYER MAP 64 TEXTTYPE 0 1122 // nwell pin
+
+LAYER diffpt  1123
+   LAYER MAP 65 TEXTTYPE 16 1123 // diff pin
+   LAYER MAP 65 TEXTTYPE 0 1123 // diff pin
+
+LAYER polypt  1124
+   LAYER MAP 66 TEXTTYPE 16 1124 // poly pin
+   LAYER MAP 66 TEXTTYPE 0 1124 // poly pin
+
+LAYER li1pt  1125
+   LAYER MAP 67 TEXTTYPE 16 1125 // li1 pin
+   LAYER MAP 67 TEXTTYPE 0 1125 // li1 pin
+
+LAYER met1pt  1126
+   LAYER MAP 68 TEXTTYPE 16 1126 // met1 pin
+   LAYER MAP 68 TEXTTYPE 0 1126 // met1 pin
+
+LAYER met2pt  1127
+   LAYER MAP 69 TEXTTYPE 16 1127 // met2 pin
+   LAYER MAP 69 TEXTTYPE 0 1127 // met2 pin
+
+LAYER met3pt  1128
+   LAYER MAP 70 TEXTTYPE 16 1128 // met3 pin
+   LAYER MAP 70 TEXTTYPE 0 1128 // met3 pin
+
+LAYER padpt  1129
+   LAYER MAP 76 TEXTTYPE 16 1129 // pad pin
+   LAYER MAP 76 TEXTTYPE 0 1129 // pad pin
+
+LAYER pwellres  1130
+   LAYER MAP 64 DATATYPE 13 1130 // pwell res
+
+LAYER polyres  1131
+   LAYER MAP 66 DATATYPE 13 1131 // poly res
+
+LAYER li1res  1132
+   LAYER MAP 67 DATATYPE 13 1132 // li1 res
+
+LAYER met1res  1133
+   LAYER MAP 68 DATATYPE 13 1133 // met1 res
+
+LAYER met2res  1134
+   LAYER MAP 69 DATATYPE 13 1134 // met2 res
+
+LAYER met3res  1135
+   LAYER MAP 70 DATATYPE 13 1135 // met3 res
+
+LAYER diffres  1136
+   LAYER MAP 65 DATATYPE 13 1136 // diff res
+
+LAYER met3probe  1137
+   LAYER MAP 70 TEXTTYPE 25 1137 // met3 probe
+
+LAYER met2probe  1138
+   LAYER MAP 69 TEXTTYPE 25 1138 // met2 probe
+
+LAYER met1probe  1139
+   LAYER MAP 68 TEXTTYPE 25 1139 // met1 probe
+
+LAYER li1probe  1140
+   LAYER MAP 67 TEXTTYPE 25 1140 // li1 probe
+
+LAYER polyprobe  1141
+   LAYER MAP 66 TEXTTYPE 25 1141 // poly probe
+
+LAYER py_short  1142
+   LAYER MAP 66 DATATYPE 15 1142 // poly short
+
+LAYER li_short  1143
+   LAYER MAP 67 DATATYPE 15 1143 // li1 short
+
+LAYER m1_short  1144
+   LAYER MAP 68 DATATYPE 15 1144 // met1 short
+
+LAYER m2_short  1145
+   LAYER MAP 69 DATATYPE 15 1145 // met2 short
+
+LAYER m3_short  1146
+   LAYER MAP 70 DATATYPE 15 1146 // met3 short
+
+LAYER fomWaffDrop  1147
+   LAYER MAP 22 DATATYPE 24 1147 // cfom waffleDrop
+
+LAYER moduleCutAREA  1148
+   LAYER MAP 81 DATATYPE 10 1148 // areaid moduleCut
+
+/// End layer definitions
+
+LAYOUT BASE LAYER diffi
+LAYOUT BASE LAYER tapi
+LAYOUT BASE LAYER poly
+LAYOUT BASE LAYER pnp
+LAYOUT BASE LAYER npn
+LAYOUT BASE LAYER nsdm
+LAYOUT BASE LAYER psdm
+LAYOUT BASE LAYER hvi
+LAYOUT BASE LAYER lvtn
+LAYOUT BASE LAYER hvtp
+LAYOUT BASE LAYER npc
+LAYOUT BASE LAYER DiodeId
+LAYOUT BASE LAYER ESDID
+LAYOUT BASE LAYER COREID
+LAYOUT BASE LAYER ENID
+LAYOUT BASE LAYER polyGate
+LAYOUT BASE LAYER capdraw
+LAYOUT BASE LAYER diffres
+LAYOUT BASE LAYER polyres
+LAYOUT BASE LAYER li1res
+LAYOUT BASE LAYER diffcut
+LAYOUT BASE LAYER polycut
+LAYOUT BASE LAYER li1cut
+LAYOUT BASE LAYER met1cut
+LAYOUT BASE LAYER met2cut
+LAYOUT BASE LAYER met3cut
+LAYOUT BASE LAYER polyprobe
+LAYOUT BASE LAYER li1probe
+LAYOUT BASE LAYER met1probe
+LAYOUT BASE LAYER met2probe
+LAYOUT BASE LAYER met3probe
+LAYOUT BASE LAYER m1_short
+LAYOUT BASE LAYER m2_short
+LAYOUT BASE LAYER m3_short
+LAYOUT BASE LAYER py_short
+LAYOUT BASE LAYER li_short
+LAYOUT BASE LAYER fuse
+LAYOUT BASE LAYER metop1
+LAYOUT BASE LAYER metop2
+LAYOUT BASE LAYER metop3
+LAYOUT BASE LAYER metop4
+LAYOUT BASE LAYER metop5
+LAYOUT BASE LAYER metop6
+LAYOUT BASE LAYER metop7
+LAYOUT BASE LAYER metop8
+/// --BEGIN SEPARATE DECK 0 drc lu_area--
+/// --INPUT hvi ENID nwell diff
+/// --INPUT polyres diffres poly tap
+/// --INPUT met4res met3res met2res met1res
+/// --INPUT ESDID pwellres rdlres met5res
+/// --INPUT SEALID PHdiodeID DiodeID COREID
+/// --INPUT metal3 metal2 metal1 STDCID
+/// --INPUT npn rdllayer metal5 metal4
+/// --INPUT via textlabel diffTap licon1
+/// --INPUT pmm via4 via3 via2
+/// --INPUT paddg mcon li1 poly
+/// --INPUT met3tt met2tt met1tt li1tt
+/// --INPUT polytt rdltt met5tt met4tt
+/// --INPUT met1_pin li1_pin poly_pin difftt
+/// --INPUT met5_pin met4_pin met3_pin met2_pin
+/// --INPUT polypt diffpt nwellpt rdl_pin
+/// --INPUT met3pt met2pt met1pt li1pt
+/// --INPUT dnwell rdlpt met5pt met4pt
+/// --INPUT pnp localSub
+/// --OUTPUT LU4_ioPad vccNTAP vssPTAP Li1Lu
+/// --OUTPUT LU4_PTAPspNtr LU4_NTAPspNtr LU4_PSRCDRNspNtr LU4_NSRCDRNspNtr
+/// --OUTPUT LU4_PTAPspRes LU4_NTAPspRes LU4_PSRCDRNspRes LU4_NSRCDRNspRes
+/// --OUTPUT LU4_PTAPspResNot10KorESD LU4_NTAPspResNot10KorESD LU4_PSRCDRNspResNot10KorESD LU4_NSRCDRNspResNot10KorESD
+/// --OUTPUT LU4_PTAPspResThruESD LU4_NTAPspResThruESD LU4_PSRCDRNspResThruESD LU4_NSRCDRNspResThruESD
+/// --OUTPUT lu4_secondRingN_forCWNTAP lu4_secondRingN_forCSNSD lu4_secondRingN_forIWNTAP lu4_secondRingN_forISNSD
+/// --OUTPUT lu4_secondRingP_forCWPSD lu4_secondRingP_forIPWSPTAP lu4_secondRingP_forISPTAP lu4_secondRingP_forIWPSD
+/// --OUTPUT esdresLU4_NSRCDRNspRes esdresLU4_ioPad lu4_secondRingP_forCPWSPTAP lu4_secondRingP_forCSPTAP
+/// --OUTPUT esdreslu4_secondRingN_forISNSD esdresLU4_PTAPspRes esdresLU4_NTAPspRes esdresLU4_PSRCDRNspRes
+/// --OUTPUT esdreslu4_secondRingP_forIWPSD esdreslu4_secondRingN_forCWNTAP esdreslu4_secondRingN_forCSNSD esdreslu4_secondRingN_forIWNTAP
+/// --OUTPUT esdreslu4_secondRingP_forCSPTAP esdreslu4_secondRingP_forCWPSD esdreslu4_secondRingP_forIPWSPTAP esdreslu4_secondRingP_forISPTAP
+/// --OUTPUT Met3Lu Met2Lu Met1Lu esdreslu4_secondRingP_forCPWSPTAP
+/// --OUTPUT Met4Lu Met3LuESDres Met2LuESDres Met1LuESDres
+/// --OUTPUT RdlLu Met5LuESDres Met4LuESDres Met5Lu
+/// --OUTPUT Licon1Nfom Licon1Pfom PadLuESDres PadLu
+/// --OUTPUT Pad_vsub_agr Pad_vsub_vic Licon1ply PolyNoRes
+/// --OUTPUT grPTAP_holes grNTAP_holes grPTAP_tmpA grNTAP_tmpA
+/// --OUTPUT grPTAP_tmp grNTAP_tmp grPTAPholeWithESDresSigPadDiff grNTAPholeWithESDresSigPadDiff
+/// --OUTPUT grPTAP grNTAP grPTAP_tmpESDres grNTAP_tmpESDres
+/// --OUTPUT ntapRingNotTxt sigPadDiffAll_Sz grPTAPnotVss grNTAPnotVcc
+/// --OUTPUT grNTAPESDres grPTAPsz grNTAPsz ptapRingNotTxt
+/// --OUTPUT pwrPadMet bad_nonExt_outer_grPTAP bad_nonExt_outer_grNTAP grPTAPESDres
+/// --OUTPUT gndNSRCDRN gndPadMetESDres pwrPadMetESDres gndPadMet
+/// --OUTPUT dummy_sub gndPTAP pwrNTAP pwrPSRCDRN
+/// --OUTPUT gndPadNotCheckPDiff gndPadNotCheckDiff searchZone dummy_nwell
+/// --OUTPUT signal_pad_Ptap signal_pad_Ndiff b2bDiode gndPadNotCheckNDiff
+/// --OUTPUT pwrPad gndPTAP_tmp isoPwell_Not_ground bad_signal_pad_Ndiff
+/// --OUTPUT check_9_4_pdiff gnd_esd_diff signalPad gndPad
+/// --OUTPUT check_9_4_met1 check_9_4_ntap check_9_4_diff check_9_4_ndiff
+/// --OUTPUT check_7_8_ndiff
+diff = diffi AND tapi
+ntap = (nsdm AND diffi) AND nwell 
+ptap = (psdm AND diffi) NOT nwell 
+tap = OR ptap ntap
+
+PDIFF = (diff NOT tap) AND nwell
+NDIFF = (diff NOT tap) NOT PDIFF
+//NTAP = tap AND nwell
+//PTAP = tap NOT NTAP
+gate = poly AND diff
+NSRCDRN = NDIFF NOT (gate OR diffres)
+PSRCDRN = PDIFF NOT (gate OR diffres)
+PolyNoRes = poly NOT polyres
+ResPoly = poly AND polyres
+nDiffRes = NDIFF AND diffres
+pDiffRes = PDIFF AND diffres
+Met1Lu = metal1 NOT met1res
+Met2Lu = metal2 NOT met2res
+Met3Lu = metal3 NOT met3res
+Met1LuESDres = metal1 OR (met1res AND ESDID)
+Met2LuESDres = metal2 OR (met2res AND ESDID)
+Met3LuESDres = metal3 OR (met3res AND ESDID)
+Li1Lu = COPY li1
+PadLu_tmp = COPY pad
+Licon1ply = licon1 OUTSIDE diffTap
+Licon1fom = licon1 NOT Licon1ply
+Licon1Nfom = (Licon1fom AND NDIFF) OR (Licon1fom AND NTAP)
+Licon1Pfom = (Licon1fom AND PDIFF) OR (Licon1fom AND PTAP)
+Licon1diff = Licon1fom AND diff
+MOSDIFF = diff NOT (pnp OR npn)
+MOSDIFFnotPOLY = MOSDIFF NOT poly
+MOSDIFFandPOLY = MOSDIFF AND poly
+NMOSDIFFnotPOLY = MOSDIFFnotPOLY NOT nwell
+PMOSDIFFnotPOLY = MOSDIFFnotPOLY AND nwell
+SubstrateAll = EXTENT
+dnwANDnwell = dnwell AND nwell
+SubstrateIso = SubstrateAll NOT ((dnwell NOT (SIZE dnwell BY -0.01)) OR dnwANDnwell)
+isolatedSubstrate = COPY SubstrateIso
+isolatedSubNoPWR = isolatedSubstrate NOT pwellres
+isoSubPTap = PTAP AND isolatedSubNoPWR
+PTAPnotSeal = PTAP NOT SEALID
+NTAPnotSeal = NTAP NOT SEALID
+PTAPnotSealDonut = DONUT PTAPnotSeal
+PTAPnotSealDonut_nodnw = PTAPnotSeal NOT dnwell
+NTAPnotSealDonut = DONUT NTAPnotSeal
+Met4Lu = metal4 NOT met4res
+Met4LuESDres = metal4 OR (met4res AND ESDID)
+Met5Lu = metal5 NOT met5res
+Met5LuESDres = metal5 OR (met5res AND ESDID)
+RdlLu = rdllayer NOT rdlres
+M5RDLpad5x5 = RECTANGLE (pad AND 
+(met5 AND 
+(rdl AND pmm))) == 5.0 BY == 5.0
+PadLu = PadLu_tmp NOT M5RDLpad5x5
+PadLuESDres = COPY PadLu
+/// CALconnectZone started - zoneName was nil
+DISCONNECT
+CONNECT nwell NTAP
+CONNECT Li1Lu PTAP BY Licon1Pfom
+CONNECT Li1Lu NTAP BY Licon1Nfom
+CONNECT Li1Lu PSRCDRN BY Licon1Pfom
+CONNECT Li1Lu NSRCDRN BY Licon1Nfom
+CONNECT Li1Lu PolyNoRes BY Licon1ply
+CONNECT Met1Lu Li1Lu BY mcon
+CONNECT Met2Lu Met1Lu BY via
+CONNECT Met3Lu Met2Lu BY via2
+CONNECT PolyNoRes gate
+CONNECT Met3Lu met3tt
+CONNECT Met2Lu met2tt
+CONNECT Met1Lu met1tt
+CONNECT li1 li1tt
+CONNECT PolyNoRes polytt
+CONNECT NSRCDRN difftt
+CONNECT PSRCDRN difftt
+CONNECT Met4Lu Met3Lu BY via3
+CONNECT Met5Lu Met4Lu BY via4
+CONNECT PadLu Met5Lu
+CONNECT RdlLu Met5Lu BY pmm
+CONNECT poly_pin PolyNoRes
+TEXT LAYER polypt ATTACH polypt poly_pin
+CONNECT li1_pin Li1Lu
+TEXT LAYER li1pt ATTACH li1pt li1_pin
+CONNECT met1_pin Met1Lu
+TEXT LAYER met1pt ATTACH met1pt met1_pin
+CONNECT met2_pin Met2Lu
+TEXT LAYER met2pt ATTACH met2pt met2_pin
+CONNECT met3_pin Met3Lu
+TEXT LAYER met3pt ATTACH met3pt met3_pin
+CONNECT met4_pin Met4Lu
+TEXT LAYER met4pt ATTACH met4pt met4_pin
+CONNECT met5_pin Met5Lu
+TEXT LAYER met5pt ATTACH met5pt met5_pin
+CONNECT rdl_pin RdlLu
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin
+TEXT LAYER met3tt ATTACH met3tt Met3Lu
+TEXT LAYER met2tt ATTACH met2tt Met2Lu
+TEXT LAYER met1tt ATTACH met1tt Met1Lu
+TEXT LAYER li1tt ATTACH li1tt Li1Lu
+TEXT LAYER polytt ATTACH polytt PolyNoRes
+TEXT LAYER difftt ATTACH difftt NSRCDRN
+TEXT LAYER difftt ATTACH difftt PSRCDRN
+TEXT LAYER met4tt ATTACH met4tt Met4Lu
+TEXT LAYER met5tt ATTACH met5tt Met5Lu
+TEXT LAYER rdltt ATTACH rdltt RdlLu
+/// CALconnectZone done.  zoneName is now zone_1
+Pad_vsub_vic = NET PadLu "vsub_vic_?"
+Pad_vsub_agr = NET PadLu "vsub_agr_?"
+Py_10k_res = WITH TEXT polyres "10KOhm" textlabel
+M1_10k_res = WITH TEXT met1res "10KOhm" textlabel
+M2_10k_res = WITH TEXT met2res "10KOhm" textlabel
+M3_10k_res = WITH TEXT met3res "10KOhm" textlabel
+M4_10k_res = WITH TEXT met4res "10KOhm" textlabel
+M5_10k_res = WITH TEXT met5res "10KOhm" textlabel
+Py_100k_res = (WITH TEXT polyres "100KOhm" textlabel) OR Py_10k_res
+M1_100k_res = (WITH TEXT met1res "100KOhm" textlabel) OR M1_10k_res
+M2_100k_res = (WITH TEXT met2res "100KOhm" textlabel) OR M2_10k_res
+M3_100k_res = (WITH TEXT met3res "100KOhm" textlabel) OR M3_10k_res
+M4_100k_res = (WITH TEXT met4res "100KOhm" textlabel) OR M4_10k_res
+M5_100k_res = (WITH TEXT met5res "100KOhm" textlabel) OR M5_10k_res
+pysigPadThruResNot10korESD = poly NOT (Py_100k_res OR pyESDres)
+m1sigPadThruResNot10korESD = met1 NOT (M1_100k_res OR m1ESDres)
+m2sigPadThruResNot10korESD = met2 NOT (M2_100k_res OR m2ESDres)
+m3sigPadThruResNot10korESD = met3 NOT (M3_100k_res OR m3ESDres)
+m4sigPadThruResNot10korESD = met4 NOT (M4_100k_res OR m4ESDres)
+m5sigPadThruResNot10korESD = met5 NOT (M5_100k_res OR m5ESDres)
+pyESDres = (polyres AND ESDID) NOT Py_100K_res
+m1ESDres = (met1res AND ESDID) NOT M1_100K_res
+m2ESDres = (met2res AND ESDID) NOT M2_100K_res
+m3ESDres = (met3res AND ESDID) NOT M3_100K_res
+m4ESDres = (met4res AND ESDID) NOT M4_100K_res
+m5ESDres = (met5res AND ESDID) NOT M5_100K_res
+pwrPadMet = NET PadLu "vpwr"
+gndPadMet = NET PadLu "vgnd"
+vssPTAP = NET PTAP "vgnd"
+vccNTAP = NET NTAP "vpwr"
+LU4_ioPad = NET PadLu "io"
+LU4_NSRCDRNspNtr = NOT INTERACT (NET AREA RATIO NSRCDRN LU4_ioPad > 0) ENID
+LU4_PSRCDRNspNtr = NOT INTERACT (NET AREA RATIO PSRCDRN LU4_ioPad > 0) ENID
+LU4_NTAPspNtr = NOT INTERACT (NET AREA RATIO NTAP LU4_ioPad > 0) ENID
+LU4_PTAPspNtr = NOT INTERACT (NET AREA RATIO PTAP LU4_ioPad > 0) ENID
+CONNECT Met1lu m1sigPadThruResNot10korESD
+CONNECT Met2lu m2sigPadThruResNot10korESD
+CONNECT Met3lu m3sigPadThruResNot10korESD
+CONNECT Met4lu m4sigPadThruResNot10korESD
+CONNECT Met5lu m5sigPadThruResNot10korESD
+CONNECT PolyNoRes pysigPadThruResNot10korESD
+LU4_NSRCDRNspResNot10KorESD = NOT INTERACT (NET NSRCDRN "io") ENID
+LU4_PSRCDRNspResNot10KorESD = NOT INTERACT (NET PSRCDRN "io") ENID
+LU4_NTAPspResNot10KorESD = NOT INTERACT (NET NTAP "io") ENID
+LU4_PTAPspResNot10KorESD = NOT INTERACT (NET PTAP "io") ENID
+CONNECT Met1lu m1ESDres
+CONNECT Met2lu m2ESDres
+CONNECT Met3lu m3ESDres
+CONNECT Met4lu m4ESDres
+CONNECT Met5lu m5ESDres
+CONNECT PolyNoRes pyESDres
+LU4_NSRCDRNspResThruESD = (NOT INTERACT (NET NSRCDRN "io") ENID) NOT LU4_NSRCDRNspResNot10KorESD
+LU4_PSRCDRNspResThruESD = (NOT INTERACT (NET PSRCDRN "io") ENID) NOT LU4_PSRCDRNspResNot10KorESD
+LU4_NTAPspResThruESD = (NOT INTERACT (NET NTAP "io") ENID) NOT LU4_NTAPspResNot10KorESD
+LU4_PTAPspResThruESD = (NOT INTERACT (NET PTAP "io") ENID) NOT LU4_PTAPspResNot10KorESD
+LU4_NSRCDRNspRes = NOT INTERACT (NET NSRCDRN "io") ENID
+LU4_PSRCDRNspRes = NOT INTERACT (NET PSRCDRN "io") ENID
+LU4_NTAPspRes = NOT INTERACT (NET NTAP "io") ENID
+LU4_PTAPspRes = NOT INTERACT (NET PTAP "io") ENID
+LU4_NSRCDRNspRes_pwell = LU4_NSRCDRNspRes AND dnwell
+LU4_NSRCDRNspRes_psub = LU4_NSRCDRNspRes NOT LU4_NSRCDRNspRes_pwell
+LU4_PTAPspRes_pwell = LU4_PTAPspRes AND dnwell
+PTAPnotSealDonut_nonIo = PTAPnotSealDonut NOT LU4_PTAPspRes
+NTAPnotSealDonut_nonIo = NTAPnotSealDonut NOT LU4_NTAPspRes
+PTAPnotSealDonut_nodnw_nonIo = PTAPnotSealDonut_nodnw NOT LU4_PTAPspRes
+Nwell_LU4_PSRCDRNspRes = INTERACT Nwell LU4_PSRCDRNspRes
+Nwell_LU4_NTAPspRes = INTERACT Nwell LU4_NTAPspRes
+isoSub_LU4_NSRCDRNspRes = INTERACT isolatedSubNoPWR LU4_NSRCDRNspRes
+isoSub_LU4_PTAPspRes_nodnw = NOT INTERACT (INTERACT isolatedSubNoPWR LU4_PTAPspRes) dnwell
+isoSub_LU4_PTAPspRes_dnw = INTERACT (INTERACT isolatedSubNoPWR LU4_PTAPspRes) dnwell
+LU4_PTAPspRes_PwellXmt = NET AREA RATIO LU4_PTAPspRes_pwell LU4_NSRCDRNspRes_pwell > 0 INSIDE OF LAYER dnwell
+LU4_NTAPspRes_Xmt = LU4_NTAPspRes AND (INSIDE CELL tapi "s8_esd_paddiode2pwr_100_hv" "s8_esd_paddiode2pwr_200_hv" "s8_esd_paddiode2pwr_300_hv")
+LU4_PSRCDRNspRes_commonWell = LU4_PSRCDRNspRes AND (INTERACT Nwell_LU4_PSRCDRNspRes LU4_PSRCDRNspRes > 1)
+LU4_NTAPspRes_commonWell = (LU4_NTAPspRes AND (INTERACT Nwell_LU4_NTAPspRes LU4_NTAPspRes > 1)) NOT LU4_NTAPspRes_Xmt
+LU4_NSRCDRNspRes_commonSub = LU4_NSRCDRNspRes AND (INTERACT isoSub_LU4_NSRCDRNspRes LU4_NSRCDRNspRes > 1)
+LU4_PTAPspRes_commonPWSub = (LU4_PTAPspRes AND (INTERACT isoSub_LU4_PTAPspRes_dnw LU4_PTAPspRes > 1)) NOT LU4_PTAPspRes_PwellXmt
+LU4_PTAPspRes_commonNPWSub = LU4_PTAPspRes AND (INTERACT isoSub_LU4_PTAPspRes_nodnw LU4_PTAPspRes > 1)
+LU4_PSRCDRNspRes_indWell = LU4_PSRCDRNspRes AND (INTERACT Nwell_LU4_PSRCDRNspRes LU4_PSRCDRNspRes == 1)
+LU4_NTAPspRes_indWell = (LU4_NTAPspRes AND (INTERACT Nwell_LU4_NTAPspRes LU4_NTAPspRes == 1)) NOT LU4_NTAPspRes_Xmt
+LU4_NSRCDRNspRes_indSub = LU4_NSRCDRNspRes AND (INTERACT isoSub_LU4_NSRCDRNspRes LU4_NSRCDRNspRes == 1)
+LU4_PTAPspRes_indNPWSub = LU4_PTAPspRes AND (INTERACT isoSub_LU4_PTAPspRes_nodnw LU4_PTAPspRes == 1)
+LU4_PTAPspRes_indPWSub = (LU4_PTAPspRes AND (INTERACT isoSub_LU4_PTAPspRes_dnw LU4_PTAPspRes == 1)) NOT LU4_PTAPspRes_PwellXmt
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingN_forIWPSD second:lu4_secondRingP_forIWPSD third:nil
+/// Inner ring derivation
+q0lu4_innerRingN_forIWPSD = COPY LU4_PSRCDRNspRes_indWell
+q0NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q1NTAPnotSealDonut = COPY q0NTAPnotSealDonut
+q3NTAPnotSealDonut = (HOLES q1NTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingN_forIWPSD
+q2NTAPnotSealDonut = COPY q3NTAPnotSealDonut
+q5NTAPnotSealDonut = TOUCH q1NTAPnotSealDonut q2NTAPnotSealDonut
+/// Second ring derivation
+q0PTAPnotSealDonut = NOT INTERACT PTAPnotSealDonut q5NTAPnotSealDonut
+q1PTAPnotSealDonut = DONUT q0PTAPnotSealDonut
+q5PTAPnotSealDonut = COPY q1PTAPnotSealDonut
+q4NTAPnotSealDonut = q2NTAPnotSealDonut NOT ENCLOSE q1PTAPnotSealDonut
+q6NTAPnotSealDonut = TOUCH q5NTAPnotSealDonut q4NTAPnotSealDonut
+q3PTAPnotSealDonut = (HOLES q5PTAPnotSealDonut) ENCLOSE q6NTAPnotSealDonut
+q4PTAPnotSealDonut = ((q3PTAPnotSealDonut NOT q5PTAPnotSealDonut) NOT q6NTAPnotSealDonut) NOT q4NTAPnotSealDonut
+q6PTAPnotSealDonut = TOUCH q4PTAPnotSealDonut q6NTAPnotSealDonut
+q14PTAPnotSealDonut = TOUCH q5PTAPnotSealDonut q6PTAPnotSealDonut
+q2PTAPnotSealDonut = HOLES q14PTAPnotSealDonut INNER
+q13PTAPnotSealDonut = TOUCH q14PTAPnotSealDonut (q2PTAPnotSealDonut ENCLOSE q6NTAPnotSealDonut < 2)
+lu4_innerRingN_forIWPSD = q6NTAPnotSealDonut INSIDE (HOLES q13PTAPnotSealDonut)
+lu4_secondRingP_forIWPSD = COPY q13PTAPnotSealDonut
+lu4_NinnerRegion_forIWPSD = TOUCH q4NTAPnotSealDonut lu4_innerRingN_forIWPSD
+lu4_NinnerToSecReg_forIWPSD = TOUCH q6PTAPnotSealDonut lu4_innerRingN_forIWPSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingN_forISPTAP second:lu4_secondRingP_forISPTAP third:nil
+/// Inner ring derivation
+q0lu4_innerRingN_forISPTAP = COPY LU4_PTAPspRes_indNPWSub
+q7NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q8NTAPnotSealDonut = COPY q7NTAPnotSealDonut
+q10NTAPnotSealDonut = (HOLES q8NTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingN_forISPTAP
+q9NTAPnotSealDonut = COPY q10NTAPnotSealDonut
+q12NTAPnotSealDonut = TOUCH q8NTAPnotSealDonut q9NTAPnotSealDonut
+/// Second ring derivation
+q0PTAPnotSealDonut_nonIo = NOT INTERACT PTAPnotSealDonut_nonIo q12NTAPnotSealDonut
+q1PTAPnotSealDonut_nonIo = DONUT q0PTAPnotSealDonut_nonIo
+q5PTAPnotSealDonut_nonIo = COPY q1PTAPnotSealDonut_nonIo
+q11NTAPnotSealDonut = q9NTAPnotSealDonut NOT ENCLOSE q1PTAPnotSealDonut_nonIo
+q13NTAPnotSealDonut = TOUCH q12NTAPnotSealDonut q11NTAPnotSealDonut
+q3PTAPnotSealDonut_nonIo = (HOLES q5PTAPnotSealDonut_nonIo) ENCLOSE q13NTAPnotSealDonut
+q4PTAPnotSealDonut_nonIo = ((q3PTAPnotSealDonut_nonIo NOT q5PTAPnotSealDonut_nonIo) NOT q13NTAPnotSealDonut) NOT q11NTAPnotSealDonut
+q6PTAPnotSealDonut_nonIo = TOUCH q4PTAPnotSealDonut_nonIo q13NTAPnotSealDonut
+q14PTAPnotSealDonut_nonIo = TOUCH q5PTAPnotSealDonut_nonIo q6PTAPnotSealDonut_nonIo
+q2PTAPnotSealDonut_nonIo = HOLES q14PTAPnotSealDonut_nonIo INNER
+q13PTAPnotSealDonut_nonIo = TOUCH q14PTAPnotSealDonut_nonIo (q2PTAPnotSealDonut_nonIo ENCLOSE q13NTAPnotSealDonut < 2)
+lu4_innerRingN_forISPTAP = q13NTAPnotSealDonut INSIDE (HOLES q13PTAPnotSealDonut_nonIo)
+lu4_secondRingP_forISPTAP = COPY q13PTAPnotSealDonut_nonIo
+lu4_NinnerRegion_forISPTAP = TOUCH q11NTAPnotSealDonut lu4_innerRingN_forISPTAP
+lu4_NinnerToSecReg_forISPTAP = TOUCH q6PTAPnotSealDonut_nonIo lu4_innerRingN_forISPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingN_forIPWSPTAP second:lu4_secondRingP_forIPWSPTAP third:nil
+/// Inner ring derivation
+q0lu4_innerRingN_forIPWSPTAP = COPY LU4_PTAPspRes_indPWSub
+q14NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q15NTAPnotSealDonut = COPY q14NTAPnotSealDonut
+q17NTAPnotSealDonut = (HOLES q15NTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingN_forIPWSPTAP
+q16NTAPnotSealDonut = COPY q17NTAPnotSealDonut
+q19NTAPnotSealDonut = TOUCH q15NTAPnotSealDonut q16NTAPnotSealDonut
+/// Second ring derivation
+q0PTAPnotSealDonut_nodnw_nonIo = NOT INTERACT PTAPnotSealDonut_nodnw_nonIo q19NTAPnotSealDonut
+q1PTAPnotSealDonut_nodnw_nonIo = DONUT q0PTAPnotSealDonut_nodnw_nonIo
+q5PTAPnotSealDonut_nodnw_nonIo = COPY q1PTAPnotSealDonut_nodnw_nonIo
+q18NTAPnotSealDonut = q16NTAPnotSealDonut NOT ENCLOSE q1PTAPnotSealDonut_nodnw_nonIo
+q20NTAPnotSealDonut = TOUCH q19NTAPnotSealDonut q18NTAPnotSealDonut
+q3PTAPnotSealDonut_nodnw_nonIo = (HOLES q5PTAPnotSealDonut_nodnw_nonIo) ENCLOSE q20NTAPnotSealDonut
+q4PTAPnotSealDonut_nodnw_nonIo = ((q3PTAPnotSealDonut_nodnw_nonIo NOT q5PTAPnotSealDonut_nodnw_nonIo) NOT q20NTAPnotSealDonut) NOT q18NTAPnotSealDonut
+q6PTAPnotSealDonut_nodnw_nonIo = TOUCH q4PTAPnotSealDonut_nodnw_nonIo q20NTAPnotSealDonut
+q14PTAPnotSealDonut_nodnw_nonIo = TOUCH q5PTAPnotSealDonut_nodnw_nonIo q6PTAPnotSealDonut_nodnw_nonIo
+q2PTAPnotSealDonut_nodnw_nonIo = HOLES q14PTAPnotSealDonut_nodnw_nonIo INNER
+q13PTAPnotSealDonut_nodnw_nonIo = TOUCH q14PTAPnotSealDonut_nodnw_nonIo (q2PTAPnotSealDonut_nodnw_nonIo ENCLOSE q20NTAPnotSealDonut < 2)
+lu4_innerRingN_forIPWSPTAP = q20NTAPnotSealDonut INSIDE (HOLES q13PTAPnotSealDonut_nodnw_nonIo)
+lu4_secondRingP_forIPWSPTAP = COPY q13PTAPnotSealDonut_nodnw_nonIo
+lu4_NinnerRegion_forIPWSPTAP = TOUCH q18NTAPnotSealDonut lu4_innerRingN_forIPWSPTAP
+lu4_NinnerToSecReg_forIPWSPTAP = TOUCH q6PTAPnotSealDonut_nodnw_nonIo lu4_innerRingN_forIPWSPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingN_forCWPSD second:lu4_secondRingP_forCWPSD third:nil
+/// Inner ring derivation
+q0lu4_innerRingN_forCWPSD = COPY LU4_PSRCDRNspRes_commonWell
+q21NTAPnotSealDonut = DONUT NTAPnotSealDonut
+q22NTAPnotSealDonut = COPY q21NTAPnotSealDonut
+q24NTAPnotSealDonut = (HOLES q22NTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingN_forCWPSD
+q23NTAPnotSealDonut = COPY q24NTAPnotSealDonut
+q26NTAPnotSealDonut = TOUCH q22NTAPnotSealDonut q23NTAPnotSealDonut
+/// Second ring derivation
+q15PTAPnotSealDonut = NOT INTERACT PTAPnotSealDonut q26NTAPnotSealDonut
+q16PTAPnotSealDonut = DONUT q15PTAPnotSealDonut
+q20PTAPnotSealDonut = COPY q16PTAPnotSealDonut
+q25NTAPnotSealDonut = q23NTAPnotSealDonut NOT ENCLOSE q16PTAPnotSealDonut
+q27NTAPnotSealDonut = TOUCH q26NTAPnotSealDonut q25NTAPnotSealDonut
+q18PTAPnotSealDonut = (HOLES q20PTAPnotSealDonut) ENCLOSE q27NTAPnotSealDonut
+q19PTAPnotSealDonut = ((q18PTAPnotSealDonut NOT q20PTAPnotSealDonut) NOT q27NTAPnotSealDonut) NOT q25NTAPnotSealDonut
+q21PTAPnotSealDonut = TOUCH q19PTAPnotSealDonut q27NTAPnotSealDonut
+q29PTAPnotSealDonut = TOUCH q20PTAPnotSealDonut q21PTAPnotSealDonut
+q17PTAPnotSealDonut = HOLES q29PTAPnotSealDonut INNER
+q28PTAPnotSealDonut = TOUCH q29PTAPnotSealDonut (q17PTAPnotSealDonut ENCLOSE q27NTAPnotSealDonut)
+lu4_innerRingN_forCWPSD = q27NTAPnotSealDonut INSIDE (HOLES q28PTAPnotSealDonut)
+lu4_secondRingP_forCWPSD = COPY q28PTAPnotSealDonut
+lu4_NinnerRegion_forCWPSD = TOUCH q25NTAPnotSealDonut lu4_innerRingN_forCWPSD
+lu4_NinnerToSecReg_forCWPSD = TOUCH q21PTAPnotSealDonut lu4_innerRingN_forCWPSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingN_forCSPTAP second:lu4_secondRingP_forCSPTAP third:nil
+/// Inner ring derivation
+q0lu4_innerRingN_forCSPTAP = COPY LU4_PTAPspRes_commonNPWSub
+q28NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q29NTAPnotSealDonut = COPY q28NTAPnotSealDonut
+q31NTAPnotSealDonut = (HOLES q29NTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingN_forCSPTAP
+q30NTAPnotSealDonut = COPY q31NTAPnotSealDonut
+q33NTAPnotSealDonut = TOUCH q29NTAPnotSealDonut q30NTAPnotSealDonut
+/// Second ring derivation
+q15PTAPnotSealDonut_nonIo = NOT INTERACT PTAPnotSealDonut_nonIo q33NTAPnotSealDonut
+q16PTAPnotSealDonut_nonIo = DONUT q15PTAPnotSealDonut_nonIo
+q20PTAPnotSealDonut_nonIo = COPY q16PTAPnotSealDonut_nonIo
+q32NTAPnotSealDonut = q30NTAPnotSealDonut NOT ENCLOSE q16PTAPnotSealDonut_nonIo
+q34NTAPnotSealDonut = TOUCH q33NTAPnotSealDonut q32NTAPnotSealDonut
+q18PTAPnotSealDonut_nonIo = (HOLES q20PTAPnotSealDonut_nonIo) ENCLOSE q34NTAPnotSealDonut
+q19PTAPnotSealDonut_nonIo = ((q18PTAPnotSealDonut_nonIo NOT q20PTAPnotSealDonut_nonIo) NOT q34NTAPnotSealDonut) NOT q32NTAPnotSealDonut
+q21PTAPnotSealDonut_nonIo = TOUCH q19PTAPnotSealDonut_nonIo q34NTAPnotSealDonut
+q29PTAPnotSealDonut_nonIo = TOUCH q20PTAPnotSealDonut_nonIo q21PTAPnotSealDonut_nonIo
+q17PTAPnotSealDonut_nonIo = HOLES q29PTAPnotSealDonut_nonIo INNER
+q28PTAPnotSealDonut_nonIo = TOUCH q29PTAPnotSealDonut_nonIo (q17PTAPnotSealDonut_nonIo ENCLOSE q34NTAPnotSealDonut < 2)
+lu4_innerRingN_forCSPTAP = q34NTAPnotSealDonut INSIDE (HOLES q28PTAPnotSealDonut_nonIo)
+lu4_secondRingP_forCSPTAP = COPY q28PTAPnotSealDonut_nonIo
+lu4_NinnerRegion_forCSPTAP = TOUCH q32NTAPnotSealDonut lu4_innerRingN_forCSPTAP
+lu4_NinnerToSecReg_forCSPTAP = TOUCH q21PTAPnotSealDonut_nonIo lu4_innerRingN_forCSPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingN_forCPWSPTAP second:lu4_secondRingP_forCPWSPTAP third:nil
+/// Inner ring derivation
+q0lu4_innerRingN_forCPWSPTAP = COPY LU4_PTAPspRes_commonPWSub
+q35NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q36NTAPnotSealDonut = COPY q35NTAPnotSealDonut
+q38NTAPnotSealDonut = (HOLES q36NTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingN_forCPWSPTAP
+q37NTAPnotSealDonut = COPY q38NTAPnotSealDonut
+q40NTAPnotSealDonut = TOUCH q36NTAPnotSealDonut q37NTAPnotSealDonut
+/// Second ring derivation
+q15PTAPnotSealDonut_nodnw_nonIo = NOT INTERACT PTAPnotSealDonut_nodnw_nonIo q40NTAPnotSealDonut
+q16PTAPnotSealDonut_nodnw_nonIo = DONUT q15PTAPnotSealDonut_nodnw_nonIo
+q20PTAPnotSealDonut_nodnw_nonIo = COPY q16PTAPnotSealDonut_nodnw_nonIo
+q39NTAPnotSealDonut = q37NTAPnotSealDonut NOT ENCLOSE q16PTAPnotSealDonut_nodnw_nonIo
+q41NTAPnotSealDonut = TOUCH q40NTAPnotSealDonut q39NTAPnotSealDonut
+q18PTAPnotSealDonut_nodnw_nonIo = (HOLES q20PTAPnotSealDonut_nodnw_nonIo) ENCLOSE q41NTAPnotSealDonut
+q19PTAPnotSealDonut_nodnw_nonIo = ((q18PTAPnotSealDonut_nodnw_nonIo NOT q20PTAPnotSealDonut_nodnw_nonIo) NOT q41NTAPnotSealDonut) NOT q39NTAPnotSealDonut
+q21PTAPnotSealDonut_nodnw_nonIo = TOUCH q19PTAPnotSealDonut_nodnw_nonIo q41NTAPnotSealDonut
+q29PTAPnotSealDonut_nodnw_nonIo = TOUCH q20PTAPnotSealDonut_nodnw_nonIo q21PTAPnotSealDonut_nodnw_nonIo
+q17PTAPnotSealDonut_nodnw_nonIo = HOLES q29PTAPnotSealDonut_nodnw_nonIo INNER
+q28PTAPnotSealDonut_nodnw_nonIo = TOUCH q29PTAPnotSealDonut_nodnw_nonIo (q17PTAPnotSealDonut_nodnw_nonIo ENCLOSE q41NTAPnotSealDonut < 2)
+lu4_innerRingN_forCPWSPTAP = q41NTAPnotSealDonut INSIDE (HOLES q28PTAPnotSealDonut_nodnw_nonIo)
+lu4_secondRingP_forCPWSPTAP = COPY q28PTAPnotSealDonut_nodnw_nonIo
+lu4_NinnerRegion_forCPWSPTAP = TOUCH q39NTAPnotSealDonut lu4_innerRingN_forCPWSPTAP
+lu4_NinnerToSecReg_forCPWSPTAP = TOUCH q21PTAPnotSealDonut_nodnw_nonIo lu4_innerRingN_forCPWSPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingP_forISNSD second:lu4_secondRingN_forISNSD third:nil
+/// Inner ring derivation
+q0lu4_innerRingP_forISNSD = COPY LU4_NSRCDRNspRes_indSub
+q30PTAPnotSealDonut = DONUT PTAPnotSealDonut < 2
+q31PTAPnotSealDonut = COPY q30PTAPnotSealDonut
+q33PTAPnotSealDonut = (HOLES q31PTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingP_forISNSD
+q32PTAPnotSealDonut = COPY q33PTAPnotSealDonut
+q35PTAPnotSealDonut = TOUCH q31PTAPnotSealDonut q32PTAPnotSealDonut
+/// Second ring derivation
+q42NTAPnotSealDonut = NOT INTERACT NTAPnotSealDonut q35PTAPnotSealDonut
+q43NTAPnotSealDonut = DONUT q42NTAPnotSealDonut
+q47NTAPnotSealDonut = COPY q43NTAPnotSealDonut
+q34PTAPnotSealDonut = q32PTAPnotSealDonut NOT ENCLOSE q43NTAPnotSealDonut
+q36PTAPnotSealDonut = TOUCH q35PTAPnotSealDonut q34PTAPnotSealDonut
+q45NTAPnotSealDonut = (HOLES q47NTAPnotSealDonut) ENCLOSE q36PTAPnotSealDonut
+q46NTAPnotSealDonut = ((q45NTAPnotSealDonut NOT q47NTAPnotSealDonut) NOT q36PTAPnotSealDonut) NOT q34PTAPnotSealDonut
+q48NTAPnotSealDonut = TOUCH q46NTAPnotSealDonut q36PTAPnotSealDonut
+q56NTAPnotSealDonut = TOUCH q47NTAPnotSealDonut q48NTAPnotSealDonut
+q44NTAPnotSealDonut = HOLES q56NTAPnotSealDonut INNER
+q55NTAPnotSealDonut = TOUCH q56NTAPnotSealDonut (q44NTAPnotSealDonut ENCLOSE q36PTAPnotSealDonut < 2)
+lu4_innerRingP_forISNSD = q36PTAPnotSealDonut INSIDE (HOLES q55NTAPnotSealDonut)
+lu4_secondRingN_forISNSD = COPY q55NTAPnotSealDonut
+lu4_PinnerRegion_forISNSD = TOUCH q34PTAPnotSealDonut lu4_innerRingP_forISNSD
+lu4_PinnerToSecReg_forISNSD = TOUCH q48NTAPnotSealDonut lu4_innerRingP_forISNSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingP_forIWNTAP second:lu4_secondRingN_forIWNTAP third:nil
+/// Inner ring derivation
+q0lu4_innerRingP_forIWNTAP = COPY LU4_NTAPspRes_indWell
+q37PTAPnotSealDonut = DONUT PTAPnotSealDonut < 2
+q38PTAPnotSealDonut = COPY q37PTAPnotSealDonut
+q40PTAPnotSealDonut = (HOLES q38PTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingP_forIWNTAP
+q39PTAPnotSealDonut = COPY q40PTAPnotSealDonut
+q42PTAPnotSealDonut = TOUCH q38PTAPnotSealDonut q39PTAPnotSealDonut
+/// Second ring derivation
+q0NTAPnotSealDonut_nonIo = NOT INTERACT NTAPnotSealDonut_nonIo q42PTAPnotSealDonut
+q1NTAPnotSealDonut_nonIo = DONUT q0NTAPnotSealDonut_nonIo
+q5NTAPnotSealDonut_nonIo = COPY q1NTAPnotSealDonut_nonIo
+q41PTAPnotSealDonut = q39PTAPnotSealDonut NOT ENCLOSE q1NTAPnotSealDonut_nonIo
+q43PTAPnotSealDonut = TOUCH q42PTAPnotSealDonut q41PTAPnotSealDonut
+q3NTAPnotSealDonut_nonIo = (HOLES q5NTAPnotSealDonut_nonIo) ENCLOSE q43PTAPnotSealDonut
+q4NTAPnotSealDonut_nonIo = ((q3NTAPnotSealDonut_nonIo NOT q5NTAPnotSealDonut_nonIo) NOT q43PTAPnotSealDonut) NOT q41PTAPnotSealDonut
+q6NTAPnotSealDonut_nonIo = TOUCH q4NTAPnotSealDonut_nonIo q43PTAPnotSealDonut
+q14NTAPnotSealDonut_nonIo = TOUCH q5NTAPnotSealDonut_nonIo q6NTAPnotSealDonut_nonIo
+q2NTAPnotSealDonut_nonIo = HOLES q14NTAPnotSealDonut_nonIo INNER
+q13NTAPnotSealDonut_nonIo = TOUCH q14NTAPnotSealDonut_nonIo (q2NTAPnotSealDonut_nonIo ENCLOSE q43PTAPnotSealDonut < 2)
+lu4_innerRingP_forIWNTAP = q43PTAPnotSealDonut INSIDE (HOLES q13NTAPnotSealDonut_nonIo)
+lu4_secondRingN_forIWNTAP = COPY q13NTAPnotSealDonut_nonIo
+lu4_PinnerRegion_forIWNTAP = TOUCH q41PTAPnotSealDonut lu4_innerRingP_forIWNTAP
+lu4_PinnerToSecReg_forIWNTAP = TOUCH q6NTAPnotSealDonut_nonIo lu4_innerRingP_forIWNTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingP_forCSNSD second:lu4_secondRingN_forCSNSD third:nil
+/// Inner ring derivation
+q0lu4_innerRingP_forCSNSD = COPY LU4_NSRCDRNspRes_commonSub
+q44PTAPnotSealDonut = DONUT PTAPnotSealDonut
+q45PTAPnotSealDonut = COPY q44PTAPnotSealDonut
+q47PTAPnotSealDonut = (HOLES q45PTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingP_forCSNSD
+q46PTAPnotSealDonut = COPY q47PTAPnotSealDonut
+q49PTAPnotSealDonut = TOUCH q45PTAPnotSealDonut q46PTAPnotSealDonut
+/// Second ring derivation
+q57NTAPnotSealDonut = NOT INTERACT NTAPnotSealDonut q49PTAPnotSealDonut
+q58NTAPnotSealDonut = DONUT q57NTAPnotSealDonut
+q62NTAPnotSealDonut = COPY q58NTAPnotSealDonut
+q48PTAPnotSealDonut = q46PTAPnotSealDonut NOT ENCLOSE q58NTAPnotSealDonut
+q50PTAPnotSealDonut = TOUCH q49PTAPnotSealDonut q48PTAPnotSealDonut
+q60NTAPnotSealDonut = (HOLES q62NTAPnotSealDonut) ENCLOSE q50PTAPnotSealDonut
+q61NTAPnotSealDonut = ((q60NTAPnotSealDonut NOT q62NTAPnotSealDonut) NOT q50PTAPnotSealDonut) NOT q48PTAPnotSealDonut
+q63NTAPnotSealDonut = TOUCH q61NTAPnotSealDonut q50PTAPnotSealDonut
+q71NTAPnotSealDonut = TOUCH q62NTAPnotSealDonut q63NTAPnotSealDonut
+q59NTAPnotSealDonut = HOLES q71NTAPnotSealDonut INNER
+q70NTAPnotSealDonut = TOUCH q71NTAPnotSealDonut (q59NTAPnotSealDonut ENCLOSE q50PTAPnotSealDonut)
+lu4_innerRingP_forCSNSD = q50PTAPnotSealDonut INSIDE (HOLES q70NTAPnotSealDonut)
+lu4_secondRingN_forCSNSD = COPY q70NTAPnotSealDonut
+lu4_PinnerRegion_forCSNSD = TOUCH q48PTAPnotSealDonut lu4_innerRingP_forCSNSD
+lu4_PinnerToSecReg_forCSNSD = TOUCH q63NTAPnotSealDonut lu4_innerRingP_forCSNSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:lu4_innerRingP_forCWNTAP second:lu4_secondRingN_forCWNTAP third:nil
+/// Inner ring derivation
+q0lu4_innerRingP_forCWNTAP = COPY LU4_NTAPspRes_commonWell
+q51PTAPnotSealDonut = DONUT PTAPnotSealDonut
+q52PTAPnotSealDonut = COPY q51PTAPnotSealDonut
+q54PTAPnotSealDonut = (HOLES q52PTAPnotSealDonut INNER) ENCLOSE q0lu4_innerRingP_forCWNTAP
+q53PTAPnotSealDonut = COPY q54PTAPnotSealDonut
+q56PTAPnotSealDonut = TOUCH q52PTAPnotSealDonut q53PTAPnotSealDonut
+/// Second ring derivation
+q15NTAPnotSealDonut_nonIo = NOT INTERACT NTAPnotSealDonut_nonIo q56PTAPnotSealDonut
+q16NTAPnotSealDonut_nonIo = DONUT q15NTAPnotSealDonut_nonIo < 2
+q20NTAPnotSealDonut_nonIo = COPY q16NTAPnotSealDonut_nonIo
+q55PTAPnotSealDonut = q53PTAPnotSealDonut NOT ENCLOSE q16NTAPnotSealDonut_nonIo
+q57PTAPnotSealDonut = TOUCH q56PTAPnotSealDonut q55PTAPnotSealDonut
+q18NTAPnotSealDonut_nonIo = (HOLES q20NTAPnotSealDonut_nonIo) ENCLOSE q57PTAPnotSealDonut
+q19NTAPnotSealDonut_nonIo = ((q18NTAPnotSealDonut_nonIo NOT q20NTAPnotSealDonut_nonIo) NOT q57PTAPnotSealDonut) NOT q55PTAPnotSealDonut
+q21NTAPnotSealDonut_nonIo = TOUCH q19NTAPnotSealDonut_nonIo q57PTAPnotSealDonut
+q29NTAPnotSealDonut_nonIo = TOUCH q20NTAPnotSealDonut_nonIo q21NTAPnotSealDonut_nonIo
+q17NTAPnotSealDonut_nonIo = HOLES q29NTAPnotSealDonut_nonIo INNER
+q28NTAPnotSealDonut_nonIo = TOUCH q29NTAPnotSealDonut_nonIo (q17NTAPnotSealDonut_nonIo ENCLOSE q57PTAPnotSealDonut)
+lu4_innerRingP_forCWNTAP = q57PTAPnotSealDonut INSIDE (HOLES q28NTAPnotSealDonut_nonIo)
+lu4_secondRingN_forCWNTAP = COPY q28NTAPnotSealDonut_nonIo
+lu4_PinnerRegion_forCWNTAP = TOUCH q55PTAPnotSealDonut lu4_innerRingP_forCWNTAP
+lu4_PinnerToSecReg_forCWNTAP = TOUCH q21NTAPnotSealDonut_nonIo lu4_innerRingP_forCWNTAP
+/// CALderiveGuardRings complete
+grNTAP_tmpA = lu4_secondRingN_forISNSD OR (lu4_secondRingN_forIWNTAP OR (lu4_secondRingN_forCSNSD OR lu4_secondRingN_forCWNTAP))
+grPTAP_tmpA = lu4_secondRingP_forIWPSD OR (lu4_secondRingP_forISPTAP OR (lu4_secondRingP_forIPWSPTAP OR (lu4_secondRingP_forCWPSD OR (lu4_secondRingP_forCSPTAP OR lu4_secondRingP_forCPWSPTAP))))
+grNTAP_holes = HOLES grNTAP_tmpA
+grPTAP_holes = HOLES grPTAP_tmpA
+grNTAPholeWithESDresSigPadDiff = INTERACT grNTAP_holes (LU4_PTAPspResThruESD OR 
+(LU4_NTAPspResThruESD OR 
+(LU4_NSRCDRNspResThruESD OR LU4_PSRCDRNspResThruESD)))
+grPTAPholeWithESDresSigPadDiff = INTERACT grPTAP_holes (LU4_PTAPspResThruESD OR 
+(LU4_NTAPspResThruESD OR 
+(LU4_NSRCDRNspResThruESD OR LU4_PSRCDRNspResThruESD)))
+grNTAP_tmp = NOT INTERACT grNTAP_tmpA grNTAPholeWithESDresSigPadDiff
+grPTAP_tmp = NOT INTERACT grPTAP_tmpA grPTAPholeWithESDresSigPadDiff
+CONNECT grNTAP_tmp NTAP
+CONNECT grPTAP_tmp PTAP
+grNTAP = grNTAP_tmp AND vccNTAP
+grPTAP = grPTAP_tmp AND vssPTAP
+grNTAPnotVcc = grNTAP_tmp NOT grNTAP
+grPTAPnotVss = grPTAP_tmp NOT grPTAP
+exNetGRconXmtCells = EXTENT CELL "s8iom0s8_top_sio_macro" "s8usbpdv2_20vconn_sw_300ma_ovp_ngate" "s8usbpdv2_20sbu_sw_ovp_ngate" ORIGINAL
+bad_nonExt_outer_grNTAP = grNTAP_tmp NOT (grNTAP OR exNetGRconXmtCells)
+bad_nonExt_outer_grPTAP = grPTAP_tmp NOT (grPTAP OR exNetGRconXmtCells)
+sigPadDiffAll_Sz = SIZE (LU4_NSRCDRNspNtr OR 
+(LU4_PSRCDRNspNtr OR 
+(LU4_NTAPspNtr OR 
+(LU4_PTAPspNtr OR 
+(LU4_NSRCDRNspRes OR 
+(LU4_PSRCDRNspRes OR 
+(LU4_NTAPspRes OR LU4_PTAPspRes))))))) BY 50
+innerGRs = lu4_innerRingN_forIWPSD OR (lu4_innerRingN_forISPTAP OR (lu4_innerRingN_forIPWSPTAP OR (lu4_innerRingN_forCWPSD OR (lu4_innerRingN_forCSPTAP OR (lu4_innerRingN_forCPWSPTAP OR (lu4_innerRingP_forISNSD OR (lu4_innerRingP_forIWNTAP OR (lu4_innerRingP_forCSNSD OR lu4_innerRingP_forCWNTAP))))))))
+ntapRingNotTxt = NOT WITH TEXT (DONUT NTAP) "NOT_GR" textlabel
+ptapRingNotTxt = NOT WITH TEXT (DONUT PTAP) "NOT_GR" textlabel
+lu4_5c_xmtCells = EXTENT CELL "s8ctbm_opa" "psoc4able256_top" "psoc4able_top" "s8atlasana_top" "s8tsafg6*_top" "tsg6m_top" "m0s8gen4_top" "fpg1_top" "psoc4a_top" "psoc4ads2_top" "psoc4al_top" "ccg4_top" "tsg5_m_top" "psoc4able256dma_top" "psoc4able256nr_top" "ccg5_top" "ccg3pa_top" "ccg3pa2_top" ORIGINAL
+grNTAPsz = (INTERACT (ntapRingNotTxt NOT innerGRs) sigPadDiffAll_Sz) NOT lu4_5c_xmtCells
+grPTAPsz = (INTERACT (ptapRingNotTxt NOT innerGRs) sigPadDiffAll_Sz) NOT lu4_5c_xmtCells
+/// CALconnectZone started - zoneName was "zone_1"
+DISCONNECT
+CONNECT nwell NTAP
+CONNECT Li1Lu PTAP BY Licon1Pfom
+CONNECT Li1Lu NTAP BY Licon1Nfom
+CONNECT Li1Lu PSRCDRN BY Licon1Pfom
+CONNECT Li1Lu NSRCDRN BY Licon1Nfom
+CONNECT Li1Lu PolyNoRes BY Licon1ply
+CONNECT Met1LuESDres Li1Lu BY mcon
+CONNECT Met2LuESDres Met1LuESDres BY via
+CONNECT Met3LuESDres Met2LuESDres BY via2
+CONNECT PolyNoRes gate
+CONNECT Met3LuESDres met3tt
+CONNECT Met2LuESDres met2tt
+CONNECT Met1LuESDres met1tt
+CONNECT li1 li1tt
+CONNECT PolyNoRes polytt
+CONNECT NSRCDRN difftt
+CONNECT PSRCDRN difftt
+CONNECT Met4LuESDres Met3LuESDres BY via3
+CONNECT Met5LuESDres Met4LuESDres BY via4
+CONNECT PadLuESDres Met5LuESDres
+CONNECT RdlLu Met5LuESDres BY pmm
+CONNECT poly_pin PolyNoRes
+TEXT LAYER polypt ATTACH polypt poly_pin
+CONNECT li1_pin Li1Lu
+TEXT LAYER li1pt ATTACH li1pt li1_pin
+CONNECT met1_pin Met1LuESDres
+TEXT LAYER met1pt ATTACH met1pt met1_pin
+CONNECT met2_pin Met2LuESDres
+TEXT LAYER met2pt ATTACH met2pt met2_pin
+CONNECT met3_pin Met3LuESDres
+TEXT LAYER met3pt ATTACH met3pt met3_pin
+CONNECT met4_pin Met4LuESDres
+TEXT LAYER met4pt ATTACH met4pt met4_pin
+CONNECT met5_pin Met5LuESDres
+TEXT LAYER met5pt ATTACH met5pt met5_pin
+CONNECT rdl_pin RdlLu
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin
+TEXT LAYER met3tt ATTACH met3tt Met3LuESDres
+TEXT LAYER met2tt ATTACH met2tt Met2LuESDres
+TEXT LAYER met1tt ATTACH met1tt Met1LuESDres
+TEXT LAYER li1tt ATTACH li1tt Li1Lu
+TEXT LAYER polytt ATTACH polytt PolyNoRes
+TEXT LAYER difftt ATTACH difftt NSRCDRN
+TEXT LAYER difftt ATTACH difftt PSRCDRN
+TEXT LAYER met4tt ATTACH met4tt Met4LuESDres
+TEXT LAYER met5tt ATTACH met5tt Met5LuESDres
+TEXT LAYER rdltt ATTACH rdltt RdlLu
+/// CALconnectZone done.  zoneName is now zone_2
+esdresLU4_ioPad = NET PadLuESDres "io"
+esdresLU4_NSRCDRNspRes = STAMP (COPY LU4_NSRCDRNspResThruESD) BY NSRCDRN
+esdresLU4_PSRCDRNspRes = STAMP (COPY LU4_PSRCDRNspResThruESD) BY PSRCDRN
+esdresLU4_NTAPspRes = STAMP (COPY LU4_NTAPspResThruESD) BY NTAP
+esdresLU4_PTAPspRes = STAMP (COPY LU4_PTAPspResThruESD) BY PTAP
+esdresLU4_NSRCDRNspRes_pwell = esdresLU4_NSRCDRNspRes AND dnwell
+esdresLU4_NSRCDRNspRes_psub = esdresLU4_NSRCDRNspRes NOT esdresLU4_NSRCDRNspRes_pwell
+esdresLU4_PTAPspRes_pwell = esdresLU4_PTAPspRes AND dnwell
+esdresPTAPnotSealDonut_nonIo = PTAPnotSealDonut NOT esdresLU4_PTAPspRes
+esdresNTAPnotSealDonut_nonIo = NTAPnotSealDonut NOT esdresLU4_NTAPspRes
+esdresPTAPnotSealDonut_nodnw_nonIo = PTAPnotSealDonut_nodnw NOT esdresLU4_PTAPspRes
+esdresNwell_LU4_PSRCDRNspRes = INTERACT Nwell esdresLU4_PSRCDRNspRes
+esdresNwell_LU4_NTAPspRes = INTERACT Nwell esdresLU4_NTAPspRes
+esdresisoSub_LU4_NSRCDRNspRes = INTERACT isolatedSubNoPWR esdresLU4_NSRCDRNspRes
+esdresisoSub_LU4_PTAPspRes_nodnw = NOT INTERACT (INTERACT isolatedSubNoPWR esdresLU4_PTAPspRes) dnwell
+esdresisoSub_LU4_PTAPspRes_dnw = INTERACT (INTERACT isolatedSubNoPWR esdresLU4_PTAPspRes) dnwell
+esdresLU4_PTAPspRes_PwellXmt = NET AREA RATIO esdresLU4_PTAPspRes_pwell esdresLU4_NSRCDRNspRes_pwell > 0 INSIDE OF LAYER dnwell
+esdresLU4_NTAPspRes_Xmt = esdresLU4_NTAPspRes AND (INSIDE CELL tapi "s8_esd_paddiode2pwr_100_hv" "s8_esd_paddiode2pwr_200_hv" "s8_esd_paddiode2pwr_300_hv")
+esdresLU4_PSRCDRNspRes_commonWell = esdresLU4_PSRCDRNspRes AND (INTERACT esdresNwell_LU4_PSRCDRNspRes esdresLU4_PSRCDRNspRes > 1)
+esdresLU4_NTAPspRes_commonWell = (esdresLU4_NTAPspRes AND (INTERACT esdresNwell_LU4_NTAPspRes esdresLU4_NTAPspRes > 1)) NOT esdresLU4_NTAPspRes_Xmt
+esdresLU4_NSRCDRNspRes_commonSub = esdresLU4_NSRCDRNspRes AND (INTERACT esdresisoSub_LU4_NSRCDRNspRes esdresLU4_NSRCDRNspRes > 1)
+esdresLU4_PTAPspRes_commonPWSub = (esdresLU4_PTAPspRes AND (INTERACT esdresisoSub_LU4_PTAPspRes_dnw esdresLU4_PTAPspRes > 1)) NOT esdresLU4_PTAPspRes_PwellXmt
+esdresLU4_PTAPspRes_commonNPWSub = esdresLU4_PTAPspRes AND (INTERACT esdresisoSub_LU4_PTAPspRes_nodnw esdresLU4_PTAPspRes > 1)
+esdresLU4_PSRCDRNspRes_indWell = esdresLU4_PSRCDRNspRes AND (INTERACT esdresNwell_LU4_PSRCDRNspRes esdresLU4_PSRCDRNspRes == 1)
+esdresLU4_NTAPspRes_indWell = (esdresLU4_NTAPspRes AND (INTERACT esdresNwell_LU4_NTAPspRes esdresLU4_NTAPspRes == 1)) NOT esdresLU4_NTAPspRes_Xmt
+esdresLU4_NSRCDRNspRes_indSub = esdresLU4_NSRCDRNspRes AND (INTERACT esdresisoSub_LU4_NSRCDRNspRes esdresLU4_NSRCDRNspRes == 1)
+esdresLU4_PTAPspRes_indNPWSub = esdresLU4_PTAPspRes AND (INTERACT esdresisoSub_LU4_PTAPspRes_nodnw esdresLU4_PTAPspRes == 1)
+esdresLU4_PTAPspRes_indPWSub = (esdresLU4_PTAPspRes AND (INTERACT esdresisoSub_LU4_PTAPspRes_dnw esdresLU4_PTAPspRes == 1)) NOT esdresLU4_PTAPspRes_PwellXmt
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingN_forIWPSD second:esdreslu4_secondRingP_forIWPSD third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingN_forIWPSD = COPY esdresLU4_PSRCDRNspRes_indWell
+q72NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q73NTAPnotSealDonut = COPY q72NTAPnotSealDonut
+q75NTAPnotSealDonut = (HOLES q73NTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingN_forIWPSD
+q74NTAPnotSealDonut = COPY q75NTAPnotSealDonut
+q77NTAPnotSealDonut = TOUCH q73NTAPnotSealDonut q74NTAPnotSealDonut
+/// Second ring derivation
+q58PTAPnotSealDonut = NOT INTERACT PTAPnotSealDonut q77NTAPnotSealDonut
+q59PTAPnotSealDonut = DONUT q58PTAPnotSealDonut
+q63PTAPnotSealDonut = COPY q59PTAPnotSealDonut
+q76NTAPnotSealDonut = q74NTAPnotSealDonut NOT ENCLOSE q59PTAPnotSealDonut
+q78NTAPnotSealDonut = TOUCH q77NTAPnotSealDonut q76NTAPnotSealDonut
+q61PTAPnotSealDonut = (HOLES q63PTAPnotSealDonut) ENCLOSE q78NTAPnotSealDonut
+q62PTAPnotSealDonut = ((q61PTAPnotSealDonut NOT q63PTAPnotSealDonut) NOT q78NTAPnotSealDonut) NOT q76NTAPnotSealDonut
+q64PTAPnotSealDonut = TOUCH q62PTAPnotSealDonut q78NTAPnotSealDonut
+q72PTAPnotSealDonut = TOUCH q63PTAPnotSealDonut q64PTAPnotSealDonut
+q60PTAPnotSealDonut = HOLES q72PTAPnotSealDonut INNER
+q71PTAPnotSealDonut = TOUCH q72PTAPnotSealDonut (q60PTAPnotSealDonut ENCLOSE q78NTAPnotSealDonut < 2)
+esdreslu4_innerRingN_forIWPSD = q78NTAPnotSealDonut INSIDE (HOLES q71PTAPnotSealDonut)
+esdreslu4_secondRingP_forIWPSD = COPY q71PTAPnotSealDonut
+esdreslu4_NinnerRegion_forIWPSD = TOUCH q76NTAPnotSealDonut esdreslu4_innerRingN_forIWPSD
+esdreslu4_NinnerToSecReg_forIWPSD = TOUCH q64PTAPnotSealDonut esdreslu4_innerRingN_forIWPSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingN_forISPTAP second:esdreslu4_secondRingP_forISPTAP third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingN_forISPTAP = COPY esdresLU4_PTAPspRes_indNPWSub
+q79NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q80NTAPnotSealDonut = COPY q79NTAPnotSealDonut
+q82NTAPnotSealDonut = (HOLES q80NTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingN_forISPTAP
+q81NTAPnotSealDonut = COPY q82NTAPnotSealDonut
+q84NTAPnotSealDonut = TOUCH q80NTAPnotSealDonut q81NTAPnotSealDonut
+/// Second ring derivation
+q30PTAPnotSealDonut_nonIo = NOT INTERACT PTAPnotSealDonut_nonIo q84NTAPnotSealDonut
+q31PTAPnotSealDonut_nonIo = DONUT q30PTAPnotSealDonut_nonIo
+q35PTAPnotSealDonut_nonIo = COPY q31PTAPnotSealDonut_nonIo
+q83NTAPnotSealDonut = q81NTAPnotSealDonut NOT ENCLOSE q31PTAPnotSealDonut_nonIo
+q85NTAPnotSealDonut = TOUCH q84NTAPnotSealDonut q83NTAPnotSealDonut
+q33PTAPnotSealDonut_nonIo = (HOLES q35PTAPnotSealDonut_nonIo) ENCLOSE q85NTAPnotSealDonut
+q34PTAPnotSealDonut_nonIo = ((q33PTAPnotSealDonut_nonIo NOT q35PTAPnotSealDonut_nonIo) NOT q85NTAPnotSealDonut) NOT q83NTAPnotSealDonut
+q36PTAPnotSealDonut_nonIo = TOUCH q34PTAPnotSealDonut_nonIo q85NTAPnotSealDonut
+q44PTAPnotSealDonut_nonIo = TOUCH q35PTAPnotSealDonut_nonIo q36PTAPnotSealDonut_nonIo
+q32PTAPnotSealDonut_nonIo = HOLES q44PTAPnotSealDonut_nonIo INNER
+q43PTAPnotSealDonut_nonIo = TOUCH q44PTAPnotSealDonut_nonIo (q32PTAPnotSealDonut_nonIo ENCLOSE q85NTAPnotSealDonut < 2)
+esdreslu4_innerRingN_forISPTAP = q85NTAPnotSealDonut INSIDE (HOLES q43PTAPnotSealDonut_nonIo)
+esdreslu4_secondRingP_forISPTAP = COPY q43PTAPnotSealDonut_nonIo
+esdreslu4_NinnerRegion_forISPTAP = TOUCH q83NTAPnotSealDonut esdreslu4_innerRingN_forISPTAP
+esdreslu4_NinnerToSecReg_forISPTAP = TOUCH q36PTAPnotSealDonut_nonIo esdreslu4_innerRingN_forISPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingN_forIPWSPTAP second:esdreslu4_secondRingP_forIPWSPTAP third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingN_forIPWSPTAP = COPY esdresLU4_PTAPspRes_indPWSub
+q86NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q87NTAPnotSealDonut = COPY q86NTAPnotSealDonut
+q89NTAPnotSealDonut = (HOLES q87NTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingN_forIPWSPTAP
+q88NTAPnotSealDonut = COPY q89NTAPnotSealDonut
+q91NTAPnotSealDonut = TOUCH q87NTAPnotSealDonut q88NTAPnotSealDonut
+/// Second ring derivation
+q30PTAPnotSealDonut_nodnw_nonIo = NOT INTERACT PTAPnotSealDonut_nodnw_nonIo q91NTAPnotSealDonut
+q31PTAPnotSealDonut_nodnw_nonIo = DONUT q30PTAPnotSealDonut_nodnw_nonIo
+q35PTAPnotSealDonut_nodnw_nonIo = COPY q31PTAPnotSealDonut_nodnw_nonIo
+q90NTAPnotSealDonut = q88NTAPnotSealDonut NOT ENCLOSE q31PTAPnotSealDonut_nodnw_nonIo
+q92NTAPnotSealDonut = TOUCH q91NTAPnotSealDonut q90NTAPnotSealDonut
+q33PTAPnotSealDonut_nodnw_nonIo = (HOLES q35PTAPnotSealDonut_nodnw_nonIo) ENCLOSE q92NTAPnotSealDonut
+q34PTAPnotSealDonut_nodnw_nonIo = ((q33PTAPnotSealDonut_nodnw_nonIo NOT q35PTAPnotSealDonut_nodnw_nonIo) NOT q92NTAPnotSealDonut) NOT q90NTAPnotSealDonut
+q36PTAPnotSealDonut_nodnw_nonIo = TOUCH q34PTAPnotSealDonut_nodnw_nonIo q92NTAPnotSealDonut
+q44PTAPnotSealDonut_nodnw_nonIo = TOUCH q35PTAPnotSealDonut_nodnw_nonIo q36PTAPnotSealDonut_nodnw_nonIo
+q32PTAPnotSealDonut_nodnw_nonIo = HOLES q44PTAPnotSealDonut_nodnw_nonIo INNER
+q43PTAPnotSealDonut_nodnw_nonIo = TOUCH q44PTAPnotSealDonut_nodnw_nonIo (q32PTAPnotSealDonut_nodnw_nonIo ENCLOSE q92NTAPnotSealDonut < 2)
+esdreslu4_innerRingN_forIPWSPTAP = q92NTAPnotSealDonut INSIDE (HOLES q43PTAPnotSealDonut_nodnw_nonIo)
+esdreslu4_secondRingP_forIPWSPTAP = COPY q43PTAPnotSealDonut_nodnw_nonIo
+esdreslu4_NinnerRegion_forIPWSPTAP = TOUCH q90NTAPnotSealDonut esdreslu4_innerRingN_forIPWSPTAP
+esdreslu4_NinnerToSecReg_forIPWSPTAP = TOUCH q36PTAPnotSealDonut_nodnw_nonIo esdreslu4_innerRingN_forIPWSPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingN_forCWPSD second:esdreslu4_secondRingP_forCWPSD third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingN_forCWPSD = COPY esdresLU4_PSRCDRNspRes_commonWell
+q93NTAPnotSealDonut = DONUT NTAPnotSealDonut
+q94NTAPnotSealDonut = COPY q93NTAPnotSealDonut
+q96NTAPnotSealDonut = (HOLES q94NTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingN_forCWPSD
+q95NTAPnotSealDonut = COPY q96NTAPnotSealDonut
+q98NTAPnotSealDonut = TOUCH q94NTAPnotSealDonut q95NTAPnotSealDonut
+/// Second ring derivation
+q73PTAPnotSealDonut = NOT INTERACT PTAPnotSealDonut q98NTAPnotSealDonut
+q74PTAPnotSealDonut = DONUT q73PTAPnotSealDonut
+q78PTAPnotSealDonut = COPY q74PTAPnotSealDonut
+q97NTAPnotSealDonut = q95NTAPnotSealDonut NOT ENCLOSE q74PTAPnotSealDonut
+q99NTAPnotSealDonut = TOUCH q98NTAPnotSealDonut q97NTAPnotSealDonut
+q76PTAPnotSealDonut = (HOLES q78PTAPnotSealDonut) ENCLOSE q99NTAPnotSealDonut
+q77PTAPnotSealDonut = ((q76PTAPnotSealDonut NOT q78PTAPnotSealDonut) NOT q99NTAPnotSealDonut) NOT q97NTAPnotSealDonut
+q79PTAPnotSealDonut = TOUCH q77PTAPnotSealDonut q99NTAPnotSealDonut
+q87PTAPnotSealDonut = TOUCH q78PTAPnotSealDonut q79PTAPnotSealDonut
+q75PTAPnotSealDonut = HOLES q87PTAPnotSealDonut INNER
+q86PTAPnotSealDonut = TOUCH q87PTAPnotSealDonut (q75PTAPnotSealDonut ENCLOSE q99NTAPnotSealDonut)
+esdreslu4_innerRingN_forCWPSD = q99NTAPnotSealDonut INSIDE (HOLES q86PTAPnotSealDonut)
+esdreslu4_secondRingP_forCWPSD = COPY q86PTAPnotSealDonut
+esdreslu4_NinnerRegion_forCWPSD = TOUCH q97NTAPnotSealDonut esdreslu4_innerRingN_forCWPSD
+esdreslu4_NinnerToSecReg_forCWPSD = TOUCH q79PTAPnotSealDonut esdreslu4_innerRingN_forCWPSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingN_forCSPTAP second:esdreslu4_secondRingP_forCSPTAP third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingN_forCSPTAP = COPY esdresLU4_PTAPspRes_commonNPWSub
+q100NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q101NTAPnotSealDonut = COPY q100NTAPnotSealDonut
+q103NTAPnotSealDonut = (HOLES q101NTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingN_forCSPTAP
+q102NTAPnotSealDonut = COPY q103NTAPnotSealDonut
+q105NTAPnotSealDonut = TOUCH q101NTAPnotSealDonut q102NTAPnotSealDonut
+/// Second ring derivation
+q45PTAPnotSealDonut_nonIo = NOT INTERACT PTAPnotSealDonut_nonIo q105NTAPnotSealDonut
+q46PTAPnotSealDonut_nonIo = DONUT q45PTAPnotSealDonut_nonIo
+q50PTAPnotSealDonut_nonIo = COPY q46PTAPnotSealDonut_nonIo
+q104NTAPnotSealDonut = q102NTAPnotSealDonut NOT ENCLOSE q46PTAPnotSealDonut_nonIo
+q106NTAPnotSealDonut = TOUCH q105NTAPnotSealDonut q104NTAPnotSealDonut
+q48PTAPnotSealDonut_nonIo = (HOLES q50PTAPnotSealDonut_nonIo) ENCLOSE q106NTAPnotSealDonut
+q49PTAPnotSealDonut_nonIo = ((q48PTAPnotSealDonut_nonIo NOT q50PTAPnotSealDonut_nonIo) NOT q106NTAPnotSealDonut) NOT q104NTAPnotSealDonut
+q51PTAPnotSealDonut_nonIo = TOUCH q49PTAPnotSealDonut_nonIo q106NTAPnotSealDonut
+q59PTAPnotSealDonut_nonIo = TOUCH q50PTAPnotSealDonut_nonIo q51PTAPnotSealDonut_nonIo
+q47PTAPnotSealDonut_nonIo = HOLES q59PTAPnotSealDonut_nonIo INNER
+q58PTAPnotSealDonut_nonIo = TOUCH q59PTAPnotSealDonut_nonIo (q47PTAPnotSealDonut_nonIo ENCLOSE q106NTAPnotSealDonut < 2)
+esdreslu4_innerRingN_forCSPTAP = q106NTAPnotSealDonut INSIDE (HOLES q58PTAPnotSealDonut_nonIo)
+esdreslu4_secondRingP_forCSPTAP = COPY q58PTAPnotSealDonut_nonIo
+esdreslu4_NinnerRegion_forCSPTAP = TOUCH q104NTAPnotSealDonut esdreslu4_innerRingN_forCSPTAP
+esdreslu4_NinnerToSecReg_forCSPTAP = TOUCH q51PTAPnotSealDonut_nonIo esdreslu4_innerRingN_forCSPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingN_forCPWSPTAP second:esdreslu4_secondRingP_forCPWSPTAP third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingN_forCPWSPTAP = COPY esdresLU4_PTAPspRes_commonPWSub
+q107NTAPnotSealDonut = DONUT NTAPnotSealDonut < 2
+q108NTAPnotSealDonut = COPY q107NTAPnotSealDonut
+q110NTAPnotSealDonut = (HOLES q108NTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingN_forCPWSPTAP
+q109NTAPnotSealDonut = COPY q110NTAPnotSealDonut
+q112NTAPnotSealDonut = TOUCH q108NTAPnotSealDonut q109NTAPnotSealDonut
+/// Second ring derivation
+q45PTAPnotSealDonut_nodnw_nonIo = NOT INTERACT PTAPnotSealDonut_nodnw_nonIo q112NTAPnotSealDonut
+q46PTAPnotSealDonut_nodnw_nonIo = DONUT q45PTAPnotSealDonut_nodnw_nonIo
+q50PTAPnotSealDonut_nodnw_nonIo = COPY q46PTAPnotSealDonut_nodnw_nonIo
+q111NTAPnotSealDonut = q109NTAPnotSealDonut NOT ENCLOSE q46PTAPnotSealDonut_nodnw_nonIo
+q113NTAPnotSealDonut = TOUCH q112NTAPnotSealDonut q111NTAPnotSealDonut
+q48PTAPnotSealDonut_nodnw_nonIo = (HOLES q50PTAPnotSealDonut_nodnw_nonIo) ENCLOSE q113NTAPnotSealDonut
+q49PTAPnotSealDonut_nodnw_nonIo = ((q48PTAPnotSealDonut_nodnw_nonIo NOT q50PTAPnotSealDonut_nodnw_nonIo) NOT q113NTAPnotSealDonut) NOT q111NTAPnotSealDonut
+q51PTAPnotSealDonut_nodnw_nonIo = TOUCH q49PTAPnotSealDonut_nodnw_nonIo q113NTAPnotSealDonut
+q59PTAPnotSealDonut_nodnw_nonIo = TOUCH q50PTAPnotSealDonut_nodnw_nonIo q51PTAPnotSealDonut_nodnw_nonIo
+q47PTAPnotSealDonut_nodnw_nonIo = HOLES q59PTAPnotSealDonut_nodnw_nonIo INNER
+q58PTAPnotSealDonut_nodnw_nonIo = TOUCH q59PTAPnotSealDonut_nodnw_nonIo (q47PTAPnotSealDonut_nodnw_nonIo ENCLOSE q113NTAPnotSealDonut < 2)
+esdreslu4_innerRingN_forCPWSPTAP = q113NTAPnotSealDonut INSIDE (HOLES q58PTAPnotSealDonut_nodnw_nonIo)
+esdreslu4_secondRingP_forCPWSPTAP = COPY q58PTAPnotSealDonut_nodnw_nonIo
+esdreslu4_NinnerRegion_forCPWSPTAP = TOUCH q111NTAPnotSealDonut esdreslu4_innerRingN_forCPWSPTAP
+esdreslu4_NinnerToSecReg_forCPWSPTAP = TOUCH q51PTAPnotSealDonut_nodnw_nonIo esdreslu4_innerRingN_forCPWSPTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingP_forISNSD second:esdreslu4_secondRingN_forISNSD third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingP_forISNSD = COPY esdresLU4_NSRCDRNspRes_indSub
+q88PTAPnotSealDonut = DONUT PTAPnotSealDonut < 2
+q89PTAPnotSealDonut = COPY q88PTAPnotSealDonut
+q91PTAPnotSealDonut = (HOLES q89PTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingP_forISNSD
+q90PTAPnotSealDonut = COPY q91PTAPnotSealDonut
+q93PTAPnotSealDonut = TOUCH q89PTAPnotSealDonut q90PTAPnotSealDonut
+/// Second ring derivation
+q114NTAPnotSealDonut = NOT INTERACT NTAPnotSealDonut q93PTAPnotSealDonut
+q115NTAPnotSealDonut = DONUT q114NTAPnotSealDonut
+q119NTAPnotSealDonut = COPY q115NTAPnotSealDonut
+q92PTAPnotSealDonut = q90PTAPnotSealDonut NOT ENCLOSE q115NTAPnotSealDonut
+q94PTAPnotSealDonut = TOUCH q93PTAPnotSealDonut q92PTAPnotSealDonut
+q117NTAPnotSealDonut = (HOLES q119NTAPnotSealDonut) ENCLOSE q94PTAPnotSealDonut
+q118NTAPnotSealDonut = ((q117NTAPnotSealDonut NOT q119NTAPnotSealDonut) NOT q94PTAPnotSealDonut) NOT q92PTAPnotSealDonut
+q120NTAPnotSealDonut = TOUCH q118NTAPnotSealDonut q94PTAPnotSealDonut
+q128NTAPnotSealDonut = TOUCH q119NTAPnotSealDonut q120NTAPnotSealDonut
+q116NTAPnotSealDonut = HOLES q128NTAPnotSealDonut INNER
+q127NTAPnotSealDonut = TOUCH q128NTAPnotSealDonut (q116NTAPnotSealDonut ENCLOSE q94PTAPnotSealDonut < 2)
+esdreslu4_innerRingP_forISNSD = q94PTAPnotSealDonut INSIDE (HOLES q127NTAPnotSealDonut)
+esdreslu4_secondRingN_forISNSD = COPY q127NTAPnotSealDonut
+esdreslu4_PinnerRegion_forISNSD = TOUCH q92PTAPnotSealDonut esdreslu4_innerRingP_forISNSD
+esdreslu4_PinnerToSecReg_forISNSD = TOUCH q120NTAPnotSealDonut esdreslu4_innerRingP_forISNSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingP_forIWNTAP second:esdreslu4_secondRingN_forIWNTAP third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingP_forIWNTAP = COPY esdresLU4_NTAPspRes_indWell
+q95PTAPnotSealDonut = DONUT PTAPnotSealDonut < 2
+q96PTAPnotSealDonut = COPY q95PTAPnotSealDonut
+q98PTAPnotSealDonut = (HOLES q96PTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingP_forIWNTAP
+q97PTAPnotSealDonut = COPY q98PTAPnotSealDonut
+q100PTAPnotSealDonut = TOUCH q96PTAPnotSealDonut q97PTAPnotSealDonut
+/// Second ring derivation
+q30NTAPnotSealDonut_nonIo = NOT INTERACT NTAPnotSealDonut_nonIo q100PTAPnotSealDonut
+q31NTAPnotSealDonut_nonIo = DONUT q30NTAPnotSealDonut_nonIo
+q35NTAPnotSealDonut_nonIo = COPY q31NTAPnotSealDonut_nonIo
+q99PTAPnotSealDonut = q97PTAPnotSealDonut NOT ENCLOSE q31NTAPnotSealDonut_nonIo
+q101PTAPnotSealDonut = TOUCH q100PTAPnotSealDonut q99PTAPnotSealDonut
+q33NTAPnotSealDonut_nonIo = (HOLES q35NTAPnotSealDonut_nonIo) ENCLOSE q101PTAPnotSealDonut
+q34NTAPnotSealDonut_nonIo = ((q33NTAPnotSealDonut_nonIo NOT q35NTAPnotSealDonut_nonIo) NOT q101PTAPnotSealDonut) NOT q99PTAPnotSealDonut
+q36NTAPnotSealDonut_nonIo = TOUCH q34NTAPnotSealDonut_nonIo q101PTAPnotSealDonut
+q44NTAPnotSealDonut_nonIo = TOUCH q35NTAPnotSealDonut_nonIo q36NTAPnotSealDonut_nonIo
+q32NTAPnotSealDonut_nonIo = HOLES q44NTAPnotSealDonut_nonIo INNER
+q43NTAPnotSealDonut_nonIo = TOUCH q44NTAPnotSealDonut_nonIo (q32NTAPnotSealDonut_nonIo ENCLOSE q101PTAPnotSealDonut < 2)
+esdreslu4_innerRingP_forIWNTAP = q101PTAPnotSealDonut INSIDE (HOLES q43NTAPnotSealDonut_nonIo)
+esdreslu4_secondRingN_forIWNTAP = COPY q43NTAPnotSealDonut_nonIo
+esdreslu4_PinnerRegion_forIWNTAP = TOUCH q99PTAPnotSealDonut esdreslu4_innerRingP_forIWNTAP
+esdreslu4_PinnerToSecReg_forIWNTAP = TOUCH q36NTAPnotSealDonut_nonIo esdreslu4_innerRingP_forIWNTAP
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingP_forCSNSD second:esdreslu4_secondRingN_forCSNSD third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingP_forCSNSD = COPY esdresLU4_NSRCDRNspRes_commonSub
+q102PTAPnotSealDonut = DONUT PTAPnotSealDonut
+q103PTAPnotSealDonut = COPY q102PTAPnotSealDonut
+q105PTAPnotSealDonut = (HOLES q103PTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingP_forCSNSD
+q104PTAPnotSealDonut = COPY q105PTAPnotSealDonut
+q107PTAPnotSealDonut = TOUCH q103PTAPnotSealDonut q104PTAPnotSealDonut
+/// Second ring derivation
+q129NTAPnotSealDonut = NOT INTERACT NTAPnotSealDonut q107PTAPnotSealDonut
+q130NTAPnotSealDonut = DONUT q129NTAPnotSealDonut
+q134NTAPnotSealDonut = COPY q130NTAPnotSealDonut
+q106PTAPnotSealDonut = q104PTAPnotSealDonut NOT ENCLOSE q130NTAPnotSealDonut
+q108PTAPnotSealDonut = TOUCH q107PTAPnotSealDonut q106PTAPnotSealDonut
+q132NTAPnotSealDonut = (HOLES q134NTAPnotSealDonut) ENCLOSE q108PTAPnotSealDonut
+q133NTAPnotSealDonut = ((q132NTAPnotSealDonut NOT q134NTAPnotSealDonut) NOT q108PTAPnotSealDonut) NOT q106PTAPnotSealDonut
+q135NTAPnotSealDonut = TOUCH q133NTAPnotSealDonut q108PTAPnotSealDonut
+q143NTAPnotSealDonut = TOUCH q134NTAPnotSealDonut q135NTAPnotSealDonut
+q131NTAPnotSealDonut = HOLES q143NTAPnotSealDonut INNER
+q142NTAPnotSealDonut = TOUCH q143NTAPnotSealDonut (q131NTAPnotSealDonut ENCLOSE q108PTAPnotSealDonut)
+esdreslu4_innerRingP_forCSNSD = q108PTAPnotSealDonut INSIDE (HOLES q142NTAPnotSealDonut)
+esdreslu4_secondRingN_forCSNSD = COPY q142NTAPnotSealDonut
+esdreslu4_PinnerRegion_forCSNSD = TOUCH q106PTAPnotSealDonut esdreslu4_innerRingP_forCSNSD
+esdreslu4_PinnerToSecReg_forCSNSD = TOUCH q135NTAPnotSealDonut esdreslu4_innerRingP_forCSNSD
+/// CALderiveGuardRings complete
+/// CALderiveGuardRings: Deriving guard ring inner:esdreslu4_innerRingP_forCWNTAP second:esdreslu4_secondRingN_forCWNTAP third:nil
+/// Inner ring derivation
+q0esdreslu4_innerRingP_forCWNTAP = COPY esdresLU4_NTAPspRes_commonWell
+q109PTAPnotSealDonut = DONUT PTAPnotSealDonut
+q110PTAPnotSealDonut = COPY q109PTAPnotSealDonut
+q112PTAPnotSealDonut = (HOLES q110PTAPnotSealDonut INNER) ENCLOSE q0esdreslu4_innerRingP_forCWNTAP
+q111PTAPnotSealDonut = COPY q112PTAPnotSealDonut
+q114PTAPnotSealDonut = TOUCH q110PTAPnotSealDonut q111PTAPnotSealDonut
+/// Second ring derivation
+q45NTAPnotSealDonut_nonIo = NOT INTERACT NTAPnotSealDonut_nonIo q114PTAPnotSealDonut
+q46NTAPnotSealDonut_nonIo = DONUT q45NTAPnotSealDonut_nonIo < 2
+q50NTAPnotSealDonut_nonIo = COPY q46NTAPnotSealDonut_nonIo
+q113PTAPnotSealDonut = q111PTAPnotSealDonut NOT ENCLOSE q46NTAPnotSealDonut_nonIo
+q115PTAPnotSealDonut = TOUCH q114PTAPnotSealDonut q113PTAPnotSealDonut
+q48NTAPnotSealDonut_nonIo = (HOLES q50NTAPnotSealDonut_nonIo) ENCLOSE q115PTAPnotSealDonut
+q49NTAPnotSealDonut_nonIo = ((q48NTAPnotSealDonut_nonIo NOT q50NTAPnotSealDonut_nonIo) NOT q115PTAPnotSealDonut) NOT q113PTAPnotSealDonut
+q51NTAPnotSealDonut_nonIo = TOUCH q49NTAPnotSealDonut_nonIo q115PTAPnotSealDonut
+q59NTAPnotSealDonut_nonIo = TOUCH q50NTAPnotSealDonut_nonIo q51NTAPnotSealDonut_nonIo
+q47NTAPnotSealDonut_nonIo = HOLES q59NTAPnotSealDonut_nonIo INNER
+q58NTAPnotSealDonut_nonIo = TOUCH q59NTAPnotSealDonut_nonIo (q47NTAPnotSealDonut_nonIo ENCLOSE q115PTAPnotSealDonut)
+esdreslu4_innerRingP_forCWNTAP = q115PTAPnotSealDonut INSIDE (HOLES q58NTAPnotSealDonut_nonIo)
+esdreslu4_secondRingN_forCWNTAP = COPY q58NTAPnotSealDonut_nonIo
+esdreslu4_PinnerRegion_forCWNTAP = TOUCH q113PTAPnotSealDonut esdreslu4_innerRingP_forCWNTAP
+esdreslu4_PinnerToSecReg_forCWNTAP = TOUCH q51NTAPnotSealDonut_nonIo esdreslu4_innerRingP_forCWNTAP
+/// CALderiveGuardRings complete
+grNTAP_tmpESDres = esdreslu4_secondRingN_forISNSD OR 
+(esdreslu4_secondRingN_forIWNTAP OR 
+(esdreslu4_secondRingN_forCSNSD OR esdreslu4_secondRingN_forCWNTAP))
+grPTAP_tmpESDres = esdreslu4_secondRingP_forIWPSD OR 
+(esdreslu4_secondRingP_forISPTAP OR 
+(esdreslu4_secondRingP_forIPWSPTAP OR 
+(esdreslu4_secondRingP_forCWPSD OR 
+(esdreslu4_secondRingP_forCSPTAP OR esdreslu4_secondRingP_forCPWSPTAP))))
+pwrPadMetESDres = COPY pwrPadMet
+gndPadMetESDres = COPY gndPadMet
+signalDIFFTAP = (NET PSRCDRN "io") OR 
+((NET NSRCDRN "io") OR 
+((NET NTAP "io") OR (NET PTAP "io")))
+searchZone = SIZE signalDIFFTAP BY 100
+dummy_nwell = INTERACT nwell searchZone
+dummy_sub = INTERACT isolatedSubstrate searchZone
+vssvccSRCDRN = (NET NSRCDRN "vgnd") OR (NET PSRCDRN "vpwr")
+searchZone_tmp1 = SIZE signalDIFFTAP BY 70
+searchZone_tmp2 = SIZE signalDIFFTAP BY 100
+searchDevice_tmp1 = INTERACT vssvccSRCDRN searchZone_tmp1
+searchDevice_tmp2 = (INTERACT vssvccSRCDRN searchZone_tmp2) NOT searchDevice_tmp1
+searchDevice_tmp3 = EXTERNAL [searchDevice_tmp2] signalDIFFTAP <= 100.0
+searchDevice_tmp4 = vssvccSRCDRN WITH EDGE searchDevice_tmp3
+searchDevice_all = searchDevice_tmp1 OR searchDevice_tmp4
+gndNSRCDRN = INTERACT (NSRCDRN AND searchDevice_all) licon1 > 2
+pwrPSRCDRN = INTERACT (PSRCDRN AND searchDevice_all) licon1 > 6
+pwrNTAP_tmp = NET NTAP "vpwr"
+gndPTAP_tmp = NET PTAP "vgnd"
+pwrNTAP = INTERACT pwrNTAP_tmp searchZone
+gndPTAP = INTERACT gndPTAP_tmp searchZone
+/// CALconnectZone started - zoneName was "zone_2"
+DISCONNECT
+CONNECT nwell NTAP
+CONNECT Li1Lu PTAP BY Licon1Pfom
+CONNECT Li1Lu NTAP BY Licon1Nfom
+CONNECT Li1Lu PSRCDRN BY Licon1Pfom
+CONNECT Li1Lu NSRCDRN BY Licon1Nfom
+CONNECT Li1Lu PolyNoRes BY Licon1ply
+CONNECT Met1Lu Li1Lu BY mcon
+CONNECT Met2Lu Met1Lu BY via
+CONNECT Met3Lu Met2Lu BY via2
+CONNECT PolyNoRes gate
+CONNECT Met3Lu met3tt
+CONNECT Met2Lu met2tt
+CONNECT Met1Lu met1tt
+CONNECT li1 li1tt
+CONNECT PolyNoRes polytt
+CONNECT NSRCDRN difftt
+CONNECT PSRCDRN difftt
+CONNECT Met4Lu Met3Lu BY via3
+CONNECT Met5Lu Met4Lu BY via4
+CONNECT PadLu Met5Lu
+CONNECT RdlLu Met5Lu BY pmm
+CONNECT poly_pin PolyNoRes
+TEXT LAYER polypt ATTACH polypt poly_pin
+CONNECT li1_pin Li1Lu
+TEXT LAYER li1pt ATTACH li1pt li1_pin
+CONNECT met1_pin Met1Lu
+TEXT LAYER met1pt ATTACH met1pt met1_pin
+CONNECT met2_pin Met2Lu
+TEXT LAYER met2pt ATTACH met2pt met2_pin
+CONNECT met3_pin Met3Lu
+TEXT LAYER met3pt ATTACH met3pt met3_pin
+CONNECT met4_pin Met4Lu
+TEXT LAYER met4pt ATTACH met4pt met4_pin
+CONNECT met5_pin Met5Lu
+TEXT LAYER met5pt ATTACH met5pt met5_pin
+CONNECT rdl_pin RdlLu
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin
+TEXT LAYER met3tt ATTACH met3tt Met3Lu
+TEXT LAYER met2tt ATTACH met2tt Met2Lu
+TEXT LAYER met1tt ATTACH met1tt Met1Lu
+TEXT LAYER li1tt ATTACH li1tt Li1Lu
+TEXT LAYER polytt ATTACH polytt PolyNoRes
+TEXT LAYER difftt ATTACH difftt NSRCDRN
+TEXT LAYER difftt ATTACH difftt PSRCDRN
+TEXT LAYER met4tt ATTACH met4tt Met4Lu
+TEXT LAYER met5tt ATTACH met5tt Met5Lu
+TEXT LAYER rdltt ATTACH rdltt RdlLu
+/// CALconnectZone done.  zoneName is now zone_3
+CONNECT grNTAP_tmpESDres NTAP
+CONNECT grPTAP_tmpESDres PTAP
+lu4_5b_xmtCells = EXTENT CELL "psoc4able256_top" "psoc4al_top" "psoc4ads2_top" "psoc4a_top" "psoc4able_top" "fpg1_top" "tsg5_m_top" "psoc4able256dma_top" ORIGINAL
+grNTAPESDres = (grNTAP_tmpESDres AND vccNTAP) NOT lu4_5b_xmtCells
+grPTAPESDres = (grPTAP_tmpESDres AND vssPTAP) NOT lu4_5b_xmtCells
+pwrPad = NET PadLu "vpwr"
+gndPad = NET PadLu "vgnd"
+signalPad = NET PadLu "io"
+Diff_10k_res = WITH TEXT diffres "10KOhm" textlabel
+Poly_10k_res = WITH TEXT polyres "10KOhm" textlabel
+Met1_10k_res = WITH TEXT met1res "10KOhm" textlabel
+Met2_10k_res = WITH TEXT met2res "10KOhm" textlabel
+Met3_10k_res = WITH TEXT met3res "10KOhm" textlabel
+Diff_100k_res = (WITH TEXT diffres "100KOhm" textlabel) OR Diff_10k_res
+Poly_100k_res = (WITH TEXT polyres "100KOhm" textlabel) OR Poly_10k_res
+Met1_100k_res = (WITH TEXT met1res "100KOhm" textlabel) OR Met1_10k_res
+Met2_100k_res = (WITH TEXT met2res "100KOhm" textlabel) OR Met2_10k_res
+Met3_100k_res = (WITH TEXT met3res "100KOhm" textlabel) OR Met3_10k_res
+Diff_leaker = WITH TEXT diffres "leaker" textlabel
+Poly_leaker = WITH TEXT polyres "leaker" textlabel
+Met1_leaker = WITH TEXT met1res "leaker" textlabel
+Met2_leaker = WITH TEXT met2res "leaker" textlabel
+Met3_leaker = WITH TEXT met3res "leaker" textlabel
+NSRCDRN_lu9 = NSRCDRN NOT (Diff_leaker OR Diff_100k_res)
+PSRCDRN_lu9 = PSRCDRN NOT (Diff_leaker OR Diff_100K_res)
+poly_lu9 = poly NOT (poly_leaker OR Poly_100k_res)
+met1_lu9 = met1 NOT (Met1_leaker OR Met1_100k_res)
+met2_lu9 = met2 NOT (Met2_leaker OR Met2_100k_res)
+met3_lu9 = met3 NOT (Met3_leaker OR Met3_100k_res)
+ESD_NSRCDRN = (ESDID AND NSRCDRN) NOT Diff_leaker
+ESD_PSRCDRN = (ESDID AND PSRCDRN) NOT Diff_leaker
+ESD_NTAP = ESDID AND NTAP
+ESD_PTAP = ESDID AND PTAP
+Met4_10k_res = WITH TEXT met4res "10KOhm" textlabel
+Met4_100k_res = (WITH TEXT met4res "100KOhm" textlabel) OR Met4_10k_res
+Met4_leaker = WITH TEXT met4res "leaker" textlabel
+met4_lu9 = met4 NOT (Met4_leaker OR Met4_100k_res)
+Met5_10k_res = WITH TEXT met5res "10KOhm" textlabel
+Met5_100k_res = (WITH TEXT met5res "100KOhm" textlabel) OR Met5_10k_res
+Met5_leaker = WITH TEXT met5res "leaker" textlabel
+met5_lu9 = met5 NOT (Met5_leaker OR Met5_100k_res)
+rdl_lu9 = COPY rdl
+/// CALconnectZone started - zoneName was "zone_3"
+DISCONNECT
+CONNECT nwell ESD_NTAP
+CONNECT li1 ESD_PTAP BY Licon1Pfom
+CONNECT li1 PTAP BY Licon1Pfom
+CONNECT li1 ESD_NTAP BY Licon1Nfom
+CONNECT li1 ESD_PSRCDRN BY Licon1Pfom
+CONNECT li1 ESD_NSRCDRN BY Licon1Nfom
+CONNECT li1 PSRCDRN BY Licon1Pfom
+CONNECT li1 NSRCDRN BY Licon1Nfom
+CONNECT li1 poly_lu9 BY Licon1ply
+CONNECT met1_lu9 li1 BY mcon
+CONNECT met2_lu9 met1_lu9 BY via
+CONNECT met3_lu9 met2_lu9 BY via2
+CONNECT poly_lu9 gate
+CONNECT met3_lu9 met3tt
+CONNECT met2_lu9 met2tt
+CONNECT met1_lu9 met1tt
+CONNECT li1 li1tt
+CONNECT poly_lu9 polytt
+CONNECT ESD_NSRCDRN difftt
+CONNECT ESD_PSRCDRN difftt
+CONNECT NSRCDRN difftt
+CONNECT PSRCDRN difftt
+CONNECT poly_lu9 poly_pin BY polypt
+CONNECT li1 li1_pin BY li1pt
+CONNECT met1_lu9 met1_pin BY met1pt
+CONNECT met2_lu9 met2_pin BY met2pt
+CONNECT met3_lu9 met3_pin BY met3pt
+CONNECT met4_lu9 met3_lu9 BY via3
+CONNECT met5_lu9 met4_lu9 BY via4
+CONNECT met5_lu9 rdl_lu9 BY pmm
+CONNECT signalPad met5_lu9
+CONNECT pwrPad met5_lu9
+CONNECT gndPad met5_lu9
+CONNECT poly_pin poly_lu9
+TEXT LAYER polypt ATTACH polypt poly_pin
+CONNECT li1_pin li1
+TEXT LAYER li1pt ATTACH li1pt li1_pin
+CONNECT met1_pin met1_lu9
+TEXT LAYER met1pt ATTACH met1pt met1_pin
+CONNECT met2_pin met2_lu9
+TEXT LAYER met2pt ATTACH met2pt met2_pin
+CONNECT met3_pin met3_lu9
+TEXT LAYER met3pt ATTACH met3pt met3_pin
+CONNECT met4_pin met4_lu9
+TEXT LAYER met4pt ATTACH met4pt met4_pin
+CONNECT met5_pin met5_lu9
+TEXT LAYER met5pt ATTACH met5pt met5_pin
+CONNECT rdl_pin rdl_lu9
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin
+TEXT LAYER met3tt ATTACH met3tt met3_lu9
+TEXT LAYER met2tt ATTACH met2tt met2_lu9
+TEXT LAYER met1tt ATTACH met1tt met1_lu9
+TEXT LAYER li1tt ATTACH li1tt li1
+TEXT LAYER polytt ATTACH polytt poly_lu9
+TEXT LAYER difftt ATTACH difftt ESD_NSRCDRN
+TEXT LAYER difftt ATTACH difftt ESD_PSRCDRN
+TEXT LAYER difftt ATTACH difftt NSRCDRN
+TEXT LAYER difftt ATTACH difftt PSRCDRN
+TEXT LAYER met4tt ATTACH met4tt met4_lu9
+TEXT LAYER met5tt ATTACH met5tt met5_lu9
+TEXT LAYER rdltt ATTACH rdltt rdl_lu9
+/// CALconnectZone done.  zoneName is now zone_4
+signal_pad_diff = (NET AREA RATIO NSRCDRN signalPad > 0) OR (NET AREA RATIO PSRCDRN signalPAD > 0)
+LV_signal_pad_diff = signal_pad_diff NOT hvi
+HV_signal_pad_diff = signal_pad_diff AND hvi
+CONNECT LV_signal_pad_diff NSRCDRN
+CONNECT LV_signal_pad_diff PSRCDRN
+CONNECT HV_signal_pad_diff NSRCDRN
+CONNECT HV_signal_pad_diff PSRCDRN
+signal_pad_conn_to_HV_tmp1 = NET AREA RATIO signalPad HV_signal_pad_diff > 0
+signal_pad_conn_to_LV = NET AREA RATIO signalPad LV_signal_pad_diff > 0
+signal_pad_conn_to_HV = signal_pad_conn_to_HV_tmp1 NOT signal_pad_conn_to_LV
+CONNECT signal_pad_conn_to_HV signalPad
+CONNECT signal_pad_conn_to_LV signalPad
+gnd_esd_diff = (NET AREA RATIO ESD_NSRCDRN gndPad > 0) OR (NET AREA RATIO ESD_PSRCDRN gndPad > 0)
+gnd_esd_ntap = (NET AREA RATIO ESD_NTAP gndPad > 0) OR (NET AREA RATIO ESD_PTAP gndPad > 0)
+check_9_4_diff = gnd_esd_diff AND (EXTENT CELL "s8iom0s8_top_b2b_diode" "s8iom0s8_top_lvc_b2b_wopad" "s8fpiom0s8_top_lvc_b2b_wopad" "s8_esd_gnd2gnd_120x2_lv_isosub" "s8atlasana_esd_gnd2gnd_120x2_lv_isosub" "s8fpiom0s8_esd_gnd2gnd_180x2_lv_dnwl" ORIGINAL)
+check_9_4_ntap = gnd_esd_ntap AND (EXTENT CELL "s8iom0s8_top_b2b_diode" "s8iom0s8_top_lvc_b2b_wopad" "s8fpiom0s8_top_lvc_b2b_wopad" "s8_esd_gnd2gnd_120x2_lv_isosub" "s8atlasana_esd_gnd2gnd_120x2_lv_isosub" "s8fpiom0s8_esd_gnd2gnd_180x2_lv_dnwl" ORIGINAL)
+check_9_4_pdiff = FLATTEN (check_9_4_diff AND nwell)
+check_9_4_ndiff = FLATTEN (check_9_4_diff NOT nwell)
+check_9_4_Met1 = Met1Lu AND (check_9_4_pdiff OR check_9_4_ndiff)
+CONNECT check_9_4_met1 Met1Lu
+CONNECT check_9_4_pdiff PSRCDRN
+CONNECT check_9_4_ndiff NSRCDRN
+CONNECT check_9_4_ntap ESD_NTAP
+gndPadNotCheckPDiff = FLATTEN (NET AREA RATIO gndPad check_9_4_pdiff == 0)
+gndPadNotCheckNDiff = FLATTEN (NET AREA RATIO gndPad check_9_4_ndiff == 0)
+gndPadNotCheckDiff = gndPadNotCheckPDiff AND gndPadNotCheckNDiff
+b2bDiode = FLATTEN (EXTENT CELL "s8iom0s8_top_b2b_diode" "s8iom0s8_top_lvc_b2b_wopad" "s8fpiom0s8_top_lvc_b2b_wopad" "s8_esd_gnd2gnd_120x2_lv_isosub" "s8atlasana_esd_gnd2gnd_120x2_lv_isosub" "s8fpiom0s8_esd_gnd2gnd_180x2_lv_dnwl" ORIGINAL)
+checkSigPad = COPY signalPad
+signal_pad_Ndiff = NET AREA RATIO NSRCDRN checkSigPad > 0
+signal_pad_Ptap = NET AREA RATIO PTAP checkSigPad > 0
+bad_signal_pad_Ndiff = NET AREA RATIO signal_pad_Ndiff signal_pad_Ptap > 0
+/// CALconnectZone started - zoneName was "zone_4"
+DISCONNECT
+CONNECT nwell NTAP
+CONNECT Li1Lu PTAP BY Licon1Pfom
+CONNECT Li1Lu NTAP BY Licon1Nfom
+CONNECT Li1Lu PSRCDRN BY Licon1Pfom
+CONNECT Li1Lu NSRCDRN BY Licon1Nfom
+CONNECT Li1Lu PolyNoRes BY Licon1ply
+CONNECT Met1Lu Li1Lu BY mcon
+CONNECT Met2Lu Met1Lu BY via
+CONNECT Met3Lu Met2Lu BY via2
+CONNECT PolyNoRes gate
+CONNECT Met3Lu met3tt
+CONNECT Met2Lu met2tt
+CONNECT Met1Lu met1tt
+CONNECT li1 li1tt
+CONNECT PolyNoRes polytt
+CONNECT NSRCDRN difftt
+CONNECT PSRCDRN difftt
+CONNECT Met4Lu Met3Lu BY via3
+CONNECT Met5Lu Met4Lu BY via4
+CONNECT PadLu Met5Lu
+CONNECT RdlLu Met5Lu BY pmm
+CONNECT poly_pin PolyNoRes
+TEXT LAYER polypt ATTACH polypt poly_pin
+CONNECT li1_pin Li1Lu
+TEXT LAYER li1pt ATTACH li1pt li1_pin
+CONNECT met1_pin Met1Lu
+TEXT LAYER met1pt ATTACH met1pt met1_pin
+CONNECT met2_pin Met2Lu
+TEXT LAYER met2pt ATTACH met2pt met2_pin
+CONNECT met3_pin Met3Lu
+TEXT LAYER met3pt ATTACH met3pt met3_pin
+CONNECT met4_pin Met4Lu
+TEXT LAYER met4pt ATTACH met4pt met4_pin
+CONNECT met5_pin Met5Lu
+TEXT LAYER met5pt ATTACH met5pt met5_pin
+CONNECT rdl_pin RdlLu
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin
+TEXT LAYER met3tt ATTACH met3tt Met3Lu
+TEXT LAYER met2tt ATTACH met2tt Met2Lu
+TEXT LAYER met1tt ATTACH met1tt Met1Lu
+TEXT LAYER li1tt ATTACH li1tt Li1Lu
+TEXT LAYER polytt ATTACH polytt PolyNoRes
+TEXT LAYER difftt ATTACH difftt NSRCDRN
+TEXT LAYER difftt ATTACH difftt PSRCDRN
+TEXT LAYER met4tt ATTACH met4tt Met4Lu
+TEXT LAYER met5tt ATTACH met5tt Met5Lu
+TEXT LAYER rdltt ATTACH rdltt RdlLu
+/// CALconnectZone done.  zoneName is now zone_5
+isoPwell_Not_ground = NOT INTERACT dnwell gndPTAP_tmp
+check_7_8_ndiff = (signal_pad_Ndiff NOT (bad_signal_pad_Ndiff OR (EXTENT CELL "s8_esd_signal_40_sym_hv_2k_dnwl_aup1_b" "s8usbpd_sbu_sw_top" "s8usbpdv2_vddd_sw_nsw" "s8usbpdv2_dpdm_sw_2X2_nch" "s8usbpdv2_20vconn_sw_top" "s8usbpdv2_20sbu_sw_top" ORIGINAL))) AND isoPwell_Not_ground
+CONNECT check_7_8_ndiff NSRCDRN
+/// --END SEPARATE DECK 0 drc lu_area--
+q4PolyNoRes = COPY 4000
+q5PolyNoRes = COPY PolyNoRes
+PolyNoRes_cond = q5PolyNoRes NOT q4PolyNoRes
+CONNECT poly_pin PolyNoRes_cond
+TEXT LAYER polypt ATTACH polypt poly_pin ATTACH polypt PolyNoRes_cond
+TEXT LAYER polytt ATTACH polytt PolyNoRes_cond
+RESISTANCE SHEET PolyNoRes_cond [ 48.2 0 ]
+PARASITIC VARIATION PolyNoRes_cond SHEET  // deltaW = 0.056000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.155000 VALUE 76.914894 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.165000 VALUE 74.153846 // sheet @ w==0.16 
+    SPACE > 0 DRAWN_WIDTH >= 0.165000 < 0.175000 VALUE 71.877193 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.185000 VALUE 69.967742 // sheet @ w==0.18 
+    SPACE > 0 DRAWN_WIDTH >= 0.185000 < 0.195000 VALUE 68.343284 // sheet @ w==0.19 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.215000 VALUE 66.315436 // sheet @ w==0.205 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.235000 VALUE 64.171598 // sheet @ w==0.225 
+    SPACE > 0 DRAWN_WIDTH >= 0.235000 < 0.265000 VALUE 62.113402 // sheet @ w==0.25 
+    SPACE > 0 DRAWN_WIDTH >= 0.265000 < 0.310000 VALUE 59.986900 // sheet @ w==0.285 
+    SPACE > 0 DRAWN_WIDTH >= 0.310000 < 0.375000 VALUE 57.704225 // sheet @ w==0.34 
+    SPACE > 0 DRAWN_WIDTH >= 0.375000 < 0.480000 VALUE 55.615385 // sheet @ w==0.42 
+    SPACE > 0 DRAWN_WIDTH >= 0.480000 < 0.690000 VALUE 53.502947 // sheet @ w==0.565 
+    SPACE > 0 DRAWN_WIDTH >= 0.690000 < 1.275000 VALUE 51.417163 // sheet @ w==0.895 
+    SPACE > 0 DRAWN_WIDTH >= 1.275000 < 2.800000 VALUE 49.408236 // sheet @ w==2.29
+q8PolyNoRes = EXPAND TEXT "?" polytt BY 0.005 PRIMARY ONLY
+q10PolyNoRes = COPY poly_pin
+q6PolyNoRes = q8PolyNoRes NOT (SIZE q10PolyNoRes BY 0.005)
+q7PolyNoRes = SIZE q6PolyNoRes BY 0.005
+CONNECT q7PolyNoRes
+DEVICE Probe(probe_polytt) q6PolyNoRes   q7PolyNoRes(probe) PolyNoRes_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER polytt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Li1Lu = COPY 4001
+q5Li1Lu = COPY Li1Lu
+Li1Lu_cond = q5Li1Lu NOT q4Li1Lu
+CONNECT li1_pin Li1Lu_cond
+TEXT LAYER li1pt ATTACH li1pt li1_pin ATTACH li1pt Li1Lu_cond
+TEXT LAYER li1tt ATTACH li1tt Li1Lu_cond
+RESISTANCE SHEET Li1Lu_cond [ 12.2 0 ]
+PARASITIC VARIATION Li1Lu_cond SHEET  // deltaW = -0.017000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.215000 VALUE 11.090909 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.450000 VALUE 11.524430 // sheet @ w==0.29 
+    SPACE > 0 DRAWN_WIDTH >= 0.450000 < 0.850000 VALUE 11.960784 // sheet @ w==0.85
+q8Li1Lu = EXPAND TEXT "?" li1tt BY 0.005 PRIMARY ONLY
+q10Li1Lu = COPY li1_pin
+q6Li1Lu = q8Li1Lu NOT (SIZE q10Li1Lu BY 0.005)
+q7Li1Lu = SIZE q6Li1Lu BY 0.005
+CONNECT q7Li1Lu
+DEVICE Probe(probe_li1tt) q6Li1Lu   q7Li1Lu(probe) Li1Lu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER li1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met1Lu = COPY 4002
+q5Met1Lu = COPY Met1Lu
+Met1Lu_cond = q5Met1Lu NOT q4Met1Lu
+CONNECT met1_pin Met1Lu_cond
+TEXT LAYER met1pt ATTACH met1pt met1_pin ATTACH met1pt Met1Lu_cond
+TEXT LAYER met1tt ATTACH met1tt Met1Lu_cond
+RESISTANCE SHEET Met1Lu_cond [ 0.125 0 ]
+PARASITIC VARIATION Met1Lu_cond SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q8Met1Lu = EXPAND TEXT "?" met1tt BY 0.005 PRIMARY ONLY
+q10Met1Lu = COPY met1_pin
+q6Met1Lu = q8Met1Lu NOT (SIZE q10Met1Lu BY 0.005)
+q7Met1Lu = SIZE q6Met1Lu BY 0.005
+CONNECT q7Met1Lu
+DEVICE Probe(probe_met1tt) q6Met1Lu   q7Met1Lu(probe) Met1Lu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met1LuESDres = COPY 4003
+q5Met1LuESDres = COPY Met1LuESDres
+Met1LuESDres_cond = q5Met1LuESDres NOT q4Met1LuESDres
+CONNECT met1_pin Met1LuESDres_cond
+TEXT LAYER met1pt ATTACH met1pt met1_pin ATTACH met1pt Met1LuESDres_cond
+TEXT LAYER met1tt ATTACH met1tt Met1LuESDres_cond
+RESISTANCE SHEET Met1LuESDres_cond [ 0.125 0 ]
+PARASITIC VARIATION Met1LuESDres_cond SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q8Met1LuESDres = EXPAND TEXT "?" met1tt BY 0.005 PRIMARY ONLY
+q10Met1LuESDres = COPY met1_pin
+q6Met1LuESDres = q8Met1LuESDres NOT (SIZE q10Met1LuESDres BY 0.005)
+q7Met1LuESDres = SIZE q6Met1LuESDres BY 0.005
+CONNECT q7Met1LuESDres
+DEVICE Probe(probe_met1tt) q6Met1LuESDres   q7Met1LuESDres(probe) Met1LuESDres_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4check_9_4_met1 = COPY 4004
+q5check_9_4_met1 = COPY check_9_4_met1
+check_9_4_met1_cond = q5check_9_4_met1 NOT q4check_9_4_met1
+CONNECT met1_pin check_9_4_met1_cond
+TEXT LAYER met1pt ATTACH met1pt met1_pin ATTACH met1pt check_9_4_met1_cond
+TEXT LAYER met1tt ATTACH met1tt check_9_4_met1_cond
+RESISTANCE SHEET check_9_4_met1_cond [ 0.125 0 ]
+PARASITIC VARIATION check_9_4_met1_cond SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q8check_9_4_met1 = EXPAND TEXT "?" met1tt BY 0.005 PRIMARY ONLY
+q10check_9_4_met1 = COPY met1_pin
+q6check_9_4_met1 = q8check_9_4_met1 NOT (SIZE q10check_9_4_met1 BY 0.005)
+q7check_9_4_met1 = SIZE q6check_9_4_met1 BY 0.005
+CONNECT q7check_9_4_met1
+DEVICE Probe(probe_met1tt) q6check_9_4_met1   q7check_9_4_met1(probe) check_9_4_met1_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met2Lu = COPY 4005
+q5Met2Lu = COPY Met2Lu
+Met2Lu_cond = q5Met2Lu NOT q4Met2Lu
+CONNECT met2_pin Met2Lu_cond
+TEXT LAYER met2pt ATTACH met2pt met2_pin ATTACH met2pt Met2Lu_cond
+TEXT LAYER met2tt ATTACH met2tt Met2Lu_cond
+RESISTANCE SHEET Met2Lu_cond [ 0.125 0 ]
+PARASITIC VARIATION Met2Lu_cond SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q8Met2Lu = EXPAND TEXT "?" met2tt BY 0.005 PRIMARY ONLY
+q10Met2Lu = COPY met2_pin
+q6Met2Lu = q8Met2Lu NOT (SIZE q10Met2Lu BY 0.005)
+q7Met2Lu = SIZE q6Met2Lu BY 0.005
+CONNECT q7Met2Lu
+DEVICE Probe(probe_met2tt) q6Met2Lu   q7Met2Lu(probe) Met2Lu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met2tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met3Lu = COPY 4006
+q5Met3Lu = COPY Met3Lu
+Met3Lu_cond = q5Met3Lu NOT q4Met3Lu
+CONNECT met3_pin Met3Lu_cond
+TEXT LAYER met3pt ATTACH met3pt met3_pin ATTACH met3pt Met3Lu_cond
+TEXT LAYER met3tt ATTACH met3tt Met3Lu_cond
+RESISTANCE SHEET Met3Lu_cond [ 0.047 0 ]
+PARASITIC VARIATION Met3Lu_cond SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q8Met3Lu = EXPAND TEXT "?" met3tt BY 0.005 PRIMARY ONLY
+q10Met3Lu = COPY met3_pin
+q6Met3Lu = q8Met3Lu NOT (SIZE q10Met3Lu BY 0.005)
+q7Met3Lu = SIZE q6Met3Lu BY 0.005
+CONNECT q7Met3Lu
+DEVICE Probe(probe_met3tt) q6Met3Lu   q7Met3Lu(probe) Met3Lu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met3tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met2LuESDres = COPY 4007
+q5Met2LuESDres = COPY Met2LuESDres
+Met2LuESDres_cond = q5Met2LuESDres NOT q4Met2LuESDres
+CONNECT met2_pin Met2LuESDres_cond
+TEXT LAYER met2pt ATTACH met2pt met2_pin ATTACH met2pt Met2LuESDres_cond
+TEXT LAYER met2tt ATTACH met2tt Met2LuESDres_cond
+RESISTANCE SHEET Met2LuESDres_cond [ 0.125 0 ]
+PARASITIC VARIATION Met2LuESDres_cond SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q8Met2LuESDres = EXPAND TEXT "?" met2tt BY 0.005 PRIMARY ONLY
+q10Met2LuESDres = COPY met2_pin
+q6Met2LuESDres = q8Met2LuESDres NOT (SIZE q10Met2LuESDres BY 0.005)
+q7Met2LuESDres = SIZE q6Met2LuESDres BY 0.005
+CONNECT q7Met2LuESDres
+DEVICE Probe(probe_met2tt) q6Met2LuESDres   q7Met2LuESDres(probe) Met2LuESDres_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met2tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met3LuESDres = COPY 4008
+q5Met3LuESDres = COPY Met3LuESDres
+Met3LuESDres_cond = q5Met3LuESDres NOT q4Met3LuESDres
+CONNECT met3_pin Met3LuESDres_cond
+TEXT LAYER met3pt ATTACH met3pt met3_pin ATTACH met3pt Met3LuESDres_cond
+TEXT LAYER met3tt ATTACH met3tt Met3LuESDres_cond
+RESISTANCE SHEET Met3LuESDres_cond [ 0.047 0 ]
+PARASITIC VARIATION Met3LuESDres_cond SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q8Met3LuESDres = EXPAND TEXT "?" met3tt BY 0.005 PRIMARY ONLY
+q10Met3LuESDres = COPY met3_pin
+q6Met3LuESDres = q8Met3LuESDres NOT (SIZE q10Met3LuESDres BY 0.005)
+q7Met3LuESDres = SIZE q6Met3LuESDres BY 0.005
+CONNECT q7Met3LuESDres
+DEVICE Probe(probe_met3tt) q6Met3LuESDres   q7Met3LuESDres(probe) Met3LuESDres_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met3tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met4Lu = COPY 4009
+q5Met4Lu = COPY Met4Lu
+Met4Lu_cond = q5Met4Lu NOT q4Met4Lu
+CONNECT met4_pin Met4Lu_cond
+TEXT LAYER met4pt ATTACH met4pt met4_pin ATTACH met4pt Met4Lu_cond
+TEXT LAYER met4tt ATTACH met4tt Met4Lu_cond
+RESISTANCE SHEET Met4Lu_cond [ 0.047 0 ]
+PARASITIC VARIATION Met4Lu_cond SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q8Met4Lu = EXPAND TEXT "?" met4tt BY 0.005 PRIMARY ONLY
+q10Met4Lu = COPY met4_pin
+q6Met4Lu = q8Met4Lu NOT (SIZE q10Met4Lu BY 0.005)
+q7Met4Lu = SIZE q6Met4Lu BY 0.005
+CONNECT q7Met4Lu
+DEVICE Probe(probe_met4tt) q6Met4Lu   q7Met4Lu(probe) Met4Lu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met4tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met4LuESDres = COPY 4010
+q5Met4LuESDres = COPY Met4LuESDres
+Met4LuESDres_cond = q5Met4LuESDres NOT q4Met4LuESDres
+CONNECT met4_pin Met4LuESDres_cond
+TEXT LAYER met4pt ATTACH met4pt met4_pin ATTACH met4pt Met4LuESDres_cond
+TEXT LAYER met4tt ATTACH met4tt Met4LuESDres_cond
+RESISTANCE SHEET Met4LuESDres_cond [ 0.047 0 ]
+PARASITIC VARIATION Met4LuESDres_cond SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q8Met4LuESDres = EXPAND TEXT "?" met4tt BY 0.005 PRIMARY ONLY
+q10Met4LuESDres = COPY met4_pin
+q6Met4LuESDres = q8Met4LuESDres NOT (SIZE q10Met4LuESDres BY 0.005)
+q7Met4LuESDres = SIZE q6Met4LuESDres BY 0.005
+CONNECT q7Met4LuESDres
+DEVICE Probe(probe_met4tt) q6Met4LuESDres   q7Met4LuESDres(probe) Met4LuESDres_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met4tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met5Lu = COPY 4011
+q5Met5Lu = COPY Met5Lu
+Met5Lu_cond = q5Met5Lu NOT q4Met5Lu
+CONNECT met5_pin Met5Lu_cond
+TEXT LAYER met5pt ATTACH met5pt met5_pin ATTACH met5pt Met5Lu_cond
+TEXT LAYER met5tt ATTACH met5tt Met5Lu_cond
+RESISTANCE SHEET Met5Lu_cond [ 0.0285 0 ]
+PARASITIC VARIATION Met5Lu_cond SHEET  // deltaW = 0.090000, max error = 0.001000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 1.625000 VALUE 0.030199 // sheet @ w==1.6 
+    SPACE > 0 DRAWN_WIDTH >= 1.625000 < 1.675000 VALUE 0.030144 // sheet @ w==1.65 
+    SPACE > 0 DRAWN_WIDTH >= 1.675000 < 1.735000 VALUE 0.030088 // sheet @ w==1.705 
+    SPACE > 0 DRAWN_WIDTH >= 1.735000 < 1.795000 VALUE 0.030031 // sheet @ w==1.765 
+    SPACE > 0 DRAWN_WIDTH >= 1.795000 < 1.860000 VALUE 0.029978 // sheet @ w==1.825 
+    SPACE > 0 DRAWN_WIDTH >= 1.860000 < 1.930000 VALUE 0.029921 // sheet @ w==1.895 
+    SPACE > 0 DRAWN_WIDTH >= 1.930000 < 2.010000 VALUE 0.029864 // sheet @ w==1.97 
+    SPACE > 0 DRAWN_WIDTH >= 2.010000 < 2.095000 VALUE 0.029809 // sheet @ w==2.05 
+    SPACE > 0 DRAWN_WIDTH >= 2.095000 < 2.185000 VALUE 0.029751 // sheet @ w==2.14 
+    SPACE > 0 DRAWN_WIDTH >= 2.185000 < 2.285000 VALUE 0.029696 // sheet @ w==2.235 
+    SPACE > 0 DRAWN_WIDTH >= 2.285000 < 2.400000 VALUE 0.029640 // sheet @ w==2.34 
+    SPACE > 0 DRAWN_WIDTH >= 2.400000 < 2.525000 VALUE 0.029582 // sheet @ w==2.46 
+    SPACE > 0 DRAWN_WIDTH >= 2.525000 < 2.665000 VALUE 0.029524 // sheet @ w==2.595 
+    SPACE > 0 DRAWN_WIDTH >= 2.665000 < 2.820000 VALUE 0.029468 // sheet @ w==2.74 
+    SPACE > 0 DRAWN_WIDTH >= 2.820000 < 2.995000 VALUE 0.029411 // sheet @ w==2.905 
+    SPACE > 0 DRAWN_WIDTH >= 2.995000 < 3.195000 VALUE 0.029355 // sheet @ w==3.09 
+    SPACE > 0 DRAWN_WIDTH >= 3.195000 < 3.425000 VALUE 0.029298 // sheet @ w==3.305 
+    SPACE > 0 DRAWN_WIDTH >= 3.425000 < 3.695000 VALUE 0.029240 // sheet @ w==3.555 
+    SPACE > 0 DRAWN_WIDTH >= 3.695000 < 4.010000 VALUE 0.029183 // sheet @ w==3.845 
+    SPACE > 0 DRAWN_WIDTH >= 4.010000 < 4.385000 VALUE 0.029126 // sheet @ w==4.19 
+    SPACE > 0 DRAWN_WIDTH >= 4.385000 < 4.840000 VALUE 0.029069 // sheet @ w==4.6 
+    SPACE > 0 DRAWN_WIDTH >= 4.840000 < 5.405000 VALUE 0.029011 // sheet @ w==5.105 
+    SPACE > 0 DRAWN_WIDTH >= 5.405000 < 6.120000 VALUE 0.028954 // sheet @ w==5.74 
+    SPACE > 0 DRAWN_WIDTH >= 6.120000 < 7.060000 VALUE 0.028897 // sheet @ w==6.555 
+    SPACE > 0 DRAWN_WIDTH >= 7.060000 < 8.350000 VALUE 0.028839 // sheet @ w==7.65 
+    SPACE > 0 DRAWN_WIDTH >= 8.350000 < 10.220000 VALUE 0.028782 // sheet @ w==9.19 
+    SPACE > 0 DRAWN_WIDTH >= 10.220000 < 13.185000 VALUE 0.028725 // sheet @ w==11.515 
+    SPACE > 0 DRAWN_WIDTH >= 13.185000 < 18.600000 VALUE 0.028667 // sheet @ w==15.43 
+    SPACE > 0 DRAWN_WIDTH >= 18.600000 < 31.615000 VALUE 0.028610 // sheet @ w==23.42 
+    SPACE > 0 DRAWN_WIDTH >= 31.615000 < 90.000000 VALUE 0.028553 // sheet @ w==48.685
+q8Met5Lu = EXPAND TEXT "?" met5tt BY 0.005 PRIMARY ONLY
+q10Met5Lu = COPY met5_pin
+q6Met5Lu = q8Met5Lu NOT (SIZE q10Met5Lu BY 0.005)
+q7Met5Lu = SIZE q6Met5Lu BY 0.005
+CONNECT q7Met5Lu
+DEVICE Probe(probe_met5tt) q6Met5Lu   q7Met5Lu(probe) Met5Lu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met5tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Met5LuESDres = COPY 4012
+q5Met5LuESDres = COPY Met5LuESDres
+Met5LuESDres_cond = q5Met5LuESDres NOT q4Met5LuESDres
+CONNECT met5_pin Met5LuESDres_cond
+TEXT LAYER met5pt ATTACH met5pt met5_pin ATTACH met5pt Met5LuESDres_cond
+TEXT LAYER met5tt ATTACH met5tt Met5LuESDres_cond
+RESISTANCE SHEET Met5LuESDres_cond [ 0.0285 0 ]
+PARASITIC VARIATION Met5LuESDres_cond SHEET  // deltaW = 0.090000, max error = 0.001000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 1.625000 VALUE 0.030199 // sheet @ w==1.6 
+    SPACE > 0 DRAWN_WIDTH >= 1.625000 < 1.675000 VALUE 0.030144 // sheet @ w==1.65 
+    SPACE > 0 DRAWN_WIDTH >= 1.675000 < 1.735000 VALUE 0.030088 // sheet @ w==1.705 
+    SPACE > 0 DRAWN_WIDTH >= 1.735000 < 1.795000 VALUE 0.030031 // sheet @ w==1.765 
+    SPACE > 0 DRAWN_WIDTH >= 1.795000 < 1.860000 VALUE 0.029978 // sheet @ w==1.825 
+    SPACE > 0 DRAWN_WIDTH >= 1.860000 < 1.930000 VALUE 0.029921 // sheet @ w==1.895 
+    SPACE > 0 DRAWN_WIDTH >= 1.930000 < 2.010000 VALUE 0.029864 // sheet @ w==1.97 
+    SPACE > 0 DRAWN_WIDTH >= 2.010000 < 2.095000 VALUE 0.029809 // sheet @ w==2.05 
+    SPACE > 0 DRAWN_WIDTH >= 2.095000 < 2.185000 VALUE 0.029751 // sheet @ w==2.14 
+    SPACE > 0 DRAWN_WIDTH >= 2.185000 < 2.285000 VALUE 0.029696 // sheet @ w==2.235 
+    SPACE > 0 DRAWN_WIDTH >= 2.285000 < 2.400000 VALUE 0.029640 // sheet @ w==2.34 
+    SPACE > 0 DRAWN_WIDTH >= 2.400000 < 2.525000 VALUE 0.029582 // sheet @ w==2.46 
+    SPACE > 0 DRAWN_WIDTH >= 2.525000 < 2.665000 VALUE 0.029524 // sheet @ w==2.595 
+    SPACE > 0 DRAWN_WIDTH >= 2.665000 < 2.820000 VALUE 0.029468 // sheet @ w==2.74 
+    SPACE > 0 DRAWN_WIDTH >= 2.820000 < 2.995000 VALUE 0.029411 // sheet @ w==2.905 
+    SPACE > 0 DRAWN_WIDTH >= 2.995000 < 3.195000 VALUE 0.029355 // sheet @ w==3.09 
+    SPACE > 0 DRAWN_WIDTH >= 3.195000 < 3.425000 VALUE 0.029298 // sheet @ w==3.305 
+    SPACE > 0 DRAWN_WIDTH >= 3.425000 < 3.695000 VALUE 0.029240 // sheet @ w==3.555 
+    SPACE > 0 DRAWN_WIDTH >= 3.695000 < 4.010000 VALUE 0.029183 // sheet @ w==3.845 
+    SPACE > 0 DRAWN_WIDTH >= 4.010000 < 4.385000 VALUE 0.029126 // sheet @ w==4.19 
+    SPACE > 0 DRAWN_WIDTH >= 4.385000 < 4.840000 VALUE 0.029069 // sheet @ w==4.6 
+    SPACE > 0 DRAWN_WIDTH >= 4.840000 < 5.405000 VALUE 0.029011 // sheet @ w==5.105 
+    SPACE > 0 DRAWN_WIDTH >= 5.405000 < 6.120000 VALUE 0.028954 // sheet @ w==5.74 
+    SPACE > 0 DRAWN_WIDTH >= 6.120000 < 7.060000 VALUE 0.028897 // sheet @ w==6.555 
+    SPACE > 0 DRAWN_WIDTH >= 7.060000 < 8.350000 VALUE 0.028839 // sheet @ w==7.65 
+    SPACE > 0 DRAWN_WIDTH >= 8.350000 < 10.220000 VALUE 0.028782 // sheet @ w==9.19 
+    SPACE > 0 DRAWN_WIDTH >= 10.220000 < 13.185000 VALUE 0.028725 // sheet @ w==11.515 
+    SPACE > 0 DRAWN_WIDTH >= 13.185000 < 18.600000 VALUE 0.028667 // sheet @ w==15.43 
+    SPACE > 0 DRAWN_WIDTH >= 18.600000 < 31.615000 VALUE 0.028610 // sheet @ w==23.42 
+    SPACE > 0 DRAWN_WIDTH >= 31.615000 < 90.000000 VALUE 0.028553 // sheet @ w==48.685
+q8Met5LuESDres = EXPAND TEXT "?" met5tt BY 0.005 PRIMARY ONLY
+q10Met5LuESDres = COPY met5_pin
+q6Met5LuESDres = q8Met5LuESDres NOT (SIZE q10Met5LuESDres BY 0.005)
+q7Met5LuESDres = SIZE q6Met5LuESDres BY 0.005
+CONNECT q7Met5LuESDres
+DEVICE Probe(probe_met5tt) q6Met5LuESDres   q7Met5LuESDres(probe) Met5LuESDres_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met5tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4RdlLu = COPY 4013
+q5RdlLu = COPY RdlLu
+RdlLu_cond = q5RdlLu NOT q4RdlLu
+CONNECT rdl_pin RdlLu_cond
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin ATTACH rdlpt RdlLu_cond
+TEXT LAYER rdltt ATTACH rdltt RdlLu_cond
+RESISTANCE SHEET RdlLu_cond [ 0.005 0 ]
+q8RdlLu = EXPAND TEXT "?" rdltt BY 0.005 PRIMARY ONLY
+q10RdlLu = COPY rdl_pin
+q6RdlLu = q8RdlLu NOT (SIZE q10RdlLu BY 0.005)
+q7RdlLu = SIZE q6RdlLu BY 0.005
+CONNECT q7RdlLu
+DEVICE Probe(probe_rdltt) q6RdlLu   q7RdlLu(probe) RdlLu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER rdltt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4PadLu = COPY 4014
+q5PadLu = COPY PadLu
+PadLu_cond = q5PadLu NOT q4PadLu
+CONNECT pad_pin PadLu_cond
+TEXT LAYER padpt ATTACH padpt pad_pin ATTACH padpt PadLu_cond
+TEXT LAYER padtt ATTACH padtt PadLu_cond
+RESISTANCE SHEET PadLu_cond [ 0.0 0 ]
+q8PadLu = EXPAND TEXT "?" padtt BY 0.005 PRIMARY ONLY
+q10PadLu = COPY pad_pin
+q6PadLu = q8PadLu NOT (SIZE q10PadLu BY 0.005)
+q7PadLu = SIZE q6PadLu BY 0.005
+CONNECT q7PadLu
+DEVICE Probe(probe_padtt) q6PadLu   q7PadLu(probe) PadLu_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER padtt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4PadLuESDres = COPY 4015
+q5PadLuESDres = COPY PadLuESDres
+PadLuESDres_cond = q5PadLuESDres NOT q4PadLuESDres
+CONNECT pad_pin PadLuESDres_cond
+TEXT LAYER padpt ATTACH padpt pad_pin ATTACH padpt PadLuESDres_cond
+TEXT LAYER padtt ATTACH padtt PadLuESDres_cond
+RESISTANCE SHEET PadLuESDres_cond [ 0.0 0 ]
+q8PadLuESDres = EXPAND TEXT "?" padtt BY 0.005 PRIMARY ONLY
+q10PadLuESDres = COPY pad_pin
+q6PadLuESDres = q8PadLuESDres NOT (SIZE q10PadLuESDres BY 0.005)
+q7PadLuESDres = SIZE q6PadLuESDres BY 0.005
+CONNECT q7PadLuESDres
+DEVICE Probe(probe_padtt) q6PadLuESDres   q7PadLuESDres(probe) PadLuESDres_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER padtt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4pwrPadMet = COPY 4016
+q5pwrPadMet = COPY pwrPadMet
+PwrPadLu_cond = q5pwrPadMet NOT q4pwrPadMet
+RESISTANCE SHEET PwrPadLu_cond [ 0.0 0 ]
+q4gndPadMet = COPY 4017
+q5gndPadMet = COPY gndPadMet
+GndPadLu_cond = q5gndPadMet NOT q4gndPadMet
+RESISTANCE SHEET GndPadLu_cond [ 0.0 0 ]
+q4pwrPadMetESDres = COPY 4018
+q5pwrPadMetESDres = COPY pwrPadMetESDres
+PwrPadLuESDres_cond = q5pwrPadMetESDres NOT q4pwrPadMetESDres
+RESISTANCE SHEET PwrPadLuESDres_cond [ 0.0 0 ]
+q4gndPadMetESDres = COPY 4019
+q5gndPadMetESDres = COPY gndPadMetESDres
+GndPadLuESDres_cond = q5gndPadMetESDres NOT q4gndPadMetESDres
+RESISTANCE SHEET GndPadLuESDres_cond [ 0.0 0 ]
+Licon1ply_cont = COPY Licon1ply
+Licon1Nfom_cont = COPY Licon1Nfom
+Licon1Pfom_cont = COPY Licon1Pfom
+mcon_cont = COPY mcon
+via_cont = COPY via
+via2_cont = COPY via2
+via3_cont = COPY via3
+via4_cont = COPY via4
+pmm_cont = COPY pmm
+CONNECT Li1Lu_cond PolyNoRes_cond BY Licon1ply_cont
+RESISTANCE CONNECTION Li1Lu_cond PolyNoRes_cond [ 4.198592 0 ]
+CONNECT Met1Lu_cond Li1Lu_cond BY mcon_cont
+RESISTANCE CONNECTION Met1Lu_cond Li1Lu_cond [ 0.26877 0 ]
+CONNECT Met1LuESDres_cond Li1Lu_cond BY mcon_cont
+RESISTANCE CONNECTION Met1LuESDres_cond Li1Lu_cond [ 0.26877 0 ]
+CONNECT check_9_4_met1_cond Li1Lu_cond BY mcon_cont
+RESISTANCE CONNECTION check_9_4_met1_cond Li1Lu_cond [ 0.26877 0 ]
+CONNECT Met2Lu_cond Met1Lu_cond BY via_cont
+RESISTANCE CONNECTION Met2Lu_cond Met1Lu_cond [ 0.10125 0 ]
+CONNECT Met2LuESDres_cond Met1LuESDres_cond BY via_cont
+RESISTANCE CONNECTION Met2LuESDres_cond Met1LuESDres_cond [ 0.10125 0 ]
+CONNECT Met2Lu_cond check_9_4_met1_cond BY via_cont
+RESISTANCE CONNECTION Met2Lu_cond check_9_4_met1_cond [ 0.10125 0 ]
+CONNECT Met3Lu_cond Met2Lu_cond BY via2_cont
+RESISTANCE CONNECTION Met3Lu_cond Met2Lu_cond [ 0.1364 0 ]
+CONNECT Met3LuESDres_cond Met2LuESDres_cond BY via2_cont
+RESISTANCE CONNECTION Met3LuESDres_cond Met2LuESDres_cond [ 0.1364 0 ]
+CONNECT Met4Lu_cond Met3Lu_cond BY via3_cont
+RESISTANCE CONNECTION Met4Lu_cond Met3Lu_cond [ 0.1364 0 ]
+CONNECT Met4LuESDres_cond Met3LuESDres_cond BY via3_cont
+RESISTANCE CONNECTION Met4LuESDres_cond Met3LuESDres_cond [ 0.1364 0 ]
+CONNECT Met5Lu_cond Met4Lu_cond BY via4_cont
+RESISTANCE CONNECTION Met5Lu_cond Met4Lu_cond [ 0.2432 0 ]
+CONNECT Met5LuESDres_cond Met4LuESDres_cond BY via4_cont
+RESISTANCE CONNECTION Met5LuESDres_cond Met4LuESDres_cond [ 0.2432 0 ]
+CONNECT RdlLu_cond Met5Lu_cond BY pmm_cont
+RESISTANCE CONNECTION RdlLu_cond Met5Lu_cond [ 0.116 0 ]
+CONNECT PadLu_cond Met5Lu_cond
+CONNECT PadLuESDres_cond Met5LuESDres_cond
+q4grNTAP = COPY 4020
+q5grNTAP = COPY grNTAP
+q0grNTAP_cond = q5grNTAP NOT q4grNTAP
+grNTAP_cond = MERGE q0grNTAP_cond
+RESISTANCE SHEET grNTAP_cond [ 0.0 0 ]
+q4grPTAP = COPY 4021
+q5grPTAP = COPY grPTAP
+q0grPTAP_cond = q5grPTAP NOT q4grPTAP
+grPTAP_cond = MERGE q0grPTAP_cond
+RESISTANCE SHEET grPTAP_cond [ 0.0 0 ]
+q4grNTAPsz = COPY 4022
+q5grNTAPsz = COPY grNTAPsz
+q0grNTAPsz_cond = q5grNTAPsz NOT q4grNTAPsz
+grNTAPsz_cond = MERGE q0grNTAPsz_cond
+RESISTANCE SHEET grNTAPsz_cond [ 0.0 0 ]
+q4grPTAPsz = COPY 4023
+q5grPTAPsz = COPY grPTAPsz
+q0grPTAPsz_cond = q5grPTAPsz NOT q4grPTAPsz
+grPTAPsz_cond = MERGE q0grPTAPsz_cond
+RESISTANCE SHEET grPTAPsz_cond [ 0.0 0 ]
+q4grNTAPESDres = COPY 4024
+q5grNTAPESDres = COPY grNTAPESDres
+q0grNTAP_condESDres = q5grNTAPESDres NOT q4grNTAPESDres
+grNTAP_condESDres = MERGE q0grNTAP_condESDres
+RESISTANCE SHEET grNTAP_condESDres [ 0.0 0 ]
+q4grPTAPESDres = COPY 4025
+q5grPTAPESDres = COPY grPTAPESDres
+q0grPTAP_condESDres = q5grPTAPESDres NOT q4grPTAPESDres
+grPTAP_condESDres = MERGE q0grPTAP_condESDres
+RESISTANCE SHEET grPTAP_condESDres [ 0.0 0 ]
+CONNECT Li1Lu_cond grNTAP_cond BY Licon1Nfom_cont
+RESISTANCE CONNECTION Li1Lu_cond grNTAP_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond grPTAP_cond BY Licon1Pfom_cont
+RESISTANCE CONNECTION Li1Lu_cond grPTAP_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond grNTAPsz_cond BY Licon1Nfom_cont
+RESISTANCE CONNECTION Li1Lu_cond grNTAPsz_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond grPTAPsz_cond BY Licon1Pfom_cont
+RESISTANCE CONNECTION Li1Lu_cond grPTAPsz_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond grNTAP_condESDres BY Licon1Nfom_cont
+RESISTANCE CONNECTION Li1Lu_cond grNTAP_condESDres [ 0.0 0 ]
+CONNECT Li1Lu_cond grPTAP_condESDres BY Licon1Pfom_cont
+RESISTANCE CONNECTION Li1Lu_cond grPTAP_condESDres [ 0.0 0 ]
+CONNECT PwrPadLu_cond PadLu_cond
+CONNECT GndPadLu_cond PadLu_cond
+CONNECT PwrPadLuESDres_cond PadLuESDres_cond
+CONNECT GndPadLuESDres_cond PadLuESDres_cond
+DEVICE grNTAP_cond grNTAP_cond grNTAP_cond(P1)
+DEVICE PwrPadLu_cond PwrPadLu_cond PwrPadLu_cond(P1)
+DEVICE grPTAP_cond grPTAP_cond grPTAP_cond(P1)
+DEVICE GndPadLu_cond GndPadLu_cond GndPadLu_cond(P1)
+DEVICE grNTAP_condESDres grNTAP_condESDres grNTAP_condESDres(P1)
+DEVICE PwrPadLuESDres_cond PwrPadLuESDres_cond PwrPadLuESDres_cond(P1)
+DEVICE grPTAP_condESDres grPTAP_condESDres grPTAP_condESDres(P1)
+DEVICE GndPadLuESDres_cond GndPadLuESDres_cond GndPadLuESDres_cond(P1)
+DEVICE grNTAPsz_cond grNTAPsz_cond grNTAPsz_cond(P1)
+DEVICE grPTAPsz_cond grPTAPsz_cond grPTAPsz_cond(P1)
+"r_0_lu4.5" {
+    @ lu4.5: Outer guardring must be connected to external non-regulated power net(s): ("vpwr") 
+    COPY bad_nonExt_outer_grNTAP
+    }
+"r_1_lu4.5" {
+    @ lu4.5: Outer guardring must be connected to external non-regulated ground net(s): ("vgnd") 
+    COPY bad_nonExt_outer_grPTAP
+    }
+q4gndNSRCDRN = COPY 4026
+q5gndNSRCDRN = COPY gndNSRCDRN
+gndNSRCDRN_cond = q5gndNSRCDRN NOT q4gndNSRCDRN
+RESISTANCE SHEET gndNSRCDRN_cond [ 0.0 0 ]
+q4pwrPSRCDRN = COPY 4027
+q5pwrPSRCDRN = COPY pwrPSRCDRN
+pwrPSRCDRN_cond = q5pwrPSRCDRN NOT q4pwrPSRCDRN
+RESISTANCE SHEET pwrPSRCDRN_cond [ 0.0 0 ]
+q4pwrNTAP = COPY 4028
+q5pwrNTAP = COPY pwrNTAP
+pwrNTAP_cond = q5pwrNTAP NOT q4pwrNTAP
+RESISTANCE SHEET pwrNTAP_cond [ 0.0 0 ]
+q4gndPTAP = COPY 4029
+q5gndPTAP = COPY gndPTAP
+gndPTAP_cond = q5gndPTAP NOT q4gndPTAP
+RESISTANCE SHEET gndPTAP_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond gndNSRCDRN_cond BY Licon1Nfom_cont
+RESISTANCE CONNECTION Li1Lu_cond gndNSRCDRN_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond pwrPSRCDRN_cond BY Licon1Pfom_cont
+RESISTANCE CONNECTION Li1Lu_cond pwrPSRCDRN_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond pwrNTAP_cond BY Licon1Nfom_cont
+RESISTANCE CONNECTION Li1Lu_cond pwrNTAP_cond [ 0.0 0 ]
+CONNECT Li1Lu_cond gndPTAP_cond BY Licon1Pfom_cont
+RESISTANCE CONNECTION Li1Lu_cond gndPTAP_cond [ 0.0 0 ]
+interest_ndiff = FLATTEN gndNSRCDRN_cond
+interest_pdiff = FLATTEN pwrPSRCDRN_cond
+interest_ntap_tmp = FLATTEN pwrNTAP_cond
+interest_ptap_tmp = FLATTEN gndPTAP_cond
+interest_ntap = COPY interest_ntap_tmp
+interest_ptap = COPY interest_ptap_tmp
+CONNECT interest_ntap
+CONNECT interest_ptap
+CONNECT interest_ndiff gndNSRCDRN_cond
+CONNECT interest_pdiff pwrPSRCDRN_cond
+CONNECT dummy_sub
+CONNECT dummy_nwell
+Substrate_net = DFM PROPERTY dummy_sub 
+    [bulk_net = NETID( dummy_sub )]
+Nwell_net = DFM PROPERTY dummy_nwell 
+    [bulk_net = NETID( dummy_nwell )]
+ntap_net = DFM PROPERTY interest_ntap Nwell_net OVERLAP MULTI 
+    [tap_net = NETID( interest_ntap )] 
+    [bulk_net = NETPROPERTY( Nwell_net , "bulk_net" , 1 )]
+ptap_net = DFM PROPERTY interest_ptap Substrate_net OVERLAP MULTI 
+    [tap_net = NETID( interest_ptap )] 
+    [bulk_net = NETPROPERTY( Substrate_net , "bulk_net" , 1 )]
+interest_ptap_sub_net = dummy_sub AND interest_ptap
+interest_ntap_well_net = dummy_nwell AND interest_ntap
+interest_ndiff_sub_net = dummy_sub AND interest_ndiff
+interest_pdiff_well_net = dummy_nwell AND interest_pdiff
+ptap_distance_2um = EXTERNAL interest_ndiff_sub_net interest_ptap_sub_net < 2 MEASURE ALL CONNECTED ABUT < 90
+ntap_distance_2um = EXTERNAL interest_pdiff_well_net interest_ntap_well_net < 2 MEASURE ALL CONNECTED ABUT < 90
+ptap_distance_2um_e = EXTERNAL [interest_ndiff_sub_net] interest_ptap_sub_net < 2 MEASURE ALL CONNECTED ABUT < 90
+ntap_distance_2um_e = EXTERNAL [interest_pdiff_well_net] interest_ntap_well_net < 2 MEASURE ALL CONNECTED ABUT < 90
+interest_ndiff_gt2 = interest_ndiff_sub_net NOT WITH EDGE ptap_distance_2um_e
+interest_pdiff_gt2 = interest_pdiff_well_net NOT WITH EDGE ntap_distance_2um_e
+ptap_distance_5um = EXTERNAL interest_ndiff_gt2 interest_ptap_sub_net < 5 MEASURE ALL CONNECTED
+ntap_distance_5um = EXTERNAL interest_pdiff_gt2 interest_ntap_well_net < 5 MEASURE ALL CONNECTED
+ptap_distance_5um_e = EXTERNAL [interest_ndiff_gt2] interest_ptap_sub_net < 5 MEASURE ALL CONNECTED
+ntap_distance_5um_e = EXTERNAL [interest_pdiff_gt2] interest_ntap_well_net < 5 MEASURE ALL CONNECTED
+interest_ndiff_gt5 = interest_ndiff_gt2 NOT WITH EDGE ptap_distance_5um_e
+interest_pdiff_gt5 = interest_pdiff_gt2 NOT WITH EDGE ntap_distance_5um_e
+ptap_distance_10um = EXTERNAL interest_ndiff_gt5 interest_ptap_sub_net < 10 MEASURE ALL CONNECTED
+ntap_distance_10um = EXTERNAL interest_pdiff_gt5 interest_ntap_well_net < 10 MEASURE ALL CONNECTED
+ptap_distance_10um_e = EXTERNAL [interest_ndiff_gt5] interest_ptap_sub_net < 10 MEASURE ALL CONNECTED
+ntap_distance_10um_e = EXTERNAL [interest_pdiff_gt5] interest_ntap_well_net < 10 MEASURE ALL CONNECTED
+interest_ndiff_gt10 = interest_ndiff_gt5 NOT WITH EDGE ptap_distance_10um_e
+interest_pdiff_gt10 = interest_pdiff_gt5 NOT WITH EDGE ntap_distance_10um_e
+ptap_distance_15um = EXTERNAL interest_ndiff_gt10 interest_ptap_sub_net < 15 MEASURE ALL CONNECTED
+ntap_distance_15um = EXTERNAL interest_pdiff_gt10 interest_ntap_well_net < 15 MEASURE ALL CONNECTED
+ptap_distance_15um_e = EXTERNAL [interest_ndiff_gt10] interest_ptap_sub_net < 15 MEASURE ALL CONNECTED
+ntap_distance_15um_e = EXTERNAL [interest_pdiff_gt10] interest_ntap_well_net < 15 MEASURE ALL CONNECTED
+interest_ndiff_gt15 = interest_ndiff_gt10 NOT WITH EDGE ptap_distance_15um_e
+interest_pdiff_gt15 = interest_pdiff_gt10 NOT WITH EDGE ntap_distance_15um_e
+ptap_distance_30um = EXTERNAL interest_ndiff_gt15 interest_ptap_sub_net < 30 MEASURE ALL CONNECTED
+ntap_distance_30um = EXTERNAL interest_pdiff_gt15 interest_ntap_well_net < 30 MEASURE ALL CONNECTED
+ptap_distance_30um_e = EXTERNAL [interest_ndiff_gt15] interest_ptap_sub_net < 30 MEASURE ALL CONNECTED
+ntap_distance_30um_e = EXTERNAL [interest_pdiff_gt15] interest_ntap_well_net < 30 MEASURE ALL CONNECTED
+bad_interest_ndiff = interest_ndiff_gt15 NOT WITH EDGE ptap_distance_30um_e
+bad_interest_pdiff = interest_pdiff_gt15 NOT WITH EDGE ntap_distance_30um_e
+ptap_distance = DFM COPY ptap_distance_2um ptap_distance_5um ptap_distance_10um ptap_distance_15um ptap_distance_30um
+ntap_distance = DFM COPY ntap_distance_2um ntap_distance_5um ntap_distance_10um ntap_distance_15um ntap_distance_30um
+ptap_distance_net = DFM PROPERTY ptap_distance ptap_net interest_ndiff OVERLAP ABUT ALSO MULTI 
+    [tap_net = NETPROPERTY( ptap_net , "tap_net" , 1 )] 
+    [sep = EW( ptap_distance )]
+ntap_distance_net = DFM PROPERTY ntap_distance ntap_net interest_pdiff OVERLAP ABUT ALSO MULTI 
+    [tap_net = NETPROPERTY( ntap_net , "tap_net" , 1 )] 
+    [sep = EW( ntap_distance )]
+ndiff_tap_dist = DFM PROPERTY interest_ndiff ptap_distance_net OVERLAP MULTI 
+    [tap_net = VNETIDMIN( VECTOR( PROPERTY( ptap_distance_net , "sep" ) ) , 0 , VNETID( NETPROPERTY( ptap_distance_net , "tap_net" ) ) , 0 )] 
+    [tap_dist = VMIN( VECTOR( PROPERTY( ptap_distance_net , "sep" ) ) , 0 , VECTOR( PROPERTY( ptap_distance_net , "sep" ) ) , 0 )]
+pdiff_tap_dist = DFM PROPERTY interest_pdiff ntap_distance_net OVERLAP MULTI 
+    [tap_net = VNETIDMIN( VECTOR( PROPERTY( ntap_distance_net , "sep" ) ) , 0 , VNETID( NETPROPERTY( ntap_distance_net , "tap_net" ) ) , 0 )] 
+    [tap_dist = VMIN( VECTOR( PROPERTY( ntap_distance_net , "sep" ) ) , 0 , VECTOR( PROPERTY( ntap_distance_net , "sep" ) ) , 0 )]
+"s_0_lu4.15" {
+    @ lu4.15: Ground connected source/drain missing nearby connected tap
+    COPY bad_interest_ndiff
+    }
+"s_1_lu4.15" {
+    @ lu4.15: Power connected source/drain missing nearby connected tap
+    COPY bad_interest_pdiff
+    }
+ 
+ DEVICE interest_ndiff_device interest_ndiff gndNSRCDRN_cond(P1) ndiff_tap_dist(P2) BY NET  [
+     PROPERTY tapnet , tapdist
+     tapnet1 = dfm_numeric_value( ndiff_tap_dist , "tap_net" )
+     tapnet = TVF_string_function::DEVICE_FUNC::CALC_STRING(tapnet1)
+     tapdist = dfm_numeric_value( ndiff_tap_dist , "tap_dist" )
+     ]
+ 
+ DEVICE interest_pdiff_device interest_pdiff pwrPSRCDRN_cond(P1) pdiff_tap_dist(P2) BY NET [
+     PROPERTY tapnet , tapdist
+     tapnet1 = dfm_numeric_value( pdiff_tap_dist , "tap_net" )
+     tapnet = TVF_string_function::DEVICE_FUNC::CALC_STRING(tapnet1)
+     tapdist = dfm_numeric_value( pdiff_tap_dist , "tap_dist" )
+     ]
+ 
+ DEVICE interest_ntap_device interest_ntap pwrNTAP_cond(P1) ntap_net(P2) BY NET [
+     PROPERTY tapnet
+     tapnet1 = dfm_numeric_value( ntap_net , "tap_net" )
+     tapnet = TVF_string_function::DEVICE_FUNC::CALC_STRING(tapnet1)
+     ]
+ 
+ DEVICE interest_ptap_device interest_ptap gndPTAP_cond(P1) ptap_net(P2) BY NET [
+     PROPERTY tapnet
+     tapnet1 = dfm_numeric_value( ptap_net , "tap_net" )
+     tapnet = TVF_string_function::DEVICE_FUNC::CALC_STRING(tapnet1)
+     ]
+ 
+ PERC PROPERTY interest_ndiff_device tapdist
+ PERC PROPERTY interest_pdiff_device tapdist
+ PERC PROPERTY STRING interest_ndiff_device tapnet
+ PERC PROPERTY STRING interest_pdiff_device tapnet
+ PERC PROPERTY STRING interest_ntap_device tapnet
+ PERC PROPERTY STRING interest_ptap_device tapnet
+ 
+  
+ TVF FUNCTION DEVICE_FUNC [/*
+ package require CalibreLVS_DEVICE_DFM
+ proc CALC_STRING {x} {
+ set s ""
+ set s "[$x]"
+ return $s
+ }
+ */]
+ 
+ q4poly = COPY 4030
+q5poly = COPY poly
+Poly_cond = q5poly NOT q4poly
+CONNECT poly_pin Poly_cond
+TEXT LAYER polypt ATTACH polypt poly_pin ATTACH polypt Poly_cond
+TEXT LAYER polytt ATTACH polytt Poly_cond
+RESISTANCE SHEET Poly_cond [ 48.2 0 ]
+PARASITIC VARIATION Poly_cond SHEET  // deltaW = 0.056000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.155000 VALUE 76.914894 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.165000 VALUE 74.153846 // sheet @ w==0.16 
+    SPACE > 0 DRAWN_WIDTH >= 0.165000 < 0.175000 VALUE 71.877193 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.185000 VALUE 69.967742 // sheet @ w==0.18 
+    SPACE > 0 DRAWN_WIDTH >= 0.185000 < 0.195000 VALUE 68.343284 // sheet @ w==0.19 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.215000 VALUE 66.315436 // sheet @ w==0.205 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.235000 VALUE 64.171598 // sheet @ w==0.225 
+    SPACE > 0 DRAWN_WIDTH >= 0.235000 < 0.265000 VALUE 62.113402 // sheet @ w==0.25 
+    SPACE > 0 DRAWN_WIDTH >= 0.265000 < 0.310000 VALUE 59.986900 // sheet @ w==0.285 
+    SPACE > 0 DRAWN_WIDTH >= 0.310000 < 0.375000 VALUE 57.704225 // sheet @ w==0.34 
+    SPACE > 0 DRAWN_WIDTH >= 0.375000 < 0.480000 VALUE 55.615385 // sheet @ w==0.42 
+    SPACE > 0 DRAWN_WIDTH >= 0.480000 < 0.690000 VALUE 53.502947 // sheet @ w==0.565 
+    SPACE > 0 DRAWN_WIDTH >= 0.690000 < 1.275000 VALUE 51.417163 // sheet @ w==0.895 
+    SPACE > 0 DRAWN_WIDTH >= 1.275000 < 2.800000 VALUE 49.408236 // sheet @ w==2.29
+q8poly = EXPAND TEXT "?" polytt BY 0.005 PRIMARY ONLY
+q10poly = COPY poly_pin
+q6poly = q8poly NOT (SIZE q10poly BY 0.005)
+q7poly = SIZE q6poly BY 0.005
+CONNECT q7poly
+DEVICE Probe(probe_polytt) q6poly   q7poly(probe) Poly_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER polytt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4li1 = COPY 4031
+q5li1 = COPY li1
+Li1_cond = q5li1 NOT q4li1
+CONNECT li1_pin Li1_cond
+TEXT LAYER li1pt ATTACH li1pt li1_pin ATTACH li1pt Li1_cond
+TEXT LAYER li1tt ATTACH li1tt Li1_cond
+RESISTANCE SHEET Li1_cond [ 12.2 0 ]
+PARASITIC VARIATION Li1_cond SHEET  // deltaW = -0.017000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.215000 VALUE 11.090909 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.450000 VALUE 11.524430 // sheet @ w==0.29 
+    SPACE > 0 DRAWN_WIDTH >= 0.450000 < 0.850000 VALUE 11.960784 // sheet @ w==0.85
+q8li1 = EXPAND TEXT "?" li1tt BY 0.005 PRIMARY ONLY
+q10li1 = COPY li1_pin
+q6li1 = q8li1 NOT (SIZE q10li1 BY 0.005)
+q7li1 = SIZE q6li1 BY 0.005
+CONNECT q7li1
+DEVICE Probe(probe_li1tt) q6li1   q7li1(probe) Li1_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER li1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4met1 = COPY 4032
+q5met1 = COPY met1
+Met1_cond = q5met1 NOT q4met1
+CONNECT met1_pin Met1_cond
+TEXT LAYER met1pt ATTACH met1pt met1_pin ATTACH met1pt Met1_cond
+TEXT LAYER met1tt ATTACH met1tt Met1_cond
+RESISTANCE SHEET Met1_cond [ 0.125 0 ]
+PARASITIC VARIATION Met1_cond SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q8met1 = EXPAND TEXT "?" met1tt BY 0.005 PRIMARY ONLY
+q10met1 = COPY met1_pin
+q6met1 = q8met1 NOT (SIZE q10met1 BY 0.005)
+q7met1 = SIZE q6met1 BY 0.005
+CONNECT q7met1
+DEVICE Probe(probe_met1tt) q6met1   q7met1(probe) Met1_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4met2 = COPY 4033
+q5met2 = COPY met2
+Met2_cond = q5met2 NOT q4met2
+CONNECT met2_pin Met2_cond
+TEXT LAYER met2pt ATTACH met2pt met2_pin ATTACH met2pt Met2_cond
+TEXT LAYER met2tt ATTACH met2tt Met2_cond
+RESISTANCE SHEET Met2_cond [ 0.125 0 ]
+PARASITIC VARIATION Met2_cond SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q8met2 = EXPAND TEXT "?" met2tt BY 0.005 PRIMARY ONLY
+q10met2 = COPY met2_pin
+q6met2 = q8met2 NOT (SIZE q10met2 BY 0.005)
+q7met2 = SIZE q6met2 BY 0.005
+CONNECT q7met2
+DEVICE Probe(probe_met2tt) q6met2   q7met2(probe) Met2_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met2tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4met3 = COPY 4034
+q5met3 = COPY met3
+Met3_cond = q5met3 NOT q4met3
+CONNECT met3_pin Met3_cond
+TEXT LAYER met3pt ATTACH met3pt met3_pin ATTACH met3pt Met3_cond
+TEXT LAYER met3tt ATTACH met3tt Met3_cond
+RESISTANCE SHEET Met3_cond [ 0.047 0 ]
+PARASITIC VARIATION Met3_cond SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q8met3 = EXPAND TEXT "?" met3tt BY 0.005 PRIMARY ONLY
+q10met3 = COPY met3_pin
+q6met3 = q8met3 NOT (SIZE q10met3 BY 0.005)
+q7met3 = SIZE q6met3 BY 0.005
+CONNECT q7met3
+DEVICE Probe(probe_met3tt) q6met3   q7met3(probe) Met3_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met3tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4met4 = COPY 4035
+q5met4 = COPY met4
+Met4_cond = q5met4 NOT q4met4
+CONNECT met4_pin Met4_cond
+TEXT LAYER met4pt ATTACH met4pt met4_pin ATTACH met4pt Met4_cond
+TEXT LAYER met4tt ATTACH met4tt Met4_cond
+RESISTANCE SHEET Met4_cond [ 0.047 0 ]
+PARASITIC VARIATION Met4_cond SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q8met4 = EXPAND TEXT "?" met4tt BY 0.005 PRIMARY ONLY
+q10met4 = COPY met4_pin
+q6met4 = q8met4 NOT (SIZE q10met4 BY 0.005)
+q7met4 = SIZE q6met4 BY 0.005
+CONNECT q7met4
+DEVICE Probe(probe_met4tt) q6met4   q7met4(probe) Met4_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met4tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4met5 = COPY 4036
+q5met5 = COPY met5
+Met5_cond = q5met5 NOT q4met5
+CONNECT met5_pin Met5_cond
+TEXT LAYER met5pt ATTACH met5pt met5_pin ATTACH met5pt Met5_cond
+TEXT LAYER met5tt ATTACH met5tt Met5_cond
+RESISTANCE SHEET Met5_cond [ 0.0285 0 ]
+PARASITIC VARIATION Met5_cond SHEET  // deltaW = 0.090000, max error = 0.001000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 1.625000 VALUE 0.030199 // sheet @ w==1.6 
+    SPACE > 0 DRAWN_WIDTH >= 1.625000 < 1.675000 VALUE 0.030144 // sheet @ w==1.65 
+    SPACE > 0 DRAWN_WIDTH >= 1.675000 < 1.735000 VALUE 0.030088 // sheet @ w==1.705 
+    SPACE > 0 DRAWN_WIDTH >= 1.735000 < 1.795000 VALUE 0.030031 // sheet @ w==1.765 
+    SPACE > 0 DRAWN_WIDTH >= 1.795000 < 1.860000 VALUE 0.029978 // sheet @ w==1.825 
+    SPACE > 0 DRAWN_WIDTH >= 1.860000 < 1.930000 VALUE 0.029921 // sheet @ w==1.895 
+    SPACE > 0 DRAWN_WIDTH >= 1.930000 < 2.010000 VALUE 0.029864 // sheet @ w==1.97 
+    SPACE > 0 DRAWN_WIDTH >= 2.010000 < 2.095000 VALUE 0.029809 // sheet @ w==2.05 
+    SPACE > 0 DRAWN_WIDTH >= 2.095000 < 2.185000 VALUE 0.029751 // sheet @ w==2.14 
+    SPACE > 0 DRAWN_WIDTH >= 2.185000 < 2.285000 VALUE 0.029696 // sheet @ w==2.235 
+    SPACE > 0 DRAWN_WIDTH >= 2.285000 < 2.400000 VALUE 0.029640 // sheet @ w==2.34 
+    SPACE > 0 DRAWN_WIDTH >= 2.400000 < 2.525000 VALUE 0.029582 // sheet @ w==2.46 
+    SPACE > 0 DRAWN_WIDTH >= 2.525000 < 2.665000 VALUE 0.029524 // sheet @ w==2.595 
+    SPACE > 0 DRAWN_WIDTH >= 2.665000 < 2.820000 VALUE 0.029468 // sheet @ w==2.74 
+    SPACE > 0 DRAWN_WIDTH >= 2.820000 < 2.995000 VALUE 0.029411 // sheet @ w==2.905 
+    SPACE > 0 DRAWN_WIDTH >= 2.995000 < 3.195000 VALUE 0.029355 // sheet @ w==3.09 
+    SPACE > 0 DRAWN_WIDTH >= 3.195000 < 3.425000 VALUE 0.029298 // sheet @ w==3.305 
+    SPACE > 0 DRAWN_WIDTH >= 3.425000 < 3.695000 VALUE 0.029240 // sheet @ w==3.555 
+    SPACE > 0 DRAWN_WIDTH >= 3.695000 < 4.010000 VALUE 0.029183 // sheet @ w==3.845 
+    SPACE > 0 DRAWN_WIDTH >= 4.010000 < 4.385000 VALUE 0.029126 // sheet @ w==4.19 
+    SPACE > 0 DRAWN_WIDTH >= 4.385000 < 4.840000 VALUE 0.029069 // sheet @ w==4.6 
+    SPACE > 0 DRAWN_WIDTH >= 4.840000 < 5.405000 VALUE 0.029011 // sheet @ w==5.105 
+    SPACE > 0 DRAWN_WIDTH >= 5.405000 < 6.120000 VALUE 0.028954 // sheet @ w==5.74 
+    SPACE > 0 DRAWN_WIDTH >= 6.120000 < 7.060000 VALUE 0.028897 // sheet @ w==6.555 
+    SPACE > 0 DRAWN_WIDTH >= 7.060000 < 8.350000 VALUE 0.028839 // sheet @ w==7.65 
+    SPACE > 0 DRAWN_WIDTH >= 8.350000 < 10.220000 VALUE 0.028782 // sheet @ w==9.19 
+    SPACE > 0 DRAWN_WIDTH >= 10.220000 < 13.185000 VALUE 0.028725 // sheet @ w==11.515 
+    SPACE > 0 DRAWN_WIDTH >= 13.185000 < 18.600000 VALUE 0.028667 // sheet @ w==15.43 
+    SPACE > 0 DRAWN_WIDTH >= 18.600000 < 31.615000 VALUE 0.028610 // sheet @ w==23.42 
+    SPACE > 0 DRAWN_WIDTH >= 31.615000 < 90.000000 VALUE 0.028553 // sheet @ w==48.685
+q8met5 = EXPAND TEXT "?" met5tt BY 0.005 PRIMARY ONLY
+q10met5 = COPY met5_pin
+q6met5 = q8met5 NOT (SIZE q10met5 BY 0.005)
+q7met5 = SIZE q6met5 BY 0.005
+CONNECT q7met5
+DEVICE Probe(probe_met5tt) q6met5   q7met5(probe) Met5_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met5tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4rdl = COPY 4037
+q5rdl = COPY rdl
+Rdl_cond = q5rdl NOT q4rdl
+CONNECT rdl_pin Rdl_cond
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin ATTACH rdlpt Rdl_cond
+TEXT LAYER rdltt ATTACH rdltt Rdl_cond
+RESISTANCE SHEET Rdl_cond [ 0.005 0 ]
+q8rdl = EXPAND TEXT "?" rdltt BY 0.005 PRIMARY ONLY
+q10rdl = COPY rdl_pin
+q6rdl = q8rdl NOT (SIZE q10rdl BY 0.005)
+q7rdl = SIZE q6rdl BY 0.005
+CONNECT q7rdl
+DEVICE Probe(probe_rdltt) q6rdl   q7rdl(probe) Rdl_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER rdltt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4pwrPad = COPY 4038
+q5pwrPad = COPY pwrPad
+PwrPad_cond = q5pwrPad NOT q4pwrPad
+RESISTANCE SHEET PwrPad_cond [ 0.0 0 ]
+q4gndPad = COPY 4039
+q5gndPad = COPY gndPad
+GndPad_cond = q5gndPad NOT q4gndPad
+RESISTANCE SHEET GndPad_cond [ 0.0 0 ]
+q4signalPad = COPY 4040
+q5signalPad = COPY signalPad
+SignalPad_cond = q5signalPad NOT q4signalPad
+RESISTANCE SHEET SignalPad_cond [ 0.0 0 ]
+q4pad = COPY 4041
+q5pad = COPY pad
+Pad_cond = q5pad NOT q4pad
+CONNECT pad_pin Pad_cond
+TEXT LAYER padpt ATTACH padpt pad_pin ATTACH padpt Pad_cond
+TEXT LAYER padtt ATTACH padtt Pad_cond
+RESISTANCE SHEET Pad_cond [ 0.0 0 ]
+q8pad = EXPAND TEXT "?" padtt BY 0.005 PRIMARY ONLY
+q10pad = COPY pad_pin
+q6pad = q8pad NOT (SIZE q10pad BY 0.005)
+q7pad = SIZE q6pad BY 0.005
+CONNECT q7pad
+DEVICE Probe(probe_padtt) q6pad   q7pad(probe) Pad_cond(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER padtt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+CONNECT Li1_cond Poly_cond BY Licon1ply
+RESISTANCE CONNECTION Li1_cond Poly_cond [ 4.198592 0 ]
+CONNECT Met1_cond Li1_cond BY mcon
+RESISTANCE CONNECTION Met1_cond Li1_cond [ 0.26877 0 ]
+CONNECT Met2_cond Met1_cond BY via
+RESISTANCE CONNECTION Met2_cond Met1_cond [ 0.10125 0 ]
+CONNECT Met3_cond Met2_cond BY via2
+RESISTANCE CONNECTION Met3_cond Met2_cond [ 0.1364 0 ]
+CONNECT Met4_cond Met3_cond BY via3
+RESISTANCE CONNECTION Met4_cond Met3_cond [ 0.1364 0 ]
+CONNECT Met5_cond Met4_cond BY via4
+RESISTANCE CONNECTION Met5_cond Met4_cond [ 0.2432 0 ]
+CONNECT Rdl_cond Met5_cond BY pmm
+RESISTANCE CONNECTION Rdl_cond Met5_cond [ 0.116 0 ]
+CONNECT Pad_cond Met5_cond
+CONNECT PwrPad_cond Pad_cond
+CONNECT GndPad_cond Pad_cond
+CONNECT SignalPad_cond Pad_cond
+q4check_7_8_ndiff = COPY 4042
+q5check_7_8_ndiff = COPY check_7_8_ndiff
+check_7_8_ndiff_cond = q5check_7_8_ndiff NOT q4check_7_8_ndiff
+RESISTANCE SHEET check_7_8_ndiff_cond [ 0.0 0 ]
+q4check_9_4_pdiff = COPY 4043
+q5check_9_4_pdiff = COPY check_9_4_pdiff
+check_9_4_pdiff_cond = q5check_9_4_pdiff NOT q4check_9_4_pdiff
+RESISTANCE SHEET check_9_4_pdiff_cond [ 0.0 0 ]
+q4check_9_4_ndiff = COPY 4044
+q5check_9_4_ndiff = COPY check_9_4_ndiff
+check_9_4_ndiff_cond = q5check_9_4_ndiff NOT q4check_9_4_ndiff
+RESISTANCE SHEET check_9_4_ndiff_cond [ 0.0 0 ]
+CONNECT Li1_cond check_7_8_ndiff_cond BY Licon1Nfom
+RESISTANCE CONNECTION Li1_cond check_7_8_ndiff_cond [ 5.2598 0 ]
+CONNECT Li1_cond check_9_4_pdiff_cond BY Licon1Pfom
+RESISTANCE CONNECTION Li1_cond check_9_4_pdiff_cond [ 0.0 0 ]
+CONNECT Li1_cond check_9_4_ndiff_cond BY Licon1Nfom
+RESISTANCE CONNECTION Li1_cond check_9_4_ndiff_cond [ 0.0 0 ]
+DEVICE check_7_8_ndiff_cond check_7_8_ndiff_cond check_7_8_ndiff_cond(P1)
+DEVICE SignalPad_cond SignalPad_cond SignalPad_cond(P1)
+DEVICE GndPad_cond GndPad_cond GndPad_cond(P1)
+DEVICE check_9_4_met1_cond check_9_4_met1_cond check_9_4_met1_cond(P1)
+"r_2_luB1.14" {
+    @ luB1.14: vssNet must connect to at least one B2B diode defined in (Section B1.13) 
+    COPY gndPadNotCheckDiff
+    }
+gndPad_vgnd = NET gndPad_cond "vgnd"
+gndPadB14_vgnd = gndPad_vgnd AND gndPadNotCheckDiff
+"r_3_luB1.14" {
+    @ luB1.14: Gnd pad connected to "vgnd", not connected to valid B2B diode
+    COPY gndPadB14_vgnd
+    }
+// NTAP = tap AND nwell
+// PTAP = tap NOT NTAP
+// PTAPnotSeal = PTAP NOT SEALID
+// PTAPnotSealDonut = DONUT PTAPnotSeal
+PTAPvictim = (WITH TEXT PTAP "victim" textlabel) OR (WITH TEXT PTAP "vic" textlabel)
+PTAPaggressor = (WITH TEXT PTAP "aggressor" textlabel) OR (WITH TEXT PTAP "agr" textlabel)
+PTAPringVictim = PTAPvictim AND PTAPnotSealDonut
+PTAPringAggressor = PTAPaggressor AND PTAPnotSealDonut
+allVicAgrPTAPrings = PTAPringVictim OR PTAPringAggressor
+VicRingCorners_tmp1 = INTERNAL PTAPringVictim < 0.01 ABUT <= 90 SINGULAR REGION EXTENTS
+AgrRingCorners_tmp1 = INTERNAL PTAPringAggressor < 0.01 ABUT <= 90 SINGULAR REGION EXTENTS
+VicRingCorners_tmp2 = EXTERNAL PTAPringVictim < 0.01 ABUT <= 90 SINGULAR REGION EXTENTS
+AgrRingCorners_tmp2 = EXTERNAL PTAPringAggressor < 0.01 ABUT <= 90 SINGULAR REGION EXTENTS
+VicRingCorners_tmp3 = PTAPringVictim COINCIDENT EDGE VicRingCorners_tmp2
+AgrRingCorners_tmp3 = PTAPringAggressor COINCIDENT EDGE AgrRingCorners_tmp2
+VicRingCorners_tmp4 = EXPAND EDGE VicRingCorners_tmp3 INSIDE BY 0.025 CORNER FILL
+AgrRingCorners_tmp4 = EXPAND EDGE AgrRingCorners_tmp3 INSIDE BY 0.025 CORNER FILL
+VicRingCorners_tmp5 = PTAPringVictim AND (EXTERNAL VicRingCorners_tmp4 < 0.01 ABUT <= 90 SINGULAR REGION EXTENTS)
+AgrRingCorners_tmp5 = PTAPringAggressor AND (EXTERNAL AgrRingCorners_tmp4 < 0.01 ABUT <= 90 SINGULAR REGION EXTENTS)
+VicRingCorners_tmp = VicRingCorners_tmp1 OR VicRingCorners_tmp5
+AgrRingCorners_tmp = AgrRingCorners_tmp1 OR AgrRingCorners_tmp5
+VicRingCorners = SIZE VicRingCorners_tmp BY 4.99 INSIDE OF PTAP STEP 0.05
+AgrRingCorners = SIZE AgrRingCorners_tmp BY 4.99 INSIDE OF PTAP STEP 0.05
+"k_0_PTAPringVictim" {
+    @ keep: PTAPringVictim - PTAPringVictim
+    COPY PTAPringVictim
+    }
+"k_1_PTAPringAggressor" {
+    @ keep: PTAPringAggressor - PTAPringAggressor
+    COPY PTAPringAggressor
+    }
+"k_2_AgrRingCorners" {
+    @ keep: AgrRingCorners - AgrRingCorners
+    COPY AgrRingCorners
+    }
+"k_3_VicRingCorners" {
+    @ keep: VicRingCorners - VicRingCorners
+    COPY VicRingCorners
+    }
+q4VicRingCorners = COPY 4045
+q5VicRingCorners = COPY VicRingCorners
+VicRingCorners_cond = q5VicRingCorners NOT q4VicRingCorners
+RESISTANCE SHEET VicRingCorners_cond [ 0.0 0 ]
+q4AgrRingCorners = COPY 4046
+q5AgrRingCorners = COPY AgrRingCorners
+AgrRingCorners_cond = q5AgrRingCorners NOT q4AgrRingCorners
+RESISTANCE SHEET AgrRingCorners_cond [ 0.0 0 ]
+q4PTAPringVictim = COPY 4047
+q5PTAPringVictim = COPY PTAPringVictim
+q4PTAPringAggressor = COPY 4048
+q5PTAPringAggressor = COPY PTAPringAggressor
+PTAPringVictim_cond = q5PTAPringVictim NOT q4PTAPringVictim
+PTAPringAggressor_cond = q5PTAPringAggressor NOT q4PTAPringAggressor
+CONNECT VicRingCorners_cond PTAPringVictim_cond
+CONNECT AgrRingCorners_cond PTAPringAggressor_cond
+RESISTANCE SHEET PTAPringVictim_cond [ 197.0 0 ]
+PARASITIC VARIATION PTAPringVictim_cond SHEET  // deltaW = -0.004000, max error = 0.001000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.155000 VALUE 191.883117 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.165000 VALUE 192.195122 // sheet @ w==0.16 
+    SPACE > 0 DRAWN_WIDTH >= 0.165000 < 0.175000 VALUE 192.471264 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.185000 VALUE 192.717391 // sheet @ w==0.18 
+    SPACE > 0 DRAWN_WIDTH >= 0.185000 < 0.195000 VALUE 192.938144 // sheet @ w==0.19 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.215000 VALUE 193.229665 // sheet @ w==0.205 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.235000 VALUE 193.558952 // sheet @ w==0.225 
+    SPACE > 0 DRAWN_WIDTH >= 0.235000 < 0.260000 VALUE 193.835341 // sheet @ w==0.245 
+    SPACE > 0 DRAWN_WIDTH >= 0.260000 < 0.295000 VALUE 194.175627 // sheet @ w==0.275 
+    SPACE > 0 DRAWN_WIDTH >= 0.295000 < 0.340000 VALUE 194.529781 // sheet @ w==0.315 
+    SPACE > 0 DRAWN_WIDTH >= 0.340000 < 0.405000 VALUE 194.893048 // sheet @ w==0.37 
+    SPACE > 0 DRAWN_WIDTH >= 0.405000 < 0.505000 VALUE 195.264317 // sheet @ w==0.45 
+    SPACE > 0 DRAWN_WIDTH >= 0.505000 < 0.670000 VALUE 195.639033 // sheet @ w==0.575 
+    SPACE > 0 DRAWN_WIDTH >= 0.670000 < 1.005000 VALUE 196.025958 // sheet @ w==0.805 
+    SPACE > 0 DRAWN_WIDTH >= 1.005000 < 2.015000 VALUE 196.413690 // sheet @ w==1.34 
+    SPACE > 0 DRAWN_WIDTH >= 2.015000 < 4.000000 VALUE 196.803197 // sheet @ w==4.0
+RESISTANCE SHEET PTAPringAggressor_cond [ 197.0 0 ]
+PARASITIC VARIATION PTAPringAggressor_cond SHEET  // deltaW = -0.004000, max error = 0.001000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.155000 VALUE 191.883117 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.165000 VALUE 192.195122 // sheet @ w==0.16 
+    SPACE > 0 DRAWN_WIDTH >= 0.165000 < 0.175000 VALUE 192.471264 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.185000 VALUE 192.717391 // sheet @ w==0.18 
+    SPACE > 0 DRAWN_WIDTH >= 0.185000 < 0.195000 VALUE 192.938144 // sheet @ w==0.19 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.215000 VALUE 193.229665 // sheet @ w==0.205 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.235000 VALUE 193.558952 // sheet @ w==0.225 
+    SPACE > 0 DRAWN_WIDTH >= 0.235000 < 0.260000 VALUE 193.835341 // sheet @ w==0.245 
+    SPACE > 0 DRAWN_WIDTH >= 0.260000 < 0.295000 VALUE 194.175627 // sheet @ w==0.275 
+    SPACE > 0 DRAWN_WIDTH >= 0.295000 < 0.340000 VALUE 194.529781 // sheet @ w==0.315 
+    SPACE > 0 DRAWN_WIDTH >= 0.340000 < 0.405000 VALUE 194.893048 // sheet @ w==0.37 
+    SPACE > 0 DRAWN_WIDTH >= 0.405000 < 0.505000 VALUE 195.264317 // sheet @ w==0.45 
+    SPACE > 0 DRAWN_WIDTH >= 0.505000 < 0.670000 VALUE 195.639033 // sheet @ w==0.575 
+    SPACE > 0 DRAWN_WIDTH >= 0.670000 < 1.005000 VALUE 196.025958 // sheet @ w==0.805 
+    SPACE > 0 DRAWN_WIDTH >= 1.005000 < 2.015000 VALUE 196.413690 // sheet @ w==1.34 
+    SPACE > 0 DRAWN_WIDTH >= 2.015000 < 4.000000 VALUE 196.803197 // sheet @ w==4.0
+q19li1 = COPY 4050
+q20li1 = COPY li1
+Li1_cond_vic_agr = q20li1 NOT q19li1
+
+CONNECT Li1_cond_vic_agr PTAPringVictim_cond BY Licon1Pfom
+RESISTANCE CONNECTION Li1_cond_vic_agr PTAPringVictim_cond [ 17.34 0 ]
+CONNECT Li1_cond_vic_agr PTAPringAggressor_cond BY Licon1Pfom
+RESISTANCE CONNECTION Li1_cond_vic_agr PTAPringAggressor_cond [ 17.34 0 ]
+CONNECT Li1_cond_vic_agr AgrRingCorners BY Licon1Pfom
+RESISTANCE CONNECTION Li1_cond_vic_agr AgrRingCorners [ 17.34 0 ]
+q19poly = COPY 4049
+q20poly = COPY poly
+Poly_cond_vic_agr = q20poly NOT q19poly
+CONNECT poly_pin Poly_cond_vic_agr
+TEXT LAYER polypt ATTACH polypt poly_pin ATTACH polypt Poly_cond_vic_agr
+TEXT LAYER polytt ATTACH polytt Poly_cond_vic_agr
+RESISTANCE SHEET Poly_cond_vic_agr [ 48.2 0 ]
+PARASITIC VARIATION Poly_cond_vic_agr SHEET  // deltaW = 0.056000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.155000 VALUE 76.914894 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.165000 VALUE 74.153846 // sheet @ w==0.16 
+    SPACE > 0 DRAWN_WIDTH >= 0.165000 < 0.175000 VALUE 71.877193 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.185000 VALUE 69.967742 // sheet @ w==0.18 
+    SPACE > 0 DRAWN_WIDTH >= 0.185000 < 0.195000 VALUE 68.343284 // sheet @ w==0.19 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.215000 VALUE 66.315436 // sheet @ w==0.205 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.235000 VALUE 64.171598 // sheet @ w==0.225 
+    SPACE > 0 DRAWN_WIDTH >= 0.235000 < 0.265000 VALUE 62.113402 // sheet @ w==0.25 
+    SPACE > 0 DRAWN_WIDTH >= 0.265000 < 0.310000 VALUE 59.986900 // sheet @ w==0.285 
+    SPACE > 0 DRAWN_WIDTH >= 0.310000 < 0.375000 VALUE 57.704225 // sheet @ w==0.34 
+    SPACE > 0 DRAWN_WIDTH >= 0.375000 < 0.480000 VALUE 55.615385 // sheet @ w==0.42 
+    SPACE > 0 DRAWN_WIDTH >= 0.480000 < 0.690000 VALUE 53.502947 // sheet @ w==0.565 
+    SPACE > 0 DRAWN_WIDTH >= 0.690000 < 1.275000 VALUE 51.417163 // sheet @ w==0.895 
+    SPACE > 0 DRAWN_WIDTH >= 1.275000 < 2.800000 VALUE 49.408236 // sheet @ w==2.29
+q23poly = EXPAND TEXT "?" polytt BY 0.005 PRIMARY ONLY
+q25poly = COPY poly_pin
+q21poly = q23poly NOT (SIZE q25poly BY 0.005)
+q22poly = SIZE q21poly BY 0.005
+CONNECT q22poly
+DEVICE Probe(probe_polytt) q21poly   q22poly(probe) Poly_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER polytt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+CONNECT li1_pin Li1_cond_vic_agr
+TEXT LAYER li1pt ATTACH li1pt li1_pin ATTACH li1pt Li1_cond_vic_agr
+TEXT LAYER li1tt ATTACH li1tt Li1_cond_vic_agr
+RESISTANCE SHEET Li1_cond_vic_agr [ 12.2 0 ]
+PARASITIC VARIATION Li1_cond_vic_agr SHEET  // deltaW = -0.017000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.215000 VALUE 11.090909 // sheet @ w==0.17 
+    SPACE > 0 DRAWN_WIDTH >= 0.215000 < 0.450000 VALUE 11.524430 // sheet @ w==0.29 
+    SPACE > 0 DRAWN_WIDTH >= 0.450000 < 0.850000 VALUE 11.960784 // sheet @ w==0.85
+q23li1 = EXPAND TEXT "?" li1tt BY 0.005 PRIMARY ONLY
+q25li1 = COPY li1_pin
+q21li1 = q23li1 NOT (SIZE q25li1 BY 0.005)
+q22li1 = SIZE q21li1 BY 0.005
+CONNECT q22li1
+DEVICE Probe(probe_li1tt) q21li1   q22li1(probe) Li1_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER li1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q19met1 = COPY 4051
+q20met1 = COPY met1
+Met1_cond_vic_agr = q20met1 NOT q19met1
+CONNECT met1_pin Met1_cond_vic_agr
+TEXT LAYER met1pt ATTACH met1pt met1_pin ATTACH met1pt Met1_cond_vic_agr
+TEXT LAYER met1tt ATTACH met1tt Met1_cond_vic_agr
+RESISTANCE SHEET Met1_cond_vic_agr [ 0.125 0 ]
+PARASITIC VARIATION Met1_cond_vic_agr SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q23met1 = EXPAND TEXT "?" met1tt BY 0.005 PRIMARY ONLY
+q25met1 = COPY met1_pin
+q21met1 = q23met1 NOT (SIZE q25met1 BY 0.005)
+q22met1 = SIZE q21met1 BY 0.005
+CONNECT q22met1
+DEVICE Probe(probe_met1tt) q21met1   q22met1(probe) Met1_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met1tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q19met2 = COPY 4052
+q20met2 = COPY met2
+Met2_cond_vic_agr = q20met2 NOT q19met2
+CONNECT met2_pin Met2_cond_vic_agr
+TEXT LAYER met2pt ATTACH met2pt met2_pin ATTACH met2pt Met2_cond_vic_agr
+TEXT LAYER met2tt ATTACH met2tt Met2_cond_vic_agr
+RESISTANCE SHEET Met2_cond_vic_agr [ 0.125 0 ]
+PARASITIC VARIATION Met2_cond_vic_agr SHEET  // deltaW = 0.039000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.145000 VALUE 0.173267 // sheet @ w==0.14 
+    SPACE > 0 DRAWN_WIDTH >= 0.145000 < 0.155000 VALUE 0.168919 // sheet @ w==0.15 
+    SPACE > 0 DRAWN_WIDTH >= 0.155000 < 0.175000 VALUE 0.163690 // sheet @ w==0.165 
+    SPACE > 0 DRAWN_WIDTH >= 0.175000 < 0.195000 VALUE 0.158390 // sheet @ w==0.185 
+    SPACE > 0 DRAWN_WIDTH >= 0.195000 < 0.230000 VALUE 0.153509 // sheet @ w==0.21 
+    SPACE > 0 DRAWN_WIDTH >= 0.230000 < 0.285000 VALUE 0.147569 // sheet @ w==0.255 
+    SPACE > 0 DRAWN_WIDTH >= 0.285000 < 0.380000 VALUE 0.142045 // sheet @ w==0.325 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.585000 VALUE 0.136580 // sheet @ w==0.46 
+    SPACE > 0 DRAWN_WIDTH >= 0.585000 < 1.350000 VALUE 0.131282 // sheet @ w==0.815 
+    SPACE > 0 DRAWN_WIDTH >= 1.350000 < 1.950000 VALUE 0.127551 // sheet @ w==1.95
+q23met2 = EXPAND TEXT "?" met2tt BY 0.005 PRIMARY ONLY
+q25met2 = COPY met2_pin
+q21met2 = q23met2 NOT (SIZE q25met2 BY 0.005)
+q22met2 = SIZE q21met2 BY 0.005
+CONNECT q22met2
+DEVICE Probe(probe_met2tt) q21met2   q22met2(probe) Met2_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met2tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q19met3 = COPY 4053
+q20met3 = COPY met3
+Met3_cond_vic_agr = q20met3 NOT q19met3
+CONNECT met3_pin Met3_cond_vic_agr
+TEXT LAYER met3pt ATTACH met3pt met3_pin ATTACH met3pt Met3_cond_vic_agr
+TEXT LAYER met3tt ATTACH met3tt Met3_cond_vic_agr
+RESISTANCE SHEET Met3_cond_vic_agr [ 0.047 0 ]
+PARASITIC VARIATION Met3_cond_vic_agr SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q23met3 = EXPAND TEXT "?" met3tt BY 0.005 PRIMARY ONLY
+q25met3 = COPY met3_pin
+q21met3 = q23met3 NOT (SIZE q25met3 BY 0.005)
+q22met3 = SIZE q21met3 BY 0.005
+CONNECT q22met3
+DEVICE Probe(probe_met3tt) q21met3   q22met3(probe) Met3_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met3tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q19met4 = COPY 4054
+q20met4 = COPY met4
+Met4_cond_vic_agr = q20met4 NOT q19met4
+CONNECT met4_pin Met4_cond_vic_agr
+TEXT LAYER met4pt ATTACH met4pt met4_pin ATTACH met4pt Met4_cond_vic_agr
+TEXT LAYER met4tt ATTACH met4tt Met4_cond_vic_agr
+RESISTANCE SHEET Met4_cond_vic_agr [ 0.047 0 ]
+PARASITIC VARIATION Met4_cond_vic_agr SHEET  // deltaW = 0.025000, max error = 0.020000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 0.380000 VALUE 0.051273 // sheet @ w==0.3 
+    SPACE > 0 DRAWN_WIDTH >= 0.380000 < 0.900000 VALUE 0.049304 // sheet @ w==0.535 
+    SPACE > 0 DRAWN_WIDTH >= 0.900000 < 1.250000 VALUE 0.047959 // sheet @ w==1.25
+q23met4 = EXPAND TEXT "?" met4tt BY 0.005 PRIMARY ONLY
+q25met4 = COPY met4_pin
+q21met4 = q23met4 NOT (SIZE q25met4 BY 0.005)
+q22met4 = SIZE q21met4 BY 0.005
+CONNECT q22met4
+DEVICE Probe(probe_met4tt) q21met4   q22met4(probe) Met4_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met4tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q19met5 = COPY 4055
+q20met5 = COPY met5
+Met5_cond_vic_agr = q20met5 NOT q19met5
+CONNECT met5_pin Met5_cond_vic_agr
+TEXT LAYER met5pt ATTACH met5pt met5_pin ATTACH met5pt Met5_cond_vic_agr
+TEXT LAYER met5tt ATTACH met5tt Met5_cond_vic_agr
+RESISTANCE SHEET Met5_cond_vic_agr [ 0.0285 0 ]
+PARASITIC VARIATION Met5_cond_vic_agr SHEET  // deltaW = 0.090000, max error = 0.001000 
+    SPACE > 0 DRAWN_WIDTH >= 0.000000 < 1.625000 VALUE 0.030199 // sheet @ w==1.6 
+    SPACE > 0 DRAWN_WIDTH >= 1.625000 < 1.675000 VALUE 0.030144 // sheet @ w==1.65 
+    SPACE > 0 DRAWN_WIDTH >= 1.675000 < 1.735000 VALUE 0.030088 // sheet @ w==1.705 
+    SPACE > 0 DRAWN_WIDTH >= 1.735000 < 1.795000 VALUE 0.030031 // sheet @ w==1.765 
+    SPACE > 0 DRAWN_WIDTH >= 1.795000 < 1.860000 VALUE 0.029978 // sheet @ w==1.825 
+    SPACE > 0 DRAWN_WIDTH >= 1.860000 < 1.930000 VALUE 0.029921 // sheet @ w==1.895 
+    SPACE > 0 DRAWN_WIDTH >= 1.930000 < 2.010000 VALUE 0.029864 // sheet @ w==1.97 
+    SPACE > 0 DRAWN_WIDTH >= 2.010000 < 2.095000 VALUE 0.029809 // sheet @ w==2.05 
+    SPACE > 0 DRAWN_WIDTH >= 2.095000 < 2.185000 VALUE 0.029751 // sheet @ w==2.14 
+    SPACE > 0 DRAWN_WIDTH >= 2.185000 < 2.285000 VALUE 0.029696 // sheet @ w==2.235 
+    SPACE > 0 DRAWN_WIDTH >= 2.285000 < 2.400000 VALUE 0.029640 // sheet @ w==2.34 
+    SPACE > 0 DRAWN_WIDTH >= 2.400000 < 2.525000 VALUE 0.029582 // sheet @ w==2.46 
+    SPACE > 0 DRAWN_WIDTH >= 2.525000 < 2.665000 VALUE 0.029524 // sheet @ w==2.595 
+    SPACE > 0 DRAWN_WIDTH >= 2.665000 < 2.820000 VALUE 0.029468 // sheet @ w==2.74 
+    SPACE > 0 DRAWN_WIDTH >= 2.820000 < 2.995000 VALUE 0.029411 // sheet @ w==2.905 
+    SPACE > 0 DRAWN_WIDTH >= 2.995000 < 3.195000 VALUE 0.029355 // sheet @ w==3.09 
+    SPACE > 0 DRAWN_WIDTH >= 3.195000 < 3.425000 VALUE 0.029298 // sheet @ w==3.305 
+    SPACE > 0 DRAWN_WIDTH >= 3.425000 < 3.695000 VALUE 0.029240 // sheet @ w==3.555 
+    SPACE > 0 DRAWN_WIDTH >= 3.695000 < 4.010000 VALUE 0.029183 // sheet @ w==3.845 
+    SPACE > 0 DRAWN_WIDTH >= 4.010000 < 4.385000 VALUE 0.029126 // sheet @ w==4.19 
+    SPACE > 0 DRAWN_WIDTH >= 4.385000 < 4.840000 VALUE 0.029069 // sheet @ w==4.6 
+    SPACE > 0 DRAWN_WIDTH >= 4.840000 < 5.405000 VALUE 0.029011 // sheet @ w==5.105 
+    SPACE > 0 DRAWN_WIDTH >= 5.405000 < 6.120000 VALUE 0.028954 // sheet @ w==5.74 
+    SPACE > 0 DRAWN_WIDTH >= 6.120000 < 7.060000 VALUE 0.028897 // sheet @ w==6.555 
+    SPACE > 0 DRAWN_WIDTH >= 7.060000 < 8.350000 VALUE 0.028839 // sheet @ w==7.65 
+    SPACE > 0 DRAWN_WIDTH >= 8.350000 < 10.220000 VALUE 0.028782 // sheet @ w==9.19 
+    SPACE > 0 DRAWN_WIDTH >= 10.220000 < 13.185000 VALUE 0.028725 // sheet @ w==11.515 
+    SPACE > 0 DRAWN_WIDTH >= 13.185000 < 18.600000 VALUE 0.028667 // sheet @ w==15.43 
+    SPACE > 0 DRAWN_WIDTH >= 18.600000 < 31.615000 VALUE 0.028610 // sheet @ w==23.42 
+    SPACE > 0 DRAWN_WIDTH >= 31.615000 < 90.000000 VALUE 0.028553 // sheet @ w==48.685
+q23met5 = EXPAND TEXT "?" met5tt BY 0.005 PRIMARY ONLY
+q25met5 = COPY met5_pin
+q21met5 = q23met5 NOT (SIZE q25met5 BY 0.005)
+q22met5 = SIZE q21met5 BY 0.005
+CONNECT q22met5
+DEVICE Probe(probe_met5tt) q21met5   q22met5(probe) Met5_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER met5tt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q19rdl = COPY 4056
+q20rdl = COPY rdl
+Rdl_cond_vic_agr = q20rdl NOT q19rdl
+CONNECT rdl_pin Rdl_cond_vic_agr
+TEXT LAYER rdlpt ATTACH rdlpt rdl_pin ATTACH rdlpt Rdl_cond_vic_agr
+TEXT LAYER rdltt ATTACH rdltt Rdl_cond_vic_agr
+RESISTANCE SHEET Rdl_cond_vic_agr [ 0.005 0 ]
+q23rdl = EXPAND TEXT "?" rdltt BY 0.005 PRIMARY ONLY
+q25rdl = COPY rdl_pin
+q21rdl = q23rdl NOT (SIZE q25rdl BY 0.005)
+q22rdl = SIZE q21rdl BY 0.005
+CONNECT q22rdl
+DEVICE Probe(probe_rdltt) q21rdl   q22rdl(probe) Rdl_cond_vic_agr(conductor) BY NET NETLIST ELEMENT "p" TEXT MODEL LAYER rdltt [
+    PROPERTY probeType
+    probeType = 1
+    ]
+
+
+q4Pad_vsub_vic = COPY 4057
+q5Pad_vsub_vic = COPY Pad_vsub_vic
+Pad_vsub_vic_cond = q5Pad_vsub_vic NOT q4Pad_vsub_vic
+RESISTANCE SHEET Pad_vsub_vic_cond [ 0.0 0 ]
+q4Pad_vsub_agr = COPY 4058
+q5Pad_vsub_agr = COPY Pad_vsub_agr
+Pad_vsub_agr_cond = q5Pad_vsub_agr NOT q4Pad_vsub_agr
+RESISTANCE SHEET Pad_vsub_agr_cond [ 0.0 0 ]
+CONNECT Li1_cond_vic_agr Poly_cond_vic_agr BY Licon1ply
+RESISTANCE CONNECTION Li1_cond_vic_agr Poly_cond_vic_agr [ 4.198592 0 ]
+CONNECT Met1_cond_vic_agr Li1_cond_vic_agr BY mcon
+RESISTANCE CONNECTION Met1_cond_vic_agr Li1_cond_vic_agr [ 0.26877 0 ]
+CONNECT Met2_cond_vic_agr Met1_cond_vic_agr BY via
+RESISTANCE CONNECTION Met2_cond_vic_agr Met1_cond_vic_agr [ 0.10125 0 ]
+CONNECT Met3_cond_vic_agr Met2_cond_vic_agr BY via2
+RESISTANCE CONNECTION Met3_cond_vic_agr Met2_cond_vic_agr [ 0.1364 0 ]
+CONNECT Met4_cond_vic_agr Met3_cond_vic_agr BY via3
+RESISTANCE CONNECTION Met4_cond_vic_agr Met3_cond_vic_agr [ 0.1364 0 ]
+CONNECT Met5_cond_vic_agr Met4_cond_vic_agr BY via4
+RESISTANCE CONNECTION Met5_cond_vic_agr Met4_cond_vic_agr [ 0.2432 0 ]
+CONNECT Rdl_cond_vic_agr Met5_cond_vic_agr BY pmm
+RESISTANCE CONNECTION Rdl_cond_vic_agr Met5_cond_vic_agr [ 0.116 0 ]
+CONNECT Pad_vsub_vic_cond Met5_cond_vic_agr
+CONNECT Pad_vsub_agr_cond Met5_cond_vic_agr
+"k_4_Pad_vsub_vic_cond" {
+    @ keep: Pad_vsub_vic_cond - Pad_vsub_vic_cond
+    COPY Pad_vsub_vic_cond
+    }
+"k_5_Pad_vsub_agr_cond" {
+    @ keep: Pad_vsub_agr_cond - Pad_vsub_agr_cond
+    COPY Pad_vsub_agr_cond
+    }
+DEVICE VicRingCorners_cond VicRingCorners_cond VicRingCorners_cond(P1)
+DEVICE Pad_vsub_vic_cond Pad_vsub_vic_cond Pad_vsub_vic_cond(P1)
+DEVICE AgrRingCorners_cond AgrRingCorners_cond AgrRingCorners_cond(P1)
+DEVICE Pad_vsub_agr_cond Pad_vsub_agr_cond Pad_vsub_agr_cond(P1)
+VicRingCornersWithPad = NET AREA RATIO VicRingCorners_cond Pad_vsub_vic_cond > 0
+VicRingsWithPads = INTERACT PTAPringVictim VicRingCornersWithPad
+VicRingsWithoutPads = PTAPringVictim NOT VicRingsWithPads
+AgrRingCornersWithpad = NET AREA RATIO AgrRingCorners Pad_vsub_agr_cond > 0
+AgrRingsWithPads = INTERACT PTAPringAggressor AgrRingCornersWithPad
+AgrRingsWithoutPads = PTAPringAggressor NOT AgrRingsWithPads
+"r_4_subiso.18" {
+    @ subiso.18: Victim guardring must be connected to a vsub_vic pad. If this is not a full chip run, use the block_level switch.
+    COPY VicRingsWithoutPads
+    }
+"r_5_subiso.18" {
+    @ subiso.18: Aggressor guardring must be connected to a vsub_agr pad. If this is not a full chip run, use the block_level switch.
+    COPY AgrRingsWithoutPads
+    }
+/// End of Calibre Rules
+PORT LAYER POLYGON pad_pin rdl_pin met5_pin met4_pin
+	 met3_pin met2_pin met1_pin li1_pin poly_pin
+GROUP drcErrors "r_5_subiso.18" "r_4_subiso.18" "r_3_luB1.14" "r_2_luB1.14"
+	 "r_1_lu4.5" "r_0_lu4.5"
+GROUP keepLayers "k_5_Pad_vsub_agr_cond" "k_4_Pad_vsub_vic_cond" "k_3_VicRingCorners" "k_2_AgrRingCorners"
+	 "k_1_PTAPringAggressor" "k_0_PTAPringVictim"
+GROUP drcRecommended "s_1_lu4.15" "s_0_lu4.15"
+DRC SELECT CHECK drcErrors
+DRC SELECT CHECK keepLayers
+DRC CHECK MAP keepLayers
+    ASCII "keepLayer.db"
+    MAXIMUM RESULTS ALL
+DRC SELECT CHECK drcRecommended
+DRC CHECK MAP drcRecommended
+    ASCII "drcRecommended.db"
+    MAXIMUM RESULTS 20000
+/// --BEGIN LATCHUP RCX TABLE--
+/// vpwr
+/// vgnd
+/// --END LATCHUP RCX TABLE--
+PEX REDUCE VIA RESISTANCE MINIMUM
+DUMMY_PERC_DEVICE_1 = RECTANGLES 1 1 1 INSIDE OF 0 0 1 1
+DUMMY_PERC_DEVICE_2 = RECTANGLES 1 1 1 INSIDE OF 0.5 0.5 1.5 1.5
+CONNECT DUMMY_PERC_DEVICE_1 DUMMY_PERC_DEVICE_2
+RESISTANCE SHEET DUMMY_PERC_DEVICE_1 [ 1 0 ]
+RESISTANCE SHEET DUMMY_PERC_DEVICE_2 [ 1 0 ]
+DEVICE DUMMY_PERC_DEVICE_1 DUMMY_PERC_DEVICE_1 DUMMY_PERC_DEVICE_1(P1)
+DEVICE DUMMY_PERC_DEVICE_2 DUMMY_PERC_DEVICE_2 DUMMY_PERC_DEVICE_2(P1)
+
+DFM DATABASE dfmdb OVERWRITE REVISIONS [ALL PINLOC]
+PERC REPORT "perc.rep"
+PERC LOAD perc_lib INIT init SELECT  PERC_lu4.5_0 PERC_lu4.5_1 PERC_lu4.5b_2 PERC_lu4.5b_3 PERC_lu4.5c_4 PERC_lu4.5c_5 PERC_lu4.15_6 PERC_lu4.15_7 PERC_luC.5_8 PERC_luB1.13_9 PERC_subiso.18_10 PERC_subiso.18_11 PERC_DUMMY_ERROR_12
+TVF FUNCTION perc_lib [/*
+package require CalibreLVS_PERC
+proc init {} {
+perc::define_net_type_by_device "grNTAP_cond"
+perc::define_net_type_by_device "PwrPadLu_cond"
+perc::define_net_type_by_device "grPTAP_cond"
+perc::define_net_type_by_device "GndPadLu_cond"
+perc::define_net_type_by_device "grNTAP_condESDres"
+perc::define_net_type_by_device "PwrPadLuESDres_cond"
+perc::define_net_type_by_device "grPTAP_condESDres"
+perc::define_net_type_by_device "GndPadLuESDres_cond"
+perc::define_net_type_by_device "grNTAPsz_cond"
+perc::define_net_type_by_device "grPTAPsz_cond"
+perc::define_net_type_by_device "interest_ndiff_device"
+perc::define_net_type_by_device "interest_ptap_device"
+perc::define_net_type_by_device "interest_pdiff_device"
+perc::define_net_type_by_device "interest_ntap_device"
+perc::define_net_type_by_device "check_7_8_ndiff_cond"
+perc::define_net_type_by_device "SignalPad_cond"
+perc::define_net_type_by_device "GndPad_cond"
+perc::define_net_type_by_device "check_9_4_met1_cond"
+perc::define_net_type_by_device "VicRingCorners_cond"
+perc::define_net_type_by_device "Pad_vsub_vic_cond"
+perc::define_net_type_by_device "AgrRingCorners_cond"
+perc::define_net_type_by_device "Pad_vsub_agr_cond"
+perc::define_net_type_by_device "DUMMY_PERC_DEVICE_1"
+perc::define_net_type_by_device "DUMMY_PERC_DEVICE_2"
+
+}
+source "/home/vun/v/s8pir_10r/s8pir_10r_vcells_luRes_4_5/latchupRes/CALtvfPERC.tcl"
+proc PERC_COND_lu4.5_0 { net } { res_dev $net grNTAP_cond P1 PwrPadLu_cond P1 gt; return 0}
+proc PERC_lu4.5_0 {} { global current_error; set current_error lu4.5_0; global rule_value; set rule_value 5.000000; perc::check_net -netType { grNTAP_cond && PwrPadLu_cond } -condition PERC_COND_lu4.5_0 -comment "lu4.5: Resistance between outer NTAP GuardRing of diffConn SigPad in metal to pwr pad > 5.000000 ohms"}
+proc PERC_COND_lu4.5_1 { net } { res_dev $net grPTAP_cond P1 GndPadLu_cond P1 gt; return 0}
+proc PERC_lu4.5_1 {} { global current_error; set current_error lu4.5_1; global rule_value; set rule_value 5.000000; perc::check_net -netType { grPTAP_cond && GndPadLu_cond } -condition PERC_COND_lu4.5_1 -comment "lu4.5: Resistance between outer PTAP GuardRing of diffConn SigPad in metal to  gnd pad > 5.000000 ohms"}
+proc PERC_COND_lu4.5b_2 { net } { res_dev $net grNTAP_condESDres P1 PwrPadLuESDres_cond P1 gt; return 0}
+proc PERC_lu4.5b_2 {} { global current_error; set current_error lu4.5b_2; global rule_value; set rule_value 10.000000; perc::check_net -netType { grNTAP_condESDres && PwrPadLuESDres_cond } -condition PERC_COND_lu4.5b_2 -comment "lu4.5b: Resistance between outer NTAP GuardRing of diffConn SigPad thru ESDres to pwr pad > 10.000000 ohms"}
+proc PERC_COND_lu4.5b_3 { net } { res_dev $net grPTAP_condESDres P1 GndPadLuESDres_cond P1 gt; return 0}
+proc PERC_lu4.5b_3 {} { global current_error; set current_error lu4.5b_3; global rule_value; set rule_value 10.000000; perc::check_net -netType { grPTAP_condESDres && GndPadLuESDres_cond } -condition PERC_COND_lu4.5b_3 -comment "lu4.5b: Resistance between outer PTAP GuardRing of diffConn SigPad thru ESDres to gnd pad > 10.000000 ohms"}
+proc PERC_COND_lu4.5c_4 { net } { res_dev $net grNTAPsz_cond P1 PwrPadLu_cond P1 gt; return 0}
+proc PERC_lu4.5c_4 {} { global current_error; set current_error lu4.5c_4; global rule_value; set rule_value 10.000000; perc::check_net -netType { grNTAPsz_cond && PwrPadLu_cond } -condition PERC_COND_lu4.5c_4 -comment "lu4.5c: Resistance between any NTAP guardRing to pwr pad within 50um of SigPadDiff to pwr pad> 10.000000 ohms"}
+proc PERC_COND_lu4.5c_5 { net } { res_dev $net grPTAPsz_cond P1 GndPadLu_cond P1 gt; return 0}
+proc PERC_lu4.5c_5 {} { global current_error; set current_error lu4.5c_5; global rule_value; set rule_value 10.000000; perc::check_net -netType { grPTAPsz_cond && GndPadLu_cond } -condition PERC_COND_lu4.5c_5 -comment "lu4.5c: Resistance between any PTAP guardRing to gnd pad within 50um of SigPadDiff to gnd pad> 10.000000 ohms"}
+proc PERC_COND_lu4.15_6 { net } { res_dev_difftap $net interest_ndiff_device P1 interest_ptap_device P1; return 0}
+proc PERC_lu4.15_6 {} { global current_error; set current_error lu4.15_6; global dev_array; global dev_net_type_pinAtNet; set dev_net_type_pinAtNet {}; unset dev_array; array set dev_array {}; global rule_value; set rule_value 100.000000; perc::check_net -netType { interest_ndiff_device } -condition PERC_COND_lu4.15_6 -comment "lu4.15: Resistance between N source/drain and body connection for devices within 100.000000 um of signal diff > 100.000000 ohms"}
+proc PERC_COND_lu4.15_7 { net } { res_dev_difftap $net interest_pdiff_device P1 interest_ntap_device P1; return 0}
+proc PERC_lu4.15_7 {} { global current_error; set current_error lu4.15_7; global dev_array; global dev_net_type_pinAtNet; set dev_net_type_pinAtNet {}; unset dev_array; array set dev_array {}; global rule_value; set rule_value 100.000000; perc::check_net -netType { interest_pdiff_device } -condition PERC_COND_lu4.15_7 -comment "lu4.15: Resistance between P source/drain and body connection for devices within 100.000000 um of signal diff > 100.000000 ohms"}
+proc PERC_COND_luC.5_8 { net } { res_dev $net check_7_8_ndiff_cond P1 SignalPad_cond P1 lt; return 0}
+proc PERC_luC.5_8 {} { global current_error; set current_error luC.5_8; global rule_value; set rule_value 150.000000; perc::check_net -netType { check_7_8_ndiff_cond && SignalPad_cond } -condition PERC_COND_luC.5_8 -comment "luC.5: Resistance between ndiff in iso pwell not grounded to signal Pad < 150.000000 ohms"}
+proc PERC_COND_luB1.13_9 { net } { res_dev_nearest $net GndPad_cond P1 check_9_4_met1_cond P1 gt; return 0}
+proc PERC_luB1.13_9 {} { global current_error; set current_error luB1.13_9; global rule_value; set rule_value 2.000000; perc::check_net -netType { GndPad_cond && check_9_4_met1_cond } -condition PERC_COND_luB1.13_9 -comment "luB1.13: Resistance between gnd pad and nearest gnd2gnd clamp > 2.000000 ohms"}
+proc PERC_COND_subiso.18_10 { net } { res_dev $net VicRingCorners_cond P1 Pad_vsub_vic_cond P1 gt; return 0}
+proc PERC_subiso.18_10 {} { global current_error; set current_error subiso.18_10; global rule_value; set rule_value 10.000000; perc::check_net -netType { VicRingCorners_cond && Pad_vsub_vic_cond } -condition PERC_COND_subiso.18_10 -comment "subiso.18: Resistance between victim guardring and vsub_vic pad > 10.000000. If this is not a full chip run, use the block_level switch."}
+proc PERC_COND_subiso.18_11 { net } { res_dev $net AgrRingCorners_cond P1 Pad_vsub_agr_cond P1 gt; return 0}
+proc PERC_subiso.18_11 {} { global current_error; set current_error subiso.18_11; global rule_value; set rule_value 10.000000; perc::check_net -netType { AgrRingCorners_cond && Pad_vsub_agr_cond } -condition PERC_COND_subiso.18_11 -comment "subiso.18: Resistance between aggressor guardring and vsub_agr pad > 10.000000. If this is not a full chip run, use the block_level switch."}
+proc PERC_COND_DUMMY_ERROR_12 { net } { res_dev $net DUMMY_PERC_DEVICE_1 P1 DUMMY_PERC_DEVICE_2 P1 gt; return 0}
+proc PERC_DUMMY_ERROR_12 {} { global current_error; set current_error DUMMY_ERROR_12; global rule_value; set rule_value 100000.000000; perc::check_net -netType { DUMMY_PERC_DEVICE_1 && DUMMY_PERC_DEVICE_2 } -condition PERC_COND_DUMMY_ERROR_12 -comment "DUMMY_ERROR: DUMMY ERROR: CONTACT CAD FOR SUPPORT"}
+
+*/]
+DFM YS AUTOSTART ldl_lib ldl_run1
+TVF FUNCTION ldl_lib [/*
+package require CalibrePERC_LDL
+proc ldl_run1 {} {
+perc_ldl::execute_p2p_checks -user_via_reduction
+if {[catch {ldl::import_perc -check_type lu4.15_6 -instances ::incompleted_instances}]} {
+puts "LDL WARNING: Could not import check lu4.15 from PERC"
+exec touch "lu4.15_6.rdb"
+} else {
+ldl::foreach_instance -instances ::incompleted_instances -copy_device_props -noempty -svrf { incompleted_source_device$dev_num = COPY ldl_dev$dev_num } -save { -layers {incompleted_source_device$dev_num} -checkname lu4.15_6 -nopseudo -format RDB -file "lu4.15_6.rdb" -delete -comment "lu4.15: Ground connected source/drain missing nearby connected tap"}
+}
+if {[catch {ldl::import_perc -check_type lu4.15_7 -instances ::incompleted_instances}]} {
+puts "LDL WARNING: Could not import check lu4.15 from PERC"
+exec touch "lu4.15_7.rdb"
+} else {
+ldl::foreach_instance -instances ::incompleted_instances -copy_device_props -noempty -svrf { incompleted_source_device$dev_num = COPY ldl_dev$dev_num } -save { -layers {incompleted_source_device$dev_num} -checkname lu4.15_7 -nopseudo -format RDB -file "lu4.15_7.rdb" -delete -comment "lu4.15: Power connected source/drain missing nearby connected tap"}
+}
+exec touch "perc.rep.p2p.rdb"
+exit -force
+}
+*/]
+
+/// --BEGIN PERC RDB TABLE--
+/// lu4.15_6
+/// lu4.15_7
+/// --END PERC RDB TABLE--
+/// --BEGIN PERC RECOMMENDED TABLE--
+/// "s_0_lu4.15"
+/// "s_1_lu4.15"
+/// PERC_lu4.15_6
+/// lu4.15_6
+/// PERC_lu4.15_7
+/// lu4.15_7
+/// --END PERC RECOMMENDED TABLE--

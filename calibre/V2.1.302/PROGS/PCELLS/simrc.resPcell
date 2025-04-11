@@ -1,0 +1,179 @@
+/*==============================================================================
+  File:         simrc.resPcell
+  Purpose:      Required auCdl functions for Skywater S130 rpoly_hp, rpoly_hp2K,
+                rpoly, rndiff, rndiff_v5, rpdiff, & rpdiff_v5 Pcells.
+                To be loaded by the users .simrc file in their workarea
+
+  Created:      Mar 07, 2020  Madek Graham
+  Description:  An addition to the .simrc to support proper cdl netlisting
+                procedures for:  rpoly_hp, rpoly_hp2K
+  
+  Functions redefined:  ansCdlGetSegmentConnections
+                        ansCdlPrintInstParams
+                        ansCdlPrintConnections
+
+------------------------------------------------------------
+  Modifications:
+  - Mar 17, 2020 MSG
+    added nf to cdl netlisting to spit out as segments
+  - Mar 23, 2020 MSG
+    added rpoly and diff resistors
+
+==============================================================================*/
+
+procedure( ansCdlGetSegmentConnections( inst connectionPairs iterSeg iterMult
+   numSegments multiplicityFactor segmentConnType netCount )
+  let( ( mycellList firstTerm secondTerm pairList )
+    mycellList = list("rpoly_hp" "rpoly_hp2K" "rpoly" "rndiff" "rndiff_v5" "rpdiff" "rpdiff_v5" "rpwell")
+
+    if( member(inst~>cellName mycellList)  then
+      ; reorder terms in correct order
+      if( inst~>cellName != "rpoly" then
+        connectionPairs = list(
+          assoc("PLUS" connectionPairs)
+          assoc("MINUS" connectionPairs)
+          assoc("B" connectionPairs)
+        )
+      else
+        connectionPairs = list(
+          assoc("PLUS" connectionPairs)
+          assoc("MINUS" connectionPairs)
+        )
+      )
+      if( inst->rType == "Series" then
+        cond(
+          ( iterSeg == 1
+            secondTerm = cadr( connectionPairs )
+            secondTerm = list( car(secondTerm) sprintf( nil "%s_%s_%d_%d" inst->baseName
+              cadar(connectionPairs) hnlCurrentIteration netCount ) )
+            pairList = list( car(connectionPairs) secondTerm )
+            pairList = append( pairList cddr(connectionPairs) )
+          ); iterSeg = 1
+          ( iterSeg == numSegments
+            firstTerm = car(connectionPairs)
+            firstTerm = list( car(firstTerm) sprintf(nil "%s_%s_%d_%d" inst->baseName
+              cadar(connectionPairs) hnlCurrentIteration netCount-1 ) )
+            pairList = append( list(firstTerm) cdr(connectionPairs))
+          ); iterSeg = max
+          (t
+            firstTerm = car(connectionPairs)
+            secondTerm = cadr(connectionPairs)
+            firstTerm = list( car(firstTerm) sprintf(nil "%s_%s_%d_%d" inst->baseName
+              cadar(connectionPairs) hnlCurrentIteration netCount-1 ) )
+            secondTerm = list( car(secondTerm) sprintf(nil "%s_%s_%d_%d" inst->baseName
+              cadar(connectionPairs) hnlCurrentIteration netCount ) )
+            pairList = append1( list(firstTerm) secondTerm )
+            pairList = append( pairList cddr(connectionPairs))
+          ); t
+        ); cond
+      else
+        pairList = connectionPairs
+      ); if series
+    else
+      pairList = connectionPairs
+    ); if member
+    pairList
+  ); let
+); procedure ansCdlGetSegmentConnections
+
+procedure( ansCdlPrintInstParams(fp pairList)
+  let( ( mycellList )
+    mycellList = list("rpoly_hp" "rpoly_hp2K" "rpoly" "rndiff" "rndiff_v5" "rpdiff" "rpdiff_v5" "rpwell")
+
+    if( member(hnlCurrentInst~>cellName mycellList)  then
+      foreach( pair pairList
+        case(car(pair)
+          ("model"
+            artFprintf( fp "$[%s] " artMakeString(cadr(pair)))
+          ); model
+          ("m"
+            cond(
+              (cadr( assoc("rType" pairList)) == "Parallel"
+                artFprintf( fp "m=%s "
+                  artMakeString(cadr(assoc( "segments" pairList))*cadr(assoc( "m" pairList)) ))
+              )
+              (hnlCurrentInst~>cellName == "rpwell"
+                artFprintf( fp "m=%s " artMakeString(cadr( assoc( "m" pairList))))
+              )
+              (t
+                artFprintf( fp "m=1 " )
+              )
+            )
+            ;artFprintf( fp "%s=%s " car(pair) artMakeString(cadr(pair)) )
+          ); m
+          ("segments"
+            cond(
+              (cadr( assoc("rType" pairList)) == "Serpentine"
+                artFprintf( fp "segments=%s " artMakeString(cadr( assoc( "segments" pairList))))
+              )
+              (t
+                artFprintf( fp "segments=1 " )
+              )
+            )
+          ); segments
+          ("w" || "l"
+            artFprintf( fp "$%s=%s " upperCase(car(pair)) S130stringTruncateZeros(artMakeString(cadr(pair))) )
+          ); w/l
+          (t
+            ;unless(member(car(pair) list("nf" "rType" "wellType"))
+            unless(member(car(pair) list("nf" "wellType"))
+              artFprintf( fp "%s=%s " car(pair) artMakeString(cadr(pair)) )
+            )
+          ); t
+        ); case
+      ); foreach
+    else
+      foreach( pair pairList
+        artFprintf( fp "%s=%s " artMakeString(car(pair)) artMakeString(cadr(pair)) )
+      ); foreach
+    ); if mycellList
+  ); let
+); procedure ansCdlPrintInstParams
+
+procedure( ansCdlPrintConnections(fp connections )
+  let((mycellList myConnections)
+    mycellList = list("rpoly_hp" "rpoly_hp2K" "rpoly" "rndiff" "rndiff_v5" "rpdiff" "rpdiff_v5" "rpwell")
+    if( member(hnlCurrentInst~>cellName mycellList)  then
+      if( hnlCurrentInst~>cellName != "rpoly" then
+        myConnections = list(
+          car(setof(x connections car(x)=="PLUS"))
+          car(setof(x connections car(x)=="MINUS"))
+          car(setof(x connections car(x)=="B"))
+        )
+      else
+        myConnections = list(
+          car(setof(x connections car(x)=="PLUS"))
+          car(setof(x connections car(x)=="MINUS"))
+        )
+      )
+      foreach( cn myConnections
+        if( car(cn) == "B" then
+          artFprintf( fp "$SUB=%s " artMakeString(cadr(cn)) )
+        else
+          artFprintf( fp "%s " artMakeString(cadr(cn)) )
+        )
+      ); foreach
+    else
+      foreach( cn connections
+        artFprintf( fp "%s " artMakeString(cadr(cn)) )
+      ); foreach
+    ); if member
+  ); let
+); procedure ansCdlPrintConnections
+
+define( ansCdlGetSegmentInfo(inst master parent)
+  case( inst->rType
+    ("Parallel" `(1 "Parallel") )
+    ("Series" `(,inst->segments "Series") )
+    ("Serpentine" `(1 "Parallel") )
+  )
+)
+define( ansCdlGetMultiplicity(inst master parent)
+  case( inst->rType
+    ("Parallel" 1 )
+    ("Series" inst->m )
+    ("Serpentine" 1 )
+  )
+)
+
+/*==================================  EOF  ===================================*/

@@ -1,0 +1,1191 @@
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// This file includes SVRF/TVF Technology licensed by Siemens Industry Software Inc. and its affiliates ("SISW".
+// "SVRF/TVF Technology" means SISW's Standard Verification Rule Format ("SVRF") and Tcl Verification Format
+// ("TVF") proprietary languages for expressing process rules.  SVRF/TVF Technology constitutes or contains trade
+// secrets and confidential information of SISW, and any use is subject to the terms and conditions of the SISW
+// End-User License Agreement, which may be viewed at https://www.sw.siemens.com/en-US/swterms/base/eula/ and the
+// EDA Supplemental Terms which may be viewed at https://www.sw.siemens.com/en-US/sw-terms/supplements/ .
+// SVRF/TVF Technology may be used solely with SISW software products, by your company's employees and on-site
+// contractors, excluding EDA Competitors, who are under obligations of confidentiality and whose job performance
+// requires access for your internal business purposes.
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//  Copyright (c) 2018 SkyWater Technology.
+//
+//  DESCRIPTION
+//  Calibre Metal Fill Generation rule for S130 PDK V1
+//  
+//  Revision History
+//  vun 05/21/20 adapted from S8 PDK V2.0
+//  jag 02/22/22 changed SNAP value to 5 for MM1/2
+//               changed output fill name to "fill.gds" from "fill.db"
+//               increased STEP value to avoid spacing issues
+//               added SETBACK commands to avoid spacing issues
+//               commented out FILL SPEC sections to avoid min area and other DRC errors
+//               added APPEND "_fill" to output cell names
+//               added (squared-off) pad setback for m4/m5
+    
+// ********************************************************
+// Begin control statements
+// ********************************************************
+//LAYOUT PATH  "top_cell.calibre.db"
+//LAYOUT PRIMARY "top_cell"
+//LAYOUT SYSTEM GDSII
+
+PRECISION 1000
+
+UNIT LENGTH u
+
+DRC ICSTATION YES
+
+DRC MAXIMUM RESULTS ALL
+
+// Tolerance for round-off errors on skew edges
+DRC TOLERANCE FACTOR 0.001
+
+// ********************************************************
+// End control statements
+// ********************************************************
+
+// ********************************************************
+// Begin layer definitions
+// ********************************************************
+
+LAYER nwell  1000
+   LAYER MAP 64 DATATYPE 20 1000 // nwell drawing
+
+LAYER diff  1001
+   LAYER MAP 65 DATATYPE 20 1001 // diff drawing
+
+LAYER dnwell  1002
+   LAYER MAP 64 DATATYPE 18 1002 // dnwell drawing
+
+//JAG renamed to tap old for compatibility with older db's
+LAYER tap_old  1003
+   LAYER MAP 65 DATATYPE 44 1003 // tap drawing
+
+LAYER lvtn  1004
+   LAYER MAP 125 DATATYPE 44 1004 // lvtn drawing
+
+LAYER hvtp  1005
+   LAYER MAP 78 DATATYPE 44 1005 // hvtp drawing
+
+LAYER hvi  1006
+   LAYER MAP 75 DATATYPE 20 1006 // hvi drawing
+
+LAYER tunm  1007
+   LAYER MAP 80 DATATYPE 20 1007 // tunm drawing
+
+LAYER poly  1008
+   LAYER MAP 66 DATATYPE 20 1008 // poly drawing
+
+LAYER npc  1009
+   LAYER MAP 95 DATATYPE 20 1009 // npc drawing
+
+LAYER nsdm  1010
+   LAYER MAP 93 DATATYPE 44 1010 // nsdm drawing
+
+LAYER psdm  1011
+   LAYER MAP 94 DATATYPE 20 1011 // psdm drawing
+
+LAYER licon1  1012
+   LAYER MAP 66 DATATYPE 44 1012 // licon1 drawing
+
+LAYER li1  1013
+   LAYER MAP 67 DATATYPE 20 1013 // li1 drawing
+
+LAYER mcon  1014
+   LAYER MAP 67 DATATYPE 44 1014 // mcon drawing
+
+LAYER met1  1015
+   LAYER MAP 68 DATATYPE 20 1015 // met1 drawing
+
+LAYER via  1016
+   LAYER MAP 68 DATATYPE 44 1016 // via drawing
+
+LAYER met2  1017
+   LAYER MAP 69 DATATYPE 20 1017 // met2 drawing
+
+LAYER via2  1018
+   LAYER MAP 69 DATATYPE 44 1018 // via2 drawing
+
+LAYER via3  1019
+   LAYER MAP 70 DATATYPE 44 1019 // via3 drawing
+
+LAYER met4  1020
+   LAYER MAP 71 DATATYPE 20 1020 // met4 drawing
+
+LAYER via4  1021
+   LAYER MAP 71 DATATYPE 44 1021 // via4 drawing
+
+LAYER met5  1022
+   LAYER MAP 72 DATATYPE 20 1022 // met5 drawing
+
+LAYER pad  1023
+   LAYER MAP 76 DATATYPE 20 1023 // pad drawing
+
+LAYER pnp  1024
+   LAYER MAP 82 DATATYPE 44 1024 // pnp drawing
+
+LAYER ldntm  1025
+   LAYER MAP 11 DATATYPE 44 1025 // ldntm drawing
+
+LAYER nsm  1026
+   LAYER MAP 61 DATATYPE 20 1026 // nsm drawing
+
+LAYER hvntm  1027
+   LAYER MAP 125 DATATYPE 20 1027 // hvntm drawing
+
+LAYER pmm  1028
+   LAYER MAP 85 DATATYPE 44 1028 // pmm drawing
+
+LAYER ncm  1029
+   LAYER MAP 92 DATATYPE 44 1029 // ncm drawing
+
+LAYER capacitor  1030
+   LAYER MAP 82 DATATYPE 64 1030 // capacitor drawing
+
+LAYER rpm  1031
+   LAYER MAP 86 DATATYPE 20 1031 // rpm drawing
+
+LAYER inductor  1032
+   LAYER MAP 82 DATATYPE 24 1032 // inductor drawing
+
+LAYER rdl  1033
+   LAYER MAP 74 DATATYPE 20 1033 // rdl drawing
+
+LAYER pmm2  1034
+   LAYER MAP 77 DATATYPE 20 1034 // pmm2 drawing
+
+LAYER hvtr  1035
+   LAYER MAP 18 DATATYPE 20 1035 // hvtr drawing
+
+LAYER ubm  1036
+   LAYER MAP 127 DATATYPE 21 1036 // ubm drawing
+
+LAYER bump  1037
+   LAYER MAP 127 DATATYPE 22 1037 // bump drawing
+
+LAYER HVTRMdg  1038
+   LAYER MAP 98 DATATYPE 44 1038 // chvtrm drawing
+
+LAYER HVTRMmk  1039
+   LAYER MAP 98 DATATYPE 0 1039 // chvtrm mask
+
+LAYER PMM2mk  1040
+   LAYER MAP 94 DATATYPE 0 1040 // cpmm2 mask
+
+LAYER RPMmk  1041
+   LAYER MAP 96 DATATYPE 0 1041 // crpm mask
+
+LAYER CU1Mmk  1042
+   LAYER MAP 93 DATATYPE 0 1042 // ccu1m mask
+
+LAYER PBOmk  1043
+   LAYER MAP 99 DATATYPE 0 1043 // cpbo mask
+
+LAYER PDMmk  1044
+   LAYER MAP 37 DATATYPE 0 1044 // cpdm mask
+
+LAYER MM5mk  1045
+   LAYER MAP 59 DATATYPE 0 1045 // cmm5 mask
+
+LAYER VIM4dg  1046
+   LAYER MAP 117 DATATYPE 20 1046 // cviam4 drawing
+
+LAYER VIM4mk  1047
+   LAYER MAP 58 DATATYPE 0 1047 // cviam4 mask
+
+LAYER MM4mk  1048
+   LAYER MAP 51 DATATYPE 0 1048 // cmm4 mask
+
+LAYER VIM3mk  1049
+   LAYER MAP 50 DATATYPE 0 1049 // cviam3 mask
+
+LAYER NSMmk  1050
+   LAYER MAP 22 DATATYPE 0 1050 // cnsm mask
+
+LAYER MM3mk  1051
+   LAYER MAP 34 DATATYPE 0 1051 // cmm3 mask
+
+LAYER VIM2mk  1052
+   LAYER MAP 44 DATATYPE 0 1052 // cviam2 mask
+
+LAYER MM2mk  1053
+   LAYER MAP 41 DATATYPE 0 1053 // cmm2 mask
+
+LAYER VIMmk  1054
+   LAYER MAP 40 DATATYPE 0 1054 // cviam mask
+
+LAYER MM1mk  1055
+   LAYER MAP 36 DATATYPE 0 1055 // cmm1 mask
+
+LAYER CTM1mk  1056
+   LAYER MAP 35 DATATYPE 0 1056 // cctm1 mask
+
+LAYER LI1Mdg  1057
+   LAYER MAP 115 DATATYPE 44 1057 // cli1m drawing
+
+LAYER LI1Mdrop  1058
+   LAYER MAP 115 DATATYPE 42 1058 // cli1m maskDrop
+
+LAYER LI1Madd  1059
+   LAYER MAP 115 DATATYPE 43 1059 // cli1m maskAdd
+
+LAYER LI1Mmk  1060
+   LAYER MAP 56 DATATYPE 0 1060 // cli1m mask
+
+LAYER LICM1drop  1061
+   LAYER MAP 106 DATATYPE 42 1061 // clicm1 maskDrop
+
+LAYER LICM1add  1062
+   LAYER MAP 106 DATATYPE 43 1062 // clicm1 maskAdd
+
+LAYER LICM1mk  1063
+   LAYER MAP 43 DATATYPE 0 1063 // clicm1 mask
+
+LAYER PSDMdg  1064
+   LAYER MAP 31 DATATYPE 20 1064 // cpsdm drawing
+
+LAYER PSDMdrop  1065
+   LAYER MAP 31 DATATYPE 22 1065 // cpsdm maskDrop
+
+LAYER PSDMadd  1066
+   LAYER MAP 31 DATATYPE 21 1066 // cpsdm maskAdd
+
+LAYER PSDMmk  1067
+   LAYER MAP 32 DATATYPE 0 1067 // cpsdm mask
+
+LAYER NSDMdg  1068
+   LAYER MAP 29 DATATYPE 20 1068 // cnsdm drawing
+
+LAYER NSDMdrop  1069
+   LAYER MAP 29 DATATYPE 22 1069 // cnsdm maskDrop
+
+LAYER NSDMadd  1070
+   LAYER MAP 29 DATATYPE 21 1070 // cnsdm maskAdd
+
+LAYER NSDMmk  1071
+   LAYER MAP 30 DATATYPE 0 1071 // cnsdm mask
+
+LAYER NPCMdg  1072
+   LAYER MAP 44 DATATYPE 20 1072 // cnpc drawing
+
+LAYER NPCMmk  1073
+   LAYER MAP 49 DATATYPE 0 1073 // cnpc mask
+
+LAYER LDNTMmk  1074
+   LAYER MAP 11 DATATYPE 0 1074 // cldntm mask
+
+LAYER HVNTMdg  1075
+   LAYER MAP 38 DATATYPE 20 1075 // chvntm drawing
+
+LAYER HVNTMmk  1076
+   LAYER MAP 39 DATATYPE 0 1076 // chvntm mask
+
+LAYER NTMdg  1077
+   LAYER MAP 26 DATATYPE 20 1077 // cntm drawing
+
+LAYER NTMdrop  1078
+   LAYER MAP 26 DATATYPE 22 1078 // cntm maskDrop
+
+LAYER NTMadd  1079
+   LAYER MAP 26 DATATYPE 21 1079 // cntm maskAdd
+
+LAYER NTMmk  1080
+   LAYER MAP 27 DATATYPE 0 1080 // cntm mask
+
+LAYER P1Mdrop  1081
+   LAYER MAP 33 DATATYPE 42 1081 // cp1m maskDrop
+
+LAYER P1Madd  1082
+   LAYER MAP 33 DATATYPE 43 1082 // cp1m maskAdd
+
+LAYER P1Mmk  1083
+   LAYER MAP 28 DATATYPE 0 1083 // cp1m mask
+
+LAYER LVOMdg  1084
+   LAYER MAP 45 DATATYPE 20 1084 // clvom drawing
+
+LAYER LVOMmk  1085
+   LAYER MAP 46 DATATYPE 0 1085 // clvom mask
+
+LAYER ONOMdg  1086
+   LAYER MAP 87 DATATYPE 44 1086 // conom drawing
+
+LAYER ONOMmk  1087
+   LAYER MAP 88 DATATYPE 0 1087 // conom mask
+
+LAYER TUNMmk  1088
+   LAYER MAP 20 DATATYPE 0 1088 // ctunm mask
+
+LAYER HVTPMdg  1089
+   LAYER MAP 88 DATATYPE 44 1089 // chvtpm drawing
+
+LAYER HVTPMdrop  1090
+   LAYER MAP 97 DATATYPE 42 1090 // chvtpm maskDrop
+
+LAYER HVTPMadd  1091
+   LAYER MAP 97 DATATYPE 43 1091 // chvtpm maskAdd
+
+LAYER HVTPMmk  1092
+   LAYER MAP 97 DATATYPE 0 1092 // chvtpm mask
+
+LAYER LVTNMdg  1093
+   LAYER MAP 25 DATATYPE 44 1093 // clvtnm drawing
+
+LAYER LVTNMdrop  1094
+   LAYER MAP 25 DATATYPE 42 1094 // clvtnm maskDrop
+
+LAYER LVTNMadd  1095
+   LAYER MAP 25 DATATYPE 43 1095 // clvtnm maskAdd
+
+LAYER LVTNMmk  1096
+   LAYER MAP 25 DATATYPE 0 1096 // clvtnm mask
+
+LAYER NWMmk  1097
+   LAYER MAP 21 DATATYPE 0 1097 // cnwm mask
+
+LAYER DNMmk  1098
+   LAYER MAP 48 DATATYPE 0 1098 // cdnm mask
+
+LAYER FOMdg  1099
+   LAYER MAP 22 DATATYPE 20 1099 // cfom drawing
+
+LAYER FOMdrop  1100
+   LAYER MAP 22 DATATYPE 22 1100 // cfom maskDrop
+
+LAYER FOMadd  1101
+   LAYER MAP 22 DATATYPE 21 1101 // cfom maskAdd
+
+LAYER FOMmk  1102
+   LAYER MAP 23 DATATYPE 0 1102 // cfom mask
+
+LAYER met3  1103
+   LAYER MAP 70 DATATYPE 20 1103 // met3 drawing
+
+// JAG removed and use Boolean to create diffTap
+//LAYER diffTap  1001 1003
+   // 1001 -> diff drawing
+   // 1003 -> tap drawing
+
+LAYER SEALID  1104
+   LAYER MAP 81 DATATYPE 1 1104 // areaid seal
+
+LAYER COREID  1105
+   LAYER MAP 81 DATATYPE 2 1105 // areaid core
+
+LAYER ESDID  1106
+   LAYER MAP 81 DATATYPE 19 1106 // areaid esd
+
+LAYER ENID  1107
+   LAYER MAP 81 DATATYPE 57 1107 // areaid extendedDrain
+
+LAYER DIODEID  1108
+   LAYER MAP 81 DATATYPE 23 1108 // areaid diode
+
+LAYER frameBndr  1109
+   LAYER MAP 81 DATATYPE 12 1109 // areaid frameRect
+
+LAYER photoID  1110
+   LAYER MAP 81 DATATYPE 81 1110 // areaid photo
+
+LAYER LVID  1111
+   LAYER MAP 81 DATATYPE 60 1111 // areaid lvNative
+
+LAYER fuse  1112
+   LAYER MAP 71 DATATYPE 17 1112 // met4 fuse
+
+LAYER fomWaffDrop  1113
+   LAYER MAP 22 DATATYPE 24 1113 // cfom waffleDrop
+
+LAYER p1mWaffDrop  1114
+   LAYER MAP 33 DATATYPE 24 1114 // cp1m waffleDrop
+
+LAYER mm1WaffDrop  1115
+   LAYER MAP 62 DATATYPE 24 1115 // cmm1 waffleDrop
+
+LAYER mm2WaffDrop  1116
+   LAYER MAP 105 DATATYPE 52 1116 // cmm2 waffleDrop
+
+LAYER mm3WaffDrop  1117
+   LAYER MAP 107 DATATYPE 24 1117 // cmm3 waffleDrop
+
+LAYER mm4WaffDrop  1118
+   LAYER MAP 112 DATATYPE 4 1118 // cmm4 waffleDrop
+
+LAYER padMask  1044
+   // 1044 -> cpdm mask
+
+LAYER dieCut  1119
+   LAYER MAP 81 DATATYPE 11 1119 // areaid dieCut
+
+LAYER WAFFLEWINDOWID  1120
+   LAYER MAP 81 DATATYPE 13 1120 // areaid waffleWindow
+
+LAYER moduleCutAREA  1121
+   LAYER MAP 81 DATATYPE 10 1121 // areaid moduleCut
+
+LAYER rdlprobepad  1122
+   LAYER MAP 81 DATATYPE 27 1122 // areaid rdlprobepad
+
+LAYER li1res  1123
+   LAYER MAP 67 DATATYPE 13 1123 // li1 res
+
+LAYER polyres  1124
+   LAYER MAP 66 DATATYPE 13 1124 // poly res
+
+LAYER pwellres  1125
+   LAYER MAP 64 DATATYPE 13 1125 // pwell res
+
+LAYER diffres  1126
+   LAYER MAP 65 DATATYPE 13 1126 // diff res
+
+LAYER cncmMask  1127
+   LAYER MAP 17 DATATYPE 0 1127 // cncm mask
+
+LAYER cncmDrawing  1128
+   LAYER MAP 96 DATATYPE 44 1128 // cncm drawing
+
+LAYER textlabel  1129
+   LAYER MAP 83 TEXTTYPE 44 1129 // text drawing
+
+LAYER li1tt  1130 1131 1132 1133
+   LAYER MAP 67 TEXTTYPE 20 1130 // li1 drawing
+   LAYER MAP 67 TEXTTYPE 5 1131 // li1 label
+   LAYER MAP 67 TEXTTYPE 23 1132 // li1 net
+   LAYER MAP 67 TEXTTYPE 16 1133 // li1 pin
+
+LAYER met1tt  1134 1135 1136 1137
+   LAYER MAP 68 TEXTTYPE 20 1134 // met1 drawing
+   LAYER MAP 68 TEXTTYPE 5 1135 // met1 label
+   LAYER MAP 68 TEXTTYPE 23 1136 // met1 net
+   LAYER MAP 68 TEXTTYPE 16 1137 // met1 pin
+
+LAYER met2tt  1138 1139 1140 1141
+   LAYER MAP 69 TEXTTYPE 20 1138 // met2 drawing
+   LAYER MAP 69 TEXTTYPE 5 1139 // met2 label
+   LAYER MAP 69 TEXTTYPE 23 1140 // met2 net
+   LAYER MAP 69 TEXTTYPE 16 1141 // met2 pin
+
+LAYER met3tt  1142 1143 1144 1145
+   LAYER MAP 70 TEXTTYPE 20 1142 // met3 drawing
+   LAYER MAP 70 TEXTTYPE 5 1143 // met3 label
+   LAYER MAP 70 TEXTTYPE 23 1144 // met3 net
+   LAYER MAP 70 TEXTTYPE 16 1145 // met3 pin
+
+LAYER met4tt  1146 1147 1148 1149
+   LAYER MAP 71 TEXTTYPE 20 1146 // met4 drawing
+   LAYER MAP 71 TEXTTYPE 5 1147 // met4 label
+   LAYER MAP 71 TEXTTYPE 23 1148 // met4 net
+   LAYER MAP 71 TEXTTYPE 16 1149 // met4 pin
+
+LAYER met5tt  1150 1151 1152 1153
+   LAYER MAP 72 TEXTTYPE 20 1150 // met5 drawing
+   LAYER MAP 72 TEXTTYPE 5 1151 // met5 label
+   LAYER MAP 72 TEXTTYPE 23 1152 // met5 net
+   LAYER MAP 72 TEXTTYPE 16 1153 // met5 pin
+
+LAYER polytt  1154 1155 1156 1157
+   LAYER MAP 66 TEXTTYPE 20 1154 // poly drawing
+   LAYER MAP 66 TEXTTYPE 5 1155 // poly label
+   LAYER MAP 66 TEXTTYPE 23 1156 // poly net
+   LAYER MAP 66 TEXTTYPE 16 1157 // poly pin
+
+LAYER difftt  1158 1159 1160 1161
+   LAYER MAP 65 TEXTTYPE 20 1158 // diff drawing
+   LAYER MAP 65 TEXTTYPE 6 1159 // diff label
+   LAYER MAP 65 TEXTTYPE 23 1160 // diff net
+   LAYER MAP 65 TEXTTYPE 16 1161 // diff pin
+
+LAYER padtt  1162 1163
+   LAYER MAP 76 TEXTTYPE 20 1162 // pad drawing
+   LAYER MAP 76 TEXTTYPE 5 1163 // pad label
+
+LAYER rdltt  1164 1165 1166
+   LAYER MAP 74 TEXTTYPE 20 1164 // rdl drawing
+   LAYER MAP 74 TEXTTYPE 5 1165 // rdl label
+   LAYER MAP 74 TEXTTYPE 16 1166 // rdl pin
+
+LAYER poly_pin  1167
+   LAYER MAP 66 DATATYPE 16 1167 // poly pin
+
+LAYER li1_pin  1168
+   LAYER MAP 67 DATATYPE 16 1168 // li1 pin
+
+LAYER met1_pin  1169
+   LAYER MAP 68 DATATYPE 16 1169 // met1 pin
+
+LAYER met2_pin  1170
+   LAYER MAP 69 DATATYPE 16 1170 // met2 pin
+
+LAYER met3_pin  1171
+   LAYER MAP 70 DATATYPE 16 1171 // met3 pin
+
+LAYER met4_pin  1172
+   LAYER MAP 71 DATATYPE 16 1172 // met4 pin
+
+LAYER met5_pin  1173
+   LAYER MAP 72 DATATYPE 16 1173 // met5 pin
+
+LAYER pad_pin  1174
+   LAYER MAP 76 DATATYPE 16 1174 // pad pin
+
+LAYER rdl_pin  1175
+   LAYER MAP 74 DATATYPE 16 1175 // rdl pin
+
+LAYER nwellpt  1176
+   LAYER MAP 64 TEXTTYPE 16 1176 // nwell pin
+   LAYER MAP 64 TEXTTYPE 0 1176 // nwell pin
+
+LAYER diffpt  1177
+   LAYER MAP 65 TEXTTYPE 16 1177 // diff pin
+   LAYER MAP 65 TEXTTYPE 0 1177 // diff pin
+
+LAYER polypt  1178
+   LAYER MAP 66 TEXTTYPE 16 1178 // poly pin
+   LAYER MAP 66 TEXTTYPE 0 1178 // poly pin
+
+LAYER Li1pt  1179
+   LAYER MAP 67 TEXTTYPE 16 1179 // li1 pin
+   LAYER MAP 67 TEXTTYPE 0 1179 // li1 pin
+
+LAYER Met1pt  1180
+   LAYER MAP 68 TEXTTYPE 16 1180 // met1 pin
+   LAYER MAP 68 TEXTTYPE 0 1180 // met1 pin
+
+LAYER Met2pt  1181
+   LAYER MAP 69 TEXTTYPE 16 1181 // met2 pin
+   LAYER MAP 69 TEXTTYPE 0 1181 // met2 pin
+
+LAYER Met3pt  1182
+   LAYER MAP 70 TEXTTYPE 16 1182 // met3 pin
+   LAYER MAP 70 TEXTTYPE 0 1182 // met3 pin
+
+LAYER Met4pt  1183
+   LAYER MAP 71 TEXTTYPE 16 1183 // met4 pin
+   LAYER MAP 71 TEXTTYPE 0 1183 // met4 pin
+
+LAYER Met5pt  1184
+   LAYER MAP 72 TEXTTYPE 16 1184 // met5 pin
+   LAYER MAP 72 TEXTTYPE 0 1184 // met5 pin
+
+LAYER padpt  1185
+   LAYER MAP 76 TEXTTYPE 16 1185 // pad pin
+   LAYER MAP 76 TEXTTYPE 0 1185 // pad pin
+
+LAYER rdlpt  1186
+   LAYER MAP 74 TEXTTYPE 16 1186 // rdl pin
+   LAYER MAP 74 TEXTTYPE 0 1186 // rdl pin
+
+LAYER PMMdg  1187
+   LAYER MAP 91 DATATYPE 44 1187 // cpmm drawing
+
+LAYER fomDummy  1188
+   LAYER MAP 22 DATATYPE 23 1188 // fom dummy
+
+LAYER ccornerID  1189
+   LAYER MAP 81 DATATYPE 51 1189 // areaid critCorner
+
+LAYER critsideID  1190
+   LAYER MAP 81 DATATYPE 52 1190 // areaid critSid
+
+LAYER localSub_cldrc  1191
+   LAYER MAP 81 DATATYPE 53 1191 // areaid substrateCut
+
+LAYER mm5WaffDrop  1192
+   LAYER MAP 117 DATATYPE 4 1192 // cmm5 waffleDrop
+
+LAYER prBoundaryDG  1124
+   LAYER MAP 235 DATATYPE 252 1124 // prBoundary drawing
+
+LAYER prBoundaryBnd  1125
+   LAYER MAP 235 DATATYPE 250 1125 // prBoundary boundary
+
+LAYOUT BASE LAYER diff poly lvtn hvtp hvtr hvi npc nsdm psdm DIODEID ESDID COREID diffres polyres li1res fuse pnp
+
+// ********************************************************
+// End layer definitions
+// ********************************************************
+
+ntapi = (nsdm AND diff) AND nwell
+ptapi = (psdm AND diff) NOT nwell
+tap = OR ptapi ntapi tap_old
+diffTap = OR tap diff tap_old
+
+POLYandDIFF = poly AND diff
+GATE = COPY POLYandDIFF
+NTAP = tap AND nwell
+PTAP = tap NOT nwell
+PDIFF = diff AND nwell
+NDIFF = diff NOT nwell
+SRCDRN = diff NOT poly
+hvNdiff = NDIFF AND hvi
+hvNdiffRes = INTERACT hvNdiff (hvNdiff AND diffres)
+NDIFFnoHV = NDIFF NOT hvi
+PDIFFnoHV = PDIFF NOT hvi
+laser_target = EXTENT CELL "*lazX_*" "*lazY_*"
+SEALnoHoles = (DONUT SEALID) OR (HOLES SEALID)
+SEALwithHole = HOLES SEALID
+SEALwithHoleNoPho = SEALwithHole NOT photoArray
+extentOrSeal = (NOT INTERACT (EXTENT) SEALwithHole) OR SEALwithHole
+lvNwell = nwell NOT hvi
+lvNwell_PERI = lvNwell NOT COREID
+varacChannel = (NTAP AND poly) AND lvNwell_PERI
+varacNwell = INTERACT nwell varacChannel
+lvNWnoVar = lvNwell NOT varacNwell
+lvNWnoVarNoLvtn = lvNWnoVar NOT lvtn
+lvNWoverVar = INTERACT lvNwell (lvNwell AND varacChannel)
+lvNWoverVarHvtp = lvNWoverVar AND hvtp
+photoDiode_cldrc = dnwell AND photoID
+nwellAndDnwell = dnwell AND nwell
+nwellDnwellHoles = HOLES nwellAndDnwell INNER
+photoArray = (nwellAndDnwell OR nwellDnwellHoles) ENCLOSE photoDiode_cldrc
+pnpDiffSize = SIZE (PDIFF AND pnp) BY 0.03
+nwellPwellRes = (INTERACT nwell pwellres) OR pwellres
+dieCut_keepout = SIZE dieCut BY 3
+inductor_metal = COPY 4000
+
+waffleChpBnd = COPY SEALwithHole
+prBoundary = prBoundaryBnd OR prBoundaryDG
+//waffleChpBnd = COPY prBoundary
+
+frameBndrNotDieCut = frameBndr NOT dieCut
+waffleFrmBnd = (SIZE frameBndr BY -3) NOT (dieCut OR SEALnoHoles)
+waffleFrmDensity = waffleFrmBnd NOT (WITH TEXT textlabel "falseScribe")
+padDie = ((padMask OR pad) AND SEALnoHoles) OUTSIDE moduleCutAREA
+critSdCnr = critsideID OR ccornerID
+NSM_keepout = SIZE (nsm OR NSMmk) BY 1
+dieCut150 = CONVEX EDGE dieCut == 2 WITH LENGTH >= 150.0
+dieCutCorner = INTERNAL [dieCut150] <= 150.0 INTERSECTING ONLY ABUT == 90
+dieCutCornerSz = EXPAND EDGE dieCutCorner INSIDE BY 0.005 CORNER FILL
+realScribeLine = frameBndr NOT (INTERACT dieCut dieCutCornerSz)
+scribeKeepout = INTERACT (realScribeLine NOT (SIZE realScribeLine BY -13.0)) (DONUT pad)
+
+/// ******************** LI1M ********************
+li1mOPCin = COPY li1
+
+q28li1m = COPY li1mOPCin
+
+q2li1m = SNAP q28li1m 5
+q29li1m = li1mOPCin NOT q2li1m
+q30li1m = INTERNAL q2li1m (LENGTH q2li1m <= 0.03) < 0.17 REGION OPPOSITE PARALLEL ONLY
+q31li1m = q2li1m NOT ((q30li1m OUTSIDE li1mOPCin) OR (TOUCH q30li1m q29li1m))
+q32li1m = EXTERNAL (LENGTH q31li1m <= 0.0423) < 0.135 REGION OPPOSITE
+q33li1m = q31li1m OR (INTERACT q32li1m (EXPAND EDGE (q32li1m OUTSIDE EDGE q31li1m) OUTSIDE BY 0.005) == 1)
+q35li1m = EXTERNAL q33li1m (LENGTH q33li1m <= 0.0423) < 0.135 REGION OPPOSITE
+q36li1m = q33li1m OR (INTERACT q35li1m (EXPAND EDGE (q35li1m OUTSIDE EDGE q33li1m) OUTSIDE BY 0.005) == 1)
+q34li1m = COPY q36li1m
+q37li1m = li1mOPCin NOT q34li1m
+q38li1m = INTERNAL q34li1m (LENGTH q34li1m <= 0.03) < 0.17 REGION OPPOSITE PARALLEL ONLY
+q39li1m = q34li1m NOT ((q38li1m OUTSIDE li1mOPCin) OR (TOUCH q38li1m q37li1m))
+q40li1m = EXTERNAL (LENGTH q39li1m <= 0.0423) < 0.135 REGION OPPOSITE
+q41li1m = q39li1m OR (INTERACT q40li1m (EXPAND EDGE (q40li1m OUTSIDE EDGE q39li1m) OUTSIDE BY 0.005) == 1)
+q43li1m = EXTERNAL q41li1m (LENGTH q41li1m <= 0.0423) < 0.135 REGION OPPOSITE
+q44li1m = q41li1m OR (INTERACT q43li1m (EXPAND EDGE (q43li1m OUTSIDE EDGE q41li1m) OUTSIDE BY 0.005) == 1)
+q42li1m = COPY q44li1m
+q5li1m = INTERNAL (LENGTH q42li1m <= 0.03) q42li1m < 0.17 ABUT < 90 REGION OPPOSITE
+q6li1m = q42li1m NOT ((q5li1m OUTSIDE li1mOPCin) OR (TOUCH q5li1m q37li1m))
+q15li1m = EXTERNAL q6li1m <= 0.03 NOTCH REGION
+q17li1m = q6li1m OR q15li1m
+q8li1m = EXTERNAL q17li1m < 0.135 region
+q13li1m = EXTENTS (EXPAND EDGE (CONVEX EDGE q8li1m ANGLE1 > 180 ANGLE2 < 180) OUTSIDE BY 0.005)
+q11li1m = q13li1m NOT li1mOPCin
+q12li1m = PUSH (q17li1m NOT q11li1m)
+q45li1m = EXTERNAL [q12li1m] < 0.135
+q46li1m = EXPAND EDGE q45li1m INSIDE BY 0.005
+q47li1m = EXPAND EDGE (TOUCH EDGE (EXPAND EDGE (LENGTH q12li1m <= 0.03) OUTSIDE BY 0.005) q46li1m) OUTSIDE BY 0.005
+q48li1m = (EXTENTS ((INTERACT q46li1m q47li1m) OR q47li1m)) NOT li1mOPCin
+q49li1m = PUSH (q12li1m NOT q48li1m)
+q50li1m = EXPAND EDGE (TOUCH EDGE ((EXTERNAL q49li1m < 0.135 PERPENDICULAR ALSO REGION) OUTSIDE q49li1m) q49li1m) OUTSIDE BY 0.005
+q51li1m = (EXTENTS q50li1m) NOT li1mOPCin
+q52li1m = PUSH (q49li1m NOT q51li1m)
+q53li1m = EXPAND EDGE (EXTERNAL [q52li1m] < 0.135) INSIDE BY 0.03
+q54li1m = q53li1m NOT li1mOPCin
+q55li1m = PUSH (q52li1m NOT q54li1m)
+q56li1m = li1mOPCin NOT q55li1m
+q57li1m = INTERNAL q55li1m (LENGTH q55li1m <= 0.03) < 0.17 REGION OPPOSITE
+q58li1m = q55li1m NOT ((q57li1m OUTSIDE li1mOPCin) OR (TOUCH q57li1m q56li1m))
+q59li1m = EXTERNAL (LENGTH q58li1m <= 0.03) < 0.135 REGION OPPOSITE
+q60li1m = q58li1m OR (INTERACT q59li1m (EXPAND EDGE (q59li1m OUTSIDE EDGE q58li1m) OUTSIDE BY 0.005) == 1)
+q62li1m = EXTERNAL q60li1m (LENGTH q60li1m <= 0.03) < 0.135 REGION OPPOSITE
+q63li1m = q60li1m OR (INTERACT q62li1m (EXPAND EDGE (q62li1m OUTSIDE EDGE q60li1m) OUTSIDE BY 0.005) == 1)
+q61li1m = COPY q63li1m
+q64li1m = li1mOPCin NOT q61li1m
+q65li1m = INTERNAL q61li1m (LENGTH q61li1m <= 0.03) < 0.17 REGION OPPOSITE
+q66li1m = q61li1m NOT ((q65li1m OUTSIDE li1mOPCin) OR (TOUCH q65li1m q64li1m))
+q67li1m = EXTERNAL (LENGTH q66li1m <= 0.03) < 0.135 REGION OPPOSITE
+q68li1m = q66li1m OR (INTERACT q67li1m (EXPAND EDGE (q67li1m OUTSIDE EDGE q66li1m) OUTSIDE BY 0.005) == 1)
+q70li1m = EXTERNAL q68li1m (LENGTH q68li1m <= 0.03) < 0.135 REGION OPPOSITE
+q71li1m = q68li1m OR (INTERACT q70li1m (EXPAND EDGE (q70li1m OUTSIDE EDGE q68li1m) OUTSIDE BY 0.005) == 1)
+q69li1m = COPY q71li1m
+q72li1m = li1mOPCin NOT q69li1m
+q73li1m = INTERNAL q69li1m (LENGTH q69li1m <= 0.03) < 0.17 REGION OPPOSITE
+q74li1m = q69li1m NOT ((q73li1m OUTSIDE li1mOPCin) OR (TOUCH q73li1m q72li1m))
+q75li1m = EXTERNAL (LENGTH q74li1m <= 0.03) < 0.135 REGION OPPOSITE
+q76li1m = q74li1m OR (INTERACT q75li1m (EXPAND EDGE (q75li1m OUTSIDE EDGE q74li1m) OUTSIDE BY 0.005) == 1)
+q78li1m = EXTERNAL q76li1m (LENGTH q76li1m <= 0.03) < 0.135 REGION OPPOSITE
+q79li1m = q76li1m OR (INTERACT q78li1m (EXPAND EDGE (q78li1m OUTSIDE EDGE q76li1m) OUTSIDE BY 0.005) == 1)
+q77li1m = COPY q79li1m
+q80li1m = li1mOPCin NOT q77li1m
+q81li1m = INTERNAL q77li1m (LENGTH q77li1m <= 0.03) < 0.17 REGION OPPOSITE
+q82li1m = q77li1m NOT ((q81li1m OUTSIDE li1mOPCin) OR (TOUCH q81li1m q80li1m))
+q83li1m = EXTERNAL (LENGTH q82li1m <= 0.03) < 0.135 REGION OPPOSITE
+q84li1m = q82li1m OR (INTERACT q83li1m (EXPAND EDGE (q83li1m OUTSIDE EDGE q82li1m) OUTSIDE BY 0.005) == 1)
+q86li1m = EXTERNAL q84li1m (LENGTH q84li1m <= 0.03) < 0.135 REGION OPPOSITE
+q87li1m = q84li1m OR (INTERACT q86li1m (EXPAND EDGE (q86li1m OUTSIDE EDGE q84li1m) OUTSIDE BY 0.005) == 1)
+q85li1m = COPY q87li1m
+q88li1m = EXTERNAL q85li1m < 0.135 NOTCH REGION OPPOSITE
+q89li1m = q88li1m WITH EDGE (LENGTH q88li1m <= 0.0423)
+q90li1m = q85li1m OR q89li1m
+q91li1m = PUSH (SNAP q90li1m 5)
+li1mOPC = COPY q91li1m
+li1CoreSz = COPY 4007
+
+li1mPeriTmp = li1mOPC NOT COREID
+li1mPeriTmp2 = (li1mPeriTmp OR (NOT INTERACT (li1mOPC AND COREID) li1)) NOT (NOT INTERACT li1mPeriTmp (li1 NOT COREID))
+li1mPeriTmp3 = li1mPeriTmp2 NOT (INTERNAL li1mPeriTmp2 <= 0.03 OPPOSITE PARALLEL ONLY REGION)
+li1mPeri = li1mPeriTmp3 NOT (INTERNAL li1mPeriTmp3 <= 0.03 OPPOSITE PARALLEL ONLY REGION)
+li1mCore = li1 AND COREID
+li1mFinal = li1mPeri OR 
+(li1mCore OR (NOT INTERACT li1CoreSz (LI1Madd OR LI1Mdrop)))
+q0li1mFinal = INTERNAL li1mFinal (LENGTH li1mFinal <= 0.03) < 0.17 REGION OPPOSITE PARALLEL ONLY
+q1li1mFinal = li1mFinal NOT (q0li1mFinal OUTSIDE li1)
+q4li1mFinal = COPY q1li1mFinal
+q0CLLI1M = COPY q4li1mFinal
+CLLI1M = q0CLLI1M OR LI1Mdg
+CLLI1M1c_err = INTERNAL CLLI1M < 0.14 ABUT < 90 SINGULAR REGION EXCLUDE FALSE
+CLLI1M1b_errInCap = CLLI1M1c_err INSIDE capacitor
+CLLI1M1b_errAll = INTERNAL CLLI1M < 0.17 ABUT < 90 SINGULAR REGION EXCLUDE FALSE
+CLLI1M1b_errOutCap = CLLI1M1b_errAll OUTSIDE (COREID OR capacitor)
+CLLI1MnotCap = CLLI1M NOT capacitor
+CLLI1Mcap1b_err = INTERNAL CLLI1MnotCap < 0.17 ABUT < 90 SINGULAR REGION EXCLUDE FALSE
+CLLI1Mcap1bCutCap = CUT CLLI1M1b_errAll capacitor
+CLLI1M1b_errStrad = CLLI1Mcap1b_err INSIDE CLLI1Mcap1bCutCap
+CLLI1M1b_errAcross = SIZE CLLI1M1b_errStrad BY 0.005 INSIDE OF CLLI1M1b_errAll STEP 0.17
+CLLI1MnoIntCap = CLLI1M OUTSIDE capacitor
+
+q0CLLI1MnoIntCap = INTERNAL CLLI1MnoIntCap < 0.17 ABUT < 90 SINGULAR REGION EXCLUDE FALSE
+q3CLLI1MnoIntCap = q0CLLI1MnoIntCap OUTSIDE COREID
+q7CLLI1MnoIntCap = CLLI1MnoIntCap NOT COREID
+q6CLLI1MnoIntCap = INTERNAL q7CLLI1MnoIntCap < 0.17 ABUT < 90 SINGULAR REGION EXCLUDE FALSE
+q1CLLI1MnoIntCap = q6CLLI1MnoIntCap INSIDE (CUT q0CLLI1MnoIntCap COREID)
+q2CLLI1MnoIntCap = SIZE q1CLLI1MnoIntCap BY 0.005 INSIDE OF q0CLLI1MnoIntCap STEP 0.17
+
+CAnotLI1M = SEALwithHole NOT LI1Mout
+
+q93LI1M = CLLI1M OR LI1Mmk
+q94LI1M = q93LI1M OR LI1Madd
+// q92LI1M = q94LI1M NOT LI1Mdrop
+preq92LI1M = q94LI1M NOT LI1Mdrop
+q92LI1M = preq92LI1M NOT li1
+
+LI1Mout = SNAP q92LI1M 5
+LI1M {COPY LI1Mout
+    }
+DRC CHECK MAP LI1M
+    GDSII 67 99 "fill.gds"
+    MAXIMUM RESULTS ALL
+    MAXIMUM VERTICES 198
+    APPEND "_fill"
+
+
+/// ******************** MM1 ********************
+mm1Waff = met1 OR MM1mk
+mm1WaffDropAll = COPY mm1WaffDrop
+met1Slot = (HOLES (met1 OUTSIDE SEALID) INNER EMPTY) AND critSdCnr
+mm1WaffleKO = padDie OR 
+(met1Slot OR 
+(met1 OR 
+(mcon OR 
+(via OR 
+(MM1mk OR 
+(mm1WaffDropAll OR 
+(photoArray OR 
+(NSM_keepout OR dieCut_keepout))))))))
+mm1Oxide = SIZE mm1Waff BY 0.6
+mm1WaffleArea = waffleChpBnd NOT (SIZE mm1Waff BY 0.6 OVERUNDER)
+
+mm1_DFMwaffle = DFM FILL mm1
+DFM SPEC FILL mm1 mm1Oxide [ ( AREA(mm1Oxide) + AREA(_FILL_) ) / AREA() ]  
+> 0.8 
+	 MAGNITUDE < 0.3 
+	 WINDOW 700  STEP 70
+	 INSIDE OF LAYER  waffleChpBnd mm1WaffleArea
+	 FILLSHAPE 0 0 2 2 STEP 0.2 EFFORT 1 
+		 SPACE 3 mm1WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.2 
+                 SETBACK 0.2
+	 FILLSHAPE 0 0 1 1 STEP 0.2 EFFORT 1 
+		 SPACE 3 mm1WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.2 
+                 SETBACK 0.2
+	 FILLSHAPE 0 0 0.58 0.58 STEP 0.2 EFFORT 1 
+		 SPACE 0.5 mm1WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.2 
+                 SETBACK 0.2
+	 FILLSHAPE 0 0 0.3 0.3 STEP 0.3 EFFORT 1 
+		 SPACE 0.3 mm1WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+                 SETBACK 0.2
+MM1tsac = met1 OR (MM1mk OR mm1_DFMwaffle)
+
+MM1_opcIn = COPY met1
+q0mm1_opcIn_jog_a = LENGTH (CONVEX EDGE mm1_opcIn LENGTH1 > 0 ANGLE1 > 0 LENGTH2 < 0.14 ANGLE2 > 269 < 271) < 0.14
+q0mm1_opcIn_jog_fill = EXTENTS (EXPAND EDGE q0mm1_opcIn_jog_a OUTSIDE BY 0.005)
+q0mm1_opcIn_fill_a = mm1_opcIn OR q0mm1_opcIn_jog_fill
+q0mm1_opcIn_fill = q0mm1_opcIn_fill_a NOT (INTERACT q0mm1_opcIn_jog_fill (EXTERNAL q0mm1_opcIn_fill_a < 0.14 ABUT < 90 SINGULAR REGION))
+q0mm1_opcIn_jog_b = LENGTH (CONVEX EDGE q0mm1_opcIn_fill LENGTH1 > 0 ANGLE1 > 0 LENGTH2 < 0.14 ANGLE2 > 89 < 91) < 0.14
+q0mm1_opcIn_jog_shave = EXTENTS (EXPAND EDGE q0mm1_opcIn_jog_b INSIDE BY 0.005)
+q0mm1_opcIn_shave = q0mm1_opcIn_fill NOT q0mm1_opcIn_jog_shave
+mm1_NoJog_1 = q0mm1_opcIn_shave OR (INTERACT q0mm1_opcIn_jog_shave (INTERNAL q0mm1_opcIn_shave < 0.14 ABUT < 90 SINGULAR REGION))
+q1mm1_NoJog_OPC = COPY mm1_NoJog_1 
+q0mm1_NoJog_OPC = COPY q1mm1_NoJog_OPC
+          
+mm1_NoJog = COPY q0mm1_NoJog_OPC
+mm1_MBopc = COPY mm1_NoJog
+
+mm1_opcOutSP = EXTERNAL mm1_MBopc < 0.08 OPPOSITE REGION NOTCH
+mm1_opcOut = mm1_MBopc OR mm1_opcOutSP
+CLMM1 = PUSH MM1_opcOut
+mm1Final = CLMM1 OR mm1_DFMwaffle
+// q0MM1 = mm1Final OR MM1mk
+preq0MM1 = mm1Final OR MM1mk
+q0MM1 = SIZE (preq0MM1 NOT met1) BY 0.01 UNDEROVER
+MM1out = SNAP q0MM1 5
+MM1 {COPY MM1out
+    }
+DRC CHECK MAP MM1
+    GDSII 68 99 "fill.gds"
+    MAXIMUM RESULTS ALL
+    MAXIMUM VERTICES 198
+    AREF CALgen_auto_aref_MM1__0_3__0_3 0.3 0.3
+    AREF CALgen_auto_aref_MM1__0_58__0_58 0.58 0.58
+    AREF CALgen_auto_aref_MM1__1__1 1 1
+    AREF CALgen_auto_aref_MM1__2__2 2 2
+    APPEND "_fill"
+
+/// ******************** MM2 ********************
+mm2Waff = met2 OR MM2mk
+mm2WaffDropAll = COPY mm2WaffDrop
+met2Slot = (HOLES (met2 OUTSIDE SEALID) INNER EMPTY) AND critSdCnr
+mm2WaffleKO = padDie OR 
+(met2Slot OR 
+(met2 OR 
+(via OR 
+(via2 OR 
+(MM2mk OR 
+(mm2WaffDropAll OR 
+(photoArray OR 
+(NSM_keepout OR dieCut_keepout))))))))
+mm2Oxide = SIZE mm2Waff BY 0.6
+mm2WaffleArea = waffleChpBnd NOT (SIZE mm2Waff BY 0.6 OVERUNDER)
+mm2_DFMwaffle = DFM FILL mm2
+DFM SPEC FILL mm2 mm2Oxide [ ( AREA(mm2Oxide) + AREA(_FILL_) ) / AREA() ]  
+> 0.8 
+	 MAGNITUDE < 0.3 
+	 WINDOW 700  STEP 70
+	 INSIDE OF LAYER  waffleChpBnd mm2WaffleArea
+	 FILLSHAPE 0 0 2 2 STEP 0.2 EFFORT 1 
+		 SPACE 3 mm2WaffleKO 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.2 
+                 SETBACK 0.2
+	 FILLSHAPE 0 0 1 1 STEP 0.2 EFFORT 1 
+		 SPACE 3 mm2WaffleKO 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.2 
+                 SETBACK 0.2
+	 FILLSHAPE 0 0 0.58 0.58 STEP 0.2 EFFORT 1 
+		 SPACE 0.5 mm2WaffleKO 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.2 
+                 SETBACK 0.2
+	 FILLSHAPE 0 0 0.3 0.3 STEP 0.3 EFFORT 1 
+		 SPACE 0.3 mm2WaffleKO 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+                 SETBACK 0.2
+MM2tsac = met2 OR (MM2mk OR mm2_DFMwaffle)
+
+MM2_opcIn = COPY met2
+q0mm2_opcIn_jog_a = LENGTH (CONVEX EDGE mm2_opcIn LENGTH1 > 0 ANGLE1 > 0 LENGTH2 < 0.14 ANGLE2 > 269 < 271) < 0.14
+q0mm2_opcIn_jog_fill = EXTENTS (EXPAND EDGE q0mm2_opcIn_jog_a OUTSIDE BY 0.005)
+q0mm2_opcIn_fill_a = mm2_opcIn OR q0mm2_opcIn_jog_fill
+q0mm2_opcIn_fill = q0mm2_opcIn_fill_a NOT (INTERACT q0mm2_opcIn_jog_fill (EXTERNAL q0mm2_opcIn_fill_a < 0.14 ABUT < 90 SINGULAR REGION))
+q0mm2_opcIn_jog_b = LENGTH (CONVEX EDGE q0mm2_opcIn_fill LENGTH1 > 0 ANGLE1 > 0 LENGTH2 < 0.14 ANGLE2 > 89 < 91) < 0.14
+q0mm2_opcIn_jog_shave = EXTENTS (EXPAND EDGE q0mm2_opcIn_jog_b INSIDE BY 0.005)
+q0mm2_opcIn_shave = q0mm2_opcIn_fill NOT q0mm2_opcIn_jog_shave
+mm2_NoJog_1 = q0mm2_opcIn_shave OR (INTERACT q0mm2_opcIn_jog_shave (INTERNAL q0mm2_opcIn_shave < 0.14 ABUT < 90 SINGULAR REGION))
+q1mm2_NoJog_OPC = COPY mm2_NoJog_1 
+q0mm2_NoJog_OPC = COPY q1mm2_NoJog_OPC
+
+mm2_NoJog = COPY q0mm2_NoJog_OPC
+mm2_MBopc = COPY mm2_NoJog
+mm2_opcOutSP = EXTERNAL mm2_MBopc < 0.08 OPPOSITE REGION NOTCH
+mm2_opcOut = mm2_MBopc OR mm2_opcOutSP
+CLMM2 = PUSH MM2_opcOut
+mm2Final = CLMM2 OR mm2_DFMwaffle
+// q0MM2 = mm2Final OR MM2mk
+preq0MM2 = mm2Final OR MM2mk
+q0MM2_1 = SIZE (preq0MM2 NOT met2) BY 0.01 UNDEROVER
+q0MM2_small_area = AREA q0MM2_1 < 0.0676
+q0MM2_2 = q0MM2_1 NOT q0MM2_small_area
+q0MM2_2_small_wid = INT q0MM2_2 < 0.14 ABUT<90 REGION
+q0MM2 = q0MM2_2 NOT q0MM2_2_small_wid
+MM2out = SNAP q0MM2 5
+MM2 {COPY MM2out
+    }
+DRC CHECK MAP MM2
+    GDSII 69 99 "fill.gds"
+    MAXIMUM RESULTS ALL
+    MAXIMUM VERTICES 198
+    AREF CALgen_auto_aref_MM2__0_3__0_3 0.3 0.3
+    AREF CALgen_auto_aref_MM2__0_58__0_58 0.58 0.58
+    AREF CALgen_auto_aref_MM2__1__1 1 1
+    AREF CALgen_auto_aref_MM2__2__2 2 2
+    APPEND "_fill"
+
+/// ******************** MM3 ********************
+mm3Waff = met3 OR MM3mk
+mm3WaffDropAll = COPY mm3WaffDrop
+met3Slot = (HOLES (met3 OUTSIDE SEALID) INNER EMPTY) AND critSdCnr
+mm3WaffleKO = padDie OR 
+(met3Slot OR 
+(met3 OR 
+(via3 OR 
+(via2 OR 
+(MM3mk OR 
+(mm3WaffDropAll OR 
+(photoArray OR 
+(NSM_keepout OR dieCut_keepout))))))))
+mm3Oxide = SIZE mm3Waff BY 1.15
+mm3WaffleArea = waffleChpBnd NOT (SIZE mm3Waff BY 1.15 OVERUNDER)
+mm3_DFMwaffle = DFM FILL mm3
+DFM SPEC FILL mm3 mm3Oxide [ ( AREA(mm3Oxide) + AREA(_FILL_) ) / AREA() ]  
+> 0.8 
+	 MAGNITUDE < 0.3 
+	 WINDOW 700  STEP 70
+	 INSIDE OF LAYER  waffleChpBnd mm3WaffleArea
+	 FILLSHAPE 0 0 2 2 STEP 0.32 EFFORT 1 
+		 SPACE 3 mm3WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.34 
+                 SETBACK 0.34
+	 FILLSHAPE 0 0 1 1 STEP 0.32 EFFORT 1 
+		 SPACE 3 mm3WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.34 
+                 SETBACK 0.34
+	 FILLSHAPE 0 0 0.58 0.58 STEP 0.32 EFFORT 1 
+		 SPACE 0.5 mm3WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 3 capacitor 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.34 
+                 SETBACK 0.34
+//	 FILLSHAPE 0 0 0.4 0.4 STEP 0.3 EFFORT 1 
+//		 SPACE 0.5 mm3WaffleKO 
+//		 SPACE 3.3 fuse 
+//		 SPACE 0 inductor_metal 
+//		 SPACE 3 capacitor 
+//		 SPACE 0 scribeKeepout 
+//		 SHAPESPACE 0.34 
+//                 SETBACK 0.34
+MM3tsac = met3 OR (MM3mk OR mm3_DFMwaffle)
+
+MM3_opcOut = COPY met3
+CLMM3 = PUSH MM3_opcOut
+mm3Final = CLMM3 OR mm3_DFMwaffle
+q1MM3 = SIZE mm3Final BY 0.01
+// q0MM3 = q1MM3 OR MM3mk
+preq0MM3 = q1MM3 OR MM3mk
+q0MM3 = SIZE (preq0MM3 NOT met3) BY 0.01 UNDEROVER
+MM3out = SNAP q0MM3 5
+MM3 {COPY MM3out
+    }
+DRC CHECK MAP MM3
+    GDSII 70 99 "fill.gds"
+    MAXIMUM RESULTS ALL
+    MAXIMUM VERTICES 198
+    AREF CALgen_auto_aref_MM3__0_4__0_4 0.4 0.4
+    AREF CALgen_auto_aref_MM3__0_58__0_58 0.58 0.58
+    AREF CALgen_auto_aref_MM3__1__1 1 1
+    AREF CALgen_auto_aref_MM3__2__2 2 2
+    APPEND "_fill"
+
+/// ******************** MM4 ********************
+square_pad = EXTENTS pad
+mm4Waff = met4 OR MM4mk
+mm4WaffDropAll = COPY mm4WaffDrop
+met4Slot = (HOLES (met4 OUTSIDE SEALID) INNER EMPTY) AND critSdCnr
+mm4WaffleKO = padDie OR 
+(met4Slot OR 
+(met4 OR 
+(via4 OR 
+(via3 OR 
+(MM4mk OR 
+(mm4WaffDropAll OR 
+(photoArray OR 
+(NSM_keepout OR dieCut_keepout))))))))
+mm4Oxide = SIZE mm4Waff BY 1.15
+mm4WaffleArea = waffleChpBnd NOT (SIZE mm4Waff BY 1.15 OVERUNDER)
+mm4_DFMwaffle = DFM FILL mm4
+DFM SPEC FILL mm4 mm4Oxide [ ( AREA(mm4Oxide) + AREA(_FILL_) ) / AREA() ]  
+> 0.8 
+	 MAGNITUDE < 0.3 
+	 WINDOW 700  STEP 70
+	 INSIDE OF LAYER  waffleChpBnd mm4WaffleArea
+	 FILLSHAPE 0 0 2 2 STEP 0.32 EFFORT 1 
+		 SPACE 3 mm4WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 0 scribeKeepout 
+                 SPACE 6 square_pad
+		 SHAPESPACE 0.32 
+                 SETBACK 0.3
+	 FILLSHAPE 0 0 1 1 STEP 0.32 EFFORT 1 
+		 SPACE 3 mm4WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 0 scribeKeepout 
+		 SHAPESPACE 0.32 
+                 SPACE 6 square_pad
+                 SETBACK 0.32
+	 FILLSHAPE 0 0 0.58 0.58 STEP 0.32 EFFORT 1 
+		 SPACE 0.5 mm4WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 0 scribeKeepout 
+                 SPACE 6 square_pad
+		 SHAPESPACE 0.3 
+                 SETBACK 0.32
+//	 FILLSHAPE 0 0 0.4 0.4 STEP 0.3 EFFORT 1 
+//		 SPACE 0.3 mm4WaffleKO 
+//		 SPACE 3.3 fuse 
+//		 SPACE 0 inductor_metal 
+//		 SPACE 0 scribeKeepout 
+//		 SHAPESPACE 0.3 
+//                 SETBACK 0.3
+MM4tsac = met4 OR (MM4mk OR mm4_DFMwaffle)
+
+MM4_opcOut = COPY met4
+CLMM4 = PUSH MM4_opcOut
+mm4Final = CLMM4 OR mm4_DFMwaffle
+q1MM4 = SIZE mm4Final BY 0.01
+// q0MM4 = q1MM4 OR MM4mk
+preq0MM4 = q1MM4 OR MM4mk
+q0MM4 = SIZE (preq0MM4 NOT met4) BY 0.01 UNDEROVER
+MM4out = SNAP q0MM4 5
+MM4 {COPY MM4out
+    }
+DRC CHECK MAP MM4
+    GDSII 71 99 "fill.gds"
+    MAXIMUM RESULTS ALL
+    MAXIMUM VERTICES 198
+    AREF CALgen_auto_aref_MM4__0_4__0_4 0.4 0.4
+    AREF CALgen_auto_aref_MM4__0_58__0_58 0.58 0.58
+    AREF CALgen_auto_aref_MM4__1__1 1 1
+    AREF CALgen_auto_aref_MM4__2__2 2 2
+    APPEND "_fill"
+
+/// ******************** MM5 ********************
+
+mm5Waff = met5 OR MM5mk
+mm5WaffDropAll = COPY mm5WaffDrop
+met5Slot = (HOLES (met5 OUTSIDE SEALID) INNER EMPTY) AND critSdCnr
+mm5WaffleKO = padDie OR 
+(met5Slot OR 
+(met5 OR 
+(via4 OR 
+(MM5mk OR 
+(mm5WaffDropAll OR 
+(photoArray OR 
+(NSM_keepout OR dieCut_keepout)))))))
+mm5Oxide = SIZE mm5Waff BY 1.15
+mm5WaffleArea = waffleChpBnd NOT (SIZE mm5Waff BY 1.15 OVERUNDER)
+mm5_DFMwaffle = DFM FILL mm5
+DFM SPEC FILL mm5 mm5Oxide [ ( AREA(mm5Oxide) + AREA(_FILL_) ) / AREA() ]  
+> 0.8 
+	 MAGNITUDE < 0.3 
+	 WINDOW 700  STEP 70
+	 INSIDE OF LAYER  waffleChpBnd mm5WaffleArea
+	 FILLSHAPE 0 0 2 2 STEP 1.8 EFFORT 1 
+		 SPACE 3 mm5WaffleKO 
+		 SPACE 3.3 fuse 
+		 SPACE 0 inductor_metal 
+		 SPACE 0 scribeKeepout 
+                 SPACE 6 square_pad
+		 SHAPESPACE 0.3 
+                 SETBACK 1.8
+//	 FILLSHAPE 0 0 1 1 STEP 0.3 EFFORT 1 
+//		 SPACE 3 mm5WaffleKO 
+//		 SPACE 3.3 fuse 
+//		 SPACE 0 inductor_metal 
+//		 SPACE 0 scribeKeepout 
+//		 SHAPESPACE 0.3 
+//                 SETBACK 0.3
+//	 FILLSHAPE 0 0 0.58 0.58 STEP 0.3 EFFORT 1 
+//		 SPACE 0.5 mm5WaffleKO 
+//		 SPACE 3.3 fuse 
+//		 SPACE 0 inductor_metal 
+//		 SPACE 0 scribeKeepout 
+//		 SHAPESPACE 0.3 
+//                 SETBACK 0.3
+//	 FILLSHAPE 0 0 0.4 0.4 STEP 0.3 EFFORT 1 
+//		 SPACE 0.3 mm5WaffleKO 
+//		 SPACE 3.3 fuse 
+//		 SPACE 0 inductor_metal 
+//		 SPACE 0 scribeKeepout 
+//		 SHAPESPACE 0.3 
+//                 SETBACK 0.3
+MM5tsac = met5 OR (MM5mk OR mm5_DFMwaffle)
+
+MM5_opcOut = COPY met5
+CLMM5 = PUSH MM5_opcOut
+mm5Final = CLMM5 OR mm5_DFMwaffle
+q1MM5 = SIZE mm5Final BY 0.01
+// q0MM5 = q1MM5 OR MM5mk
+preq0MM5 = q1MM5 OR MM5mk
+q0MM5 = SIZE (preq0MM5 NOT met5) BY 0.01 UNDEROVER
+MM5out = SNAP q0MM5 5
+MM5 {COPY MM5out
+    }
+DRC CHECK MAP MM5
+    GDSII 72 99 "fill.gds"
+    MAXIMUM RESULTS ALL
+    MAXIMUM VERTICES 198
+    AREF CALgen_auto_aref_MM5__0_4__0_4 0.4 0.4
+    AREF CALgen_auto_aref_MM5__0_58__0_58 0.58 0.58
+    AREF CALgen_auto_aref_MM5__1__1 1 1
+    AREF CALgen_auto_aref_MM5__2__2 2 2
+    APPEND "_fill"
+

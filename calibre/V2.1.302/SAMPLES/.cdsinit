@@ -1,0 +1,57 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; S130 .cdsinit
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+println("########## Loading Calibre ###################################")
+if( isFile( strcat( getShellEnvVar("MGC_HOME") "/shared/pkgs/icv/tools/queryskl/calibre.OA.skl" )) then
+    println( strcat("Loading " strcat( getShellEnvVar("MGC_HOME") "/shared/pkgs/icv/tools/queryskl/calibre.OA.skl" )))
+      load( strcat( getShellEnvVar("MGC_HOME") "/shared/pkgs/icv/tools/queryskl/calibre.OA.skl" ))
+)
+
+; Load PVS pre-trigger Skill script
+load( strcat( getShellEnvVar( "PDK_HOME" ) "/PV/PVS/pvsPreTrigger.il" ) )
+
+envSetVal("spectre.envOpts" "controlMode" 'string "batch")
+envSetVal("layout" "xSnapSpacing" 'float 0.005)
+envSetVal("layout" "ySnapSpacing" 'float 0.005)
+setShellEnvVar("CDS_Netlisting_Mode=Analog")
+setShellEnvVar("CDS_AUTO_64BIT=ALL")
+
+; Setting for symbol values to be in metrics
+gLabelsNumNotation = 'suffix
+
+;; Turn on infix
+hiGetCIWindow()->infix = t
+
+;; Set Load State default from cellview
+envSetVal("asimenv" "saveAsCellview" 'boolean t)
+
+;; Auto update configs
+envSetVal("hed.general" "autoUpdate" 'boolean t)
+
+;; Show tree view on config startup
+envSetVal("hed.display" "showTable" 'boolean nil)
+
+;; Turn off large stack trace for failed skill
+sstatus(stacktraceDump nil)
+
+;; Print in C syntax (not LISP)
+;; Fixes messed up calculator expressions in ADE XL
+sstatus(printinfix t)
+
+;; Set spectre in batch mode (releases licenses after sims complete and forces renetlist)
+envSetVal("spectre.envOpts" "controlMode" 'string "batch")
+
+; Un-set libFlag to allow ADE XL to come up (patch to work around code in libInit.il file in S8 PDK)
+envSetVal("adexl.icrpStartup" "binaryName" 'string "unset libFlag; virtuoso")
+
+;; Forces PDK libInit.il to load and load the menus & tools
+ddGetObj("S130")
+
+;; Open Library Manager
+;; Delay allows for Library Manager custom menus to load properly (Cadence bug)
+;hiRegTimer("ddsOpenLibManager()" 50)
+;; Using the enqueue cmd makes open once all else is loaded, better than using a delay
+hiEnqueueCmd("ddsOpenLibManager()")

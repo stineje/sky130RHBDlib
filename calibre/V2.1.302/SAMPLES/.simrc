@@ -1,0 +1,22 @@
+nlReNetlistAll=t
+
+cdlSimViewList='("auCdl" "schematic")
+cdlSimStopList='("auCdl")
+
+when(simSimulator=="auCdl"
+  ;auCdlScale = "MICRON"
+  auCdlCDFPinCntrl = t
+  when( "$PDK_HOME/PV/Calibre/LVS/source.cdl"
+    incFILE = "$PDK_HOME/PV/Calibre/LVS/source.cdl"
+    auCdlSkipMEGA = 't
+  );when
+
+  let( (simrcRes)
+    ; needed for cdl netlisting of rply_hp & rply_hp2K resistors
+    simrcRes = strcat( getShellEnvVar("PDK_HOME") "/PROGS/PCELLS/simrc.resPcell" )
+    when( simrcRes
+        load(simrcRes)
+    );when
+  ); let
+
+);when

@@ -1,0 +1,19 @@
+#!/bin/csh -f
+cd hchr
+echo "Preparing hchr corner..."
+techgen.si.cmd hchr
+techgen.comp.cmd hchr
+cd ../hrlc
+echo "Preparing hrlc corner..."
+techgen.si.cmd hrlc
+techgen.comp.cmd hrlc
+cd ../lclr
+echo "Preparing lclr corner..."
+techgen.si.cmd lclr
+techgen.comp.cmd lclr
+cd ../lrhc
+echo "Preparing lrhc corner..."
+techgen.si.cmd lrhc
+techgen.comp.cmd lrhc
+cd ..
+echo "Done!!"

@@ -1,0 +1,172 @@
+######## INTERCONNECT LAYER MAPPING ########
+
+interconnect nwell nwell drawing
+interconnect ntap  diff drawing
+interconnect ptap  diff drawing
+
+interconnect nsd             diff drawing
+interconnect psd             diff drawing
+interconnect pwres_term      diff drawing
+interconnect nsrc_de_12v     diff drawing
+interconnect ndrn_de_12v     diff drawing
+interconnect psrc_de_12v     diff drawing
+interconnect pdrn_de_12v     diff drawing
+interconnect ngate_de_12v_pw diff drawing
+interconnect pgate_de_12v_pw diff drawing
+interconnect nsd_20v_src     diff drawing
+interconnect nsd_20v_drc     diff drawing
+
+interconnect ply poly drawing
+interconnect li  li   drawing
+interconnect m1  met1 drawing
+interconnect m2  met2 drawing
+interconnect m3  met3 drawing
+interconnect m4  met4 drawing
+interconnect m5  met5 drawing
+
+interconnect pad pad drawing
+interconnect rdl rdl drawing
+
+interconnect ngate_de_12v_gate_conn thkox drawing
+interconnect pgate_de_12v_gate_conn thkox drawing
+
+interconnect licon licon drawing
+interconnect mcon  mcon  drawing
+interconnect via1  via1  drawing
+interconnect via2  via2  drawing
+interconnect via3  via3  drawing
+interconnect via4  via4  drawing
+
+######## DEVICE RECOGNITION SHAPES ########
+
+#####################
+# Bipolar Transistors
+#####################
+recognition npn_1x1_rec    npn
+recognition npn_1x1_rec_v5 npn
+recognition npn_1x2_rec    npn
+recognition pnp_rec_1x     pnp
+recognition pnp_rec_5x     pnp
+
+############
+# Capacitors
+############
+recognition cap_34 capm
+recognition cap_45 cap2m
+
+########
+# Diodes
+########
+recognition dnsd_pw        diff
+recognition dnsd_pw_esd    diff
+recognition dnsd_pw_esd_v5 diff
+recognition dnsd_pw_lvt    diff
+recognition dnsd_pw_nat    diff
+recognition dnsd_pw_v5     diff
+recognition dpsd_nw        diff
+recognition dpsd_nw_esd    diff
+recognition dpsd_nw_esd_v5 diff
+recognition dpsd_nw_hvt    diff
+recognition dpsd_nw_lvt    diff
+recognition dpsd_nw_v5     diff
+
+#recognition dnw_sub_nom       dnwell
+#recognition dpw_dnw_nom       dnwell
+#recognition dpw_dnw_nom_pwres dnwell
+#recognition dnw_sub_v5        dnwell
+#recognition dpw_dnw_v5        dnwell
+#recognition dpw_dnw_v5_pwres  dnwell
+#recognition dnw_sub_v12       dnwell
+#recognition dpw_dnw_v12       dnwell
+#recognition dpw_dnw_v12_pwres dnwell
+#recognition dnw_sub_v20       dnwell
+#recognition dpw_dnw_v20       dnwell
+#recognition dpw_dnw_v20_pwres dnwell
+
+#############
+# Fuse Device
+#############
+recognition m4fuse met4
+
+##############
+# NMOS Devices
+##############
+recognition ngate_nom_pw        poly
+recognition ngate_nom_pt        poly
+recognition ngate_lvt_pw        poly
+recognition ngate_lvt_pt        poly
+recognition ngate_v5_pw         poly
+recognition ngate_v5_pt         poly
+recognition ngate_v12_pw        poly
+recognition ngate_v12_pt        poly
+recognition ngate_v20_pw        poly
+recognition ngate_v20_pt        poly
+recognition ngate_v20_nat       poly
+recognition ngate_v20_zvt       poly
+recognition ngate_v20_nom       poly
+recognition ngate_v20_iso_rec   poly
+recognition ngate_esd_nat_5v_pw poly
+recognition ngate_esd_nat_5v_pt poly
+recognition ngate_esd_5v_pw     poly
+recognition ngate_esd_5v_pt     poly
+recognition ngate_nat_3v_pw     poly
+recognition ngate_nat_3v_pt     poly
+recognition ngate_nat_5v_pw     poly
+recognition ngate_nat_5v_pt     poly
+recognition ngate_de_12v_pw     poly
+
+##############
+# PMOS Devices
+##############
+recognition pgate_nom       poly
+recognition pgate_lvt       poly
+recognition pgate_hvt       poly
+recognition pgate_v5        poly
+recognition pgate_v12       poly
+recognition pgate_v20       poly
+recognition pgate_esd_v5    poly
+recognition pgate_de_12v_pw poly
+
+###########
+# Resistors
+###########
+recognition lires         li
+recogntion  m1res         met1
+recognition m2res         met2
+recognition m3res         met3
+recognition m4res         met4
+recognition m5res         met5
+recognition hp_poly_pw    poly
+recognition hp_poly_pt    poly
+recognition hp_poly_nw    poly
+recognition hs_poly_pw    poly
+recognition hs_poly_nw    poly
+recognition rpoly_rec     poly
+recognition rpdiff_nom    diff
+recognition rndiff_nom_pw diff
+recognition rndiff_nom_pt diff
+recogntiion rpdiff_5v     diff
+recognition rndiff_5v_pw  diff
+recognition rndiff_5v_pt  diff
+recognition pwres_rec     pwell
+
+######## MISCELLANEOUS COPY COMMANDS ########
+
+copy nwell label
+copy pwell label
+copy li    label
+copy met1  label
+copy met2  label
+copy met3  label
+copy met4  label
+copy met5  label
+copy rdl   label
+copy nwell pin
+copy pwell pin
+copy li    pin
+copy met1  pin
+copy met2  pin
+copy met3  pin
+copy met4  pin
+copy met5  pin
+copy rdl   pin

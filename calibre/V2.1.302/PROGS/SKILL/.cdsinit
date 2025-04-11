@@ -1,0 +1,34 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; SKY102 S8 .cdsinit
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; set up environment variables if not set in the module
+
+;setShellEnvVar("PDK_HOME=/vendor_lib/skywater/s8/V1.0.0")
+;setShellEnvVar("SW_IP_HOME=/vendor_lib/skywater/s8/ip")
+;setShellEnvVar("METAL_STACK=s8phirs_10r")
+
+
+println("########## Loading Calibre ###################################")
+if( isFile( strcat( getShellEnvVar("MGC_HOME") "/shared/pkgs/icv/tools/queryskl/calibre.OA.skl" )) then
+    println( strcat("Loading " strcat( getShellEnvVar("MGC_HOME") "/shared/pkgs/icv/tools/queryskl/calibre.OA.skl" )))
+      load( strcat( getShellEnvVar("MGC_HOME") "/shared/pkgs/icv/tools/queryskl/calibre.OA.skl" ))
+)
+
+;; Set Default Model Files.  Note the "#;" de-selects the model call.
+
+setModelFiles=strcat(
+   " " getShellEnvVar("PDK_HOME") "/MODELS/SPECTRE/" getShellEnvVar("METAL_STACK") "/design_wrapper.lib.scs;tt_fet"
+   " " getShellEnvVar("PDK_HOME") "/MODELS/SPECTRE/" getShellEnvVar("METAL_STACK") "/design_wrapper.lib.scs;tt_cell"
+   " " getShellEnvVar("PDK_HOME") "/MODELS/SPECTRE/" getShellEnvVar("METAL_STACK") "/design_wrapper.lib.scs;tt_parRC"
+   " " getShellEnvVar("PDK_HOME") "/MODELS/SPECTRE/" getShellEnvVar("METAL_STACK") "/design_wrapper.lib.scs;tt_rc"
+   " " getShellEnvVar("PDK_HOME") "/MODELS/SPECTRE/" getShellEnvVar("METAL_STACK") "/design_wrapper.lib.scs;npn_t"
+)
+envSetVal("spectre.envOpts" "modelFiles" 'string setModelFiles)
+envSetVal("spectre.envOpts" "controlMode" 'string "batch")
+envSetVal("layout" "xSnapSpacing" 'float 0.005)
+envSetVal("layout" "ySnapSpacing" 'float 0.005)
+setShellEnvVar("CDS_Netlisting_Mode=Analog")
+setShellEnvVar("CDS_AUTO_64BIT=ALL")

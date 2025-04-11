@@ -1,0 +1,517 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; S130 5LM Calibre xRC cell map file
+;  9 July 2020    - Version 1.0
+; 15 April 2021   - Version 1.1
+; 19 Jan 2022   - added pmos_hvt
+;
+; Format for devices:
+;
+; ( LVS_name
+;   ( library cell view )
+;   (
+;   	( LVS_terminal1  cellview_terminal1 )   ; also can use nil
+;   	( LVS_terminal2  cellview_terminal2 )
+;	( ... )
+;   ) ;end terminals
+;   (
+;   	( LVS_param1  cellview_param1 )
+;   	( LVS_param1  cellview_param1 )
+;	( ... )
+;   ) ;end paramters
+; ) ;end device
+;
+; NOTES:
+;
+;  Terminals and paramters don't need to be mapped if the names are the same.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;                                     CANONICAL DEVICES
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Bipolar devices
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------
+; NPN devices
+;-------------
+( npn_1x1 (S130 npn_1x1 symbol)
+ ( (C C) (B B) (E E) (S body) )
+); npn_1x1
+
+( npn_1x1_v5 (S130 npn_1x1_v5 symbol)
+ ( (C C) (B B) (E E) (S body) )
+); npn_1x1_v5
+
+( npn_1x2 (S130 npn_1x2 symbol)
+ ( (C C) (B B) (E E) (S body) )
+); npn_1x2
+
+;-------------
+; PNP devices
+;-------------
+( pnp (S130 pnp symbol)
+ ( (C C) (B B) (E E) )
+); pnp
+
+( pnp_5x (S130 pnp_5x symbol)
+ ( (C C) (B B) (E E) )
+); pnp_5x
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; CAPACITOR devices
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+( cm3m4 (S130 cm3m4 symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); cm3m4
+
+( cm4m5 (S130 cm4m5 symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); cm4m5
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; DIODE devices
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+( dnsd_pw (S130 dnsd_pw symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dnsd_pw
+
+( dnsd_pw_esd (S130 dnsd_pw_esd symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dnsd_pw_esd
+
+( dnsd_pw_esd_v5 (S130 dnsd_pw_esd_v5 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dnsd_pw_esd_v5
+
+( dnsd_pw_lvt (S130 dnsd_pw_lvt symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dnsd_pw_lvt
+
+( dnsd_pw_nat (S130 dnsd_pw_nat symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dnsd_pw_nat
+
+( dnsd_pw_v5 (S130 dnsd_pw_v5 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dnsd_pw_v5
+
+( dpsd_nw (S130 dpsd_nw symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dpsd_nw
+
+( dpsd_nw_esd (S130 dpsd_nw_esd symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dpsd_nw_esd
+
+( dpsd_nw_esd_v5 (S130 dpsd_nw_esd_v5 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dpsd_nw_esd_v5
+
+( dpsd_nw_hvt (S130 dpsd_nw_hvt symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dpsd_nw_hvt
+
+( dpsd_nw_lvt (S130 dpsd_nw_lvt symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dpsd_nw_lvt
+
+( dpsd_nw_v5 (S130 dpsd_nw_v5 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dpsd_nw_v5
+
+( ddnw_sub (S130 ddnw_sub symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); ddnw_sub
+
+( dipw_dnw (S130 dipw_dnw symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dipw_dnw
+
+( ddnw_sub_v5 (S130 ddnw_sub_v5 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); ddnw_sub_v5
+
+( dipw_dnw_v5 (S130 dipw_dnw_v5 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dipw_dnw_v5
+
+( ddnw_sub_v12 (S130 ddnw_sub_v12 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); ddnw_sub_v12
+
+( dipw_dnw_v12 (S130 dipw_dnw_v12 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dipw_dnw_v12
+
+( ddnw_sub_v20 (S130 ddnw_sub_v20 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); ddnw_sub_v20
+
+( dipw_dnw_v20 (S130 dipw_dnw_v20 symbol)
+  ( (POS PLUS) (NEG MINUS) )
+); dipw_dnw_v20
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; MOS devices
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;--------------
+; NMOS devices
+;--------------
+( nmos (S130 nmos symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos
+
+( nmos_de_v12 (S130 nmos_de_v12 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos_de_v12
+
+( nmos_esd_nat_v5 (S130 nmos_esd_nat_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos_esd_nat_v5
+
+( nmos_esd_v5 (S130 nmos_esd_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos_esd_v5
+
+( nmos_lvt (S130 nmos_lvt symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos_lvt
+
+( nmos_nat_v3 (S130 nmos_nat_v3 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos_nat_v3
+
+( nmos_nat_v5 (S130 nmos_nat_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos_nat_v5
+
+( nmos_v5 (S130 nmos_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); nmos_v5
+
+;--------------
+; PMOS devices
+;--------------
+( pmos (S130 pmos symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos
+
+( pmos_de_v12 (S130 pmos_de_v12 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_de_v12
+
+( pmos_esd_nat_v5 (S130 pmos_esd_nat_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_esd_nat_v5
+
+( pmos_esd_v5 (S130 pmos_esd_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_esd_v5
+
+( pmos_lvt (S130 pmos_lvt symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_lvt
+
+( pmos_hvt (S130 pmos_hvt symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_hvt
+
+( pmos_nat_v3 (S130 pmos_nat_v3 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_nat_v3
+
+( pmos_nat_v5 (S130 pmos_nat_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_nat_v5
+
+( pmos_v5 (S130 pmos_v5 symbol)
+ ( (d d) (g g) (s s) (b b) )
+); pmos_v5
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; RESISTOR devices
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;---------------------
+; diffusion resistors
+;---------------------
+( rndiff (S130 rndiff symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rndiff
+
+( rndiff_v5 (S130 rndiff_v5 symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rndiff_v5
+
+( rpdiff (S130 rpdiff symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rpdiff
+
+( rpdiff_v5 (S130 rpdiff_v5 symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rpdiff_v5
+
+;-----------------
+; metal resistors
+;-----------------
+( rli (S130 rmet symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); rli
+
+( rm1 (S130 rmet symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); rm1
+
+( rm2 (S130 rmet symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); rm2
+
+( rm3 (S130 rmet symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); rm3
+
+( rm4 (S130 rmet symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); rm4
+( rm5 (S130 rmet symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); rm5
+
+;----------------
+; poly resistors
+;----------------
+( rpoly (S130 rpoly symbol)
+ ( (POS PLUS) (NEG MINUS) )
+); rpoly
+( rpoly_hp_nw (S130 rpoly_hp symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rpoly_hp_nw
+
+( rpoly_hp_pw (S130 rpoly_hp symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rpoly_hp_pw
+
+( rpoly_hp2K_nw (S130 rpoly_hp2K symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rpoly_hp2K_nw
+
+( rpoly_hp2K_pw (S130 rpoly_hp2K symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rpoly_hp2K_pw
+
+;-----------------
+; pwell resistors
+;-----------------
+( rpwell (S130 pwell symbol)
+ ( (POS PLUS) (NEG MINUS) (SUB B) )
+); rpwell
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; PARASITIC devices
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+( (p cap c) (analogLib pcapacitor symbol) ( (PLUS) (MINUS) ) )
+( (p res r) (analogLib presistor symbol)  ( (PLUS) (MINUS) ) )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Drawn/Derived layer map used to build layout view for PEX
+;
+; Format:
+;
+;     list( "calibre_layer_name" '(CDS_layer_name CDS_layer_purpose) )
+;
+; Note:
+;
+;   "calibre_layer_name" should be a drawn or derived layer that satisfies one of the
+;   following criteria:
+;
+;      (1) is a connective layer
+;      (2) is a device recognition layer
+;      (3) is a pin/text layer used to establish an I/O port on a conductive layer
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+mgc_layer_map( list(
+
+;-------------------
+; Conductive layers
+;-------------------
+ list( "m5"     '(met5 drawing) )
+ list( "m4"     '(met4 drawing) )
+ list( "m3"     '(met3 drawing) )
+ list( "m2"     '(met2 drawing) )
+ list( "m1"     '(met1 drawing) )
+ list( "li"     '(li drawing) )
+ list( "ply"    '(poly drawing) )
+ list( "nwell"  '(nwell drawing) )
+ list( "pwell"  '(pwell drawing) )
+ list( "dnwell" '(dnwell drawing) )
+
+;---------------
+; Contacts/Vias
+;---------------
+ list( "licon" '(licon drawing) )
+ list( "mcon"  '(mcon drawing) )
+ list( "via1"  '(via1 drawing) )
+ list( "via2"  '(via2 drawing) )
+ list( "via3"  '(via3 drawing) )
+ list( "via4"  '(via3 drawing) )
+
+;-----------------------
+; Taps/Device Terminals
+;-----------------------
+ list( "ntap"            '(nsdm drawing ) )
+ list( "ptap"            '(psdm drawing ) )
+ list( "ptub"            '(pwell drawing) )
+ list( "ptubtap"         '(psdm drawing) )
+ list( "nsd"             '(nsdm drawing) )
+ list( "psd"             '(psdm drawing) )
+ list( "pwres_term"      '(psdm drawing) )
+ list( "ngate_de_12v_pw" '(pwell drawing) )
+ list( "pgate_de_12v_pw" '(pwell drawing) )
+ list( "nsrc_de_12v"     '(nsdm drawing) )
+ list( "ndrn_de_12v"     '(nsdm drawing) )
+ list( "psrc_de_12v"     '(psdm drawing) )
+ list( "pdrn_de_12v"     '(psdm drawing) )
+
+;---------------------------
+; Device Recognition Layers
+;---------------------------
+
+;---------------------------
+; Bipolar Devices (NPN/PNP)
+;---------------------------
+ list( "npn_1x1_rec"    '(npn drawing) )
+ list( "npn_1x1_rec_v5" '(npn drawing) )
+ list( "npn_1x2_rec"    '(npn drawing) )
+ list( "pnp_rec_1x"     '(pnp drawing) )
+ list( "pnp_rec_5x"     '(pnp drawing) )
+
+;-------------------
+; Capacitor Devices
+;-------------------
+ list( "cap_34" '(capm drawing) )
+ list( "cap_45" '(cap2m drawing) )
+
+;---------------
+; Diode Devices
+;---------------
+ list( "dnsd_pw"           '(areaid diode) )
+ list( "dnsd_pw_esd"       '(areaid diode) )
+ list( "dnsd_pw_esd_v5"    '(areaid diode) )
+ list( "dnsd_pw_lvt"       '(areaid diode) )
+ list( "dnsd_pw_nat"       '(areaid diode) )
+ list( "dnsd_pw_v5"        '(areaid diode) )
+ list( "dpsd_nw"           '(areaid diode) )
+ list( "dpsd_nw_esd"       '(areaid diode) )
+ list( "dpsd_nw_esd_v5"    '(areaid diode) )
+ list( "dpsd_nw_hvt"       '(areaid diode) )
+ list( "dpsd_nw_lvt"       '(areaid diode) )
+ list( "dpsd_nw_v5"        '(areaid diode) )
+ list( "dnw_sub_nom"       '(nsdm drawing) )
+ list( "dpw_dnw_nom"       '(psdm drawing) )
+ list( "dpw_dnw_nom_pwres" '(psdm drawing) )
+ list( "dnw_sub_v5"        '(nsdm drawing) )
+ list( "dpw_dnw_v5"        '(psdm drawing) )
+ list( "dpw_dnw_v5_pwres"  '(psdm drawing) )
+ list( "dnw_sub_v12"       '(nsdm drawing) )
+ list( "dpw_dnw_v12"       '(psdm drawing) )
+ list( "dpw_dnw_v12_pwres" '(psdm drawing) )
+ list( "dnw_sub_v20"       '(nsdm drawing) )
+ list( "dpw_dnw_v20"       '(psdm drawing) )
+ list( "dpw_dnw_v20_pwres" '(psdm drawing) )
+
+;-------------------
+; NMOS/PMOS Devices
+;-------------------
+ list( "ngate_nom_pw"        '(poly drawing) )
+ list( "ngate_nom_pt"        '(poly drawing) )
+ list( "ngate_lvt_pw"        '(poly drawing) )
+ list( "ngate_lvt_pt"        '(poly drawing) )
+ list( "ngate_v5_pw"         '(poly drawing) )
+ list( "ngate_v5_pt"         '(poly drawing) )
+ list( "ngate_v12_pw"        '(poly drawing) )
+ list( "ngate_v12_pt"        '(poly drawing) )
+ list( "ngate_v20_pw"        '(poly drawing) )
+ list( "ngate_v20_pt"        '(poly drawing) )
+ list( "ngate_esd_nat_5v_pw" '(poly drawing) )
+ list( "ngate_esd_nat_5v_pt" '(poly drawing) )
+ list( "ngate_esd_5v_pw"     '(poly drawing) )
+ list( "ngate_esd_5v_pt"     '(poly drawing) )
+ list( "ngate_nat_5v_pw"     '(poly drawing) )
+ list( "ngate_nat_5v_pt"     '(poly drawing) )
+ list( "ngate_nat_3v_pw"     '(poly drawing) )
+ list( "ngate_nat_3v_pt"     '(poly drawing) )
+ list( "pgate_nom"           '(poly drawing) )
+ list( "pgate_lvt"           '(poly drawing) )
+ list( "pgate_hvt"           '(poly drawing) )
+ list( "pgate_v5"            '(poly drawing) )
+ list( "pgate_v12"           '(poly drawing) )
+ list( "pgate_v20"           '(poly drawing) )
+ list( "pgate_esd_v5"        '(poly drawing) )
+ list( "pgate_de_v12_pw"     '(poly drawing) )
+
+;------------------
+; Resistor Devices
+;------------------
+ list( "lires"      '(li res) )
+ list( "m1res"      '(met1 res) )
+ list( "m2res"      '(met2 res) )
+ list( "m3res"      '(met3 res) )
+ list( "m4res"      '(met4 res) )
+ list( "m5res"      '(met5 res) )
+ list( "hp_poly_pw" '(poly res) )
+ list( "hp_poly_nw" '(poly res) )
+ list( "hs_poly_pw" '(poly res) )
+ list( "hs_poly_nw" '(poly res) )
+ list( "rpoly_rec"  '(poly res) )
+ list( "rpdiff_nom" '(diff res) )
+ list( "rpdiff_5v"  '(diff res) )
+ list( "pwres_rec"  '(pwell res) )
+ 
+;-----------------
+; Pin/Text layers
+;-----------------
+ list( "pwell_pin" '(pwell pin) )
+ list( "nwell_pin" '(nwell pin) )
+ list( "poly_pin"  '(poly pin) )
+ list( "li1_pin"   '(li pin) )
+ list( "met1_pin"  '(met1 pin) ) 
+ list( "met2_pin"  '(met2 pin) ) 
+ list( "met3_pin"  '(met3 pin) ) 
+ list( "met4_pin"  '(met4 pin) ) 
+ list( "met5_pin"  '(met5 pin) )
+ 
+ list( "pwelltt" '(pwell label) )
+ list( "nwelltt" '(nwell label) )
+ list( "polytt"  '(poly label) )
+ list( "li1tt"   '(li label) )
+ list( "met1tt"  '(met1 label) ) 
+ list( "met2tt"  '(met2 label) ) 
+ list( "met3tt"  '(met3 label) ) 
+ list( "met4tt"  '(met4 label) ) 
+ list( "met5tt"  '(met5 label) )
+
+ );list
+
+);mgc_layer_map
