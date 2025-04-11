@@ -1,0 +1,19 @@
+// File: nmos_top_trim1.spi
+// Created: Tue Oct 15 15:58:57 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/nmos_top_trim1.pex.spice"
+subckt nmos_top_trim1 (  )
+// 
+M0_noxref ( noxref_1 noxref_3 noxref_2 noxref_5 ) NMOS l=0.163346 w=2.31104 m=1
+c_3 ( noxref_1 0 ) capacitor c=0.00700155f //x=0.43 //y=0.54
+c_6 ( noxref_2 0 ) capacitor c=0.187445f //x=0 //y=0
+c_9 ( noxref_3 0 ) capacitor c=0.220409f //x=0.62 //y=0.965
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/nmos_top_trim1.pxi.spice"
+// 
+ends NMOS_TOP_TRIM1
+// 
+// 

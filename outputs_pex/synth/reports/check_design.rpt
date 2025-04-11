@@ -1,0 +1,23 @@
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+check_design summary:
+Version:     V-2023.12-SP3
+Date:        Wed Nov 13 13:22:57 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      1
+    Multiply driven inputs (LINT-6)                                 1
+
+Tristate                                                            4
+    A tristate bus has a non tri-state driver (LINT-34)             4
+--------------------------------------------------------------------------------
+
+Warning: In design 'top', input port 'tdi' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'top', three-state bus 'reset1' has non three-state driver 'reset_reg/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'captureIR' has non three-state driver 'captureIR_reg/Q'. (LINT-34)
+Warning: In design 'top', three-state bus 'ir_clk' has non three-state driver 'U34810/Y'. (LINT-34)
+Warning: In design 'top', three-state bus 'updateIR' has non three-state driver 'U34809/Y'. (LINT-34)
+1

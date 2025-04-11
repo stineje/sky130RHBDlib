@@ -1,0 +1,60 @@
+// File: inv.spi.pex
+// Created: Tue Oct 15 15:56:53 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// Nominal Temperature: 30C
+// Circuit Temperature: 30C
+// 
+simulator lang=spectre
+subckt PM_INV\%A ( 1 3 7 8 16 )
+c16 ( 16 0 ) capacitor c=0.0718082f //x=-0.119 //y=0.56
+c17 ( 8 0 ) capacitor c=0.0833265f //x=0.075 //y=1.195
+c18 ( 7 0 ) capacitor c=0.0709645f //x=0.075 //y=0.005
+c19 ( 3 0 ) capacitor c=0.012557f //x=-0.119 //y=0.56
+r20 (  16 18 ) resistor r=56.5354 //w=0.414 //l=0.19 //layer=ply \
+ //thickness=0.18 //x=-0.085 //y=0.56 //x2=-0.085 //y2=0.75
+r21 (  16 17 ) resistor r=55.9533 //w=0.414 //l=0.185 //layer=ply \
+ //thickness=0.18 //x=-0.085 //y=0.56 //x2=-0.085 //y2=0.375
+r22 (  8 18 ) resistor r=228.181 //w=0.094 //l=0.445 //layer=ply \
+ //thickness=0.18 //x=0.075 //y=1.195 //x2=0.075 //y2=0.75
+r23 (  7 17 ) resistor r=189.723 //w=0.094 //l=0.37 //layer=ply \
+ //thickness=0.18 //x=0.075 //y=0.005 //x2=0.075 //y2=0.375
+r24 (  3 16 ) resistor r=152 //w=0.17 //l=0.17 //layer=licon //count=1 \
+ //x=-0.119 //y=0.56 //x2=-0.119 //y2=0.56
+r25 (  1 3 ) resistor r=0.249027 //w=0.257 //l=0.005 //layer=li \
+ //thickness=0.1 //x=-0.12 //y=0.565 //x2=-0.12 //y2=0.56
+ends PM_INV\%A
+
+subckt PM_INV\%GND ( 1 8 10 11 )
+c12 ( 11 0 ) capacitor c=0.0280935f //x=-0.365 //y=-0.205
+c13 ( 10 0 ) capacitor c=0.0511109f //x=-0.155 //y=-0.622
+c14 ( 8 0 ) capacitor c=0.0727768f //x=-0.07 //y=-0.622
+r15 (  8 10 ) resistor r=2.90875 //w=0.345 //l=0.085 //layer=li \
+ //thickness=0.1 //x=-0.07 //y=-0.622 //x2=-0.155 //y2=-0.622
+r16 (  4 10 ) resistor r=4.17434 //w=0.69 //l=0.172 //layer=li //thickness=0.1 \
+ //x=-0.155 //y=-0.45 //x2=-0.155 //y2=-0.622
+r17 (  4 11 ) resistor r=25.7369 //w=0.187 //l=0.376 //layer=li \
+ //thickness=0.1 //x=-0.155 //y=-0.45 //x2=-0.155 //y2=-0.074
+r18 (  1 8 ) resistor r=7.23478 //w=0.345 //l=0.195 //layer=li //thickness=0.1 \
+ //x=0.125 //y=-0.622 //x2=-0.07 //y2=-0.622
+ends PM_INV\%GND
+
+subckt PM_INV\%VDD ( 1 6 8 )
+c11 ( 8 0 ) capacitor c=0.0254511f //x=-0.285 //y=0.985
+c12 ( 6 0 ) capacitor c=0.12397f //x=-0.055 //y=1.797
+r13 (  2 6 ) resistor r=8.28215 //w=0.345 //l=0.210247 //layer=li \
+ //thickness=0.1 //x=-0.14 //y=1.625 //x2=-0.055 //y2=1.797
+r14 (  2 8 ) resistor r=23.9572 //w=0.187 //l=0.35 //layer=li //thickness=0.1 \
+ //x=-0.14 //y=1.625 //x2=-0.14 //y2=1.275
+r15 (  1 6 ) resistor r=5.1942 //w=0.345 //l=0.14 //layer=li //thickness=0.1 \
+ //x=0.085 //y=1.797 //x2=-0.055 //y2=1.797
+ends PM_INV\%VDD
+
+subckt PM_INV\%Y ( 1 9 11 )
+c7 ( 9 0 ) capacitor c=0.0848727f //x=0.15 //y=-0.205
+r8 (  1 11 ) resistor r=41.0695 //w=0.187 //l=0.6 //layer=li //thickness=0.1 \
+ //x=0.29 //y=0.675 //x2=0.29 //y2=1.275
+r9 (  1 9 ) resistor r=51.2684 //w=0.187 //l=0.749 //layer=li //thickness=0.1 \
+ //x=0.29 //y=0.675 //x2=0.29 //y2=-0.074
+ends PM_INV\%Y
+

@@ -1,0 +1,23 @@
+// File: inv.spi
+// Created: Tue Oct 15 15:56:53 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/inv.pex.spice"
+subckt inv (  A GND VDD Y )
+// 
+// Y	Y
+// VDD	VDD
+// GND	GND
+// A	A
+M0_noxref ( N_Y_M0_noxref_d N_A_M0_noxref_g N_GND_M0_noxref_s noxref_9 ) NMOS \
+ l=0.15 w=0.42 m=1
+M1_noxref ( N_Y_M1_noxref_d N_A_M1_noxref_g N_VDD_M1_noxref_s noxref_7 ) PMOS \
+ l=0.15 w=0.42 ad=0.1197 as=0.1197 pd=0.99 ps=0.99 nrd=0 nrs=0 m=1
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/inv.pxi.spice"
+// 
+ends INV
+// 
+// 

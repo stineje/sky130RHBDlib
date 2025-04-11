@@ -1,0 +1,39 @@
+// File: or2x1_pcell.spi
+// Created: Tue Oct 15 15:59:49 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/or2x1_pcell.pex.spice"
+subckt or2x1_pcell (  )
+// 
+M0_noxref ( N_noxref_3_M0_noxref_d N_noxref_4_M0_noxref_g \
+ N_noxref_1_M0_noxref_s noxref_78 ) NMOS l=0.163346 w=2.31104 m=1
+M1_noxref ( N_noxref_3_M1_noxref_d N_noxref_5_M1_noxref_g \
+ N_noxref_1_M0_noxref_s noxref_78 ) NMOS l=0.163129 w=2.31397 m=1
+M2_noxref ( N_noxref_7_M2_noxref_d N_noxref_3_M2_noxref_g \
+ N_noxref_1_M2_noxref_s noxref_78 ) NMOS l=0.163346 w=2.31104 m=1
+M3_noxref ( N_noxref_2_M3_noxref_d N_noxref_4_M3_noxref_g \
+ N_noxref_6_M3_noxref_s noxref_76 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M4_noxref ( N_noxref_6_M4_noxref_d N_noxref_4_M4_noxref_g \
+ N_noxref_2_M3_noxref_d noxref_76 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M5_noxref ( N_noxref_3_M5_noxref_d N_noxref_5_M5_noxref_g \
+ N_noxref_6_M4_noxref_d noxref_76 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 \
+ ps=2.58 nrd=0 nrs=0 m=1
+M6_noxref ( N_noxref_6_M6_noxref_d N_noxref_5_M6_noxref_g \
+ N_noxref_3_M5_noxref_d noxref_76 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+M7_noxref ( N_noxref_7_M7_noxref_d N_noxref_3_M7_noxref_g \
+ N_noxref_2_M7_noxref_s noxref_76 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M8_noxref ( N_noxref_2_M8_noxref_d N_noxref_3_M8_noxref_g \
+ N_noxref_7_M7_noxref_d noxref_76 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/or2x1_pcell.pxi.spice"
+// 
+ends OR2X1_PCELL
+// 
+// 

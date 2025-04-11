@@ -1,0 +1,22 @@
+// File: pmos2.spi
+// Created: Tue Oct 15 16:00:16 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/pmos2.pex.spice"
+subckt pmos2 (  )
+// 
+M0_noxref ( noxref_2 N_noxref_4_M0_noxref_g noxref_1 noxref_5 ) PMOS l=0.15 \
+ w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
+M1_noxref ( noxref_3 N_noxref_4_M1_noxref_g noxref_2 noxref_5 ) PMOS l=0.15 \
+ w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
+c_4 ( noxref_1 0 ) capacitor c=0.088445f //x=0.44 //y=-2
+c_10 ( noxref_2 0 ) capacitor c=0.0289494f //x=0.87 //y=-2
+c_14 ( noxref_3 0 ) capacitor c=0.088445f //x=1.31 //y=-2
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/pmos2.pxi.spice"
+// 
+ends PMOS2
+// 
+// 

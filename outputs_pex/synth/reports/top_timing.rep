@@ -1,0 +1,60 @@
+Warning: Design 'top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nets
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : top
+Version: V-2023.12-SP3
+Date   : Wed Nov 13 13:22:59 2024
+****************************************
+
+Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
+Wire Load Model Mode: top
+
+  Startpoint: ir/instructions[4] (internal pin)
+  Endpoint: tdo (output port clocked by vclk)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                       Fanout       Cap     Trans      Incr       Path
+  ----------------------------------------------------------------------------------------------
+  ir/instructions[4] (instruction_register)                     0.000000  0.000000   0.000000 f
+  instructions[4] (net)                         2     0.018956            0.000000   0.000000 f
+  U314/Y (NOR2X1)                                               0.209354  0.165102   0.165102 r
+  n24905 (net)                                  5     0.048393            0.000000   0.165102 r
+  U83731/Y (NAND2X1)                                            0.077114  0.082564   0.247666 f
+  n24862 (net)                                  2     0.018253            0.000000   0.247666 f
+  U330/Y (NOR2X1)                                               0.096057  0.089425   0.337092 r
+  n24861 (net)                                  2     0.019535            0.000000   0.337092 r
+  U35095/Y (NOR2X1)                                             0.036146  0.044552   0.381643 f
+  n34530 (net)                                  1     0.009979            0.000000   0.381643 f
+  U35096/Y (AND3X1)                                             0.021860  0.072590   0.454233 f
+  n34531 (net)                                  1     0.009979            0.000000   0.454233 f
+  U35097/Y (AND3X1)                                             0.030715  0.075958   0.530191 f
+  n34536 (net)                                  2     0.018253            0.000000   0.530191 f
+  U35102/Y (NOR2X1)                                             0.059896  0.054076   0.584267 r
+  n34538 (net)                                  1     0.010198            0.000000   0.584267 r
+  U35103/Y (OR2X1)                                              0.026447  0.068071   0.652338 r
+  n34539 (net)                                  1     0.009230            0.000000   0.652338 r
+  U35104/Y (NAND2X1)                                            0.034544  0.035179   0.687517 f
+  n34540 (net)                                  1     0.009413            0.000000   0.687517 f
+  U35105/Y (NAND2X1)                                            0.035665  0.038567   0.726083 r
+  n34542 (net)                                  1     0.010198            0.000000   0.726083 r
+  U35106/Y (OR2X1)                                              0.027298  0.061248   0.787332 r
+  n34543 (net)                                  1     0.009230            0.000000   0.787332 r
+  U35107/Y (NAND2X1)                                            0.034895  0.034659   0.821991 f
+  n34544 (net)                                  1     0.008840            0.000000   0.821991 f
+  U35108/Y (NOR2X1)                                             0.177833  0.125156   0.947147 r
+  tdo (net)                                     1     0.040355            0.000000   0.947147 r
+  tdo (out)                                                     0.177833  0.000000   0.947147 r
+  data arrival time                                                                  0.947147
+  ----------------------------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

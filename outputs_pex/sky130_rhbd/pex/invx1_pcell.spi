@@ -1,0 +1,24 @@
+// File: invx1_pcell.spi
+// Created: Tue Oct 15 15:57:06 2024
+// Program "Calibre xRC"
+// Version "v2023.2_27.15"
+// 
+simulator lang=spectre
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/invx1_pcell.pex.spice"
+subckt invx1_pcell (  )
+// 
+M0_noxref ( N_noxref_4_M0_noxref_d N_noxref_3_M0_noxref_g noxref_1 noxref_45 ) \
+ NMOS l=0.163346 w=2.31104 m=1
+M1_noxref ( N_noxref_4_M1_noxref_d N_noxref_3_M1_noxref_g \
+ N_noxref_2_M1_noxref_s noxref_43 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+ ps=2.57 nrd=0 nrs=0 m=1
+M2_noxref ( N_noxref_2_M2_noxref_d N_noxref_3_M2_noxref_g \
+ N_noxref_4_M1_noxref_d noxref_43 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+ ps=2.56 nrd=0 nrs=0 m=1
+c_13 ( noxref_1 0 ) capacitor c=0.627917f //x=0.495 //y=0.37
+// 
+include "/home/zwils11/Documents/OSU_SKY130_FLOW/calibre/sky130_rhbd_output/spice/invx1_pcell.pxi.spice"
+// 
+ends INVX1_PCELL
+// 
+// 
