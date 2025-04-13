@@ -1,0 +1,1191 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version V-2023.12-SP3 for linux64 - Apr 17, 2024 
+
+                    Copyright (c) 1988 - 2024 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+Current time:       Thu Oct 17 16:27:32 2024
+Hostname:           mimi.ecen.okstate.edu
+CPU Model:          AMD EPYC 7343 16-Core Processor
+CPU Details:        Cores = 64 : Sockets = 2 : Cache Size = 512 KB : Freq = 3.19 GHz
+OS:                 Linux 3.10.0-1160.76.1.el7.x86_64
+RAM:                251 GB (Free 170 GB)
+Swap:                 3 GB (Free   3 GB)
+Work Filesystem:    /home/zwils11 mounted to patchy:/volume1/nfshome/zwils11
+Tmp Filesystem:     / mounted to /dev/mapper/rhel-root
+Work Disk:          53622 GB (Free 43679 GB)
+Tmp Disk:           441 GB (Free 340 GB)
+
+CPU Load: 0%, Ram Free: 170 GB, Swap Free: 3 GB, Work Disk Free: 43679 GB, Tmp Disk Free: 340 GB
+#
+# OKSTATE Main Synopsys Flow
+# Updated Sep 27, 2015 jes
+#
+# Verilog files
+set my_verilog_files [glob ./hdl/*]
+./hdl/adder.v ./hdl/gcd.v ./hdl/adder.sv ./hdl/aludec_new.sv ./hdl/aludec_orig.sv ./hdl/aludec.sv ./hdl/alu.sv ./hdl/arrs.sv ./hdl/controller.sv ./hdl/counter.sv ./hdl/datapath.sv ./hdl/flopenr.sv ./hdl/flopens.sv ./hdl/flopr.sv ./hdl/magcompare2b.sv ./hdl/magcompare2c.sv ./hdl/magcompare32.sv ./hdl/maindec.sv ./hdl/mux2.sv ./hdl/mux3.sv ./hdl/mux4.sv ./hdl/mux5.sv ./hdl/regfile.sv ./hdl/riscv.sv ./hdl/shifter.sv ./hdl/signext.sv ./hdl/mult.sv ./hdl/mult2.sv
+# VHDL files
+# set my_vhdl_files [list top.vhd]
+# Set toplevel
+set my_toplevel riscv 
+riscv
+# Set number of significant digits
+set report_default_significant_digits 6
+6
+# V(HDL) Unconnectoed Pins Output
+set verilogout_show_unconnected_pins "true"
+true
+set vhdlout_show_unconnected_pins "true"
+true
+#
+# Due to parameterized Verilog must use analyze/elaborate and not 
+# read_verilog/vhdl (change to pull in Verilog and/or VHDL)
+# to read verilog remove "s"
+#
+define_design_lib WORK -path ./WORK
+1
+analyze -f sverilog -lib WORK $my_verilog_files
+Running PRESTO HDLC
+Compiling source file ./hdl/adder.v
+Compiling source file ./hdl/gcd.v
+Compiling source file ./hdl/adder.sv
+Warning:  ./hdl/adder.sv:1: Overwriting existing design element 'adder' with newer version. (VER-64)
+Compiling source file ./hdl/aludec_new.sv
+Compiling source file ./hdl/aludec_orig.sv
+Warning:  ./hdl/aludec_orig.sv:1: Overwriting existing design element 'aludec' with newer version. (VER-64)
+Compiling source file ./hdl/aludec.sv
+Warning:  ./hdl/aludec.sv:1: Overwriting existing design element 'aludec' with newer version. (VER-64)
+Compiling source file ./hdl/alu.sv
+Compiling source file ./hdl/arrs.sv
+Compiling source file ./hdl/controller.sv
+Compiling source file ./hdl/counter.sv
+Compiling source file ./hdl/datapath.sv
+Compiling source file ./hdl/flopenr.sv
+Compiling source file ./hdl/flopens.sv
+Warning:  ./hdl/flopenr.sv:9: Intraassignment delays for nonblocking assignments are ignored. (VER-130)
+Warning:  ./hdl/flopenr.sv:10: Intraassignment delays for nonblocking assignments are ignored. (VER-130)
+Compiling source file ./hdl/flopr.sv
+Warning:  ./hdl/flopens.sv:9: Intraassignment delays for nonblocking assignments are ignored. (VER-130)
+Warning:  ./hdl/flopens.sv:10: Intraassignment delays for nonblocking assignments are ignored. (VER-130)
+Compiling source file ./hdl/magcompare2b.sv
+Warning:  ./hdl/flopr.sv:8: Intraassignment delays for nonblocking assignments are ignored. (VER-130)
+Warning:  ./hdl/flopr.sv:9: Intraassignment delays for nonblocking assignments are ignored. (VER-130)
+Compiling source file ./hdl/magcompare2c.sv
+Compiling source file ./hdl/magcompare32.sv
+Compiling source file ./hdl/maindec.sv
+Compiling source file ./hdl/mux2.sv
+Compiling source file ./hdl/mux3.sv
+Compiling source file ./hdl/mux4.sv
+Compiling source file ./hdl/mux5.sv
+Compiling source file ./hdl/regfile.sv
+Compiling source file ./hdl/riscv.sv
+Compiling source file ./hdl/shifter.sv
+Compiling source file ./hdl/signext.sv
+Compiling source file ./hdl/mult.sv
+Compiling source file ./hdl/mult2.sv
+Warning:  ./hdl/mult2.sv:158: Overwriting existing design element 'HA' with newer version. (VER-64)
+Warning:  ./hdl/mult2.sv:163: Overwriting existing design element 'FA' with newer version. (VER-64)
+Presto compilation completed successfully.
+Loading db file '/home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/sky130_rhbd_tt_1P8_25C.ccs.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/TMR_sky130_rhbd_tt_1P8_25C.ccs.db'
+Loading db file '/import/programs/synopsys/syn/current/libraries/syn/dw_foundation.sldb'
+1
+#
+# Added if you had any VHDL
+# analyze -f vhdl -lib WORK $my_vhdl_files
+#
+elaborate $my_toplevel -lib WORK 
+Loading db file '/import/programs/synopsys/syn/current/libraries/syn/gtech.db'
+Loading db file '/import/programs/synopsys/syn/current/libraries/syn/standard.sldb'
+  Loading link library 'sky130_rhbd_tt_1P8_25C.ccs'
+  Loading link library 'TMR_sky130_rhbd_tt_1P8_25C.ccs'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully. (riscv)
+Elaborated 1 design.
+Current design is now 'riscv'.
+Information: Building the design 'controller'. (HDL-193)
+Presto compilation completed successfully. (controller)
+Information: Building the design 'datapath'. (HDL-193)
+Presto compilation completed successfully. (datapath)
+Information: Building the design 'maindec'. (HDL-193)
+
+Statistics for case statements in always block at line 21 in file
+	'./hdl/maindec.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            22            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (maindec)
+Information: Building the design 'aludec'. (HDL-193)
+
+Statistics for case statements in always block at line 10 in file
+	'./hdl/aludec.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            11            |    auto/auto     |
+|            14            |    auto/auto     |
+|            99            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (aludec)
+Information: Building the design 'mux2' instantiated from design 'controller' with
+	the parameters "1". (HDL-193)
+Presto compilation completed successfully. (mux2_WIDTH1)
+Information: Building the design 'mux2' instantiated from design 'controller' with
+	the parameters "4". (HDL-193)
+Presto compilation completed successfully. (mux2_WIDTH4)
+Information: Building the design 'flopenr' instantiated from design 'datapath' with
+	the parameters "32". (HDL-193)
+
+Inferred memory devices in process
+	in routine flopenr_WIDTH32 line 8 in file
+		'./hdl/flopenr.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (flopenr_WIDTH32)
+Information: Building the design 'flopr' instantiated from design 'datapath' with
+	the parameters "32". (HDL-193)
+
+Inferred memory devices in process
+	in routine flopr_WIDTH32 line 7 in file
+		'./hdl/flopr.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (flopr_WIDTH32)
+Information: Building the design 'adder'. (HDL-193)
+Presto compilation completed successfully. (adder)
+Information: Building the design 'mux2' instantiated from design 'datapath' with
+	the parameters "5". (HDL-193)
+Presto compilation completed successfully. (mux2_WIDTH5)
+Information: Building the design 'regfile'. (HDL-193)
+
+Inferred memory devices in process
+	in routine regfile line 14 in file
+		'./hdl/regfile.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       rf_reg        | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|    regfile/17    |   32   |   32    |      5       |
+|    regfile/18    |   32   |   32    |      5       |
+======================================================
+Presto compilation completed successfully. (regfile)
+Information: Building the design 'signext'. (HDL-193)
+Presto compilation completed successfully. (signext)
+Information: Building the design 'mux2' instantiated from design 'datapath' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully. (mux2_WIDTH32)
+Information: Building the design 'magcompare32'. (HDL-193)
+Presto compilation completed successfully. (magcompare32)
+Information: Building the design 'alu'. (HDL-193)
+
+Statistics for case statements in always block at line 15 in file
+	'./hdl/alu.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            16            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (alu)
+Information: Building the design 'shifter'. (HDL-193)
+Warning:  ./hdl/shifter.sv:10: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/shifter.sv:14: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/shifter.sv:18: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/shifter.sv:22: signed to unsigned assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 6 in file
+	'./hdl/shifter.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            7             |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (shifter)
+Information: Building the design 'mux4' instantiated from design 'signext' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully. (mux4_WIDTH32)
+Information: Building the design 'magcompare2b'. (HDL-193)
+Presto compilation completed successfully. (magcompare2b)
+Information: Building the design 'magcompare2c'. (HDL-193)
+Presto compilation completed successfully. (magcompare2c)
+1
+# Set the current_design 
+current_design $my_toplevel
+Current design is 'riscv'.
+{riscv}
+link
+
+  Linking design 'riscv'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  sky130_rhbd_tt_1P8_25C.ccs (library) /home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/sky130_rhbd_tt_1P8_25C.ccs.db
+  TMR_sky130_rhbd_tt_1P8_25C.ccs (library) /home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/TMR_sky130_rhbd_tt_1P8_25C.ccs.db
+  dw_foundation.sldb (library) /import/programs/synopsys/syn/current/libraries/syn/dw_foundation.sldb
+
+1
+# Reset all constraints 
+reset_design
+1
+# Set Frequency in [MHz] or [ps]
+set my_clock_pin clk
+clk
+set my_clk_freq_MHz 500 
+500
+set my_period [expr 1000.0 / $my_clk_freq_MHz]
+2.0
+set my_uncertainty [expr .1 * $my_period]
+0.2
+# Create clock object 
+set find_clock [ find port [list $my_clock_pin] ]
+{clk}
+if {  $find_clock != [list] } {
+    echo "Found clock!"
+    set my_clk $my_clock_pin
+    create_clock -period $my_period $my_clk
+    set_clock_uncertainty $my_uncertainty [get_clocks $my_clk]
+} else {
+    echo "Did not find clock! Design is probably combinational!"
+    set my_clk vclk
+    create_clock -period $my_period -name $my_clk
+}
+Found clock!
+1
+# Partitioning - flatten or hierarchically synthesize
+#ungroup -flatten -simple_names { dp* }
+#ungroup -flatten -simple_names { c* }
+ungroup -all -flatten -simple_names
+Information: Updating graph... (UID-83)
+Warning: Design 'riscv' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+# Set input pins except clock
+set all_in_ex_clk [remove_from_collection [all_inputs] [get_ports $my_clk]]
+{reset instr[31] instr[30] instr[29] instr[28] instr[27] instr[26] instr[25] instr[24] instr[23] instr[22] instr[21] instr[20] instr[19] instr[18] instr[17] instr[16] instr[15] instr[14] instr[13] instr[12] instr[11] instr[10] instr[9] instr[8] instr[7] instr[6] instr[5] instr[4] instr[3] instr[2] instr[1] instr[0] readdata[31] readdata[30] readdata[29] readdata[28] readdata[27] readdata[26] readdata[25] readdata[24] readdata[23] readdata[22] readdata[21] readdata[20] readdata[19] readdata[18] readdata[17] readdata[16] readdata[15] readdata[14] readdata[13] readdata[12] readdata[11] readdata[10] readdata[9] readdata[8] readdata[7] readdata[6] readdata[5] readdata[4] readdata[3] readdata[2] readdata[1] readdata[0]}
+# Specifies delays be propagated through the clock network
+set_propagated_clock [get_clocks $my_clk]
+Information: set_input_delay values are added to the propagated clock skew. (TIM-113)
+1
+# Setting constraints on input ports 
+set_driving_cell -lib_cell TMRDFFQX1 -pin Q $all_in_ex_clk
+1
+# Set input/output delay
+set_input_delay 0.0 -max -clock $my_clk $all_in_ex_clk
+1
+set_output_delay 0.0 -max -clock $my_clk [all_outputs]
+1
+# Setting load constraint on output ports 
+set_load [expr [load_of TMR_sky130_rhbd_tt_1P8_25C.ccs/TMRDFFQX1/D] * 1] [all_outputs]
+1
+# Set the wire load model 
+set_wire_load_mode "top"
+1
+# Attempt Area Recovery - if looking for minimal area
+# set_max_area 2000
+# Set fanout
+set_max_fanout 6 $all_in_ex_clk
+1
+# Fix hold time violations
+set_fix_hold [all_clocks]
+1
+# Deal with constants and buffers to isolate ports
+set_fix_multiple_port_nets -all -buffer_constants
+1
+# setting up the group paths to find out the required timings
+#group_path -name OUTPUTS -to [all_outputs]
+#group_path -name INPUTS -from [all_inputs] 
+#group_path -name COMBO -from [all_inputs] -to [all_outputs]
+# Save Unmapped Design
+set filename [format "%s%s%s"  "unmapped/" $my_toplevel ".ddc"]
+unmapped/riscv.ddc
+write_file -format ddc -hierarchy -o $filename
+Writing ddc file 'unmapped/riscv.ddc'.
+1
+# Compile statements - either compile or compile_ultra
+# compile -scan -incr -map_effort high
+compile_ultra -no_seq_output_inversion -no_boundary_optimization
+Information: Auto ungrouping of the design is disabled because the '-no_boundary_optimization' is used. (OPT-1316)
+Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
+Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
+Information: Performing leakage power optimization. (PWR-850)
+CPU Load: 0%, Ram Free: 170 GB, Swap Free: 3 GB, Work Disk Free: 43679 GB, Tmp Disk Free: 340 GB
+Analyzing: "/home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/sky130_rhbd_tt_1P8_25C.ccs.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | V-2023.12-DWBB_202312.2 |     *     |
+| Licensed DW Building Blocks        | V-2023.12-DWBB_202312.2 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Command Line | compile_ultra -no_seq_output_inversion -no_boundary_optimization                  |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 2015                                   |
+| Number of User Hierarchies                              | 0                                      |
+| Sequential Cell Count                                   | 1088                                   |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 0                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 154                                    |
+| Number of Dont Touch Nets                               | 0                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+----------------------------------------------------------------------------------------------------
+| Variables                                               | Value                                  |
+----------------------------------------------------------------------------------------------------
+| set_fix_multiple_port_nets                              | -all -buffer_constants                 |
+====================================================================================================
+
+Information: There are 35 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'riscv'
+Information: The register 'q_reg[31]' will be removed. (OPT-1207)
+Information: The register 'q_reg[30]' will be removed. (OPT-1207)
+Information: The register 'q_reg[29]' will be removed. (OPT-1207)
+Information: The register 'q_reg[28]' will be removed. (OPT-1207)
+Information: The register 'q_reg[27]' will be removed. (OPT-1207)
+Information: The register 'q_reg[26]' will be removed. (OPT-1207)
+Information: The register 'q_reg[25]' will be removed. (OPT-1207)
+Information: The register 'q_reg[24]' will be removed. (OPT-1207)
+Information: The register 'q_reg[23]' will be removed. (OPT-1207)
+Information: The register 'q_reg[22]' will be removed. (OPT-1207)
+Information: The register 'q_reg[21]' will be removed. (OPT-1207)
+Information: The register 'q_reg[20]' will be removed. (OPT-1207)
+Information: The register 'q_reg[19]' will be removed. (OPT-1207)
+Information: The register 'q_reg[18]' will be removed. (OPT-1207)
+Information: The register 'q_reg[17]' will be removed. (OPT-1207)
+Information: The register 'q_reg[16]' will be removed. (OPT-1207)
+Information: The register 'q_reg[15]' will be removed. (OPT-1207)
+Information: The register 'q_reg[14]' will be removed. (OPT-1207)
+Information: The register 'q_reg[13]' will be removed. (OPT-1207)
+Information: The register 'q_reg[12]' will be removed. (OPT-1207)
+Information: The register 'q_reg[11]' will be removed. (OPT-1207)
+Information: The register 'q_reg[10]' will be removed. (OPT-1207)
+Information: The register 'q_reg[9]' will be removed. (OPT-1207)
+Information: The register 'q_reg[8]' will be removed. (OPT-1207)
+Information: The register 'q_reg[7]' will be removed. (OPT-1207)
+Information: The register 'q_reg[6]' will be removed. (OPT-1207)
+Information: The register 'q_reg[5]' will be removed. (OPT-1207)
+Information: The register 'q_reg[4]' will be removed. (OPT-1207)
+Information: The register 'q_reg[3]' will be removed. (OPT-1207)
+Information: The register 'q_reg[2]' will be removed. (OPT-1207)
+Information: The register 'q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'q_reg[0]' will be removed. (OPT-1207)
+
+Loaded alib file './alib-52/sky130_rhbd_tt_1P8_25C.ccs.db.alib'
+Loaded alib file './alib-52/TMR_sky130_rhbd_tt_1P8_25C.ccs.db.alib' (placeholder)
+CPU Load: 0%, Ram Free: 170 GB, Swap Free: 3 GB, Work Disk Free: 43679 GB, Tmp Disk Free: 340 GB
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'riscv'
+ Implement Synthetic for 'riscv'.
+Information: Added key list 'DesignWare' to design 'riscv'. (DDB-72)
+Information: The register 'rf_reg[0][31]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][30]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][29]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][28]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][27]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][26]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][25]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][24]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][23]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][22]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][21]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][20]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][19]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][18]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][17]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][16]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][15]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][14]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][13]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][12]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][11]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][10]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][9]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][8]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][7]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][6]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][5]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][4]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][3]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][2]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][1]' will be removed. (OPT-1207)
+Information: The register 'rf_reg[0][0]' will be removed. (OPT-1207)
+CPU Load: 0%, Ram Free: 170 GB, Swap Free: 3 GB, Work Disk Free: 43679 GB, Tmp Disk Free: 340 GB
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Timing loop detected. (OPT-150)
+	q_reg[31]1/QN q_reg[31]1/Q 
+Information: Timing loop detected. (OPT-150)
+	q_reg[31]1/QN q_reg[31]1/Q 
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[31]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[31]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[30]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[30]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[29]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[29]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[28]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[28]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[27]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[27]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[26]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[26]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[25]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[25]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[24]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[24]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[23]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[23]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[22]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[22]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[21]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[21]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[20]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[20]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[19]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[19]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[18]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[18]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[17]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[17]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[16]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[16]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[15]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[15]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[14]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[14]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[13]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[13]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[12]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[12]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[11]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[11]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[10]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[10]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[9]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[9]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[8]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[8]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[7]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[7]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[6]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[6]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[5]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[5]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[4]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[4]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[3]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[3]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[2]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[2]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[1]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[1]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[0]1'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'q_reg[0]1'
+         to break a timing loop. (OPT-314)
+Information: The library cell 'TIELO' in the library 'sky130_rhbd_tt_1P8_25C.ccs' is not characterized for internal power. (PWR-536)
+Information: The library cell 'TIEHI' in the library 'sky130_rhbd_tt_1P8_25C.ccs' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:38  474270.9      0.94     932.4       8.0                           77445.9531      0.00  
+    0:00:39  468181.6      1.36    1330.4       8.0                           76652.7734      0.00  
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:40  449815.1      1.28    1231.5       8.0                           72468.0078      0.00  
+    0:00:54  455222.6      0.63     645.9      10.0                           73756.8516      0.00  
+    0:00:54  455222.6      0.63     645.9      10.0                           73756.8516      0.00  
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[28][5]/QN rf_reg[28][5]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[6][16]/QN rf_reg[6][16]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][0]/QN rf_reg[31][0]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[3][11]/QN rf_reg[3][11]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[31][21]/QN rf_reg[31][21]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Warning: Timing update failed because design has loops.
+Dumping new detected-loops for layer '__default__'[0th/1]...
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+Information: Timing loop detected. (OPT-150)
+	rf_reg[4][26]/QN rf_reg[4][26]/Q 
+    0:00:56  455222.6      0.63     645.9      10.0                           73756.8516      0.00  
+    0:00:57  455126.8      0.63     645.9      10.0                           73755.7656      0.00  
+    0:00:58  454943.3      0.79     727.2      10.0                           73735.5938      0.00  
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:59  450244.9      0.74     737.3       8.0                           72734.5781      0.00  
+    0:01:00  450244.9      0.74     737.3       8.0                           72734.5781      0.00  
+    0:01:00  450244.9      0.74     737.3       8.0                           72734.5781      0.00  
+    0:01:00  450244.9      0.74     737.3       8.0                           72734.5781      0.00  
+    0:01:00  450244.9      0.74     737.3       8.0                           72734.5781      0.00  
+***
+*** WARNING: Characterizing failed for lib_cell family '32'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFRNX1 (32 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
+    Arc from 'CLK' to 'Q' of sense 'rising_edge'
+    Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'QN' of sense 'negative_unate'
+    Arc from 'Q' to 'QN' of sense 'fall_to_rise'
+    Arc from 'QN' to 'Q' of sense 'negative_unate'
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:01:00  450244.9      0.74     737.3       8.0                           72734.5781      0.00  
+    0:01:00  450244.9      0.74     737.3       8.0                           72734.5781      0.00  
+    0:01:24  464342.9      0.63     637.0       8.0                           75529.5703      0.00  
+    0:01:24  464342.9      0.63     637.0       8.0                           75529.5703      0.00  
+    0:01:24  464342.9      0.63     637.0       8.0                           75529.5703      0.00  
+    0:01:24  464342.9      0.63     637.0       8.0                           75529.5703      0.00  
+    0:01:25  464342.9      0.63     637.0       8.0                           75529.5703      0.00  
+    0:01:25  464342.9      0.63     637.0       8.0                           75529.5703      0.00  
+    0:01:34  465282.0      0.54     554.6       8.0                           75748.0234      0.00  
+    0:01:34  465282.0      0.54     554.6       8.0                           75748.0234      0.00  
+    0:01:45  468449.9      0.52     534.8       8.0                           76385.5312      0.00  
+    0:01:45  468449.9      0.52     534.8       8.0                           76385.5312      0.00  
+    0:01:51  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+    0:01:51  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+    0:01:51  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+    0:01:51  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+    0:01:52  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+    0:01:52  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+    0:01:52  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+
+
+  Beginning Design Rule Fixing  (max_fanout)
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:01:52  469016.7      0.50     507.6       8.0                           76523.7188      0.00  
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:01:53  469405.5      0.50     501.6       3.0 rf_reg[16][28]/D          76600.7578      0.00  
+    0:01:53  469881.9      0.49     497.7       3.0 rf_reg[16][28]/D          76690.7422      0.00  
+    0:01:53  470257.0      0.49     493.5       3.0 rf_reg[5][27]/D           76753.9531      0.00  
+    0:01:54  470774.5      0.48     489.4       3.0 rf_reg[8][13]/D           76860.0234      0.00  
+    0:01:54  471259.1      0.48     486.3       3.0 rf_reg[16][28]/D          76955.8047      0.00  
+    0:01:54  471439.8      0.48     485.2       3.0 rf_reg[8][0]/D            77002.5078      0.00  
+    0:01:54  471598.6      0.48     481.0       3.0 rf_reg[8][21]/D           77039.0000      0.00  
+    0:01:55  471636.9      0.47     479.8       3.0 rf_reg[8][15]/D           77043.8984      0.00  
+    0:01:55  471697.2      0.47     478.9       3.0 rf_reg[16][29]/D          77058.2812      0.00  
+    0:01:55  472028.5      0.48     482.3       0.0 rf_reg[8][20]/D           77133.3594      0.00  
+    0:01:56  472181.8      0.47     479.4       0.0 rf_reg[16][26]/D          77161.7031      0.00  
+    0:01:56  472378.9      0.47     477.9       0.0 rf_reg[24][21]/D          77198.6641      0.00  
+    0:01:56  472378.9      0.47     477.9       0.0                           77198.6641      0.00  
+    0:01:59  472562.4      0.47     478.0       0.0                           77233.4609      0.00  
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:01:59  472562.4      0.47     478.0       0.0                           77233.4609      0.00  
+    0:02:00  472797.8      0.47     475.2       0.0 rf_reg[8][20]/D           77272.3281      0.00  
+    0:02:00  472863.6      0.46     473.4       0.0 rf_reg[8][24]/D           77292.2344      0.00  
+    0:02:00  472932.0      0.46     472.4       0.0                           77313.6953      0.00  
+    0:02:03  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:03  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+***
+*** WARNING: Characterizing failed for lib_cell family '32'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFRNX1 (32 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
+    Arc from 'CLK' to 'Q' of sense 'rising_edge'
+    Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'QN' of sense 'negative_unate'
+    Arc from 'Q' to 'QN' of sense 'fall_to_rise'
+    Arc from 'QN' to 'Q' of sense 'negative_unate'
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:02:03  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:03  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:04  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:04  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:04  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:04  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:05  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:05  473208.5      0.46     472.2       0.0                           77354.4688      0.00  
+    0:02:10  473739.7      0.45     459.5       0.0                           77445.5703      0.00  
+    0:02:10  473739.7      0.45     459.5       0.0                           77445.5703      0.00  
+    0:02:11  473909.5      0.45     458.3       1.0                           77467.1172      0.00  
+    0:02:11  473909.5      0.45     458.3       1.0                           77467.1172      0.00  
+    0:02:12  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+    0:02:12  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+    0:02:13  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+    0:02:13  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+    0:02:14  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+    0:02:14  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+    0:02:15  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:02:15  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+***
+*** WARNING: Characterizing failed for lib_cell family '32'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFRNX1 (32 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
+    Arc from 'CLK' to 'Q' of sense 'rising_edge'
+    Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'QN' of sense 'negative_unate'
+    Arc from 'Q' to 'QN' of sense 'fall_to_rise'
+    Arc from 'QN' to 'Q' of sense 'negative_unate'
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:02:15  473860.2      0.45     457.6       1.0                           77454.5938      0.00  
+    0:02:16  472743.1      0.45     456.5       1.0                           77197.2812      0.00  
+    0:02:16  471327.5      0.45     458.0       1.0                           76868.8047      0.00  
+    0:02:17  470054.4      0.45     457.7       1.0                           76588.5078      0.00  
+    0:02:17  470054.4      0.45     457.7       1.0                           76588.5078      0.00  
+***
+*** WARNING: Characterizing failed for lib_cell family '32'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFRNX1 (32 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
+    Arc from 'CLK' to 'Q' of sense 'rising_edge'
+    Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'QN' of sense 'negative_unate'
+    Arc from 'Q' to 'QN' of sense 'fall_to_rise'
+    Arc from 'QN' to 'Q' of sense 'negative_unate'
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:02:17  470054.4      0.45     457.7       1.0                           76588.5078      0.00  
+    0:02:17  467754.4      0.45     459.9       1.0 rf_reg[7][23]/D           76084.9375      0.00  
+    0:02:18  467918.7      0.45     458.2       1.0 rf_reg[24][15]/D          76122.0938      0.00  
+    0:02:18  468146.0      0.45     455.8       0.0 rf_reg[8][23]/D           76181.4375      0.00  
+    0:02:18  468258.2      0.45     454.7       0.0 rf_reg[8][30]/D           76206.1406      0.00  
+    0:02:19  468354.1      0.45     453.9       0.0 rf_reg[20][24]/D          76230.8125      0.00  
+    0:02:19  468378.7      0.45     453.5       0.0 rf_reg[16][23]/D          76230.9219      0.00  
+    0:02:19  468493.7      0.44     453.2       0.0                           76256.3594      0.00  
+    0:02:23  469268.6      0.44     446.8       0.0                           76403.9922      0.00  
+    0:02:23  469268.6      0.44     446.8       0.0                           76403.9922      0.00  
+    0:02:25  469268.6      0.44     446.8       0.0                           76403.9922      0.00  
+    0:02:25  469268.6      0.44     446.8       0.0                           76403.9922      0.00  
+    0:02:25  469268.6      0.44     446.8       0.0                           76403.9922      0.00  
+CPU Load: 1%, Ram Free: 170 GB, Swap Free: 3 GB, Work Disk Free: 43679 GB, Tmp Disk Free: 340 GB
+Loading db file '/home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/sky130_rhbd_tt_1P8_25C.ccs.db'
+Loading db file '/home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/TMR_sky130_rhbd_tt_1P8_25C.ccs.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'riscv' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clk': 1024 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+CPU Load: 1%, Ram Free: 170 GB, Swap Free: 3 GB, Work Disk Free: 43679 GB, Tmp Disk Free: 340 GB
+Information: Total number of MV cells in the design.
+----------------------------------------------------------------------------------------------------
+ MV Cells                                           Total Number                                   
+----------------------------------------------------------------------------------------------------
+ Level Shifter:                                     0                                             
+ Enable Level Shifter:                              0                                             
+ Isolation Cell:                                    0                                             
+ Retention Cell:                                    0                                             
+ Retention Clamp Cell:                              0                                             
+ Switch Cell:                                       0                                             
+ Always-On Cell:                                    0                                             
+ Repeater Cell:                                     0                                             
+
+----------------------------------------------------------------------------------------------------
+Unmapped MV Cells 
+----------------------------------------------------------------------------------------------------
+0 Isolation Cells are unmapped 
+0 Retention Clamp Cells are unmapped 
+----------------------------------------------------------------------------------------------------
+1
+# Eliminate need for assign statements (yuck!)
+set verilogout_no_tri true
+true
+set verilogout_equation false
+false
+# setting to generate output files
+set write_v    1        ;# generates structual netlist
+1
+set write_sdc  1	;# generates synopsys design constraint file for p&r
+1
+set write_ddc  1	;# compiler file in ddc format
+1
+set write_sdf  1	;# sdf file for backannotated timing sim
+1
+set write_pow  1 	;# genrates estimated power report
+1
+set write_rep  1	;# generates estimated area and timing report
+1
+set write_cst  1        ;# generate report of constraints
+1
+set write_hier 1        ;# generate hierarchy report
+1
+# Report Constraint Violators
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_constraint_all_violators.rpt"]
+reports/riscv_constraint_all_violators.rpt
+redirect $filename {report_constraint -all_violators}
+# Check design
+redirect reports/check_design.rpt { check_design }
+# Report Final Netlist (Hierarchical)
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".vh"]
+mapped/riscv.vh
+write_file -f verilog -hierarchy -output $filename
+Writing verilog file '/home/zwils11/Documents/OSU_SKY130_FLOW/synth/mapped/riscv.vh'.
+1
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".sdc"]
+mapped/riscv.sdc
+write_sdc $filename
+1
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".ddc"]
+mapped/riscv.ddc
+write_file -format ddc -hierarchy -o $filename
+Writing ddc file 'mapped/riscv.ddc'.
+1
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".sdf"]
+mapped/riscv.sdf
+write_sdf $filename
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/zwils11/Documents/OSU_SKY130_FLOW/synth/mapped/riscv.sdf'. (WT-3)
+1
+# QoR
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_qor.rep"]
+reports/riscv_qor.rep
+redirect $filename { report_qor }
+# Report Timing
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_reportpath.rep"]
+reports/riscv_reportpath.rep
+redirect $filename { report_path_group }
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_report_clock.rep"]
+reports/riscv_report_clock.rep
+redirect $filename { report_clock }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_timing.rep"]
+reports/riscv_timing.rep
+redirect $filename { report_timing -capacitance -transition_time -nets -nworst 1 }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_min_timing.rep"]
+reports/riscv_min_timing.rep
+redirect $filename { report_timing -delay min }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_area.rep"]
+reports/riscv_area.rep
+redirect $filename { report_area -hierarchy -nosplit -physical -designware}
+set filename [format "%s%s%s" "reports/" $my_toplevel "_cell.rep"]
+reports/riscv_cell.rep
+redirect $filename { report_cell [get_cells -hier *] }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_power.rep"]
+reports/riscv_power.rep
+redirect $filename { report_power }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_constraint.rep"]
+reports/riscv_constraint.rep
+redirect $filename { report_constraint }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_hier.rep"]
+reports/riscv_hier.rep
+redirect $filename { report_hierarchy }
+# Quit
+quit
+
+Memory usage for this session 178 Mbytes.
+Memory usage for this session including child processes 178 Mbytes.
+CPU usage for this session 183 seconds ( 0.05 hours ).
+Elapsed time for this session 186 seconds ( 0.05 hours ).
+
+Thank you...

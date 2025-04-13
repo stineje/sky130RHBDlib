@@ -1,0 +1,157 @@
+puts stdout "Sourcing design .magicrc for technology SKY130A..."
+
+# Put grid on 0.005 pitch.  This is important, as some commands don't
+# rescale the grid automatically (such as lef read?).
+
+set scalefac [tech lambda]
+if {[lindex $scalefac 1] < 2} {
+    scalegrid 1 2
+}
+
+# drc off
+drc euclidean on
+
+# Allow override of PDK path from environment variable PDK_ROOT
+# "file nativename" guards against a local PDK_ROOT with "~" in the name
+if {[catch {set PDK_ROOT [file nativename $env(PDK_ROOT)]}]} {
+    set PDK_ROOT /import/yukari1/pdk/share/pdk
+}
+
+# loading technology
+tech load $PDK_ROOT/sky130A/libs.tech/magic/sky130A.tech
+
+# loading technology
+#tech load $PDK_ROOT/libs.tech/magic/EFS8A.tech
+#tech load ./sky130A.tech
+tech unlocked nfetlvt
+tech unlocked pfethvt
+
+
+# load device generator
+source $PDK_ROOT/sky130A/libs.tech/magic/sky130A.tcl
+
+# load bind keys (optional)
+# source $PDK_ROOT/libs.tech/magic/EFS8A-BindKeys
+
+# set units to lambda grid 
+snap internal
+
+# set sky130 standard power, ground, and substrate names
+set VDD VPWR
+set GND VGND
+set SUB VSUBS
+
+# add path to reference cells
+#set MAGPATH "${PDK_ROOT}/libs.ref/mag"
+#addpath ${MAGPATH}/primdev
+#addpath ${MAGPATH}/s8fmlt
+#addpath ${MAGPATH}/s8iom0
+#addpath ${MAGPATH}/scs8hd
+#addpath ${MAGPATH}/scs8hdll
+#addpath ${MAGPATH}/scs8hvl
+#addpath ${MAGPATH}/scs8hs
+#addpath ${MAGPATH}/scs8ms
+#addpath ${MAGPATH}/scs8ls
+#addpath ${MAGPATH}/scs8lp
+
+if {[catch {set MAGTYPE $env(MAGTYPE)}]} {
+   set MAGTYPE mag
+}
+
+# add path to reference cells
+if {[file isdir ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}]} {
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_pr
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_io
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_sc_hd
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_sc_hdll
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_sc_hs
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_sc_hvl
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_sc_lp
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_sc_ls
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_sc_ms
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_osu_sc
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_osu_sc_t18
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_ml_xx_hd
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_fd_bd_sram
+    addpath ${PDK_ROOT}/sky130A/libs.ref/${MAGTYPE}/sky130_sram_macros
+} else {
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_pr/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_io/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_sc_hd/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_sc_hdll/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_sc_hs/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_sc_hvl/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_sc_lp/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_sc_ls/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_sc_ms/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_osu_sc/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_osu_sc_t18/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_ml_xx_hd/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_fd_bd_sram/${MAGTYPE}
+    addpath ${PDK_ROOT}/sky130A/libs.ref/sky130_sram_macros/${MAGTYPE}
+}
+
+# add path to GDS cells
+
+# add path to IP from catalog.  This procedure defined in the PDK script.
+catch {magic::query_mylib_ip}
+# add path to local IP from user design space.  Defined in the PDK script.
+catch {magic::query_my_projects}
+
+macro Shift_G "grid 74"
+macro XK_Left "scroll l .1 w"
+macro Shift_XK_Left "scroll l 1 w"
+macro Control_XK_Left "box grow w 1"
+macro Control_Shift_XK_Left "box shrink e 1"
+macro XK_Right "scroll r .1 w"
+macro Shift_XK_Right "scroll r 1 w"
+macro Control_XK_Right "box grow e 1"
+macro Control_Shift_XK_Right "box shrink w 1"
+macro XK_Up "scroll u .1 w"
+macro Shift_XK_Up "scroll u 1 w"
+macro Control_XK_Up "box grow n 1"
+macro Control_Shift_XK_Up "box shrink s 1"
+macro XK_Down "scroll d .1 w"
+macro Shift_XK_Down "scroll d 1 w"
+macro Control_XK_Down "box grow s 1"
+macro Control_Shift_XK_Down "box shrink n 1"
+
+macro XK_Pointer_Button4 "scroll u .05 w"
+macro XK_Pointer_Button5 "scroll d .05 w"
+macro . "history redo -1"
+
+macro XK_L "select less area {ndif pdif nwell poly}"
+macro XK_K "select less area nwell"
+macro XK_J "select less area {m1 lic}"
+macro XK_H "select less area li1"
+macro Control_Shift_XK_X "rotate"
+macro Shift_XK_Pointer_Button4 "stretch N 74"
+macro Shift_XK_Pointer_Button5 "stretch S 74"
+macro Control_XK_Pointer_Button4 "stretch N 34"
+macro Control_XK_Pointer_Button5 "stretch S 34"
+macro Control_Shift_XK_Q "stretch W 88"
+macro Control_Shift_XK_R "stretch E 88"
+macro Control_Shift_XK_W "stretch N 28"
+macro Control_Shift_XK_E "stretch N 4"
+macro XK_Y "stretch N 6"
+#macro Control_Shift_XK_W "stretch S 6"
+#macro Control_Shift_XK_E "stretch S 8"
+
+macro Control_Shift_XK_Pointer_Button4 "stretch N 17"
+macro Control_Shift_XK_Pointer_Button5 "stretch S 17"
+macro Control_Shift_XK_G "select area {m1 lic}"
+macro Control_Shift_XK_F "select area {poly polycont}"
+macro Control_Shift_XK_D "select area {ndc li1}"
+macro Control_Shift_XK_S "select area ntrans"
+
+macro Shift_D "select clear; move S 6; paint m1c"
+macro Shift_F "select clear; move N 6; paint m1c"
+
+
+macro Shift_B "box height 1.0um; move S 1.655um; select area; erase; select clear; move N 1um; select area; move S 1um; select clear; box height 0.26um; move S 4.35um;  select area; erase; select clear; move S 0.655um; box height 0.655um; select area; move N 0.26um; select clear; box height 20um; select area; move S 0.26um"
+
+
+macro Shift_N "box height 1.74um; move S 2.395um; select area; erase; select clear; move N 1.74um; select area; move S 1.74um; select clear; box height 0.48um; move S 3.61um;  select area; erase; select clear; move S 0.655um; box height 0.655um; select area; move N 0.48um; select clear; box height 20um; select area; move S 0.48um"
+
+
+macro Shift_M "box height 1.02um; move S 2.015um; select area; erase; select clear; move N 1.02um; box height 1.20um; select area; move S 1.02um; select clear; box height 0.12um; move S 0.56um;  select area; erase; select clear; box height 5.00um; select area; move S 0.12um; select clear; move N 0.12um; box height 0.21um; move S 2.98um; select area;erase; select clear; box height 1.105um; move S 1.105um; select area; move N 0.21um; select clear; box height 0.17um; move N 0.825um; select area; erase; move S 0.825um; box height 0.825um; select area; move N 0.17um"

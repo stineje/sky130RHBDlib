@@ -1,0 +1,88 @@
+* NGSPICE file created from FA.ext - technology: sky130A
+
+.subckt nmos_top a_84_92# a_0_0# a_54_62# VSUBS
+X0 a_84_92# a_54_62# a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.0597 pd=0.555 as=0.39 ps=2.96 w=3.01 l=0.15
+.ends
+
+.subckt pmos2 a_88_n400# a_144_n461# a_174_n400# a_262_n400# w_52_n436#
+X0 a_262_n400# a_144_n461# a_174_n400# w_52_n436# sky130_fd_pr__pfet_01v8 ad=0.54 pd=4.54 as=0.29 ps=2.29 w=2 l=0.15
+X1 a_174_n400# a_144_n461# a_88_n400# w_52_n436# sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.29 as=0.56 ps=4.56 w=2 l=0.15
+.ends
+
+.subckt invx1_pcell a_34_482# a_206_1059# w_n87_786# pmos2_0/VSUBS a_155_381#
+Xnmos_top_0 a_206_1059# pmos2_0/VSUBS a_155_381# pmos2_0/VSUBS nmos_top
+Xpmos2_0 w_n87_786# a_155_381# a_206_1059# w_n87_786# w_n87_786# pmos2
+.ends
+
+.subckt pmos2_1 a_144_n460# a_262_n399# a_88_n399# w_52_n435# a_174_n399#
+X0 a_174_n399# a_144_n460# a_88_n399# w_52_n435# sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.29 as=0.56 ps=4.56 w=2 l=0.15
+X1 a_262_n399# a_144_n460# a_174_n399# w_52_n435# sky130_fd_pr__pfet_01v8 ad=0.54 pd=4.54 as=0.29 ps=2.29 w=2 l=0.15
+.ends
+
+.subckt nmos_top_trim1 a_86_92# a_56_62# a_0_0# VSUBS
+X0 a_86_92# a_56_62# a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.0597 pd=0.555 as=0.395 ps=2.97 w=3.01 l=0.15
+.ends
+
+.subckt nmos_top_trim2 a_86_92# a_56_62# a_0_0# VSUBS
+X0 a_86_92# a_56_62# a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.06 pd=0.56 as=0.395 ps=2.97 w=3.01 l=0.15
+.ends
+
+.subckt nor2x1_pcell a_405_1059# a_34_482# a_362_382# pmos2_1_1/VSUBS a_168_375# w_87_786#
+Xpmos2_1_0 a_168_375# a_317_1331# a_317_1331# w_87_786# w_87_786# pmos2_1
+Xpmos2_1_1 a_362_382# a_317_1331# a_317_1331# w_87_786# a_405_1059# pmos2_1
+Xnmos_top_trim1_1 a_405_1059# a_168_375# pmos2_1_1/VSUBS pmos2_1_1/VSUBS nmos_top_trim1
+Xnmos_top_trim2_0 a_405_1059# a_362_382# pmos2_1_1/VSUBS pmos2_1_1/VSUBS nmos_top_trim2
+.ends
+
+.subckt or2x1_pcell nor2x1_pcell_0/a_168_375# nor2x1_pcell_0/w_87_786# invx1_pcell_0/a_34_482#
++ nor2x1_pcell_0/a_362_382# invx1_pcell_0/a_206_1059# VSUBS
+Xinvx1_pcell_0 invx1_pcell_0/a_34_482# invx1_pcell_0/a_206_1059# nor2x1_pcell_0/w_87_786#
++ VSUBS m1_547_649# invx1_pcell
+Xnor2x1_pcell_0 m1_547_649# invx1_pcell_0/a_34_482# nor2x1_pcell_0/a_362_382# VSUBS
++ nor2x1_pcell_0/a_168_375# nor2x1_pcell_0/w_87_786# nor2x1_pcell
+.ends
+
+.subckt nmos_bottom a_56_54# a_86_84# a_0_0# VSUBS
+X0 a_86_84# a_56_54# a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.0597 pd=0.555 as=0.393 ps=2.99 w=3.01 l=0.15
+.ends
+
+.subckt xor2X1_pcell a_1141_482# pmos2_1_3/VSUBS m1_981_723# a_806_383# a_478_482#
++ a_1141_n17# a_612_376# w_585_1330#
+Xnmos_bottom_0 a_612_376# pmos2_1_3/VSUBS nmos_bottom_0/a_0_0# pmos2_1_3/VSUBS nmos_bottom
+Xnmos_bottom_1 m1_939_797# pmos2_1_3/VSUBS nmos_bottom_1/a_0_0# pmos2_1_3/VSUBS nmos_bottom
+Xpmos2_1_0 a_612_376# a_761_1330# a_761_1330# w_585_1330# w_585_1330# pmos2_1
+Xnmos_top_trim1_1 m1_981_723# m1_315_501# nmos_bottom_1/a_0_0# pmos2_1_3/VSUBS nmos_top_trim1
+Xnmos_top_trim1_0 m1_981_723# a_806_383# nmos_bottom_0/a_0_0# pmos2_1_3/VSUBS nmos_top_trim1
+Xpmos2_1_1 m1_939_797# a_761_1330# a_761_1330# w_585_1330# m1_981_723# pmos2_1
+Xpmos2_1_2 a_806_383# a_1427_1330# a_1427_1330# w_585_1330# w_585_1330# pmos2_1
+Xpmos2_1_3 m1_315_501# a_1427_1330# a_1427_1330# w_585_1330# m1_981_723# pmos2_1
+Xinvx1_pcell_0 pmos2_1_3/VSUBS m1_315_501# w_585_1330# pmos2_1_3/VSUBS a_612_376#
++ invx1_pcell
+Xinvx1_pcell_1 pmos2_1_3/VSUBS m1_939_797# w_585_1330# pmos2_1_3/VSUBS a_806_383#
++ invx1_pcell
+.ends
+
+.subckt nand2x1_pcell a_31_480# a_362_382# a_229_1059# pmos2_1/VSUBS a_168_375# w_87_786#
+Xnmos_bottom_0 a_168_375# pmos2_1/VSUBS nmos_bottom_0/a_0_0# pmos2_1/VSUBS nmos_bottom
+Xnmos_top_trim1_0 a_229_1059# a_362_382# nmos_bottom_0/a_0_0# pmos2_1/VSUBS nmos_top_trim1
+Xpmos2_0 w_87_786# a_168_375# a_229_1059# w_87_786# w_87_786# pmos2
+Xpmos2_1 w_87_786# a_362_382# a_229_1059# w_87_786# w_87_786# pmos2
+.ends
+
+.subckt and2x1_pcell nand2x1_pcell_0/a_168_375# nand2x1_pcell_0/a_362_382# invx1_pcell_0/a_206_1059#
++ invx1_pcell_0/w_n87_786# VSUBS invx1_pcell_0/a_34_482#
+Xinvx1_pcell_0 invx1_pcell_0/a_34_482# invx1_pcell_0/a_206_1059# invx1_pcell_0/w_n87_786#
++ VSUBS m1_547_649# invx1_pcell
+Xnand2x1_pcell_0 invx1_pcell_0/a_34_482# nand2x1_pcell_0/a_362_382# m1_547_649# VSUBS
++ nand2x1_pcell_0/a_168_375# invx1_pcell_0/w_n87_786# nand2x1_pcell
+.ends
+
+.subckt FA SUM COUT A B CIN VDD GND
+Xor2x1_pcell_0 m1_5553_611# VDD GND m1_6663_685# COUT GND or2x1_pcell
+Xxor2X1_pcell_0 xor2X1_pcell_0/a_1141_482# GND m1_2519_463# B xor2X1_pcell_0/a_478_482#
++ GND A VDD xor2X1_pcell
+Xand2x1_pcell_0 CIN m1_2519_463# m1_5553_611# VDD GND GND and2x1_pcell
+Xxor2X1_pcell_1 GND GND SUM CIN GND GND m1_2519_463# VDD xor2X1_pcell
+Xand2x1_pcell_1 B A m1_6663_685# VDD GND GND and2x1_pcell
+.ends
+

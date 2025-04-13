@@ -1,0 +1,73 @@
+timestamp 1742511297
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 4400000 2200000 950000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12800 125 125 47 47 29 5
+use poly_li1_contact poly_li1_contact_1 0 1 247 -1 0 453
+use poly_li1_contact poly_li1_contact_0 0 1 247 -1 0 977
+use pmos2 pmos2_0 1 0 117 0 1 1440
+use nmos_top nmos_top_0 -1 0 443 0 1 109
+use diff_ring_side diff_ring_side_1 1 0 98 0 1 36
+use diff_ring_side diff_ring_side_0 1 0 542 0 1 36
+port "Y" 1 303 907 337 941 li
+port "Y" 1 303 833 337 867 li
+port "Y" 1 303 759 337 793 li
+port "VDD" 2 0 1482 640 1552 m1
+port "GND" 3 0 0 640 70 m1
+node "li_263_419#" 84 105.492 263 419 li 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7582 514 0 0 0 0 0 0 0 0 0 0 0 0
+node "li_229_485#" 191 163.035 229 485 li 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17272 1084 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_253_417#" 51 36.1694 253 417 p 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 960 124 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_391_1096#" 233 18.4422 391 1096 pdc 0 0 0 0 0 0 0 0 0 0 1156 136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3230 258 0 0 0 0 0 0 0 0 0 0 0 0
+node "Y" 343 49.0919 303 759 li 0 0 0 0 0 0 0 0 0 0 1156 136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13192 844 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_215_1096#" 233 16.3817 215 1096 pdc 0 0 0 0 0 0 0 0 0 0 1156 136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3230 258 0 0 0 0 0 0 0 0 0 0 0 0
+node "VDD" 3855 1849.57 0 1482 m1 0 0 0 0 490240 2812 0 0 43512 2006 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 39600 1628 44800 1420 0 0 0 0 0 0 0 0 0 0
+substrate "GND" 0 0 0 0 m1 0 0 0 0 0 0 0 0 0 0 43920 2006 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 44128 1898 44800 1420 0 0 0 0 0 0 0 0 0 0
+cap "a_215_1096#" "li_229_485#" 5.86207
+cap "Y" "VDD" 58.0158
+cap "a_391_1096#" "VDD" 18.7286
+cap "a_391_1096#" "Y" 29.5427
+cap "a_253_417#" "VDD" 0.896153
+cap "VDD" "li_229_485#" 31.1778
+cap "Y" "li_229_485#" 87.75
+cap "Y" "a_215_1096#" 29.5427
+cap "a_215_1096#" "VDD" 17.3593
+cap "a_253_417#" "li_229_485#" 1.2417
+cap "VDD" "li_263_419#" 2.96672
+cap "Y" "li_263_419#" 2.59581
+cap "a_253_417#" "li_263_419#" 3.25816
+cap "nmos_top_0/a_84_92#" "diff_ring_side_0/m1_n34_1446#" 122.701
+cap "diff_ring_side_0/m1_n34_1446#" "pmos2_0/a_174_n400#" 8.34205
+cap "nmos_top_0/a_84_92#" "diff_ring_side_0/m1_n34_n34#" 157.321
+cap "pmos2_0/a_174_n400#" "diff_ring_side_0/m1_n34_n34#" 0.492443
+cap "nmos_top_0/a_84_92#" "pmos2_0/a_174_n400#" 29.0787
+cap "diff_ring_side_0/m1_n34_1446#" "diff_ring_side_0/m1_n34_n34#" -11.032
+cap "pmos2_0/a_174_n400#" "diff_ring_side_0/m1_n34_1446#" 22.862
+cap "nmos_top_0/a_84_92#" "diff_ring_side_0/m1_n34_1446#" 38.7988
+cap "diff_ring_side_0/m1_n34_1446#" "diff_ring_side_0/m1_n34_n34#" -2.27566
+merge "diff_ring_side_0/m1_n34_n34#" "diff_ring_side_0/a_n34_n34#" -639.853 0 0 0 0 0 0 0 0 0 0 -408 -724 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -4054 -960 -9248 -544 0 0 0 0 0 0 0 0 0 0
+merge "diff_ring_side_0/a_n34_n34#" "diff_ring_side_1/m1_n34_n34#"
+merge "diff_ring_side_1/m1_n34_n34#" "diff_ring_side_1/a_n34_n34#"
+merge "diff_ring_side_1/a_n34_n34#" "nmos_top_0/VSUBS"
+merge "nmos_top_0/VSUBS" "nmos_top_0/a_0_0#"
+merge "nmos_top_0/a_0_0#" "pmos2_0/VSUBS"
+merge "pmos2_0/VSUBS" "poly_li1_contact_0/VSUBS"
+merge "poly_li1_contact_0/VSUBS" "poly_li1_contact_1/VSUBS"
+merge "poly_li1_contact_1/VSUBS" "GND"
+merge "nmos_top_0/a_84_92#" "nmos_top_0/a_54_62#" -375.346 0 0 0 0 0 0 0 0 -512 -176 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -960 -244 0 0 -1700 -372 0 0 0 0 0 0 0 0 0 0 0 0
+merge "nmos_top_0/a_54_62#" "pmos2_0/a_144_n461#"
+merge "pmos2_0/a_144_n461#" "poly_li1_contact_0/a_n32_n28#"
+merge "poly_li1_contact_0/a_n32_n28#" "poly_li1_contact_1/a_n32_n28#"
+merge "poly_li1_contact_1/a_n32_n28#" "li_229_485#"
+merge "li_229_485#" "li_263_419#"
+merge "li_263_419#" "a_253_417#"
+merge "diff_ring_side_0/m1_n34_1446#" "diff_ring_side_0/w_n87_786#" -1889.43 0 0 0 0 -407472 -5296 0 0 0 -724 -2312 -272 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -4048 -1024 -9248 -544 0 0 0 0 0 0 0 0 0 0
+merge "diff_ring_side_0/w_n87_786#" "diff_ring_side_1/m1_n34_1446#"
+merge "diff_ring_side_1/m1_n34_1446#" "diff_ring_side_1/w_n87_786#"
+merge "diff_ring_side_1/w_n87_786#" "pmos2_0/a_262_n400#"
+merge "pmos2_0/a_262_n400#" "a_391_1096#"
+merge "a_391_1096#" "pmos2_0/a_88_n400#"
+merge "pmos2_0/a_88_n400#" "a_215_1096#"
+merge "a_215_1096#" "pmos2_0/w_52_n436#"
+merge "pmos2_0/w_52_n436#" "VDD"
+merge "pmos2_0/a_174_n400#" "Y" -34.6845 0 0 0 0 0 0 0 0 0 0 -1156 -136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -68 0 0 0 0 0 0 0 0 0 0 0 0

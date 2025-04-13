@@ -1,0 +1,24 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO diff_ring_side
+  CLASS BLOCK ;
+  FOREIGN diff_ring_side ;
+  ORIGIN 0.435 0.170 ;
+  SIZE 0.870 BY 7.920 ;
+  OBS
+      LAYER nwell ;
+        RECT -0.435 3.930 0.435 7.750 ;
+      LAYER pwell ;
+        RECT -0.170 -0.170 0.170 2.720 ;
+      LAYER li1 ;
+        RECT -0.170 4.110 0.170 7.570 ;
+        RECT -0.170 -0.170 0.170 2.720 ;
+      LAYER met1 ;
+        RECT -0.170 7.230 0.170 7.570 ;
+        RECT -0.170 -0.170 0.170 0.170 ;
+  END
+END diff_ring_side
+END LIBRARY
+

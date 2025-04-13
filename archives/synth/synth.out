@@ -1,0 +1,791 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version M-2016.12-SP1 for linux64 - Jan 13, 2017 
+
+                    Copyright (c) 1988 - 2017 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+#
+# OKSTATE Main Synopsys Flow
+# Updated Sep 27, 2015 jes
+#
+# Verilog files
+set my_verilog_files [list top.v]
+top.v
+# VHDL files
+# set my_vhdl_files [list top.vhd]
+# Set toplevel
+set my_toplevel riscv
+riscv
+# Set number of significant digits
+set report_default_significant_digits 6
+6
+# V(HDL) Unconnectoed Pins Output
+set verilogout_show_unconnected_pins "true"
+true
+set vhdlout_show_unconnected_pins "true"
+true
+#
+# Due to parameterized Verilog must use analyze/elaborate and not 
+# read_verilog/vhdl (change to pull in Verilog and/or VHDL)
+#
+define_design_lib WORK -path ./WORK
+1
+analyze -f sverilog -lib WORK $my_verilog_files
+Running PRESTO HDLC
+Compiling source file ./hdl/top.v
+Presto compilation completed successfully.
+Loading db file '/classes/ecen4303F19/osu_soc_3.0/lib/ami05/lib/osu05_stdcells.db'
+Loading db file '/programs/synopsys/syn_vM-2016.12/libraries/syn/dw_foundation.sldb'
+1
+#
+# Added if you had any VHDL
+# analyze -f vhdl -lib WORK $my_vhdl_files
+#
+elaborate $my_toplevel -lib WORK 
+Loading db file '/programs/synopsys/syn_vM-2016.12/libraries/syn/gtech.db'
+Loading db file '/programs/synopsys/syn_vM-2016.12/libraries/syn/standard.sldb'
+  Loading link library 'osu05_stdcells'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Warning:  ./hdl/top.v:3176: Netlist for always block is empty. (ELAB-985)
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'riscv'.
+Information: Building the design 'datapath'. (HDL-193)
+Warning:  ./hdl/top.v:2608: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2611: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2614: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2616: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2617: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2618: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2633: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2637: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2638: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2639: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2640: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2652: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2653: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2671: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2678: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2683: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2684: signed to unsigned assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine datapath line 2731 in file
+		'./hdl/top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      pcReg_reg      | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'decoder'. (HDL-193)
+Warning:  ./hdl/top.v:3042: Netlist for always block is empty. (ELAB-985)
+Presto compilation completed successfully.
+Information: Building the design 'regfile'. (HDL-193)
+
+Inferred memory devices in process
+	in routine regfile line 275 in file
+		'./hdl/top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       rf_reg        | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|   regfile/129    |   32   |   32    |      5       |
+|   regfile/131    |   32   |   32    |      5       |
+======================================================
+Presto compilation completed successfully.
+Information: Building the design 'fpuRegfile'. (HDL-193)
+
+Inferred memory devices in process
+	in routine fpuRegfile line 1303 in file
+		'./hdl/top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     fpu_rf_reg      | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+| fpuRegfile/1153  |   32   |   32    |      5       |
+| fpuRegfile/1155  |   32   |   32    |      5       |
+======================================================
+Presto compilation completed successfully.
+Information: Building the design 'alu'. (HDL-193)
+Warning:  ./hdl/top.v:2114: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2115: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2117: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2118: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2120: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2121: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2122: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2126: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2128: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2133: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2135: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2136: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2139: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2142: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2144: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2146: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2147: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2148: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2149: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2150: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2151: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2152: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2153: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2154: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2155: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2156: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2157: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2158: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2159: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2160: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2163: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2167: Netlist for always block is empty. (ELAB-985)
+Presto compilation completed successfully.
+Information: Building the design 'fpu'. (HDL-193)
+Warning:  ./hdl/top.v:2344: Netlist for always block is empty. (ELAB-985)
+Presto compilation completed successfully.
+Information: Building the design 'extend'. (HDL-193)
+Warning:  ./hdl/top.v:2379: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2382: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2385: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2386: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2387: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2388: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./hdl/top.v:2391: Netlist for always block is empty. (ELAB-985)
+Presto compilation completed successfully.
+1
+# Set the current_design 
+current_design $my_toplevel
+Current design is 'riscv'.
+{riscv}
+link
+
+  Linking design 'riscv'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  osu05_stdcells (library)    /classes/ecen4303F19/osu_soc_3.0/lib/ami05/lib/osu05_stdcells.db
+  dw_foundation.sldb (library) /programs/synopsys/syn_vM-2016.12/libraries/syn/dw_foundation.sldb
+
+1
+# Reset all constraints 
+reset_design
+1
+# Set Frequency in [MHz] or [ps]
+set my_clock_pin clk
+clk
+set my_uncertainty 1
+1
+set my_clk_freq_MHz 10
+10
+set my_period [expr 1000 / $my_clk_freq_MHz]
+100
+# Create clock object 
+set find_clock [ find port [list $my_clock_pin] ]
+{clk}
+if {  $find_clock != [list] } {
+    echo "Found clock!"
+    set my_clk $my_clock_pin
+    create_clock -period $my_period $my_clk
+    set_clock_uncertainty $my_uncertainty [get_clocks $my_clk]
+} else {
+    echo "Did not find clock! Design is probably combinational!"
+    set my_clk vclk
+    create_clock -period $my_period -name $my_clk
+}
+Found clock!
+1
+# Partitioning - flatten or hierarchically synthesize
+#ungroup -flatten -simple_names { dp* }
+#ungroup -flatten -simple_names { c* }
+ungroup -all -flatten -simple_names
+Information: Updating graph... (UID-83)
+Warning: Design 'riscv' contains 4 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+# Set input pins except clock
+set all_in_ex_clk [remove_from_collection [all_inputs] [get_ports $my_clk]]
+{reset io_instr[31] io_instr[30] io_instr[29] io_instr[28] io_instr[27] io_instr[26] io_instr[25] io_instr[24] io_instr[23] io_instr[22] io_instr[21] io_instr[20] io_instr[19] io_instr[18] io_instr[17] io_instr[16] io_instr[15] io_instr[14] io_instr[13] io_instr[12] io_instr[11] io_instr[10] io_instr[9] io_instr[8] io_instr[7] io_instr[6] io_instr[5] io_instr[4] io_instr[3] io_instr[2] io_instr[1] io_instr[0] io_memReadData[31] io_memReadData[30] io_memReadData[29] io_memReadData[28] io_memReadData[27] io_memReadData[26] io_memReadData[25] io_memReadData[24] io_memReadData[23] io_memReadData[22] io_memReadData[21] io_memReadData[20] io_memReadData[19] io_memReadData[18] io_memReadData[17] io_memReadData[16] io_memReadData[15] io_memReadData[14] io_memReadData[13] io_memReadData[12] io_memReadData[11] io_memReadData[10] io_memReadData[9] io_memReadData[8] io_memReadData[7] io_memReadData[6] io_memReadData[5] io_memReadData[4] io_memReadData[3] io_memReadData[2] io_memReadData[1] io_memReadData[0]}
+# Specifies delays be propagated through the clock network
+set_propagated_clock [get_clocks $my_clk]
+Information: set_input_delay values are added to the propagated clock skew. (TIM-113)
+1
+# Setting constraints on input ports 
+set_driving_cell  -lib_cell DFFPOSX1 -pin Q $all_in_ex_clk
+1
+# Set input/output delay
+set_input_delay 0.0 -max -clock $my_clk $all_in_ex_clk
+1
+set_output_delay 0.0 -max -clock $my_clk [all_outputs]
+1
+# Setting load constraint on output ports 
+set_load [expr [load_of osu05_stdcells/DFFPOSX1/D] * 1] [all_outputs]
+1
+# Set the wire load model 
+set_wire_load_mode "top"
+1
+# Attempt Area Recovery - if looking for minimal area
+# set_max_area 2000
+# Set fanout
+set_max_fanout 6 $all_in_ex_clk
+1
+# Fix hold time violations
+set_fix_hold [all_clocks]
+1
+# Deal with constants and buffers to isolate ports
+set_fix_multiple_port_nets -all -buffer_constants
+1
+# setting up the group paths to find out the required timings
+#group_path -name OUTPUTS -to [all_outputs]
+#group_path -name INPUTS -from [all_inputs] 
+#group_path -name COMBO -from [all_inputs] -to [all_outputs]
+# Save Unmapped Design
+set filename [format "%s%s%s"  "unmapped/" $my_toplevel ".ddc"]
+unmapped/riscv.ddc
+write_file -format ddc -hierarchy -o $filename
+Writing ddc file 'unmapped/riscv.ddc'.
+1
+# Compile statements - either compile or compile_ultra
+# compile -scan -incr -map_effort high
+compile_ultra -no_seq_output_inversion -no_boundary_optimization
+Information: Auto ungrouping of the design is disabled because the '-no_boundary_optimization' is used. (OPT-1316)
+Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
+Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/classes/ecen4303F19/osu_soc_3.0/lib/ami05/lib/osu05_stdcells.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | M-2016.12-DWBB_201612.1 |     *     |
+| Licensed DW Building Blocks        | M-2016.12-DWBB_201612.1 |     *     |
+============================================================================
+
+
+Information: There are 2 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'riscv'
+
+Loaded alib file './alib-52/osu05_stdcells.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'riscv'
+Information: Added key list 'DesignWare' to design 'riscv'. (DDB-72)
+ Implement Synthetic for 'riscv'.
+  Processing 'riscv_DW_div_tc_J1_0'
+  Processing 'riscv_DW01_absval_J1_0'
+  Processing 'riscv_DW01_inc_J1_0'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Input delay ('fall') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('rise') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: The register 'rf_reg[0][9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][25]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][18]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][21]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][19]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][17]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][23]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][22]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][20]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][27]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][26]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][29]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][28]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][24]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][16]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][30]' is a constant and will be removed. (OPT-1206)
+Information: The register 'rf_reg[0][31]' is a constant and will be removed. (OPT-1206)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Building model 'DW01_NAND2'
+  Building model 'DW01_absval_width33' (cla)
+  Building model 'DW01_absval_width33' (cla)
+  Structuring 'riscv_DW_div_tc_0'
+  Mapping 'riscv_DW_div_tc_0'
+  Structuring 'riscv_DW01_absval_0'
+  Mapping 'riscv_DW01_absval_0'
+  Structuring 'riscv_DW01_inc_0'
+  Mapping 'riscv_DW01_inc_0'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'riscv_DW01_add_59'
+  Mapping 'riscv_DW01_add_60'
+  Mapping 'riscv_DW01_add_61'
+  Mapping 'riscv_DW01_add_62'
+  Mapping 'riscv_DW01_add_63'
+  Mapping 'riscv_DW01_add_64'
+  Mapping 'riscv_DW01_add_65'
+  Mapping 'riscv_DW01_add_66'
+  Mapping 'riscv_DW01_add_67'
+  Mapping 'riscv_DW01_add_68'
+  Mapping 'riscv_DW01_add_69'
+  Mapping 'riscv_DW01_add_70'
+  Mapping 'riscv_DW01_add_71'
+  Mapping 'riscv_DW01_add_72'
+  Mapping 'riscv_DW01_add_73'
+  Mapping 'riscv_DW01_add_74'
+  Mapping 'riscv_DW01_add_75'
+  Mapping 'riscv_DW01_add_76'
+  Mapping 'riscv_DW01_add_77'
+  Mapping 'riscv_DW01_add_78'
+  Mapping 'riscv_DW01_add_79'
+  Mapping 'riscv_DW01_add_80'
+  Mapping 'riscv_DW01_add_81'
+  Mapping 'riscv_DW01_add_82'
+  Mapping 'riscv_DW01_add_83'
+  Mapping 'riscv_DW01_add_84'
+  Mapping 'riscv_DW01_add_85'
+  Mapping 'riscv_DW01_add_86'
+  Mapping 'riscv_DW_inc_0'
+  Building model 'DW01_absval_width33' (cla)
+  Building model 'DW01_absval_width33' (cla)
+  Structuring 'riscv_DW_div_tc_1'
+  Mapping 'riscv_DW_div_tc_1'
+  Structuring 'riscv_DW01_absval_1'
+  Mapping 'riscv_DW01_absval_1'
+  Structuring 'riscv_DW01_inc_1'
+  Mapping 'riscv_DW01_inc_1'
+  Mapping 'riscv_DW01_add_87'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'DW01_add'
+  Mapping 'riscv_DW01_add_88'
+  Mapping 'riscv_DW01_add_89'
+  Mapping 'riscv_DW01_add_90'
+  Mapping 'riscv_DW01_add_91'
+  Mapping 'riscv_DW01_add_92'
+  Mapping 'riscv_DW01_add_93'
+  Mapping 'riscv_DW01_add_94'
+  Mapping 'riscv_DW01_add_95'
+  Mapping 'riscv_DW01_add_96'
+  Mapping 'riscv_DW01_add_97'
+  Mapping 'riscv_DW01_add_98'
+  Mapping 'riscv_DW01_add_99'
+  Mapping 'riscv_DW01_add_100'
+  Mapping 'riscv_DW01_add_101'
+  Mapping 'riscv_DW01_add_102'
+  Mapping 'riscv_DW01_add_103'
+  Mapping 'riscv_DW01_add_104'
+  Mapping 'riscv_DW01_add_105'
+  Mapping 'riscv_DW01_add_106'
+  Mapping 'riscv_DW01_add_107'
+  Mapping 'riscv_DW01_add_108'
+  Mapping 'riscv_DW01_add_109'
+  Mapping 'riscv_DW01_add_110'
+  Mapping 'riscv_DW01_add_111'
+  Mapping 'riscv_DW01_add_112'
+  Mapping 'riscv_DW01_add_113'
+  Mapping 'riscv_DW01_add_114'
+  Mapping 'riscv_DW01_add_115'
+  Mapping 'riscv_DW01_add_116'
+  Mapping 'riscv_DW01_add_117'
+  Mapping 'riscv_DW01_add_118'
+  Mapping 'riscv_DW01_add_119'
+  Mapping 'riscv_DW01_add_120'
+  Mapping 'riscv_DW01_add_121'
+  Mapping 'riscv_DW01_add_122'
+  Mapping 'riscv_DW01_add_123'
+  Mapping 'riscv_DW01_add_124'
+  Mapping 'riscv_DW01_add_125'
+  Mapping 'riscv_DW01_add_126'
+  Mapping 'riscv_DW01_add_127'
+  Mapping 'riscv_DW01_add_128'
+  Mapping 'riscv_DW01_add_129'
+  Mapping 'riscv_DW_inc_2'
+  Building model 'DW01_absval_width33' (cla)
+  Building model 'DW01_absval_width33' (cla)
+  Structuring 'riscv_DW_div_tc_2'
+  Mapping 'riscv_DW_div_tc_2'
+  Structuring 'riscv_DW01_absval_2'
+  Mapping 'riscv_DW01_absval_2'
+  Structuring 'riscv_DW01_inc_2'
+  Mapping 'riscv_DW01_inc_2'
+  Mapping 'riscv_DW01_add_130'
+  Mapping 'riscv_DW01_add_131'
+  Mapping 'riscv_DW01_add_132'
+  Mapping 'riscv_DW01_sub_0'
+  Mapping 'riscv_DW01_add_133'
+  Mapping 'riscv_DW01_add_134'
+  Mapping 'riscv_DW01_add_135'
+  Mapping 'riscv_DW01_add_136'
+  Mapping 'riscv_DW01_add_137'
+  Mapping 'riscv_DW01_add_138'
+  Mapping 'riscv_DW01_add_139'
+  Mapping 'riscv_DW01_add_140'
+  Mapping 'riscv_DW01_add_141'
+  Mapping 'riscv_DW01_add_142'
+  Mapping 'riscv_DW01_add_143'
+  Mapping 'riscv_DW01_add_144'
+  Mapping 'riscv_DW01_add_145'
+  Mapping 'riscv_DW01_add_146'
+  Mapping 'riscv_DW01_add_147'
+  Mapping 'riscv_DW01_add_148'
+  Mapping 'riscv_DW01_add_149'
+  Mapping 'riscv_DW01_add_150'
+  Mapping 'riscv_DW01_add_151'
+  Mapping 'riscv_DW01_add_152'
+  Mapping 'riscv_DW01_add_153'
+  Mapping 'riscv_DW01_add_154'
+  Mapping 'riscv_DW01_add_155'
+  Mapping 'riscv_DW01_add_156'
+  Mapping 'riscv_DW01_add_157'
+  Mapping 'riscv_DW01_add_158'
+  Mapping 'riscv_DW01_add_159'
+  Mapping 'riscv_DW01_add_160'
+  Mapping 'riscv_DW01_add_161'
+  Mapping 'riscv_DW01_add_162'
+  Mapping 'riscv_DW01_add_163'
+  Mapping 'riscv_DW01_add_164'
+  Mapping 'riscv_DW01_add_165'
+  Mapping 'riscv_DW01_add_166'
+  Mapping 'riscv_DW01_add_167'
+  Mapping 'riscv_DW01_add_168'
+  Mapping 'riscv_DW01_add_169'
+  Mapping 'riscv_DW01_add_170'
+  Mapping 'riscv_DW01_add_171'
+  Mapping 'riscv_DW01_add_172'
+  Mapping 'riscv_DW01_add_173'
+  Mapping 'riscv_DW01_add_174'
+  Mapping 'riscv_DW01_add_175'
+  Mapping 'riscv_DW01_add_176'
+  Mapping 'riscv_DW01_add_177'
+  Mapping 'riscv_DW01_add_178'
+  Mapping 'riscv_DW01_add_179'
+  Mapping 'riscv_DW01_add_180'
+  Mapping 'riscv_DW01_add_181'
+  Mapping 'riscv_DW01_add_182'
+  Mapping 'riscv_DW01_add_183'
+  Mapping 'riscv_DW01_add_184'
+  Mapping 'riscv_DW01_add_185'
+  Mapping 'riscv_DW01_add_186'
+  Mapping 'riscv_DW01_add_187'
+  Mapping 'riscv_DW01_add_188'
+  Mapping 'riscv_DW01_add_189'
+  Mapping 'riscv_DW01_add_190'
+  Mapping 'riscv_DW01_add_191'
+  Mapping 'riscv_DW01_add_192'
+  Mapping 'riscv_DW01_add_193'
+  Mapping 'riscv_DW01_add_194'
+  Mapping 'riscv_DW01_add_195'
+  Mapping 'riscv_DW01_add_196'
+  Mapping 'riscv_DW01_add_197'
+  Mapping 'riscv_DW01_add_198'
+  Mapping 'riscv_DW01_add_199'
+  Mapping 'riscv_DW01_add_200'
+  Mapping 'riscv_DW01_add_201'
+  Mapping 'riscv_DW01_add_202'
+  Mapping 'riscv_DW01_add_203'
+  Mapping 'riscv_DW01_add_204'
+  Mapping 'riscv_DW01_add_205'
+  Mapping 'riscv_DW01_add_206'
+  Mapping 'riscv_DW01_add_207'
+  Mapping 'riscv_DW01_add_208'
+  Mapping 'riscv_DW01_add_209'
+  Mapping 'riscv_DW_inc_4'
+  Mapping Optimization (Phase 1)
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+  Beginning Global Optimizations
+  ------------------------------
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+Information: Input delay ('fall') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('rise') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('fall') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('rise') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:01:57 4848777.0      0.00       0.0      19.4                           1397.5841      0.00  
+    0:01:57 4848777.0      0.00       0.0      19.4                           1397.5841      0.00  
+    0:01:57 4848777.0      0.00       0.0      19.4                           1397.5841      0.00  
+    0:01:57 4848777.0      0.00       0.0      19.4                           1397.5841      0.00  
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:03:15 4712211.0      0.00       0.0      18.3                           1359.4305      0.00  
+    0:03:15 4709763.0      0.00       0.0      18.3                           1358.9087      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+
+
+  Beginning Design Rule Fixing  (max_fanout)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:03:16 4709763.0      0.00       0.0      18.3                           1358.8507      0.00  
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:03:16 4713219.0      0.00       0.0       0.0                           1359.7693      0.00  
+    0:03:16 4713219.0      0.00       0.0       0.0                           1359.7693      0.00  
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:03:16 4713219.0      0.00       0.0       0.0                           1359.7693      0.00  
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8955      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8955      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8955      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:18 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:03:19 4708107.0      0.00       0.0       0.0                           1357.8959      0.00  
+    0:03:19 4699323.0      0.00       0.0       0.0                           1356.1674      0.00  
+    0:03:19 4699323.0      0.00       0.0       0.0                           1356.1674      0.00  
+    0:03:19 4699323.0      0.00       0.0       0.0                           1356.1674      0.00  
+    0:03:20 4699395.0      0.00       0.0       0.0                           1356.1989      0.00  
+    0:03:22 4698531.0      0.00       0.0       0.0                           1355.8508      0.00  
+    0:03:22 4698531.0      0.00       0.0       0.0                           1355.8508      0.00  
+    0:03:22 4698531.0      0.00       0.0       0.0                           1355.8508      0.00  
+    0:03:22 4698531.0      0.00       0.0       0.0                           1355.8508      0.00  
+    0:03:23 4698459.0      0.00       0.0       0.0                           1355.8196      0.00  
+Loading db file '/classes/ecen4303F19/osu_soc_3.0/lib/ami05/lib/osu05_stdcells.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'riscv' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clk': 1024 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+# Eliminate need for assign statements (yuck!)
+set verilogout_no_tri true
+true
+set verilogout_equation false
+false
+# setting to generate output files
+set write_v    1        ;# generates structual netlist
+1
+set write_sdc  1	;# generates synopsys design constraint file for p&r
+1
+set write_ddc  1	;# compiler file in ddc format
+1
+set write_sdf  1	;# sdf file for backannotated timing sim
+1
+set write_pow  1 	;# genrates estimated power report
+1
+set write_rep  1	;# generates estimated area and timing report
+1
+set write_cst  1        ;# generate report of constraints
+1
+set write_hier 1        ;# generate hierarchy report
+1
+# Report Constraint Violators
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_constraint_all_violators.rpt"]
+reports/riscv_constraint_all_violators.rpt
+redirect $filename {report_constraint -all_violators}
+# Check design
+redirect reports/check_design.rpt { check_design }
+# Report Final Netlist (Hierarchical)
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".vh"]
+mapped/riscv.vh
+write_file -f verilog -hierarchy -output $filename
+Writing verilog file '/home/rjridle/synthguide/synth/mapped/riscv.vh'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".sdc"]
+mapped/riscv.sdc
+write_sdc $filename
+1
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".ddc"]
+mapped/riscv.ddc
+write_file -format ddc -hierarchy -o $filename
+Writing ddc file 'mapped/riscv.ddc'.
+1
+set filename [format "%s%s%s"  "mapped/" $my_toplevel ".sdf"]
+mapped/riscv.sdf
+write_sdf $filename
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/rjridle/synthguide/synth/mapped/riscv.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+Warning: Design 'riscv' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Information: Input delay ('fall') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('rise') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+1
+# Report Timing
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_reportpath.rep"]
+reports/riscv_reportpath.rep
+redirect $filename { report_path_group }
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_report_clock.rep"]
+reports/riscv_report_clock.rep
+redirect $filename { report_clock }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_timing.rep"]
+reports/riscv_timing.rep
+redirect $filename { report_timing -capacitance -transition_time -nets -nworst 1 }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_min_timing.rep"]
+reports/riscv_min_timing.rep
+redirect $filename { report_timing -delay min }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_area.rep"]
+reports/riscv_area.rep
+redirect $filename { report_area -hierarchy -nosplit -physical -designware}
+set filename [format "%s%s%s" "reports/" $my_toplevel "_cell.rep"]
+reports/riscv_cell.rep
+redirect $filename { report_cell [get_cells -hier *] }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_power.rep"]
+reports/riscv_power.rep
+redirect $filename { report_power }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_constraint.rep"]
+reports/riscv_constraint.rep
+redirect $filename { report_constraint }
+set filename [format "%s%s%s" "reports/" $my_toplevel "_hier.rep"]
+reports/riscv_hier.rep
+redirect $filename { report_hierarchy }
+# Quit
+quit
+
+Thank you...

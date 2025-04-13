@@ -1,0 +1,26 @@
+* NGSPICE file created from NAND2X1.ext - technology: sky130A
+
+.subckt nmos_bottom a_56_54# a_86_84# a_0_0# VSUBS
+X0 a_86_84# a_56_54# a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.0597 pd=0.555 as=0.393 ps=2.99 w=3.01 l=0.15
+.ends
+
+.subckt nmos_top_trim1 a_86_92# a_56_62# a_0_0# VSUBS
+X0 a_86_92# a_56_62# a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.0597 pd=0.555 as=0.395 ps=2.97 w=3.01 l=0.15
+.ends
+
+.subckt pmos2 a_88_n400# a_144_n461# a_174_n400# a_262_n400# w_52_n436#
+X0 a_262_n400# a_144_n461# a_174_n400# w_52_n436# sky130_fd_pr__pfet_01v8 ad=0.54 pd=4.54 as=0.29 ps=2.29 w=2 l=0.15
+X1 a_174_n400# a_144_n461# a_88_n400# w_52_n436# sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.29 as=0.56 ps=4.56 w=2 l=0.15
+.ends
+
+.subckt nand2x1_pcell a_362_382# a_229_1059# pmos2_1/VSUBS w_87_786# a_168_375#
+Xnmos_bottom_0 a_168_375# pmos2_1/VSUBS nmos_bottom_0/a_0_0# pmos2_1/VSUBS nmos_bottom
+Xnmos_top_trim1_0 a_229_1059# a_362_382# nmos_bottom_0/a_0_0# pmos2_1/VSUBS nmos_top_trim1
+Xpmos2_0 w_87_786# a_168_375# a_229_1059# w_87_786# w_87_786# pmos2
+Xpmos2_1 w_87_786# a_362_382# a_229_1059# w_87_786# w_87_786# pmos2
+.ends
+
+.subckt NAND2X1 Y A B VDD GND
+Xnand2x_pcell_0 B Y GND VDD A nand2x1_pcell
+.ends
+

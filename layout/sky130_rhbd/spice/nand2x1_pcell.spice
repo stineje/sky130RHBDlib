@@ -1,0 +1,16 @@
+* HSPICE file created from nand2x1_pcell.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt nand2x1_pcell
+X0 x1/VSUBS a_168_375 x2/a_0_0 x1/VSUBS sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X3 a_229_1059 a_362_382 x2/a_0_0 x1/VSUBS sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X4 w_87_786 a_168_375 a_229_1059 w_87_786 sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X5 a_229_1059 a_168_375 w_87_786 w_87_786 sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X6 w_87_786 a_362_382 a_229_1059 w_87_786 sky130_fd_pr__pfet_01v8 ad=67.2n pd=2.74m as=46.4n ps=1.83m w=400 l=30
+X7 a_229_1059 a_362_382 w_87_786 w_87_786 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	pmos2_1
+* x2	nmos_bottom_0

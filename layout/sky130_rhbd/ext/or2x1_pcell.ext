@@ -1,0 +1,39 @@
+timestamp 1742082207
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 4400000 2200000 950000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12800 125 125 47 47 29 5
+use nor2x1_pcell nor2x1_pcell_0 1 0 0 0 1 0
+use li1_M1_contact li1_M1_contact_1 1 0 814 0 1 666
+use li1_M1_contact li1_M1_contact_0 -1 0 518 0 -1 666
+use invx1_pcell invx1_pcell_0 1 0 666 0 1 0
+node "m1_547_649#" 1 105.303 547 649 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7276 496 0 0 0 0 0 0 0 0 0 0
+substrate "VSUBS" 0 0 -1073741817 -1073741817 space 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cap "invx1_pcell_0/li_131_449#" "invx1_pcell_0/nmos_top_0/a_84_92#" 1.41608
+cap "invx1_pcell_0/a_34_482#" "nor2x1_pcell_0/pmos2_1_0/a_88_n399#" -0.295607
+cap "invx1_pcell_0/li_131_449#" "nor2x1_pcell_0/poly_li1_contact_2/a_n32_n28#" 9.79812
+cap "invx1_pcell_0/w_n87_786#" "invx1_pcell_0/li_131_449#" 44.7836
+cap "invx1_pcell_0/a_34_482#" "invx1_pcell_0/w_n87_786#" -19.7821
+cap "invx1_pcell_0/a_34_482#" "nor2x1_pcell_0/poly_li1_contact_2/a_n32_n28#" 0.00358306
+cap "nor2x1_pcell_0/poly_li1_contact_0/a_n32_n28#" "invx1_pcell_0/li_131_449#" 0.351763
+cap "invx1_pcell_0/nmos_top_0/a_84_92#" "nor2x1_pcell_0/poly_li1_contact_2/a_n32_n28#" 0.00275225
+cap "invx1_pcell_0/w_n87_786#" "nor2x1_pcell_0/poly_li1_contact_2/a_n32_n28#" 0.737305
+cap "nor2x1_pcell_0/pmos2_1_0/a_88_n399#" "invx1_pcell_0/li_131_449#" 1.34349
+cap "invx1_pcell_0/a_34_482#" "invx1_pcell_0/li_131_449#" 38.9658
+cap "invx1_pcell_0/w_n87_786#" "invx1_pcell_0/li_131_449#" 9.52332
+cap "invx1_pcell_0/w_n87_786#" "nor2x1_pcell_0/pmos2_1_0/a_88_n399#" 8.52651e-14
+cap "nor2x1_pcell_0/poly_li1_contact_2/a_n32_n28#" "invx1_pcell_0/w_n87_786#" 1.0169
+cap "invx1_pcell_0/li_131_449#" "nor2x1_pcell_0/pmos2_1_0/a_88_n399#" 0.000624632
+cap "nor2x1_pcell_0/poly_li1_contact_2/a_n32_n28#" "invx1_pcell_0/li_131_449#" 0.573066
+cap "invx1_pcell_0/w_n87_786#" "invx1_pcell_0/a_34_482#" -8.51665
+merge "invx1_pcell_0/a_34_n34#" "li1_M1_contact_0/VSUBS" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "li1_M1_contact_0/VSUBS" "li1_M1_contact_1/VSUBS"
+merge "li1_M1_contact_1/VSUBS" "nor2x1_pcell_0/a_34_n34#"
+merge "nor2x1_pcell_0/a_34_n34#" "VSUBS"
+merge "invx1_pcell_0/w_n87_786#" "nor2x1_pcell_0/w_87_786#" -690.655 0 0 0 0 -132936 -1876 0 0 -47056 -1520 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -47056 -1520 -4624 -272 0 0 0 0 0 0 0 0 0 0
+merge "invx1_pcell_0/li_131_449#" "li1_M1_contact_0/li_n17_n33#" -312.616 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -4488 -400 -816 -184 0 0 0 0 0 0 0 0 0 0
+merge "li1_M1_contact_0/li_n17_n33#" "nor2x1_pcell_0/a_405_1059#"
+merge "nor2x1_pcell_0/a_405_1059#" "li1_M1_contact_1/li_n17_n33#"
+merge "li1_M1_contact_1/li_n17_n33#" "m1_547_649#"
+merge "invx1_pcell_0/a_34_482#" "nor2x1_pcell_0/a_34_482#" -329.896 0 0 0 0 0 0 0 0 0 0 -39304 -1292 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -39304 -1292 -4624 -272 0 0 0 0 0 0 0 0 0 0

@@ -1,0 +1,1 @@
+/import/yukari1/lrburle/RHBD_SKY130_Zach/outputs_pex/synth/fsm.sdc

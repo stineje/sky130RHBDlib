@@ -1,0 +1,22 @@
+* HSPICE file created from or3x1_pcell.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt or3x1_pcell
+X0 x1/a_206_1059 m1_491_649 VSUBS VSUBS sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X2 x3/w_87_786 m1_491_649 x1/a_206_1059 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X4 x1/a_206_1059 m1_491_649 x3/w_87_786 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X5 x3/w_87_786 x3/a_168_375 x3/a_317_1331 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X6 x3/a_317_1331 x3/a_168_375 x3/w_87_786 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X7 x3/a_613_1331 x3/a_362_382 x3/a_317_1331 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=67.2n pd=2.74m as=67.2n ps=2.74m w=400 l=30
+X8 x3/a_317_1331 x3/a_362_382 x3/a_613_1331 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X9 m1_491_649 x3/a_168_375 VSUBS VSUBS sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X10 m1_491_649 x3/a_619_944 x3/a_613_1331 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=23.2n pd=0.916m as=0 ps=0 w=400 l=30
+X11 x3/a_613_1331 x3/a_619_944 m1_491_649 x3/w_87_786 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X12 m1_491_649 x3/a_362_382 VSUBS VSUBS sky130_fd_pr__nfet_01v8 ad=2.4n pd=0.112m as=15.8n ps=0.594m w=602 l=30
+X13 m1_491_649 x3/a_619_944 VSUBS VSUBS sky130_fd_pr__nfet_01v8 ad=21.5n pd=0.946m as=0.154u ps=5.17m w=602 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	invx1_pcell_0
+* x3	nor3x1_pcell_0

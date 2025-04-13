@@ -1,0 +1,19 @@
+* HSPICE file created from AND2X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt AND2X1 Y A B VDD GND
+X0 Y x1/m1_547_649 GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X2 VDD x1/m1_547_649 Y VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X3 Y x1/m1_547_649 VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X4 GND A x5/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X6 x1/m1_547_649 B x5/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X7 VDD A x1/m1_547_649 VDD sky130_fd_pr__pfet_01v8 ad=0.111u pd=4.56m as=46.4n ps=1.83m w=400 l=30
+X8 x1/m1_547_649 A VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X9 VDD B x1/m1_547_649 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X10 x1/m1_547_649 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	and2x1_pcell_0
+* x5	and2x1_pcell_0/nand2x1_pcell_0/nmos_bottom_0

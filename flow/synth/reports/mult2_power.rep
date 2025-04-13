@@ -1,0 +1,55 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : mult2
+Version: V-2023.12-SP3
+Date   : Fri Mar  7 11:20:42 2025
+****************************************
+
+
+Library(s) Used:
+
+    sky130_rhbd_tt_1P8_25C.ccs (File: /home/zwils11/Documents/OSU_SKY130_FLOW/outputs_pex/sky130_rhbd/sky130_rhbd_tt_1P8_25C.ccs.db)
+
+
+Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.8  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  = 371.491364 uW   (99%)
+  Net Switching Power  = 3.251039 uW    (1%)
+                         ---------
+Total Dynamic Power    = 374.742401 uW  (100%)
+
+Cell Leakage Power     = 171.3170 nW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+memory           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+black_box        0.000000          0.000000          0.000000          0.000000  (   0.00%)
+clock_network    0.000000          0.000000          0.000000          0.000000  (   0.00%)  i
+register         0.000000          0.000000          0.000000          0.000000  (   0.00%)
+sequential       0.000000          0.000000          0.000000          0.000000  (   0.00%)
+combinational    0.371491        3.251046e-03        171.317001          0.374914
+                                                                                 ( 100.00%)
+--------------------------------------------------------------------------------------------------
+Total            0.371491 mW     3.251046e-03 mW     171.317001 nW       0.374914 mW
+1

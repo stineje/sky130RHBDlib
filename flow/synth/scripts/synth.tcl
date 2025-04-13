@@ -4,13 +4,13 @@
 #
 
 # Verilog files
-set my_verilog_files [list top.v]
+set my_verilog_files [glob ./hdl/*]
 
 # VHDL files
 # set my_vhdl_files [list top.vhd]
 
 # Set toplevel
-set my_toplevel riscv
+set my_toplevel fsm
 
 # Set number of significant digits
 set report_default_significant_digits 6
@@ -22,6 +22,7 @@ set vhdlout_show_unconnected_pins "true"
 #
 # Due to parameterized Verilog must use analyze/elaborate and not 
 # read_verilog/vhdl (change to pull in Verilog and/or VHDL)
+# to read verilog remove "s"
 #
 define_design_lib WORK -path ./WORK
 analyze -f sverilog -lib WORK $my_verilog_files
@@ -41,9 +42,9 @@ reset_design
 
 # Set Frequency in [MHz] or [ps]
 set my_clock_pin clk
-set my_uncertainty 1
-set my_clk_freq_MHz 10
-set my_period [expr 1000 / $my_clk_freq_MHz]
+set my_clk_freq_MHz 500 
+set my_period [expr 1000.0 / $my_clk_freq_MHz]
+set my_uncertainty [expr .1 * $my_period]
 
 # Create clock object 
 set find_clock [ find port [list $my_clock_pin] ]
@@ -70,14 +71,15 @@ set all_in_ex_clk [remove_from_collection [all_inputs] [get_ports $my_clk]]
 set_propagated_clock [get_clocks $my_clk]
 
 # Setting constraints on input ports 
-set_driving_cell  -lib_cell DFFPOSX1 -pin Q $all_in_ex_clk
+set_driving_cell -lib_cell TMRDFFQX1 -pin Q $all_in_ex_clk
 
 # Set input/output delay
 set_input_delay 0.0 -max -clock $my_clk $all_in_ex_clk
 set_output_delay 0.0 -max -clock $my_clk [all_outputs]
 
 # Setting load constraint on output ports 
-set_load [expr [load_of sky130_fd_sc_rh_TT_1P8_25C/DFFQX1/D] * 1] [all_outputs]
+set_load [expr [load_of TMR_sky130_rhbd_tt_1P8_25C.ccs/TMRDFFQX1/D] * 1] [all_outputs]
+
 
 # Set the wire load model 
 set_wire_load_mode "top"
@@ -140,6 +142,10 @@ write_file -format ddc -hierarchy -o $filename
 
 set filename [format "%s%s%s"  "mapped/" $my_toplevel ".sdf"]
 write_sdf $filename
+
+# QoR
+set filename [format "%s%s%s"  "reports/" $my_toplevel "_qor.rep"]
+redirect $filename { report_qor }
 
 # Report Timing
 set filename [format "%s%s%s"  "reports/" $my_toplevel "_reportpath.rep"]

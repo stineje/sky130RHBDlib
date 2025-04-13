@@ -1,0 +1,527 @@
+ROOT_DIR = /import/programs/cadence/LIBERATE/current
+exepath = /import/programs/cadence/LIBERATE/current/bin
+Host : mimi.ecen.okstate.edu x86_64 Linux 3.10.0-1160.76.1.el7.x86_64
+LIBERATE Library Characterization Platform (x86_64) 
+Release 23.1.1.221.isr1, compiled by vficcm on Tue Sep 12 23:49:38 PDT 2023
+
+
+    ********************************************************************
+    *   Copyright (c)  Cadence Design Systems, Inc.  2006 - 2024.      *
+    *             All rights reserved.                                 *
+    *                                                                  *
+    *                                                                  *
+    *                                                                  *
+    * This program contains confidential and trade secret information  *
+    * of Cadence Design Systems, Inc. and is protected by copyright    *
+    * law and international treaties.  Any reproduction, use,          *
+    * distribution or disclosure of this program or any portion of it, *
+    * or any attempt to obtain a human-readable version of this        *
+    * program, without the express, prior written consent of           *
+    * Cadence Design Systems, Inc., is strictly prohibited.            *
+    *                                                                  *
+    *         Cadence Design Systems, Inc.                             *
+    *           2655 Seely Avenue                                      *
+    *           San Jose, CA 95134,  USA                               *
+    *                                                                  *
+    *                                                                  *
+    ********************************************************************
+    
+    
+    Copyright notices for Open Source and Third Party Tools used by this 
+    software can be viewed at <cds_inst_dir>/doc/liberate/thirdpartyinfo/Notices.txt
+
+LIBERATE started on mimi.ecen.okstate.edu at Mon Sep 23 11:55:33 2024
+
+Command line arguments: '--trio char.tcl'.
+ALTOSHOME set to '/import/programs/cadence/LIBERATE/current'.
+Server ID : T20240923115533324906S0060168
+LIBERATE parameter "max_transition" set to "1e-08"
+LIBERATE parameter "sim_duration" set to "1e-06"
+LIBERATE parameter "sim_estimate_duration" set to "0"
+*Warning* (define_cell) : Cell 'TMRDFFRNQNX1' contains duplicated pin Qn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFRNQNX1' contains duplicated pin Sn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFRNQNX1' contains duplicated pin Rn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFRNQX1' contains duplicated pin Qn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFRNQX1' contains duplicated pin Sn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFRNQX1' contains duplicated pin Rn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFSNQNX1' contains duplicated pin Qn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFSNQNX1' contains duplicated pin Sn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFSNQNX1' contains duplicated pin Rn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFSNQX1' contains duplicated pin Qn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFSNQX1' contains duplicated pin Sn which will be ignored.
+*Warning* (define_cell) : Cell 'TMRDFFSNQX1' contains duplicated pin Rn which will be ignored.
+LIBERATE parameter "parse_ignore_duplicate_subckt" set to "1"
+LIBERATE parameter "floating_node_initialize_mode" set to "1"
+LIBERATE parameter "simulator" set to "ski"
+Start Characterizing Library at (Mon Sep 23 11:55:33 2024)
+
+This version is not authorized for use at this site. Please contact your Cadence representative for more information
+*Info* (/import/programs/cadence/LIBERATE/current/bin/clean_sm.sh v2.2.4) Starting clean-up and resource checking
+*Debug* Enabling debugging messages for all types
+*Info* Max Shared Memory Segments : 4096
+*Debug* Shared Memory Segment Data
+*Debug* key         shmid       owner       perms       bytes       nattch     
+*Debug* 0x00000000  27557889    jstine      600         524288      2          
+*Debug* 0x00000000  51544067    mshah       600         393216      2          
+*Debug* 0x00000000  51642373    mshah       600         51408       2          
+*Debug* 0x00000000  39387142    zwils11     600         16777216    2          
+*Debug* 0x00000000  32775       zwils11     600         393216      2          
+*Debug* 0x00000000  51544072    mshah       600         393216      2          
+*Debug* 0x00000000  51544073    mshah       600         393216      2          
+*Debug* 0x00000000  39059466    jstine      600         393216      2          
+*Debug* 0x00000000  39059467    jstine      600         393216      2          
+*Debug* 0x00000000  35094541    zwils11     600         524288      2          
+*Debug* 0x00000000  32783       zwils11     600         67108864    2          
+*Debug* 0x00000000  51937297    mshah       600         4194304     2          
+*Debug* 0x00000000  32786       zwils11     600         524288      2          
+*Debug* 0x00000000  44433427    mshah       600         188336      1          
+*Debug* 0x00000000  44433428    mshah       600         21120       1          
+*Debug* 0x00000000  27557909    jstine      600         524288      2          
+*Debug* 0x00000000  39780374    kalhern     600         524288      2          
+*Debug* 0x00000000  44433431    mshah       600         90736       1          
+*Debug* 0x00000000  34766872    kalhern     600         393216      2          
+*Debug* 0x00000000  32793       zwils11     600         524288      2          
+*Debug* 0x00000000  32794       zwils11     600         393216      2          
+*Debug* 0x00000000  27525147    jstine      600         393216      2          
+*Debug* 0x00000000  27525150    jstine      600         393216      2          
+*Debug* 0x00000000  27525151    jstine      600         393216      2          
+*Debug* 0x00000000  44433440    mshah       600         64600       1          
+*Debug* 0x00000000  32801       zwils11     600         524288      2          
+*Debug* 0x00000000  44433442    mshah       600         40848       1          
+*Debug* 0x00000000  44433443    mshah       600         340200      1          
+*Debug* 0x00000000  65573       zwils11     600         393216      2          
+*Debug* 0x00000000  39026726    zwils11     600         393216      2          
+*Debug* 0x00000000  38338599    marcus      600         393216      2          
+*Debug* 0x00000000  34766888    kalhern     600         524288      2          
+*Debug* 0x00000000  27525161    jstine      600         393216      2          
+*Debug* 0x00000000  38338602    marcus      600         393216      2          
+*Debug* 0x00000000  29032491    jstine      600         12288       2          
+*Debug* 0x00000000  65580       zwils11     600         393216      2          
+*Debug* 0x00000000  163885      zwils11     600         8388608     2          
+*Debug* 0x00000000  29032494    jstine      600         12288       2          
+*Debug* 0x00000000  39026735    zwils11     600         12288       2          
+*Debug* 0x00000000  29032496    jstine      600         12288       2          
+*Debug* 0x00000000  39026737    zwils11     600         12288       2          
+*Debug* 0x00000000  39026738    zwils11     600         12288       2          
+*Debug* 0x00000000  27525171    jstine      600         268435456   2          
+*Debug* 0x00000000  51544116    mshah       600         393216      2          
+*Debug* 0x00000000  44433461    mshah       600         123480      1          
+*Debug* 0x00000000  27525174    jstine      600         393216      2          
+*Debug* 0x00000000  38338616    marcus      600         393216      2          
+*Debug* 0x00000000  57          zwils11     600         393216      2          
+*Debug* 0x00000000  58          zwils11     600         393216      2          
+*Debug* 0xabbaca01  229435      zwils11     666         4           5          
+*Debug* 0xabbaca02  229436      zwils11     666         4           5          
+*Debug* 0x00000000  61          zwils11     600         393216      2          
+*Debug* 0x00000000  27525182    jstine      600         16777216    2          
+*Debug* 0x00000000  37486655    mshah       600         393216      0          
+*Debug* 0x00000000  39387200    zwils11     600         7458816     2          
+*Debug* 0x00000000  54788161    mshah       600         524288      2          
+*Debug* 0x00000000  39387202    zwils11     600         7458816     2          
+*Debug* 0x00000000  38338632    marcus      600         524288      2          
+*Debug* 0x00000000  30965833    zwils11     600         393216      2          
+*Debug* 0x00000000  41746506    mshah       600         393216      0          
+*Debug* 0x00000000  38338635    marcus      600         393216      2          
+*Debug* 0x00000000  51544140    mshah       600         268435456   2          
+*Debug* 0x00000000  51544143    mshah       600         393216      2          
+*Debug* 0x00000000  38338640    marcus      600         134217728   2          
+*Debug* 0x00000000  51544145    mshah       600         524288      2          
+*Debug* 0x00000000  51675218    mshah       600         281496      2          
+*Debug* 0x00000000  38338645    marcus      600         524288      2          
+*Debug* 0x00000000  34766936    kalhern     600         524288      2          
+*Debug* 0x00000000  51544155    mshah       600         393216      2          
+*Debug* 0x00000000  51544159    mshah       600         524288      2          
+*Debug* 0x00000000  51544160    mshah       600         393216      2          
+*Debug* 0x00000000  51544163    mshah       600         16777216    2          
+*Debug* 0x00000000  53018724    jstine      600         524288      2          
+*Debug* 0x00000000  40960101    zwils11     600         730296      1          
+*Debug* 0x00000000  40960102    zwils11     600         415688      1          
+*Debug* 0x00000000  52527209    mshah       600         288120      2          
+*Debug* 0x00000000  40960106    zwils11     600         25840       1          
+*Debug* 0x00000000  52527211    mshah       600         1465616     2          
+*Debug* 0x00000000  40960111    zwils11     600         119856      1          
+*Debug* 0x00000000  46039152    jstine      600         393216      2          
+*Debug* 0x00000000  34766962    kalhern     600         3584000     2          
+*Debug* 0x00000000  34766964    kalhern     600         3584000     2          
+*Debug* 0x00000000  40960118    zwils11     600         438872      1          
+*Debug* 0x00000000  54788220    zwils11     600         524288      2          
+*Debug* 0x00000000  51806333    mshah       600         414920      2          
+*Debug* 0x00000000  53936254    mshah       600         2587740     2          
+*Debug* 0x00000000  44368000    mshah       600         432768      1          
+*Debug* 0x00000000  44368002    mshah       600         415688      1          
+*Debug* 0x00000000  34766979    kalhern     600         4194304     2          
+*Debug* 0x00000000  51806340    mshah       600         466456      2          
+*Debug* 0x00000000  52985989    jstine      600         4194304     2          
+*Debug* 0x00000000  34766982    kalhern     600         524288      2          
+*Debug* 0x00000000  51773575    mshah       600         366000      2          
+*Debug* 0x00000000  42926217    mshah       600         415688      1          
+*Debug* 0x00000000  46039178    jstine      600         393216      2          
+*Debug* 0x00000000  51773580    mshah       600         200880      2          
+*Debug* 0x00000000  51609741    mshah       600         613740      2          
+*Debug* 0x00000000  51609742    mshah       600         415688      2          
+*Debug* 0x00000000  34472080    kalhern     600         393216      2          
+*Debug* 0x00000000  51609746    mshah       600         772112      2          
+*Debug* 0x00000000  51609747    mshah       600         45288       2          
+*Debug* 0x00000000  51609748    mshah       600         384400      2          
+*Debug* 0x00000000  34766997    kalhern     600         393216      2          
+*Debug* 0x00000000  51773590    mshah       600         210816      2          
+*Debug* 0x00000000  51609751    mshah       600         52896       2          
+*Debug* 0x00000000  34472089    kalhern     600         393216      2          
+*Debug* 0x00000000  34767002    kalhern     600         524288      2          
+*Debug* 0x00000000  34767003    kalhern     600         393216      2          
+*Debug* 0x00000000  34472092    kalhern     600         393216      2          
+*Debug* 0x00000000  50954398    jstine      600         524288      2          
+*Debug* 0x00000000  34472095    kalhern     600         33554432    2          
+*Debug* 0x00000000  51609760    mshah       600         716000      2          
+*Debug* 0x00000000  51609761    mshah       600         31008       2          
+*Debug* 0x00000000  51609763    mshah       600         323680      2          
+*Debug* 0x00000000  51609764    mshah       600         563584      2          
+*Debug* 0x00000000  51675301    mshah       600         1104000     2          
+*Debug* 0x00000000  46039207    jstine      600         524288      2          
+*Debug* 0x00000000  34767016    kalhern     600         3584000     2          
+*Debug* 0x00000000  34767018    kalhern     600         3584000     2          
+*Debug* 0x00000000  46039211    jstine      600         524288      2          
+*Debug* 0x00000000  54001837    mshah       600         1852448     2          
+*Debug* 0x00000000  53543095    jstine      600         524288      2          
+*Debug* 0x00000000  53543105    jstine      600         524288      2          
+*Debug* 0x00000000  54001867    mshah       600         12288       2          
+*Debug* 0x00000000  46563538    marcus      600         16777216    2          
+*Debug* 0x00000000  49840353    marcus      600         524288      2          
+*Debug* 0x00000000  51937538    mshah       600         68400       2          
+*Debug* 0x00000000  51937539    mshah       600         68400       2          
+*Debug*
+*Info* No unattached Shared Memory Segments belonging to zwils11 out of 128 total.
+*Info* Max Semaphore Arrays : 128
+*Debug* Semaphore Array Data
+*Debug* key         semid       owner       perms      
+*Debug* 0x00004155  12          zwils11     666        
+*Debug*
+*Info* SA in use: systotal=1 total=1
+*Info* SA in use: zwils11=1
+*Info* Max Message Queues : 32000
+*Info* No Message Queues in use
+*Info* No Zombie Processes found
+*Info* (/import/programs/cadence/LIBERATE/current/bin/clean_sm.sh) Ending clean-up and resource checking
+*Info* (/import/programs/cadence/LIBERATE/current/bin/clean_sm.sh) SKI environment clean.
+*Info* (/import/programs/cadence/LIBERATE/current/bin/clean_sm.sh v2.2.4) Starting clean-up and resource checking
+*Info* Removing all zombie proceses
+*Info* No Zombie Processes found
+*Info* (/import/programs/cadence/LIBERATE/current/bin/clean_sm.sh) Ending clean-up and resource checking
+*Info* (/import/programs/cadence/LIBERATE/current/bin/clean_sm.sh) SKI environment clean.
+WARNING (LIB-64): The 'auto_index' option is enabled but 'min_transition' is not defined. This parameter must be set to the design rule for this process when using Packet Mode. Set the appropriate value for this parameter in your Tcl script and rerun.
+WARNING (LIB-64): The 'auto_index' option is enabled but 'min_output_cap' is not defined. This parameter must be set to the design rule for this process when using Packet Mode. Set the appropriate value for this parameter in your Tcl script and rerun.
+WARNING (LIB-103): When using Spectre-SKI, runtime may significantly improve when using an extsim_model_include/define_leafcell flow.  This is needed to enable the Spectre modellib flow.
+WARNING (LIB-909): (read_spice): Could not find a model/subckt definition for instance 'params:' named 'port' with '2' terminals.  Liberate will attempt to guess the device type. Read the models in read_spice or use define_leafcell to map the name to a model/subckt and rerun.
+WARNING (LIB-933): To enable automatic leaf-cell recognition, the variable 'extsim_model_include' is required.
+INFO (LIB-956): (read_spice): Reading file: '/home/zwils11/Documents/OSU_SKY130_FLOW/char/liberate/MODELS/include.scs'.
+INFO (LIB-956): (read_spice): Reading file: '/home/zwils11/Documents/OSU_SKY130_FLOW/char/liberate/NETLIST/TMRDFFRNQNX1.spi'.
+INFO (LIB-956): (read_spice): Reading file: '/home/zwils11/Documents/OSU_SKY130_FLOW/char/liberate/NETLIST/TMRDFFRNQX1.spi'.
+INFO (LIB-956): (read_spice): Reading file: '/home/zwils11/Documents/OSU_SKY130_FLOW/char/liberate/NETLIST/TMRDFFSNQNX1.spi'.
+INFO (LIB-956): (read_spice): Reading file: '/home/zwils11/Documents/OSU_SKY130_FLOW/char/liberate/NETLIST/TMRDFFSNQX1.spi'.
+INFO (LIB-940): The parser has identified the following leaf cells. Review these for missing or incorrect settings and if needed, add them to your Tcl script and rerun.
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} ddnw_sub
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} ddnw_sub_defet
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dipw_dnw
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dipw_dnw_defet
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dnsd_pw
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dnsd_pw_defet
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dnsd_pw_lvt
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dnsd_pw_nat
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dnsd_pw_v5
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dnw_ipw
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dnw_sub_photo
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dpsd_nw
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dpsd_nw_hvt
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dpsd_nw_lvt
+INFO (LIB-906): (AUTO): define_leafcell -type diode -pin_position {0 1} dpsd_nw_v5
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3 4} nmos_de_iso_v20
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_de_nat_v20
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_de_v12_base
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_de_v20
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_de_zvt_v20
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_esd
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_esd_nat_v5
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_esd_v5
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_lvt
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_nat_v3
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_nat_v5
+INFO (LIB-906): (AUTO): define_leafcell -type nmos -pin_position {0 1 2 3} nmos_v5
+INFO (LIB-906): (AUTO): define_leafcell -type npn -pin_position {0 1 2 3} npn_1x1
+INFO (LIB-906): (AUTO): define_leafcell -type npn -pin_position {0 1 2 3} npn_1x1_v5
+INFO (LIB-906): (AUTO): define_leafcell -type npn -pin_position {0 1 2 3} npn_1x2
+INFO (LIB-906): (AUTO): define_leafcell -type pmos -pin_position {0 1 2 3} pmos
+INFO (LIB-906): (AUTO): define_leafcell -type pmos -pin_position {0 1 2 3} pmos_de_v12_base
+INFO (LIB-906): (AUTO): define_leafcell -type pmos -pin_position {0 1 2 3} pmos_de_v20
+INFO (LIB-906): (AUTO): define_leafcell -type pmos -pin_position {0 1 2 3} pmos_esd_v5
+INFO (LIB-906): (AUTO): define_leafcell -type pmos -pin_position {0 1 2 3} pmos_hvt
+INFO (LIB-906): (AUTO): define_leafcell -type pmos -pin_position {0 1 2 3} pmos_lvt
+INFO (LIB-906): (AUTO): define_leafcell -type pmos -pin_position {0 1 2 3} pmos_v5
+INFO (LIB-906): (AUTO): define_leafcell -type pnp -pin_position {0 1 2 3WARNING (LIB-913): (AUTO): Leafcell xrdn is recognized as a black_box. It may cause Inside-View failures.
+WARNING (LIB-913): (AUTO): Leafcell xrdp is recognized as a black_box. It may cause Inside-View failures.
+} pnp
+INFO (LIB-906): (AUTO): define_leafcell -type pnp -pin_position {0 1 2 3} pnp_5x
+INFO (LIB-906): (AUTO): define_leafcell -type r -pin_position {0 1 2} rpoly_hp
+INFO (LIB-906): (AUTO): define_leafcell -type r -pin_position {0 1 2} rpoly_hp2K
+INFO (LIB-906): (AUTO): define_leafcell -type r -pin_position {0 1 2} rpwell
+INFO (LIB-906): (AUTO): define_leafcell -type black_box -pin_position {0 1 2} xrdn
+INFO (LIB-906): (AUTO): define_leafcell -type black_box -pin_position {0 1 2} xrdp
+INFO (LIB-907): (AUTO): define_leafcell -element -type r -pin_position {0 1} resbody
+INFO (LIB-943): Finished reading netlist(s) at Sep 23 11:55:35.
+*Info* (char_library) : SKI process child signal handler enabled.
+
+LIBERATE parameter "ccsp_unateness_infer_mode" set to "1"
+INFO (LIB-9246): Since 'ccsn_char_both_formats' is set to '0', 'ccsn_char_both_formats_compatibility_mode' is overwritten to '0'.
+INFO (LIB-33): (char_library) The parameter "ccsn_group_update_mode" will be set to "0" because this option is not compatable if ccsn_char_both_formats = 0 is used.
+INFO (LIB-966): Using Spectre version 21.1.0.612.isr15 located at: /import/programs/cadence/LIBERATE/current/bin/spectre.
+*Info* Use temporary directory '/home/zwils11/Documents/OSU_SKY130_FLOW/char/liberate'.
+LIBERATE parameter "extsim_deck_dir" defaulted to mimi.ecen.okstate.edu:/home/zwils11/Documents/OSU_SKY130_FLOW/char/liberate/decks.mimi.ecen.okstate.edu.T20240923115533324906S0060168
+
+*Info* : Initializing SKI environment...
+Initializing Spice
+*Info* Adding 64 global models to Spice.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+capsw = cp1fsw, (.model mcp1f, .lib AltosLib)
+cox = cp1f, (.model mcp1f, .lib AltosLib)
+capsw = cl1fsw, (.model mcl1f, .lib AltosLib)
+cox = cl1f, (.model mcl1f, .lib AltosLib)
+capsw = cl1dsw, (.model mcl1d, .lib AltosLib)
+cox = cl1d, (.model mcl1d, .lib AltosLib)
+capsw = cl1p1sw, (.model mcl1p1, .lib AltosLib)
+cox = cl1p1, (.model mcl1p1, .lib AltosLib)
+capsw = cm1fsw, (.model mcm1f, .lib AltosLib)
+cox = cm1f, (.model mcm1f, .lib AltosLib)
+capsw = cm1dsw, (.model mcm1d, .lib AltosLib)
+cox = cm1d, (.model mcm1d, .lib AltosLib)
+capsw = cm1p1sw, (.model mcm1p1, .lib AltosLib)
+cox = cm1p1, (.model mcm1p1, .lib AltosLib)
+capsw = cm1l1sw, (.model mcm1l1, .lib AltosLib)
+cox = cm1l1, (.model mcm1l1, .lib AltosLib)
+capsw = cm2fsw, (.model mcm2f, .lib AltosLib)
+cox = cm2f, (.model mcm2f, .lib AltosLib)
+capsw = cm2dsw, (.model mcm2d, .lib AltosLib)
+cox = cm2d, (.model mcm2d, .lib AltosLib)
+capsw = cm2p1sw, (.model mcm2p1, .lib AltosLib)
+cox = cm2p1, (.model mcm2p1, .lib AltosLib)
+capsw = cm2l1sw, (.model mcm2l1, .lib AltosLib)
+cox = cm2l1, (.model mcm2l1, .lib AltosLib)
+capsw = cm2m1sw, (.model mcm2m1, .lib AltosLib)
+cox = cm2m1, (.model mcm2m1, .lib AltosLib)
+capsw = cm3fsw, (.model mcm3f, .lib AltosLib)
+cox = cm3f, (.model mcm3f, .lib AltosLib)
+capsw = cm3dsw, (.model mcm3d, .lib AltosLib)
+cox = cm3d, (.model mcm3d, .lib AltosLib)
+capsw = cm3p1sw, (.model mcm3p1, .lib AltosLib)
+cox = cm3p1, (.model mcm3p1, .lib AltosLib)
+capsw = cm3l1sw, (.model mcm3l1, .lib AltosLib)
+cox = cm3l1, (.model mcm3l1, .lib AltosLib)
+capsw = cm3m1sw, (.model mcm3m1, .lib AltosLib)
+cox = cm3m1, (.model mcm3m1, .lib AltosLib)
+capsw = cm3m2sw, (.model mcm3m2, .lib AltosLib)
+cox = cm3m2, (.model mcm3m2, .lib AltosLib)
+capsw = cm4fsw, (.model mcm4f, .lib AltosLib)
+cox = cm4f, (.model mcm4f, .lib AltosLib)
+capsw = cm4dsw, (.model mcm4d, .lib AltosLib)
+cox = cm4d, (.model mcm4d, .lib AltosLib)
+capsw = cm4p1sw, (.model mcm4p1, .lib AltosLib)
+cox = cm4p1, (.model mcm4p1, .lib AltosLib)
+capsw = cm4l1sw, (.model mcm4l1, .lib AltosLib)
+cox = cm4l1, (.model mcm4l1, .lib AltosLib)
+capsw = cm4m1sw, (.model mcm4m1, .lib AltosLib)
+cox = cm4m1, (.model mcm4m1, .lib AltosLib)
+capsw = cm4m2sw, (.model mcm4m2, .lib AltosLib)
+cox = cm4m2, (.model mcm4m2, .lib AltosLib)
+capsw = cm4m3sw, (.model mcm4m3, .lib AltosLib)
+cox = cm4m3, (.model mcm4m3, .lib AltosLib)
+capsw = cm5fsw, (.model mcm5f, .lib AltosLib)
+cox = cm5f, (.model mcm5f, .lib AltosLib)
+capsw = cm5dsw, (.model mcm5d, .lib AltosLib)
+cox = cm5d, (.model mcm5d, .lib AltosLib)
+capsw = cm5p1sw, (.model mcm5p1, .lib AltosLib)
+cox = cm5p1, (.model mcm5p1, .lib AltosLib)
+capsw = cm5l1sw, (.model mcm5l1, .lib AltosLib)
+cox = cm5l1, (.model mcm5l1, .lib AltosLib)
+capsw = cm5m1sw, (.model mcm5m1, .lib AltosLib)
+cox = cm5m1, (.model mcm5m1, .lib AltosLib)
+capsw = cm5m2sw, (.model mcm5m2, .lib AltosLib)
+cox = cm5m2, (.model mcm5m2, .lib AltosLib)
+capsw = cm5m3sw, (.model mcm5m3, .lib AltosLib)
+cox = cm5m3, (.model mcm5m3, .lib AltosLib)
+capsw = cm5m4sw, (.model mcm5m4, .lib AltosLib)
+cox = cm5m4, (.model mcm5m4, .lib AltosLib)
+capsw = crdlfsw, (.model mcrdlf, .lib AltosLib)
+cox = crdlf, (.model mcrdlf, .lib AltosLib)
+capsw = crdldsw, (.model mcrdld, .lib AltosLib)
+cox = crdld, (.model mcrdld, .lib AltosLib)
+capsw = crdlp1sw, (.model mcrdlp1, .lib AltosLib)
+cox = crdlp1, (.model mcrdlp1, .lib AltosLib)
+capsw = crdll1sw, (.model mcrdll1, .lib AltosLib)
+cox = crdll1, (.model mcrdll1, .lib AltosLib)
+capsw = crdlm1sw, (.model mcrdlm1, .lib AltosLib)
+cox = crdlm1, (.model mcrdlm1, .lib AltosLib)
+capsw = crdlm2sw, (.model mcrdlm2, .lib AltosLib)
+cox = crdlm2, (.model mcrdlm2, .lib AltosLib)
+capsw = crdlm3sw, (.model mcrdlm3, .lib AltosLib)
+cox = crdlm3, (.model mcrdlm3, .lib AltosLib)
+capsw = crdlm4sw, (.model mcrdlm4, .lib AltosLib)
+cox = crdlm4, (.model mcrdlm4, .lib AltosLib)
+capsw = crdlm5sw, (.model mcrdlm5, .lib AltosLib)
+cox = crdlm5, (.model mcrdlm5, .lib AltosLib)
+dw = (((0-tol_rdl)/2)-(rdl_dw/2)), (.model mrrdl, .lib AltosLib)
+rsh = rrdl, (.model mrrdl, .lib AltosLib)
+res = rcn, (.model mrcn, .lib AltosLib)
+res = rcp, (.modeWARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+WARNING (LIB-524): (char_library): Failed to evaluate parameter ''.
+l mrcp, .lib AltosLib)
+res = rcp1, (.model mrcp1, .lib AltosLib)
+res = rcl1, (.model mrcl1, .lib AltosLib)
+res = rcvia, (.model mrcvia, .lib AltosLib)
+res = rcvia2, (.model mrcvia2, .lib AltosLib)
+res = rcvia3, (.model mrcvia3, .lib AltosLib)
+res = rcvia4, (.model mrcvia4, .lib AltosLib)
+res = rcrdlcon, (.model mrcrdlcon, .lib AltosLib)
+Building library database
+Processing cell: TMRDFFRNQNX1
+WARNING (LIB-519): (char_library): The pin 'A' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'B' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'C' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'E' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'EN' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'F' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Q' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'S' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'SN' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Y' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Yn' is not defined for cell 'TMRDFFRNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+(Sep 23 11:55:36) Finish building module.
+*Warning* (char_library) : Cell 'TMRDFFRNQNX1' has transistors (eg. MM79_noxref.pmos) with floating bulk(s).  Bulk nodes should either be connected to supplies or driven by other active devices.  Simulation results can be very inaccurate.
+WARNING (LIB-819): Omitting short-circuit vectors for cell 'TMRDFFRNQNX1', state 'CLK=1*D=0*RN=0 + CLK=1*D=1*RN=0 + CLK=1*D=1*RN=1'. Check that the circuit and netlist are correct. To allow the short-circuit vectors to be characterized, set parameter 'mega_short_circuit_mode' to '2' and rerun the TCL script.
+WARNING (LIB-806): No valid vectors were found for cell 'TMRDFFRNQNX1' when the pin 'RN'=0, which might indicate an incorrect analysis of the circuit. Check for any missing arcs, and if necessary add 'define_arc' commands and rerun.
+Processing cell: TMRDFFRNQX1
+WARNING (LIB-519): (char_library): The pin 'A' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'B' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'C' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'E' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'EN' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'F' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'QN' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'S' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'SN' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Y' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Yn' is not defined for cell 'TMRDFFRNQX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+(Sep 23 11:55:45) Finish building module.
+*Warning* (char_library) : Cell 'TMRDFFRNQX1' has transistors (eg. MM79_noxref.pmos) with floating bulk(s).  Bulk nodes should either be connected to supplies or driven by other active devices.  Simulation results can be very inaccurate.
+WARNING (LIB-819): Omitting short-circuit vectors for cell 'TMRDFFRNQX1', state 'CLK=1*D=0*RN=0 + CLK=1*D=1*RN=0 + CLK=1*D=1*RN=1'. Check that the circuit and netlist are correct. To allow the short-circuit vectors to be characterized, set parameter 'mega_short_circuit_mode' to '2' and rerun the TCL script.
+WARNING (LIB-806): No valid vectors were found for cell 'TMRDFFRNQX1' when the pin 'RN'=0, which might indicate an incorrect analysis of the circuit. Check for any missing arcs, and if necessary add 'define_arc' commands and rerun.
+Processing cell: TMRDFFSNQNX1
+WARNING (LIB-519): (char_library): The pin 'A' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'B' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'C' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'E' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'EN' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'F' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Q' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'RN' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'S' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Y' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+WARNING (LIB-519): (char_library): The pin 'Yn' is not defined for cell 'TMRDFFSNQNX1'. Check the netlist and make sure it is consistent with 'define_cell' command. This command will be ignored.
+(Sep 23 11:55:55) Finish building module.
+INFO (LIB-500): (char_library): Cannot determine VDD/VSS for port 'D' in cell 'TMRDFFSNQNX1', use default values 1.800V and 0.000V.
+INFO (LIB-500): (char_library): Cannot determine VDD/VSS for port 'CLK' in cell 'TMRDFFSNQNX1', use default values 1.800V and 0.000V.
+INFO (LIB-500): (char_library): Cannot determine VDD/VSS for port 'SN' in cell 'TMRDFFSNQNX1', use default values 1.800V and 0.000V.
+INFO (LIB-500): (char_library): Cannot determine VDD/VSS for port 'QN' in cell 'TMRDFFSNQNX1', use default values 1.800V and 0.000V.
+*Warning* (char_library) : Cell 'TMRDFFSNQNX1' has transistors (eg. MM79_noxref.pmos) with floating bulk(s).  Bulk nodes should either be connected to supplies or driven by other active devices.  Simulation results can be very inaccurate.

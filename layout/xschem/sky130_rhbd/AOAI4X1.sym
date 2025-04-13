@@ -1,0 +1,61 @@
+v {xschem version=3.0.0 file_version=1.2 
+
+* Copyright 2021 Stefan Frederik Schippers
+* 
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @VDD @VSS @symname"
+template="name=x1 VDD=VDD VSS=VSS"
+extra="VDD VSS"}
+V {}
+S {}
+E {}
+L 4 50 20 50 60 {}
+L 4 -90 60 50 60 {}
+L 4 -90 -60 -60 -60 {}
+L 4 -90 -20 -60 -20 {}
+L 4 5 -50 12.5 -50 {}
+L 4 5 10 12.5 10 {}
+L 4 -60 -70 -45 -70 {}
+L 4 -60 -70 -60 -10 {}
+L 4 -60 -10 -45 -10 {}
+L 4 -5 -40 10 -40 {}
+L 4 -27.5 0 -27.5 20 {}
+L 4 -90 20 -27.5 20 {}
+L 4 -27.5 0 10 0 {}
+L 4 68 -20 98 -20 {}
+L 4 68 20 98 20 {}
+L 4 98 -30 113 -30 {}
+L 4 98 -30 98 30 {}
+L 4 98 30 113 30 {}
+L 4 153 0 168 0 {}
+L 4 168 0 170 0 {}
+L 4 50 20 70 20 {}
+B 5 167.5 -2.5 172.5 2.5 {name=YN dir=out verilog_type=wire}
+B 5 -92.5 -62.5 -87.5 -57.5 {name=A dir=in}
+B 5 -92.5 -22.5 -87.5 -17.5 {name=B dir=in}
+B 5 -92.5 17.5 -87.5 22.5 {name=C dir=in}
+B 5 -92.5 57.5 -87.5 62.5 {name=D dir=in}
+A 4 -42.5 -20 56.18051263561058 327.7243556854224 64.55128862915524 {}
+A 4 -45 -40 30 270 180 {}
+A 4 7.857142857142861 5.714285714285721 55.90740340153566 27.38350663876661 57.85285167050722 {}
+A 4 7.857142857142861 -45.71428571428569 55.90740340153566 274.7636416907262 57.85285167050722 {}
+A 4 -10 -40 5 0 360 {}
+A 4 62.5 -20 5 0 360 {}
+A 4 113 0 30 270 180 {}
+A 4 148 0 5 0 360 {}
+T {@name} 16.25 -25 0 0 0.2 0.2 {}
+T {@symname} 9.75 -76 0 0 0.2 0.2 {}

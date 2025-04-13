@@ -1,0 +1,16 @@
+* NGSPICE file created from TIELO.ext - technology: sky130A
+
+.subckt nmos_top a_84_92# a_0_0# a_54_62# VSUBS
+X0 a_84_92# a_54_62# a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.0597 pd=0.555 as=0.39 ps=2.96 w=3.01 l=0.15
+.ends
+
+.subckt pmos2 a_88_n400# a_144_n461# a_174_n400# a_262_n400# w_52_n436#
+X0 a_262_n400# a_144_n461# a_174_n400# w_52_n436# sky130_fd_pr__pfet_01v8 ad=0.54 pd=4.54 as=0.29 ps=2.29 w=2 l=0.15
+X1 a_174_n400# a_144_n461# a_88_n400# w_52_n436# sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.29 as=0.56 ps=4.56 w=2 l=0.15
+.ends
+
+.subckt TIELO YN VDD GND
+Xnmos_top_0 YN GND a_253_417# GND nmos_top
+Xpmos2_0 VDD a_253_417# a_253_417# VDD VDD pmos2
+.ends
+

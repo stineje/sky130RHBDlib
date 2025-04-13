@@ -1,0 +1,159 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1742511297
+<< error_s >>
+rect 283 332 299 348
+rect 359 302 389 332
+rect 283 286 299 302
+rect 343 286 359 302
+rect 283 201 299 217
+rect 343 201 359 217
+rect 253 171 283 201
+rect 359 171 389 201
+<< nwell >>
+rect 0 822 640 1588
+<< pwell >>
+rect 155 19 189 53
+<< pdiffc >>
+rect 215 1096 249 1130
+rect 303 1096 337 1130
+rect 391 1096 425 1130
+<< psubdiff >>
+rect 132 518 508 580
+rect 132 19 155 53
+rect 189 19 229 53
+rect 263 19 303 53
+rect 337 19 377 53
+rect 411 19 451 53
+rect 485 19 508 53
+rect 132 5 508 19
+rect 64 0 576 5
+<< nsubdiff >>
+rect 64 1550 576 1552
+rect 132 1533 508 1550
+rect 132 1499 155 1533
+rect 189 1499 229 1533
+rect 263 1499 303 1533
+rect 337 1499 377 1533
+rect 411 1499 451 1533
+rect 485 1499 508 1533
+rect 132 858 508 920
+<< psubdiffcont >>
+rect 155 19 189 53
+rect 229 19 263 53
+rect 303 19 337 53
+rect 377 19 411 53
+rect 451 19 485 53
+<< nsubdiffcont >>
+rect 155 1499 189 1533
+rect 229 1499 263 1533
+rect 303 1499 337 1533
+rect 377 1499 411 1533
+rect 451 1499 485 1533
+<< poly >>
+rect 253 417 283 449
+<< locali >>
+rect 0 1534 640 1552
+rect 0 1482 82 1534
+rect 132 1533 508 1534
+rect 132 1499 155 1533
+rect 189 1499 229 1533
+rect 263 1499 303 1533
+rect 337 1499 377 1533
+rect 411 1499 451 1533
+rect 485 1499 508 1533
+rect 132 1482 508 1499
+rect 558 1482 640 1534
+rect 215 1130 249 1147
+rect 215 1052 249 1096
+rect 303 1130 337 1147
+rect 229 485 263 993
+rect 303 759 337 1096
+rect 391 1130 425 1147
+rect 391 1052 425 1096
+rect 263 419 337 453
+rect 303 270 337 419
+rect 207 70 241 109
+rect 303 70 337 125
+rect 401 70 435 109
+rect 0 17 84 70
+rect 132 53 508 70
+rect 132 19 155 53
+rect 189 19 229 53
+rect 263 19 303 53
+rect 337 19 377 53
+rect 411 19 451 53
+rect 485 19 508 53
+rect 132 17 508 19
+rect 558 17 640 70
+rect 0 0 640 17
+<< viali >>
+rect 155 1499 189 1533
+rect 229 1499 263 1533
+rect 303 1499 337 1533
+rect 377 1499 411 1533
+rect 451 1499 485 1533
+rect 155 19 189 53
+rect 229 19 263 53
+rect 303 19 337 53
+rect 377 19 411 53
+rect 451 19 485 53
+<< metal1 >>
+rect 0 1533 640 1552
+rect 0 1499 155 1533
+rect 189 1499 229 1533
+rect 263 1499 303 1533
+rect 337 1499 377 1533
+rect 411 1499 451 1533
+rect 485 1499 640 1533
+rect 0 1482 640 1499
+rect 0 53 640 70
+rect 0 19 155 53
+rect 189 19 229 53
+rect 263 19 303 53
+rect 337 19 377 53
+rect 411 19 451 53
+rect 485 19 640 53
+rect 0 0 640 19
+use diff_ring_side  diff_ring_side_0
+timestamp 1741967758
+transform 1 0 542 0 1 36
+box -87 -34 87 1550
+use diff_ring_side  diff_ring_side_1
+timestamp 1741967758
+transform 1 0 98 0 1 36
+box -87 -34 87 1550
+use nmos_top  nmos_top_0
+timestamp 1651256841
+transform -1 0 443 0 1 109
+box 0 0 246 308
+use pmos2  pmos2_0
+timestamp 1741967758
+transform 1 0 117 0 1 1440
+box 52 -461 352 42
+use poly_li1_contact  poly_li1_contact_0
+timestamp 1648060378
+transform 0 1 247 -1 0 977
+box -32 -28 34 26
+use poly_li1_contact  poly_li1_contact_1
+timestamp 1648060378
+transform 0 1 247 -1 0 453
+box -32 -28 34 26
+<< labels >>
+rlabel locali 303 759 337 793 1 Y
+port 1 nsew signal output
+rlabel locali 303 833 337 867 1 Y
+port 1 nsew signal output
+rlabel locali 303 907 337 941 1 Y
+port 1 nsew signal output
+rlabel metal1 0 1482 640 1552 1 VDD
+port 2 nsew power bidirectional abutment
+rlabel metal1 0 0 640 70 1 GND
+port 3 nsew ground bidirectional abutment
+<< properties >>
+string FIXED_BBOX 0 0 640 1552
+string LEFclass CORE WELLTAP
+string LEFsite unitrh
+string LEFsymmetry X Y
+<< end >>

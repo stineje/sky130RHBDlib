@@ -1,0 +1,22 @@
+v {xschem version=3.0.0 file_version=1.2 }
+G {}
+K {type=subcircuit
+format="@name @pinlist @VDD @VSS @symname"
+template="name=x1 VDD=VDD VSS=VSS"
+extra="VDD VSS"
+}
+V {}
+S {}
+E {}
+L 4 -60 -20 -40 -20 {}
+L 4 40 -20 60 -20 {}
+L 4 -60 20 -40 20 {}
+B 5 -62.5 17.5 -57.5 22.5 {name=GATE_N dir=in verilog_type=wire}
+B 5 57.5 -22.5 62.5 -17.5 {name=Q dir=out verilog_type=wire}
+B 5 -62.5 -22.5 -57.5 -17.5 {name=D dir=in verilog_type=wire}
+P 4 5 -40 40 40 40 40 -40 -40 -40 -40 40 {}
+T {Q} 35 -25 0 1 0.2 0.2 {}
+T {D} -35 -25 0 0 0.2 0.2 {}
+T {GATE_N} -35 15 0 0 0.2 0.2 {}
+T {@symname} -31.25 -55 0 0 0.2 0.2 {}
+T {@name} -21.25 -5 0 0 0.2 0.2 {}

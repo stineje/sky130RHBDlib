@@ -1,0 +1,8 @@
+set init_layout_view ""
+set init_abstract_name ""
+set init_verilog "/import/yukari1/lrburle/RHBD_SKY130_Zach/outputs_pex/synth/fsm.vh"
+set init_mmmc_file "/import/yukari1/lrburle/RHBD_SKY130_Zach/pnr/FF/view_definition.tcl"
+set init_lef_file "../outputs_pex/sky130_rhbd//s130.tlef ../outputs_pex/sky130_rhbd//sky130_rhbd.lef"
+set init_top_cell "fsm"
+set init_gnd_net "GND"
+set init_pwr_net "VDD"

@@ -1,0 +1,47 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nets
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : mult2
+Version: V-2023.12-SP3
+Date   : Fri Mar  7 11:20:42 2025
+****************************************
+
+Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
+Wire Load Model Mode: top
+
+  Startpoint: op2[0] (input port clocked by clk)
+  Endpoint: y[0] (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                        Fanout       Cap     Trans      Incr       Path
+  -------------------------------------------------------------------------------
+  clock clk (rise edge)                                    0.000000   0.000000
+  clock network delay (propagated)                         0.000000   0.000000
+  input external delay                                     0.000000   0.000000 r
+  op2[0] (in)                                    0.030766  0.013144   0.013144 r
+  op2[0] (net)                   1     0.010219            0.000000   0.013144 r
+  U25/Y (AND2X1)                                 0.079614  0.118770   0.131914 r
+  y[0] (net)                     1     0.040355            0.000000   0.131914 r
+  y[0] (out)                                     0.079614  0.000000   0.131914 r
+  data arrival time                                                   0.131914
+
+  clock clk (rise edge)                                    2.000000   2.000000
+  clock network delay (propagated)                         0.000000   2.000000
+  clock uncertainty                                        -0.200000  1.800000
+  output external delay                                    0.000000   1.800000
+  data required time                                                  1.800000
+  -------------------------------------------------------------------------------
+  data required time                                                  1.800000
+  data arrival time                                                   -0.131914
+  -------------------------------------------------------------------------------
+  slack (MET)                                                         1.668086
+
+
+1

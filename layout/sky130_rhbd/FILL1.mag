@@ -1,0 +1,77 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1742507968
+<< nwell >>
+rect 0 1585 418 1588
+rect 0 1552 44 1585
+rect 185 1552 234 1585
+rect 394 1552 418 1585
+rect 0 1550 418 1552
+rect 0 1482 73 1550
+rect 0 869 44 1482
+rect 185 921 234 1550
+rect 354 1482 418 1550
+rect 0 822 63 869
+rect 129 859 288 921
+rect 185 822 234 859
+rect 394 822 418 1482
+<< pwell >>
+rect 64 70 354 580
+rect 0 0 418 70
+<< psubdiff >>
+rect 132 518 286 580
+rect 132 19 192 53
+rect 226 19 286 53
+rect 132 15 286 19
+rect 64 0 354 15
+<< nsubdiff >>
+rect 64 1550 354 1552
+rect 132 1533 286 1550
+rect 132 1499 192 1533
+rect 226 1499 286 1533
+rect 132 858 286 920
+<< psubdiffcont >>
+rect 192 19 226 53
+<< nsubdiffcont >>
+rect 192 1499 226 1533
+<< locali >>
+rect 0 1550 418 1552
+rect 0 1482 73 1550
+rect 132 1533 286 1550
+rect 132 1499 192 1533
+rect 226 1499 286 1533
+rect 132 1482 286 1499
+rect 354 1482 418 1550
+rect 0 15 71 70
+rect 132 53 286 70
+rect 132 19 192 53
+rect 226 19 286 53
+rect 132 15 286 19
+rect 353 15 418 70
+rect 0 0 418 15
+<< metal1 >>
+rect 0 1550 418 1552
+rect 0 1482 73 1550
+rect 132 1482 286 1550
+rect 354 1482 418 1550
+rect 0 0 418 70
+use diff_ring_side  diff_ring_side_0
+timestamp 1741967758
+transform 1 0 98 0 1 36
+box -87 -34 87 1550
+use diff_ring_side  diff_ring_side_1
+timestamp 1741967758
+transform 1 0 320 0 1 36
+box -87 -34 87 1550
+<< labels >>
+rlabel metal1 0 0 418 70 1 GND
+port 2 nsew ground bidirectional abutment
+rlabel metal1 0 1482 418 1552 1 VDD
+port 1 nsew power bidirectional abutment
+<< properties >>
+string FIXED_BBOX 0 0 418 1552
+string LEFclass CORE SPACER
+string LEFsite unitrh
+string LEFsymmetry X Y
+<< end >>
