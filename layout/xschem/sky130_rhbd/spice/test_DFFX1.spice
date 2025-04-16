@@ -1,4 +1,4 @@
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/test_DFFX1.sch
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/test_DFFX1.sch
 .subckt test_DFFX1
 
 V2 D GND pwl 0n 1.8 6ns 1.8 6.1ns 0 12n 0 12.1n 1.8 22n 1.8 22.1n 0 27n 0 27.1n 1.8 34n 1.8 34.1n 0
@@ -14,8 +14,8 @@ x1 Q QN D CLK VDD GND DFFX1
 .ends
 
 * expanding   symbol:  DFFX1.sym # of pins=4
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/DFFX1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/DFFX1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/DFFX1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/DFFX1.sch
 .subckt DFFX1 Q QN D CLK VDD VSS
 *.PININFO Q:O QN:O D:I CLK:I
 x1 net2 net3 CLK net1 VDD VSS NAND3X1
@@ -28,8 +28,8 @@ x6 Q QN net3 VDD VSS NAND2X1
 
 
 * expanding   symbol:  NAND3X1.sym # of pins=4
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND3X1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND3X1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND3X1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND3X1.sch
 .subckt NAND3X1 Y A B C VDD VSS
 *.PININFO Y:O A:I B:I C:I
 XM1 net2 A VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
@@ -54,8 +54,8 @@ XM6 Y C VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf
 
 
 * expanding   symbol:  NAND2X1.sym # of pins=3
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND2X1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND2X1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND2X1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND2X1.sch
 .subckt NAND2X1 Y A B VDD VSS
 *.PININFO Y:O A:I B:I
 XM1 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'

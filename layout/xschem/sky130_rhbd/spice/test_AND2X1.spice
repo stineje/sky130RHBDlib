@@ -1,4 +1,4 @@
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/test_AND2X1.sch
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/test_AND2X1.sch
 .subckt test_AND2X1
 
 V2 B GND pwl 0n 0 20n 0 20.1n 1.8
@@ -14,8 +14,8 @@ x1 Y A B VDD GND AND2X1
 .ends
 
 * expanding   symbol:  AND2X1.sym # of pins=3
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/AND2X1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/AND2X1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/AND2X1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/AND2X1.sch
 .subckt AND2X1 Y A B VDD VSS
 *.PININFO Y:O A:I B:I
 x1 net1 A B VDD VSS NAND2X1
@@ -24,8 +24,8 @@ x2 Y net1 VDD VSS INVX1
 
 
 * expanding   symbol:  NAND2X1.sym # of pins=3
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND2X1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND2X1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND2X1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND2X1.sch
 .subckt NAND2X1 Y A B VDD VSS
 *.PININFO Y:O A:I B:I
 XM1 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
@@ -44,8 +44,8 @@ XM3 net1 A VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W
 
 
 * expanding   symbol:  INVX1.sym # of pins=2
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/INVX1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/INVX1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/INVX1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/INVX1.sch
 .subckt INVX1 Y A VDD VSS
 *.PININFO Y:O A:I
 XM1 Y A VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'

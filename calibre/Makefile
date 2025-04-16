@@ -1,6 +1,6 @@
 .PHONY: purge pex
 
-DESIGN=sky130_rhbd
+DESIGN?=sky130_rhbd
 
 default: pex
 

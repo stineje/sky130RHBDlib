@@ -1,0 +1,1194 @@
+% \iffalse meta-comment
+%<=*COPYRIGHT>
+%% Copyright (C) 2010-2022 by Martin Scharrer <martin.scharrer@web.de>
+%% ---------------------------------------------------------------------------
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Martin Scharrer.
+%%
+%% This work consists of the files standalone.dtx and standalone.ins
+%% and the derived filebase standalone.sty, standalone.cls and 
+%% standalone.cfg.
+%%
+%<=/COPYRIGHT>
+% \fi
+%
+% \iffalse
+%<*driver>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesFile{standalone.dtx}[%
+%<=*DATE>
+    2022/11/11
+%<=/DATE>
+%<=*VERSION>
+    v1.4
+%<=/VERSION>
+    DTX file of the standalone bundle]
+\documentclass[a4paper,11pt]{ydoc}
+\usepackage{flafter}
+\usepackage{standalone}
+%\addtolength{\oddsidemargin}{1cm}
+%\addtolength{\textwidth}{-1cm}
+\def\subsectionautorefname{section}
+\def\subsubsectionautorefname{section}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\colorlet{keydesc}{opt}
+\OnlyDescription
+\lstset{numbers=none,columns=fullflexible}
+\def\Eurl#1{\edef\temp{{#1}}\expandafter\url\temp}
+\IfFileExists{metalogo.sty}{%
+\usepackage{metalogo}%
+}%
+{%
+\providecommand{\XeLaTeX}{Xe\TeX}
+\providecommand{\XeLaTeX}{Xe\LaTeX}
+}
+\begin{document}
+  \DocInput{\jobname.dtx}
+  \PrintChanges
+  \newpage\PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{3934}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v0.1}{2010/03/21}{First released version}
+% \changes{v0.2}{2010/03/22}{Added support for beamer style settings in the config file using \cs{ifstandalonebeamer}. Updated documentation.}
+% \changes{v0.3}{2010/03/26}{Added package options to automatically copy sub-preamble code to the main preamble.}
+% \changes{v0.3a}{2010/03/27}{Fixed bug related to line endings in \texttt{.sta} file. Listed sub-files now have \texttt{.tex} as default extension.}
+% \changes{v0.4}{2011/02/28}{Added option 'border' for easy adjustments of the preview border.}
+% \changes{v1.1}{2012/05/05}{Fixed conversion issue with MiKTeX.}
+% \changes{v1.1a}{2012/05/20}{Failed conversion now always creates a normal output file. Some requested changes in the
+% manual.}
+% \changes{v1.1b}{2012/09/15}{Fixed issue with 'subpreambles' for Beamer documents.}
+% \changes{v1.2}{2012/12/31}{Fixed build issue with MiKTeX due to incorrect quoting character.}
+% \changes{v1.3}{2018/03/24}{Several fixes for new driver and LuaTeX versions. Other minor fixes in bundle and manual.}
+% \changes{v1.3a}{2018/03/26}{Improved shellescape code to ensure compatibility with all current LaTeX formats.
+% Added loading of LuaTeX compatibility packages.
+% Changed filemodedate code to support LuaTeX.
+% Fixes for option combination multi,convert.}
+% \changes{v1.3b}{2022/10/10}{Fixed incorrect/unwanted messages for conversion feature. Updated project URLs in documentation. Added dependency list file.}
+% \changes{v1.4}{2022/11/11}{Updated conversion feature.}
+%
+% \GetFileInfo{\jobname.dtx}
+%
+% \DoNotIndex{\newcommand,\newenvironment,\def,\edef,\xdef,\gdef,\DeclareRobustCommand}
+% \DoNotIndex{\expandafter,\if,\else,\fi,\ifnum,\ifx,\let,\global,\long}
+% \DoNotIndex{\newcounter,\newcount,\message,\meaning,\noexpand,\relax,\value}
+% \DoNotIndex{\setcounter,\addtocounter,\advance,\afterassignment,\AtEndOfPackage}
+% \DoNotIndex{\ProvidesPackage,\providecommand,\RequirePackage,\empty,\begin,\end}
+% \DoNotIndex{\begingroup,\bgroup,\egroup,\endgroup,\csname,\endcsname,\@tempa,\@tempb}
+% \DoNotIndex{\ignorespaces,\lccode,\sffamily,\@gobble,\@ifundefined,\@for,\or}
+% \DoNotIndex{\@firstoftwo,\@ifnextchar,\@namedef,\@nameuse,\@secondoftwo}
+% \DoNotIndex{\@temptokena,\toks@,\BODY,\do,\g@addto@macro,\lowercase,\uppercase,\the}
+% \DoNotIndex{\aftergroup,\CurrentOption,\DeclareBoolOption,\DeclareDefaultOption,\DeclareStringOption,\DeclareVoidOption}
+% \DoNotIndex{\endinput,\endpreview,\input,\LoadClass,\newif,\PassOptionsToPackage,\preview,\ProcessKeyvalOptions}
+% \DoNotIndex{\renewcommand,\renewenvironment,\setbeamertemplate,\SetupKeyvalOptions,\space,\unskip,\usepackage}
+% \DoNotIndex{\unexpanded,\write,\next,\jobname,\hbox}
+%
+% \ifpdf
+% \hypersetup{%
+%   pdfauthor   = {Martin Scharrer <martin.scharrer@web.de>},
+%   pdftitle    = {The standalone class and package},
+%   pdfsubject  = {Documentation of LaTeX class and package 'standalone'},
+%   pdfkeywords = {standalone, LaTeX, TeX}
+% }%
+% \fi
+% \author{Martin Scharrer}
+% \email{martin.scharrer@web.de}
+% \repository{https://github.com/MartinScharrer/standalone}
+% \maketitle
+%
+%
+% \begin{abstract}
+% The \pkg{standalone} bundle allows users to easily place picture environments or other material in own source files
+% and compile these on their own or as part of a main document.
+% A special \cls{standalone} class is provided for use with such files, which by default crops the resulting output file to the content.
+% The \pkg{standalone} package enables the user to simply load the standalone files using \Macro\input\relax inside a main document.
+% \end{abstract}
+%
+% \smallskip
+% \begin{multicols}{2}
+% \setcounter{tocdepth}{2}
+% \tableofcontents
+% \end{multicols}
+% 
+% \section{Online Resources and Help}
+% This bundle is released on the comprehensive \TeX\ archive network (CTAN) under \url{https://ctan.org/pkg/standalone}.
+% Any modern \LaTeX\ distribution should pick it from there automatically, though. CTAN now allows votes and comments on packages and such feedback is very welcome.
+%
+% The source code of this bundle is hosted on Github under \url{https://github.com/MartinScharrer/standalone}. 
+% The ticket system there should be used to report bugs or request new features: \url{https://github.com/MartinScharrer/standalone/issues}.
+% 
+% User which need help with should search for an existing solution on the site TeX.Stackexchange.com: \url{https://tex.stackexchange.com/questions/tagged/standalone} 
+% or post a new question: \url{https://tex.stackexchange.com/questions/ask?tags=standalone}. 
+% The bundle author is an active user on TeX.SE but other users might help as well.
+%
+% \section{Installation}
+% This bundle is part of the two main \LaTeX\ distributions \emph{TeX Live} and \emph{MikTeX} and can be easily installed
+% with their package managers. It is also provided as TDS ZIP file on CTAN which can be used for a manual install.
+% Other packages are also required as described in \autoref{sec:dep}.
+%
+% \subsection{Installation with TeX Live}
+% Using a normal TeX Live the bundle is easily installed using the package manager \texttt{tlmgr}.
+% The command \texttt{tlmgr install standalone} will install it and \texttt{tlmgr update standalone} can be used to update it.
+%
+% Because the Ubuntu/Debian version of TeX Live may not include \texttt{tlmgr} a manual install of the package is
+% required. The author recommends to manually install the vanilla version of TeX Live instead which will include 
+% regular package updates.
+%
+% \subsection{Installation with MikTeX}
+% The bundle can be easily installed using the MikTeX package manager as described by
+% \url{http://docs.miktex.org/manual/pkgmgt.html}. The MikTeX package name is identical to the normal package name.
+%
+% \subsection{Manual Installation from CTAN}
+% The bundle is also available on the Comprehensive TeX Archive Network (CTAN), both as the DTX/INS files and as TDS
+% ZIP file, which can be used for a manual install. A manual install is only required if the used distribution does not
+% include the (required version of the) package.
+%
+%
+% \subsubsection{Installation from TDS ZIP file}
+% The TDS (\TeX\ Directory Structur) ZIP file includes all package files in the final form and relative location.
+% It can be downloaded from CTAN: \url{http://mirrors.ctan.org/install/macros/latex/contrib/standalone.tds.zip} and 
+% from the Github project site \url{https://github.com/MartinScharrer/standalone/releases/}.
+% It needs only to be unzipped in a TEXMF directory. Under Linux/Unix this is usually the user TEXMF directory
+% \path{~/texmf}. 
+% Under Windows it is usually \path{C:\Users\<user name>\texmf} (Windows Vista/7) or \path{C:\Documents and
+% Settings\<user name>\texmf} (Windows XP). 
+% Under Mac OS X it is usually \path{/Users/<user name>/Library/texmf}.
+% Alternatively a system local directory can be used which is usually given by the environment variable 
+% \texttt{TEXMFLOCAL}.
+% After the files are copied to this location the file name database of \TeX\ might need to be updated.
+% This can be done with TeX Live by running \texttt{texhash <path>} or \texttt{mktexlsr <path>}.
+% MikTeX provides a graphical interface to refresh its file name database as described by 
+% \url{http://docs.miktex.org/manual/configuring.html#fndbupdate}.
+%
+%
+% \subsubsection{Installation from DTX File}
+% The package is also provided as DTX (Documented TeX file) which is accompanied by an INS (Install) file
+% under \url{http://www.ctan.org/tex-archive/macros/latex/contrib/standalone}.
+% To unpack all package files from the DTX file compile the INS file with |tex| once.
+% The manual can be compiled from the DTX file with |pdflatex|. This requires the \pkg{ydoc} bundle to be installed.
+%
+%
+% \subsection{Dependencies}\label{sec:dep}
+% The \cls{standalone} class and package require the \pkg{xkeyval} package.
+% The packages \pkg{ifpdf}, \pkg{ifluatex}, \pkg{ifxetex}, and \pkg{shellesc} are loaded if available, otherwise some fall-back code is used.
+% If enabled the class options \opt{varwidth}, \opt{preview} and \opt{beamer} require the package or class of the same name.
+%
+% The \pkg{standalone} package requires the \pkg{currfile} package (which in turn uses \pkg{filehook}) to track the correct file names of
+% sub-files included using |\input|.
+% For the compilation support for included standalone files the \pkg{gincltex} and \pkg{filemod} packages are also required.
+%
+% To compile the documentation of \cls{standalone} the \cls{ydoc} bundle is required.
+%
+% All of these packages are included in recent versions of the TeXLive or MikTeX distributions and are freely available on \href{http://www.ctan.org/}{CTAN}.
+%
+% \section{Bug reports, feature requests and other feedback}
+% Bug reports, feature requests and other feedback about the \cls{standalone} bundle can be sent to the author
+% either by email to \href{mailto:martin.scharrer@web.de?subject=standalone:%20}{martin.scharrer@web.de}
+% or using the issue tracker for the bundle under \url{https://github.com/MartinScharrer/standalone/issues}.
+% Bug reports should include the used version of \cls{standalone} as well as the used \LaTeX\ format (|pdflatex|, |latex|, |xelatex|, etc.) and distribution including its version.
+% Usually a minimal example which recreate the issue is immensely helpful in analysing and solving any bug.
+% Please look for existing related issue tickets first and check the FAQ/troubleshooting in \autoref{sec:classfaq} first.
+% Issues related to the \opt{preview} class option should be compared with a direct use of the underlying \pkg{preview} package.
+%
+%
+% \clearpage
+%
+% \section{Introduction}
+% Larger \LaTeX{} documents can be split into multiple \TeX\ files which are then included in a main document with \cs{include}
+% for e.g.\ chapter files or \cs{input} for e.g.\ \TeX-coded pictures. Keeping pictures in their own sub-files improves readability
+% of the main file and simplifies the sharing of them between different documents. However, during the, sometimes lengthly,
+% drawing/coding process it has benefits to be able to compile the pictures on their own. The compile process is much quicker and
+% the resulting document only holds the picture which avoids constant page turning and zooming.
+%
+% While it is possible to write a small `main' file for each picture file, this method is a little cumbersome and clutters
+% the directories with a lot of extra files. A second method is to place the `main' components, i.e. a preamble, directly into the
+% picture files and make the main document ignore this code sections.
+%
+% The package \cls{standalone} can be used in the main document to skip all extra preambles in included files. The main file must load all packages
+% and settings required by the sub-files. Several package options are provided to collect the preambles of the sub-files automatically and execute them from the main file.
+%
+% A \cls{standalone} class is also provided to minimise the extra preamble code needed in this files.
+% It's usage is optional, but simplifies and standardises how picture files are compiled standalone.
+% The class uses by default the \opt{crop} option to create an output file which only contains the picture with no extra
+% margins, page numbers or anything else. 
+% A configuration file \file{standalone.cfg} read by the class allows the user to adjust settings and macros easily
+% on a per directory base.
+%
+% \subsection{Quick instructions}
+% Load the \cls{standalone} \emph{package} very early in the main document. Also all packages needed by all the sub-files must be loaded by the main document.
+% Include your picture or other sub-files using |\input| or a similar macro as normal.
+% In the sub-files use the \cls{standalone} \emph{class} with a normal \cs{documentclass} and load all packages needed for the particular
+% file. Finally wrap the actual content of the sub-file in a \env{document} environment. Avoid empty lines at the begin or end of the document body.
+%
+% When the sub-file is compiled on its own the |\documentclass| and \env{document} environment will be active as normal. The main file, however,
+% will skip everything from the |\documentclass| till the |\begin{document}|. The (now fake) \env{document} environment is redefined to be a simple
+% TeX-group. Any code lines after the |\end{document}| will be ignored. The real \env{document} environment of the main file will be unaffected and will work as normal.
+%
+% The packages required by each sub-file can be transfered automatically to the main document preamble using the options
+% listed in \autoref{sec:pkgoptions}.
+%
+% \subsection{Version update and backwards compatibility}
+% The default behaviour of v1.x of the \cls{standalone} class is slightly different as the one of v0.x, but should result in the same output for the majority of standalone files.
+% In previous versions the \opt{preview} option was enabled by default, but since v1.0 the new, similar \opt{crop} option is now used.
+% This change should improve several use-cases, like avoiding the creation of a paragraph due to a trailing empty line and issues with TikZ patterns under \XeLaTeX.
+% However, paragraph breaks are now ignored by default, which should be no issue at all for picture and similar environments which are the main target of the \cls{standalone} class.
+% Additionally, the default border has been changed from the \pkg{preview} default of 0.50001bp to no border (0pt).
+% Both of these settings can be changed back to the old default by adding \Macro\standaloneconfig{preview,border=0.50001bp} in the configuration file
+% or explicitly stating these options as class options.
+%
+% One true incompatibility between v0.x and v1.x is the load point of the class configuration file.
+% In v0.x the configuration file was loaded after all options where processed in order to have all if-switches their final value.
+% In v1.x the configuration file is now loaded directly before the given class options are processed. This allows to easily set default options for all standalone files.
+% Code which relies on if-switches (like \Macro{ifstandalone} and \Macro{ifstandalonebeamer}) should be placed inside a \Macro\AtEndOfClass{<code>} macro.
+% This change might require an update of personal configuration files.
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Similar packages and classes}
+% The following packages, libraries and/or classes target the same or similar applications as the \bundle{standalone} bundle and are mentioned here for easy comparison, so that the user can decide
+% which suits them best.
+%
+% The \pkg{docmute} package is written for the same basic task as the \cls{standalone} package. However, no sub-preamble processing other than the removal is support. It also
+% doesn't provide a special class or configuration file.
+%
+% The \pkg{subfile} package and class are written for the same application to allow subfiles to be compiled standalone. However, the \cls{class} class will import the preamble from a given main file,
+% while \pkg{standalone} is designed more for the opposite direction where the preamble of subfiles can be imported to the main document. Therefore a \cls{standalone} file can be more easily included
+% into several documents, like a paper (scientific publication), a corresponding presentation and then a thesis, while \cls{subfile} is designed for a one-to-one relationship.
+% At the time of the writing \pkg{subfile} is not part of TeXLive due to a missing license statement.
+%
+% The \lib{external} library of \pkg{tikz} allows to externalize \env{tikzpictures} from an main document. Its build feature is similar to the one provided by \cls{standalone}.
+% However, both work form different directions: \cls{standalone} allows to include external \env{tikzpictures} to be included in a main file while ignoring the preamble while
+% \lib{external} writes them from the main file to temporary external files. The user must decide which workflow is better suited for him/her.
+% Also \cls{standalone} is working independently of \pkg{tikz} and supports other picture environments like \pkg{pstricks} or any other \TeX\ material.
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+% \section{Usage of the \cls{standalone} class}
+% \subsection{Basic usage}
+% Creating a basic standalone is straight-forward: Create a normal \LaTeX\ document which uses the \cls{standalone} as document class.
+% The preamble should load all required packages and libraries for the content. The content, usually a single picture environment like \env{tikzpicture},
+% is placed in the \env{document} body. Empty lines before and after the picture should be avoided.
+% Also the |\begin{document}| and |\end{document}| should each stand on a source line of their own.
+%
+% \par\noindent
+% \begin{minipage}{\textwidth}
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,caption={Basic use of the \cls{standalone} class.},numbers=none]
+%   \documentclass{standalone}
+%   \usepackage{somepackage}
+%   \begin{document}
+%   \begin{somepicture}
+%       \somedrawingcommands
+%   \end{somepicture}
+%   \end{document}
+% \end{lstlisting}
+% \end{minipage}
+%
+% Such a file can be compiled as normal. The \cls{standalone} class will crop the resulting output file (PDF or DVI/PS) to the content size plus a certain border.
+% Page number and other header or footer material will be suppressed.
+%
+% For pictures drawn with TikZ a dedicated \opt{tikz} option is provided which loads the \pkg{tikz} package and also configures the \env{tikzpicture} environment to create a single cropped page.
+% For PSTricks pictures an corresponding \opt{pstricks} option is provided.
+%
+% \par\noindent
+% \begin{minipage}{\textwidth}
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,caption={Basic use of the \cls{standalone} class.},numbers=none]
+%   \documentclass[tikz]{standalone}
+%   %\usetikzlibrary{calc}
+%   \begin{document}
+%   \begin{tikzpicture}
+%     \draw (0,0) rectangle (2,1) node [midway] {Example};
+%   \end{tikzpicture}
+%   % Further 'tikzpicture' environments are possible which will create further pages.
+%   \end{document}
+% \end{lstlisting}
+% \end{minipage}
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Class options}\label{sec:classoptions}
+% The \cls{standalone} class provides the following options to adjust the processing and size of the content.
+% These options are removed from the normal list of class options and not passed to any loaded packages or classes like it would usually occur.
+% This is also done to avoid option conflicts with identical named options of the underlying class.
+%
+% All boolean options take either `|true|' or `|false|' as optional values. Otherwise, if the option is used without a value, `|true|' is used.
+% If not mentioned otherwise all options set to `|false|' initially.
+% Options might switch other options on or off. For example, mutual exclusive options will disable each other. The order of the option is obeyed
+% and later options will prevail over earlier ones.
+%
+% By default the \opt{crop} option with \opt{border}|=0| is enabled. In versions prior to v1.0 the option \opt{preview} was the default. This chance
+% was deemed required and should not affect most documents. However, in some cases resetting the \opt{preview} option
+% might be required.
+%
+% Certain class options can also be set inside the preamble or document body using \Macro\standaloneconfig{<options>}.
+%
+% \DescribeKey{class}'='<class name>
+% Specifies the underlying class which is loaded by the \cls{standalone} class.
+% By default \cls{article} is used, which should be suitable for standalone pictures.
+% In certain cases it may be from benefit to use the same class than in the targeted main document.
+% For the \cls{beamer} class the special \opt{beamer} option should be used instead.
+%
+% \DescribeKey{crop}'=true|false'
+% If enabled this option crops the content to its natural size plus a specified border. This is done by saving the content in a box register and resizing
+% the page size relative to the box dimensions. This option is enabled by default (since v1.0).
+% This option is mutually exclusive with the similar \opt{preview} option and will therefore disable it.
+% If both options are used the last one will be enabled and the other will be disabled.
+% Also \Key{float}'=false' will be set by \Key{crop}'=true' in order to avoid issues with floating environments.
+%
+% \DescribeKey{preview}'=true|false'
+% If enabled this option loads the \pkg{preview} package with the \opt{tightpage} option
+% and wraps the content into a \env{preview} environment. This crops the content to its natural size plus a specified border.
+% Issues with the \pkg{preview} options and TikZ shadings under \XeLaTeX have been reported. In this cases the \opt{crop} option should be used instead.
+% Note that this option was enabled by default for versions before v1.0, but since then \opt{crop} is enabled by
+% default.
+%
+% This option is mutually exclusive with the similar \opt{crop} option and will therefore disable it.
+% If both options are used the last one will be enabled and the other will be disabled.
+% Also \Key{float}'=false' will be set by \Key{preview}'=true' in order to avoid issues with floating environments.
+%
+% \DescribeKey{border}'='<length (all sides)>
+% \DescribeKey{border}'='{<length (left/right)>~<length (bottom/top)>}
+% \DescribeKey{border}'='{<length (left)>~<length (bottom)>~<length (right)>~<length (top)>}
+% This option allows to specify the border used by the \opt{preview} and \opt{crop} options.
+% An alternative name of this option is \opt{margin}.
+% The border can either be given using a single value for all sides, separately for the horizontal and vertical borders or for all sides separately.
+% Multiple values are separated by spaces, which require the whole value to be wrapped in braces.
+% By default a border of |0pt| is set.
+%
+% This option can be changed during the document using \Macro\standaloneconfig and will affect all following pages.
+%
+% \DescribeKey{multi}'=true|false'
+% \DescribeKey{multi}'='{<environment name>, \ldots>}
+% By default the \cls{standalone} class assume that the whole content is one block which should be shown on one single page.
+% If this option is activated multiple pages are supported. Each page will be cropped to its content plus the selected border (as long either \opt{preview} or \opt{crop} are enabled).
+% A set of environments which hold a single page must either be given as option value or declared using \Macro\standaloneenv{<environment name>, \ldots}.
+% No typeset material should be used outside such environments.
+% Note that this option is enabled automatically by \Macro\standaloneenv if either \opt{crop} or \opt{preview} is enabled.
+% However, it needs to be set explicitly as class option if the \opt{ignorerest} option is also set.
+% If environment names are provided as option values the option is set to `|true|' and the environments are passed to \Macro\standaloneenv which is executed at the begin of the
+% document environment, where all mentioned environments should be already defined.
+%
+% \DescribeKey{ignorerest}'=true|false'
+% This option is only meaningful when both \opt{multi} and \opt{crop} are enabled.
+% Then it determines if all material which does not appear inside environments declared with \Macro\standalone should be ignored or not.
+% This is done by boxing and discarding all outside material. Any code will be placed inside a group and therefore local settings made between environments
+% will not affect later code. Code in the preamble is not affected.
+% It is recommended to keep this option disabled and only use it if really required.
+% It should be noted that which \opt{preview} such material is always ignored while not affecting local settings.
+% Therefore the \opt{ignorrest} option can be seen as a compatibility setting to make \opt{crop} act more like \opt{preview}, if this is required by the user.
+%
+%
+% \DescribeKey{multido}'=true|false'
+% Often the \pkg{multido} package with its \Macro\multido macro is used to produce several iterations of a diagram.
+% Usually every iteration should be placed on a seperate page. This option simplifies this task be changing
+% \Macro\multido to automatically wrap the content (3rd argument) in a \opt{multi} environment.
+% This option will only work if the \Macro\multido macro is on the top level and not part of an environment like \env{pspicture}.
+%
+% The \opt{ignorerest} option is supported by \opt{multido} because special care is taken to not ignore the
+% \Macro\multido macros.
+%
+% The nesting of \Macro\multido macros is supported and only the outer one will produce pages while the inner ones are
+% acting normally. The same is true for \Macro\multido inside any \opt{multi} environment.
+%
+% This option sets the option \opt{multi}|=samultido|, loads the \pkg{multido} package and redefines its internal macro
+% \Macro\multido@.  This is done to also support the other macros \Macro\mmultido, \Macro\Multido and \Macro\MMultido.
+%
+%
+% \DescribeKey{varwidth}'=true|false'
+% \DescribeKey{varwidth}'='<width>
+% A trailing empty line between the content and \Macro\end{document}\relax will normally create a paragraph which is \Macro\linewidth wide.
+% This paragraph (or any other one) will enlarge the size of smaller pictures and display itself as a large right border.
+% This option uses the \pkg{varwidth} package to wrap the content into a \env{varwidth} environment, which is based on \env{minipage},
+% but will always use the natural width of the content if it is smaller than the given maximum width.
+% The resulting effect is that the created paragraph will not cause any additional width and that multiple paragraphs can be included as part of the content.
+% The used maximal width (which is provided to the underlying \env{minipage} environment) is \Macro\linewidth by default, but can be set 
+% by provided a width as value to the option. Doing so will also switch the option on.
+%
+% If the \opt{crop} option is used the content is placed in restricted horizontal mode which ignores paragraph breaks.
+% Using the \opt{varwidth} option paragraph breaks are enabled again.
+%
+% A drawback of this option is that the content will be limited to the given width, i.e.\ wider picture environment will be cropped to the width at the right
+% side. In such cases either a larger width should be selected, the option be switch off, any paragraph breaks should be avoided (no trailing empty lines) or one of the 
+% specific picture options like \opt{tikz} or \opt{pstricks} should be used instead.
+%
+% This option can be changed during the document using \Macro\standaloneconfig and will affect all content of the following pages.
+%
+% \DescribeKey{tikz}'=true|false'
+% This option declares that the content contains of one or more \env{tikzpicture} environments. This sets |multi=tikzpicture,varwidth=false| and loads the \pkg{tikz} package.
+%
+% \DescribeKey{pstricks}'=true|false'
+% This option declares that the content contains of one or more \env{pspicture} or \env{pspicture*} environments. This sets |multi=pspicture,varwidth=false| and loads the \pkg{pstricks} package.
+% Because \env{pspicture*} uses \env{pspicture} internally it is also supported. Other environments which use it as well should also be supported,
+% but might also declared explicitly using \Macro\standaloneenv{<environment name>, \ldots}.
+%
+% \DescribeKey{beamer}'=true|false'
+% If set to `|true|' this option enables a special \cls{beamer} mode, where the normal cropping is disabled.
+% Instead the content is shown on a blank beamer frame.
+%
+% \DescribeKey{float}'=true|false'
+% If this option is that to `|false|' (which is the default) any floats like \env{figure} and \env{table} environments are turned into non-floating environment.
+% This is required for the options \opt{crop} and \opt{preview} to work, so these will set \Key{float}'=false' when set to `|true|' itself.
+% In general it is recommended to keep floating environments inside the main document and only place the content of them into standalone files.
+% This also makes it simple to include the same content in different floats of different main documents.
+%
+% If custom floats are defined using a package like \pkg{float} are not supported yet. Dependent on the way they define floats they might still work.
+% For these \Key{float}'=true' should be set as class options so that the normal definition of floats is preserved.
+% Afterwards \Macro\standaloneconfig{float=false} can be used to disable floats while taking the changed float definition into account.
+%
+%
+% \DescribeKey{convert}'='{<conversion options>}
+% \DescribeKey{png}'='{<conversion options>}
+% \DescribeKey{jpg}'='{<conversion options>}
+% \DescribeKey{gif}'='{<conversion options>}
+% \DescribeKey{svg}'='{<conversion options>}
+% \DescribeKey{emf}'='{<conversion options>}
+% These options allow to enable and configure the conversion feature. See \autoref{sec:convert} for the full description.
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Macros and environments}\label{sec:classmacros}
+% The following macros and environments can be used inside the preamble of \cls{standalone} files. Further macros are listed in \autoref{sec:common} which are
+% defined by both the class and package and can be used in standalone files but also in the main document.
+%
+% \DescribeMacro\standaloneconfig{<options>}
+% This configuration macro accepts the class options described in \autoref{sec:classoptions}.
+% It can be used inside the class configuration file to set default settings used by all standalone files, as mention in \autoref{sec:configfile}.
+% These settings are set just before the class options of the standalone file are processed.
+%
+% Certain class options (e.g.\ \opt{border}, \opt{varwidth}) which do not have a global effect can also be changed using this macro later in the preamble or even inside the document body
+% between different content if the \opt{multi} option is enabled.
+%
+% \DescribeMacro\standaloneenv{<environment>', '<environment>', '\ldots}
+% If the \opt{multi} option is in effect this macro should be used to declare all environments which produce content.
+% Common examples of such environments are \env{tikzpicture}, \env{pspicture} and other picture environments.
+% This macro must only be used inside the preamble.
+% Every use of such an environment in the document body will produce a new page.
+% An exception are nested appearances of such environments, e.g.\ a \env{tikzpicture} inside a node of another \env{tikzpicture}.
+% The environments must be previously defined and must not be redefined afterwards. Multiple appearances of the same environment name
+% inside one or multiple \Macro\standalonenv should be avoided.
+%
+% This macro uses \Macro\PreviewEnvironment internally if the \opt{preview} option is active. Own code is used with the alternative \opt{crop} option.
+% If none of these options are enabled this macro will have not effect and will be silently ignored.
+%
+% \DescribeMacro{\standaloneignore}
+% In rare cases some code must be placed before the |\documentclass| of a sub-file (e.g.\ |\PassOptionsToPackage|).
+% Because the main document will only skip code between |\documentclass| and |\begin{document}| this code will be executed by it.
+% In order to avoid this the macro \cs{standaloneignore} can be used at the very beginning of a sub-file to skip over this code.
+% However it must be written as |\csname standaloneignore\endcsname| to avoid a `Undefined control sequence' error when compiled standalone.
+% After all the class is not loaded at this point, therefore no \cls{standalone} macros are yet defined.
+% The |\csname|\,\ldots|\endcsname| construct will simple make it equal to |\relax| in this case.
+%
+% Please note that all code before |\documentclass| is not processed by any of the \opt{subpreamble} options but always simply removed.
+% This macro was inspired by the similar macro |\docmute| of the |docmute| package.
+%
+% \DescribeEnv[<sub-file content>]{standalone}
+% The \env{standalone} environment is automatically wrapped around the content of standalone files.
+% If the \opt{multi} option is enabled it is wrapped around every page, i.e.\ every environment declared with \Macro\standaloneenv.
+% The definition of this environment depends on options like \opt{crop} and \opt{preview}.
+% It is possible to redefine this environment in the configuration file or the document preamble to adjust the processing of the content, but this is not recommended.
+% If done most content related options will stop work and/or cause errors.
+%
+% The beamer specific macros and environments are described in \autoref{sec:beamer}.
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Support for Beamer Presentations}\label{sec:beamer}
+% Presentation can be written in \LaTeX\ using the \cls{beamer} class. Each presentation frame is wrapped in a \env{frame} environment. Overlay effects
+% can be added using special macros. This effects result in multiple pages per frame. Pictures with such overlay effects can not be
+% compiled standalone using the normal settings. Instead the \cls{standalone} class must load the |beamer| class and wrap the content also in
+% a \env{frame} environment while skipping the \env{preview} environment. To activate this settings load the \cls{standalone} class with the |beamer| option.
+% Because the \env{frame} environment is quite special (it normally collects all it's content and calls the \cs{frame}) and must also support
+% verbatim content it is not easily possible to redefined the |document| environment to include \env{frame}. Also \env{frame} accepts options which |document| doesn't.
+% Therefore a second environment called \env{standaloneframe} is used in the beamer picture files. It will be equal to \env{frame} in standalone mode, but
+% without effect otherwise.
+%
+% \DescribeMacro{\ifstandalonebeamer}
+% Both the class and the package provide the if-switch \cs{ifstandalonebeamer}, which can be used to only include code if the file is
+% compiled standalone with the |beamer| class option set.
+% The switch is set to \cs{iftrue} by the class when loaded with the \opt{beamer} option and always to \cs{iffalse} by the package.
+% It can be used to place beamer specific options in the configuration files, which should be skipped for non-beamer standalone files.
+% If used inside the configuration file this switch must be placed inside \Macro\AtEndOfClass{\ldots}, because the \opt{beamer} option is not yet processed 
+%
+% \begin{DescribeEnv}{standaloneframe}
+%   !\begingroup\oargstyle!<< <overlay specification> >>!\endgroup!
+%   ['<'<default overlay spec>'>']!\\\hspace*{7em}!
+%   [<options>]{<optional frame title>}{<optional frame subtitle>}
+%   \relax\MacroArgs<code with beamer overlays>
+% \end{DescribeEnv}
+% The \env{standaloneframe} environment must be used in sub-file holding beamer overlay code.
+% It is only defined when the class is called with the |beamer| option and acts as a replacement
+% of the \env{frame} environment of beamer when compiled standalone.
+% All optional arguments of \env{frame} are supported but most might not be useful for normal sub-files.
+% When compiled as part of a main document it does nothing except of gobbling its arguments.
+%
+% The listings~\ref{lst:beamer}--\ref{lst:beamerrepl} shows a beamer standalone example and its effective code in standalone and main document mode.
+%
+% \par\bigskip\noindent
+% \begin{minipage}{\textwidth}\noindent
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,numbers=none,caption={Use of \texttt{standalone} class with \texttt{beamer} option.},label=lst:beamer]
+%   % Use of 'standalone' class with a beamer overlay:
+%   \documentclass[beamer]{standalone}
+%   % Load packages needed for this TeX file:
+%   \usepackage{tikz}
+%   % Surround TeX code with 'document' environment:
+%   \begin{document}
+%   \begin{standaloneframe}[<options>] % e.g. 'fragile'
+%    % Add your TeX code:
+%     \only<1>{ One }%
+%     \only<2>{ Two }%
+%   \end{standaloneframe}
+%   \end{document}
+% \end{lstlisting}
+% \end{minipage}
+%
+% \par\bigskip\noindent
+% \begin{minipage}{\textwidth}\noindent
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,numbers=none,caption={Effective beamer code if compiled standalone.}]
+%   \documentclass{beamer}
+%   <beamer code from standalone.cfg file>
+%   \usepackage{tikz}
+%   \begin{document}
+%   \begin{frame}[your options]
+%     \only<1>{ One }%
+%     \only<2>{ Two }%
+%   \end{frame}
+%   \end{document}
+% \end{lstlisting}
+% \end{minipage}
+%
+% \par\bigskip\noindent
+% \begin{minipage}{\textwidth}\noindent
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,numbers=none,caption={Effective code if included in a beamer presentation.},label=lst:beamerrepl]
+%   \begingroup
+%     \only<1>{ One }%
+%     \only<2>{ Two }%
+%   \endgroup
+%   \endinput
+% \end{lstlisting}
+% \end{minipage}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Class configuration file}\label{sec:configfile}
+% The \cls{standalone} class loads a configuration file called \file{standalone.cfg} just before the options are processed, but after all options and if-switches are declared.
+% Any class options can then also be given using \Macro\standaloneconfig{<options>}.
+% Settings which depends on the finally used options should be placed inside \Macro\AtEndOfClass{\ldots}, so that they are processed after all options.
+% This is particular required for \cls{beamer} specific settings, because at load time of the configuration file a given \opt{beamer} option is not yet processed.
+% Please note that this was handled differently before v1.0, so in old configuration files edited by the user the \Macro\AtEndOfClass must now be added.
+%
+% A default configuration file is provided together with the bundle and holds some default settings. Because this file will be overwritten every time the bundle is updated, users
+% should create an own configuration file in the local TEXMF tree or the document directory. In order to keep the default behaviour this file should either contain the content of the bundle configuration file
+% or load it.
+% Because it can be assumed that the bundle configuration file resides inside a \file{standalone} directory, therefore it can be loaded from a user configuration file using
+% \Macro\input{standalone/standalone.cfg}.
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \subsection{Simple TeX File}
+% A simple \file{standalone.tex} file is provided together with the bundle, which may be useful in special occasions.
+% It will set the \cs{ifstandalone} switch to \emph{true} when compiled standalone but to \emph{false}
+% when loaded after any |\documentclass| macro, as long the switch isn't defined yet.
+% It must be used if this switch is required before the |\documentclass| of a standalone file.
+%
+% \noindent
+% \begin{minipage}{\textwidth}\noindent
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,numbers=none,caption={Usage of 'standalone.tex'.}]
+%   \input{standalone} % use before any '\documentclass'
+%   \ifstandalone
+%     % Used only if compiled standalone
+%   \fi
+% \end{lstlisting}
+% \end{minipage}
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{FAQ / Troubleshooting}\label{sec:classfaq}
+% This section expands some issues and their solution which can arise with the \cls{standalone} class.
+%
+% \subsubsection*{Large white space / border at the right side}
+% A large white space / border on the right side occurs when the content is placed inside a paragraph.
+% This causes the content to be \Macro\linewidth wide and so smaller pictures will contain now a white space at the right.
+% A common cause for this is that there was is a empty line between the content and \Macro\end{document} which causes a paragraph break.
+%
+% This issue can be solved by either removing any trailing lines or other paragraph breaks, or by using the \opt{varwidth} option which suppresses the extra added width.
+% It is also possible to use the \opt{multi} option and \Macro\standaloneenv{<environment name>} to declare certain environments as page content.
+% The \opt{tikz} option does this for \env{tikzpictures} and the \opt{pstricks} option for \env{pspicture}. See the descriptions of these options for more details.
+%
+% \subsubsection*{Some amount of the content on the right side is missing}
+% If the content is cropped to much on the right side, check if the \opt{varwidth} option is used. In this case the used maximum width (\Macro\linewidth by default) is too small.
+% A larger width can be set using \hbox{\opt{varwidth}\MacroArgs'='<length>} or the option can be disabled altogether using \hbox{\opt{varwidth}|=false|}.
+% The largest width possible is given by \Macro\maxdimen, which however might cause internal overflows.
+%
+% This can also be caused with \cls{beamer} content (i.e.\ when the \opt{beamer} option is used). In this case no cropping or \env{varwidth} environment is used at all,
+% but the content is simply to large to fit on a \cls{beamer} \env{frame}. To avoid this rescale the content to do fit. This can be realised by either using 
+% scaling facilities of the used picture environment (like |scale| with \env{environment}, but this only scales coordinates) or using \Macro\scalebox or \Macro\resizebox from \pkg{graphicx}.
+% For complicated code which contains verbatim or other catcode changing code either the \Macro\Resizebox from the \pkg{realboxes} package
+% or the \MacroArgs{adjustbox}{scale=<factor>} environment from the \pkg{adjustbox} package should be used.
+%
+% \subsubsection*{A multi-page document contains some pages with unwanted content}
+% This is caused while \opt{multi}|=true| and \opt{crop}|=true| are set but \opt{ignorerest}|=false| \emph{and} the document contains
+% typeset material outside of environments declared with \Macro\standaloneenv. To avoid that this extra material should be removed or \opt{ignorerest} should be set to |true|.
+% This will also ignore all settings inside the document body which are not inside a declared environment. These can be moved to the preamble instead.
+% See the description of the \opt{ignorerest} option for more details.
+%
+% \subsubsection*{In a multi-page document using DVI/PS mode all pages except the first have a vertical offset}
+% The vertical reference points in PostScript could does not change when the pages are resized to fit the individual content of every page.
+% Therefore an offset is added to compensate for this, which shifts the content to the appropriate vertical position.
+% Should this not work as expected please inform the package author and provide a small example which causes this issue, together with the version number of the used |latex| compiler and tools (like |dvips|, |ps2pdf|)
+% as well as the used \cls{standalone} bundle.
+%
+% \subsubsection*{Issues with cropped files in DVI mode}
+% The \opt{crop} option uses PostScript commans in DVI mode, i.e.\ when |latex| not |pdflatex| (or others) is used as a compiler.
+% This PostScript commands will only work once the DVI is converted to PS or EPS.
+% Currently this cropping code is experimental and might not produce a full (E)PS standard compatible file.
+% This can lead to wrong bounding boxes and wrong orientations or, dependent on the used PostScript tool, even to PostScript compiler errors.
+% Some issues can be overcome by converting the the (E)PS file to a (more) standard compatible version using tools like |eps2eps| or Ghostscript.
+%
+% \subsubsection*{Errors ``Float(s) lost'' or ``not in outer par mode''}
+% Floating environments like \env{figure} or \env{table} can not be used while \Key{float}'=true' and either \Key{crop}'=true' or \Key{preview}'=true' is set.
+% The last two options will try to store the float into a box which is not allowed (because it can't the float any longer).
+% Usually \Key{float}'=false' will solve this error, because it turns these environments into non-floating alternatives.
+% Because both the \Key{crop} and \Key{preview} option will set \Key{float}'=false' themselves, this issue can only arise when the \Key{float} option is manually set afterwards.
+%
+% \subsubsection*{Image conversion does not work}
+% In order for the image conversion to work an external conversion software must be installed. By default either Image Magkick or GhostScript is used. Please insure that either or both of these softwares are installed.
+% Installation guide for your operating system should be easily available on the Internet. The \LaTeX\ compiler option |-shell-escape| must be used to allow this external software to be executed from within the \LaTeX\ code.
+% If this two points are fulfilled but the conversion does still not work, please check the log file. The lines in question start with `|runsystem|' (at least with \TeX\ Live 2011).
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Conversion to images}\label{sec:convert}
+% Using the \opt{convert} class option the standalone file can be easily converted to an raster image. This is done by executing an external program to convert the output file (PDF or PS) to
+% an image (recommended is the lossless PNG format, but also others are supported).
+%
+% \subsection{Conversion settings}
+% Conversion settings can be given as the value of the \Key{convert}'='{<settings>} option.
+% By default conversion is disabled (\Key{convert}'=false'). If enabled without providing own settings (\Key{convert}, \Key{convert}'=true')
+% the following default settings are used: PNG format, a density of 300dpi, no explicit size and the output file name is given by \Macro\jobname, i.e.\ the name of the \LaTeX\ document.
+% Using the \opt{convert} option with any value other than |false| will enabled it.
+% All normal conversion settings are listed in \autoref{tab:convopt}, while \autoref{tab:advconvopt} lists the more advanced options which e.g.\ can be used to modify the conversion command directly.
+% Note that macros used inside documentclass options must be protected from expansion. This can either be done wrapping the whole argument in an \Macro\unexpanded{..} (requires e-\TeX) 
+% or by using \Macro\noexpand in front of any macro.
+%
+% \begin{table}
+% \vspace*{-10ex}%
+% \belowcaptionskip=\abovecaptionskip
+% \caption[Conversion Options]{Conversion Options (to be used in the value of \opt{convert} class option)}\label{tab:convopt}
+% \hbox to \textwidth{\hss%
+% \begin{tabular}{>{\ttfamily}lp{\dimexpr.7\textwidth\relax}l}
+%  \toprule
+%  \multicolumn{1}{l}{Sub-Option}  &  Description & Default value \\
+%  \midrule
+%   (no value) &  Conversion enabled with default settings   & ./. \\
+%     true     &  Conversion enabled (with default settings if no other options are given)  & (no value) \\
+%     false    &  Conversion disabled   & (no value) \\
+%  \midrule
+%     png      &  Selects PNG output format & \\
+%     jpg      &  Selects JPG output format & \\
+%     gif      &  Selects GIF output format using \emph{ImageMagick}. & \\
+%     svg      &  Selects SVG output format using \emph{Inkscape}. & \\
+%     emf      &  Selects EMF output format using \emph{Inkscape}. & \\
+%  \midrule
+%     density  &  Sets the density in dots-per-inch (dpi). Can be a single numerical value or `\meta{X}|x|\meta{Y}'.  & |300| \\
+%     size     &  Sets the size of the image. Can be a single numerical value or `\meta{X}|x|\meta{Y}'. If empty the size is determined by the density setting and the size of the PDF. & (empty) \\
+%  subjobname  &  The jobname used for the internal \LaTeX\ run  & |\jobname| \\
+%     inext    &  Input file extension including the leading dot  & |.pdf| or |.ps| \\
+%     inname   &  Name base of input file (i.e.\ file name without extension)  & |\subjobname| \\
+%     infile   &  Input file name  & |\indir\inname\inext| \\
+%     outext   &  Output file extension including the leading dot  & |.png| \\
+%     outname  &  Name base of output file  & |\inname| \\
+%     outfile  &  Output file name  & |\outdir\outname\outext| \\
+%  \midrule
+%   outputdir  &  Directory to be used for the \LaTeX\ compilers |-output-directory| option. 
+%                 This will cause that all \LaTeX\ output files from the internal run will be created and read-back from the given directory. 
+%                 This option shall be set if the main \LaTeX\ compiler run is called with the |-output-directory| option but can also be used on its own.
+%                 If not empty the directory must end with a slash `/'. & (empty) \\
+%      outdir  &  Output directory where the conversion result shall be created. If not empty the directory must end with a slash `/'.  & |\outputdir| \\
+%       indir  &  Input directory, e.g.\ where the PDF is created. If not empty the directory must end with a slash `/'.  & |\outputdir| \\
+%  \bottomrule\noalign{\smallskip}
+%  \multicolumn{3}{l}{%
+%   \strut Note: the settings (except 'true' and 'false') can also be used as macros in other settings.
+%   }%
+% \end{tabular}%
+% \hss}%
+% \end{table}
+%
+% \begin{table}
+% \vspace*{-10ex}%
+% \belowcaptionskip=\abovecaptionskip
+% \caption{Advanced Conversion Options}\label{tab:advconvopt}
+% \hbox to \textwidth{\hss%
+% \begin{tabular}{>{\ttfamily}lp{\dimexpr.6\textwidth\relax}l}
+%  \toprule
+%  \multicolumn{1}{l}{Sub-Option}  &  Description & Default value \\
+%  \midrule
+%     command  &  Command line used for conversion. & (see |imagemagick|) \\
+%     perpage     & Boolean value. If set to |true| (default if used without a value) the conversion command is called once per page. Needs the \opt{multi} option to be enabled. \\
+%     imagemagick & Sets the convert command to use Image Magick: \newline\bigskip
+%                   \hspace*{-5em}\hbox{\vtop{\hbox{\strut|command=\unexpanded{{\convertexe\space -density \density\space |\vrule height 2\ht\strutbox width 0pt{}}%
+%                                      \hbox{\strut|         \infile\space \ifx\size\empty\else |}%
+%                                      \hbox{\strut|         -resize \size\fi\space -quality 90 \outfile}}|}}\hss} \\
+%     convertexe  & Name of the executable of Image Magick. & (see \autoref{sec:convprogs})  \\
+%     ghostscript & Sets the convert command to use Ghostscript: \newline\bigskip
+%                   \hspace*{-5em}\hbox{\vtop{\hbox{\strut|command=\unexpanded{{\gsexe\space -dSAFER -dBATCH -dNOPAUSE|\vrule height 2\ht\strutbox width 0pt{}}%
+%                                      \hbox{\strut|         -sDEVICE=\gsdevice\space -r\density\space|}%
+%                                      \hbox{\strut|         -sOutputFile=\outfile\space \infile}}|}}\hss} \\
+%     ghostscript32 & Sets the convert command to use Ghostscript and |gsexe| to the 32-bit executable. \\
+%     ghostscript64 & Sets the convert command to use Ghostscript and |gsexe| to the 64-bit executable. \\
+%     gsexe       & Name of the executable of Ghostscript. & (see \autoref{sec:convprogs})  \\
+%     gsdevice    & The output device to be used for ghostscript. Already set up for PNG and JPG output. & \parbox[t]{15em}{Uses known device if defined for output format, otherwise the output format itself.}\\
+%     precommand  & Command to be executed before the actual conversion command.  & {\tabular[t]{@{}l@{}}|dvips \subjobname| (DVI/PS),\\empty (PDF)\endtabular} \\
+%     onfailure   & Sets if an type of `message' which should be triggered on conversion failure:  |error|, |warning|, |info| or |ignore|. & |warning| \\
+%
+%  \bottomrule
+% \end{tabular}%
+% \hss}%
+% \end{table}
+%
+% \subsection{Conversion software}\label{sec:convprogs}
+% The conversion requires an external image converter program to be installed. The two following tools are supported.
+% In order for an external program to be executed the \texttt{-shell-escape} option\footnote{Maybe named differently depending on the used \LaTeX\ distribution} must be used for the 
+% compiler executable, e.g.\ \texttt{pdflatex -shell-escape filename}. Without this option no conversion is possible as \LaTeX\ will block calls to the shell.
+%
+% By default the conversion program \href{https://pages.cs.wisc.edu/~ghost/}{Ghostscript} is used, which is a very common PostScript interpreter which also supports PDF.
+% Under Ubuntu Linux it is most likely already installed but otherwise can be installed using `\texttt{sudo apt-get install ghostscript}' or
+% `\texttt{sudo apt-get install gs}'.
+% It can convert both to various output formats and is freely available for Unix/Linux, Max OS X and MS Windows.
+% It requires to set the correct output device which is not always fully identical to the output format (e.g.\ `|png16m|' for a PNG (with 16 million colors)).
+% The devices for PNG and JPG are already configured.
+% Other devices can be configured using the \Key{defgsdevice}'='{<.extension>}{<device>} conversion setting.
+% The Ghostscript executable is usually named `|gs|' under Linux/Unix and `|gswin64c|' (32-bit version: `|gswin32c|') under MS Windows and configured this way by default,
+% but this may be changed using the |gsexe| setting. By default the 64-bit version is used, which can be changed to the 32-bit version using the \opt{ghostscript32} convert option.
+%
+% Also supported is the conversion program \href{https://www.imagemagick.org/}{Image Magick}, which is freely available for Unix/Linux, Mac and MS Windows.
+% For PDF input it will however use \emph{Ghostscript} internally, but adds more output filetypes like the GIF format.
+% Under Ubuntu Linux it can be installed using the shell command `\texttt{sudo apt-get install imagemagick}'.
+% The conversion executable was orinally called `|convert|', which clashed with a MS Windows FAT-to-NTFS converter.
+% Newer version name the executable `|magick|' where the convert command must be given as an argument: `|magick convert|'.
+% If needed the executable name can be change manually using the `|convertexe|' conversion option or by using
+% \codeline{\AlsoMacro\standaloneconfig{'convert='{'convertexe='{...}}}} in the configuration file `|standalone.cfg|'.
+%
+% Furthermore the vector graphics software \href{https://inkscape.org/}{Inkscape} is supported. 
+% It allows the conversion from PDF files to SVG, useful for web publishing, and to EMF, which is useful for including the diagrams in MS Office.
+% It is also freely available for MS Windows, Linux and macOS.
+%
+% \subsection{Conversion process}
+% The conversion process is currently implemented in the following way to allow the normal compilation and subsequent conversion using only one (manual) compiler run.
+% Because the document must be fully compiled before the conversion can occur the \cls{standalone} executes the same \LaTeX\ compiler (e.g.\ texttt{pdflatex}) again as
+% a sub-process which compiles the current document fully. This is done when the \cls{standalone} class is loaded, so that the main compiler instance is still at \Macro\documentclass
+% and has not yet itself opened the output file for writing. After the document got compiled using the sub-process the external conversion tool will be executed.
+% If required intermediate conversions like \texttt{dvips} are also executed beforehand.
+% Finally the main compiler run is terminated without producing any output, keeping the output file generated by the sub-process intact.
+% A drawback of this implementation is that the log file created by the sub-process is overwritten by the main process and does not hold meaningful information.
+% This can be compensated by setting a different jobname for the sub-process using the \Key{subjobname} conversion setting.
+%
+% \subsection{Conversion examples}
+%
+% \par\medskip\noindent
+% Produces PNG (default) with a size of 640px (suitable to be uploaded on StackExchange sites without the image getting downscaled):\\*[\smallskipamount]
+% |  \documentclass[convert={size=640}]{standalone}|
+%
+% \par\medskip\noindent
+% Produces EMF, a vector format suitable for inclusion in MS Word or other MS Office software. Text content will be rendered as curves and will not be able to be copied
+% as text. This needs \emph{Inkscape} to be installed as other conversion softwares do not support this output format.\\*[\smallskipamount]
+% |  \documentclass[emf]{standalone}|\\
+% or \\
+% |  \documentclass[convert={emf}]{standalone}|
+%
+% \par\medskip\noindent
+% Produces SVG, a vector format suitable for inclusion in websites. Text content will be rendered as curves and will not be able to be copied
+% as text. This needs \emph{Inkscape} to be installed as other conversion softwares do not support this output format.\\*[\smallskipamount]
+% |  \documentclass[svg]{standalone}|\\
+% or \\
+% |  \documentclass[convert={svg}]{standalone}|
+%
+% \par\medskip\noindent
+% Produces GIF with a size of 640px. This needs \emph{ImageMagick} to be installed as other conversion softwares do not support this output format.\\*[\smallskipamount]
+% |  \documentclass[gif={size=640}]{standalone}|\\
+% or \\
+% |  \documentclass[convert={gif,size=640}]{standalone}|
+%
+% \par\medskip\noindent
+% PDF/PS is rastered with 600x100dpi and then converted to JPG (not recommended):\\*[\smallskipamount]
+% |  \documentclass[convert={density=600x100,outext=.jpg}]{standalone}|
+%
+% \par\medskip\noindent
+% Produces BMP with 400x400px (one side might be meder if content is not quadratic in shape):\\*[\smallskipamount]
+% |  \documentclass[convert={outext=.bmp,size=400}]{standalone}|
+%
+% \par\medskip\noindent
+% Produces TIFF G4 output file using Ghostscript with a density of 72dpi:\\*[\smallskipamount]
+% |  \documentclass[convert={ghostscript,gsdevice=tiffg4,|\\*
+% |                 outext=.tiff,density=72}]{standalone}|
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+% \section{Usage of the \pkg{standalone} package}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Basic usage}
+% The \pkg{standalone} package needs simply be loaded using \Macro\usepackage in a main document. It redefines the \Macro\documentclass macro, which can occur in sub-files,
+% so that it ignores anything till the next \Macro\begin{document} and then takes the \env{document} environment as a simple group. The real \env{document} environment in the main file is not
+% affected. Sub-files can then be included in the main document body using \Macro\input{<filename>}.
+%
+% The \pkg{standalone} package must not be loaded before the document class using \Macro\RequirePackage, because this will cause issues.
+% Also it is not possible to \Macro\input\relax standalone files inside the preamble, e.g.\ as part of a \Macro\savebox assignment.
+%
+% It is possible to cascade \cls{standalone} files, i.e. \Macro\input\relax a \cls{standalone} file from within a \cls{standalone} file. Then both the \cls{standalone} class and the \pkg{standalone}
+% package must be loaded by the any parent \cls{standalone} file. These parent files can still be used inside other \LaTeX\ documents if these load the \pkg{standalone} package themselves.
+%
+% See \autoref{sec:pkgoptions} for a list of package options which enable further features.
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Package options}\label{sec:pkgoptions}
+% The following options are supported by the \pkg{standalone} package.
+% Most of them are boolean options which take either `|true|' or `|false|' as optional values. If such an option is used without a value, `|true|' is used.
+% If not mentioned otherwise all options set to `|false|' initially.
+% Options might switch other options on or off. The order of the option is obeyed and later options will prevail over earlier ones.
+% Note that some older versions of the \pkg{standalone} package only take the option without any value.
+%
+% \DescribeKey{subpreambles}'=true|false'
+% The \cls{standalone} package removes all sub-file preambles (``sub-preambles'') by default when loaded.
+% However, if the package is loaded with the \opt{subpreambles} options, all sub-preambles are stored in an auxiliary file with the name `\meta{main tex file name}|.sta|' (for \emph{sta}ndalone).
+% This file is then loaded or processed at the beginning of the next \LaTeX\ run (i.e.\ at the place in the preamble where the \cls{standalone} package is loaded).
+% The way how the \opt{subpreambles} option works can be controlled by the options \opt{sort}, \opt{print} and \opt{comments}/\opt{nocomments}.
+% Please note that the \opt{sort} and \opt{print} options require of course the \opt{subpreambles} option and will enable it if not already done so.
+%
+% \DescribeKey{sort}'=true|false'
+% With only the \opt{subpreambles} option set, the sub-preambles are simple read and executed unchanged. This includes the risk of option clashes if one package is loaded with different
+% options inside the sub-preambles and/or the main preamble. This is avoided by the \opt{sort} option, which accumulates all packages loaded by all sub-files together with their options.
+% The options are then marked to be loaded by the package using \LaTeX{}s \cs{PassOptionsToPackage} macro. The packages are loaded at the end of the preamble using the \cs{AtBeginDocument} hook.
+% This allows the user to load the same packages with own options in the main file, after the |standalone| package is loaded, without any option clashes.
+%
+% \DescribeKey{print}'=true|false'
+% While the \opt{sort} option is giving already good results, problems with the order of packages can still occur. Some packages provide, redefine or patch the same macros, so that they must be loaded in
+% the correct order to give the desired result. Potential additional code in the sub-preambles, required for some sub-figures but maybe incompatible with others, complicates the situation further.
+% If such issues occur they can hardly be handled in an automatic way. Instead the sub-preambles must be carefully merged into the main preamble.
+% The option \opt{print} was created to simplify this otherwise cumbersome task.
+% It concatenated all sub-preambles into a single file named `\meta{main tex file name}|.stp|' (for \emph{st}andalone, \emph{p}rint). Each preamble is commented with its original file name.
+% Please note that |.sta| file mentioned above, while quite similar, holds additional macros and might not be easily user readable or editable.
+% After the file was generated it can be easily pasted into the main file preamble using a text editor.
+%
+% When the \opt{print} option is enabled the normal |.sta| file is not generated or loaded. Because this will cause most likely some errors related to packages not loaded, all sub-file bodies will be skipped.
+% A warning is printed for each sub-file to remind the user about this fact. The \opt{print} option is only indented to by used when required to get a list of sub-preambles. After including this list in the main file the option
+% must be removed to compile the main file normally.
+%
+% \DescribeKeys
+% \hbox{\Key{print},\Key{sort}}
+% \endDescribeKeys
+% Finally if both the \opt{print} and \opt{sort} options are enabled, a `sorted' list of sub-preambles is printed into the |.stp| file. In this `sorted print' mode all |\usepackage| macros and other
+% similar macros like |\usepgflibrary|, |\usetikzlibrary| as well as |\usetikztiminglibrary| from the |pgf|, |tikz| and |tikz-timing| packages, respectively) are removed from the rest of the sub-preamble code.
+% A list of packages (and libraries) without duplicates is printed at the begin of the |.stp| file (using |\usepackage|, of course). Every option provided by any sub-file for a package is added, again without duplicates.
+% If specific package date was requested in a sub-file it is also added. If multiple dates are requested for one package, the most recent (i.e.\ the ``highest one'', not the last processed) is used.
+% After this list(s) the rest of the sub-preamble code is printed with the above macros removed. This mode frees the user from the need to remove duplicates and collect package options manually.
+%
+% Please note that all |\usepackage| and similar macros inside braces |{}| will not be seen by \cls{standalone}s sort macro and therefore are not extracted or handled in any special form mentioned above.
+% This can be exploited to load certain packages only in \cls{standalone} mode but not in the main document.
+% Unfortunately, macros inside \Macro{ifstandalone}!\ldots!\AlsoMacro\fi are seen and extracted while not wanted inside the main file.
+% The macro \Macro\onlyifstandalone{<code>} (see below) was created because of this two reasons. Its argument braces hide the content from the scanner.
+% It is then also completely removed from the printed sub-preamble code.
+%
+% \DescribeKey{comments}'=true|false'
+% \DescribeKey{nocomments}
+% The \opt{comment} option selects if the |.stp| file should also include the comments of the sub-preambles.
+% For backwards compatibility \opt{nocomments} exists which is identical to \Key{comments}'=false'.
+% Comments are included by default in the non-sorting print mode (\opt{print} without \opt{sort} option), but can cause `wrong' results during the `sorting' process and are therefore removed by default in this mode.
+% The reason for this can be explained as follows.
+% In order to transfer the comments from the sub-files to the |.stp| file \TeX\ must be instructed to handle them as normal input and not discard them.
+% However, in this case the scanning algorithm which removes |\usepackage| and friends can not distinguish
+% between `active' macros and macros which are commented out. All above mentioned macro inside comments will then be processed as when there where `active'.
+% The user might favour the information provided by the comments over this small risk and enable them using the \opt{comments} option.
+%
+% \DescribeKey{group}'=true|false'
+% This option is set the `|true|' by default and controlled whether or not a group is added around the content of standalone files. Normally (`|true|') the \env{document} environment of the sub-files
+% is turned into an environment which does nothing, besides adding the usual group. If set to `|false|' this environment made transparent, so that no group is added.
+% Any definition inside the document body of sub-files will still be accessible after the \Macro\input\relax macro. Note that this does not effects the \Macro\includestandalone macro which always
+% will add a group.
+%
+% \DescribeKey{mode}'='<mode>
+% Sets the mode for \Macro\includestandalone. Valid values are `|tex|' (use source file, default),
+% `|image|' (use existing image file produced by the source file), `\verb+image|tex+' (use image if available, source otherwise),
+% `|build|' (build image from source, then use it), `|buildmissing|' (only build image if it does not exist) 
+% and `|buildnew|' (only build image if source file is newer; doesn't work with \XeLaTeX). See \autoref{sec:pkgmacros} for more details.
+% See also \autoref{sec:build} for further details.
+%
+% \DescribeKey{obeyclassoptions}'=true|false'
+% If this option is enabled the \Macro\includestandalone will try to obey the class options used in the standalone files while in `|tex|' mode.
+% This only works if the standalone file uses the \cls{standalone} class and only with certain options. The class configuration file will also be loaded (in
+% a local scope, for every standalone file) in order to load the default settings.
+%
+% This feature is intended to ensure (nearly) identical results independent if the standalone files are included as source code or as image,
+% in order to permit an easy switch between this two modes.
+% In particular, the standard size options |10pt|, |11pt| and |12pt| are applied to the standalone file (supported for the standard and KOMA Script classes)
+% as well as the \opt{border} class option. The \opt{multi}'='{<environment>, \ldots} option is supported and will make the |page=|\meta{number} option of \Macro\includegraphics
+% work with \Macro\includestandalone. This means, that one particular page can be selected, while all other environments are skipped.
+% By default the first page is taken (if \opt{multi} was used). The special value of |-1| will include all pages from the source file (but not from the image).
+% Because \opt{multi} option will assume that either \opt{crop} or \opt{preview} is enabled and will always ignore other content like with \Key{ignorerest}'=true'.
+% These three class option will be ignored by the package, which might lead to different behaviour between standalone and main-document mode, but only for uncommon cases 
+% where \opt{multi} is used without declaring environments and with disabled cropping (\opt{crop}/\opt{preview}).
+% In order to support a potential \opt{varwidth} option the \pkg{varwidth} is loaded if it is available.
+%
+% This is an extended feature, which requires substantial amount of extra code and some advanced techniques to switch the font size.
+% It might not work correctly under all circumstances. Because of this it is disabled by default.
+% At the moment it does not take the class configuration file into account and does not work for \cls{beamer} standalone files.
+%
+% \DescribeKey{extension}'='<.extension>
+% The image file extension (with leading dot) used for \Key{mode}'=image' can be selected using this option.
+% By default the target output file extension of the used \LaTeX\ compiler is used, i.e.\ `|.pdf|' for |pdflatex|,
+% |lualatex| and |xelatex| and `|.eps|' (converted from DVI) for |latex|.
+%
+% \DescribeKey{build}'='{<build options>}
+% This option allows to set the options used for building images from standalone files.
+% See \autoref{sec:build}, especially \autoref{tab:buildsettings} for further details.
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Macros}\label{sec:pkgmacros}
+% The following user macros are provided by the \cls{standalone} package. Further macros are listed in \autoref{sec:common} which are
+% defined by both the class and package and can be used in standalone files but also in the main document.
+%
+% \DescribeMacro\standaloneconfig{<options>}
+% This configuration macro accepts some of the package options described in \autoref{sec:pkgoptions}. These options are \opt{group}, \opt{mode}, \opt{extension} and \opt{build},
+% which can be changed for different included standalone files.
+%
+% If both the \pkg{standalone} class and package is used together this macro can also be used to set the class options as described in \autoref{sec:classmacros}.
+%
+% \DescribeMacro\includestandalone[<options>]{<file>}
+% This sophisticated macro can be used instead of \Macro\input\relax to include standalone files. Its behaviour is controlled by the \opt{mode} package option.
+% This macro can either include the source code in the same way as \Macro\input\relax (\Key{mode}'=tex'), include the output file (PDF, EPS) using \Macro\includegraphics\relax
+% (\Key{mode}'=image'), try first the output file and use the source file if it is available (\Key{mode}'=image|tex'),
+% build the output file from the source file either always (\Key{mode}'=build'), only if the image files does not exist (\Key{mode}'=buildmissing')
+% or only if the source file is newer (\Key{mode}'=buildnew', which doesn't work on \XeLaTeX\ because some pdf\TeX\ macros are required for this).
+% See also the \autoref{sec:build} for further details.
+%
+% The \meta{file} argument must be the file name of the standalone source file \emph{without} the extension. The macro accepts the same \meta{options} as \Macro\includegraphics as well
+% as any options suitable for \Macro\standaloneconfig. This means that the source file can also be resized and rotated in `|tex|' mode like an image.
+% TODO: In this mode the package also tries to extract and apply the class options from the standalone file and apply these to the included source.
+% Unfortunately, it can not be fully guaranteed that the standalone content will be displayed identical in source code and image mode. Some settings might not be applied
+% in the same way and rounding differences may occur.
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Building images from standalone files}\label{sec:build}
+% Using the \Macro\includestandalone macro standalone files can be either included directly as source files or as vector graphic images which are build from these.
+% The \pkg{standalone} package provides the feature to automatically build image files from given standalone source files.
+% This is controlled by the \opt{mode} options. This was already described in \autoref{sec:pkgoptions} and~\ref{sec:pkgmacros}.
+%
+% This enables the user to switch easily between including source code or images, either globally or only for selected standalone files.
+% Using images has the benefit that the included material, often complicated pictures, does not have to be recompiled every time with the main document.
+% This leads to significant speed improvements. The drawback is a slight increase in file size, because the material will have its own file headers.
+% Also any settings done in the main document which would affects the source code will not have an effect on the image. This can be positive or negative dependent on the case.
+%
+% An extended feature is the automatic building of images from the standalone files, either always or only if the source files are newer than the existing image files.
+% In this cases the \Macro\includestandlone macro will call the \LaTeX\ compiler on the standalone files in question to produce the images, then include these using \Macro\includegraphics.
+% This requires the `|-shell-escape|' compiler option to be set, otherwise the execution of shell commands is disabled for security reasons.
+%
+% The image files will normally be created in the current directory of the main document, which is not necessarily the same directory where the source files are located.
+% Dependent on the used compiler settings, files in the current directory will be found first before other directories are searched.
+% Using \Key{mode}'=buildnew' newly build image files placed in the current directory will therefore taken before older images files potentially located in the directory of
+% the standalone files. Because the exact directory of source files is not accessible within \LaTeX\ documents, it is not possible to create the images files always in the same directories 
+% as the source files. Compiler options like `|-output-directory|' can be useful to influence the output directory of the build images. However, these options must be used with the 
+% internal compiler run, i.e.\ by setting \Key{build}'='{'latexoptions='<...>} appropriately, not (only) on the main \LaTeX\ compiler run.
+%
+% If the build process fails a warning is issued and the source code will be included instead. It should be noted that failure detection is not perfect and might lead to false positives or negatives.
+%
+% \begin{table}
+% \makeatletter
+% \def\showbuildvar#1{{%
+%   \expandafter\let\expandafter\@tempa\csname sa@build@#1\endcsname
+%   \@onelevel@sanitize\@tempa
+%   \texttt{\@tempa}
+% }}%
+% \makeatother
+% \belowcaptionskip=\abovecaptionskip
+% \caption{Build settings}\label{tab:buildsettings}
+% \hbox to \textwidth{\hss%
+% \begin{tabular}{>{\ttfamily}lp{\dimexpr.45\textwidth\relax}l}
+%  \toprule
+%  \multicolumn{1}{l}{Build setting} &  Description & Default value \\
+%  \midrule
+%   latex & \LaTeX\ compiler to be used & Same as main compiler \\
+%   latexoptions & Command line options for compiler & \tiny\showbuildvar{latexoptions} \\
+%   jobname & Jobname for build compiler run & \scriptsize\showbuildvar{jobname} \\
+%   quote & Character to be used to quote file names & \verb|'| for Linux\,\&\,Mac OS X, \verb|"| for Windows \\
+%   command & Full build shell command & \scriptsize\showbuildvar{command} \\
+%   postcommand & Command executed after main command, to produce final output file & \scriptsize\texttt{dvips -o '\textbackslash file.eps' '\textbackslash file.dvi'} \normalsize (DVI mode only)\\
+%  \bottomrule\noalign{\smallskip}
+%  \multicolumn{3}{l}{%
+%   \strut Note: the settings (except `\texttt{command}' and `\texttt{postcommand}') can also be used as macros in other settings.
+%   }\\%
+%  \multicolumn{3}{l}{%
+%   \strut The given file name is available (without extension) as \texttt{\textbackslash file}.
+%   }%
+% \end{tabular}
+% \hss}
+% \end{table}
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Common macros}\label{sec:common}
+% The following conditional macros are defined by both the \cls{standalone} class and package, but react differently when the code is compiled standalone or as part of a main document.
+%
+% \DescribeMacro{\ifstandalone}
+% Both the class and the package provide the if-switch \cs{ifstandalone}, which can be used to only include code if the file is
+% compiled standalone. The switch is set to \cs{iftrue} by the class and to \cs{iffalse} by the package.
+%
+% The additional file \file{standalone.tex} also defines this switch by checking if \cs{documentclass} was already used. It can be included
+% with |\input{standalone}| and is intended for specialised files which do not use the \cls{standalone} class.
+%
+% \DescribeMacro{\IfStandalone}{<code for standalone mode>}{<code for main document>}
+% This is the macro version of the \Macro\ifstandalone if-switch. It executes the first argument only in \cls{standalone} mode, i.e.\ when the file is compiled on its own.
+% When included in the main document the second argument is executed instead.
+% As mentioned in \autoref{sec:pkgoptions}
+% it can also be used to hide |\usepackage| and similar macros from the extraction scanner of the |sort| option. The macro and its arguments is not printed into the |.stp| file.
+%
+% \DescribeMacro{\onlyifstandalone}{<code>}
+% This macro is similar to \Macro\IfStandalone but only has takes one argument which is executed only in standalone mode, but ignored when compiled as part of a main document.
+% As mentioned in \autoref{sec:pkgoptions}
+% it can also be used to hide |\usepackage| and similar macros from the extraction scanner of the |sort| option. The macro and its argument is not printed into the |.stp| file.
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Usage Examples}
+%
+% \def\lstlistingname{Example}
+% \setcounter{lstlisting}{0}
+%
+% \par\noindent
+% \begin{minipage}{\textwidth}
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,caption={Use of \emph{standalone} package.}]
+%   % Main file
+%   % Real document class:
+%   \documentclass{article}
+%
+%   % Use the 'standalone' package:
+%   \usepackage{standalone}
+%
+%   % Load all packages needed for all sub-files:
+%   \usepackage{tikz}
+%
+%   % Inside the real 'document' environment
+%   % read the sub-file with '\input'
+%   \begin{document}
+%   % ...
+%   \begin{figure}
+%     \input{subfile}
+%     \caption{A subfile}
+%   \end{figure}
+%   % ...
+%   \end{document}
+% \end{lstlisting}
+% \end{minipage}
+%
+% \par\noindent
+% \begin{minipage}{\textwidth}
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,caption={Use of \emph{standalone} class.}]
+%   % A sub-file (e.g. picture) using the 'standalone' class:
+%   % Use 'standalone' as document class:
+%   \documentclass{standalone}
+%
+%   % Load packages needed for this TeX file:
+%   \usepackage{tikz}
+%
+%   % Surround TeX code with 'document' environment as usually:
+%   \begin{document}
+%   % Add your TeX code, e.g. a picture:
+%   \begin{tikzpicture}
+%     \draw (0,0) rectangle (2,1) node [midway] {Example};
+%   \end{tikzpicture}
+%   \end{document}
+% \end{lstlisting}
+% \end{minipage}
+%
+% \par\noindent
+% \begin{minipage}{\textwidth}
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,caption={Effective code if compiled standalone.}]
+%   \documentclass{article}
+%
+%   \newenvironment{standalone}{\begin{preview}}{\end{preview}}
+%   \input{standalone.cfg}
+%   % which by defaults loads:
+%   % \PassOptionsToPackage{active,tightpage}{preview}
+%   \usepackage{preview}
+%
+%   \usepackage{tikz}
+%
+%   \begin{document}
+%   \begin{standalone}
+%   \begin{tikzpicture}
+%     \draw (0,0) rectangle (2,1) node [midway] {Example};
+%   \end{tikzpicture}
+%   \end{standalone}
+%   \end{document}
+% \end{lstlisting}
+% \end{minipage}
+%
+% \par\noindent
+% \begin{minipage}{\textwidth}
+% \begin{lstlisting}[language={[latex]tex},gobble=4,frame=lines,caption={Effective code if included in a main document.}]
+%   \begingroup
+%   \begin{tikzpicture}
+%     \draw (0,0) rectangle (2,1) node [midway] {Example};
+%   \end{tikzpicture}
+%   \endgroup
+%   \endinput
+% \end{lstlisting}
+% \end{minipage}
+%
+%
+%
+% \StopEventually{}
+% \clearpage
+% \section{Implementation}
+% \lstset{numbers=left}
+%
+% \iffalse
+%<@standalone.cls>
+% \fi
+%
+% \iffalse
+%<@standalone.sty>
+% \fi
+%
+% \iffalse
+%<@standalone.tex>
+% \fi
+%
+% \iffalse
+%<@standalone.cfg>
+% \fi
+%
+% \Finale
+% \endinput

@@ -1,5 +1,4 @@
-** sch_path:
-*+ /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/test_TMRDFFSNRNQX1.sch
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/test_TMRDFFSNRNQX1.sch
 .subckt test_TMRDFFSNRNQX1
 
 V1 VDD GND 1.8
@@ -17,8 +16,8 @@ x1 QN D0 CLK net1 net2 VDD GND TMRDFFQNX1
 .ends
 
 * expanding   symbol:  TMRDFFQNX1.sym # of pins=5
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/TMRDFFQNX1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/TMRDFFQNX1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/TMRDFFQNX1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/TMRDFFQNX1.sch
 .subckt TMRDFFQNX1 QN D1 CLK D0 D2 VDD VSS
 *.PININFO QN:O CLK:I D:I
 x1 CLK net3 D VDD VSS DFFQX1
@@ -29,8 +28,8 @@ x4 net3 net2 net1 QN VDD VSS VOTERN3X1
 
 
 * expanding   symbol:  DFFQX1.sym # of pins=3
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/DFFQX1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/DFFQX1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/DFFQX1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/DFFQX1.sch
 .subckt DFFQX1 CLK Q D VDD VSS
 *.PININFO Q:O D:I CLK:I
 x1 net2 net3 CLK net1 VDD VSS NAND3X1
@@ -43,8 +42,8 @@ x6 Q net5 net3 VDD VSS NAND2X1
 
 
 * expanding   symbol:  VOTERN3X1.sym # of pins=4
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/VOTERN3X1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/VOTERN3X1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/VOTERN3X1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/VOTERN3X1.sch
 .subckt VOTERN3X1 A B C YN VDD VSS
 *.PININFO YN:O A:I B:I C:I
 XM2 net1 A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
@@ -87,8 +86,8 @@ XM12 YN A net5 VSS sky130_fd_pr__nfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W
 
 
 * expanding   symbol:  NAND3X1.sym # of pins=4
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND3X1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND3X1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND3X1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND3X1.sch
 .subckt NAND3X1 Y A B C VDD VSS
 *.PININFO Y:O A:I B:I C:I
 XM1 net2 A VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
@@ -113,8 +112,8 @@ XM6 Y C VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf
 
 
 * expanding   symbol:  NAND2X1.sym # of pins=3
-** sym_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND2X1.sym
-** sch_path: /import/yukari1/lrburle/RHBD_SKY130_Zach/layout/xschem/sky130_rhbd/NAND2X1.sch
+** sym_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND2X1.sym
+** sch_path: /import/yukari1/lrburle/sky130RHBDlib/layout/xschem/sky130_rhbd/NAND2X1.sch
 .subckt NAND2X1 Y A B VDD VSS
 *.PININFO Y:O A:I B:I
 XM1 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'

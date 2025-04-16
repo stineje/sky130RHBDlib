@@ -17,7 +17,8 @@ VARIANT:=
 NETLIST_PATH:=../../calibre/output/spice
 MODELS_PATH:=../../models
 AREA_FILE_PATH:=../abstract
-OUTPUT_FILE_PATH:=../../outputs_pex
+LIBRARY_NAME?=$(DESIGN)
+OUTPUT_FILE_PATH:=../../$(LIBRARY_NAME)
 
 USER:=$(shell whoami)
 USER_MAIL:=$(shell echo `ldapsearch -x -LL "(uid=$(USER))" mail | sed -n "s/^mail: //p"`)
@@ -64,15 +65,15 @@ run: setup
 	printf "*\ninclude \"$(RUN_DIR)/MODELS/models.scs\"\ninclude \"$(RUN_DIR)/MODELS/parameters.scs\" section=fet_$(CORNER)\ninclude \"$(RUN_DIR)/MODELS/modular_models.scs\" section=global\ninclude \"$(RUN_DIR)/MODELS/parameters.scs\" section=res_nom\ninclude \"$(RUN_DIR)/MODELS/parameters.scs\" section=cap_nom" > MODELS/include.scs; \
 	liberate --trio char.tcl |& tee LOG/$$FILE_NAME.log; \
 	lc_shell -no_log -f SCRIPTS/lib_to_db.tcl
-	mkdir -p $(RUN_DIR)/$(OUTPUT_FILE_PATH)/$(DESIGN)
-	cp -rf *.lib *.db DATASHEET/ VERILOG/ LOG/ $(RUN_DIR)/$(OUTPUT_FILE_PATH)/$(DESIGN)
+	mkdir -p $(RUN_DIR)/$(OUTPUT_FILE_PATH)
+	cp -rf *.lib *.db DATASHEET/ VERILOG/ LOG/ $(RUN_DIR)/$(OUTPUT_FILE_PATH)
 
 do: run
-	@mkdir -p $(RUN_DIR)/$(OUTPUT_FILE_PATH)/$(CORNER) 
-	@cp *.lib $(RUN_DIR)/$(OUTPUT_FILE_PATH)/$(CORNER)
-	@cp *.db $(RUN_DIR)/$(OUTPUT_FILE_PATH)/$(CORNER)
-	@cp -r DATASHEET $(RUN_DIR)/$(OUTPUT_FILE_PATH)/$(CORNER)
-	@cp -r VERILOG $(RUN_DIR)/$(OUTPUT_FILE_PATH)/$(CORNER)
+	@mkdir -p $(RUN_DIR)/$(OUTPUT_FILE_PATH)/lib/$(CORNER) 
+	@cp *.lib $(RUN_DIR)/$(OUTPUT_FILE_PATH)/lib/$(CORNER)
+	@cp *.db $(RUN_DIR)/$(OUTPUT_FILE_PATH)/lib/$(CORNER)
+	@cp -r DATASHEET $(RUN_DIR)/$(OUTPUT_FILE_PATH)/lib/$(CORNER)
+	@cp -r VERILOG $(RUN_DIR)/$(OUTPUT_FILE_PATH)/lib/$(CORNER)
 	@mv *.lib ./LIBRARY/
 	@mv *.db ./LIBRARY/
 

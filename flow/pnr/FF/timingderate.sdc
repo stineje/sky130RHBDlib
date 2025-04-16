@@ -1,2 +1,0 @@
-Puts "<FF> DERATING DELAY CORNERS ..."
-
