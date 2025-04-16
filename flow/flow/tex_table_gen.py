@@ -22,8 +22,10 @@ class table:
 				if 'Hierarchy' in line:
 					line_found = True
 				if line_found and f'{design}' in line and line_increment == 2:
+					self.power_units = line.split(' ')[-1]
 					return line.split(' ')[-2]
 
+			self.power_units = lines[-2].split(' ')[-1]
 			return lines[-2].split(" ")[-2]
 
 	def timing(self, path, design):
@@ -92,13 +94,16 @@ class table:
 			print('	\\textbf{Design}', end="")
 
 			for index, tech in enumerate(self.technologies):
-				print(' & \\textbf{\\textit{Power (pW)}} & \\textbf{\\textit{Timing (ns)}} & \\textbf{\\textit{Area ($\\mu$m$^2$)}} & \\textbf{\\textit{\\# Std Cells}}', end="")
+				print(' & \\textbf{\\textit{Power (POWER_UNITS)}} & \\textbf{\\textit{Timing (ns)}} & \\textbf{\\textit{Area ($\\mu$m$^2$)}} & \\textbf{\\textit{\\# Std Cells}}', end="")
 
 			print('\\\\ \\hline')
 
 			for tech in self.technologies:
 				for design in self.designs:
 					design_print = design.replace('_', '\_')
+
+					tech = tech.replace('\\', '')
+
 					print(f'    {design_print}', end=" ")
 
 					sys.stdout = std_out
@@ -160,6 +165,19 @@ class table:
 			print('\\end{document}')
 
 		sys.stdout = std_out
+
+		# Adjust the power units. 
+		with open('table.tex', 'r+') as f:
+			lines = f.readlines()
+			f.seek(0)
+
+			for line in lines:
+				if 'POWER_UNITS' in line:
+					line = line.replace("POWER_UNITS", self.power_units.replace("\n", ""))
+				
+				f.write(line)
+			
+			f.truncate()
 
 		table_out = subprocess.run(['pdflatex table.tex'], shell=True)
 		table_png_out = subprocess.run(['pdftoppm -r 300 -png table.pdf >table.png'], shell=True)
