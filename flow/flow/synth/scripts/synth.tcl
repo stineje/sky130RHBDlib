@@ -10,7 +10,7 @@ set my_verilog_files [glob ../../hdl/*]
 # set my_vhdl_files [list top.vhd]
 
 # Set toplevel
-set my_toplevel fsm 
+set my_toplevel fsm_test 
 
 # Set number of significant digits
 set report_default_significant_digits 6

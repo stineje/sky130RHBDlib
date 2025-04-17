@@ -1,10 +1,9 @@
 .PHONY: clean move run purge
-
-DESIGN=fsm
+SHELL:=/usr/bin/bash
 
 export LIBRARY_NAME?=sky130_rhbd
-export HDL_TOP?='[fsm]'
-export FREQENCY?='[500]'
+export HDL_TOP?='[fsm,fsm_test]'
+export FREQUENCY?='[750,500]'
 
 default: run
 

@@ -42,6 +42,12 @@ if __name__ == '__main__':
 	hdl_top = ['fsm'] if os.getenv('HDL_TOP') == None else parseEnviron('HDL_TOP')
 	frequency = ['500'] if os.getenv('FREQUENCY') == None else parseEnviron('FREQUENCY')
 
+	print('#######################################################################')
+	print('#######################################################################')
+	print(f'SELECTED VARIABLES:\n\tHDL_TOP : {hdl_top}\n\tFREQUENCY : {frequency}')
+	print('#######################################################################')
+	print('#######################################################################')
+
 	working_directory = os.getcwd() 
 
 	main(frequency, hdl_top, working_directory)

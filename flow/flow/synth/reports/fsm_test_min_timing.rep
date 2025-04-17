@@ -1,0 +1,45 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+Design : fsm_test
+Version: V-2023.12-SP3
+Date   : Thu Apr 17 12:17:37 2025
+****************************************
+
+Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
+Wire Load Model Mode: top
+
+  Startpoint: state_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: state_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                0.000000   0.000000
+  clock network delay (propagated)     0.000000   0.000000
+  state_reg[0]/CLK (DFFRNX1)           0.000000   0.000000 r
+  state_reg[0]/Q (DFFRNX1)             0.211276   0.211276 r
+  U5/Y (AND3X1)                        0.113746   0.325023 r
+  state_reg[1]/D (DFFRNX1)             0.000000   0.325023 r
+  data arrival time                               0.325023
+
+  clock clk (rise edge)                0.000000   0.000000
+  clock network delay (propagated)     0.000000   0.000000
+  clock uncertainty                    0.200000   0.200000
+  state_reg[1]/CLK (DFFRNX1)           0.000000   0.200000 r
+  library hold time                    0.033752   0.233752
+  data required time                              0.233752
+  -----------------------------------------------------------
+  data required time                              0.233752
+  data arrival time                               -0.325023
+  -----------------------------------------------------------
+  slack (MET)                                     0.091271
+
+
+1

@@ -1,6 +1,6 @@
 ###################################################################
 
-# Created by write_sdc on Thu Apr 17 09:30:14 2025
+# Created by write_sdc on Thu Apr 17 12:13:59 2025
 
 ###################################################################
 set sdc_version 2.1
@@ -29,8 +29,8 @@ set_max_fanout 6 [get_ports reset]
 set_max_fanout 6 [get_ports start]
 set_max_fanout 6 [get_ports error]
 set_max_fanout 6 [get_ports op_type]
-create_clock [get_ports clk]  -period 2  -waveform {0 1}
-set_clock_uncertainty 0.2  [get_clocks clk]
+create_clock [get_ports clk]  -period 1.33333  -waveform {0 0.666667}
+set_clock_uncertainty 0.133333  [get_clocks clk]
 set_propagated_clock [get_clocks clk]
 set_input_delay -clock clk  -max 0  [get_ports reset]
 set_input_delay -clock clk  -max 0  [get_ports start]

@@ -29,19 +29,19 @@
             Inclusivity and Diversity" (Refer to article 000036315 at
                         https://solvnetplus.synopsys.com)
 Initializing...
-Current time:       Thu Apr 17 09:30:12 2025
+Current time:       Thu Apr 17 12:17:36 2025
 Hostname:           yukari.ecen.okstate.edu
 CPU Model:          AMD EPYC 74F3 24-Core Processor
 CPU Details:        Cores = 96 : Sockets = 2 : Cache Size = 512 KB : Freq = 3.19 GHz
 OS:                 Linux 3.10.0-1160.119.1.el7.x86_64
-RAM:                125 GB (Free  21 GB)
+RAM:                125 GB (Free  20 GB)
 Swap:                 3 GB (Free   3 GB)
 Work Filesystem:    /import/yukari1 mounted to /dev/mapper/yukari_data-yukari1
 Tmp Filesystem:     / mounted to /dev/mapper/rhel_yukari-root
 Work Disk:          2639 GB (Free 164 GB)
 Tmp Disk:           441 GB (Free 300 GB)
 
-CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 #
 # OKSTATE Main Synopsys Flow
 # Updated Sep 27, 2015 jes
@@ -52,8 +52,8 @@ set my_verilog_files [glob ../../hdl/*]
 # VHDL files
 # set my_vhdl_files [list top.vhd]
 # Set toplevel
-set my_toplevel fsm 
-fsm
+set my_toplevel fsm_test 
+fsm_test
 # Set number of significant digits
 set report_default_significant_digits 6
 6
@@ -170,33 +170,33 @@ Loading db file '/import/programs/synopsys/syn/current/libraries/syn/standard.sl
   Loading link library 'gtech'
 Running PRESTO HDLC
 
-Statistics for case statements in always block at line 41 in file
-	'../../hdl/fsm.sv'
+Statistics for case statements in always block at line 15 in file
+	'../../hdl/fsssssm.sv'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|            43            |    auto/auto     |
+|            16            |    auto/auto     |
 ===============================================
 
 Inferred memory devices in process
-	in routine fsm line 30 in file
-		'../../hdl/fsm.sv'.
+	in routine fsm_test line 10 in file
+		'../../hdl/fsssssm.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
-|      state_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
 ===============================================================================
-Presto compilation completed successfully. (fsm)
+Presto compilation completed successfully. (fsm_test)
 Elaborated 1 design.
-Current design is now 'fsm'.
+Current design is now 'fsm_test'.
 1
 # Set the current_design 
 current_design $my_toplevel
-Current design is 'fsm'.
-{fsm}
+Current design is 'fsm_test'.
+{fsm_test}
 link
 
-  Linking design 'fsm'
+  Linking design 'fsm_test'
   Using the following designs and libraries:
   --------------------------------------------------------------------------
   sky130_rhbd_tt_1P8_25C.ccs (library) /import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/db/sky130_rhbd_tt_1P8_25C.ccs.db
@@ -239,7 +239,7 @@ Warning: Design has no hierarchy.  No cells can be ungrouped. (UID-228)
 0
 # Set input pins except clock
 set all_in_ex_clk [remove_from_collection [all_inputs] [get_ports $my_clk]]
-{reset start error op_type}
+{reset a}
 # Specifies delays be propagated through the clock network
 set_propagated_clock [get_clocks $my_clk]
 Information: set_input_delay values are added to the propagated clock skew. (TIM-113)
@@ -275,9 +275,9 @@ set_fix_multiple_port_nets -all -buffer_constants
 #group_path -name COMBO -from [all_inputs] -to [all_outputs]
 # Save Unmapped Design
 set filename [format "%s%s%s"  "unmapped/" $my_toplevel ".ddc"]
-unmapped/fsm.ddc
+unmapped/fsm_test.ddc
 write_file -format ddc -hierarchy -o $filename
-Writing ddc file 'unmapped/fsm.ddc'.
+Writing ddc file 'unmapped/fsm_test.ddc'.
 1
 # Compile statements - either compile or compile_ultra
 # compile -scan -incr -map_effort high
@@ -286,7 +286,7 @@ Information: Auto ungrouping of the design is disabled because the '-no_boundary
 Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
 Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
 Information: Performing leakage power optimization. (PWR-850)
-CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Alib files are up-to-date.
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
@@ -306,15 +306,15 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 | Design Information                                      | Value                                  |
 ====================================================================================================
 | Number of Scenarios                                     | 0                                      |
-| Leaf Cell Count                                         | 194                                    |
+| Leaf Cell Count                                         | 18                                     |
 | Number of User Hierarchies                              | 0                                      |
-| Sequential Cell Count                                   | 5                                      |
+| Sequential Cell Count                                   | 2                                      |
 | Macro Count                                             | 0                                      |
 | Number of Power Domains                                 | 0                                      |
 | Number of Path Groups                                   | 2                                      |
 | Number of VT Class                                      | 0                                      |
 | Number of Clocks                                        | 1                                      |
-| Number of Dont Touch Cells                              | 59                                     |
+| Number of Dont Touch Cells                              | 8                                      |
 | Number of Dont Touch Nets                               | 0                                      |
 | Number of Size Only Cells                               | 0                                      |
 | Design with UPF Data                                    | false                                  |
@@ -323,23 +323,32 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ----------------------------------------------------------------------------------------------------
 | set_fix_multiple_port_nets                              | -all -buffer_constants                 |
 ====================================================================================================
-
-Information: There are 1 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
-
-  Simplifying Design 'fsm'
+  Simplifying Design 'fsm_test'
 
 Loaded alib file './alib-52/sky130_rhbd_tt_1P8_25C.ccs.db.alib'
 Loaded alib file './alib-52/TMR_sky130_rhbd_tt_1P8_25C.ccs.db.alib' (placeholder)
-CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Information: State dependent leakage is now switched from on to off.
 
   Beginning Pass 1 Mapping
   ------------------------
-  Processing 'fsm'
-CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+  Processing 'fsm_test'
+CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 
   Updating timing information
 Information: Updating design information... (UID-85)
+Information: Timing loop detected. (OPT-150)
+	state_reg[0]/QN state_reg[0]/Q 
+Information: Timing loop detected. (OPT-150)
+	state_reg[0]/QN state_reg[0]/Q 
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[0]'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[0]'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[1]'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[1]'
+         to break a timing loop. (OPT-314)
 Information: The library cell 'TIELO' in the library 'sky130_rhbd_tt_1P8_25C.ccs' is not characterized for internal power. (PWR-536)
 Information: The library cell 'TIEHI' in the library 'sky130_rhbd_tt_1P8_25C.ccs' is not characterized for internal power. (PWR-536)
 Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
@@ -351,8 +360,8 @@ Information: The target library(s) contains cell(s), other than black boxes, tha
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:00:01    3575.8      0.00       0.0       0.0                            516.2584      0.00  
-    0:00:01    3575.8      0.00       0.0       0.0                            516.2584      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
 
   Beginning Constant Register Removal
   -----------------------------------
@@ -395,91 +404,59 @@ Information: The target library(s) contains cell(s), other than black boxes, tha
 
   Beginning Delay Optimization
   ----------------------------
-    0:00:01    3641.5      0.00       0.0       0.0                            528.4000      0.00  
-    0:00:01    3641.5      0.00       0.0       0.0                            528.4000      0.00  
-    0:00:01    3641.5      0.00       0.0       0.0                            528.4000      0.00  
-Warning: Timing update failed because design has loops.
-Dumping new detected-loops for layer '__default__'[0th/1]...
-Information: Timing loop detected. (OPT-150)
-	state_reg[1]/Q state_reg[1]/QN 
-Information: Timing loop detected. (OPT-150)
-	state_reg[1]/Q state_reg[1]/QN 
-Warning: Timing update failed because design has loops.
-Dumping new detected-loops for layer '__default__'[0th/1]...
-Information: Timing loop detected. (OPT-150)
-	state_reg[1]/Q state_reg[1]/QN 
-Information: Timing loop detected. (OPT-150)
-	state_reg[1]/Q state_reg[1]/QN 
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
 
   Beginning WLM Backend Optimization
   --------------------------------------
-Information: Timing loop detected. (OPT-150)
-	state_reg[0]/QN state_reg[0]/Q 
-Information: Timing loop detected. (OPT-150)
-	state_reg[0]/QN state_reg[0]/Q 
-Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[0]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[0]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[1]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[1]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[3]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[3]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[2]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'Q' and 'QN' on cell 'state_reg[2]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
-         to break a timing loop. (OPT-314)
-Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
-         to break a timing loop. (OPT-314)
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
 ***
-*** WARNING: Characterizing failed for lib_cell family '23'
+*** WARNING: Characterizing failed for lib_cell family '32'
 ***
   Cells of this type cannot be sized in Linear.
   Cells include:
-	DFFX1 (5 instances)
-    Arc from 'CLK' to 'D' of sense 'setup_clk_rise'
-    Arc from 'CLK' to 'D' of sense 'hold_clk_rise'
+	DFFRNX1 (2 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
     Arc from 'CLK' to 'Q' of sense 'rising_edge'
     Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
     Arc from 'Q' to 'QN' of sense 'negative_unate'
     Arc from 'Q' to 'QN' of sense 'fall_to_rise'
     Arc from 'QN' to 'Q' of sense 'negative_unate'
-    Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
 
 
   Beginning Leakage Power Optimization  (max_leakage_power 0)
@@ -489,88 +466,100 @@ Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
 ***
-*** WARNING: Characterizing failed for lib_cell family '23'
+*** WARNING: Characterizing failed for lib_cell family '32'
 ***
   Cells of this type cannot be sized in Linear.
   Cells include:
-	DFFX1 (5 instances)
-    Arc from 'CLK' to 'D' of sense 'setup_clk_rise'
-    Arc from 'CLK' to 'D' of sense 'hold_clk_rise'
+	DFFRNX1 (2 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
     Arc from 'CLK' to 'Q' of sense 'rising_edge'
     Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
     Arc from 'Q' to 'QN' of sense 'negative_unate'
     Arc from 'Q' to 'QN' of sense 'fall_to_rise'
     Arc from 'QN' to 'Q' of sense 'negative_unate'
-    Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
 
                                   TOTAL                                                            
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
 ***
-*** WARNING: Characterizing failed for lib_cell family '23'
-***
-  Cells of this type cannot be sized in Linear.
-  Cells include:
-	DFFX1 (5 instances)
-    Arc from 'CLK' to 'D' of sense 'setup_clk_rise'
-    Arc from 'CLK' to 'D' of sense 'hold_clk_rise'
-    Arc from 'CLK' to 'Q' of sense 'rising_edge'
-    Arc from 'CLK' to 'QN' of sense 'rising_edge'
-    Arc from 'Q' to 'QN' of sense 'negative_unate'
-    Arc from 'Q' to 'QN' of sense 'fall_to_rise'
-    Arc from 'QN' to 'Q' of sense 'negative_unate'
-    Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-***
-*** WARNING: Characterizing failed for lib_cell family '23'
+*** WARNING: Characterizing failed for lib_cell family '32'
 ***
   Cells of this type cannot be sized in Linear.
   Cells include:
-	DFFX1 (5 instances)
-    Arc from 'CLK' to 'D' of sense 'setup_clk_rise'
-    Arc from 'CLK' to 'D' of sense 'hold_clk_rise'
+	DFFRNX1 (2 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
     Arc from 'CLK' to 'Q' of sense 'rising_edge'
     Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
     Arc from 'Q' to 'QN' of sense 'negative_unate'
     Arc from 'Q' to 'QN' of sense 'fall_to_rise'
     Arc from 'QN' to 'Q' of sense 'negative_unate'
-    Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+***
+*** WARNING: Characterizing failed for lib_cell family '32'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFRNX1 (2 instances)
+    Arc from 'CLK' to 'D' of sense 'setup_clk_rise' (2)
+    Arc from 'CLK' to 'D' of sense 'hold_clk_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'recovery_rise' (2)
+    Arc from 'CLK' to 'RN' of sense 'removal_rise' (2)
+    Arc from 'CLK' to 'Q' of sense 'rising_edge'
+    Arc from 'CLK' to 'QN' of sense 'rising_edge'
+    Arc from 'RN' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RN' to 'QN' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'QN' of sense 'negative_unate'
+    Arc from 'Q' to 'QN' of sense 'fall_to_rise'
+    Arc from 'QN' to 'Q' of sense 'negative_unate'
+    Arc from 'QN' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+    0:00:01     542.1      0.00       0.0       0.0                             92.6802      0.00  
+CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Loading db file '/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/db/sky130_rhbd_tt_1P8_25C.ccs.db'
 Loading db file '/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/db/TMR_sky130_rhbd_tt_1P8_25C.ccs.db'
 
@@ -582,7 +571,7 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   ---------------------
 Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
-CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Information: Total number of MV cells in the design.
 ----------------------------------------------------------------------------------------------------
  MV Cells                                           Total Number                                   
@@ -627,69 +616,70 @@ set write_hier 1        ;# generate hierarchy report
 1
 # Report Constraint Violators
 set filename [format "%s%s%s"  "reports/" $my_toplevel "_constraint_all_violators.rpt"]
-reports/fsm_constraint_all_violators.rpt
+reports/fsm_test_constraint_all_violators.rpt
 redirect $filename {report_constraint -all_violators}
 # Check design
 redirect reports/check_design.rpt { check_design }
 # Report Final Netlist (Hierarchical)
 set filename [format "%s%s%s"  "mapped/" $my_toplevel ".vh"]
-mapped/fsm.vh
+mapped/fsm_test.vh
 write_file -f verilog -hierarchy -output $filename
-Writing verilog file '/import/yukari1/lrburle/sky130RHBDlib/flow/flow/synth/mapped/fsm.vh'.
+Writing verilog file '/import/yukari1/lrburle/sky130RHBDlib/flow/flow/synth/mapped/fsm_test.vh'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
 1
 set filename [format "%s%s%s"  "mapped/" $my_toplevel ".sdc"]
-mapped/fsm.sdc
+mapped/fsm_test.sdc
 write_sdc $filename
 1
 set filename [format "%s%s%s"  "mapped/" $my_toplevel ".ddc"]
-mapped/fsm.ddc
+mapped/fsm_test.ddc
 write_file -format ddc -hierarchy -o $filename
-Writing ddc file 'mapped/fsm.ddc'.
+Writing ddc file 'mapped/fsm_test.ddc'.
 1
 set filename [format "%s%s%s"  "mapped/" $my_toplevel ".sdf"]
-mapped/fsm.sdf
+mapped/fsm_test.sdf
 write_sdf $filename
 Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
-Information: Writing timing information to file '/import/yukari1/lrburle/sky130RHBDlib/flow/flow/synth/mapped/fsm.sdf'. (WT-3)
+Information: Writing timing information to file '/import/yukari1/lrburle/sky130RHBDlib/flow/flow/synth/mapped/fsm_test.sdf'. (WT-3)
 1
 # QoR
 set filename [format "%s%s%s"  "reports/" $my_toplevel "_qor.rep"]
-reports/fsm_qor.rep
+reports/fsm_test_qor.rep
 redirect $filename { report_qor }
 # Report Timing
 set filename [format "%s%s%s"  "reports/" $my_toplevel "_reportpath.rep"]
-reports/fsm_reportpath.rep
+reports/fsm_test_reportpath.rep
 redirect $filename { report_path_group }
 set filename [format "%s%s%s"  "reports/" $my_toplevel "_report_clock.rep"]
-reports/fsm_report_clock.rep
+reports/fsm_test_report_clock.rep
 redirect $filename { report_clock }
 set filename [format "%s%s%s" "reports/" $my_toplevel "_timing.rep"]
-reports/fsm_timing.rep
+reports/fsm_test_timing.rep
 redirect $filename { report_timing -capacitance -transition_time -nets -nworst 1 }
 set filename [format "%s%s%s" "reports/" $my_toplevel "_min_timing.rep"]
-reports/fsm_min_timing.rep
+reports/fsm_test_min_timing.rep
 redirect $filename { report_timing -delay min }
 set filename [format "%s%s%s" "reports/" $my_toplevel "_area.rep"]
-reports/fsm_area.rep
+reports/fsm_test_area.rep
 redirect $filename { report_area -hierarchy -nosplit -physical -designware}
 set filename [format "%s%s%s" "reports/" $my_toplevel "_cell.rep"]
-reports/fsm_cell.rep
+reports/fsm_test_cell.rep
 redirect $filename { report_cell [get_cells -hier *] }
 set filename [format "%s%s%s" "reports/" $my_toplevel "_power.rep"]
-reports/fsm_power.rep
+reports/fsm_test_power.rep
 redirect $filename { report_power }
 set filename [format "%s%s%s" "reports/" $my_toplevel "_constraint.rep"]
-reports/fsm_constraint.rep
+reports/fsm_test_constraint.rep
 redirect $filename { report_constraint }
 set filename [format "%s%s%s" "reports/" $my_toplevel "_hier.rep"]
-reports/fsm_hier.rep
+reports/fsm_test_hier.rep
 redirect $filename { report_hierarchy }
 # Quit
 quit
 
-Memory usage for this session 120 Mbytes.
-Memory usage for this session including child processes 120 Mbytes.
+Memory usage for this session 119 Mbytes.
+Memory usage for this session including child processes 119 Mbytes.
 CPU usage for this session 2 seconds ( 0.00 hours ).
-Elapsed time for this session 4 seconds ( 0.00 hours ).
+Elapsed time for this session 3 seconds ( 0.00 hours ).
 
 Thank you...

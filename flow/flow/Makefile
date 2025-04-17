@@ -6,6 +6,7 @@ default: flow
 
 flow:
 	-@python3 top.py | tee log.txt
+	-@cat ../output-files/OSU130_RHBD/table.tex
 
 clean:
 	-@rm -rf output-files

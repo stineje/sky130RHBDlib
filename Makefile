@@ -5,14 +5,14 @@ RUN_DIR:=$(shell pwd)
 DESIGN=sky130_rhbd
 PATTERN=*
 
+# Primarily used in the synth/pnr flows.
 export LIBRARY_NAME?=$(DESIGN)
+export HDL_TOP?='[fsm,fsm_test]'
+export FREQUENCY?='[750,500]'
 
 # Power rail names.
 VDD=VDD
 GND=GND
-
-# Design parameters for synth/pnr
-HDL_TOP=fsm
 
 default: extract
 

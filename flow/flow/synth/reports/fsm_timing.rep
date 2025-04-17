@@ -9,15 +9,16 @@ Report : timing
         -capacitance
 Design : fsm
 Version: V-2023.12-SP3
-Date   : Thu Apr 17 09:30:14 2025
+Date   : Thu Apr 17 12:13:59 2025
 ****************************************
 
 Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
 Wire Load Model Mode: top
 
-  Startpoint: state_reg[1]
+  Startpoint: state_reg[4]
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: load_regc (output port clocked by clk)
+  Endpoint: state_reg[2]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -25,40 +26,39 @@ Wire Load Model Mode: top
   -------------------------------------------------------------------------------
   clock clk (rise edge)                                    0.000000   0.000000
   clock network delay (propagated)                         0.000000   0.000000
-  state_reg[1]/CLK (DFFX1)                       0.000000  0.000000   0.000000 r
-  state_reg[1]/QN (DFFX1)                        0.202766  0.439189   0.439189 f
-  n178 (net)                     8     0.074802            0.000000   0.439189 f
-  U112/Y (NAND2X1)                               0.083763  0.093278   0.532467 r
-  n131 (net)                     2     0.019155            0.000000   0.532467 r
-  U113/Y (INVX1)                                 0.036930  0.041912   0.574379 f
-  n130 (net)                     2     0.019444            0.000000   0.574379 f
-  U115/Y (NOR2X1)                                0.168580  0.148198   0.722578 r
-  n154 (net)                     4     0.037994            0.000000   0.722578 r
-  U116/Y (NOR2X1)                                0.060553  0.067141   0.789718 f
-  n121 (net)                     2     0.018863            0.000000   0.789718 f
-  U119/Y (NAND2X1)                               0.038608  0.052026   0.841744 r
-  n90 (net)                      1     0.009722            0.000000   0.841744 r
-  U125/Y (NAND2X1)                               0.113369  0.105876   0.947620 f
-  sel_muxa[2] (net)              2     0.049758            0.000000   0.947620 f
-  U126/Y (INVX1)                                 0.043728  0.050670   0.998290 r
-  n92 (net)                      1     0.009823            0.000000   0.998290 r
-  U131/Y (NAND3X1)                               0.176387  0.159670   1.157960 f
-  load_rega (net)                2     0.050470            0.000000   1.157960 f
-  U132/Y (BUFX1)                                 0.054930  0.128057   1.286017 f
-  load_regc (net)                1     0.040355            0.000000   1.286017 f
-  load_regc (out)                                0.054930  0.000000   1.286017 f
-  data arrival time                                                   1.286017
+  state_reg[4]/CLK (DFFX1)                       0.000000  0.000000   0.000000 r
+  state_reg[4]/Q (DFFX1)                         0.133648  0.365276   0.365276 f
+  state[4] (net)                 5     0.047157            0.000000   0.365276 f
+  state_reg[4]/QN (DFFX1)                        0.155693  0.147601   0.512877 r
+  n181 (net)                     6     0.057315            0.000000   0.512877 r
+  U142/Y (NAND2X1)                               0.080936  0.095142   0.608019 f
+  n121 (net)                     3     0.027112            0.000000   0.608019 f
+  U110/Y (NOR2X1)                                0.135137  0.114357   0.722376 r
+  n155 (net)                     3     0.029460            0.000000   0.722376 r
+  U198/Y (NAND3X1)                               0.094422  0.103911   0.826287 f
+  n163 (net)                     2     0.018956            0.000000   0.826287 f
+  U201/Y (NAND2X1)                               0.045957  0.059113   0.885400 r
+  n158 (net)                     1     0.009230            0.000000   0.885400 r
+  U202/Y (NAND2X1)                               0.056590  0.041151   0.926551 f
+  n160 (net)                     1     0.009710            0.000000   0.926551 f
+  U204/Y (AND3X1)                                0.020946  0.083301   1.009851 f
+  n162 (net)                     1     0.008840            0.000000   1.009851 f
+  U205/Y (NOR2X1)                                0.062785  0.050597   1.060448 r
+  N34 (net)                      1     0.009962            0.000000   1.060448 r
+  state_reg[2]/D (DFFX1)                         0.062785  0.000000   1.060448 r
+  data arrival time                                                   1.060448
 
-  clock clk (rise edge)                                    2.000000   2.000000
-  clock network delay (propagated)                         0.000000   2.000000
-  clock uncertainty                                        -0.200000  1.800000
-  output external delay                                    0.000000   1.800000
-  data required time                                                  1.800000
+  clock clk (rise edge)                                    1.333333   1.333333
+  clock network delay (propagated)                         0.000000   1.333333
+  clock uncertainty                                        -0.133333  1.200000
+  state_reg[2]/CLK (DFFX1)                                 0.000000   1.200000 r
+  library setup time                                       -0.123781  1.076219
+  data required time                                                  1.076219
   -------------------------------------------------------------------------------
-  data required time                                                  1.800000
-  data arrival time                                                   -1.286017
+  data required time                                                  1.076219
+  data arrival time                                                   -1.060448
   -------------------------------------------------------------------------------
-  slack (MET)                                                         0.513983
+  slack (MET)                                                         0.015770
 
 
 1

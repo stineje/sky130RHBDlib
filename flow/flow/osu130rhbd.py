@@ -125,6 +125,13 @@ class OSU130RHBD:
 		for file in glob.glob(r'./RPT/*main*'):
 			shutil.copy(file, f'{self.scriptHome}/../output-files/{self.technology}/{self.hdl_top}/')
 
+		try:
+			shutil.copytree('./DBS/', f'{self.scriptHome}/../output-files/{self.technology}/{self.hdl_top}/DBS/')
+		except FileNotFoundError:
+			print('DBS not found')
+		except Exception as e:
+			print(f'Exception for DBS movement : {e}')
+		
 		gzip = subprocess.run([f'gzip -d {self.scriptHome}/../output-files/{self.technology}/{self.hdl_top}/*.gz'], shell=True)
 		os.chdir(self.scriptHome + '/../')
 
@@ -134,8 +141,8 @@ class OSU130RHBD:
 		self.scriptHome = cwd
 		os.chdir(self.scriptHome)
 
-		if(not os.path.exists(f'../output-files/{self.technology}/{hdl_top}')):
-			os.makedirs(f'../output-files/{self.technology}/{hdl_top}')
+		if(not os.path.exists(f'../output-files/{self.technology}/{hdl_top}/')):
+			os.makedirs(f'../output-files/{self.technology}/{hdl_top}/')
 			os.chdir(self.scriptHome + '/../')
 
 		self.synth()
