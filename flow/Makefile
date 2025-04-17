@@ -3,6 +3,8 @@
 DESIGN=fsm
 
 export LIBRARY_NAME?=sky130_rhbd
+export HDL_TOP?='[fsm]'
+export FREQENCY?='[500]'
 
 default: run
 

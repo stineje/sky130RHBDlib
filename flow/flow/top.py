@@ -1,8 +1,23 @@
 import os
 import shutil
+import re
 
 from osu130rhbd import OSU130RHBD as f1 
 from tex_table_gen import table
+
+def parseEnviron(key : str):
+	print(f'{key} : is active.')
+	array = []
+	var = os.getenv(key)
+
+	# Replace all unncessary characters with an empty character. Helpful for turning the input variables into an array.
+	var = re.sub(r'[\[\]\'\"\s]', '', var)
+	
+	# Turns the values into an array.
+	for s in var.split(','):
+		array.append(str(s))
+	
+	return array
 
 def main(frequency, hdl_top, working_directory):
 	flow1 = f1(PNR_FLAG=True)
@@ -23,8 +38,10 @@ def main(frequency, hdl_top, working_directory):
 	shutil.move('table.aux', f'../output-files/OSU130_RHBD/')
 
 if __name__ == '__main__':
-	hdl_top = ['fsm']
-	frequency = ['500']
+	# Selects the values based on environment variables or manual input.
+	hdl_top = ['fsm'] if os.getenv('HDL_TOP') == None else parseEnviron('HDL_TOP')
+	frequency = ['500'] if os.getenv('FREQUENCY') == None else parseEnviron('FREQUENCY')
+
 	working_directory = os.getcwd() 
 
 	main(frequency, hdl_top, working_directory)

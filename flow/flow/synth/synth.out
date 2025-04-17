@@ -29,19 +29,19 @@
             Inclusivity and Diversity" (Refer to article 000036315 at
                         https://solvnetplus.synopsys.com)
 Initializing...
-Current time:       Tue Apr 15 21:18:30 2025
+Current time:       Thu Apr 17 09:30:12 2025
 Hostname:           yukari.ecen.okstate.edu
 CPU Model:          AMD EPYC 74F3 24-Core Processor
 CPU Details:        Cores = 96 : Sockets = 2 : Cache Size = 512 KB : Freq = 3.19 GHz
 OS:                 Linux 3.10.0-1160.119.1.el7.x86_64
-RAM:                125 GB (Free  20 GB)
+RAM:                125 GB (Free  21 GB)
 Swap:                 3 GB (Free   3 GB)
 Work Filesystem:    /import/yukari1 mounted to /dev/mapper/yukari_data-yukari1
 Tmp Filesystem:     / mounted to /dev/mapper/rhel_yukari-root
 Work Disk:          2639 GB (Free 164 GB)
 Tmp Disk:           441 GB (Free 300 GB)
 
-CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 #
 # OKSTATE Main Synopsys Flow
 # Updated Sep 27, 2015 jes
@@ -286,7 +286,7 @@ Information: Auto ungrouping of the design is disabled because the '-no_boundary
 Warning: The value of variable 'compile_preserve_subdesign_interfaces' has been changed to true because '-no_boundary_optimization' is used. (OPT-133)
 Information: Starting from 2013.12 release, constant propagation is enabled even when boundary optimization is disabled. (OPT-1318)
 Information: Performing leakage power optimization. (PWR-850)
-CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Alib files are up-to-date.
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
@@ -330,13 +330,13 @@ Information: There are 1 potential problems in your design. Please run 'check_de
 
 Loaded alib file './alib-52/sky130_rhbd_tt_1P8_25C.ccs.db.alib'
 Loaded alib file './alib-52/TMR_sky130_rhbd_tt_1P8_25C.ccs.db.alib' (placeholder)
-CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Information: State dependent leakage is now switched from on to off.
 
   Beginning Pass 1 Mapping
   ------------------------
   Processing 'fsm'
-CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 
   Updating timing information
 Information: Updating design information... (UID-85)
@@ -351,8 +351,8 @@ Information: The target library(s) contains cell(s), other than black boxes, tha
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:00:00    3575.8      0.00       0.0       0.0                            516.2584      0.00  
-    0:00:00    3575.8      0.00       0.0       0.0                            516.2584      0.00  
+    0:00:01    3575.8      0.00       0.0       0.0                            516.2584      0.00  
+    0:00:01    3575.8      0.00       0.0       0.0                            516.2584      0.00  
 
   Beginning Constant Register Removal
   -----------------------------------
@@ -395,9 +395,9 @@ Information: The target library(s) contains cell(s), other than black boxes, tha
 
   Beginning Delay Optimization
   ----------------------------
-    0:00:00    3641.5      0.00       0.0       0.0                            528.4000      0.00  
-    0:00:00    3641.5      0.00       0.0       0.0                            528.4000      0.00  
-    0:00:00    3641.5      0.00       0.0       0.0                            528.4000      0.00  
+    0:00:01    3641.5      0.00       0.0       0.0                            528.4000      0.00  
+    0:00:01    3641.5      0.00       0.0       0.0                            528.4000      0.00  
+    0:00:01    3641.5      0.00       0.0       0.0                            528.4000      0.00  
 Warning: Timing update failed because design has loops.
 Dumping new detected-loops for layer '__default__'[0th/1]...
 Information: Timing loop detected. (OPT-150)
@@ -410,9 +410,9 @@ Information: Timing loop detected. (OPT-150)
 	state_reg[1]/Q state_reg[1]/QN 
 Information: Timing loop detected. (OPT-150)
 	state_reg[1]/Q state_reg[1]/QN 
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
 
   Beginning WLM Backend Optimization
   --------------------------------------
@@ -440,11 +440,11 @@ Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
          to break a timing loop. (OPT-314)
 Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
          to break a timing loop. (OPT-314)
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
 ***
 *** WARNING: Characterizing failed for lib_cell family '23'
 ***
@@ -459,27 +459,27 @@ Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
     Arc from 'Q' to 'QN' of sense 'fall_to_rise'
     Arc from 'QN' to 'Q' of sense 'negative_unate'
     Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
 
 
   Beginning Leakage Power Optimization  (max_leakage_power 0)
@@ -489,10 +489,10 @@ Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
 ***
 *** WARNING: Characterizing failed for lib_cell family '23'
 ***
@@ -507,31 +507,31 @@ Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
     Arc from 'Q' to 'QN' of sense 'fall_to_rise'
     Arc from 'QN' to 'Q' of sense 'negative_unate'
     Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
 
                                   TOTAL                                                            
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
 ***
 *** WARNING: Characterizing failed for lib_cell family '23'
 ***
@@ -546,9 +546,9 @@ Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
     Arc from 'Q' to 'QN' of sense 'fall_to_rise'
     Arc from 'QN' to 'Q' of sense 'negative_unate'
     Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
 ***
 *** WARNING: Characterizing failed for lib_cell family '23'
 ***
@@ -563,14 +563,14 @@ Warning: Disabling timing arc between pins 'QN' and 'Q' on cell 'state_reg[4]'
     Arc from 'Q' to 'QN' of sense 'fall_to_rise'
     Arc from 'QN' to 'Q' of sense 'negative_unate'
     Arc from 'QN' to 'Q' of sense 'fall_to_rise'
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-    0:00:00    3559.4      0.00       0.0       0.0                            508.8781      0.00  
-CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+    0:00:01    3559.4      0.00       0.0       0.0                            508.8781      0.00  
+CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Loading db file '/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/db/sky130_rhbd_tt_1P8_25C.ccs.db'
 Loading db file '/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/db/TMR_sky130_rhbd_tt_1P8_25C.ccs.db'
 
@@ -582,7 +582,7 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   ---------------------
 Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
-CPU Load: 10%, Ram Free: 20 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
+CPU Load: 10%, Ram Free: 21 GB, Swap Free: 3 GB, Work Disk Free: 164 GB, Tmp Disk Free: 300 GB
 Information: Total number of MV cells in the design.
 ----------------------------------------------------------------------------------------------------
  MV Cells                                           Total Number                                   
