@@ -75,7 +75,7 @@ liberate:
 	cd -
 
 flow:
-	cd flow/ && make && cd -; \
+	cd flow/ && ${MAKE} -f Makefile && cd -; \
 
 purge:
 	cd layout/${DESIGN} && ${MAKE} -f Makefile purge && cd -; \
