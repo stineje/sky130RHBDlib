@@ -15,7 +15,7 @@ class OSU130RHBD:
 		self.pnr_flag = PNR_FLAG
 
 		# These options are used for the PNR portion of the flow.
-		self.libFile = ["sky130_rhbd_tt_1P8_25C.ccs.lib", "TMR_sky130_rhbd_tt_1P8_25C.ccs.lib"]
+		self.libFile = ["sky130_rhbd_tt_1P8_25C.ccs.lib"]
 		self.abstFile = 'sky130_rhbd'
 
 		self.fillList = ['FILL1']
@@ -23,7 +23,7 @@ class OSU130RHBD:
 	def synth(self):
 		os.chdir(f'{self.scriptHome}/synth/scripts')
 
-		make = subprocess.run(['make clean'], shell=True)
+		make = subprocess.run(['make purge'], shell=True)
 
 		out = open('synth.tcl', 'w')
   

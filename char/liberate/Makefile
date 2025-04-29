@@ -4,21 +4,23 @@ RUN_DIR:=$(shell pwd)
 SHELL:=/bin/bash
 
 DESIGN:=sky130_rhbd
+LIBRARY_NAME?=$(DESIGN)
+OUTPUT_FILE_PATH:=../../$(LIBRARY_NAME)
 
 .DEFAULT: all
 .PHONY: all do run clean purge
 
-PREFIX:=TMR_
+PREFIX:=
 CORNER:=tt
 TEMP:=25
 VLTG:=1.8
 ARGS:=-ccs
 VARIANT:=
-NETLIST_PATH:=../../calibre/output/spice
+
+# Pulling in the models and necessary netlists and lef file.
 MODELS_PATH:=../../models
+NETLIST_PATH:=../../$(LIBRARY_NAME)/pex
 AREA_FILE_PATH:=../abstract
-LIBRARY_NAME?=$(DESIGN)
-OUTPUT_FILE_PATH:=../../$(LIBRARY_NAME)
 
 USER:=$(shell whoami)
 USER_MAIL:=$(shell echo `ldapsearch -x -LL "(uid=$(USER))" mail | sed -n "s/^mail: //p"`)

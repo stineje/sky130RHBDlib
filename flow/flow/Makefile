@@ -16,5 +16,5 @@ clean:
 	-@rm table.aux table.log table.pdf table.tex
 
 purge: clean
-	-@cd synth/ && make clean && cd -
+	-@cd synth/ && make purge && cd -
 	-@cd pnr/ && make clean && ./clean_me.csh && cd -

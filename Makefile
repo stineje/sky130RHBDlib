@@ -5,6 +5,9 @@ RUN_DIR:=$(shell pwd)
 DESIGN=sky130_rhbd
 PATTERN=*
 
+# Used for the PEX extraction flow.
+export NETLIST_DIR?=../../layout/${DESIGN}/spice
+
 # Primarily used in the synth/pnr flows.
 export LIBRARY_NAME?=$(DESIGN)
 export HDL_TOP?='[fsm,fsm_test]'
@@ -75,7 +78,7 @@ liberate:
 	cd -
 
 flow:
-	cd flow/ && ${MAKE} -f Makefile && cd -; \
+	cd flow/ && ${MAKE} -f Makefile && cd -
 
 purge:
 	cd layout/${DESIGN} && ${MAKE} -f Makefile purge && cd -; \

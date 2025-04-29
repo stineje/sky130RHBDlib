@@ -100,8 +100,7 @@ set vars(max_route_layer)                  6
 # set vars(<set1>,si)     <list of cdb/udn files> (OPTIONAL)
 ###############################################################################
 set vars(library_sets)   "libs_tt"
-set vars(libs_tt,timing) "$vars(library_root)/lib/sky130_rhbd_tt_1P8_25C.ccs.lib \
-    $vars(library_root)/lib/TMR_sky130_rhbd_tt_1P8_25C.ccs.lib"
+set vars(libs_tt,timing) "$vars(library_root)/lib/sky130_rhbd_tt_1P8_25C.ccs.lib"
 set vars(lef_files) "$vars(library_root)/lef/s130.tlef \
     $vars(library_root)/lef/sky130_rhbd.lef"
 

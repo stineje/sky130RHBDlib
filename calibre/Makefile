@@ -1,6 +1,8 @@
 .PHONY: purge pex
 
 DESIGN?=sky130_rhbd
+export NETLIST_DIR?="../../layout/${DESIGN}/spice"
+#export NETLIST_DIR?="../../layout/xschem/$1/spice"
 
 default: pex
 
@@ -13,6 +15,9 @@ purge:
 	-@rm -rf *rul* 
 	-@rm -rf *probe*
 	-@rm -rf *lvs*
+	-@rm -rf *${DESIGN}*
+	-@rm -rf svdb
+
 
 pex: 
 	-@./run_calibrePEX $(DESIGN)
