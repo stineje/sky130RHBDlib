@@ -38,10 +38,10 @@ global vars
 # Define some variables to point to data, libraries, and scripts
 ###############################################################################
 set vars(design_root)  [pwd]/../..
-set vars(data_root) "../../output-files/OSU130_RHBD/fsm_test/"
+set vars(data_root) "../../output-files/OSU130_RHBD/riscvsingle/"
 set vars(library_root) "../../../$env(LIBRARY_NAME)"
 set vars(script_root)  [pwd]/SCRIPTS
-set vars(top_level)  "fsm_test"
+set vars(top_level)  "riscvsingle"
 #set init_io_file encounter.io
 
 ###############################################################################

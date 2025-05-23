@@ -10,8 +10,9 @@ export NETLIST_DIR?=../../layout/${DESIGN}/spice
 
 # Primarily used in the synth/pnr flows.
 export LIBRARY_NAME?=$(DESIGN)
-export HDL_TOP?='[fsm,fsm_test]'
-export FREQUENCY?='[750,500]'
+export HDL_TOP?='[riscv,riscvsingle]'
+export FREQUENCY?='[800,800]'
+export HDL_DIRECTORY?='[pipelined/,single/]'
 
 # Power rail names.
 VDD=VDD

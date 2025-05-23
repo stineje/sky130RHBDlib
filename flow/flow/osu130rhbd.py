@@ -33,6 +33,8 @@ class OSU130RHBD:
 			for line in lines:
 				if 'HDL_TOP' in line:
 					line = line.replace('HDL_TOP', self.hdl_top)
+				if 'HDL_DIRECTORY' in line:
+					line = line.replace('HDL_DIRECTORY', self.hdl_directory)
 				if 'FREQ_TARGET' in line:
 					line = line.replace('FREQ_TARGET', self.frequency)
 				if 'CLK' in line:
@@ -135,10 +137,11 @@ class OSU130RHBD:
 		gzip = subprocess.run([f'gzip -d {self.scriptHome}/../output-files/{self.technology}/{self.hdl_top}/*.gz'], shell=True)
 		os.chdir(self.scriptHome + '/../')
 
-	def main(self, hdl_top, frequency, cwd):
+	def main(self, hdl_top, frequency, cwd, directory):
 		self.hdl_top = hdl_top
 		self.frequency = frequency
 		self.scriptHome = cwd
+		self.hdl_directory = directory
 		os.chdir(self.scriptHome)
 
 		if(not os.path.exists(f'../output-files/{self.technology}/{hdl_top}/')):

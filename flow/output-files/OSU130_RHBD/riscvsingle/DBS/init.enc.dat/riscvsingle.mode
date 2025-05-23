@@ -1,0 +1,45 @@
+catch { setDesignMode -process 130 }
+catch { setDesignMode -topRoutingLayer met5 }
+catch { setAnalysisMode -analysisType single }
+catch { setAnalysisMode -checkType setup }
+catch { setAnalysisMode -clkSrcPath false }
+catch { setAnalysisMode -clockPropagation forcedIdeal }
+catch { setPathGroupOptions reg2reg -effortLevel high -weight 2 }
+catch { setPathGroupOptions reg2reg -late -slackAdjustment -0 }
+catch { setPathGroupOptions default -late -slackAdjustment -0 }
+catch { setExtractRCMode  -engine preRoute -total_c_th 0 -relative_c_th 1 -coupling_c_th 0.4 }
+catch {setNanoRouteMode -quiet -extractThirdPartyCompatible false}
+catch {setNanoRouteMode -quiet -routeTopRoutingLayer 6}
+
+catch { setIlmMode -keepHighFanoutPorts true -keepLoopBack false -keepInstInSdc false -keepFlatten true }
+catch { setSrouteMode -viaConnectToShape noshape }
+catch { setDelayCalMode -enable_high_fanout true }
+catch { setDelayCalMode -engine aae }
+catch { setDelayCalMode -ignoreNetLoad false }
+catch { setDelayCalMode -socv_accuracy_mode low }
+catch { setPinAssignMode -maxLayer 6 }
+catch { setAddRingMode -avoid_short false }
+catch { setAddRingMode -extend_over_row false }
+catch { setAddRingMode -ignore_rows false }
+catch { setAddRingMode -orthogonal_only true }
+catch { setAddRingMode -ring_target default }
+catch { setAddRingMode -skip_crossing_trunks none }
+catch { setAddRingMode -skip_via_on_pin standardcell }
+catch { setAddRingMode -skip_via_on_wire_shape noshape }
+catch { setAddRingMode -stacked_via_bottom_layer li }
+catch { setAddRingMode -stacked_via_top_layer met1 }
+catch { setAddRingMode -via_using_exact_crossover_size true }
+catch { setImportMode -discardFloatingVNets false }
+catch { setImportMode -keepEmptyModule true }
+catch { setSIMode -separate_delta_delay_on_data true }
+catch { setRouteMode -earlyGlobalMaxRouteLayer 6 }
+catch { setFPlanMode -cellsForExtraSites {} }
+catch { setFPlanMode -defaultTechSite unitrh }
+catch { setFPlanMode -extraSites {} }
+catch { setFPlanMode -maxIoHeight false }
+catch { setFPlanMode -place_check_ignore_fixed_cell_list {} }
+catch { setFPlanMode -powerRailLayer {} }
+catch { setFPlanMode -snap_all_corners_to_grid true }
+catch { setFPlanMode -snapConstraintGrid manufacturing }
+catch { setFPlanMode -snapCoreGrid manufacturing }
+catch { setFPlanMode -snapDieGrid manufacturing }

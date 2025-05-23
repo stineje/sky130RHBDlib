@@ -19,13 +19,13 @@ def parseEnviron(key : str):
 	
 	return array
 
-def main(frequency, hdl_top, working_directory):
+def main(frequency, hdl_top, working_directory, hdl_directory):
 	flow1 = f1(PNR_FLAG=True)
 
 	tex_table = table(['OSU130_RHBD'], 'OSU', [''], hdl_top)
 
-	for freq, top in zip(frequency, hdl_top):
-		flow1.main(top, freq, working_directory)
+	for freq, top, directory in zip(frequency, hdl_top, hdl_directory):
+		flow1.main(top, freq, working_directory, directory)
 	
 	os.chdir(working_directory)
 	
@@ -41,13 +41,14 @@ if __name__ == '__main__':
 	# Selects the values based on environment variables or manual input.
 	hdl_top = ['fsm'] if os.getenv('HDL_TOP') == None else parseEnviron('HDL_TOP')
 	frequency = ['500'] if os.getenv('FREQUENCY') == None else parseEnviron('FREQUENCY')
+	hdl_directory = '' if os.getenv('HDL_DIRECTORY') == None else parseEnviron('HDL_DIRECTORY')
 
 	print('#######################################################################')
 	print('#######################################################################')
-	print(f'SELECTED VARIABLES:\n\tHDL_TOP : {hdl_top}\n\tFREQUENCY : {frequency}')
+	print(f'SELECTED VARIABLES:\n\tHDL_TOP : {hdl_top}\n\tFREQUENCY : {frequency}\n\tHDL_DIRECTORY : {hdl_directory}')
 	print('#######################################################################')
 	print('#######################################################################')
 
 	working_directory = os.getcwd() 
 
-	main(frequency, hdl_top, working_directory)
+	main(frequency, hdl_top, working_directory, hdl_directory=hdl_directory)

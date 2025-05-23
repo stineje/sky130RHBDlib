@@ -1,0 +1,50 @@
+ 
+****************************************
+Report : constraint
+Design : riscvsingle
+Version: V-2023.12-SP3
+Date   : Fri May 23 09:52:17 2025
+****************************************
+
+
+                                                   Weighted
+    Group (max_delay/setup)      Cost     Weight     Cost
+    -----------------------------------------------------
+    clk                      1.389221  1.000000  1.389221
+    default                  0.000000  1.000000  0.000000
+    -----------------------------------------------------
+    max_delay/setup                              1.389221
+
+                              Total Neg  Critical
+    Group (critical_range)      Slack    Endpoints   Cost
+    -----------------------------------------------------
+    clk                      1459.274292
+                                              2  2.778441
+    default                  0.000000         0  0.000000
+    -----------------------------------------------------
+    critical_range                               2.778441
+
+                                                   Weighted
+    Group (min_delay/hold)       Cost     Weight     Cost
+    -----------------------------------------------------
+    clk                      0.000000  1.000000  0.000000
+    default                  0.000000  1.000000  0.000000
+    -----------------------------------------------------
+    min_delay/hold                               0.000000
+
+
+    Constraint                                       Cost
+    -----------------------------------------------------
+    multiport_net                                0.000000 (MET)
+    max_transition                               0.000000 (MET)
+    max_fanout                                   0.000000 (MET)
+    max_capacitance                              0.000000 (MET)
+    max_delay/setup                              1.389221 (VIOLATED)
+    sequential_clock_pulse_width                 0.000000 (MET)
+    critical_range                               2.778441 (VIOLATED)
+    min_delay/hold                               0.000000 (MET)
+    max_leakage_power                            186895.140625
+                                                          (VIOLATED)
+
+
+1

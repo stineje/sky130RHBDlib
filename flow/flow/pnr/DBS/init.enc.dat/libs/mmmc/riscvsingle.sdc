@@ -1,0 +1,1 @@
+/import/yukari1/lrburle/sky130RHBDlib/flow/output-files/OSU130_RHBD/riscvsingle/riscvsingle.sdc

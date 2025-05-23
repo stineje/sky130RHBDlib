@@ -1,0 +1,52 @@
+Warning: There are infeasible paths detected in your design that were ignored during optimization. Please run 'report_timing -attributes' and/or 'create_qor_snapshot/query_qor_snapshot -infeasible_paths' to identify these paths.  (OPT-1721)
+ 
+****************************************
+Report : constraint
+Design : riscv
+Version: V-2023.12-SP3
+Date   : Fri May 23 09:01:16 2025
+****************************************
+
+
+                                                   Weighted
+    Group (max_delay/setup)      Cost     Weight     Cost
+    -----------------------------------------------------
+    clk                      1.943486  1.000000  1.943486
+    default                  0.000000  1.000000  0.000000
+    -----------------------------------------------------
+    max_delay/setup                              1.943486
+
+                              Total Neg  Critical
+    Group (critical_range)      Slack    Endpoints   Cost
+    -----------------------------------------------------
+    clk                      1211.000488
+                                              1  1.943486
+    default                  0.000000         0  0.000000
+    -----------------------------------------------------
+    critical_range                               1.943486
+
+                                                   Weighted
+    Group (min_delay/hold)       Cost     Weight     Cost
+    -----------------------------------------------------
+    clk                      0.000000  1.000000  0.000000
+    default                  0.000000  1.000000  0.000000
+    -----------------------------------------------------
+    min_delay/hold                               0.000000
+
+
+    Constraint                                       Cost
+    -----------------------------------------------------
+    multiport_net                                0.000000 (MET)
+    max_transition                               0.000000 (MET)
+    max_fanout                                   0.000000 (MET)
+    max_capacitance                              0.000000 (MET)
+    max_delay/setup                              1.943486 (VIOLATED)
+    sequential_clock_pulse_width                 373.236176
+                                                          (VIOLATED)
+    critical_range                               1.943486 (VIOLATED)
+    min_delay/hold                               0.000000 (MET)
+    max_leakage_power                            230636.468750
+                                                          (VIOLATED)
+
+
+1

@@ -1,0 +1,57 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : riscvsingle
+Version: V-2023.12-SP3
+Date   : Fri May 23 09:52:17 2025
+****************************************
+
+
+Library(s) Used:
+
+    sky130_rhbd_tt_1P8_25C.ccs (File: /import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/db/sky130_rhbd_tt_1P8_25C.ccs.db)
+
+
+Operating Conditions: PVT_1P8V_25C   Library: sky130_rhbd_tt_1P8_25C.ccs
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.8  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  = 17.578299  W  (100%)
+  Net Switching Power  = 24.102865 mW    (0%)
+                         ---------
+Total Dynamic Power    = 17.602402  W  (100%)
+
+Cell Leakage Power     =  95.6339 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+memory           0.000000          0.000000          0.000000          0.000000  (   0.00%)
+black_box        0.000000          0.000000          0.000000          0.000000  (   0.00%)
+clock_network  1.419830e+04          0.000000          0.000000        1.419830e+04
+                                                                                 (  80.66%)  i
+register       455.435547          0.720643        3.085363e+04        456.187103
+                                                                                 (   2.59%)
+sequential       0.000000          0.000000          0.000000          0.000000  (   0.00%)
+combinational  2.924566e+03         23.382133        6.478029e+04        2.948017e+03
+                                                                                 (  16.75%)
+--------------------------------------------------------------------------------------------------
+Total          1.757830e+04 mW      24.102776 mW     9.563392e+04 nW     1.760250e+04 mW
+1

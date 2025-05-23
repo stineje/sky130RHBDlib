@@ -4,13 +4,13 @@
 #
 
 # Verilog files
-set my_verilog_files [glob ../../hdl/*]
+set my_verilog_files [glob ../../hdl/single/*]
 
 # VHDL files
 # set my_vhdl_files [list top.vhd]
 
 # Set toplevel
-set my_toplevel fsm_test 
+set my_toplevel riscvsingle 
 
 # Set number of significant digits
 set report_default_significant_digits 6
@@ -42,7 +42,7 @@ reset_design
 
 # Set Frequency in [MHz] or [ps]
 set my_clock_pin clk 
-set my_clk_freq_MHz 500
+set my_clk_freq_MHz 800
 set my_period [expr 1000.0 / $my_clk_freq_MHz]
 set my_uncertainty [expr .1 * $my_period]
 

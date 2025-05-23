@@ -2,8 +2,9 @@
 SHELL:=/usr/bin/bash
 
 export LIBRARY_NAME?=sky130_rhbd
-export HDL_TOP?='[fsm,fsm_test]'
-export FREQUENCY?='[750,500]'
+export HDL_TOP?='[riscv,riscvsingle]'
+export FREQUENCY?='[800,800]'
+export HDL_DIRECTORY?='[pipelined/,single/]'
 
 default: run
 
