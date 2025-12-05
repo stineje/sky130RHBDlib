@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1742484610
+timestamp 1764969336
 << error_s >>
 rect 296 324 312 340
 rect 490 332 506 348
@@ -34,20 +34,32 @@ rect 1294 1584 1306 1586
 rect 1292 1552 1306 1584
 rect 155 1499 189 1533
 rect 1242 1482 1306 1552
+rect 233 1089 279 1135
 rect 1292 822 1306 1482
 << pwell >>
 rect 0 2 64 70
 rect 155 19 189 53
 rect 1242 2 1306 70
 rect 0 0 1306 2
+<< pdiff >>
+rect 233 1089 279 1135
 << psubdiff >>
 rect 64 0 1242 2
 << nsubdiff >>
 rect 64 1550 1242 1552
 << locali >>
-rect 0 1550 1306 1552
-rect 0 1482 64 1550
-rect 1242 1482 1306 1550
+rect 0 1482 1306 1552
+rect 239 1129 273 1232
+rect 239 1063 273 1095
+rect 0 0 1306 70
+<< viali >>
+rect 239 1095 273 1129
+<< metal1 >>
+rect 0 1482 1306 1552
+rect 233 1129 279 1135
+rect 233 1095 239 1129
+rect 273 1095 279 1129
+rect 233 1089 279 1095
 rect 303 907 337 941
 rect 451 907 485 941
 rect 1043 907 1077 941
@@ -69,17 +81,12 @@ rect 1043 537 1077 571
 rect 303 463 337 497
 rect 451 463 485 497
 rect 1043 463 1077 497
-rect 0 2 64 70
-rect 1242 2 1306 70
-rect 0 0 1306 2
-<< metal1 >>
-rect 0 1482 1306 1552
 rect 0 64 1306 70
 rect 0 2 64 64
 rect 78 2 1306 64
 rect 0 0 1306 2
 use and2x1_pcell  and2x1_pcell_0
-timestamp 1742082207
+timestamp 1764969336
 transform 1 0 98 0 1 36
 box -87 -34 1197 1550
 << labels >>
@@ -127,7 +134,7 @@ rlabel locali 451 463 485 497 1 B
 port 3 nsew signal input
 rlabel metal1 0 1482 1306 1552 1 VDD
 port 4 nsew power bidirectional abutment
-rlabel metal1 0 0 1306 70 1 GND
+rlabel metal1 0 0 64 70 1 GND
 port 5 nsew ground bidirectional abutment
 << properties >>
 string FIXED_BBOX 0 0 1306 1552
