@@ -3,60 +3,116 @@ tech sky130A
 magscale 1 2
 timestamp 1765849543
 << error_s >>
-rect 185 297 201 313
-rect 629 297 645 313
-rect 261 267 291 297
-rect 705 267 735 297
-rect 185 251 201 267
-rect 245 251 261 267
-rect 629 251 645 267
-rect 689 251 705 267
-rect 185 166 201 182
-rect 245 166 261 182
-rect 629 166 645 182
-rect 689 166 705 182
-rect 155 136 185 166
-rect 261 136 291 166
-rect 599 136 629 166
-rect 705 136 735 166
+rect 229 943 263 975
+rect 229 907 263 941
+rect 821 907 855 941
+rect 229 833 263 867
+rect 821 833 855 867
+rect 229 759 263 793
+rect 821 759 855 793
+rect 229 685 263 719
+rect 821 685 855 719
+rect 229 611 263 645
+rect 821 611 855 645
+rect 229 537 263 571
+rect 821 537 855 571
+rect 821 463 855 497
+rect 283 333 299 349
+rect 727 333 743 349
+rect 359 303 389 333
+rect 803 303 833 333
+rect 283 287 299 303
+rect 343 287 359 303
+rect 727 287 743 303
+rect 787 287 803 303
+rect 283 202 299 218
+rect 343 202 359 218
+rect 727 202 743 218
+rect 787 202 803 218
+rect 253 172 283 202
+rect 359 172 389 202
+rect 697 172 727 202
+rect 803 172 833 202
+<< nwell >>
+rect 0 1586 1084 1588
+rect 0 1552 11 1586
+rect 0 1482 46 1552
+rect 155 1499 189 1533
+rect 0 822 11 1482
+rect 1073 822 1084 1586
+<< pwell >>
+rect 0 2 64 70
+rect 155 19 189 53
+rect 1020 2 1084 70
+rect 0 0 1084 2
+<< psubdiff >>
+rect 64 0 1020 2
+<< nsubdiff >>
+rect 64 1550 1020 1552
+<< locali >>
+rect 0 1550 1084 1552
+rect 0 1482 64 1550
+rect 1020 1482 1084 1550
+rect 229 907 263 941
+rect 821 907 855 941
+rect 229 833 263 867
+rect 821 833 855 867
+rect 229 759 263 793
+rect 821 759 855 793
+rect 229 685 263 719
+rect 821 685 855 719
+rect 229 611 263 645
+rect 821 611 855 645
+rect 229 537 263 571
+rect 821 537 855 571
+rect 229 463 263 497
+rect 821 463 855 497
+rect 0 2 64 70
+rect 1020 2 1084 70
+rect 0 0 1084 2
 << metal1 >>
-rect 264 545 328 551
-rect 264 493 270 545
-rect 322 493 328 545
-rect 264 487 328 493
-rect 560 545 624 551
-rect 560 493 566 545
-rect 618 493 624 545
-rect 560 487 624 493
-<< via1 >>
-rect 270 493 322 545
-rect 566 493 618 545
-<< metal2 >>
-rect 264 545 328 551
-rect 264 493 270 545
-rect 322 535 328 545
-rect 560 545 624 551
-rect 560 535 566 545
-rect 322 501 566 535
-rect 322 493 328 501
-rect 264 487 328 493
-rect 560 493 566 501
-rect 618 493 624 545
-rect 560 487 624 493
-use invx1_pcell  invx1_pcell_0
-timestamp 1765572787
-transform 1 0 0 0 1 0
-box -87 -34 531 1550
-use invx1_pcell  invx1_pcell_1
-timestamp 1765572787
-transform 1 0 444 0 1 0
-box -87 -34 531 1550
-use li1_M1_contact  li1_M1_contact_0
-timestamp 1648061256
-transform -1 0 296 0 -1 518
-box -53 -33 29 33
-use li1_M1_contact  li1_M1_contact_1
-timestamp 1648061256
-transform 1 0 592 0 1 518
-box -53 -33 29 33
+rect 0 1482 1084 1552
+rect 0 0 1084 70
+use bufx1  bufx1_0
+timestamp 1765849543
+transform 1 0 98 0 1 36
+box -87 -34 975 1550
+<< labels >>
+rlabel metal1 821 463 855 497 1 Y
+port 1 nsew signal output
+rlabel metal1 821 537 855 571 1 Y
+port 1 nsew signal output
+rlabel metal1 821 611 855 645 1 Y
+port 1 nsew signal output
+rlabel metal1 821 685 855 719 1 Y
+port 1 nsew signal output
+rlabel metal1 821 759 855 793 1 Y
+port 1 nsew signal output
+rlabel metal1 821 833 855 867 1 Y
+port 1 nsew signal output
+rlabel metal1 821 907 855 941 1 Y
+port 1 nsew signal output
+rlabel metal1 229 463 263 497 1 A
+port 2 nsew signal input
+rlabel metal1 229 537 263 571 1 A
+port 2 nsew signal input
+rlabel metal1 229 611 263 645 1 A
+port 2 nsew signal input
+rlabel metal1 229 685 263 719 1 A
+port 2 nsew signal input
+rlabel metal1 229 759 263 793 1 A
+port 2 nsew signal input
+rlabel metal1 229 833 263 867 1 A
+port 2 nsew signal input
+rlabel metal1 229 907 263 941 1 A
+port 2 nsew signal input
+rlabel metal1 0 1482 1084 1552 1 VDD
+port 3 nsew power bidirectional abutment
+rlabel metal1 0 0 1084 70 1 GND
+port 4 nsew ground bidirectional abutment
+<< properties >>
+string FIXED_BBOX 0 0 1084 1552
+string LEFclass CORE
+string LEFsite unitrh
+string LEFsymmetry X Y
 << end >>
