@@ -1,17 +1,17 @@
 // File: NAND2X1.spi
-// Created: Tue Apr 29 10:43:14 2025
+// Created: Thu Jan 22 07:07:01 2026
 // Program "Calibre xRC"
 // Version "v2023.2_27.15"
 // 
 simulator lang=spectre
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/NAND2X1.pex.spice"
-subckt NAND2X1 (  GND VDD A B Y )
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/NAND2X1.pex.spice"
+subckt NAND2X1 (  VDD A GND B Y )
 // 
 // Y	Y
 // B	B
+// GND	GND
 // A	A
 // VDD	VDD
-// GND	GND
 M0_noxref ( N_GND_M0_noxref_d N_A_M0_noxref_g N_noxref_6_M0_noxref_s noxref_53 \
  ) NMOS l=0.163119 w=2.35104 m=1
 M1_noxref ( N_Y_M1_noxref_d N_B_M1_noxref_g N_noxref_6_M0_noxref_s noxref_53 ) \
@@ -25,7 +25,7 @@ M4_noxref ( N_Y_M4_noxref_d N_B_M4_noxref_g N_VDD_M3_noxref_d noxref_51 ) PMOS \
 M5_noxref ( N_VDD_M5_noxref_d N_B_M5_noxref_g N_Y_M4_noxref_d noxref_51 ) PMOS \
  l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
 // 
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/NAND2X1.pxi.spice"
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/NAND2X1.pxi.spice"
 // 
 ends NAND2X1
 // 

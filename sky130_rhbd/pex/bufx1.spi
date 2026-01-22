@@ -1,30 +1,30 @@
 // File: bufx1.spi
-// Created: Tue Apr 29 10:48:41 2025
+// Created: Thu Jan 22 07:12:29 2026
 // Program "Calibre xRC"
 // Version "v2023.2_27.15"
 // 
 simulator lang=spectre
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/bufx1.pex.spice"
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/bufx1.pex.spice"
 subckt bufx1 (  )
 // 
-M0_noxref ( N_noxref_3_M0_noxref_d N_noxref_4_M0_noxref_g \
- N_noxref_1_M0_noxref_s noxref_70 ) NMOS l=0.163346 w=2.31104 m=1
-M1_noxref ( N_noxref_5_M1_noxref_d N_noxref_3_M1_noxref_g \
- N_noxref_1_M1_noxref_s noxref_70 ) NMOS l=0.163346 w=2.31104 m=1
-M2_noxref ( N_noxref_3_M2_noxref_d N_noxref_4_M2_noxref_g \
- N_noxref_2_M2_noxref_s noxref_68 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+M0_noxref ( N_noxref_1_M0_noxref_d N_noxref_4_M0_noxref_g \
+ N_noxref_2_M0_noxref_s noxref_70 ) NMOS l=0.163346 w=2.31104 m=1
+M1_noxref ( N_noxref_5_M1_noxref_d N_noxref_1_M1_noxref_g \
+ N_noxref_2_M1_noxref_s noxref_70 ) NMOS l=0.163346 w=2.31104 m=1
+M2_noxref ( N_noxref_1_M2_noxref_d N_noxref_4_M2_noxref_g \
+ N_noxref_3_M2_noxref_s noxref_68 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
  ps=2.57 nrd=0 nrs=0 m=1
-M3_noxref ( N_noxref_2_M3_noxref_d N_noxref_4_M3_noxref_g \
- N_noxref_3_M2_noxref_d noxref_68 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
+M3_noxref ( N_noxref_3_M3_noxref_d N_noxref_4_M3_noxref_g \
+ N_noxref_1_M2_noxref_d noxref_68 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
  ps=2.56 nrd=0 nrs=0 m=1
-M4_noxref ( N_noxref_5_M4_noxref_d N_noxref_3_M4_noxref_g \
- N_noxref_2_M4_noxref_s noxref_68 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
+M4_noxref ( N_noxref_5_M4_noxref_d N_noxref_1_M4_noxref_g \
+ N_noxref_3_M4_noxref_s noxref_68 ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 \
  ps=2.57 nrd=0 nrs=0 m=1
-M5_noxref ( N_noxref_2_M5_noxref_d N_noxref_3_M5_noxref_g \
+M5_noxref ( N_noxref_3_M5_noxref_d N_noxref_1_M5_noxref_g \
  N_noxref_5_M4_noxref_d noxref_68 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
  ps=2.56 nrd=0 nrs=0 m=1
 // 
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/bufx1.pxi.spice"
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/bufx1.pxi.spice"
 // 
 ends BUFX1
 // 

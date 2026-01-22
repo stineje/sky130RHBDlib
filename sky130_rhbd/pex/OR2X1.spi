@@ -1,37 +1,37 @@
 // File: OR2X1.spi
-// Created: Tue Apr 29 10:44:03 2025
+// Created: Thu Jan 22 07:07:48 2026
 // Program "Calibre xRC"
 // Version "v2023.2_27.15"
 // 
 simulator lang=spectre
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/OR2X1.pex.spice"
-subckt OR2X1 (  GND VDD A B Y )
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/OR2X1.pex.spice"
+subckt OR2X1 (  GND A VDD B Y )
 // 
 // Y	Y
 // B	B
-// A	A
 // VDD	VDD
+// A	A
 // GND	GND
-M0_noxref ( N_noxref_3_M0_noxref_d N_A_M0_noxref_g N_GND_M0_noxref_s noxref_78 \
+M0_noxref ( N_noxref_1_M0_noxref_d N_A_M0_noxref_g N_GND_M0_noxref_s noxref_78 \
  ) NMOS l=0.163346 w=2.31104 m=1
-M1_noxref ( N_noxref_3_M1_noxref_d N_B_M1_noxref_g N_GND_M0_noxref_s noxref_78 \
+M1_noxref ( N_noxref_1_M1_noxref_d N_B_M1_noxref_g N_GND_M0_noxref_s noxref_78 \
  ) NMOS l=0.163129 w=2.31397 m=1
-M2_noxref ( N_Y_M2_noxref_d N_noxref_3_M2_noxref_g N_GND_M2_noxref_s noxref_78 \
+M2_noxref ( N_Y_M2_noxref_d N_noxref_1_M2_noxref_g N_GND_M2_noxref_s noxref_78 \
  ) NMOS l=0.163346 w=2.31104 m=1
-M3_noxref ( N_VDD_M3_noxref_d N_A_M3_noxref_g N_noxref_6_M3_noxref_s noxref_76 \
+M3_noxref ( N_VDD_M3_noxref_d N_A_M3_noxref_g N_noxref_3_M3_noxref_s noxref_76 \
  ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
-M4_noxref ( N_noxref_6_M4_noxref_d N_A_M4_noxref_g N_VDD_M3_noxref_d noxref_76 \
+M4_noxref ( N_noxref_3_M4_noxref_d N_A_M4_noxref_g N_VDD_M3_noxref_d noxref_76 \
  ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
-M5_noxref ( N_noxref_3_M5_noxref_d N_B_M5_noxref_g N_noxref_6_M4_noxref_d \
+M5_noxref ( N_noxref_1_M5_noxref_d N_B_M5_noxref_g N_noxref_3_M4_noxref_d \
  noxref_76 ) PMOS l=0.15 w=2 ad=0.58 as=0.58 pd=2.58 ps=2.58 nrd=0 nrs=0 m=1
-M6_noxref ( N_noxref_6_M6_noxref_d N_B_M6_noxref_g N_noxref_3_M5_noxref_d \
+M6_noxref ( N_noxref_3_M6_noxref_d N_B_M6_noxref_g N_noxref_1_M5_noxref_d \
  noxref_76 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
-M7_noxref ( N_Y_M7_noxref_d N_noxref_3_M7_noxref_g N_VDD_M7_noxref_s noxref_76 \
+M7_noxref ( N_Y_M7_noxref_d N_noxref_1_M7_noxref_g N_VDD_M7_noxref_s noxref_76 \
  ) PMOS l=0.15 w=2 ad=0.57 as=0.57 pd=2.57 ps=2.57 nrd=0 nrs=0 m=1
-M8_noxref ( N_VDD_M8_noxref_d N_noxref_3_M8_noxref_g N_Y_M7_noxref_d noxref_76 \
+M8_noxref ( N_VDD_M8_noxref_d N_noxref_1_M8_noxref_g N_Y_M7_noxref_d noxref_76 \
  ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 ps=2.56 nrd=0 nrs=0 m=1
 // 
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/OR2X1.pxi.spice"
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/OR2X1.pxi.spice"
 // 
 ends OR2X1
 // 

@@ -1,10 +1,10 @@
 // File: invx1_pcell.spi
-// Created: Tue Apr 29 10:50:01 2025
+// Created: Thu Jan 22 07:13:36 2026
 // Program "Calibre xRC"
 // Version "v2023.2_27.15"
 // 
 simulator lang=spectre
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/invx1_pcell.pex.spice"
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/invx1_pcell.pex.spice"
 subckt invx1_pcell (  )
 // 
 M0_noxref ( N_noxref_4_M0_noxref_d N_noxref_3_M0_noxref_g noxref_1 noxref_45 ) \
@@ -15,9 +15,9 @@ M1_noxref ( N_noxref_4_M1_noxref_d N_noxref_3_M1_noxref_g \
 M2_noxref ( N_noxref_2_M2_noxref_d N_noxref_3_M2_noxref_g \
  N_noxref_4_M1_noxref_d noxref_43 ) PMOS l=0.15 w=2 ad=0.56 as=0.56 pd=2.56 \
  ps=2.56 nrd=0 nrs=0 m=1
-c_13 ( noxref_1 0 ) capacitor c=0.627917f //x=0.495 //y=0.37
+c_17 ( noxref_1 0 ) capacitor c=0.64322f //x=0.495 //y=0.37
 // 
-include "/import/yukari1/lrburle/sky130RHBDlib/calibre/sky130_rhbd_output/spice/invx1_pcell.pxi.spice"
+include "/import/yukari1/lrburle/sky130RHBDlib/sky130_rhbd/pex/invx1_pcell.pxi.spice"
 // 
 ends INVX1_PCELL
 // 
