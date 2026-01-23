@@ -20,7 +20,7 @@ GND=GND
 
 default: extract
 
-all: extract lvs pex abstract liberate 
+all: extract pex abstract liberate 
 
 extract: 
 	cd layout/${DESIGN}/ && python3 ext4mag.py --move --lef --extract_ngspice ${PATTERN} && cd -; \
@@ -51,6 +51,7 @@ pex:
 	sed -i 's|/calibre/output/|/calibre/${DESIGN}_output/|g' ${DESIGN}_output/spice/*; \
 	cp -f ${DESIGN}_output/spice/*.spice $(RUN_DIR)/${LIBRARY_NAME}/pex/; \
 	cp -f ${DESIGN}_output/spice/*.spi $(RUN_DIR)/${LIBRARY_NAME}/pex/; \
+	sed -i 's|calibre/sky130_rhbd_output/spice|${LIBRARY_NAME}/pex|g' ${LIBRARY_NAME}/pex/*.spi; \
 	cd ../
 
 spef:
