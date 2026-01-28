@@ -1,0 +1,23 @@
+* HSPICE file created from AOI3X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt AOI3X1 YN A B C VDD GND
+X0 GND A x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X2 x3/m1_486_486 B x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X4 VDD A x3/m1_486_486 VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X5 x3/m1_486_486 A VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X6 VDD B x3/m1_486_486 VDD sky130_fd_pr__pfet_01v8 ad=90.4n pd=3.65m as=46.4n ps=1.83m w=400 l=30
+X7 x3/m1_486_486 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X8 VDD x3/m1_486_486 x9/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X10 x9/a_317_1331 x3/m1_486_486 VDD VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X11 YN C x9/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=23.2n pd=0.917m as=67.2n ps=2.74m w=400 l=30
+X12 x9/a_317_1331 C YN VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X13 YN x3/m1_486_486 GND GND sky130_fd_pr__nfet_01v8 ad=14.3n pd=0.63m as=91.8n ps=3.31m w=602 l=30
+X14 YN C GND GND sky130_fd_pr__nfet_01v8 ad=2.4n pd=0.112m as=15.8n ps=0.594m w=602 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	aoi3x1_pcell_0/nand2x1_pcell_0/nmos_bottom_0
+* x3	aoi3x1_pcell_0
+* x9	aoi3x1_pcell_0/nor2x1_pcell_0

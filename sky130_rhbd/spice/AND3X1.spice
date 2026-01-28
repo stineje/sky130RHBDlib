@@ -1,0 +1,23 @@
+* HSPICE file created from AND3X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt AND3X1 Y A B C VDD GND
+X0 Y x1/m1_783_634 GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X2 VDD x1/m1_783_634 Y VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X3 Y x1/m1_783_634 VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X4 GND A x5/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X6 x1/m1_783_634 C x7/li_393_182 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X8 x7/li_393_182 B x5/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.18n pd=0.106m as=16.2n ps=0.604m w=600 l=30
+X9 VDD A x1/m1_783_634 VDD sky130_fd_pr__pfet_01v8 ad=0.134u pd=5.47m as=69.6n ps=2.75m w=400 l=30
+X10 x1/m1_783_634 A VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X11 VDD B x1/m1_783_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X12 x1/m1_783_634 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X13 VDD C x1/m1_783_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X14 x1/m1_783_634 C VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	and3x1_pcell_0
+* x5	and3x1_pcell_0/nand3x1_pcell_0/nmos_bottom_0
+* x7	and3x1_pcell_0/nand3x1_pcell_0

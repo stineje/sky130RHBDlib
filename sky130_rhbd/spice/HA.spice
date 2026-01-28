@@ -1,0 +1,42 @@
+* HSPICE file created from HA.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt HA SUM COUT A B VDD GND
+X0 GND A x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X2 GND x3/li_871_923 x4/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=60n pd=2.25m as=77.2n ps=2.61m w=602 l=30
+X5 VDD A x3/a_761_1330 VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X6 x3/a_761_1330 A VDD VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X7 SUM x3/a_1472_383 x4/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X8 SUM B x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=21.5n pd=1.91m as=77.2n ps=2.61m w=602 l=30
+X9 SUM x3/li_871_923 x3/a_761_1330 VDD sky130_fd_pr__pfet_01v8 ad=46.4n pd=1.83m as=67.2n ps=2.74m w=400 l=30
+X10 x3/a_761_1330 x3/li_871_923 SUM VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X11 VDD B x3/a_1427_1330 VDD sky130_fd_pr__pfet_01v8 ad=0.246u pd=0.01 as=67.2n ps=2.74m w=400 l=30
+X12 x3/a_1427_1330 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X13 SUM x3/a_1472_383 x3/a_1427_1330 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X14 x3/a_1427_1330 x3/a_1472_383 SUM VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X15 x3/a_1472_383 A GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X16 VDD A x3/a_1472_383 VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X17 x3/a_1472_383 A VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X18 x3/li_871_923 B x19/VSUBS x19/VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=60n ps=2.78m w=602 l=30
+X20 VDD B x3/li_871_923 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X21 x3/li_871_923 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X22 COUT x23/m1_486_634 x23/VSUBS x23/VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=60n ps=2.34m w=602 l=30
+X24 VDD x23/m1_486_634 COUT VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=23.2n ps=0.917m w=400 l=30
+X25 COUT x23/m1_486_634 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X26 x23/VSUBS A x27/a_0_0 x23/VSUBS sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X28 x23/m1_486_634 B x27/a_0_0 x23/VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=0 ps=0 w=602 l=30
+X29 VDD A x23/m1_486_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X30 x23/m1_486_634 A VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X31 VDD B x23/m1_486_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X32 x23/m1_486_634 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+C0 B x3/li_871_923 2.08f
+.ends
+
+** hspice subcircuit dictionary
+* x1	xor2X1_pcell_0/nmos_bottom_0
+* x3	xor2X1_pcell_0
+* x4	xor2X1_pcell_0/nmos_bottom_1
+* x19	xor2X1_pcell_0/li1_M1_contact_2
+* x23	and2x1_pcell_0
+* x27	and2x1_pcell_0/nand2x1_pcell_0/nmos_bottom_0

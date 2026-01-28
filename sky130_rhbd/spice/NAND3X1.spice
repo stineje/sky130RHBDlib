@@ -1,0 +1,19 @@
+* HSPICE file created from NAND3X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt NAND3X1 Y A B C VDD GND
+X0 GND A x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X2 Y C x3/li_393_182 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X4 x3/li_393_182 B x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.18n pd=0.106m as=16.2n ps=0.604m w=600 l=30
+X5 VDD A Y VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X6 Y A VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X7 VDD B Y VDD sky130_fd_pr__pfet_01v8 ad=90.4n pd=3.65m as=69.6n ps=2.75m w=400 l=30
+X8 Y B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X9 VDD C Y VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X10 Y C VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	nand3x1_pcell_0/nmos_bottom_0
+* x3	nand3x1_pcell_0

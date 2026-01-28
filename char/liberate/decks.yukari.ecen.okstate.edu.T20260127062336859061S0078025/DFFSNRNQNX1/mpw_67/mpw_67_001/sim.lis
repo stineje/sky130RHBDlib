@@ -1,0 +1,851 @@
+/import/programs/cadence/LIBERATE/current/bin/spectre -64 -plugin /import/programs/cadence/LIBERATE/current/lib/lnx86_64_2.6/libSki.so +multiple -cp -ss -l -f nutascii +lqt 0 
+
+Reading file:  /dev/shm/netlistJvWfoN
+Time for NDB Parsing: CPU = 6.855500e-02 s, elapsed = 8.283901e-02 s.
+Time accumulated: CPU = 2.389450e+02 s (3m  58.9s), elapsed = 2.414583e+02 s
+        (4m  1.5s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+Warning from spectre during circuit read-in.
+    WARNING (SFE-411): "/dev/shm/netlistJvWfoN" 112: Hierarchical node
+        `x_PM_DFFSNRNQNX1%noxref_1.5' will be treated as a regular
+        (non-hierarchical) node because either it does not exist in the design
+        or a signal name of the instance or node contains the hierarchy
+        delimiter `.'. Check that both instance name and node name are correct
+        and the signal name of the instance or node does not contain the
+        hierarchy delimiter. Next, rerun the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistJvWfoN" 129: Hierarchical node
+        `x_PM_DFFSNRNQNX1%noxref_1.33' will be treated as a regular
+        (non-hierarchical) node because either it does not exist in the design
+        or a signal name of the instance or node contains the hierarchy
+        delimiter `.'. Check that both instance name and node name are correct
+        and the signal name of the instance or node does not contain the
+        hierarchy delimiter. Next, rerun the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistJvWfoN" 169: Hierarchical node
+        `x_PM_DFFSNRNQNX1%GND.99' will be treated as a regular
+        (non-hierarchical) node because either it does not exist in the design
+        or a signal name of the instance or node contains the hierarchy
+        delimiter `.'. Check that both instance name and node name are correct
+        and the signal name of the instance or node does not contain the
+        hierarchy delimiter. Next, rerun the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistJvWfoN" 172: Hierarchical node
+        `x_PM_DFFSNRNQNX1%GND.95' will be treated as a regular
+        (non-hierarchical) node because either it does not exist in the design
+        or a signal name of the instance or node contains the hierarchy
+        delimiter `.'. Check that both instance name and node name are correct
+        and the signal name of the instance or node does not contain the
+        hierarchy delimiter. Next, rerun the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistJvWfoN" 176: Hierarchical node
+        `x_PM_DFFSNRNQNX1%GND.91' will be treated as a regular
+        (non-hierarchical) node because either it does not exist in the design
+        or a signal name of the instance or node contains the hierarchy
+        delimiter `.'. Check that both instance name and node name are correct
+        and the signal name of the instance or node does not contain the
+        hierarchy delimiter. Next, rerun the simulation.
+        Further occurrences of this warning will be suppressed.
+
+Time for Elaboration: CPU = 2.982000e-02 s, elapsed = 3.040886e-02 s.
+Time accumulated: CPU = 2.389749e+02 s (3m  59.0s), elapsed = 2.414888e+02 s
+        (4m  1.5s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+Time for EDB Visiting: CPU = 2.478800e-02 s, elapsed = 2.478695e-02 s.
+Time accumulated: CPU = 2.389997e+02 s (3m  59.0s), elapsed = 2.415137e+02 s
+        (4m  1.5s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+Notice from spectre during topology check.
+    Only one connection to the following 37 nodes:
+        x_PM_DFFSNRNQNX1%CLK.13
+        x_PM_DFFSNRNQNX1%CLK.7
+        x_PM_DFFSNRNQNX1%noxref_12.16
+        x_PM_DFFSNRNQNX1%noxref_13.16
+        x_PM_DFFSNRNQNX1%noxref_14.16
+        Further occurrences of this notice will be suppressed.
+    No DC path from node `N_noxref_15_c_4136_n' to ground, Gmin installed to
+        provide path.
+
+
+Global user options:
+               temp = 25
+warning_change_severity = error
+         warning_id = MDL-360
+      preserve_inst = [ VGND VVDD ]
+           autostop = spice
+             digits = 6
+            measdgt = 6
+           notation = sci
+             ingold = sci
+               save = nooutput
+
+Scoped user options:
+
+Circuit inventory:
+              nodes 1248
+              bsim4 54    
+          capacitor 3293  
+           resistor 1295  
+            vsource 7     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+
+Notice from spectre.
+    1 notice suppressed.
+    557 warnings suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000037e-03 s)
+*************************************************************************
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    There are 2 IC nodes defined.
+    GminDC = 1.000000e-12 S is large enough to noticeably affect the DC
+        solution.
+        dV(MM14_noxref.nmos_0:int_s) = 7.344535e-02 V
+        Use the `gmin_check' option to eliminate or expand this report.
+    Initial condition computed for node N_noxref_2_M30_noxref_d is in error by
+        1.147533e-04 V.
+        Decrease `rforce' to reduce error in computed initial conditions. 
+        However, setting rforce too small may result in convergence
+        difficulties or in the matrix becoming singular.
+
+DC simulation time: CPU = 1.000500e-02 s, elapsed = 1.000714e-02 s.
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000037e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000073e-05 s
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             236
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.926e+00 V
+I: I(VVDD:p) = 5.777e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.7 %)      1 (40.0 %)      2 (41.4 %)      3 (28.9 %)
+         4 (53.7 %)      5 (47.9 %)      6 (42.0 %)      7 (46.6 %)
+         8 (37.5 %)      9 (25.0 %)     10 (59.5 %)     11 (39.5 %)
+        12 (30.1 %)     13 (57.7 %)     14 (38.3 %)     15 (24.3 %)
+        16 (24.5 %)     17 (56.1 %)     18 (82.9 %)     19 (31.2 %)
+        20 (37.7 %)     21 (59.4 %)     22 (38.1 %)     23 (61.3 %)
+        24 (44.4 %)     25 (30.0 %)     26 (20.3 %)     27 (47.1 %)
+        28 (41.6 %)     29 (20.4 %)     30 (56.4 %)     31 (72.5 %)
+        32 (18.8 %)     33 (24.4 %)     34 (45.1 %)     35 (59.3 %)
+        36 (52.6 %)     37 (57.0 %)     38 (20.5 %)     39 (44.1 %)
+        40 (26.4 %)     41 (45.0 %)     42 (52.2 %)     43 (40.8 %)
+        44 (30.9 %)     45 (41.5 %)     46 (30.8 %)     47 (24.5 %)
+        48 (43.6 %)     49 (39.8 %)     50 (39.1 %)     51 (20.5 %)
+        52 (17.3 %)     53 (22.5 %)     54 (28.1 %)     55 (13.4 %)
+        56 (26.2 %)     57 (35.2 %)     58 (15.9 %)     59 (8.0 %)
+        60 (20.1 %)     61 (10.0 %)     62 (39.9 %)     63 (50.6 %)
+        64 (34.7 %)     65 (3.9 %)      66 (11.8 %)     67 (26.3 %)
+        68 (7.1 %)      69 (12.1 %)     70 (6.4 %)      71 (4.3 %)
+        72 (34.9 %)     73 (62.6 %)     74 (62.6 %)     75 (13.6 %)
+        76 (21.2 %)     77 (55.9 %)     78 (6.3 %)      79 (13.2 %)
+        80 (43.5 %)     81 (52.6 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.5 %)      85 (8.4 %)      86 (10.8 %)     87 (21.1 %)
+        88 (33.6 %)     89 (40.2 %)     90 (18.5 %)     91 (28.4 %)
+        92 (22.3 %)     93 (26.0 %)     94 (53.9 %)     95 (17.9 %)
+        Total: 3200.0%
+Initial condition solution time: CPU = 1.002300e-02 s, elapsed = 1.002407e-02
+        s.
+Intrinsic tran analysis time:    CPU = 2.582030e-01 s, elapsed = 2.582090e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.733220e-01 s,
+        elapsed = 2.733390e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.392789e+02 s (3m  59.3s), elapsed = 2.417928e+02 s
+        (4m  1.8s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000057e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1452 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000057e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000113e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             243
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.926e+00 V
+I: I(VVDD:p) = 5.780e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.6 %)      1 (40.1 %)      2 (41.4 %)      3 (28.9 %)
+         4 (53.7 %)      5 (47.9 %)      6 (41.9 %)      7 (46.6 %)
+         8 (37.5 %)      9 (25.0 %)     10 (59.6 %)     11 (39.5 %)
+        12 (30.1 %)     13 (57.8 %)     14 (38.3 %)     15 (24.3 %)
+        16 (24.6 %)     17 (56.1 %)     18 (82.8 %)     19 (31.1 %)
+        20 (37.7 %)     21 (59.5 %)     22 (38.1 %)     23 (61.3 %)
+        24 (44.4 %)     25 (29.9 %)     26 (20.4 %)     27 (47.1 %)
+        28 (41.6 %)     29 (20.4 %)     30 (56.3 %)     31 (72.6 %)
+        32 (18.8 %)     33 (24.3 %)     34 (45.0 %)     35 (59.2 %)
+        36 (52.7 %)     37 (57.0 %)     38 (20.6 %)     39 (44.0 %)
+        40 (26.4 %)     41 (45.1 %)     42 (52.1 %)     43 (40.7 %)
+        44 (30.9 %)     45 (41.5 %)     46 (30.9 %)     47 (24.4 %)
+        48 (43.5 %)     49 (39.7 %)     50 (39.2 %)     51 (20.5 %)
+        52 (17.3 %)     53 (22.4 %)     54 (28.2 %)     55 (13.4 %)
+        56 (26.2 %)     57 (35.1 %)     58 (15.8 %)     59 (8.0 %)
+        60 (20.0 %)     61 (10.0 %)     62 (40.0 %)     63 (50.5 %)
+        64 (34.6 %)     65 (3.9 %)      66 (11.9 %)     67 (26.3 %)
+        68 (7.2 %)      69 (12.0 %)     70 (6.4 %)      71 (4.3 %)
+        72 (34.9 %)     73 (62.7 %)     74 (62.5 %)     75 (13.6 %)
+        76 (21.3 %)     77 (56.0 %)     78 (6.3 %)      79 (13.2 %)
+        80 (43.6 %)     81 (52.7 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.5 %)      85 (8.4 %)      86 (10.8 %)     87 (21.0 %)
+        88 (33.5 %)     89 (40.2 %)     90 (18.5 %)     91 (28.5 %)
+        92 (22.4 %)     93 (26.0 %)     94 (53.8 %)     95 (18.0 %)
+        Total: 3200.1%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.562770e-01 s, elapsed = 2.562840e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.577700e-01 s,
+        elapsed = 2.577751e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.395526e+02 s (3m  59.6s), elapsed = 2.420666e+02 s
+        (4m  2.1s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000097e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1452 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000097e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000193e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             247
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.927e+00 V
+I: I(VVDD:p) = 5.793e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.6 %)      1 (40.1 %)      2 (41.3 %)      3 (28.8 %)
+         4 (53.8 %)      5 (47.8 %)      6 (41.9 %)      7 (46.7 %)
+         8 (37.4 %)      9 (24.9 %)     10 (59.6 %)     11 (39.6 %)
+        12 (30.0 %)     13 (57.8 %)     14 (38.2 %)     15 (24.3 %)
+        16 (24.7 %)     17 (56.2 %)     18 (82.7 %)     19 (31.1 %)
+        20 (37.7 %)     21 (59.5 %)     22 (38.2 %)     23 (61.2 %)
+        24 (44.5 %)     25 (29.9 %)     26 (20.5 %)     27 (47.0 %)
+        28 (41.5 %)     29 (20.3 %)     30 (56.2 %)     31 (72.6 %)
+        32 (18.7 %)     33 (24.3 %)     34 (45.0 %)     35 (59.1 %)
+        36 (52.7 %)     37 (56.9 %)     38 (20.7 %)     39 (44.0 %)
+        40 (26.5 %)     41 (45.1 %)     42 (52.1 %)     43 (40.7 %)
+        44 (30.8 %)     45 (41.4 %)     46 (31.0 %)     47 (24.4 %)
+        48 (43.5 %)     49 (39.7 %)     50 (39.2 %)     51 (20.6 %)
+        52 (17.3 %)     53 (22.4 %)     54 (28.2 %)     55 (13.4 %)
+        56 (26.1 %)     57 (35.1 %)     58 (15.8 %)     59 (8.0 %)
+        60 (20.0 %)     61 (10.0 %)     62 (40.0 %)     63 (50.5 %)
+        64 (34.6 %)     65 (3.9 %)      66 (12.0 %)     67 (26.2 %)
+        68 (7.3 %)      69 (12.0 %)     70 (6.3 %)      71 (4.3 %)
+        72 (34.8 %)     73 (62.7 %)     74 (62.4 %)     75 (13.6 %)
+        76 (21.4 %)     77 (56.0 %)     78 (6.3 %)      79 (13.2 %)
+        80 (43.6 %)     81 (52.7 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.5 %)      85 (8.4 %)      86 (10.8 %)     87 (21.0 %)
+        88 (33.5 %)     89 (40.1 %)     90 (18.5 %)     91 (28.6 %)
+        92 (22.5 %)     93 (26.0 %)     94 (53.8 %)     95 (18.1 %)
+        Total: 3200.1%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.552580e-01 s, elapsed = 2.552650e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.565570e-01 s,
+        elapsed = 2.565620e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.398233e+02 s (3m  59.8s), elapsed = 2.423372e+02 s
+        (4m  2.3s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000177e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1452 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000177e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000353e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             249
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.926e+00 V
+I: I(VVDD:p) = 5.778e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.5 %)      1 (40.1 %)      2 (41.3 %)      3 (28.8 %)
+         4 (53.8 %)      5 (47.7 %)      6 (41.8 %)      7 (46.6 %)
+         8 (37.4 %)      9 (24.9 %)     10 (59.7 %)     11 (39.7 %)
+        12 (30.0 %)     13 (57.7 %)     14 (38.2 %)     15 (24.2 %)
+        16 (24.8 %)     17 (56.2 %)     18 (82.6 %)     19 (31.1 %)
+        20 (37.6 %)     21 (59.5 %)     22 (38.3 %)     23 (61.1 %)
+        24 (44.5 %)     25 (29.9 %)     26 (20.5 %)     27 (47.0 %)
+        28 (41.5 %)     29 (20.3 %)     30 (56.2 %)     31 (72.6 %)
+        32 (18.7 %)     33 (24.3 %)     34 (44.9 %)     35 (59.1 %)
+        36 (52.8 %)     37 (56.8 %)     38 (20.8 %)     39 (43.9 %)
+        40 (26.6 %)     41 (45.2 %)     42 (52.0 %)     43 (40.6 %)
+        44 (30.8 %)     45 (41.4 %)     46 (31.0 %)     47 (24.4 %)
+        48 (43.4 %)     49 (39.7 %)     50 (39.3 %)     51 (20.7 %)
+        52 (17.3 %)     53 (22.4 %)     54 (28.3 %)     55 (13.5 %)
+        56 (26.1 %)     57 (35.0 %)     58 (15.8 %)     59 (7.9 %)
+        60 (20.0 %)     61 (10.1 %)     62 (40.1 %)     63 (50.5 %)
+        64 (34.6 %)     65 (3.9 %)      66 (12.1 %)     67 (26.2 %)
+        68 (7.4 %)      69 (12.0 %)     70 (6.3 %)      71 (4.3 %)
+        72 (34.9 %)     73 (62.7 %)     74 (62.3 %)     75 (13.6 %)
+        76 (21.5 %)     77 (56.1 %)     78 (6.2 %)      79 (13.2 %)
+        80 (43.7 %)     81 (52.8 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.5 %)      85 (8.4 %)      86 (10.8 %)     87 (21.0 %)
+        88 (33.5 %)     89 (40.1 %)     90 (18.4 %)     91 (28.6 %)
+        92 (22.6 %)     93 (25.9 %)     94 (53.7 %)     95 (18.2 %)
+        Total: 3200.2%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.681120e-01 s, elapsed = 2.681248e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.693940e-01 s,
+        elapsed = 2.694049e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.401061e+02 s (4m  0.1s), elapsed = 2.426201e+02 s (4m
+        2.6s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000337e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1452 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000337e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000673e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             253
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.927e+00 V
+I: I(VVDD:p) = 5.792e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.6 %)      1 (40.1 %)      2 (41.2 %)      3 (28.8 %)
+         4 (53.9 %)      5 (47.7 %)      6 (41.8 %)      7 (46.6 %)
+         8 (37.4 %)      9 (24.9 %)     10 (59.7 %)     11 (39.7 %)
+        12 (30.0 %)     13 (57.7 %)     14 (38.1 %)     15 (24.2 %)
+        16 (24.8 %)     17 (56.1 %)     18 (82.5 %)     19 (31.0 %)
+        20 (37.6 %)     21 (59.5 %)     22 (38.3 %)     23 (61.1 %)
+        24 (44.4 %)     25 (29.8 %)     26 (20.5 %)     27 (46.9 %)
+        28 (41.4 %)     29 (20.3 %)     30 (56.1 %)     31 (72.7 %)
+        32 (18.7 %)     33 (24.2 %)     34 (44.9 %)     35 (59.0 %)
+        36 (52.8 %)     37 (56.8 %)     38 (20.9 %)     39 (43.9 %)
+        40 (26.7 %)     41 (45.2 %)     42 (52.0 %)     43 (40.6 %)
+        44 (30.7 %)     45 (41.3 %)     46 (31.1 %)     47 (24.4 %)
+        48 (43.4 %)     49 (39.8 %)     50 (39.4 %)     51 (20.8 %)
+        52 (17.2 %)     53 (22.4 %)     54 (28.4 %)     55 (13.6 %)
+        56 (26.1 %)     57 (35.0 %)     58 (15.8 %)     59 (7.9 %)
+        60 (20.0 %)     61 (10.2 %)     62 (40.2 %)     63 (50.5 %)
+        64 (34.5 %)     65 (3.9 %)      66 (12.2 %)     67 (26.2 %)
+        68 (7.5 %)      69 (12.0 %)     70 (6.3 %)      71 (4.3 %)
+        72 (34.9 %)     73 (62.8 %)     74 (62.3 %)     75 (13.5 %)
+        76 (21.6 %)     77 (56.1 %)     78 (6.2 %)      79 (13.1 %)
+        80 (43.8 %)     81 (52.8 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.5 %)      85 (8.3 %)      86 (10.8 %)     87 (21.0 %)
+        88 (33.4 %)     89 (40.0 %)     90 (18.4 %)     91 (28.7 %)
+        92 (22.6 %)     93 (25.9 %)     94 (53.6 %)     95 (18.3 %)
+        Total: 3200.2%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.737840e-01 s, elapsed = 2.737911e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.750950e-01 s,
+        elapsed = 2.751000e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.403945e+02 s (4m  0.4s), elapsed = 2.429085e+02 s (4m
+        2.9s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000657e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1452 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000657e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.001313e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             254
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.927e+00 V
+I: I(VVDD:p) = 5.792e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.7 %)      1 (40.0 %)      2 (41.2 %)      3 (28.7 %)
+         4 (53.9 %)      5 (47.6 %)      6 (41.7 %)      7 (46.5 %)
+         8 (37.3 %)      9 (24.9 %)     10 (59.8 %)     11 (39.8 %)
+        12 (29.9 %)     13 (57.6 %)     14 (38.1 %)     15 (24.2 %)
+        16 (24.9 %)     17 (56.1 %)     18 (82.4 %)     19 (31.0 %)
+        20 (37.5 %)     21 (59.4 %)     22 (38.4 %)     23 (61.0 %)
+        24 (44.4 %)     25 (29.8 %)     26 (20.6 %)     27 (46.9 %)
+        28 (41.4 %)     29 (20.3 %)     30 (56.0 %)     31 (72.7 %)
+        32 (18.7 %)     33 (24.2 %)     34 (44.8 %)     35 (58.9 %)
+        36 (52.9 %)     37 (56.8 %)     38 (20.9 %)     39 (43.8 %)
+        40 (26.8 %)     41 (45.3 %)     42 (51.9 %)     43 (40.5 %)
+        44 (30.7 %)     45 (41.3 %)     46 (31.2 %)     47 (24.3 %)
+        48 (43.4 %)     49 (39.8 %)     50 (39.5 %)     51 (20.9 %)
+        52 (17.2 %)     53 (22.3 %)     54 (28.5 %)     55 (13.7 %)
+        56 (26.1 %)     57 (35.0 %)     58 (15.8 %)     59 (7.9 %)
+        60 (20.0 %)     61 (10.3 %)     62 (40.2 %)     63 (50.6 %)
+        64 (34.5 %)     65 (3.9 %)      66 (12.3 %)     67 (26.2 %)
+        68 (7.6 %)      69 (12.0 %)     70 (6.3 %)      71 (4.3 %)
+        72 (35.0 %)     73 (62.8 %)     74 (62.2 %)     75 (13.5 %)
+        76 (21.7 %)     77 (56.2 %)     78 (6.2 %)      79 (13.1 %)
+        80 (43.8 %)     81 (52.9 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.5 %)      85 (8.3 %)      86 (10.8 %)     87 (21.0 %)
+        88 (33.4 %)     89 (40.0 %)     90 (18.4 %)     91 (28.8 %)
+        92 (22.7 %)     93 (25.9 %)     94 (53.6 %)     95 (18.4 %)
+        Total: 3200.2%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.668480e-01 s, elapsed = 2.668540e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.684320e-01 s,
+        elapsed = 2.684350e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.406781e+02 s (4m  0.7s), elapsed = 2.431921e+02 s (4m
+        3.2s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.001297e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1452 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.001297e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.002593e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             255
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.927e+00 V
+I: I(VVDD:p) = 5.791e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.7 %)      1 (40.0 %)      2 (41.2 %)      3 (28.7 %)
+         4 (54.0 %)      5 (47.6 %)      6 (41.7 %)      7 (46.5 %)
+         8 (37.3 %)      9 (24.8 %)     10 (59.8 %)     11 (39.9 %)
+        12 (29.9 %)     13 (57.5 %)     14 (38.1 %)     15 (24.1 %)
+        16 (25.0 %)     17 (56.0 %)     18 (82.3 %)     19 (31.0 %)
+        20 (37.5 %)     21 (59.4 %)     22 (38.5 %)     23 (60.9 %)
+        24 (44.4 %)     25 (29.8 %)     26 (20.7 %)     27 (46.8 %)
+        28 (41.3 %)     29 (20.2 %)     30 (56.0 %)     31 (72.7 %)
+        32 (18.6 %)     33 (24.2 %)     34 (44.8 %)     35 (58.9 %)
+        36 (52.9 %)     37 (56.9 %)     38 (20.8 %)     39 (43.8 %)
+        40 (26.9 %)     41 (45.4 %)     42 (51.9 %)     43 (40.5 %)
+        44 (30.8 %)     45 (41.2 %)     46 (31.3 %)     47 (24.3 %)
+        48 (43.3 %)     49 (39.8 %)     50 (39.4 %)     51 (21.0 %)
+        52 (17.2 %)     53 (22.3 %)     54 (28.5 %)     55 (13.8 %)
+        56 (26.0 %)     57 (34.9 %)     58 (15.8 %)     59 (7.9 %)
+        60 (19.9 %)     61 (10.4 %)     62 (40.3 %)     63 (50.7 %)
+        64 (34.4 %)     65 (3.9 %)      66 (12.4 %)     67 (26.1 %)
+        68 (7.7 %)      69 (12.0 %)     70 (6.3 %)      71 (4.2 %)
+        72 (35.1 %)     73 (62.8 %)     74 (62.2 %)     75 (13.5 %)
+        76 (21.8 %)     77 (56.2 %)     78 (6.2 %)      79 (13.1 %)
+        80 (43.9 %)     81 (52.9 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.5 %)      85 (8.3 %)      86 (10.8 %)     87 (20.9 %)
+        88 (33.3 %)     89 (39.9 %)     90 (18.4 %)     91 (28.9 %)
+        92 (22.7 %)     93 (25.9 %)     94 (53.5 %)     95 (18.4 %)
+        Total: 3200.3%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.650280e-01 s, elapsed = 2.650340e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.667460e-01 s,
+        elapsed = 2.667501e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.409604e+02 s (4m  1.0s), elapsed = 2.434744e+02 s (4m
+        3.5s).
+Peak resident memory used = 2.30e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.002577e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1452 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.002577e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.005153e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        5       
+
+
+Notice from spectre at time = 4.221413e-06 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_2_M37_noxref_g.
+Notice from spectre at time = 5.527306e-06 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_2_M37_noxref_g.
+Notice from spectre at time = 8.139092e-06 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_2_M37_noxref_g.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             259
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_9_M14_noxref_g) = 1.927e+00 V
+I: I(VVDD:p) = 5.790e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (43.8 %)      1 (39.9 %)      2 (41.3 %)      3 (28.7 %)
+         4 (54.0 %)      5 (47.5 %)      6 (41.6 %)      7 (46.4 %)
+         8 (37.2 %)      9 (24.8 %)     10 (59.9 %)     11 (40.0 %)
+        12 (29.9 %)     13 (57.5 %)     14 (38.0 %)     15 (24.1 %)
+        16 (25.1 %)     17 (55.9 %)     18 (82.2 %)     19 (30.9 %)
+        20 (37.4 %)     21 (59.3 %)     22 (38.5 %)     23 (60.9 %)
+        24 (44.3 %)     25 (29.8 %)     26 (20.7 %)     27 (46.8 %)
+        28 (41.3 %)     29 (20.2 %)     30 (55.9 %)     31 (72.7 %)
+        32 (18.6 %)     33 (24.2 %)     34 (44.7 %)     35 (58.9 %)
+        36 (53.0 %)     37 (56.9 %)     38 (20.8 %)     39 (43.8 %)
+        40 (26.9 %)     41 (45.4 %)     42 (51.8 %)     43 (40.4 %)
+        44 (30.9 %)     45 (41.2 %)     46 (31.4 %)     47 (24.3 %)
+        48 (43.3 %)     49 (39.8 %)     50 (39.4 %)     51 (21.1 %)
+        52 (17.2 %)     53 (22.3 %)     54 (28.6 %)     55 (13.8 %)
+        56 (26.0 %)     57 (34.9 %)     58 (15.7 %)     59 (7.9 %)
+        60 (19.9 %)     61 (10.5 %)     62 (40.4 %)     63 (50.7 %)
+        64 (34.4 %)     65 (3.9 %)      66 (12.5 %)     67 (26.1 %)
+        68 (7.8 %)      69 (12.0 %)     70 (6.3 %)      71 (4.2 %)
+        72 (35.2 %)     73 (62.9 %)     74 (62.2 %)     75 (13.5 %)
+        76 (21.9 %)     77 (56.3 %)     78 (6.2 %)      79 (13.1 %)
+        80 (44.0 %)     81 (53.0 %)     82 (10.5 %)     83 (5.8 %)
+        84 (6.4 %)      85 (8.3 %)      86 (10.8 %)     87 (20.9 %)
+        88 (33.3 %)     89 (39.9 %)     90 (18.4 %)     91 (28.9 %)
+        92 (22.7 %)     93 (25.8 %)     94 (53.5 %)     95 (18.5 %)
+        Total: 3200.3%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.697850e-01 s, elapsed = 2.697899e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.710400e-01 s,
+        elapsed = 2.710440e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.412458e+02 s (4m  1.2s), elapsed = 2.437599e+02 s (4m
+        3.8s).
+Peak resident memory used = 2.30e+08 bytes.
+

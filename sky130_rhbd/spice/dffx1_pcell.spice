@@ -1,0 +1,57 @@
+* HSPICE file created from dffx1_pcell.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt dffx1_pcell
+X0 VSUBS m1_2115_634 x1/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X2 m1_191_783 m1_412_908 x1/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X3 w_461_905 m1_2115_634 m1_191_783 w_461_905 sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X4 m1_191_783 m1_2115_634 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X5 w_461_905 m1_412_908 m1_191_783 w_461_905 sky130_fd_pr__pfet_01v8 ad=0.426u pd=0.0173 as=46.4n ps=1.83m w=400 l=30
+X6 m1_191_783 m1_412_908 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X7 VSUBS m1_782_708 x8/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=86n pd=4.3m as=77.2n ps=2.61m w=602 l=30
+X9 x10/a_223_1053 x10/a_362_382 x8/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=0 ps=0 w=602 l=30
+X11 w_461_905 m1_782_708 x10/a_223_1053 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X12 x10/a_223_1053 m1_782_708 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X13 w_461_905 x10/a_362_382 x10/a_223_1053 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X14 x10/a_223_1053 x10/a_362_382 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X15 VSUBS x16/a_168_375 x17/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X18 x16/a_223_1053 m1_191_783 x17/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=0 ps=0 w=602 l=30
+X19 w_461_905 x16/a_168_375 x16/a_223_1053 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X20 x16/a_223_1053 x16/a_168_375 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X21 w_461_905 m1_191_783 x16/a_223_1053 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X22 x16/a_223_1053 m1_191_783 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X23 VSUBS m1_191_783 x24/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=78.2n ps=2.61m w=602 l=30
+X25 m1_782_708 m1_635_634 x26/li_393_182 VSUBS sky130_fd_pr__nfet_01v8 ad=-7.16n pd=-0.488m as=52.7n ps=1.92m w=602 l=30
+X27 x26/li_393_182 m1_412_908 x24/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=2.18n pd=0.106m as=16.2n ps=0.604m w=600 l=30
+X28 w_461_905 m1_191_783 m1_782_708 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=69.6n ps=2.75m w=400 l=30
+X29 m1_782_708 m1_191_783 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X30 w_461_905 m1_412_908 m1_782_708 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X31 m1_782_708 m1_412_908 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X32 w_461_905 m1_635_634 m1_782_708 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X33 m1_782_708 m1_635_634 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X34 VSUBS m1_782_708 x35/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X36 m1_635_634 x37/a_362_382 x35/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=1p pd=-87u as=0 ps=0 w=602 l=30
+X38 w_461_905 m1_782_708 m1_635_634 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X39 m1_635_634 m1_782_708 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X40 w_461_905 x37/a_362_382 m1_635_634 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X41 m1_635_634 x37/a_362_382 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X42 VSUBS m1_635_634 x43/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X44 m1_2115_634 m1_191_783 x43/a_0_0 VSUBS sky130_fd_pr__nfet_01v8 ad=1p pd=-87u as=0 ps=0 w=602 l=30
+X45 w_461_905 m1_635_634 m1_2115_634 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X46 m1_2115_634 m1_635_634 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X47 w_461_905 m1_191_783 m1_2115_634 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X48 m1_2115_634 m1_191_783 w_461_905 w_461_905 sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	nand2x1_pcell_2/nmos_bottom_0
+* x8	nand2x1_pcell_3/nmos_bottom_0
+* x10	nand2x1_pcell_3
+* x16	nand2x1_pcell_4
+* x17	nand2x1_pcell_4/nmos_bottom_0
+* x24	nand3x1_pcell_0/nmos_bottom_0
+* x26	nand3x1_pcell_0
+* x35	nand2x1_pcell_0/nmos_bottom_0
+* x37	nand2x1_pcell_0
+* x43	nand2x1_pcell_1/nmos_bottom_0

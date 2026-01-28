@@ -1,0 +1,167 @@
+/import/programs/cadence/LIBERATE/current/bin/spectre -64 -plugin /import/programs/cadence/LIBERATE/current/lib/lnx86_64_2.6/libSki.so +multiple -cp -ss -l -f nutascii +lqt 0 
+Reading file:  /dev/shm/netlistkmtJMd
+Time for NDB Parsing: CPU = 3.847000e-03 s, elapsed = 9.140968e-03 s.
+Time accumulated: CPU = 2.952736e+02 s (4m  55.3s), elapsed = 2.975092e+02 s
+        (4m  57.5s).
+Peak resident memory used = 2.43e+08 bytes.
+
+
+Warning from spectre during circuit read-in.
+    WARNING (SFE-411): "/dev/shm/netlistkmtJMd" 24: Hierarchical node
+        `x_PM_INV%A.18' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistkmtJMd" 25: Hierarchical node
+        `x_PM_INV%A.17' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+
+Time for Elaboration: CPU = 9.900000e-04 s, elapsed = 1.624107e-03 s.
+Time accumulated: CPU = 2.952746e+02 s (4m  55.3s), elapsed = 2.975109e+02 s
+        (4m  57.5s).
+Peak resident memory used = 2.43e+08 bytes.
+
+
+Time for EDB Visiting: CPU = 3.400000e-04 s, elapsed = 3.399849e-04 s.
+Time accumulated: CPU = 2.952750e+02 s (4m  55.3s), elapsed = 2.975113e+02 s
+        (4m  57.5s).
+Peak resident memory used = 2.43e+08 bytes.
+
+
+Warning from spectre during initial setup.
+    WARNING (CMI-2426): MM0_noxref.nmos_0: `Eta0' = -4.826563e-07 is negative.
+Notice from spectre during topology check.
+    Only one connection to the following 3 nodes:
+        noxref_9
+        noxref_7
+        A
+    No DC path from node `MM1_noxref.pmos_0:sbnode' to ground, Gmin installed
+        to provide path.
+    No DC path from node `A' to ground, Gmin installed to provide path.
+
+
+Global user options:
+               temp = 25
+warning_change_severity = error
+         warning_id = MDL-360
+             digits = 6
+            measdgt = 6
+           notation = sci
+             ingold = sci
+               save = nooutput
+               gmin = 1e-14
+             pivabs = 1e-15
+
+Scoped user options:
+
+Circuit inventory:
+              nodes 14
+              bsim4 2     
+          capacitor 20    
+           resistor 8     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+
+Warning from spectre during initial setup.
+    WARNING (CMI-2426): MM0_noxref.nmos_0: `Eta0' = -4.826563e-07 is negative.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-12 s)
+*************************************************************************
+DC simulation time: CPU = 3.180000e-04 s, elapsed = 3.180504e-04 s.
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-12 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-14 s
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-14 S
+
+
+Output and IC/nodeset summary:
+                 nodeset        2       
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             50
+
+Maximum value achieved for any signal of each quantity: 
+V: V(MM0_noxref.nmos_0:dbnode) = 1.431e-08 V
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+   -   Non-default settings that could significantly slow down simulation
+          gmin = 1.000000e-14 S, default 1.000000e-12 S
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.5 %)      1 (40.0 %)      2 (41.4 %)      3 (31.9 %)
+         4 (51.8 %)      5 (49.2 %)      6 (34.8 %)      7 (41.6 %)
+         8 (43.1 %)      9 (24.6 %)     10 (51.4 %)     11 (39.1 %)
+        12 (30.6 %)     13 (49.9 %)     14 (38.3 %)     15 (27.0 %)
+        16 (31.7 %)     17 (46.6 %)     18 (72.8 %)     19 (27.9 %)
+        20 (32.8 %)     21 (57.0 %)     22 (47.9 %)     23 (50.0 %)
+        24 (42.4 %)     25 (28.9 %)     26 (17.7 %)     27 (42.7 %)
+        28 (41.2 %)     29 (16.9 %)     30 (53.3 %)     31 (73.2 %)
+        32 (17.7 %)     33 (22.0 %)     34 (44.7 %)     35 (55.4 %)
+        36 (53.9 %)     37 (56.6 %)     38 (21.7 %)     39 (44.5 %)
+        40 (27.3 %)     41 (47.1 %)     42 (45.3 %)     43 (37.8 %)
+        44 (30.4 %)     45 (43.5 %)     46 (32.5 %)     47 (24.1 %)
+        48 (46.9 %)     49 (37.2 %)     50 (39.8 %)     51 (26.0 %)
+        52 (14.5 %)     53 (19.0 %)     54 (28.0 %)     55 (23.0 %)
+        56 (23.5 %)     57 (35.6 %)     58 (24.4 %)     59 (11.7 %)
+        60 (21.1 %)     61 (14.0 %)     62 (42.7 %)     63 (48.4 %)
+        64 (29.3 %)     65 (4.6 %)      66 (15.7 %)     67 (23.6 %)
+        68 (21.4 %)     69 (16.2 %)     70 (6.5 %)      71 (3.7 %)
+        72 (36.7 %)     73 (64.2 %)     74 (65.4 %)     75 (12.4 %)
+        76 (27.7 %)     77 (59.2 %)     78 (9.9 %)      79 (15.3 %)
+        80 (42.9 %)     81 (47.0 %)     82 (15.8 %)     83 (5.1 %)
+        84 (5.7 %)      85 (11.1 %)     86 (9.7 %)      87 (18.6 %)
+        88 (35.2 %)     89 (34.3 %)     90 (17.6 %)     91 (36.5 %)
+        92 (25.6 %)     93 (24.0 %)     94 (45.0 %)     95 (27.7 %)
+        Total: 3193.0%
+Initial condition solution time: CPU = 3.350000e-04 s, elapsed = 3.349781e-04
+        s.
+Intrinsic tran analysis time:    CPU = 1.577000e-03 s, elapsed = 1.577854e-03
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.123000e-03 s,
+        elapsed = 2.122879e-03 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.952778e+02 s (4m  55.3s), elapsed = 2.975140e+02 s
+        (4m  57.5s).
+Peak resident memory used = 2.43e+08 bytes.
+

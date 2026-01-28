@@ -1,0 +1,30 @@
+* HSPICE file created from XOR2X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt XOR2X1 Y A B VDD GND
+X0 GND A x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X2 GND x3/li_871_923 x4/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=60n pd=2.25m as=77.2n ps=2.61m w=602 l=30
+X5 VDD A x3/a_761_1330 VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X6 x3/a_761_1330 A VDD VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X7 Y x3/a_1472_383 x4/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X8 Y B x1/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=35.8n pd=2.36m as=77.2n ps=2.61m w=602 l=30
+X9 Y x3/li_871_923 x3/a_761_1330 VDD sky130_fd_pr__pfet_01v8 ad=92.8n pd=3.66m as=67.2n ps=2.74m w=400 l=30
+X10 x3/a_761_1330 x3/li_871_923 Y VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X11 VDD B x3/a_1427_1330 VDD sky130_fd_pr__pfet_01v8 ad=0.134u pd=5.47m as=67.2n ps=2.74m w=400 l=30
+X12 x3/a_1427_1330 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X13 Y x3/a_1472_383 x3/a_1427_1330 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X14 x3/a_1427_1330 x3/a_1472_383 Y VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X15 x3/a_1472_383 A GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X16 VDD A x3/a_1472_383 VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X17 x3/a_1472_383 A VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X18 x3/li_871_923 B x19/VSUBS x19/VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=60n ps=2.78m w=602 l=30
+X20 VDD B x3/li_871_923 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X21 x3/li_871_923 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	xor2X1_pcell_0/nmos_bottom_0
+* x3	xor2X1_pcell_0
+* x4	xor2X1_pcell_0/nmos_bottom_1
+* x19	xor2X1_pcell_0/li1_M1_contact_2
