@@ -68,7 +68,6 @@ run: setup
 	liberate --trio char.tcl |& tee LOG/$$FILE_NAME.log; \
 	lc_shell -no_log -f SCRIPTS/lib_to_db.tcl
 	mkdir -p $(RUN_DIR)/$(OUTPUT_FILE_PATH)
-	cp -rf *.lib *.db DATASHEET/ VERILOG/ LOG/ $(RUN_DIR)/$(OUTPUT_FILE_PATH)
 
 do: run
 	@mkdir -p $(RUN_DIR)/$(OUTPUT_FILE_PATH)/lib/$(CORNER) 
