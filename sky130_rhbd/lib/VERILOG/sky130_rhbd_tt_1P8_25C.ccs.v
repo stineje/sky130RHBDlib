@@ -1,4 +1,4 @@
-// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Fri Feb  6 11:02:16 2026 for SDF version 2.1
+// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Fri Feb  6 13:50:25 2026 for SDF version 2.1
 
 // type:  
 `timescale 1ns/10ps
