@@ -10,7 +10,9 @@
 <TR valign=middle><TH colspan=2><font size=3>INPUT</font></TH>
 <TH colspan=1><font size=3>OUTPUT</font></TH>
 <TR><Th>D</Th><Th>CLK</Th><Th>Q</Th></TR>
-<TR><Th><font size=2>x</font></Th><Th><font size=2>x</font></Th><Th><font size=2>-</font></Th></TR>
+<TR><Th><font size=2>0</font></Th><Th><font size=2>R</font></Th><Th><font size=2>0</font></Th></TR>
+<TR><Th><font size=2>1</font></Th><Th><font size=2>R</font></Th><Th><font size=2>1</font></Th></TR>
+<TR><Th><font size=2>x</font></Th><Th><font size=2>x</font></Th><Th><font size=2>IQ</font></Th></TR>
 </TABLE>
 </TR></TABLE>
 <BR>
@@ -34,9 +36,9 @@
 <TH>Q</TH>
 </TR>
 <TR><Th><font>DFFQX1</font></Th>
-<TD align=center>0.01038</TD>
-<TD align=center>0.02299</TD>
-<TD align=center>7.52044</TD>
+<TD align=center>0.01057</TD>
+<TD align=center>0.02311</TD>
+<TD align=center>5.42070</TD>
 </TR>
 </TABLE>
 <BR>
@@ -47,8 +49,8 @@
 </TR><TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
 <TR><Th><font>DFFQX1</font></Th>
 <TD align=center>0.00000</TD>
-<TD align=center>17.32250</TD>
-<TD align=center>28.05390</TD>
+<TD align=center>28.46920</TD>
+<TD align=center>43.32390</TD>
 </TABLE>
 <BR>
 <!--NewPage-->
@@ -63,9 +65,23 @@
 <BR>
 <TR><TH rowspan=1>DFFQX1</TH>
 <Th><font>CLK->Q (RR)</font></Th>
-<TD align=center>0.09059</TD>
-<TD align=center>0.44803</TD>
-<TD align=center>7.64496</TD>
+<TD align=center>0.13097</TD>
+<TD align=center>0.77241</TD>
+<TD align=center>7.17777</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Delay(ns) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH>
+<TH colspan=3>Delay(ns)</TH></TR><TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<BR>
+<TR><TH rowspan=1>DFFQX1</TH>
+<Th><font>CLK->Q (RF)</font></Th>
+<TD align=center>0.20869</TD>
+<TD align=center>0.88075</TD>
+<TD align=center>7.84306</TD>
 </TR>
 </TABLE>
 <BR>
@@ -82,16 +98,16 @@
 <TR><TH rowspan=2>DFFQX1</TH>
 <Th><font>hold</font></Th>
 <Th><font>CLK (R)</font></Th>
-<TD align=center>0.04602</TD>
-<TD align=center>0.07009</TD>
-<TD align=center>0.90532</TD>
+<TD align=center>0.04637</TD>
+<TD align=center>0.07673</TD>
+<TD align=center>0.71013</TD>
 </TR>
 <TR>
 <Th><font>setup</font></Th>
 <Th><font>CLK (R)</font></Th>
-<TD align=center>0.12154</TD>
-<TD align=center>0.18538</TD>
-<TD align=center>0.99377</TD>
+<TD align=center>0.10638</TD>
+<TD align=center>0.17390</TD>
+<TD align=center>0.78451</TD>
 </TR>
 </TABLE>
 <BR>
@@ -104,16 +120,16 @@
 <TR><TH rowspan=2>DFFQX1</TH>
 <Th><font>hold</font></Th>
 <Th><font>CLK (R)</font></Th>
-<TD align=center>-0.02298</TD>
-<TD align=center>-0.04251</TD>
-<TD align=center>-0.38282</TD>
+<TD align=center>-0.03287</TD>
+<TD align=center>-0.08682</TD>
+<TD align=center>-0.73777</TD>
 </TR>
 <TR>
 <Th><font>setup</font></Th>
 <Th><font>CLK (R)</font></Th>
-<TD align=center>9999999999999999635896294965248.00000</TD>
-<TD align=center>9999999999999999635896294965248.00000</TD>
-<TD align=center>9999999999999999635896294965248.00000</TD>
+<TD align=center>0.05791</TD>
+<TD align=center>0.12541</TD>
+<TD align=center>1.53202</TD>
 </TR>
 </TABLE>
 <BR>
@@ -124,13 +140,21 @@
 <TH rowspan=2>When</TH>
 <TH colspan=3>Reference Slew Rate(ns)</TH></TR><TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
 <BR>
-<TR><TH rowspan=1>DFFQX1</TH>
+<TR><TH rowspan=2>DFFQX1</TH>
 <Th><font>min_pulse_width</font></Th>
 <Th><font>CLK ()</font></Th>
 <Th><font>D</font></Th>
-<TD align=center>9999999999999999635896294965248.00000</TD>
-<TD align=center>9999999999999999635896294965248.00000</TD>
-<TD align=center>9999999999999999635896294965248.00000</TD>
+<TD align=center>0.11595</TD>
+<TD align=center>0.66040</TD>
+<TD align=center>16.50020</TD>
+</TR>
+<TR>
+<Th><font>min_pulse_width</font></Th>
+<Th><font>CLK ()</font></Th>
+<Th><font>!D</font></Th>
+<TD align=center>0.13575</TD>
+<TD align=center>0.66040</TD>
+<TD align=center>16.50020</TD>
 </TR>
 </TABLE>
 <BR>
@@ -141,12 +165,20 @@
 <TH rowspan=2>When</TH>
 <TH colspan=3>Reference Slew Rate(ns)</TH></TR><TR><TH> first </TH><TH> mid </TH><TH> last </TH></TR>
 <BR>
-<TR><TH rowspan=1>DFFQX1</TH>
+<TR><TH rowspan=2>DFFQX1</TH>
 <Th><font>min_pulse_width</font></Th>
 <Th><font>CLK ()</font></Th>
 <Th><font>D</font></Th>
-<TD align=center>0.20309</TD>
-<TD align=center>0.47852</TD>
+<TD align=center>0.19019</TD>
+<TD align=center>0.66040</TD>
+<TD align=center>16.50020</TD>
+</TR>
+<TR>
+<Th><font>min_pulse_width</font></Th>
+<Th><font>CLK ()</font></Th>
+<Th><font>!D</font></Th>
+<TD align=center>0.09367</TD>
+<TD align=center>0.66040</TD>
 <TD align=center>16.50020</TD>
 </TR>
 </TABLE>
@@ -168,9 +200,28 @@
 </TR>
 <TR>
 <Th><font>CLK</font></Th>
-<TD align=center>62535.30000</TD>
-<TD align=center>62950.40000</TD>
-<TD align=center>63355.10000</TD>
+<TD align=center>21.13030</TD>
+<TD align=center>21.14170</TD>
+<TD align=center>21.49430</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Internal switching power(pJ) to Q falling :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH>
+<TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=2>DFFQX1</TH>
+<Th><font>CLK</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>CLK</font></Th>
+<TD align=center>26.25770</TD>
+<TD align=center>26.26390</TD>
+<TD align=center>26.46880</TD>
 </TR>
 </TABLE>
 <BR>
@@ -188,9 +239,9 @@
 </TR>
 <TR>
 <Th><font>(CLK * Q)</font></Th>
-<TD align=center>63893.30000</TD>
-<TD align=center>63891.90000</TD>
-<TD align=center>63907.60000</TD>
+<TD align=center>21.09430</TD>
+<TD align=center>21.10040</TD>
+<TD align=center>21.31600</TD>
 </TR>
 <TR>
 <Th><font>(CLK * !Q)</font></Th>
@@ -200,21 +251,21 @@
 </TR>
 <TR>
 <Th><font>(CLK * !Q)</font></Th>
-<TD align=center>80310.90000</TD>
-<TD align=center>80311.50000</TD>
-<TD align=center>80311.90000</TD>
+<TD align=center>24.93600</TD>
+<TD align=center>24.93560</TD>
+<TD align=center>24.93790</TD>
 </TR>
 <TR>
-<Th><font>(!CLK * !Q)</font></Th>
+<Th><font>!CLK</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 </TR>
 <TR>
-<Th><font>(!CLK * !Q)</font></Th>
-<TD align=center>146380.00000</TD>
-<TD align=center>146380.00000</TD>
-<TD align=center>146387.00000</TD>
+<Th><font>!CLK</font></Th>
+<TD align=center>11.29350</TD>
+<TD align=center>11.29980</TD>
+<TD align=center>11.50830</TD>
 </TR>
 </TABLE>
 <BR>
@@ -232,9 +283,9 @@
 </TR>
 <TR>
 <Th><font>(CLK * Q)</font></Th>
-<TD align=center>65149.30000</TD>
-<TD align=center>65148.80000</TD>
-<TD align=center>65150.10000</TD>
+<TD align=center>10.10440</TD>
+<TD align=center>10.11320</TD>
+<TD align=center>10.34910</TD>
 </TR>
 <TR>
 <Th><font>(CLK * !Q)</font></Th>
@@ -244,21 +295,21 @@
 </TR>
 <TR>
 <Th><font>(CLK * !Q)</font></Th>
-<TD align=center>79220.00000</TD>
-<TD align=center>79220.60000</TD>
-<TD align=center>79220.70000</TD>
+<TD align=center>25.56960</TD>
+<TD align=center>25.56910</TD>
+<TD align=center>25.56920</TD>
 </TR>
 <TR>
-<Th><font>(!CLK * !Q)</font></Th>
+<Th><font>!CLK</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 </TR>
 <TR>
-<Th><font>(!CLK * !Q)</font></Th>
-<TD align=center>145918.00000</TD>
-<TD align=center>145922.00000</TD>
-<TD align=center>145934.00000</TD>
+<Th><font>!CLK</font></Th>
+<TD align=center>11.30760</TD>
+<TD align=center>11.31630</TD>
+<TD align=center>11.53250</TD>
 </TR>
 </TABLE>
 <BR>
@@ -268,7 +319,19 @@
 <TR valign=middle><TH rowspan=2>Cell Name</TH>
 <TH rowspan=2>When</TH>
 </TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
-<TR><TH rowspan=2>DFFQX1</TH>
+<TR><TH rowspan=4>DFFQX1</TH>
+<Th><font>(D * Q)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(D * Q)</font></Th>
+<TD align=center>21.09670</TD>
+<TD align=center>21.09930</TD>
+<TD align=center>21.30850</TD>
+</TR>
+<TR>
 <Th><font>(!D * !Q)</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
@@ -276,9 +339,9 @@
 </TR>
 <TR>
 <Th><font>(!D * !Q)</font></Th>
-<TD align=center>80089.70000</TD>
-<TD align=center>80088.60000</TD>
-<TD align=center>80092.00000</TD>
+<TD align=center>26.21560</TD>
+<TD align=center>26.21750</TD>
+<TD align=center>26.41790</TD>
 </TR>
 </TABLE>
 <BR>
@@ -288,7 +351,19 @@
 <TR valign=middle><TH rowspan=2>Cell Name</TH>
 <TH rowspan=2>When</TH>
 </TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
-<TR><TH rowspan=4>DFFQX1</TH>
+<TR><TH rowspan=8>DFFQX1</TH>
+<Th><font>(D * Q)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(D * Q)</font></Th>
+<TD align=center>10.11820</TD>
+<TD align=center>10.12550</TD>
+<TD align=center>10.35450</TD>
+</TR>
+<TR>
 <Th><font>(D * !Q)</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
@@ -296,9 +371,21 @@
 </TR>
 <TR>
 <Th><font>(D * !Q)</font></Th>
-<TD align=center>157385.00000</TD>
-<TD align=center>157380.00000</TD>
-<TD align=center>157372.00000</TD>
+<TD align=center>10.32680</TD>
+<TD align=center>10.33320</TD>
+<TD align=center>10.54000</TD>
+</TR>
+<TR>
+<Th><font>(!D * Q)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!D * Q)</font></Th>
+<TD align=center>11.31880</TD>
+<TD align=center>11.32890</TD>
+<TD align=center>11.54880</TD>
 </TR>
 <TR>
 <Th><font>(!D * !Q)</font></Th>
@@ -308,9 +395,9 @@
 </TR>
 <TR>
 <Th><font>(!D * !Q)</font></Th>
-<TD align=center>157183.00000</TD>
-<TD align=center>157177.00000</TD>
-<TD align=center>157178.00000</TD>
+<TD align=center>9.90880</TD>
+<TD align=center>9.91450</TD>
+<TD align=center>10.11610</TD>
 </TR>
 </TABLE>
 <BR>

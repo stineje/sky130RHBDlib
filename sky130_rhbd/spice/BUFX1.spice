@@ -1,0 +1,15 @@
+* HSPICE file created from BUFX1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt BUFX1 Y A VDD GND
+X0 x1/m1_264_487 m1_229_907 GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X2 VDD m1_229_907 x1/m1_264_487 VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X3 x1/m1_264_487 m1_229_907 VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X4 m1_821_907 x1/m1_264_487 GND GND sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=91.3n ps=3.24m w=602 l=30
+X5 VDD x1/m1_264_487 m1_821_907 VDD sky130_fd_pr__pfet_01v8 ad=88n pd=3.64m as=23.2n ps=0.917m w=400 l=30
+X6 m1_821_907 x1/m1_264_487 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	bufx1_0

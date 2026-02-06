@@ -1,0 +1,49 @@
+* HSPICE file created from DLATCH.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt DLATCH Q D GATE VDD GND
+X0 m1_361_744 D x1/VSUBS x1/VSUBS sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X2 VDD D m1_361_744 VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X3 m1_361_744 D VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X4 m1_1472_744 x5/m1_486_634 GND GND sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=0.137u ps=4.93m w=602 l=30
+X6 VDD x5/m1_486_634 m1_1472_744 VDD sky130_fd_pr__pfet_01v8 ad=0.313u pd=0.0128 as=23.2n ps=0.917m w=400 l=30
+X7 m1_1472_744 x5/m1_486_634 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X8 GND m1_361_744 x9/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X10 x5/m1_486_634 GATE x9/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X11 VDD m1_361_744 x5/m1_486_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X12 x5/m1_486_634 m1_361_744 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X13 VDD GATE x5/m1_486_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X14 x5/m1_486_634 GATE VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X15 m1_2582_821 x16/m1_486_634 x16/VSUBS x16/VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=60n ps=2.34m w=602 l=30
+X17 VDD x16/m1_486_634 m1_2582_821 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=23.2n ps=0.917m w=400 l=30
+X18 m1_2582_821 x16/m1_486_634 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X19 x16/VSUBS GATE x20/a_0_0 x16/VSUBS sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X21 x16/m1_486_634 D x20/a_0_0 x16/VSUBS sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=0 ps=0 w=602 l=30
+X22 VDD GATE x16/m1_486_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X23 x16/m1_486_634 GATE VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X24 VDD D x16/m1_486_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X25 x16/m1_486_634 D VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X26 VDD m1_1472_744 x27/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X28 x27/a_317_1331 m1_1472_744 VDD VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X29 Q m1_3100_744 x27/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=2p pd=2u as=67.2n ps=2.74m w=400 l=30
+X30 x27/a_317_1331 m1_3100_744 Q VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X31 Q m1_1472_744 x32/VSUBS x32/VSUBS sky130_fd_pr__nfet_01v8 ad=1p pd=-0.521m as=77.5n ps=2.59m w=602 l=30
+X33 Q m1_3100_744 x32/VSUBS x32/VSUBS sky130_fd_pr__nfet_01v8 ad=2.4n pd=0.112m as=15.8n ps=0.594m w=602 l=30
+X34 VDD Q x35/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=67.2n ps=2.74m w=400 l=30
+X36 x35/a_317_1331 Q VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X37 m1_3100_744 m1_2582_821 x35/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=46.4n pd=1.83m as=0 ps=0 w=400 l=30
+X38 x35/a_317_1331 m1_2582_821 m1_3100_744 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X39 m1_3100_744 Q GND GND sky130_fd_pr__nfet_01v8 ad=28.7n pd=1.78m as=0 ps=0 w=602 l=30
+X40 m1_3100_744 m1_2582_821 GND GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=0 ps=0 w=602 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	li1_M1_contact_5
+* x5	and2x1_pcell_0
+* x9	and2x1_pcell_0/nand2x1_pcell_0/nmos_bottom_0
+* x16	and2x1_pcell_1
+* x20	and2x1_pcell_1/nand2x1_pcell_0/nmos_bottom_0
+* x27	nor2x1_pcell_0
+* x32	li1_M1_contact_8
+* x35	nor2x1_pcell_1

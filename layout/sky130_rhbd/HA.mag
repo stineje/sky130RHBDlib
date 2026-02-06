@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1742508865
+timestamp 1769084191
 << error_s >>
 rect 296 324 312 340
 rect 490 332 506 348
@@ -76,7 +76,10 @@ rect 2786 172 2816 202
 rect 3137 172 3167 202
 rect 3243 172 3273 202
 << nwell >>
-rect 0 822 3526 1588
+rect 0 895 3526 1588
+rect 0 880 1989 895
+rect 2001 880 3526 895
+rect 0 822 3526 880
 << pwell >>
 rect 155 19 189 53
 rect 64 0 3462 10
@@ -85,36 +88,45 @@ rect 64 0 3462 10
 << nsubdiff >>
 rect 64 1546 3462 1552
 << locali >>
-rect 0 1537 3526 1552
-rect 0 1482 64 1537
-rect 3462 1482 3526 1537
-rect 2153 981 2187 1015
+rect 0 1482 3526 1552
+rect 0 0 3526 70
+<< metal1 >>
+rect 0 1482 3526 1552
+rect 2177 981 2211 1015
 rect 2819 981 2853 1015
 rect 303 907 337 941
 rect 451 907 485 941
 rect 1043 907 1077 941
 rect 1339 907 1373 941
 rect 1857 907 1891 941
-rect 2005 907 2039 941
-rect 2523 907 2557 941
-rect 3263 907 3297 941
-rect 303 833 337 867
+rect 288 876 352 882
+rect 288 824 294 876
+rect 346 824 352 876
 rect 1339 833 1373 867
 rect 1857 833 1891 867
-rect 2005 809 2039 891
+rect 288 818 352 824
+rect 2005 806 2039 941
+rect 2523 907 2557 941
+rect 3263 907 3297 941
 rect 3263 833 3297 867
+rect 437 799 501 805
 rect 303 759 337 793
-rect 451 759 485 793
-rect 2005 759 2039 793
-rect 2153 759 2187 793
+rect 437 747 443 799
+rect 495 747 501 799
+rect 437 741 501 747
+rect 1989 800 2053 806
+rect 1989 748 1995 800
+rect 2047 748 2053 800
+rect 2187 759 2221 793
 rect 2819 759 2853 793
 rect 3263 759 3297 793
+rect 1989 742 2053 748
 rect 303 685 337 719
 rect 451 685 485 719
 rect 1043 685 1077 719
 rect 1339 685 1373 719
 rect 1857 685 1891 719
-rect 2153 685 2187 719
+rect 2177 685 2211 719
 rect 3263 685 3297 719
 rect 303 611 337 645
 rect 451 611 485 645
@@ -130,19 +142,48 @@ rect 1339 537 1373 571
 rect 2819 537 2853 571
 rect 3263 537 3297 571
 rect 1043 463 1077 497
-rect 2153 463 2187 497
+rect 2177 463 2211 497
 rect 2819 463 2853 497
-rect 0 17 74 70
-rect 3438 17 3526 70
-rect 0 0 3526 17
-<< metal1 >>
-rect 0 1482 3526 1552
-rect 2075 907 2511 941
-rect 373 833 1327 867
-rect 521 759 1969 793
 rect 0 0 3526 70
+<< via1 >>
+rect 294 824 346 876
+rect 443 747 495 799
+rect 1995 748 2047 800
+<< metal2 >>
+rect 2005 992 2557 1026
+rect 288 876 352 882
+rect 288 824 294 876
+rect 346 867 352 876
+rect 346 833 1327 867
+rect 346 824 352 833
+rect 288 818 352 824
+rect 2005 806 2039 992
+rect 2508 965 2557 992
+rect 2523 931 2557 965
+rect 437 799 501 805
+rect 437 747 443 799
+rect 495 793 501 799
+rect 1989 800 2053 806
+rect 556 793 676 796
+rect 851 793 971 796
+rect 1989 793 1995 800
+rect 495 790 1296 793
+rect 1416 791 1813 793
+rect 1933 791 1995 793
+rect 1416 790 1995 791
+rect 495 762 1995 790
+rect 495 759 556 762
+rect 676 759 851 762
+rect 971 759 1995 762
+rect 495 747 501 759
+rect 1296 756 1416 759
+rect 1813 757 1933 759
+rect 437 741 501 747
+rect 1989 748 1995 759
+rect 2047 748 2053 800
+rect 1989 742 2053 748
 use and2x1_pcell  and2x1_pcell_0
-timestamp 1742082207
+timestamp 1765847315
 transform 1 0 98 0 1 36
 box -87 -34 1197 1550
 use li1_M1_contact  li1_M1_contact_0
@@ -157,107 +198,99 @@ use li1_M1_contact  li1_M1_contact_2
 timestamp 1648061256
 transform 1 0 2022 0 1 776
 box -53 -33 29 33
-use li1_M1_contact  li1_M1_contact_3
-timestamp 1648061256
-transform -1 0 2022 0 -1 924
-box -53 -33 29 33
 use xor2X1_pcell  xor2X1_pcell_0
-timestamp 1742082207
+timestamp 1766186391
 transform 1 0 1208 0 1 36
 box -87 -34 2307 1550
 << labels >>
-rlabel locali 2819 759 2853 793 1 SUM
+rlabel metal1 2819 759 2853 793 1 SUM
 port 1 nsew signal output
-rlabel locali 2153 759 2187 793 1 SUM
+rlabel metal1 2819 463 2853 497 1 SUM
 port 1 nsew signal output
-rlabel locali 2819 463 2853 497 1 SUM
+rlabel metal1 2819 537 2853 571 1 SUM
 port 1 nsew signal output
-rlabel locali 2819 537 2853 571 1 SUM
+rlabel metal1 2819 981 2853 1015 1 SUM
 port 1 nsew signal output
-rlabel locali 2819 981 2853 1015 1 SUM
-port 1 nsew signal output
-rlabel locali 2153 685 2187 719 1 SUM
-port 1 nsew signal output
-rlabel locali 2153 463 2187 497 1 SUM
-port 1 nsew signal output
-rlabel locali 2153 981 2187 1015 1 SUM
-port 1 nsew signal output
-rlabel locali 1043 537 1077 571 1 COUT
+rlabel metal1 1043 537 1077 571 1 COUT
 port 2 nsew signal output
-rlabel locali 1043 463 1077 497 1 COUT
+rlabel metal1 1043 463 1077 497 1 COUT
 port 2 nsew signal output
-rlabel locali 1043 685 1077 719 1 COUT
+rlabel metal1 1043 685 1077 719 1 COUT
 port 2 nsew signal output
-rlabel locali 1043 907 1077 941 1 COUT
+rlabel metal1 1043 907 1077 941 1 COUT
 port 2 nsew signal output
-rlabel locali 1043 611 1077 645 1 COUT
+rlabel metal1 1043 611 1077 645 1 COUT
 port 2 nsew signal output
-rlabel locali 303 833 337 867 1 A
+rlabel metal1 303 833 337 867 1 A
 port 3 nsew signal input
-rlabel locali 303 907 337 941 1 A
+rlabel metal1 303 907 337 941 1 A
 port 3 nsew signal input
-rlabel locali 303 759 337 793 1 A
+rlabel metal1 303 759 337 793 1 A
 port 3 nsew signal input
-rlabel locali 303 685 337 719 1 A
+rlabel metal1 303 685 337 719 1 A
 port 3 nsew signal input
-rlabel locali 303 611 337 645 1 A
+rlabel metal1 303 611 337 645 1 A
 port 3 nsew signal input
-rlabel locali 303 537 337 571 1 A
+rlabel metal1 303 537 337 571 1 A
 port 3 nsew signal input
-rlabel locali 1339 907 1373 941 1 A
+rlabel metal1 1339 907 1373 941 1 A
 port 3 nsew signal input
-rlabel locali 1339 833 1373 867 1 A
+rlabel metal1 1339 833 1373 867 1 A
 port 3 nsew signal input
-rlabel locali 1339 685 1373 719 1 A
+rlabel metal1 1339 685 1373 719 1 A
 port 3 nsew signal input
-rlabel locali 1339 611 1373 645 1 A
+rlabel metal1 1339 611 1373 645 1 A
 port 3 nsew signal input
-rlabel locali 1339 537 1373 571 1 A
+rlabel metal1 1339 537 1373 571 1 A
 port 3 nsew signal input
-rlabel locali 1857 907 1891 941 1 A
+rlabel metal1 1857 907 1891 941 1 A
 port 3 nsew signal input
-rlabel locali 1857 833 1891 867 1 A
+rlabel metal1 1857 833 1891 867 1 A
 port 3 nsew signal input
-rlabel locali 1857 685 1891 719 1 A
+rlabel metal1 1857 685 1891 719 1 A
 port 3 nsew signal input
-rlabel locali 1857 611 1891 645 1 A
+rlabel metal1 1857 611 1891 645 1 A
 port 3 nsew signal input
-rlabel locali 451 759 485 793 1 B
+rlabel metal1 451 759 485 793 1 B
 port 4 nsew signal input
-rlabel locali 451 685 485 719 1 B
+rlabel metal1 451 685 485 719 1 B
 port 4 nsew signal input
-rlabel locali 451 611 485 645 1 B
+rlabel metal1 451 611 485 645 1 B
 port 4 nsew signal input
-rlabel locali 451 537 485 571 1 B
+rlabel metal1 451 537 485 571 1 B
 port 4 nsew signal input
-rlabel locali 451 907 485 941 1 B
+rlabel metal1 451 907 485 941 1 B
 port 4 nsew signal input
-rlabel locali 2005 759 2039 793 1 B
+rlabel metal1 2005 759 2039 793 1 B
 port 4 nsew signal input
-rlabel locali 2005 833 2039 867 1 B
+rlabel metal1 3263 759 3297 793 1 B
 port 4 nsew signal input
-rlabel locali 2005 907 2039 941 1 B
+rlabel metal1 2079 611 2113 645 1 B
 port 4 nsew signal input
-rlabel locali 3263 759 3297 793 1 B
+rlabel metal1 3263 611 3297 645 1 B
 port 4 nsew signal input
-rlabel locali 2079 611 2113 645 1 B
+rlabel metal1 3263 685 3297 719 1 B
 port 4 nsew signal input
-rlabel locali 3263 611 3297 645 1 B
+rlabel metal1 3263 537 3297 571 1 B
 port 4 nsew signal input
-rlabel locali 3263 685 3297 719 1 B
+rlabel metal1 3263 833 3297 867 1 B
 port 4 nsew signal input
-rlabel locali 3263 537 3297 571 1 B
+rlabel metal1 3263 907 3297 941 1 B
 port 4 nsew signal input
-rlabel locali 3263 833 3297 867 1 B
-port 4 nsew signal input
-rlabel locali 3263 907 3297 941 1 B
-port 4 nsew signal input
-rlabel locali 2523 907 2557 941 1 B
+rlabel metal1 2523 907 2557 941 1 B
 port 4 nsew signal input
 rlabel metal1 0 1482 3526 1552 1 VDD
 port 5 nsew power bidirectional abutment
 rlabel metal1 0 0 3526 70 1 GND
 port 6 nsew ground bidirectional abutment
+rlabel metal1 2177 685 2211 719 1 SUM
+port 1 nsew signal output
+rlabel metal1 2177 463 2211 497 1 SUM
+port 1 nsew signal output
+rlabel metal1 2177 981 2211 1015 1 SUM
+port 1 nsew signal output
+rlabel metal1 2187 759 2221 793 1 SUM
+port 1 nsew signal output
 << properties >>
 string FIXED_BBOX 0 0 3526 1552
 string LEFclass CORE

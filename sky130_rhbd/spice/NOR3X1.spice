@@ -1,0 +1,18 @@
+* HSPICE file created from NOR3X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt NOR3X1 C GND
+X0 C x1/a_168_375 x1/a_317_1331 C sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X2 x1/a_317_1331 x1/a_168_375 C C sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X3 x1/a_613_1331 x1/a_362_382 x1/a_317_1331 C sky130_fd_pr__pfet_01v8 ad=67.2n pd=2.74m as=67.2n ps=2.74m w=400 l=30
+X4 x1/a_317_1331 x1/a_362_382 x1/a_613_1331 C sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X5 x1/li_219_183 x1/a_168_375 GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X6 x1/li_219_183 x1/a_619_944 x1/a_613_1331 C sky130_fd_pr__pfet_01v8 ad=23.2n pd=0.916m as=0 ps=0 w=400 l=30
+X7 x1/a_613_1331 x1/a_619_944 x1/li_219_183 C sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X8 x1/li_219_183 x1/a_362_382 GND GND sky130_fd_pr__nfet_01v8 ad=2.4n pd=0.112m as=15.8n ps=0.594m w=602 l=30
+X9 x1/li_219_183 x1/a_619_944 GND GND sky130_fd_pr__nfet_01v8 ad=21.5n pd=0.946m as=0.109u ps=3.55m w=602 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	nor3x1_pcell_0

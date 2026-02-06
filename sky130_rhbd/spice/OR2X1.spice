@@ -1,0 +1,19 @@
+* HSPICE file created from OR2X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt OR2X1 Y A B VDD GND
+X0 Y x1/m1_486_635 GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X2 VDD x1/m1_486_635 Y VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X3 Y x1/m1_486_635 VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X4 VDD A x5/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X6 x5/a_317_1331 A VDD VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X7 x1/m1_486_635 B x5/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=23.2n pd=0.917m as=67.2n ps=2.74m w=400 l=30
+X8 x5/a_317_1331 B x1/m1_486_635 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X9 x1/m1_486_635 A GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X10 x1/m1_486_635 B GND GND sky130_fd_pr__nfet_01v8 ad=2.4n pd=0.112m as=15.8n ps=0.594m w=602 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	or2x1_pcell_0
+* x5	or2x1_pcell_0/nor2x1_pcell_0

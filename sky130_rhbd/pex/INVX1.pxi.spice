@@ -1,148 +1,230 @@
 // File: INVX1.spi.INVX1.pxi
-// Created: Tue Apr 29 10:42:49 2025
+// Created: Thu Jan 22 07:06:37 2026
 // 
 simulator lang=spectre
-x_PM_INVX1\%GND ( GND N_GND_c_3_p N_GND_c_4_p N_GND_c_12_p N_GND_c_1_p \
+x_PM_INVX1\%GND ( GND N_GND_c_4_p N_GND_c_5_p N_GND_c_19_p N_GND_c_1_p \
  N_GND_c_2_p N_GND_M0_noxref_s )  PM_INVX1\%GND
-x_PM_INVX1\%VDD ( VDD N_VDD_c_45_p N_VDD_c_32_p N_VDD_c_27_n N_VDD_c_28_n \
+x_PM_INVX1\%VDD ( VDD N_VDD_c_43_p N_VDD_c_44_p N_VDD_c_40_n N_VDD_c_41_n \
  N_VDD_M1_noxref_s N_VDD_M2_noxref_d )  PM_INVX1\%VDD
-x_PM_INVX1\%A ( A A A A A A A N_A_c_50_n N_A_M0_noxref_g N_A_M1_noxref_g \
- N_A_M2_noxref_g N_A_c_55_n N_A_c_85_p N_A_c_86_p N_A_c_57_n N_A_c_73_n \
- N_A_c_74_n N_A_c_58_n N_A_c_78_p N_A_c_59_n N_A_c_61_n N_A_c_62_n )  \
- PM_INVX1\%A
-x_PM_INVX1\%Y ( Y Y Y Y Y Y Y N_Y_c_97_n N_Y_c_118_n N_Y_c_107_n N_Y_c_109_n \
- N_Y_M0_noxref_d N_Y_M1_noxref_d )  PM_INVX1\%Y
-cc_1 ( N_GND_c_1_p N_VDD_c_27_n ) capacitor c=0.00989514f //x=1.12 //y=0.175 \
+x_PM_INVX1\%A ( A A A A A A A N_A_c_99_n N_A_c_77_n N_A_c_81_n N_A_c_103_n \
+ N_A_M0_noxref_g N_A_M1_noxref_g N_A_M2_noxref_g N_A_c_86_n N_A_c_124_p \
+ N_A_c_88_n N_A_c_89_n N_A_c_112_n N_A_c_113_n N_A_c_91_n N_A_c_127_p \
+ N_A_c_92_n N_A_c_94_n N_A_c_95_n )  PM_INVX1\%A
+x_PM_INVX1\%Y ( Y Y Y Y Y Y Y N_Y_c_151_n N_Y_c_167_n N_Y_c_154_n N_Y_c_198_n \
+ N_Y_c_172_n N_Y_c_175_n N_Y_c_158_n N_Y_c_176_n N_Y_M0_noxref_d \
+ N_Y_M1_noxref_d )  PM_INVX1\%Y
+cc_1 ( N_GND_c_1_p N_VDD_c_40_n ) capacitor c=0.00989514f //x=1.12 //y=0.175 \
  //x2=1.23 //y2=7.58
-cc_2 ( N_GND_c_2_p N_VDD_c_28_n ) capacitor c=0.00989514f //x=2.09 //y=0.175 \
+cc_2 ( N_GND_c_2_p N_VDD_c_41_n ) capacitor c=0.00989514f //x=2.09 //y=0.175 \
  //x2=1.97 //y2=7.58
-cc_3 ( N_GND_c_3_p N_A_c_50_n ) capacitor c=0.00203126f //x=1.97 //y=0.18 \
+cc_3 ( N_GND_c_1_p A ) capacitor c=0.0146622f //x=1.12 //y=0.175 //x2=1.23 \
+ //y2=2.77
+cc_4 ( N_GND_c_4_p N_A_c_77_n ) capacitor c=0.00249124f //x=1.97 //y=0.18 \
  //x2=1.23 //y2=2.265
-cc_4 ( N_GND_c_4_p N_A_c_50_n ) capacitor c=8.01092e-19 //x=1.52 //y=0.715 \
+cc_5 ( N_GND_c_5_p N_A_c_77_n ) capacitor c=0.00108343f //x=1.515 //y=0.715 \
  //x2=1.23 //y2=2.265
-cc_5 ( N_GND_c_1_p N_A_c_50_n ) capacitor c=0.0293771f //x=1.12 //y=0.175 \
+cc_6 ( N_GND_c_1_p N_A_c_77_n ) capacitor c=0.0100674f //x=1.12 //y=0.175 \
  //x2=1.23 //y2=2.265
-cc_6 ( N_GND_c_2_p N_A_c_50_n ) capacitor c=0.00118981f //x=2.09 //y=0.175 \
- //x2=1.23 //y2=2.265
-cc_7 ( N_GND_M0_noxref_s N_A_c_50_n ) capacitor c=0.0107289f //x=0.985 \
+cc_7 ( N_GND_M0_noxref_s N_A_c_77_n ) capacitor c=0.00297929f //x=0.985 \
  //y=0.55 //x2=1.23 //y2=2.265
-cc_8 ( N_GND_c_4_p N_A_c_55_n ) capacitor c=0.0120525f //x=1.52 //y=0.715 \
+cc_8 ( N_GND_c_4_p N_A_c_81_n ) capacitor c=0.00118266f //x=1.97 //y=0.18 \
+ //x2=1.23 //y2=2.265
+cc_9 ( N_GND_c_5_p N_A_c_81_n ) capacitor c=3.95714e-19 //x=1.515 //y=0.715 \
+ //x2=1.23 //y2=2.265
+cc_10 ( N_GND_c_1_p N_A_c_81_n ) capacitor c=0.00789228f //x=1.12 //y=0.175 \
+ //x2=1.23 //y2=2.265
+cc_11 ( N_GND_c_2_p N_A_c_81_n ) capacitor c=0.00230732f //x=2.09 //y=0.175 \
+ //x2=1.23 //y2=2.265
+cc_12 ( N_GND_M0_noxref_s N_A_c_81_n ) capacitor c=0.00476545f //x=0.985 \
+ //y=0.55 //x2=1.23 //y2=2.265
+cc_13 ( N_GND_c_5_p N_A_c_86_n ) capacitor c=0.0124814f //x=1.515 //y=0.715 \
  //x2=1.34 //y2=1.09
-cc_9 ( N_GND_M0_noxref_s N_A_c_55_n ) capacitor c=0.0315727f //x=0.985 \
+cc_14 ( N_GND_M0_noxref_s N_A_c_86_n ) capacitor c=0.0299684f //x=0.985 \
  //y=0.55 //x2=1.34 //y2=1.09
-cc_10 ( N_GND_c_1_p N_A_c_57_n ) capacitor c=0.0124051f //x=1.12 //y=0.175 \
+cc_15 ( N_GND_M0_noxref_s N_A_c_88_n ) capacitor c=0.002132f //x=0.985 \
+ //y=0.55 //x2=1.34 //y2=1.745
+cc_16 ( N_GND_c_1_p N_A_c_89_n ) capacitor c=0.00574171f //x=1.12 //y=0.175 \
  //x2=1.34 //y2=2.1
-cc_11 ( N_GND_M0_noxref_s N_A_c_58_n ) capacitor c=0.00483567f //x=0.985 \
+cc_17 ( N_GND_M0_noxref_s N_A_c_89_n ) capacitor c=0.00304786f //x=0.985 \
+ //y=0.55 //x2=1.34 //y2=2.1
+cc_18 ( N_GND_M0_noxref_s N_A_c_91_n ) capacitor c=0.00517463f //x=0.985 \
  //y=0.55 //x2=1.715 //y2=0.935
-cc_12 ( N_GND_c_12_p N_A_c_59_n ) capacitor c=0.0118631f //x=2.005 //y=0.715 \
+cc_19 ( N_GND_c_19_p N_A_c_92_n ) capacitor c=0.0134289f //x=2.005 //y=0.715 \
  //x2=1.87 //y2=1.09
-cc_13 ( N_GND_M0_noxref_s N_A_c_59_n ) capacitor c=0.0143355f //x=0.985 \
+cc_20 ( N_GND_M0_noxref_s N_A_c_92_n ) capacitor c=0.0153553f //x=0.985 \
  //y=0.55 //x2=1.87 //y2=1.09
-cc_14 ( N_GND_M0_noxref_s N_A_c_61_n ) capacitor c=0.0074042f //x=0.985 \
+cc_21 ( N_GND_M0_noxref_s N_A_c_94_n ) capacitor c=0.00629878f //x=0.985 \
  //y=0.55 //x2=1.87 //y2=1.435
-cc_15 ( N_GND_c_4_p N_A_c_62_n ) capacitor c=2.1838e-19 //x=1.52 //y=0.715 \
+cc_22 ( N_GND_c_5_p N_A_c_95_n ) capacitor c=2.1838e-19 //x=1.515 //y=0.715 \
  //x2=1.23 //y2=2.265
-cc_16 ( N_GND_c_1_p N_A_c_62_n ) capacitor c=0.0108179f //x=1.12 //y=0.175 \
+cc_23 ( N_GND_c_1_p N_A_c_95_n ) capacitor c=0.00695258f //x=1.12 //y=0.175 \
  //x2=1.23 //y2=2.265
-cc_17 ( N_GND_M0_noxref_s N_A_c_62_n ) capacitor c=0.00650301f //x=0.985 \
+cc_24 ( N_GND_M0_noxref_s N_A_c_95_n ) capacitor c=0.00659456f //x=0.985 \
  //y=0.55 //x2=1.23 //y2=2.265
-cc_18 ( N_GND_c_1_p Y ) capacitor c=8.10282e-19 //x=1.12 //y=0.175 //x2=1.97 \
- //y2=2.4
-cc_19 ( N_GND_c_3_p N_Y_c_97_n ) capacitor c=0.00212303f //x=1.97 //y=0.18 \
- //x2=1.885 //y2=2.26
-cc_20 ( N_GND_c_2_p N_Y_c_97_n ) capacitor c=0.0301661f //x=2.09 //y=0.175 \
- //x2=1.885 //y2=2.26
-cc_21 ( N_GND_M0_noxref_s N_Y_c_97_n ) capacitor c=0.0099963f //x=0.985 \
- //y=0.55 //x2=1.885 //y2=2.26
-cc_22 ( N_GND_c_3_p N_Y_M0_noxref_d ) capacitor c=0.00194747f //x=1.97 \
+cc_25 ( N_GND_c_1_p N_Y_c_151_n ) capacitor c=0.00520602f //x=1.12 //y=0.175 \
+ //x2=1.6 //y2=1.935
+cc_26 ( N_GND_c_2_p N_Y_c_151_n ) capacitor c=0.00285377f //x=2.09 //y=0.175 \
+ //x2=1.6 //y2=1.935
+cc_27 ( N_GND_M0_noxref_s N_Y_c_151_n ) capacitor c=0.0366224f //x=0.985 \
+ //y=0.55 //x2=1.6 //y2=1.935
+cc_28 ( N_GND_c_4_p N_Y_c_154_n ) capacitor c=0.00497604f //x=1.97 //y=0.18 \
+ //x2=1.885 //y2=2.02
+cc_29 ( N_GND_c_19_p N_Y_c_154_n ) capacitor c=0.00321695f //x=2.005 //y=0.715 \
+ //x2=1.885 //y2=2.02
+cc_30 ( N_GND_c_2_p N_Y_c_154_n ) capacitor c=0.0316773f //x=2.09 //y=0.175 \
+ //x2=1.885 //y2=2.02
+cc_31 ( N_GND_M0_noxref_s N_Y_c_154_n ) capacitor c=0.00565821f //x=0.985 \
+ //y=0.55 //x2=1.885 //y2=2.02
+cc_32 ( N_GND_c_4_p N_Y_c_158_n ) capacitor c=0.00998676f //x=1.97 //y=0.18 \
+ //x2=1.6 //y2=1.185
+cc_33 ( N_GND_c_5_p N_Y_c_158_n ) capacitor c=0.00124813f //x=1.515 //y=0.715 \
+ //x2=1.6 //y2=1.185
+cc_34 ( N_GND_c_19_p N_Y_c_158_n ) capacitor c=0.00130539f //x=2.005 //y=0.715 \
+ //x2=1.6 //y2=1.185
+cc_35 ( N_GND_c_2_p N_Y_c_158_n ) capacitor c=2.8029e-19 //x=2.09 //y=0.175 \
+ //x2=1.6 //y2=1.185
+cc_36 ( N_GND_M0_noxref_s N_Y_c_158_n ) capacitor c=0.0172844f //x=0.985 \
+ //y=0.55 //x2=1.6 //y2=1.185
+cc_37 ( N_GND_c_4_p N_Y_M0_noxref_d ) capacitor c=0.00119455f //x=1.97 \
  //y=0.18 //x2=1.415 //y2=1.09
-cc_23 ( N_GND_c_4_p N_Y_M0_noxref_d ) capacitor c=0.014622f //x=1.52 //y=0.715 \
- //x2=1.415 //y2=1.09
-cc_24 ( N_GND_c_1_p N_Y_M0_noxref_d ) capacitor c=0.0094373f //x=1.12 \
+cc_38 ( N_GND_c_2_p N_Y_M0_noxref_d ) capacitor c=2.70835e-19 //x=2.09 \
  //y=0.175 //x2=1.415 //y2=1.09
-cc_25 ( N_GND_c_2_p N_Y_M0_noxref_d ) capacitor c=0.00973758f //x=2.09 \
- //y=0.175 //x2=1.415 //y2=1.09
-cc_26 ( N_GND_M0_noxref_s N_Y_M0_noxref_d ) capacitor c=0.076995f //x=0.985 \
+cc_39 ( N_GND_M0_noxref_s N_Y_M0_noxref_d ) capacitor c=0.0377642f //x=0.985 \
  //y=0.55 //x2=1.415 //y2=1.09
-cc_27 ( N_VDD_c_27_n N_A_c_50_n ) capacitor c=0.0276175f //x=1.23 //y=7.58 \
- //x2=1.23 //y2=2.265
-cc_28 ( N_VDD_c_28_n N_A_c_50_n ) capacitor c=0.00144809f //x=1.97 //y=7.58 \
- //x2=1.23 //y2=2.265
-cc_29 ( N_VDD_M1_noxref_s N_A_c_50_n ) capacitor c=0.00938354f //x=1.03 \
- //y=5.2 //x2=1.23 //y2=2.265
-cc_30 ( N_VDD_c_32_p N_A_M1_noxref_g ) capacitor c=0.00753931f //x=1.96 \
+cc_40 ( N_VDD_c_40_n A ) capacitor c=0.0140262f //x=1.23 //y=7.58 //x2=1.23 \
+ //y2=2.77
+cc_41 ( N_VDD_c_43_p N_A_c_99_n ) capacitor c=5.73169e-19 //x=1.97 //y=7.58 \
+ //x2=1.23 //y2=4.76
+cc_42 ( N_VDD_c_44_p N_A_c_99_n ) capacitor c=5.48929e-19 //x=1.96 //y=7.585 \
+ //x2=1.23 //y2=4.76
+cc_43 ( N_VDD_c_40_n N_A_c_99_n ) capacitor c=0.00869686f //x=1.23 //y=7.58 \
+ //x2=1.23 //y2=4.76
+cc_44 ( N_VDD_M1_noxref_s N_A_c_99_n ) capacitor c=0.0218259f //x=1.03 //y=5.2 \
+ //x2=1.23 //y2=4.76
+cc_45 ( N_VDD_c_43_p N_A_c_103_n ) capacitor c=3.40755e-19 //x=1.97 //y=7.58 \
+ //x2=1.23 //y2=4.88
+cc_46 ( N_VDD_c_40_n N_A_c_103_n ) capacitor c=0.00851507f //x=1.23 //y=7.58 \
+ //x2=1.23 //y2=4.88
+cc_47 ( N_VDD_c_41_n N_A_c_103_n ) capacitor c=0.00235165f //x=1.97 //y=7.58 \
+ //x2=1.23 //y2=4.88
+cc_48 ( N_VDD_M1_noxref_s N_A_c_103_n ) capacitor c=0.00986169f //x=1.03 \
+ //y=5.2 //x2=1.23 //y2=4.88
+cc_49 ( N_VDD_c_44_p N_A_M1_noxref_g ) capacitor c=0.00753931f //x=1.96 \
  //y=7.585 //x2=1.385 //y2=6.2
-cc_31 ( N_VDD_c_27_n N_A_M1_noxref_g ) capacitor c=0.0241676f //x=1.23 \
- //y=7.58 //x2=1.385 //y2=6.2
-cc_32 ( N_VDD_M1_noxref_s N_A_M1_noxref_g ) capacitor c=0.0528676f //x=1.03 \
+cc_50 ( N_VDD_c_40_n N_A_M1_noxref_g ) capacitor c=0.021054f //x=1.23 //y=7.58 \
+ //x2=1.385 //y2=6.2
+cc_51 ( N_VDD_M1_noxref_s N_A_M1_noxref_g ) capacitor c=0.0573441f //x=1.03 \
  //y=5.2 //x2=1.385 //y2=6.2
-cc_33 ( N_VDD_c_32_p N_A_M2_noxref_g ) capacitor c=0.00702238f //x=1.96 \
+cc_52 ( N_VDD_c_44_p N_A_M2_noxref_g ) capacitor c=0.00755544f //x=1.96 \
  //y=7.585 //x2=1.825 //y2=6.2
-cc_34 ( N_VDD_M2_noxref_d N_A_M2_noxref_g ) capacitor c=0.0528676f //x=1.9 \
+cc_53 ( N_VDD_M2_noxref_d N_A_M2_noxref_g ) capacitor c=0.0572684f //x=1.9 \
  //y=5.2 //x2=1.825 //y2=6.2
-cc_35 ( N_VDD_c_28_n N_A_c_73_n ) capacitor c=0.0287802f //x=1.97 //y=7.58 \
+cc_54 ( N_VDD_c_41_n N_A_c_112_n ) capacitor c=0.0225829f //x=1.97 //y=7.58 \
  //x2=1.75 //y2=4.97
-cc_36 ( N_VDD_c_27_n N_A_c_74_n ) capacitor c=0.011132f //x=1.23 //y=7.58 \
+cc_55 ( N_VDD_c_40_n N_A_c_113_n ) capacitor c=0.00701819f //x=1.23 //y=7.58 \
  //x2=1.46 //y2=4.97
-cc_37 ( N_VDD_M1_noxref_s N_A_c_74_n ) capacitor c=0.00665885f //x=1.03 \
+cc_56 ( N_VDD_c_41_n N_A_c_113_n ) capacitor c=2.63786e-19 //x=1.97 //y=7.58 \
+ //x2=1.46 //y2=4.97
+cc_57 ( N_VDD_M1_noxref_s N_A_c_113_n ) capacitor c=0.00524271f //x=1.03 \
  //y=5.2 //x2=1.46 //y2=4.97
-cc_38 ( N_VDD_c_27_n Y ) capacitor c=4.80934e-19 //x=1.23 //y=7.58 //x2=1.97 \
+cc_58 ( N_VDD_c_41_n Y ) capacitor c=0.0297606f //x=1.97 //y=7.58 //x2=1.97 \
  //y2=2.4
-cc_39 ( N_VDD_c_28_n Y ) capacitor c=0.0232778f //x=1.97 //y=7.58 //x2=1.97 \
+cc_59 ( N_VDD_c_43_p N_Y_c_167_n ) capacitor c=0.00259721f //x=1.97 //y=7.58 \
+ //x2=1.605 //y2=5.42
+cc_60 ( N_VDD_c_44_p N_Y_c_167_n ) capacitor c=0.00100699f //x=1.96 //y=7.585 \
+ //x2=1.605 //y2=5.42
+cc_61 ( N_VDD_c_41_n N_Y_c_167_n ) capacitor c=0.00295945f //x=1.97 //y=7.58 \
+ //x2=1.605 //y2=5.42
+cc_62 ( N_VDD_M1_noxref_s N_Y_c_167_n ) capacitor c=0.0480012f //x=1.03 \
+ //y=5.2 //x2=1.605 //y2=5.42
+cc_63 ( N_VDD_M2_noxref_d N_Y_c_167_n ) capacitor c=0.0486749f //x=1.9 //y=5.2 \
+ //x2=1.605 //y2=5.42
+cc_64 ( N_VDD_c_43_p N_Y_c_172_n ) capacitor c=0.00199795f //x=1.97 //y=7.58 \
+ //x2=1.885 //y2=5.14
+cc_65 ( N_VDD_c_44_p N_Y_c_172_n ) capacitor c=0.00207379f //x=1.96 //y=7.585 \
+ //x2=1.885 //y2=5.14
+cc_66 ( N_VDD_M2_noxref_d N_Y_c_172_n ) capacitor c=0.0235609f //x=1.9 //y=5.2 \
+ //x2=1.885 //y2=5.14
+cc_67 ( N_VDD_c_40_n N_Y_c_175_n ) capacitor c=0.00685597f //x=1.23 //y=7.58 \
+ //x2=1.69 //y2=5.14
+cc_68 ( N_VDD_c_43_p N_Y_c_176_n ) capacitor c=0.00241566f //x=1.97 //y=7.58 \
+ //x2=1.605 //y2=5.56
+cc_69 ( N_VDD_c_44_p N_Y_c_176_n ) capacitor c=0.0138017f //x=1.96 //y=7.585 \
+ //x2=1.605 //y2=5.56
+cc_70 ( N_VDD_c_40_n N_Y_c_176_n ) capacitor c=0.00824382f //x=1.23 //y=7.58 \
+ //x2=1.605 //y2=5.56
+cc_71 ( N_VDD_c_41_n N_Y_c_176_n ) capacitor c=0.00962126f //x=1.97 //y=7.58 \
+ //x2=1.605 //y2=5.56
+cc_72 ( N_VDD_M1_noxref_s N_Y_c_176_n ) capacitor c=0.092379f //x=1.03 //y=5.2 \
+ //x2=1.605 //y2=5.56
+cc_73 ( N_VDD_M2_noxref_d N_Y_c_176_n ) capacitor c=0.0935379f //x=1.9 //y=5.2 \
+ //x2=1.605 //y2=5.56
+cc_74 ( A Y ) capacitor c=0.111579f //x=1.23 //y=2.77 //x2=1.97 //y2=2.4
+cc_75 ( N_A_c_99_n Y ) capacitor c=0.00718202f //x=1.23 //y=4.76 //x2=1.97 \
  //y2=2.4
-cc_40 ( N_VDD_c_32_p N_Y_c_107_n ) capacitor c=8.94397e-19 //x=1.96 //y=7.585 \
- //x2=1.885 //y2=4.76
-cc_41 ( N_VDD_M2_noxref_d N_Y_c_107_n ) capacitor c=0.00645128f //x=1.9 \
- //y=5.2 //x2=1.885 //y2=4.76
-cc_42 ( N_VDD_c_27_n N_Y_c_109_n ) capacitor c=0.0179238f //x=1.23 //y=7.58 \
- //x2=1.69 //y2=4.76
-cc_43 ( N_VDD_c_45_p N_Y_M1_noxref_d ) capacitor c=0.00724309f //x=1.97 \
- //y=7.58 //x2=1.46 //y2=5.2
-cc_44 ( N_VDD_c_32_p N_Y_M1_noxref_d ) capacitor c=0.0139426f //x=1.96 \
- //y=7.585 //x2=1.46 //y2=5.2
-cc_45 ( N_VDD_c_28_n N_Y_M1_noxref_d ) capacitor c=0.0219131f //x=1.97 \
- //y=7.58 //x2=1.46 //y2=5.2
-cc_46 ( N_VDD_M1_noxref_s N_Y_M1_noxref_d ) capacitor c=0.0843065f //x=1.03 \
- //y=5.2 //x2=1.46 //y2=5.2
-cc_47 ( N_VDD_M2_noxref_d N_Y_M1_noxref_d ) capacitor c=0.0832641f //x=1.9 \
- //y=5.2 //x2=1.46 //y2=5.2
-cc_48 ( N_A_c_50_n Y ) capacitor c=0.0739084f //x=1.23 //y=2.265 //x2=1.97 \
+cc_76 ( N_A_c_77_n Y ) capacitor c=0.00859794f //x=1.23 //y=2.265 //x2=1.97 \
  //y2=2.4
-cc_49 ( N_A_c_62_n Y ) capacitor c=8.49451e-19 //x=1.23 //y=2.265 //x2=1.97 \
+cc_77 ( N_A_c_81_n Y ) capacitor c=0.0023016f //x=1.23 //y=2.265 //x2=1.97 \
  //y2=2.4
-cc_50 ( N_A_c_78_p N_Y_c_97_n ) capacitor c=0.0023507f //x=1.715 //y=1.59 \
- //x2=1.885 //y2=2.26
-cc_51 ( N_A_c_62_n N_Y_c_118_n ) capacitor c=0.0167852f //x=1.23 //y=2.265 \
- //x2=1.685 //y2=2.26
-cc_52 ( N_A_c_73_n N_Y_c_107_n ) capacitor c=0.0107726f //x=1.75 //y=4.97 \
- //x2=1.885 //y2=4.76
-cc_53 ( N_A_c_50_n N_Y_c_109_n ) capacitor c=0.0250789f //x=1.23 //y=2.265 \
- //x2=1.69 //y2=4.76
-cc_54 ( N_A_c_74_n N_Y_c_109_n ) capacitor c=0.00962086f //x=1.46 //y=4.97 \
- //x2=1.69 //y2=4.76
-cc_55 ( N_A_c_50_n N_Y_M0_noxref_d ) capacitor c=0.0175773f //x=1.23 //y=2.265 \
- //x2=1.415 //y2=1.09
-cc_56 ( N_A_c_55_n N_Y_M0_noxref_d ) capacitor c=0.00218556f //x=1.34 //y=1.09 \
- //x2=1.415 //y2=1.09
-cc_57 ( N_A_c_85_p N_Y_M0_noxref_d ) capacitor c=0.00347355f //x=1.34 \
+cc_78 ( N_A_c_103_n Y ) capacitor c=0.00250262f //x=1.23 //y=4.88 //x2=1.97 \
+ //y2=2.4
+cc_79 ( N_A_c_112_n Y ) capacitor c=4.08297e-19 //x=1.75 //y=4.97 //x2=1.97 \
+ //y2=2.4
+cc_80 ( N_A_c_113_n Y ) capacitor c=0.00124564f //x=1.46 //y=4.97 //x2=1.97 \
+ //y2=2.4
+cc_81 ( N_A_c_95_n Y ) capacitor c=0.00112403f //x=1.23 //y=2.265 //x2=1.97 \
+ //y2=2.4
+cc_82 ( N_A_c_124_p N_Y_c_151_n ) capacitor c=0.0012792f //x=1.34 //y=1.435 \
+ //x2=1.6 //y2=1.935
+cc_83 ( N_A_c_88_n N_Y_c_151_n ) capacitor c=0.00561986f //x=1.34 //y=1.745 \
+ //x2=1.6 //y2=1.935
+cc_84 ( N_A_c_89_n N_Y_c_151_n ) capacitor c=0.00440271f //x=1.34 //y=2.1 \
+ //x2=1.6 //y2=1.935
+cc_85 ( N_A_c_127_p N_Y_c_151_n ) capacitor c=0.00967186f //x=1.715 //y=1.59 \
+ //x2=1.6 //y2=1.935
+cc_86 ( N_A_c_94_n N_Y_c_151_n ) capacitor c=0.00362207f //x=1.87 //y=1.435 \
+ //x2=1.6 //y2=1.935
+cc_87 ( N_A_M1_noxref_g N_Y_c_167_n ) capacitor c=0.00141266f //x=1.385 \
+ //y=6.2 //x2=1.605 //y2=5.42
+cc_88 ( N_A_M2_noxref_g N_Y_c_167_n ) capacitor c=0.00377331f //x=1.825 \
+ //y=6.2 //x2=1.605 //y2=5.42
+cc_89 ( N_A_c_127_p N_Y_c_154_n ) capacitor c=0.00180253f //x=1.715 //y=1.59 \
+ //x2=1.885 //y2=2.02
+cc_90 ( N_A_c_95_n N_Y_c_198_n ) capacitor c=0.00440271f //x=1.23 //y=2.265 \
+ //x2=1.685 //y2=2.02
+cc_91 ( N_A_M2_noxref_g N_Y_c_172_n ) capacitor c=0.00966342f //x=1.825 \
+ //y=6.2 //x2=1.885 //y2=5.14
+cc_92 ( N_A_M1_noxref_g N_Y_c_175_n ) capacitor c=0.00534267f //x=1.385 \
+ //y=6.2 //x2=1.69 //y2=5.14
+cc_93 ( N_A_c_112_n N_Y_c_175_n ) capacitor c=0.00262283f //x=1.75 //y=4.97 \
+ //x2=1.69 //y2=5.14
+cc_94 ( N_A_c_86_n N_Y_c_158_n ) capacitor c=0.00187726f //x=1.34 //y=1.09 \
+ //x2=1.6 //y2=1.185
+cc_95 ( N_A_c_124_p N_Y_c_158_n ) capacitor c=0.00414335f //x=1.34 //y=1.435 \
+ //x2=1.6 //y2=1.185
+cc_96 ( N_A_c_91_n N_Y_c_158_n ) capacitor c=5.57924e-19 //x=1.715 //y=0.935 \
+ //x2=1.6 //y2=1.185
+cc_97 ( N_A_c_127_p N_Y_c_158_n ) capacitor c=5.75878e-19 //x=1.715 //y=1.59 \
+ //x2=1.6 //y2=1.185
+cc_98 ( N_A_c_92_n N_Y_c_158_n ) capacitor c=0.00160969f //x=1.87 //y=1.09 \
+ //x2=1.6 //y2=1.185
+cc_99 ( N_A_c_94_n N_Y_c_158_n ) capacitor c=0.00411132f //x=1.87 //y=1.435 \
+ //x2=1.6 //y2=1.185
+cc_100 ( N_A_M1_noxref_g N_Y_c_176_n ) capacitor c=0.0162066f //x=1.385 \
+ //y=6.2 //x2=1.605 //y2=5.56
+cc_101 ( N_A_M2_noxref_g N_Y_c_176_n ) capacitor c=0.0162066f //x=1.825 \
+ //y=6.2 //x2=1.605 //y2=5.56
+cc_102 ( N_A_c_112_n N_Y_c_176_n ) capacitor c=0.00290963f //x=1.75 //y=4.97 \
+ //x2=1.605 //y2=5.56
+cc_103 ( N_A_c_86_n N_Y_M0_noxref_d ) capacitor c=0.00137914f //x=1.34 \
+ //y=1.09 //x2=1.415 //y2=1.09
+cc_104 ( N_A_c_124_p N_Y_M0_noxref_d ) capacitor c=0.0023891f //x=1.34 \
  //y=1.435 //x2=1.415 //y2=1.09
-cc_58 ( N_A_c_86_p N_Y_M0_noxref_d ) capacitor c=0.00742431f //x=1.34 \
- //y=1.745 //x2=1.415 //y2=1.09
-cc_59 ( N_A_c_57_n N_Y_M0_noxref_d ) capacitor c=0.00957707f //x=1.34 //y=2.1 \
- //x2=1.415 //y2=1.09
-cc_60 ( N_A_c_58_n N_Y_M0_noxref_d ) capacitor c=0.00220879f //x=1.715 \
+cc_105 ( N_A_c_91_n N_Y_M0_noxref_d ) capacitor c=0.0020782f //x=1.715 \
  //y=0.935 //x2=1.415 //y2=1.09
-cc_61 ( N_A_c_78_p N_Y_M0_noxref_d ) capacitor c=0.0138447f //x=1.715 //y=1.59 \
- //x2=1.415 //y2=1.09
-cc_62 ( N_A_c_59_n N_Y_M0_noxref_d ) capacitor c=0.00218624f //x=1.87 //y=1.09 \
- //x2=1.415 //y2=1.09
-cc_63 ( N_A_c_61_n N_Y_M0_noxref_d ) capacitor c=0.00601286f //x=1.87 \
+cc_106 ( N_A_c_127_p N_Y_M0_noxref_d ) capacitor c=0.00356097f //x=1.715 \
+ //y=1.59 //x2=1.415 //y2=1.09
+cc_107 ( N_A_c_92_n N_Y_M0_noxref_d ) capacitor c=0.00138452f //x=1.87 \
+ //y=1.09 //x2=1.415 //y2=1.09
+cc_108 ( N_A_c_94_n N_Y_M0_noxref_d ) capacitor c=0.00235934f //x=1.87 \
  //y=1.435 //x2=1.415 //y2=1.09
-cc_64 ( N_A_M1_noxref_g N_Y_M1_noxref_d ) capacitor c=0.0219309f //x=1.385 \
- //y=6.2 //x2=1.46 //y2=5.2
-cc_65 ( N_A_M2_noxref_g N_Y_M1_noxref_d ) capacitor c=0.021902f //x=1.825 \
- //y=6.2 //x2=1.46 //y2=5.2
-cc_66 ( N_A_c_73_n N_Y_M1_noxref_d ) capacitor c=0.0148755f //x=1.75 //y=4.97 \
- //x2=1.46 //y2=5.2
-cc_67 ( N_A_c_74_n N_Y_M1_noxref_d ) capacitor c=0.00307344f //x=1.46 //y=4.97 \
- //x2=1.46 //y2=5.2

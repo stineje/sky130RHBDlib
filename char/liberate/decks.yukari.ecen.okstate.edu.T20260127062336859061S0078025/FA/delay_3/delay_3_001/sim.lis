@@ -1,0 +1,4408 @@
+/import/programs/cadence/LIBERATE/current/bin/spectre -64 -plugin /import/programs/cadence/LIBERATE/current/lib/lnx86_64_2.6/libSki.so +multiple -cp -ss -l -f nutascii +lqt 0 
+Reading file:  /dev/shm/netlist2LZZZP
+Time for NDB Parsing: CPU = 8.931300e-02 s, elapsed = 1.168020e-01 s.
+Time accumulated: CPU = 2.853212e+02 s (4m  45.3s), elapsed = 2.891816e+02 s
+        (4m  49.2s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Warning from spectre during circuit read-in.
+    WARNING (SFE-411): "/dev/shm/netlist2LZZZP" 117: Hierarchical node
+        `x_PM_FA%noxref_14.34' will be treated as a regular (non-hierarchical)
+        node because either it does not exist in the design or a signal name of
+        the instance or node contains the hierarchy delimiter `.'. Check that
+        both instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlist2LZZZP" 121: Hierarchical node
+        `x_PM_FA%A.60' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlist2LZZZP" 129: Hierarchical node
+        `x_PM_FA%noxref_14.21' will be treated as a regular (non-hierarchical)
+        node because either it does not exist in the design or a signal name of
+        the instance or node contains the hierarchy delimiter `.'. Check that
+        both instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlist2LZZZP" 138: Hierarchical node
+        `x_PM_FA%VDD.504' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlist2LZZZP" 141: Hierarchical node
+        `x_PM_FA%VDD.503' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+        Further occurrences of this warning will be suppressed.
+
+Time for Elaboration: CPU = 4.116500e-02 s, elapsed = 4.175997e-02 s.
+Time accumulated: CPU = 2.853625e+02 s (4m  45.4s), elapsed = 2.892234e+02 s
+        (4m  49.2s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Time for EDB Visiting: CPU = 3.457800e-02 s, elapsed = 3.457999e-02 s.
+Time accumulated: CPU = 2.853971e+02 s (4m  45.4s), elapsed = 2.892581e+02 s
+        (4m  49.3s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre during topology check.
+    Only one connection to the following 42 nodes:
+        x_PM_FA%A.36
+        x_PM_FA%A.29
+        x_PM_FA%A.28
+        x_PM_FA%A.20
+        x_PM_FA%B.27
+        Further occurrences of this notice will be suppressed.
+    No DC path from node `N_A_M53_noxref_g' to ground, Gmin installed to
+        provide path.
+
+
+Global user options:
+               temp = 25
+warning_change_severity = error
+         warning_id = MDL-360
+      preserve_inst = [ C6499_0 C6500_0 VCIN VGND VVDD ]
+           autostop = spice
+             digits = 6
+            measdgt = 6
+           notation = sci
+             ingold = sci
+               save = nooutput
+
+Scoped user options:
+
+Circuit inventory:
+              nodes 1734
+              bsim4 63    
+          capacitor 4677  
+           resistor 1824  
+            vsource 6     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+
+Notice from spectre.
+    1 notice suppressed.
+    794 warnings suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    There are 2 IC nodes defined.
+    GminDC = 1.000000e-12 S is large enough to noticeably affect the DC
+        solution.
+        dV(MM50_noxref.pmos_0:sbnode) = -8.501900e-03 V
+        Use the `gmin_check' option to eliminate or expand this report.
+
+DC simulation time: CPU = 1.181700e-02 s, elapsed = 1.181793e-02 s.
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             184
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.954e+00 V
+I: I(VVDD:p) = 1.345e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.8 %)      1 (38.9 %)      2 (41.4 %)      3 (31.0 %)
+         4 (49.6 %)      5 (50.6 %)      6 (35.7 %)      7 (41.3 %)
+         8 (40.7 %)      9 (22.4 %)     10 (52.7 %)     11 (40.0 %)
+        12 (29.7 %)     13 (51.1 %)     14 (37.5 %)     15 (25.1 %)
+        16 (30.1 %)     17 (47.7 %)     18 (74.7 %)     19 (28.5 %)
+        20 (33.7 %)     21 (58.1 %)     22 (46.6 %)     23 (51.4 %)
+        24 (43.3 %)     25 (28.3 %)     26 (18.1 %)     27 (41.5 %)
+        28 (41.1 %)     29 (17.1 %)     30 (55.3 %)     31 (72.2 %)
+        32 (18.4 %)     33 (22.6 %)     34 (42.6 %)     35 (53.4 %)
+        36 (52.8 %)     37 (57.1 %)     38 (22.2 %)     39 (42.7 %)
+        40 (28.0 %)     41 (44.9 %)     42 (46.4 %)     43 (35.6 %)
+        44 (28.6 %)     45 (43.5 %)     46 (33.3 %)     47 (21.1 %)
+        48 (44.9 %)     49 (37.2 %)     50 (38.6 %)     51 (25.1 %)
+        52 (15.3 %)     53 (19.4 %)     54 (28.6 %)     55 (21.6 %)
+        56 (24.2 %)     57 (35.7 %)     58 (25.0 %)     59 (8.5 %)
+        60 (20.3 %)     61 (14.3 %)     62 (42.3 %)     63 (49.2 %)
+        64 (29.2 %)     65 (4.4 %)      66 (16.1 %)     67 (24.0 %)
+        68 (18.4 %)     69 (13.5 %)     70 (5.6 %)      71 (3.7 %)
+        72 (36.8 %)     73 (63.9 %)     74 (63.8 %)     75 (11.6 %)
+        76 (26.1 %)     77 (60.6 %)     78 (6.9 %)      79 (15.9 %)
+        80 (44.3 %)     81 (48.2 %)     82 (16.2 %)     83 (5.2 %)
+        84 (5.7 %)      85 (8.9 %)      86 (9.8 %)      87 (19.1 %)
+        88 (36.2 %)     89 (35.2 %)     90 (17.8 %)     91 (37.0 %)
+        92 (25.3 %)     93 (22.2 %)     94 (46.1 %)     95 (28.5 %)
+        Total: 3167.5%
+Initial condition solution time: CPU = 1.183700e-02 s, elapsed = 1.183820e-02
+        s.
+Intrinsic tran analysis time:    CPU = 2.640140e-01 s, elapsed = 2.640200e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.862030e-01 s,
+        elapsed = 2.862320e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.856907e+02 s (4m  45.7s), elapsed = 2.895517e+02 s
+        (4m  49.6s).
+Peak resident memory used = 2.75e+08 bytes.
+
+Reading file:  /dev/shm/netlistmFiHLV
+Time for NDB Parsing: CPU = 9.438700e-02 s, elapsed = 1.143491e-01 s.
+Time accumulated: CPU = 2.857851e+02 s (4m  45.8s), elapsed = 2.896661e+02 s
+        (4m  49.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Warning from spectre during circuit read-in.
+    WARNING (SFE-411): "/dev/shm/netlistmFiHLV" 117: Hierarchical node
+        `x_PM_FA%noxref_14.34' will be treated as a regular (non-hierarchical)
+        node because either it does not exist in the design or a signal name of
+        the instance or node contains the hierarchy delimiter `.'. Check that
+        both instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistmFiHLV" 121: Hierarchical node
+        `x_PM_FA%A.60' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistmFiHLV" 129: Hierarchical node
+        `x_PM_FA%noxref_14.21' will be treated as a regular (non-hierarchical)
+        node because either it does not exist in the design or a signal name of
+        the instance or node contains the hierarchy delimiter `.'. Check that
+        both instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistmFiHLV" 138: Hierarchical node
+        `x_PM_FA%VDD.504' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+    WARNING (SFE-411): "/dev/shm/netlistmFiHLV" 141: Hierarchical node
+        `x_PM_FA%VDD.503' will be treated as a regular (non-hierarchical) node
+        because either it does not exist in the design or a signal name of the
+        instance or node contains the hierarchy delimiter `.'. Check that both
+        instance name and node name are correct and the signal name of the
+        instance or node does not contain the hierarchy delimiter. Next, rerun
+        the simulation.
+        Further occurrences of this warning will be suppressed.
+
+Time for Elaboration: CPU = 3.923100e-02 s, elapsed = 3.966498e-02 s.
+Time accumulated: CPU = 2.858244e+02 s (4m  45.8s), elapsed = 2.897058e+02 s
+        (4m  49.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Time for EDB Visiting: CPU = 3.406300e-02 s, elapsed = 3.406405e-02 s.
+Time accumulated: CPU = 2.858586e+02 s (4m  45.9s), elapsed = 2.897400e+02 s
+        (4m  49.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre during topology check.
+    Only one connection to the following 42 nodes:
+        x_PM_FA%A.36
+        x_PM_FA%A.29
+        x_PM_FA%A.28
+        x_PM_FA%A.20
+        x_PM_FA%B.27
+        Further occurrences of this notice will be suppressed.
+    No DC path from node `N_A_M53_noxref_g' to ground, Gmin installed to
+        provide path.
+
+
+Global user options:
+               temp = 25
+warning_change_severity = error
+         warning_id = MDL-360
+      preserve_inst = [ C6499_0 C6500_0 VCIN VGND VVDD ]
+           autostop = spice
+             digits = 6
+            measdgt = 6
+           notation = sci
+             ingold = sci
+               save = nooutput
+
+Scoped user options:
+
+Circuit inventory:
+              nodes 1734
+              bsim4 63    
+          capacitor 4677  
+           resistor 1824  
+            vsource 6     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+
+Notice from spectre.
+    1 notice suppressed.
+    794 warnings suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    There are 2 IC nodes defined.
+    GminDC = 1.000000e-12 S is large enough to noticeably affect the DC
+        solution.
+        dV(MM50_noxref.pmos_0:sbnode) = -8.501900e-03 V
+        Use the `gmin_check' option to eliminate or expand this report.
+
+DC simulation time: CPU = 1.138200e-02 s, elapsed = 1.138401e-02 s.
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 1.299769e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 4.864088e-07 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 9.755202e-07 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 7.609260e-06 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+
+.
+
+Notice from spectre at time = 1.499449e-05 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             213
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 2.143e+00 V
+I: I(VCIN:p) = 2.406e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.7 %)      1 (39.0 %)      2 (41.5 %)      3 (31.1 %)
+         4 (49.7 %)      5 (50.5 %)      6 (35.6 %)      7 (41.3 %)
+         8 (40.8 %)      9 (22.5 %)     10 (52.6 %)     11 (39.9 %)
+        12 (29.6 %)     13 (51.0 %)     14 (37.6 %)     15 (25.2 %)
+        16 (30.2 %)     17 (47.7 %)     18 (74.6 %)     19 (28.6 %)
+        20 (33.6 %)     21 (58.1 %)     22 (46.7 %)     23 (51.3 %)
+        24 (43.2 %)     25 (28.2 %)     26 (18.1 %)     27 (41.6 %)
+        28 (41.2 %)     29 (17.1 %)     30 (55.2 %)     31 (72.2 %)
+        32 (18.3 %)     33 (22.6 %)     34 (42.7 %)     35 (53.4 %)
+        36 (52.8 %)     37 (57.0 %)     38 (22.1 %)     39 (42.8 %)
+        40 (27.9 %)     41 (45.0 %)     42 (46.3 %)     43 (35.7 %)
+        44 (28.7 %)     45 (43.6 %)     46 (33.2 %)     47 (21.3 %)
+        48 (45.0 %)     49 (37.2 %)     50 (38.5 %)     51 (25.0 %)
+        52 (15.2 %)     53 (19.4 %)     54 (28.6 %)     55 (21.7 %)
+        56 (24.1 %)     57 (35.7 %)     58 (25.0 %)     59 (8.7 %)
+        60 (20.2 %)     61 (14.3 %)     62 (42.2 %)     63 (49.2 %)
+        64 (29.2 %)     65 (4.4 %)      66 (16.0 %)     67 (24.0 %)
+        68 (18.6 %)     69 (13.5 %)     70 (5.6 %)      71 (3.7 %)
+        72 (36.9 %)     73 (64.0 %)     74 (63.8 %)     75 (11.6 %)
+        76 (26.0 %)     77 (60.5 %)     78 (7.1 %)      79 (15.8 %)
+        80 (44.2 %)     81 (48.1 %)     82 (16.2 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.1 %)      86 (9.8 %)      87 (19.1 %)
+        88 (36.1 %)     89 (35.1 %)     90 (17.8 %)     91 (37.0 %)
+        92 (25.4 %)     93 (22.1 %)     94 (46.0 %)     95 (28.4 %)
+        Total: 3167.6%
+Initial condition solution time: CPU = 1.140100e-02 s, elapsed = 1.140189e-02
+        s.
+Intrinsic tran analysis time:    CPU = 3.056190e-01 s, elapsed = 3.056319e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 3.281840e-01 s,
+        elapsed = 3.282158e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.861945e+02 s (4m  46.2s), elapsed = 2.900759e+02 s
+        (4m  50.1s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    48 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8.
+
+Notice from spectre at time = 2.287862e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM19_noxref.nmos_0:int_d.
+
+......9......8..
+
+Notice from spectre at time = 2.487862e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM19_noxref.nmos_0:int_d.
+
+......9......8...
+
+Notice from spectre at time = 2.687862e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM19_noxref.nmos_0:int_d.
+
+......9......8.....
+
+Notice from spectre at time = 2.887862e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM19_noxref.nmos_0:int_d.
+
+......9......8......
+
+Notice from spectre at time = 3.087862e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM19_noxref.nmos_0:int_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             193
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 2.117e+00 V
+I: I(VCIN:p) = 2.420e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.7 %)      1 (39.1 %)      2 (41.5 %)      3 (31.1 %)
+         4 (49.8 %)      5 (50.5 %)      6 (35.6 %)      7 (41.2 %)
+         8 (40.9 %)      9 (22.6 %)     10 (52.6 %)     11 (39.9 %)
+        12 (29.6 %)     13 (51.0 %)     14 (37.7 %)     15 (25.3 %)
+        16 (30.3 %)     17 (47.6 %)     18 (74.5 %)     19 (28.5 %)
+        20 (33.6 %)     21 (58.2 %)     22 (46.8 %)     23 (51.2 %)
+        24 (43.2 %)     25 (28.2 %)     26 (18.1 %)     27 (41.6 %)
+        28 (41.3 %)     29 (17.1 %)     30 (55.1 %)     31 (72.3 %)
+        32 (18.3 %)     33 (22.6 %)     34 (42.7 %)     35 (53.5 %)
+        36 (52.7 %)     37 (56.9 %)     38 (22.1 %)     39 (42.9 %)
+        40 (27.9 %)     41 (45.0 %)     42 (46.3 %)     43 (35.8 %)
+        44 (28.7 %)     45 (43.7 %)     46 (33.2 %)     47 (21.4 %)
+        48 (45.0 %)     49 (37.1 %)     50 (38.5 %)     51 (25.0 %)
+        52 (15.2 %)     53 (19.4 %)     54 (28.6 %)     55 (21.8 %)
+        56 (24.1 %)     57 (35.6 %)     58 (24.9 %)     59 (8.8 %)
+        60 (20.2 %)     61 (14.3 %)     62 (42.2 %)     63 (49.1 %)
+        64 (29.1 %)     65 (4.4 %)      66 (16.0 %)     67 (24.0 %)
+        68 (18.7 %)     69 (13.5 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.0 %)     73 (64.0 %)     74 (63.9 %)     75 (11.6 %)
+        76 (26.0 %)     77 (60.5 %)     78 (7.2 %)      79 (15.8 %)
+        80 (44.1 %)     81 (48.1 %)     82 (16.1 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.1 %)      86 (9.8 %)      87 (19.1 %)
+        88 (36.1 %)     89 (35.1 %)     90 (17.8 %)     91 (36.9 %)
+        92 (25.3 %)     93 (22.1 %)     94 (46.0 %)     95 (28.4 %)
+        Total: 3167.7%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.790810e-01 s, elapsed = 2.790880e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.822140e-01 s,
+        elapsed = 2.822180e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.864773e+02 s (4m  46.5s), elapsed = 2.903617e+02 s
+        (4m  50.4s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    35 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             187
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 2.115e+00 V
+I: I(VCIN:p) = 2.438e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.6 %)      1 (39.1 %)      2 (41.6 %)      3 (31.2 %)
+         4 (49.8 %)      5 (50.4 %)      6 (35.5 %)      7 (41.2 %)
+         8 (40.9 %)      9 (22.7 %)     10 (52.5 %)     11 (39.9 %)
+        12 (29.6 %)     13 (50.9 %)     14 (37.7 %)     15 (25.3 %)
+        16 (30.3 %)     17 (47.6 %)     18 (74.4 %)     19 (28.5 %)
+        20 (33.5 %)     21 (58.2 %)     22 (46.8 %)     23 (51.2 %)
+        24 (43.2 %)     25 (28.2 %)     26 (18.1 %)     27 (41.7 %)
+        28 (41.3 %)     29 (17.1 %)     30 (55.1 %)     31 (72.3 %)
+        32 (18.3 %)     33 (22.5 %)     34 (42.8 %)     35 (53.5 %)
+        36 (52.7 %)     37 (56.9 %)     38 (22.1 %)     39 (42.9 %)
+        40 (27.9 %)     41 (45.1 %)     42 (46.2 %)     43 (35.8 %)
+        44 (28.8 %)     45 (43.7 %)     46 (33.2 %)     47 (21.4 %)
+        48 (45.1 %)     49 (37.1 %)     50 (38.4 %)     51 (25.0 %)
+        52 (15.2 %)     53 (19.4 %)     54 (28.5 %)     55 (21.9 %)
+        56 (24.1 %)     57 (35.6 %)     58 (24.9 %)     59 (8.9 %)
+        60 (20.2 %)     61 (14.3 %)     62 (42.1 %)     63 (49.1 %)
+        64 (29.1 %)     65 (4.4 %)      66 (16.0 %)     67 (24.1 %)
+        68 (18.7 %)     69 (13.5 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.0 %)     73 (64.1 %)     74 (63.9 %)     75 (11.6 %)
+        76 (26.0 %)     77 (60.4 %)     78 (7.3 %)      79 (15.8 %)
+        80 (44.1 %)     81 (48.1 %)     82 (16.1 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.2 %)      86 (9.8 %)      87 (19.1 %)
+        88 (36.0 %)     89 (35.0 %)     90 (17.8 %)     91 (36.9 %)
+        92 (25.3 %)     93 (22.1 %)     94 (46.0 %)     95 (28.4 %)
+        Total: 3167.8%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.607490e-01 s, elapsed = 2.607551e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.631950e-01 s,
+        elapsed = 2.632000e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.867410e+02 s (4m  46.7s), elapsed = 2.906292e+02 s
+        (4m  50.6s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7...
+
+Notice from spectre at time = 3.636554e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+
+......9......8......7....
+
+Notice from spectre at time = 3.836554e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+
+......9......8......7......
+
+Notice from spectre at time = 4.036554e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+
+......9......8......7......6
+
+Notice from spectre at time = 4.236554e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+
+......9......8......7......6..
+
+Notice from spectre at time = 4.436554e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             175
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 2.113e+00 V
+I: I(VCIN:p) = 2.449e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.6 %)      1 (39.0 %)      2 (41.6 %)      3 (31.3 %)
+         4 (49.9 %)      5 (50.4 %)      6 (35.5 %)      7 (41.1 %)
+         8 (41.0 %)      9 (22.7 %)     10 (52.5 %)     11 (39.8 %)
+        12 (29.6 %)     13 (50.9 %)     14 (37.8 %)     15 (25.4 %)
+        16 (30.4 %)     17 (47.5 %)     18 (74.4 %)     19 (28.5 %)
+        20 (33.5 %)     21 (58.2 %)     22 (46.9 %)     23 (51.1 %)
+        24 (43.1 %)     25 (28.1 %)     26 (18.1 %)     27 (41.7 %)
+        28 (41.4 %)     29 (17.1 %)     30 (55.0 %)     31 (72.3 %)
+        32 (18.3 %)     33 (22.5 %)     34 (42.8 %)     35 (53.6 %)
+        36 (52.6 %)     37 (56.8 %)     38 (22.1 %)     39 (42.9 %)
+        40 (27.9 %)     41 (45.1 %)     42 (46.2 %)     43 (35.9 %)
+        44 (28.9 %)     45 (43.8 %)     46 (33.1 %)     47 (21.5 %)
+        48 (45.1 %)     49 (37.1 %)     50 (38.4 %)     51 (25.0 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.5 %)     55 (21.9 %)
+        56 (24.1 %)     57 (35.6 %)     58 (24.9 %)     59 (8.9 %)
+        60 (20.2 %)     61 (14.2 %)     62 (42.1 %)     63 (49.0 %)
+        64 (29.1 %)     65 (4.4 %)      66 (16.0 %)     67 (24.1 %)
+        68 (18.8 %)     69 (13.5 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.1 %)     73 (64.1 %)     74 (63.9 %)     75 (11.5 %)
+        76 (25.9 %)     77 (60.4 %)     78 (7.4 %)      79 (15.8 %)
+        80 (44.1 %)     81 (48.0 %)     82 (16.1 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.3 %)      86 (9.8 %)      87 (19.1 %)
+        88 (36.0 %)     89 (35.0 %)     90 (17.8 %)     91 (36.9 %)
+        92 (25.3 %)     93 (22.1 %)     94 (45.9 %)     95 (28.3 %)
+        Total: 3167.9%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.549940e-01 s, elapsed = 2.550001e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.572420e-01 s,
+        elapsed = 2.572470e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.869987e+02 s (4m  47.0s), elapsed = 2.908900e+02 s
+        (4m  50.9s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    28 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8
+
+Notice from spectre at time = 2.188053e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8.
+
+Notice from spectre at time = 2.388053e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8......7
+
+Notice from spectre at time = 3.188053e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+
+......9......8......7.
+
+Notice from spectre at time = 3.388053e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+
+......9......8......7...
+
+Notice from spectre at time = 3.588053e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM58_noxref.pmos_0:int_b.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             167
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 2.113e+00 V
+I: I(VCIN:p) = 2.453e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.6 %)      1 (39.0 %)      2 (41.7 %)      3 (31.3 %)
+         4 (49.9 %)      5 (50.4 %)      6 (35.5 %)      7 (41.1 %)
+         8 (41.0 %)      9 (22.8 %)     10 (52.4 %)     11 (39.8 %)
+        12 (29.6 %)     13 (50.9 %)     14 (37.8 %)     15 (25.4 %)
+        16 (30.5 %)     17 (47.5 %)     18 (74.3 %)     19 (28.5 %)
+        20 (33.5 %)     21 (58.2 %)     22 (46.9 %)     23 (51.1 %)
+        24 (43.1 %)     25 (28.1 %)     26 (18.1 %)     27 (41.8 %)
+        28 (41.4 %)     29 (17.1 %)     30 (55.0 %)     31 (72.3 %)
+        32 (18.3 %)     33 (22.5 %)     34 (42.9 %)     35 (53.6 %)
+        36 (52.6 %)     37 (56.8 %)     38 (22.1 %)     39 (43.0 %)
+        40 (27.8 %)     41 (45.2 %)     42 (46.2 %)     43 (35.9 %)
+        44 (28.9 %)     45 (43.8 %)     46 (33.1 %)     47 (21.6 %)
+        48 (45.2 %)     49 (37.0 %)     50 (38.4 %)     51 (24.9 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.5 %)     55 (22.0 %)
+        56 (24.0 %)     57 (35.5 %)     58 (24.9 %)     59 (9.0 %)
+        60 (20.3 %)     61 (14.2 %)     62 (42.1 %)     63 (49.0 %)
+        64 (29.0 %)     65 (4.4 %)      66 (16.0 %)     67 (24.1 %)
+        68 (18.9 %)     69 (13.5 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.1 %)     73 (64.1 %)     74 (63.9 %)     75 (11.5 %)
+        76 (25.9 %)     77 (60.3 %)     78 (7.4 %)      79 (15.8 %)
+        80 (44.1 %)     81 (48.0 %)     82 (16.1 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.4 %)      86 (9.8 %)      87 (19.0 %)
+        88 (36.0 %)     89 (35.0 %)     90 (17.7 %)     91 (36.8 %)
+        92 (25.3 %)     93 (22.1 %)     94 (45.9 %)     95 (28.3 %)
+        Total: 3167.9%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.322400e-01 s, elapsed = 2.322540e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.346850e-01 s,
+        elapsed = 2.346969e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.872339e+02 s (4m  47.2s), elapsed = 2.911280e+02 s
+        (4m  51.1s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    33 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8..
+
+Notice from spectre at time = 2.502565e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM10_noxref.nmos_0:int_d.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             164
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 2.112e+00 V
+I: I(VCIN:p) = 2.455e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.5 %)      1 (39.0 %)      2 (41.7 %)      3 (31.4 %)
+         4 (49.9 %)      5 (50.3 %)      6 (35.4 %)      7 (41.1 %)
+         8 (41.1 %)      9 (22.9 %)     10 (52.4 %)     11 (39.8 %)
+        12 (29.6 %)     13 (50.9 %)     14 (37.9 %)     15 (25.5 %)
+        16 (30.5 %)     17 (47.5 %)     18 (74.2 %)     19 (28.5 %)
+        20 (33.5 %)     21 (58.2 %)     22 (46.9 %)     23 (51.1 %)
+        24 (43.1 %)     25 (28.1 %)     26 (18.1 %)     27 (41.8 %)
+        28 (41.5 %)     29 (17.1 %)     30 (55.0 %)     31 (72.4 %)
+        32 (18.3 %)     33 (22.5 %)     34 (42.9 %)     35 (53.6 %)
+        36 (52.6 %)     37 (56.7 %)     38 (22.1 %)     39 (43.0 %)
+        40 (27.8 %)     41 (45.2 %)     42 (46.1 %)     43 (36.0 %)
+        44 (29.0 %)     45 (43.7 %)     46 (33.1 %)     47 (21.6 %)
+        48 (45.2 %)     49 (37.0 %)     50 (38.3 %)     51 (24.9 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.5 %)     55 (22.1 %)
+        56 (24.0 %)     57 (35.5 %)     58 (24.9 %)     59 (9.1 %)
+        60 (20.4 %)     61 (14.2 %)     62 (42.0 %)     63 (48.9 %)
+        64 (29.0 %)     65 (4.4 %)      66 (16.0 %)     67 (24.1 %)
+        68 (18.9 %)     69 (13.6 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.2 %)     73 (64.2 %)     74 (64.0 %)     75 (11.5 %)
+        76 (25.9 %)     77 (60.3 %)     78 (7.5 %)      79 (15.8 %)
+        80 (44.0 %)     81 (47.9 %)     82 (16.1 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.5 %)      86 (9.8 %)      87 (19.0 %)
+        88 (36.0 %)     89 (34.9 %)     90 (17.7 %)     91 (36.8 %)
+        92 (25.3 %)     93 (22.2 %)     94 (45.8 %)     95 (28.3 %)
+        Total: 3168.0%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.286010e-01 s, elapsed = 2.286110e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.306930e-01 s,
+        elapsed = 2.307010e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.874652e+02 s (4m  47.5s), elapsed = 2.913619e+02 s
+        (4m  51.4s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 6.438319e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_b.
+Notice from spectre at time = 1.167468e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 1.435123e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 3.776593e-07 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 7.601600e-07 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             211
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 2.073e+00 V
+I: I(VVDD:p) = 9.468e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.5 %)      1 (38.9 %)      2 (41.8 %)      3 (31.5 %)
+         4 (50.0 %)      5 (50.3 %)      6 (35.4 %)      7 (41.0 %)
+         8 (41.1 %)      9 (22.9 %)     10 (52.3 %)     11 (39.7 %)
+        12 (29.6 %)     13 (50.8 %)     14 (37.9 %)     15 (25.6 %)
+        16 (30.6 %)     17 (47.4 %)     18 (74.2 %)     19 (28.4 %)
+        20 (33.4 %)     21 (58.1 %)     22 (47.0 %)     23 (51.0 %)
+        24 (43.0 %)     25 (28.1 %)     26 (18.0 %)     27 (41.9 %)
+        28 (41.5 %)     29 (17.1 %)     30 (54.9 %)     31 (72.4 %)
+        32 (18.2 %)     33 (22.5 %)     34 (43.0 %)     35 (53.7 %)
+        36 (52.6 %)     37 (56.7 %)     38 (22.0 %)     39 (43.0 %)
+        40 (27.8 %)     41 (45.3 %)     42 (46.1 %)     43 (36.1 %)
+        44 (29.1 %)     45 (43.7 %)     46 (33.0 %)     47 (21.7 %)
+        48 (45.3 %)     49 (37.0 %)     50 (38.3 %)     51 (24.9 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.5 %)     55 (22.1 %)
+        56 (24.0 %)     57 (35.5 %)     58 (24.8 %)     59 (9.2 %)
+        60 (20.4 %)     61 (14.2 %)     62 (42.0 %)     63 (48.9 %)
+        64 (29.0 %)     65 (4.4 %)      66 (16.0 %)     67 (24.1 %)
+        68 (19.0 %)     69 (13.7 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.2 %)     73 (64.2 %)     74 (64.0 %)     75 (11.5 %)
+        76 (25.9 %)     77 (60.2 %)     78 (7.6 %)      79 (15.7 %)
+        80 (44.0 %)     81 (47.9 %)     82 (16.1 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.5 %)      86 (9.7 %)      87 (19.0 %)
+        88 (35.9 %)     89 (34.9 %)     90 (17.7 %)     91 (36.8 %)
+        92 (25.2 %)     93 (22.3 %)     94 (45.8 %)     95 (28.3 %)
+        Total: 3168.1%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.904820e-01 s, elapsed = 2.904890e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.942970e-01 s,
+        elapsed = 2.942998e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.877603e+02 s (4m  47.8s), elapsed = 2.916592e+02 s
+        (4m  51.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    49 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             201
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_c_6045_n) = 2.041e+00 V
+I: I(VVDD:p) = 1.024e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.5 %)      1 (38.9 %)      2 (41.8 %)      3 (31.5 %)
+         4 (50.0 %)      5 (50.2 %)      6 (35.4 %)      7 (41.0 %)
+         8 (41.2 %)      9 (23.0 %)     10 (52.3 %)     11 (39.7 %)
+        12 (29.5 %)     13 (50.8 %)     14 (38.0 %)     15 (25.6 %)
+        16 (30.7 %)     17 (47.4 %)     18 (74.1 %)     19 (28.4 %)
+        20 (33.4 %)     21 (58.1 %)     22 (47.0 %)     23 (51.0 %)
+        24 (43.0 %)     25 (28.0 %)     26 (18.0 %)     27 (41.9 %)
+        28 (41.6 %)     29 (17.0 %)     30 (54.9 %)     31 (72.4 %)
+        32 (18.2 %)     33 (22.4 %)     34 (43.0 %)     35 (53.7 %)
+        36 (52.7 %)     37 (56.6 %)     38 (22.0 %)     39 (43.1 %)
+        40 (27.8 %)     41 (45.3 %)     42 (46.0 %)     43 (36.1 %)
+        44 (29.1 %)     45 (43.7 %)     46 (33.0 %)     47 (21.8 %)
+        48 (45.3 %)     49 (37.1 %)     50 (38.3 %)     51 (24.9 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.4 %)     55 (22.2 %)
+        56 (24.0 %)     57 (35.4 %)     58 (24.8 %)     59 (9.2 %)
+        60 (20.5 %)     61 (14.2 %)     62 (41.9 %)     63 (48.8 %)
+        64 (29.0 %)     65 (4.4 %)      66 (16.0 %)     67 (24.0 %)
+        68 (19.1 %)     69 (13.7 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.2 %)     73 (64.2 %)     74 (64.0 %)     75 (11.5 %)
+        76 (25.9 %)     77 (60.2 %)     78 (7.7 %)      79 (15.7 %)
+        80 (43.9 %)     81 (47.8 %)     82 (16.1 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.6 %)      86 (9.7 %)      87 (19.0 %)
+        88 (35.9 %)     89 (34.9 %)     90 (17.7 %)     91 (36.8 %)
+        92 (25.2 %)     93 (22.3 %)     94 (45.8 %)     95 (28.2 %)
+        Total: 3168.1%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.746190e-01 s, elapsed = 2.746310e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.783210e-01 s,
+        elapsed = 2.783308e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.880394e+02 s (4m  48.0s), elapsed = 2.919419e+02 s
+        (4m  51.9s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 1.557767e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM11_noxref.nmos_0:int_s.
+Notice from spectre at time = 1.656397e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM11_noxref.nmos_0:int_s.
+Notice from spectre at time = 1.680469e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM11_noxref.nmos_0:int_s.
+Notice from spectre at time = 1.728612e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM11_noxref.nmos_0:int_s.
+Notice from spectre at time = 1.791831e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM11_noxref.nmos_0:int_s.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             178
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_c_6045_n) = 2.009e+00 V
+I: I(VVDD:p) = 1.061e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.4 %)      1 (38.9 %)      2 (41.9 %)      3 (31.6 %)
+         4 (50.1 %)      5 (50.2 %)      6 (35.4 %)      7 (40.9 %)
+         8 (41.2 %)      9 (23.1 %)     10 (52.2 %)     11 (39.6 %)
+        12 (29.5 %)     13 (50.7 %)     14 (38.0 %)     15 (25.7 %)
+        16 (30.6 %)     17 (47.3 %)     18 (74.0 %)     19 (28.4 %)
+        20 (33.4 %)     21 (58.0 %)     22 (47.1 %)     23 (50.9 %)
+        24 (42.9 %)     25 (28.0 %)     26 (18.0 %)     27 (42.0 %)
+        28 (41.6 %)     29 (17.0 %)     30 (54.8 %)     31 (72.4 %)
+        32 (18.2 %)     33 (22.4 %)     34 (43.1 %)     35 (53.8 %)
+        36 (52.7 %)     37 (56.6 %)     38 (22.0 %)     39 (43.1 %)
+        40 (27.7 %)     41 (45.4 %)     42 (46.0 %)     43 (36.2 %)
+        44 (29.2 %)     45 (43.6 %)     46 (33.0 %)     47 (21.8 %)
+        48 (45.4 %)     49 (37.0 %)     50 (38.2 %)     51 (24.9 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.4 %)     55 (22.3 %)
+        56 (23.9 %)     57 (35.4 %)     58 (24.8 %)     59 (9.3 %)
+        60 (20.6 %)     61 (14.2 %)     62 (41.9 %)     63 (48.8 %)
+        64 (29.0 %)     65 (4.4 %)      66 (15.9 %)     67 (24.0 %)
+        68 (19.2 %)     69 (13.8 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.2 %)     73 (64.3 %)     74 (64.1 %)     75 (11.5 %)
+        76 (25.8 %)     77 (60.1 %)     78 (7.8 %)      79 (15.7 %)
+        80 (43.9 %)     81 (47.8 %)     82 (16.0 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.7 %)      86 (9.7 %)      87 (19.0 %)
+        88 (35.9 %)     89 (34.8 %)     90 (17.7 %)     91 (36.7 %)
+        92 (25.2 %)     93 (22.4 %)     94 (45.7 %)     95 (28.2 %)
+        Total: 3168.2%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.517390e-01 s, elapsed = 2.517440e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.552120e-01 s,
+        elapsed = 2.552149e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.882954e+02 s (4m  48.3s), elapsed = 2.922012e+02 s
+        (4m  52.2s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    42 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 1.557083e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_c_3404_n.
+Notice from spectre at time = 2.786910e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_c_3373_n.
+Notice from spectre at time = 2.790707e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_c_3373_n.
+Notice from spectre at time = 2.872068e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_c_3404_n.
+
+..
+
+Notice from spectre at time = 4.197515e-05 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node VCIN:p.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             165
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.993e+00 V
+I: I(VVDD:p) = 1.075e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.4 %)      1 (39.0 %)      2 (41.9 %)      3 (31.6 %)
+         4 (50.1 %)      5 (50.1 %)      6 (35.3 %)      7 (40.9 %)
+         8 (41.3 %)      9 (23.1 %)     10 (52.2 %)     11 (39.6 %)
+        12 (29.5 %)     13 (50.7 %)     14 (38.1 %)     15 (25.8 %)
+        16 (30.6 %)     17 (47.3 %)     18 (74.0 %)     19 (28.4 %)
+        20 (33.3 %)     21 (58.0 %)     22 (47.1 %)     23 (50.9 %)
+        24 (42.9 %)     25 (28.0 %)     26 (18.0 %)     27 (42.0 %)
+        28 (41.7 %)     29 (17.0 %)     30 (54.8 %)     31 (72.5 %)
+        32 (18.2 %)     33 (22.4 %)     34 (43.1 %)     35 (53.8 %)
+        36 (52.8 %)     37 (56.5 %)     38 (22.0 %)     39 (43.2 %)
+        40 (27.7 %)     41 (45.4 %)     42 (45.9 %)     43 (36.2 %)
+        44 (29.2 %)     45 (43.6 %)     46 (33.0 %)     47 (21.9 %)
+        48 (45.4 %)     49 (37.0 %)     50 (38.2 %)     51 (24.8 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.4 %)     55 (22.3 %)
+        56 (23.9 %)     57 (35.4 %)     58 (24.8 %)     59 (9.4 %)
+        60 (20.7 %)     61 (14.2 %)     62 (41.9 %)     63 (48.8 %)
+        64 (29.1 %)     65 (4.3 %)      66 (15.9 %)     67 (24.0 %)
+        68 (19.2 %)     69 (13.9 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.2 %)     73 (64.3 %)     74 (64.1 %)     75 (11.5 %)
+        76 (25.8 %)     77 (60.1 %)     78 (7.9 %)      79 (15.7 %)
+        80 (43.9 %)     81 (47.8 %)     82 (16.0 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.8 %)      86 (9.7 %)      87 (18.9 %)
+        88 (35.8 %)     89 (34.8 %)     90 (17.7 %)     91 (36.7 %)
+        92 (25.2 %)     93 (22.5 %)     94 (45.7 %)     95 (28.2 %)
+        Total: 3168.3%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.373070e-01 s, elapsed = 2.373128e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.408190e-01 s,
+        elapsed = 2.408221e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.885369e+02 s (4m  48.5s), elapsed = 2.924455e+02 s
+        (4m  52.4s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    49 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             160
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.993e+00 V
+I: I(VVDD:p) = 1.077e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.4 %)      1 (39.0 %)      2 (41.9 %)      3 (31.7 %)
+         4 (50.1 %)      5 (50.1 %)      6 (35.3 %)      7 (40.9 %)
+         8 (41.3 %)      9 (23.2 %)     10 (52.2 %)     11 (39.6 %)
+        12 (29.5 %)     13 (50.7 %)     14 (38.1 %)     15 (25.8 %)
+        16 (30.6 %)     17 (47.3 %)     18 (73.9 %)     19 (28.3 %)
+        20 (33.3 %)     21 (57.9 %)     22 (47.2 %)     23 (50.8 %)
+        24 (42.9 %)     25 (28.0 %)     26 (18.0 %)     27 (42.1 %)
+        28 (41.6 %)     29 (17.0 %)     30 (54.7 %)     31 (72.5 %)
+        32 (18.2 %)     33 (22.4 %)     34 (43.2 %)     35 (53.8 %)
+        36 (52.8 %)     37 (56.5 %)     38 (22.0 %)     39 (43.2 %)
+        40 (27.7 %)     41 (45.4 %)     42 (45.9 %)     43 (36.3 %)
+        44 (29.3 %)     45 (43.5 %)     46 (32.9 %)     47 (22.0 %)
+        48 (45.5 %)     49 (37.0 %)     50 (38.2 %)     51 (24.8 %)
+        52 (15.2 %)     53 (19.3 %)     54 (28.4 %)     55 (22.4 %)
+        56 (23.9 %)     57 (35.4 %)     58 (24.8 %)     59 (9.5 %)
+        60 (20.7 %)     61 (14.2 %)     62 (41.8 %)     63 (48.7 %)
+        64 (29.1 %)     65 (4.4 %)      66 (15.9 %)     67 (24.0 %)
+        68 (19.3 %)     69 (14.0 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.2 %)     73 (64.3 %)     74 (64.1 %)     75 (11.5 %)
+        76 (25.9 %)     77 (60.0 %)     78 (7.9 %)      79 (15.7 %)
+        80 (43.8 %)     81 (47.7 %)     82 (16.0 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.9 %)      86 (9.7 %)      87 (18.9 %)
+        88 (35.8 %)     89 (34.8 %)     90 (17.7 %)     91 (36.7 %)
+        92 (25.1 %)     93 (22.5 %)     94 (45.7 %)     95 (28.2 %)
+        Total: 3168.3%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.281870e-01 s, elapsed = 2.282000e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.300790e-01 s,
+        elapsed = 2.300911e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.887675e+02 s (4m  48.8s), elapsed = 2.926787e+02 s
+        (4m  52.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8..
+
+Notice from spectre at time = 2.471818e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8...
+
+Notice from spectre at time = 2.671818e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8.....
+
+Notice from spectre at time = 2.871818e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8......
+
+Notice from spectre at time = 3.071818e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8......7.
+
+Notice from spectre at time = 3.271818e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             162
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.993e+00 V
+I: I(VVDD:p) = 1.079e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.3 %)      1 (39.1 %)      2 (42.0 %)      3 (31.7 %)
+         4 (50.2 %)      5 (50.1 %)      6 (35.3 %)      7 (40.9 %)
+         8 (41.4 %)      9 (23.2 %)     10 (52.1 %)     11 (39.5 %)
+        12 (29.4 %)     13 (50.6 %)     14 (38.2 %)     15 (25.9 %)
+        16 (30.6 %)     17 (47.2 %)     18 (73.9 %)     19 (28.3 %)
+        20 (33.3 %)     21 (57.9 %)     22 (47.2 %)     23 (50.8 %)
+        24 (42.8 %)     25 (28.0 %)     26 (18.0 %)     27 (42.1 %)
+        28 (41.6 %)     29 (17.0 %)     30 (54.7 %)     31 (72.5 %)
+        32 (18.2 %)     33 (22.4 %)     34 (43.2 %)     35 (53.9 %)
+        36 (52.8 %)     37 (56.4 %)     38 (22.0 %)     39 (43.3 %)
+        40 (27.7 %)     41 (45.5 %)     42 (45.9 %)     43 (36.3 %)
+        44 (29.4 %)     45 (43.5 %)     46 (32.9 %)     47 (22.0 %)
+        48 (45.5 %)     49 (36.9 %)     50 (38.1 %)     51 (24.8 %)
+        52 (15.1 %)     53 (19.2 %)     54 (28.4 %)     55 (22.5 %)
+        56 (23.9 %)     57 (35.3 %)     58 (24.7 %)     59 (9.5 %)
+        60 (20.8 %)     61 (14.2 %)     62 (41.8 %)     63 (48.7 %)
+        64 (29.2 %)     65 (4.4 %)      66 (15.9 %)     67 (24.0 %)
+        68 (19.4 %)     69 (14.0 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.1 %)     73 (64.4 %)     74 (64.1 %)     75 (11.5 %)
+        76 (25.9 %)     77 (60.0 %)     78 (8.0 %)      79 (15.7 %)
+        80 (43.8 %)     81 (47.7 %)     82 (16.0 %)     83 (5.2 %)
+        84 (5.6 %)      85 (9.9 %)      86 (9.7 %)      87 (18.9 %)
+        88 (35.8 %)     89 (34.8 %)     90 (17.7 %)     91 (36.6 %)
+        92 (25.1 %)     93 (22.6 %)     94 (45.6 %)     95 (28.1 %)
+        Total: 3168.4%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.245090e-01 s, elapsed = 2.245140e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.289710e-01 s,
+        elapsed = 2.289741e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.889973e+02 s (4m  49.0s), elapsed = 2.929107e+02 s
+        (4m  52.9s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    11 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 6.709784e-10 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_b.
+Notice from spectre at time = 1.362029e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 1.675998e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 5.485217e-07 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+Notice from spectre at time = 1.079411e-06 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             196
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.952e+00 V
+I: I(VVDD:p) = 9.409e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.3 %)      1 (39.1 %)      2 (42.0 %)      3 (31.8 %)
+         4 (50.2 %)      5 (50.0 %)      6 (35.2 %)      7 (40.8 %)
+         8 (41.4 %)      9 (23.3 %)     10 (52.1 %)     11 (39.5 %)
+        12 (29.4 %)     13 (50.6 %)     14 (38.2 %)     15 (25.9 %)
+        16 (30.5 %)     17 (47.2 %)     18 (73.8 %)     19 (28.3 %)
+        20 (33.2 %)     21 (57.8 %)     22 (47.3 %)     23 (50.7 %)
+        24 (42.8 %)     25 (27.9 %)     26 (17.9 %)     27 (42.2 %)
+        28 (41.6 %)     29 (17.0 %)     30 (54.7 %)     31 (72.5 %)
+        32 (18.2 %)     33 (22.4 %)     34 (43.3 %)     35 (53.9 %)
+        36 (52.9 %)     37 (56.4 %)     38 (21.9 %)     39 (43.3 %)
+        40 (27.6 %)     41 (45.5 %)     42 (45.8 %)     43 (36.4 %)
+        44 (29.4 %)     45 (43.5 %)     46 (32.9 %)     47 (22.1 %)
+        48 (45.6 %)     49 (37.0 %)     50 (38.2 %)     51 (24.8 %)
+        52 (15.1 %)     53 (19.2 %)     54 (28.3 %)     55 (22.5 %)
+        56 (23.9 %)     57 (35.3 %)     58 (24.7 %)     59 (9.6 %)
+        60 (20.8 %)     61 (14.2 %)     62 (41.8 %)     63 (48.6 %)
+        64 (29.2 %)     65 (4.4 %)      66 (15.9 %)     67 (23.9 %)
+        68 (19.4 %)     69 (14.1 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.1 %)     73 (64.4 %)     74 (64.2 %)     75 (11.5 %)
+        76 (26.0 %)     77 (59.9 %)     78 (8.1 %)      79 (15.7 %)
+        80 (43.7 %)     81 (47.6 %)     82 (16.0 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.0 %)     86 (9.7 %)      87 (18.9 %)
+        88 (35.7 %)     89 (34.7 %)     90 (17.7 %)     91 (36.6 %)
+        92 (25.1 %)     93 (22.7 %)     94 (45.6 %)     95 (28.1 %)
+        Total: 3168.5%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.828650e-01 s, elapsed = 2.828798e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.869370e-01 s,
+        elapsed = 2.869508e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.892852e+02 s (4m  49.3s), elapsed = 2.932009e+02 s
+        (4m  53.2s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    51 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8
+
+Notice from spectre at time = 2.136728e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8.
+
+Notice from spectre at time = 2.336728e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8..
+
+Notice from spectre at time = 2.536728e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8....
+
+Notice from spectre at time = 2.736728e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+
+......9......8.....
+
+Notice from spectre at time = 2.936728e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_21_M60_noxref_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             184
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.941e+00 V
+I: I(VVDD:p) = 1.009e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.2 %)      1 (39.0 %)      2 (41.9 %)      3 (31.7 %)
+         4 (50.3 %)      5 (50.0 %)      6 (35.2 %)      7 (40.8 %)
+         8 (41.5 %)      9 (23.4 %)     10 (52.0 %)     11 (39.5 %)
+        12 (29.4 %)     13 (50.5 %)     14 (38.3 %)     15 (26.0 %)
+        16 (30.5 %)     17 (47.1 %)     18 (73.7 %)     19 (28.3 %)
+        20 (33.2 %)     21 (57.8 %)     22 (47.3 %)     23 (50.7 %)
+        24 (42.8 %)     25 (27.9 %)     26 (17.9 %)     27 (42.2 %)
+        28 (41.5 %)     29 (17.0 %)     30 (54.6 %)     31 (72.6 %)
+        32 (18.1 %)     33 (22.3 %)     34 (43.3 %)     35 (53.9 %)
+        36 (52.9 %)     37 (56.3 %)     38 (21.9 %)     39 (43.4 %)
+        40 (27.6 %)     41 (45.6 %)     42 (45.8 %)     43 (36.4 %)
+        44 (29.5 %)     45 (43.4 %)     46 (32.9 %)     47 (22.2 %)
+        48 (45.6 %)     49 (37.0 %)     50 (38.2 %)     51 (24.9 %)
+        52 (15.1 %)     53 (19.2 %)     54 (28.3 %)     55 (22.6 %)
+        56 (23.8 %)     57 (35.3 %)     58 (24.7 %)     59 (9.7 %)
+        60 (20.9 %)     61 (14.2 %)     62 (41.7 %)     63 (48.6 %)
+        64 (29.3 %)     65 (4.3 %)      66 (15.9 %)     67 (23.9 %)
+        68 (19.5 %)     69 (14.2 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.1 %)     73 (64.4 %)     74 (64.2 %)     75 (11.4 %)
+        76 (26.1 %)     77 (59.9 %)     78 (8.2 %)      79 (15.6 %)
+        80 (43.7 %)     81 (47.6 %)     82 (16.0 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.1 %)     86 (9.7 %)      87 (18.9 %)
+        88 (35.7 %)     89 (34.7 %)     90 (17.6 %)     91 (36.6 %)
+        92 (25.1 %)     93 (22.7 %)     94 (45.5 %)     95 (28.1 %)
+        Total: 3168.5%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.600850e-01 s, elapsed = 2.600911e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.646010e-01 s,
+        elapsed = 2.646060e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.895507e+02 s (4m  49.6s), elapsed = 2.934691e+02 s
+        (4m  53.5s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    36 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             168
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.930e+00 V
+I: I(VVDD:p) = 1.055e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.2 %)      1 (39.0 %)      2 (41.9 %)      3 (31.7 %)
+         4 (50.3 %)      5 (50.0 %)      6 (35.2 %)      7 (40.8 %)
+         8 (41.5 %)      9 (23.4 %)     10 (52.0 %)     11 (39.4 %)
+        12 (29.4 %)     13 (50.5 %)     14 (38.3 %)     15 (26.1 %)
+        16 (30.5 %)     17 (47.1 %)     18 (73.7 %)     19 (28.2 %)
+        20 (33.2 %)     21 (57.7 %)     22 (47.4 %)     23 (50.7 %)
+        24 (42.7 %)     25 (27.9 %)     26 (17.9 %)     27 (42.3 %)
+        28 (41.5 %)     29 (17.0 %)     30 (54.6 %)     31 (72.6 %)
+        32 (18.1 %)     33 (22.3 %)     34 (43.4 %)     35 (54.0 %)
+        36 (53.0 %)     37 (56.3 %)     38 (21.9 %)     39 (43.4 %)
+        40 (27.6 %)     41 (45.6 %)     42 (45.7 %)     43 (36.5 %)
+        44 (29.5 %)     45 (43.4 %)     46 (32.8 %)     47 (22.3 %)
+        48 (45.7 %)     49 (37.1 %)     50 (38.3 %)     51 (25.0 %)
+        52 (15.1 %)     53 (19.2 %)     54 (28.3 %)     55 (22.7 %)
+        56 (23.8 %)     57 (35.3 %)     58 (24.7 %)     59 (9.8 %)
+        60 (21.0 %)     61 (14.1 %)     62 (41.7 %)     63 (48.5 %)
+        64 (29.4 %)     65 (4.4 %)      66 (15.9 %)     67 (23.9 %)
+        68 (19.6 %)     69 (14.3 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.0 %)     73 (64.5 %)     74 (64.2 %)     75 (11.4 %)
+        76 (26.1 %)     77 (59.8 %)     78 (8.3 %)      79 (15.6 %)
+        80 (43.7 %)     81 (47.6 %)     82 (16.0 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.2 %)     86 (9.7 %)      87 (18.9 %)
+        88 (35.7 %)     89 (34.7 %)     90 (17.6 %)     91 (36.5 %)
+        92 (25.0 %)     93 (22.8 %)     94 (45.5 %)     95 (28.1 %)
+        Total: 3168.6%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.459200e-01 s, elapsed = 2.459252e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.495890e-01 s,
+        elapsed = 2.495930e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.898010e+02 s (4m  49.8s), elapsed = 2.937216e+02 s
+        (4m  53.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......
+
+Notice from spectre at time = 2.052390e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM10_noxref.nmos_0:int_d.
+
+......9......8..
+
+Notice from spectre at time = 2.452390e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM10_noxref.nmos_0:int_d.
+
+......9......8.....
+
+Notice from spectre at time = 2.852390e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM10_noxref.nmos_0:int_d.
+
+......9......8......
+
+Notice from spectre at time = 3.052390e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM10_noxref.nmos_0:int_d.
+
+......9......8......7
+
+Notice from spectre at time = 3.252390e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM10_noxref.nmos_0:int_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             158
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.924e+00 V
+I: I(VVDD:p) = 1.071e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.2 %)      1 (39.0 %)      2 (41.9 %)      3 (31.7 %)
+         4 (50.4 %)      5 (49.9 %)      6 (35.2 %)      7 (40.7 %)
+         8 (41.6 %)      9 (23.5 %)     10 (51.9 %)     11 (39.4 %)
+        12 (29.3 %)     13 (50.4 %)     14 (38.4 %)     15 (26.1 %)
+        16 (30.5 %)     17 (47.1 %)     18 (73.6 %)     19 (28.2 %)
+        20 (33.2 %)     21 (57.7 %)     22 (47.4 %)     23 (50.6 %)
+        24 (42.7 %)     25 (27.9 %)     26 (17.9 %)     27 (42.3 %)
+        28 (41.5 %)     29 (17.0 %)     30 (54.6 %)     31 (72.6 %)
+        32 (18.1 %)     33 (22.3 %)     34 (43.4 %)     35 (54.0 %)
+        36 (53.0 %)     37 (56.2 %)     38 (21.9 %)     39 (43.5 %)
+        40 (27.6 %)     41 (45.7 %)     42 (45.7 %)     43 (36.5 %)
+        44 (29.6 %)     45 (43.4 %)     46 (32.8 %)     47 (22.3 %)
+        48 (45.7 %)     49 (37.1 %)     50 (38.3 %)     51 (25.0 %)
+        52 (15.1 %)     53 (19.2 %)     54 (28.3 %)     55 (22.7 %)
+        56 (23.8 %)     57 (35.2 %)     58 (24.7 %)     59 (9.8 %)
+        60 (21.1 %)     61 (14.1 %)     62 (41.6 %)     63 (48.5 %)
+        64 (29.4 %)     65 (4.3 %)      66 (15.9 %)     67 (23.9 %)
+        68 (19.6 %)     69 (14.3 %)     70 (5.6 %)      71 (3.7 %)
+        72 (37.0 %)     73 (64.5 %)     74 (64.3 %)     75 (11.4 %)
+        76 (26.2 %)     77 (59.8 %)     78 (8.3 %)      79 (15.6 %)
+        80 (43.6 %)     81 (47.5 %)     82 (15.9 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.2 %)     86 (9.7 %)      87 (18.9 %)
+        88 (35.6 %)     89 (34.6 %)     90 (17.6 %)     91 (36.5 %)
+        92 (25.0 %)     93 (22.9 %)     94 (45.5 %)     95 (28.0 %)
+        Total: 3168.6%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.309090e-01 s, elapsed = 2.309198e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.330280e-01 s,
+        elapsed = 2.330370e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.900345e+02 s (4m  50.0s), elapsed = 2.939578e+02 s
+        (4m  54.0s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    34 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9...
+
+Notice from spectre at time = 1.615678e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9....
+
+Notice from spectre at time = 1.815678e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9......
+
+Notice from spectre at time = 2.015678e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9......8
+
+Notice from spectre at time = 2.215678e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9......8..
+
+Notice from spectre at time = 2.415678e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             163
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.922e+00 V
+I: I(VVDD:p) = 1.077e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.1 %)      1 (38.9 %)      2 (41.8 %)      3 (31.7 %)
+         4 (50.4 %)      5 (49.9 %)      6 (35.1 %)      7 (40.7 %)
+         8 (41.6 %)      9 (23.6 %)     10 (51.9 %)     11 (39.4 %)
+        12 (29.3 %)     13 (50.4 %)     14 (38.4 %)     15 (26.2 %)
+        16 (30.5 %)     17 (47.0 %)     18 (73.6 %)     19 (28.2 %)
+        20 (33.1 %)     21 (57.6 %)     22 (47.5 %)     23 (50.6 %)
+        24 (42.7 %)     25 (27.8 %)     26 (17.9 %)     27 (42.4 %)
+        28 (41.4 %)     29 (16.9 %)     30 (54.5 %)     31 (72.6 %)
+        32 (18.1 %)     33 (22.3 %)     34 (43.5 %)     35 (54.0 %)
+        36 (53.0 %)     37 (56.2 %)     38 (21.9 %)     39 (43.5 %)
+        40 (27.6 %)     41 (45.7 %)     42 (45.7 %)     43 (36.6 %)
+        44 (29.7 %)     45 (43.3 %)     46 (32.8 %)     47 (22.4 %)
+        48 (45.7 %)     49 (37.2 %)     50 (38.4 %)     51 (25.0 %)
+        52 (15.1 %)     53 (19.2 %)     54 (28.3 %)     55 (22.8 %)
+        56 (23.8 %)     57 (35.2 %)     58 (24.6 %)     59 (9.9 %)
+        60 (21.1 %)     61 (14.1 %)     62 (41.6 %)     63 (48.5 %)
+        64 (29.4 %)     65 (4.3 %)      66 (15.8 %)     67 (23.9 %)
+        68 (19.7 %)     69 (14.4 %)     70 (5.5 %)      71 (3.7 %)
+        72 (37.0 %)     73 (64.5 %)     74 (64.3 %)     75 (11.4 %)
+        76 (26.3 %)     77 (59.7 %)     78 (8.4 %)      79 (15.6 %)
+        80 (43.6 %)     81 (47.5 %)     82 (15.9 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.3 %)     86 (9.7 %)      87 (18.8 %)
+        88 (35.6 %)     89 (34.6 %)     90 (17.6 %)     91 (36.5 %)
+        92 (25.0 %)     93 (22.9 %)     94 (45.4 %)     95 (28.0 %)
+        Total: 3168.7%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.337260e-01 s, elapsed = 2.337441e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.359140e-01 s,
+        elapsed = 2.359309e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.902710e+02 s (4m  50.3s), elapsed = 2.941969e+02 s
+        (4m  54.2s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    38 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9.....
+
+Notice from spectre at time = 1.913517e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9......8.
+
+Notice from spectre at time = 2.313517e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9......8..
+
+Notice from spectre at time = 2.513517e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9......8....
+
+Notice from spectre at time = 2.713517e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+
+......9......8.....
+
+Notice from spectre at time = 2.913517e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_14_M59_noxref_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             156
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_19_M39_noxref_s) = 1.921e+00 V
+I: I(VVDD:p) = 1.079e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.1 %)      1 (38.9 %)      2 (41.8 %)      3 (31.8 %)
+         4 (50.4 %)      5 (49.9 %)      6 (35.1 %)      7 (40.7 %)
+         8 (41.7 %)      9 (23.6 %)     10 (51.8 %)     11 (39.3 %)
+        12 (29.3 %)     13 (50.4 %)     14 (38.5 %)     15 (26.2 %)
+        16 (30.6 %)     17 (47.0 %)     18 (73.5 %)     19 (28.2 %)
+        20 (33.1 %)     21 (57.6 %)     22 (47.5 %)     23 (50.5 %)
+        24 (42.6 %)     25 (27.8 %)     26 (17.9 %)     27 (42.4 %)
+        28 (41.4 %)     29 (16.9 %)     30 (54.5 %)     31 (72.6 %)
+        32 (18.1 %)     33 (22.3 %)     34 (43.5 %)     35 (54.1 %)
+        36 (53.1 %)     37 (56.2 %)     38 (21.9 %)     39 (43.5 %)
+        40 (27.5 %)     41 (45.8 %)     42 (45.7 %)     43 (36.6 %)
+        44 (29.7 %)     45 (43.3 %)     46 (32.8 %)     47 (22.4 %)
+        48 (45.8 %)     49 (37.2 %)     50 (38.4 %)     51 (25.0 %)
+        52 (15.1 %)     53 (19.1 %)     54 (28.2 %)     55 (22.9 %)
+        56 (23.8 %)     57 (35.2 %)     58 (24.6 %)     59 (10.0 %)
+        60 (21.2 %)     61 (14.1 %)     62 (41.6 %)     63 (48.4 %)
+        64 (29.3 %)     65 (4.3 %)      66 (15.8 %)     67 (23.8 %)
+        68 (19.8 %)     69 (14.5 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.9 %)     73 (64.5 %)     74 (64.3 %)     75 (11.4 %)
+        76 (26.3 %)     77 (59.7 %)     78 (8.5 %)      79 (15.6 %)
+        80 (43.6 %)     81 (47.5 %)     82 (15.9 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.4 %)     86 (9.7 %)      87 (18.8 %)
+        88 (35.6 %)     89 (34.6 %)     90 (17.6 %)     91 (36.5 %)
+        92 (25.0 %)     93 (23.0 %)     94 (45.4 %)     95 (28.0 %)
+        Total: 3168.8%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.162500e-01 s, elapsed = 2.162549e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.198240e-01 s,
+        elapsed = 2.198279e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.904917e+02 s (4m  50.5s), elapsed = 2.944200e+02 s
+        (4m  54.4s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    36 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 1.211884e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+
+......9.
+
+Notice from spectre at time = 1.372721e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M12_noxref_g.
+
+......9...
+
+Notice from spectre at time = 1.572721e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M12_noxref_g.
+
+......9....
+
+Notice from spectre at time = 1.772721e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M12_noxref_g.
+
+......9.....
+
+Notice from spectre at time = 1.972721e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M12_noxref_g.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             184
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.935e+00 V
+I: I(VVDD:p) = 9.730e-04 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.1 %)      1 (39.0 %)      2 (41.8 %)      3 (31.8 %)
+         4 (50.5 %)      5 (49.8 %)      6 (35.1 %)      7 (40.6 %)
+         8 (41.7 %)      9 (23.7 %)     10 (51.8 %)     11 (39.3 %)
+        12 (29.3 %)     13 (50.3 %)     14 (38.5 %)     15 (26.3 %)
+        16 (30.7 %)     17 (47.0 %)     18 (73.4 %)     19 (28.2 %)
+        20 (33.1 %)     21 (57.5 %)     22 (47.5 %)     23 (50.5 %)
+        24 (42.7 %)     25 (27.8 %)     26 (17.8 %)     27 (42.4 %)
+        28 (41.4 %)     29 (16.9 %)     30 (54.4 %)     31 (72.7 %)
+        32 (18.1 %)     33 (22.2 %)     34 (43.5 %)     35 (54.1 %)
+        36 (53.1 %)     37 (56.1 %)     38 (21.9 %)     39 (43.6 %)
+        40 (27.5 %)     41 (45.8 %)     42 (45.6 %)     43 (36.7 %)
+        44 (29.8 %)     45 (43.3 %)     46 (32.7 %)     47 (22.5 %)
+        48 (45.8 %)     49 (37.2 %)     50 (38.5 %)     51 (25.0 %)
+        52 (15.1 %)     53 (19.1 %)     54 (28.2 %)     55 (22.9 %)
+        56 (23.7 %)     57 (35.2 %)     58 (24.6 %)     59 (10.1 %)
+        60 (21.2 %)     61 (14.1 %)     62 (41.5 %)     63 (48.4 %)
+        64 (29.3 %)     65 (4.3 %)      66 (15.8 %)     67 (23.8 %)
+        68 (19.8 %)     69 (14.5 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.9 %)     73 (64.5 %)     74 (64.3 %)     75 (11.5 %)
+        76 (26.4 %)     77 (59.6 %)     78 (8.6 %)      79 (15.6 %)
+        80 (43.6 %)     81 (47.4 %)     82 (15.9 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.5 %)     86 (9.7 %)      87 (18.8 %)
+        88 (35.6 %)     89 (34.5 %)     90 (17.6 %)     91 (36.4 %)
+        92 (25.0 %)     93 (23.0 %)     94 (45.4 %)     95 (28.0 %)
+        Total: 3168.8%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.647720e-01 s, elapsed = 2.647781e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.681580e-01 s,
+        elapsed = 2.681620e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.907606e+02 s (4m  50.8s), elapsed = 2.946910e+02 s
+        (4m  54.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    41 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             173
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.918e+00 V
+I: I(VVDD:p) = 1.035e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.0 %)      1 (39.0 %)      2 (41.7 %)      3 (31.9 %)
+         4 (50.5 %)      5 (49.8 %)      6 (35.1 %)      7 (40.6 %)
+         8 (41.8 %)      9 (23.8 %)     10 (51.8 %)     11 (39.3 %)
+        12 (29.2 %)     13 (50.3 %)     14 (38.6 %)     15 (26.4 %)
+        16 (30.7 %)     17 (46.9 %)     18 (73.4 %)     19 (28.1 %)
+        20 (33.1 %)     21 (57.5 %)     22 (47.6 %)     23 (50.5 %)
+        24 (42.7 %)     25 (27.8 %)     26 (17.8 %)     27 (42.3 %)
+        28 (41.3 %)     29 (16.9 %)     30 (54.4 %)     31 (72.7 %)
+        32 (18.0 %)     33 (22.2 %)     34 (43.6 %)     35 (54.2 %)
+        36 (53.2 %)     37 (56.0 %)     38 (21.8 %)     39 (43.6 %)
+        40 (27.5 %)     41 (45.9 %)     42 (45.6 %)     43 (36.7 %)
+        44 (29.8 %)     45 (43.2 %)     46 (32.7 %)     47 (22.6 %)
+        48 (45.9 %)     49 (37.1 %)     50 (38.5 %)     51 (24.9 %)
+        52 (15.1 %)     53 (19.1 %)     54 (28.2 %)     55 (23.0 %)
+        56 (23.7 %)     57 (35.1 %)     58 (24.6 %)     59 (10.1 %)
+        60 (21.3 %)     61 (14.1 %)     62 (41.5 %)     63 (48.3 %)
+        64 (29.3 %)     65 (4.3 %)      66 (15.8 %)     67 (23.8 %)
+        68 (19.9 %)     69 (14.6 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.9 %)     73 (64.4 %)     74 (64.3 %)     75 (11.6 %)
+        76 (26.4 %)     77 (59.6 %)     78 (8.6 %)      79 (15.6 %)
+        80 (43.5 %)     81 (47.4 %)     82 (15.9 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.5 %)     86 (9.7 %)      87 (18.8 %)
+        88 (35.5 %)     89 (34.5 %)     90 (17.6 %)     91 (36.4 %)
+        92 (24.9 %)     93 (23.1 %)     94 (45.3 %)     95 (27.9 %)
+        Total: 3168.9%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.564980e-01 s, elapsed = 2.565088e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.595000e-01 s,
+        elapsed = 2.595088e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.910207e+02 s (4m  51.0s), elapsed = 2.949531e+02 s
+        (4m  55.0s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9.
+
+Notice from spectre at time = 1.300190e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M8_noxref_g.
+
+......9..
+
+Notice from spectre at time = 1.500190e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M8_noxref_g.
+
+......9....
+
+Notice from spectre at time = 1.700190e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M8_noxref_g.
+
+......9.....
+
+Notice from spectre at time = 1.900190e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M8_noxref_g.
+
+......9......
+
+Notice from spectre at time = 2.100190e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_CIN_M8_noxref_g.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             166
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.904e+00 V
+I: I(VVDD:p) = 1.073e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.0 %)      1 (39.1 %)      2 (41.7 %)      3 (31.9 %)
+         4 (50.6 %)      5 (49.7 %)      6 (35.0 %)      7 (40.6 %)
+         8 (41.8 %)      9 (23.8 %)     10 (51.7 %)     11 (39.2 %)
+        12 (29.3 %)     13 (50.2 %)     14 (38.6 %)     15 (26.4 %)
+        16 (30.8 %)     17 (46.9 %)     18 (73.3 %)     19 (28.1 %)
+        20 (33.0 %)     21 (57.4 %)     22 (47.6 %)     23 (50.4 %)
+        24 (42.6 %)     25 (27.9 %)     26 (17.8 %)     27 (42.3 %)
+        28 (41.3 %)     29 (16.9 %)     30 (54.3 %)     31 (72.7 %)
+        32 (18.0 %)     33 (22.2 %)     34 (43.6 %)     35 (54.2 %)
+        36 (53.2 %)     37 (56.0 %)     38 (21.8 %)     39 (43.7 %)
+        40 (27.5 %)     41 (45.9 %)     42 (45.5 %)     43 (36.8 %)
+        44 (29.9 %)     45 (43.2 %)     46 (32.7 %)     47 (22.6 %)
+        48 (45.9 %)     49 (37.1 %)     50 (38.6 %)     51 (24.9 %)
+        52 (15.1 %)     53 (19.1 %)     54 (28.2 %)     55 (23.1 %)
+        56 (23.7 %)     57 (35.1 %)     58 (24.6 %)     59 (10.2 %)
+        60 (21.3 %)     61 (14.1 %)     62 (41.5 %)     63 (48.3 %)
+        64 (29.3 %)     65 (4.3 %)      66 (15.8 %)     67 (23.8 %)
+        68 (20.0 %)     69 (14.7 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.8 %)     73 (64.3 %)     74 (64.4 %)     75 (11.6 %)
+        76 (26.5 %)     77 (59.5 %)     78 (8.7 %)      79 (15.6 %)
+        80 (43.5 %)     81 (47.3 %)     82 (15.9 %)     83 (5.2 %)
+        84 (5.6 %)      85 (10.6 %)     86 (9.7 %)      87 (18.8 %)
+        88 (35.5 %)     89 (34.5 %)     90 (17.5 %)     91 (36.4 %)
+        92 (24.9 %)     93 (23.2 %)     94 (45.3 %)     95 (27.9 %)
+        Total: 3169.0%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.476980e-01 s, elapsed = 2.477150e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.497070e-01 s,
+        elapsed = 2.497230e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.912709e+02 s (4m  51.3s), elapsed = 2.952053e+02 s
+        (4m  55.2s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    40 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             168
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.900e+00 V
+I: I(VVDD:p) = 1.088e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (42.0 %)      1 (39.1 %)      2 (41.7 %)      3 (32.0 %)
+         4 (50.6 %)      5 (49.7 %)      6 (35.0 %)      7 (40.5 %)
+         8 (41.9 %)      9 (23.9 %)     10 (51.7 %)     11 (39.2 %)
+        12 (29.3 %)     13 (50.2 %)     14 (38.5 %)     15 (26.5 %)
+        16 (30.8 %)     17 (46.9 %)     18 (73.2 %)     19 (28.1 %)
+        20 (33.0 %)     21 (57.4 %)     22 (47.7 %)     23 (50.4 %)
+        24 (42.6 %)     25 (27.9 %)     26 (17.8 %)     27 (42.3 %)
+        28 (41.3 %)     29 (16.9 %)     30 (54.3 %)     31 (72.7 %)
+        32 (18.0 %)     33 (22.2 %)     34 (43.7 %)     35 (54.2 %)
+        36 (53.2 %)     37 (56.0 %)     38 (21.8 %)     39 (43.7 %)
+        40 (27.5 %)     41 (45.9 %)     42 (45.5 %)     43 (36.8 %)
+        44 (29.9 %)     45 (43.2 %)     46 (32.7 %)     47 (22.7 %)
+        48 (46.0 %)     49 (37.1 %)     50 (38.6 %)     51 (24.9 %)
+        52 (15.0 %)     53 (19.1 %)     54 (28.1 %)     55 (23.1 %)
+        56 (23.7 %)     57 (35.1 %)     58 (24.6 %)     59 (10.3 %)
+        60 (21.3 %)     61 (14.1 %)     62 (41.6 %)     63 (48.3 %)
+        64 (29.2 %)     65 (4.3 %)      66 (15.8 %)     67 (23.8 %)
+        68 (20.1 %)     69 (14.8 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.8 %)     73 (64.3 %)     74 (64.4 %)     75 (11.7 %)
+        76 (26.6 %)     77 (59.5 %)     78 (8.8 %)      79 (15.5 %)
+        80 (43.5 %)     81 (47.3 %)     82 (15.9 %)     83 (5.1 %)
+        84 (5.6 %)      85 (10.7 %)     86 (9.7 %)      87 (18.8 %)
+        88 (35.5 %)     89 (34.5 %)     90 (17.5 %)     91 (36.3 %)
+        92 (24.9 %)     93 (23.2 %)     94 (45.2 %)     95 (27.9 %)
+        Total: 3169.1%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.373210e-01 s, elapsed = 2.373269e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.392400e-01 s,
+        elapsed = 2.392440e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.915105e+02 s (4m  51.5s), elapsed = 2.954470e+02 s
+        (4m  55.4s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             166
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.898e+00 V
+I: I(VVDD:p) = 1.094e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.9 %)      1 (39.2 %)      2 (41.6 %)      3 (32.0 %)
+         4 (50.7 %)      5 (49.7 %)      6 (35.0 %)      7 (40.5 %)
+         8 (41.9 %)      9 (23.9 %)     10 (51.6 %)     11 (39.2 %)
+        12 (29.4 %)     13 (50.1 %)     14 (38.5 %)     15 (26.5 %)
+        16 (30.9 %)     17 (46.8 %)     18 (73.2 %)     19 (28.1 %)
+        20 (33.0 %)     21 (57.3 %)     22 (47.7 %)     23 (50.3 %)
+        24 (42.6 %)     25 (28.0 %)     26 (17.8 %)     27 (42.2 %)
+        28 (41.2 %)     29 (16.9 %)     30 (54.2 %)     31 (72.8 %)
+        32 (18.0 %)     33 (22.2 %)     34 (43.7 %)     35 (54.3 %)
+        36 (53.3 %)     37 (55.9 %)     38 (21.8 %)     39 (43.8 %)
+        40 (27.4 %)     41 (46.0 %)     42 (45.5 %)     43 (36.9 %)
+        44 (30.0 %)     45 (43.2 %)     46 (32.6 %)     47 (22.8 %)
+        48 (46.0 %)     49 (37.0 %)     50 (38.7 %)     51 (24.9 %)
+        52 (15.0 %)     53 (19.1 %)     54 (28.1 %)     55 (23.2 %)
+        56 (23.7 %)     57 (35.1 %)     58 (24.5 %)     59 (10.4 %)
+        60 (21.3 %)     61 (14.1 %)     62 (41.6 %)     63 (48.2 %)
+        64 (29.2 %)     65 (4.4 %)      66 (15.8 %)     67 (23.8 %)
+        68 (20.1 %)     69 (14.8 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.8 %)     73 (64.2 %)     74 (64.4 %)     75 (11.8 %)
+        76 (26.6 %)     77 (59.4 %)     78 (8.9 %)      79 (15.5 %)
+        80 (43.5 %)     81 (47.3 %)     82 (15.9 %)     83 (5.1 %)
+        84 (5.6 %)      85 (10.7 %)     86 (9.7 %)      87 (18.7 %)
+        88 (35.4 %)     89 (34.4 %)     90 (17.5 %)     91 (36.3 %)
+        92 (24.9 %)     93 (23.3 %)     94 (45.2 %)     95 (27.9 %)
+        Total: 3169.2%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.315700e-01 s, elapsed = 2.315760e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.334490e-01 s,
+        elapsed = 2.334521e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.917444e+02 s (4m  51.7s), elapsed = 2.956829e+02 s
+        (4m  55.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             164
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.898e+00 V
+I: I(VVDD:p) = 1.098e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.9 %)      1 (39.2 %)      2 (41.6 %)      3 (32.1 %)
+         4 (50.7 %)      5 (49.6 %)      6 (34.9 %)      7 (40.5 %)
+         8 (42.0 %)      9 (24.0 %)     10 (51.6 %)     11 (39.1 %)
+        12 (29.5 %)     13 (50.1 %)     14 (38.5 %)     15 (26.6 %)
+        16 (30.9 %)     17 (46.8 %)     18 (73.1 %)     19 (28.1 %)
+        20 (32.9 %)     21 (57.3 %)     22 (47.8 %)     23 (50.3 %)
+        24 (42.5 %)     25 (28.0 %)     26 (17.8 %)     27 (42.2 %)
+        28 (41.2 %)     29 (16.9 %)     30 (54.2 %)     31 (72.8 %)
+        32 (18.0 %)     33 (22.1 %)     34 (43.8 %)     35 (54.3 %)
+        36 (53.3 %)     37 (55.9 %)     38 (21.8 %)     39 (43.8 %)
+        40 (27.4 %)     41 (46.0 %)     42 (45.4 %)     43 (36.9 %)
+        44 (30.0 %)     45 (43.1 %)     46 (32.6 %)     47 (22.8 %)
+        48 (46.0 %)     49 (37.0 %)     50 (38.7 %)     51 (24.9 %)
+        52 (15.0 %)     53 (19.1 %)     54 (28.1 %)     55 (23.2 %)
+        56 (23.6 %)     57 (35.0 %)     58 (24.5 %)     59 (10.4 %)
+        60 (21.3 %)     61 (14.0 %)     62 (41.7 %)     63 (48.2 %)
+        64 (29.2 %)     65 (4.3 %)      66 (15.8 %)     67 (23.7 %)
+        68 (20.2 %)     69 (14.9 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.7 %)     73 (64.2 %)     74 (64.5 %)     75 (11.8 %)
+        76 (26.7 %)     77 (59.4 %)     78 (8.9 %)      79 (15.5 %)
+        80 (43.4 %)     81 (47.2 %)     82 (15.8 %)     83 (5.1 %)
+        84 (5.5 %)      85 (10.8 %)     86 (9.7 %)      87 (18.7 %)
+        88 (35.4 %)     89 (34.4 %)     90 (17.5 %)     91 (36.3 %)
+        92 (24.9 %)     93 (23.3 %)     94 (45.2 %)     95 (27.8 %)
+        Total: 3169.3%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.347820e-01 s, elapsed = 2.347882e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.369720e-01 s,
+        elapsed = 2.369761e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.919818e+02 s (4m  52.0s), elapsed = 2.959225e+02 s
+        (4m  55.9s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9....
+
+Notice from spectre at time = 1.709057e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M37_noxref_d.
+
+......9.....
+
+Notice from spectre at time = 1.909057e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M37_noxref_d.
+
+......9......
+
+Notice from spectre at time = 2.109057e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M37_noxref_d.
+
+......9......8.
+
+Notice from spectre at time = 2.309057e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M37_noxref_d.
+
+......9......8..
+
+Notice from spectre at time = 2.509057e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M37_noxref_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             202
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 2.056e+00 V
+I: I(VVDD:p) = 1.152e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.9 %)      1 (39.3 %)      2 (41.5 %)      3 (32.1 %)
+         4 (50.7 %)      5 (49.6 %)      6 (34.9 %)      7 (40.5 %)
+         8 (42.0 %)      9 (24.1 %)     10 (51.5 %)     11 (39.1 %)
+        12 (29.5 %)     13 (50.1 %)     14 (38.4 %)     15 (26.7 %)
+        16 (31.0 %)     17 (46.8 %)     18 (73.1 %)     19 (28.0 %)
+        20 (32.9 %)     21 (57.2 %)     22 (47.8 %)     23 (50.2 %)
+        24 (42.5 %)     25 (28.1 %)     26 (17.8 %)     27 (42.2 %)
+        28 (41.2 %)     29 (16.9 %)     30 (54.1 %)     31 (72.8 %)
+        32 (18.0 %)     33 (22.1 %)     34 (43.8 %)     35 (54.3 %)
+        36 (53.4 %)     37 (55.8 %)     38 (21.8 %)     39 (43.9 %)
+        40 (27.4 %)     41 (46.1 %)     42 (45.4 %)     43 (37.0 %)
+        44 (30.1 %)     45 (43.1 %)     46 (32.6 %)     47 (22.9 %)
+        48 (46.1 %)     49 (37.0 %)     50 (38.8 %)     51 (24.9 %)
+        52 (15.0 %)     53 (19.0 %)     54 (28.1 %)     55 (23.2 %)
+        56 (23.6 %)     57 (35.0 %)     58 (24.5 %)     59 (10.5 %)
+        60 (21.2 %)     61 (14.0 %)     62 (41.7 %)     63 (48.1 %)
+        64 (29.2 %)     65 (4.3 %)      66 (15.8 %)     67 (23.7 %)
+        68 (20.3 %)     69 (15.0 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.7 %)     73 (64.1 %)     74 (64.5 %)     75 (11.9 %)
+        76 (26.7 %)     77 (59.3 %)     78 (9.0 %)      79 (15.5 %)
+        80 (43.4 %)     81 (47.2 %)     82 (15.8 %)     83 (5.1 %)
+        84 (5.5 %)      85 (10.9 %)     86 (9.7 %)      87 (18.7 %)
+        88 (35.4 %)     89 (34.4 %)     90 (17.5 %)     91 (36.3 %)
+        92 (24.8 %)     93 (23.4 %)     94 (45.1 %)     95 (27.8 %)
+        Total: 3169.4%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 3.050950e-01 s, elapsed = 3.051100e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 3.071250e-01 s,
+        elapsed = 3.071380e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.922894e+02 s (4m  52.3s), elapsed = 2.962320e+02 s
+        (4m  56.2s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    38 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 3.236253e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             211
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_c_5962_n) = 2.057e+00 V
+I: I(VVDD:p) = 1.218e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.8 %)      1 (39.3 %)      2 (41.5 %)      3 (32.1 %)
+         4 (50.8 %)      5 (49.5 %)      6 (34.9 %)      7 (40.6 %)
+         8 (42.1 %)      9 (24.2 %)     10 (51.5 %)     11 (39.1 %)
+        12 (29.6 %)     13 (50.0 %)     14 (38.4 %)     15 (26.7 %)
+        16 (31.1 %)     17 (46.7 %)     18 (73.0 %)     19 (28.0 %)
+        20 (32.9 %)     21 (57.2 %)     22 (47.9 %)     23 (50.2 %)
+        24 (42.5 %)     25 (28.2 %)     26 (17.7 %)     27 (42.1 %)
+        28 (41.1 %)     29 (16.8 %)     30 (54.1 %)     31 (72.8 %)
+        32 (18.0 %)     33 (22.1 %)     34 (43.9 %)     35 (54.4 %)
+        36 (53.4 %)     37 (55.8 %)     38 (21.7 %)     39 (43.9 %)
+        40 (27.4 %)     41 (46.1 %)     42 (45.3 %)     43 (37.1 %)
+        44 (30.2 %)     45 (43.0 %)     46 (32.5 %)     47 (23.0 %)
+        48 (46.1 %)     49 (36.9 %)     50 (38.9 %)     51 (25.0 %)
+        52 (15.0 %)     53 (19.0 %)     54 (28.0 %)     55 (23.2 %)
+        56 (23.6 %)     57 (35.0 %)     58 (24.5 %)     59 (10.6 %)
+        60 (21.2 %)     61 (14.0 %)     62 (41.8 %)     63 (48.1 %)
+        64 (29.1 %)     65 (4.3 %)      66 (15.8 %)     67 (23.7 %)
+        68 (20.3 %)     69 (15.1 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.7 %)     73 (64.1 %)     74 (64.5 %)     75 (12.0 %)
+        76 (26.8 %)     77 (59.3 %)     78 (9.1 %)      79 (15.5 %)
+        80 (43.4 %)     81 (47.1 %)     82 (15.8 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.0 %)     86 (9.7 %)      87 (18.7 %)
+        88 (35.3 %)     89 (34.3 %)     90 (17.5 %)     91 (36.2 %)
+        92 (24.8 %)     93 (23.5 %)     94 (45.1 %)     95 (27.8 %)
+        Total: 3169.4%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.968130e-01 s, elapsed = 2.968249e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.990030e-01 s,
+        elapsed = 2.990131e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.925889e+02 s (4m  52.6s), elapsed = 2.965319e+02 s
+        (4m  56.5s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9.....
+
+Notice from spectre at time = 1.911793e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......
+
+Notice from spectre at time = 2.111793e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8.
+
+Notice from spectre at time = 2.311793e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8..
+
+Notice from spectre at time = 2.511793e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8....
+
+Notice from spectre at time = 2.711793e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             209
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 2.046e+00 V
+I: I(VVDD:p) = 1.236e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.8 %)      1 (39.4 %)      2 (41.5 %)      3 (32.0 %)
+         4 (50.8 %)      5 (49.5 %)      6 (34.9 %)      7 (40.6 %)
+         8 (42.1 %)      9 (24.2 %)     10 (51.4 %)     11 (39.0 %)
+        12 (29.7 %)     13 (50.0 %)     14 (38.3 %)     15 (26.8 %)
+        16 (31.1 %)     17 (46.7 %)     18 (72.9 %)     19 (28.0 %)
+        20 (32.8 %)     21 (57.1 %)     22 (47.9 %)     23 (50.1 %)
+        24 (42.4 %)     25 (28.3 %)     26 (17.7 %)     27 (42.1 %)
+        28 (41.1 %)     29 (16.8 %)     30 (54.0 %)     31 (72.9 %)
+        32 (17.9 %)     33 (22.1 %)     34 (43.9 %)     35 (54.4 %)
+        36 (53.4 %)     37 (55.7 %)     38 (21.7 %)     39 (44.0 %)
+        40 (27.4 %)     41 (46.2 %)     42 (45.3 %)     43 (37.1 %)
+        44 (30.3 %)     45 (43.0 %)     46 (32.5 %)     47 (23.1 %)
+        48 (46.2 %)     49 (36.9 %)     50 (38.9 %)     51 (25.0 %)
+        52 (15.0 %)     53 (19.0 %)     54 (28.0 %)     55 (23.2 %)
+        56 (23.6 %)     57 (34.9 %)     58 (24.5 %)     59 (10.7 %)
+        60 (21.2 %)     61 (14.0 %)     62 (41.8 %)     63 (48.0 %)
+        64 (29.1 %)     65 (4.3 %)      66 (15.7 %)     67 (23.7 %)
+        68 (20.4 %)     69 (15.2 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.6 %)     73 (64.0 %)     74 (64.6 %)     75 (12.1 %)
+        76 (26.9 %)     77 (59.2 %)     78 (9.2 %)      79 (15.5 %)
+        80 (43.3 %)     81 (47.1 %)     82 (15.8 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.1 %)     86 (9.7 %)      87 (18.7 %)
+        88 (35.3 %)     89 (34.3 %)     90 (17.4 %)     91 (36.2 %)
+        92 (24.8 %)     93 (23.6 %)     94 (45.1 %)     95 (27.8 %)
+        Total: 3169.5%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.966930e-01 s, elapsed = 2.967000e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.988210e-01 s,
+        elapsed = 2.988260e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.928881e+02 s (4m  52.9s), elapsed = 2.968319e+02 s
+        (4m  56.8s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    37 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             200
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.986e+00 V
+I: I(VVDD:p) = 1.274e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.7 %)      1 (39.5 %)      2 (41.4 %)      3 (32.0 %)
+         4 (50.9 %)      5 (49.4 %)      6 (34.8 %)      7 (40.7 %)
+         8 (42.2 %)      9 (24.3 %)     10 (51.4 %)     11 (39.0 %)
+        12 (29.7 %)     13 (49.9 %)     14 (38.3 %)     15 (26.9 %)
+        16 (31.2 %)     17 (46.6 %)     18 (72.9 %)     19 (28.0 %)
+        20 (32.8 %)     21 (57.1 %)     22 (47.9 %)     23 (50.1 %)
+        24 (42.4 %)     25 (28.3 %)     26 (17.7 %)     27 (42.1 %)
+        28 (41.1 %)     29 (16.8 %)     30 (54.0 %)     31 (72.9 %)
+        32 (17.9 %)     33 (22.1 %)     34 (44.0 %)     35 (54.5 %)
+        36 (53.5 %)     37 (55.8 %)     38 (21.7 %)     39 (44.1 %)
+        40 (27.3 %)     41 (46.3 %)     42 (45.2 %)     43 (37.2 %)
+        44 (30.2 %)     45 (43.0 %)     46 (32.5 %)     47 (23.1 %)
+        48 (46.2 %)     49 (36.9 %)     50 (39.0 %)     51 (25.1 %)
+        52 (15.0 %)     53 (19.0 %)     54 (28.0 %)     55 (23.2 %)
+        56 (23.5 %)     57 (34.9 %)     58 (24.4 %)     59 (10.8 %)
+        60 (21.2 %)     61 (14.0 %)     62 (41.9 %)     63 (48.0 %)
+        64 (29.1 %)     65 (4.3 %)      66 (15.7 %)     67 (23.7 %)
+        68 (20.5 %)     69 (15.2 %)     70 (5.5 %)      71 (3.7 %)
+        72 (36.6 %)     73 (63.9 %)     74 (64.6 %)     75 (12.2 %)
+        76 (26.9 %)     77 (59.2 %)     78 (9.3 %)      79 (15.5 %)
+        80 (43.3 %)     81 (47.0 %)     82 (15.8 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.1 %)     86 (9.7 %)      87 (18.7 %)
+        88 (35.3 %)     89 (34.3 %)     90 (17.4 %)     91 (36.2 %)
+        92 (24.8 %)     93 (23.7 %)     94 (45.0 %)     95 (27.7 %)
+        Total: 3169.6%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.943980e-01 s, elapsed = 2.944150e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.962800e-01 s,
+        elapsed = 2.962949e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.931848e+02 s (4m  53.2s), elapsed = 2.971310e+02 s
+        (4m  57.1s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 1.690593e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM6_noxref.nmos_0:int_b.
+Notice from spectre at time = 1.694187e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM6_noxref.nmos_0:int_b.
+
+......9.....
+
+Notice from spectre at time = 1.881900e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......
+
+Notice from spectre at time = 2.081900e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8.
+
+Notice from spectre at time = 2.281900e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             179
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_c_5973_n) = 1.958e+00 V
+I: I(VVDD:p) = 1.298e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.7 %)      1 (39.5 %)      2 (41.4 %)      3 (32.0 %)
+         4 (50.9 %)      5 (49.4 %)      6 (34.8 %)      7 (40.8 %)
+         8 (42.3 %)      9 (24.4 %)     10 (51.4 %)     11 (39.0 %)
+        12 (29.8 %)     13 (49.9 %)     14 (38.3 %)     15 (26.9 %)
+        16 (31.3 %)     17 (46.6 %)     18 (72.8 %)     19 (27.9 %)
+        20 (32.8 %)     21 (57.0 %)     22 (47.9 %)     23 (50.1 %)
+        24 (42.3 %)     25 (28.4 %)     26 (17.7 %)     27 (42.0 %)
+        28 (41.1 %)     29 (16.8 %)     30 (53.9 %)     31 (72.9 %)
+        32 (17.9 %)     33 (22.0 %)     34 (44.1 %)     35 (54.5 %)
+        36 (53.5 %)     37 (55.8 %)     38 (21.7 %)     39 (44.1 %)
+        40 (27.3 %)     41 (46.3 %)     42 (45.2 %)     43 (37.3 %)
+        44 (30.2 %)     45 (42.9 %)     46 (32.5 %)     47 (23.2 %)
+        48 (46.3 %)     49 (36.8 %)     50 (39.0 %)     51 (25.2 %)
+        52 (14.9 %)     53 (19.0 %)     54 (28.0 %)     55 (23.1 %)
+        56 (23.5 %)     57 (34.9 %)     58 (24.4 %)     59 (10.9 %)
+        60 (21.2 %)     61 (14.0 %)     62 (41.9 %)     63 (48.0 %)
+        64 (29.0 %)     65 (4.3 %)      66 (15.7 %)     67 (23.6 %)
+        68 (20.5 %)     69 (15.3 %)     70 (5.6 %)      71 (3.7 %)
+        72 (36.6 %)     73 (63.9 %)     74 (64.6 %)     75 (12.3 %)
+        76 (27.0 %)     77 (59.1 %)     78 (9.4 %)      79 (15.4 %)
+        80 (43.2 %)     81 (47.0 %)     82 (15.8 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.0 %)     86 (9.6 %)      87 (18.6 %)
+        88 (35.2 %)     89 (34.2 %)     90 (17.4 %)     91 (36.2 %)
+        92 (24.9 %)     93 (23.7 %)     94 (45.0 %)     95 (27.7 %)
+        Total: 3169.7%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.593490e-01 s, elapsed = 2.593551e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.615190e-01 s,
+        elapsed = 2.615240e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.934468e+02 s (4m  53.4s), elapsed = 2.973968e+02 s
+        (4m  57.4s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    39 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......
+
+Notice from spectre at time = 2.040356e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8
+
+Notice from spectre at time = 2.240356e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8..
+
+Notice from spectre at time = 2.440356e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8...
+
+Notice from spectre at time = 2.640356e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+
+......9......8....
+
+Notice from spectre at time = 2.840356e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_noxref_8_M37_noxref_g.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             172
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.953e+00 V
+I: I(VVDD:p) = 1.302e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.7 %)      1 (39.5 %)      2 (41.3 %)      3 (31.9 %)
+         4 (51.0 %)      5 (49.3 %)      6 (34.8 %)      7 (40.8 %)
+         8 (42.3 %)      9 (24.4 %)     10 (51.3 %)     11 (38.9 %)
+        12 (29.9 %)     13 (49.8 %)     14 (38.2 %)     15 (27.0 %)
+        16 (31.3 %)     17 (46.5 %)     18 (72.7 %)     19 (27.9 %)
+        20 (32.8 %)     21 (57.0 %)     22 (47.8 %)     23 (50.0 %)
+        24 (42.3 %)     25 (28.5 %)     26 (17.7 %)     27 (42.0 %)
+        28 (41.0 %)     29 (16.8 %)     30 (53.9 %)     31 (72.9 %)
+        32 (17.9 %)     33 (22.0 %)     34 (44.1 %)     35 (54.6 %)
+        36 (53.6 %)     37 (55.9 %)     38 (21.7 %)     39 (44.2 %)
+        40 (27.3 %)     41 (46.3 %)     42 (45.2 %)     43 (37.3 %)
+        44 (30.2 %)     45 (42.9 %)     46 (32.4 %)     47 (23.3 %)
+        48 (46.3 %)     49 (36.9 %)     50 (39.1 %)     51 (25.2 %)
+        52 (14.9 %)     53 (19.0 %)     54 (27.9 %)     55 (23.1 %)
+        56 (23.5 %)     57 (34.9 %)     58 (24.4 %)     59 (10.9 %)
+        60 (21.1 %)     61 (14.0 %)     62 (42.0 %)     63 (47.9 %)
+        64 (29.0 %)     65 (4.3 %)      66 (15.7 %)     67 (23.6 %)
+        68 (20.6 %)     69 (15.4 %)     70 (5.7 %)      71 (3.7 %)
+        72 (36.5 %)     73 (63.8 %)     74 (64.7 %)     75 (12.3 %)
+        76 (27.0 %)     77 (59.1 %)     78 (9.5 %)      79 (15.4 %)
+        80 (43.2 %)     81 (47.0 %)     82 (15.7 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.0 %)     86 (9.6 %)      87 (18.6 %)
+        88 (35.2 %)     89 (34.2 %)     90 (17.4 %)     91 (36.1 %)
+        92 (25.0 %)     93 (23.8 %)     94 (44.9 %)     95 (27.7 %)
+        Total: 3169.8%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.533220e-01 s, elapsed = 2.533278e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.553650e-01 s,
+        elapsed = 2.553699e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.937025e+02 s (4m  53.7s), elapsed = 2.976556e+02 s
+        (4m  57.7s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    36 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8..
+
+Notice from spectre at time = 2.519071e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+
+......9......8....
+
+Notice from spectre at time = 2.719071e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+
+......9......8.....
+
+Notice from spectre at time = 2.919071e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+
+......9......8......
+
+Notice from spectre at time = 3.119071e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+
+......9......8......7.
+
+Notice from spectre at time = 3.319071e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             216
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 2.055e+00 V
+I: I(VVDD:p) = 1.148e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.6 %)      1 (39.4 %)      2 (41.3 %)      3 (31.9 %)
+         4 (51.0 %)      5 (49.3 %)      6 (34.7 %)      7 (40.9 %)
+         8 (42.4 %)      9 (24.5 %)     10 (51.3 %)     11 (39.0 %)
+        12 (29.9 %)     13 (49.8 %)     14 (38.2 %)     15 (26.9 %)
+        16 (31.4 %)     17 (46.5 %)     18 (72.7 %)     19 (27.9 %)
+        20 (32.7 %)     21 (56.9 %)     22 (47.8 %)     23 (50.0 %)
+        24 (42.3 %)     25 (28.5 %)     26 (17.7 %)     27 (42.0 %)
+        28 (41.0 %)     29 (16.8 %)     30 (53.8 %)     31 (73.0 %)
+        32 (17.9 %)     33 (22.0 %)     34 (44.2 %)     35 (54.6 %)
+        36 (53.6 %)     37 (55.9 %)     38 (21.6 %)     39 (44.2 %)
+        40 (27.3 %)     41 (46.4 %)     42 (45.1 %)     43 (37.4 %)
+        44 (30.2 %)     45 (42.9 %)     46 (32.4 %)     47 (23.4 %)
+        48 (46.4 %)     49 (36.9 %)     50 (39.1 %)     51 (25.3 %)
+        52 (14.9 %)     53 (19.0 %)     54 (27.9 %)     55 (23.1 %)
+        56 (23.5 %)     57 (34.8 %)     58 (24.4 %)     59 (11.0 %)
+        60 (21.1 %)     61 (14.0 %)     62 (42.1 %)     63 (48.0 %)
+        64 (29.0 %)     65 (4.3 %)      66 (15.7 %)     67 (23.6 %)
+        68 (20.7 %)     69 (15.5 %)     70 (5.8 %)      71 (3.7 %)
+        72 (36.5 %)     73 (63.7 %)     74 (64.7 %)     75 (12.4 %)
+        76 (27.1 %)     77 (59.0 %)     78 (9.6 %)      79 (15.4 %)
+        80 (43.1 %)     81 (46.9 %)     82 (15.7 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.0 %)     86 (9.6 %)      87 (18.6 %)
+        88 (35.2 %)     89 (34.2 %)     90 (17.4 %)     91 (36.1 %)
+        92 (25.0 %)     93 (23.9 %)     94 (44.9 %)     95 (27.7 %)
+        Total: 3169.9%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 3.153300e-01 s, elapsed = 3.153419e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 3.174010e-01 s,
+        elapsed = 3.174112e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.940204e+02 s (4m  54.0s), elapsed = 2.979761e+02 s
+        (4m  58.0s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    22 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+
+Notice from spectre at time = 9.631636e-09 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node MM20_noxref.nmos_0:int_d.
+
+......9......8..
+
+Notice from spectre at time = 2.455846e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+
+......9......8...
+
+Notice from spectre at time = 2.655846e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+
+......9......8.....
+
+Notice from spectre at time = 2.855846e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+
+......9......8......7
+
+Notice from spectre at time = 3.255846e-04 s during transient analysis
+        `timeSweep'.
+    Found trapezoidal ringing on node N_SUM_M41_noxref_d.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             219
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_c_5975_n) = 2.056e+00 V
+I: I(VVDD:p) = 1.237e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.6 %)      1 (39.4 %)      2 (41.4 %)      3 (31.9 %)
+         4 (51.1 %)      5 (49.2 %)      6 (34.7 %)      7 (40.9 %)
+         8 (42.4 %)      9 (24.5 %)     10 (51.2 %)     11 (38.9 %)
+        12 (30.0 %)     13 (49.7 %)     14 (38.2 %)     15 (26.9 %)
+        16 (31.5 %)     17 (46.5 %)     18 (72.6 %)     19 (27.9 %)
+        20 (32.7 %)     21 (56.8 %)     22 (47.7 %)     23 (49.9 %)
+        24 (42.2 %)     25 (28.6 %)     26 (17.6 %)     27 (42.1 %)
+        28 (41.0 %)     29 (16.8 %)     30 (53.8 %)     31 (73.0 %)
+        32 (17.8 %)     33 (22.0 %)     34 (44.2 %)     35 (54.7 %)
+        36 (53.7 %)     37 (55.9 %)     38 (21.6 %)     39 (44.3 %)
+        40 (27.2 %)     41 (46.5 %)     42 (45.1 %)     43 (37.4 %)
+        44 (30.1 %)     45 (42.9 %)     46 (32.4 %)     47 (23.4 %)
+        48 (46.4 %)     49 (37.0 %)     50 (39.1 %)     51 (25.4 %)
+        52 (14.9 %)     53 (18.9 %)     54 (27.9 %)     55 (23.1 %)
+        56 (23.5 %)     57 (34.9 %)     58 (24.4 %)     59 (11.1 %)
+        60 (21.1 %)     61 (13.9 %)     62 (42.1 %)     63 (48.0 %)
+        64 (28.9 %)     65 (4.3 %)      66 (15.7 %)     67 (23.6 %)
+        68 (20.8 %)     69 (15.6 %)     70 (5.9 %)      71 (3.7 %)
+        72 (36.5 %)     73 (63.7 %)     74 (64.7 %)     75 (12.4 %)
+        76 (27.1 %)     77 (59.0 %)     78 (9.7 %)      79 (15.4 %)
+        80 (43.1 %)     81 (46.9 %)     82 (15.7 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.0 %)     86 (9.6 %)      87 (18.6 %)
+        88 (35.1 %)     89 (34.1 %)     90 (17.4 %)     91 (36.1 %)
+        92 (25.1 %)     93 (23.9 %)     94 (44.8 %)     95 (27.6 %)
+        Total: 3170.0%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 3.184200e-01 s, elapsed = 3.184400e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 3.203750e-01 s,
+        elapsed = 3.203931e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.943411e+02 s (4m  54.3s), elapsed = 2.982975e+02 s
+        (4m  58.3s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+Notice from spectre.
+    30 notices suppressed.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             231
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_c_5975_n) = 2.052e+00 V
+I: I(VVDD:p) = 1.279e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.5 %)      1 (39.5 %)      2 (41.3 %)      3 (31.8 %)
+         4 (51.1 %)      5 (49.2 %)      6 (34.7 %)      7 (41.0 %)
+         8 (42.5 %)      9 (24.5 %)     10 (51.2 %)     11 (38.9 %)
+        12 (30.1 %)     13 (49.7 %)     14 (38.1 %)     15 (26.9 %)
+        16 (31.5 %)     17 (46.4 %)     18 (72.5 %)     19 (27.8 %)
+        20 (32.7 %)     21 (56.8 %)     22 (47.7 %)     23 (49.9 %)
+        24 (42.2 %)     25 (28.7 %)     26 (17.6 %)     27 (42.1 %)
+        28 (41.0 %)     29 (16.8 %)     30 (53.7 %)     31 (73.0 %)
+        32 (17.8 %)     33 (22.0 %)     34 (44.3 %)     35 (54.7 %)
+        36 (53.7 %)     37 (56.0 %)     38 (21.6 %)     39 (44.3 %)
+        40 (27.2 %)     41 (46.5 %)     42 (45.0 %)     43 (37.5 %)
+        44 (30.1 %)     45 (42.9 %)     46 (32.3 %)     47 (23.5 %)
+        48 (46.5 %)     49 (36.9 %)     50 (39.2 %)     51 (25.5 %)
+        52 (14.9 %)     53 (18.9 %)     54 (27.9 %)     55 (23.0 %)
+        56 (23.4 %)     57 (35.0 %)     58 (24.3 %)     59 (11.2 %)
+        60 (21.1 %)     61 (13.9 %)     62 (42.2 %)     63 (47.9 %)
+        64 (28.9 %)     65 (4.4 %)      66 (15.7 %)     67 (23.6 %)
+        68 (20.9 %)     69 (15.7 %)     70 (6.0 %)      71 (3.7 %)
+        72 (36.4 %)     73 (63.6 %)     74 (64.8 %)     75 (12.4 %)
+        76 (27.2 %)     77 (58.9 %)     78 (9.8 %)      79 (15.4 %)
+        80 (43.1 %)     81 (46.8 %)     82 (15.7 %)     83 (5.1 %)
+        84 (5.5 %)      85 (11.0 %)     86 (9.6 %)      87 (18.6 %)
+        88 (35.1 %)     89 (34.1 %)     90 (17.3 %)     91 (36.0 %)
+        92 (25.2 %)     93 (23.9 %)     94 (44.8 %)     95 (27.6 %)
+        Total: 3170.2%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 3.347450e-01 s, elapsed = 3.347511e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 3.366430e-01 s,
+        elapsed = 3.366489e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.946783e+02 s (4m  54.7s), elapsed = 2.986353e+02 s
+        (4m  58.6s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             215
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_c_5975_n) = 2.038e+00 V
+I: I(VVDD:p) = 1.274e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.5 %)      1 (39.6 %)      2 (41.3 %)      3 (31.8 %)
+         4 (51.2 %)      5 (49.1 %)      6 (34.6 %)      7 (41.1 %)
+         8 (42.6 %)      9 (24.4 %)     10 (51.1 %)     11 (38.9 %)
+        12 (30.1 %)     13 (49.6 %)     14 (38.1 %)     15 (26.9 %)
+        16 (31.6 %)     17 (46.4 %)     18 (72.4 %)     19 (27.8 %)
+        20 (32.6 %)     21 (56.7 %)     22 (47.6 %)     23 (49.8 %)
+        24 (42.1 %)     25 (28.8 %)     26 (17.6 %)     27 (42.2 %)
+        28 (41.0 %)     29 (16.8 %)     30 (53.6 %)     31 (73.1 %)
+        32 (17.8 %)     33 (21.9 %)     34 (44.3 %)     35 (54.7 %)
+        36 (53.6 %)     37 (56.0 %)     38 (21.6 %)     39 (44.4 %)
+        40 (27.2 %)     41 (46.6 %)     42 (45.0 %)     43 (37.6 %)
+        44 (30.1 %)     45 (43.0 %)     46 (32.3 %)     47 (23.6 %)
+        48 (46.5 %)     49 (36.9 %)     50 (39.2 %)     51 (25.6 %)
+        52 (14.9 %)     53 (18.9 %)     54 (27.8 %)     55 (23.0 %)
+        56 (23.4 %)     57 (35.0 %)     58 (24.3 %)     59 (11.2 %)
+        60 (21.0 %)     61 (13.9 %)     62 (42.2 %)     63 (47.9 %)
+        64 (28.9 %)     65 (4.5 %)      66 (15.7 %)     67 (23.5 %)
+        68 (20.9 %)     69 (15.8 %)     70 (6.1 %)      71 (3.7 %)
+        72 (36.4 %)     73 (63.5 %)     74 (64.8 %)     75 (12.3 %)
+        76 (27.3 %)     77 (58.9 %)     78 (9.9 %)      79 (15.4 %)
+        80 (43.0 %)     81 (46.8 %)     82 (15.7 %)     83 (5.1 %)
+        84 (5.6 %)      85 (11.0 %)     86 (9.6 %)      87 (18.5 %)
+        88 (35.0 %)     89 (34.1 %)     90 (17.3 %)     91 (36.0 %)
+        92 (25.3 %)     93 (23.9 %)     94 (44.7 %)     95 (27.6 %)
+        Total: 3170.3%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 3.178990e-01 s, elapsed = 3.179059e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 3.222930e-01 s,
+        elapsed = 3.222980e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.950014e+02 s (4m  55.0s), elapsed = 2.989592e+02 s
+        (4m  59.0s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             212
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.992e+00 V
+I: I(VVDD:p) = 1.286e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.4 %)      1 (39.6 %)      2 (41.2 %)      3 (31.8 %)
+         4 (51.2 %)      5 (49.1 %)      6 (34.6 %)      7 (41.1 %)
+         8 (42.6 %)      9 (24.4 %)     10 (51.1 %)     11 (38.8 %)
+        12 (30.2 %)     13 (49.6 %)     14 (38.0 %)     15 (26.8 %)
+        16 (31.6 %)     17 (46.3 %)     18 (72.4 %)     19 (27.8 %)
+        20 (32.6 %)     21 (56.6 %)     22 (47.6 %)     23 (49.7 %)
+        24 (42.1 %)     25 (28.7 %)     26 (17.6 %)     27 (42.2 %)
+        28 (40.9 %)     29 (16.8 %)     30 (53.6 %)     31 (73.1 %)
+        32 (17.8 %)     33 (21.9 %)     34 (44.4 %)     35 (54.8 %)
+        36 (53.6 %)     37 (56.1 %)     38 (21.6 %)     39 (44.5 %)
+        40 (27.1 %)     41 (46.6 %)     42 (45.0 %)     43 (37.5 %)
+        44 (30.0 %)     45 (43.0 %)     46 (32.3 %)     47 (23.7 %)
+        48 (46.6 %)     49 (36.8 %)     50 (39.3 %)     51 (25.6 %)
+        52 (14.9 %)     53 (18.9 %)     54 (27.8 %)     55 (23.0 %)
+        56 (23.4 %)     57 (35.1 %)     58 (24.3 %)     59 (11.3 %)
+        60 (21.0 %)     61 (13.9 %)     62 (42.3 %)     63 (47.9 %)
+        64 (28.9 %)     65 (4.6 %)      66 (15.6 %)     67 (23.5 %)
+        68 (21.0 %)     69 (15.8 %)     70 (6.2 %)      71 (3.7 %)
+        72 (36.3 %)     73 (63.6 %)     74 (64.8 %)     75 (12.3 %)
+        76 (27.3 %)     77 (58.8 %)     78 (10.0 %)     79 (15.3 %)
+        80 (43.0 %)     81 (46.7 %)     82 (15.7 %)     83 (5.1 %)
+        84 (5.6 %)      85 (11.0 %)     86 (9.6 %)      87 (18.5 %)
+        88 (35.0 %)     89 (34.0 %)     90 (17.3 %)     91 (36.0 %)
+        92 (25.4 %)     93 (23.8 %)     94 (44.7 %)     95 (27.5 %)
+        Total: 3170.5%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 3.197070e-01 s, elapsed = 3.197148e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 3.234850e-01 s,
+        elapsed = 3.234901e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.953256e+02 s (4m  55.3s), elapsed = 2.992865e+02 s
+        (4m  59.3s).
+Peak resident memory used = 2.75e+08 bytes.
+
+
+*************************************************************************
+Transient Analysis `timeSweep': time = (0.000000e+00 s -> 1.000000e-03 s)
+*************************************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1970 IC nodes defined.
+
+Important parameter values:
+    start = 0.000000e+00 s
+    outputstart = 0.000000e+00 s
+    stop = 1.000000e-03 s
+    step = 1.000000e-12 s
+    maxstep = 2.000000e-05 s
+    ic = all
+    useprevic = no
+    skipdc = useprevic
+    reltol = 1.000000e-03
+    abstol(V) = 1.000000e-06 V
+    abstol(I) = 1.000000e-12 A
+    temp = 2.500000e+01 C
+    tnom = 2.700000e+01 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.500000e+00
+    relref = sigglobal
+    cmin = 0.000000e+00 F
+    gmin = 1.000000e-12 S
+
+
+Output and IC/nodeset summary:
+                 ic     2       
+                 nodeset        11      
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             204
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+Maximum value achieved for any signal of each quantity: 
+V: V(N_noxref_18_M35_noxref_s) = 1.954e+00 V
+I: I(VVDD:p) = 1.347e-03 A
+If your circuit contains signals of the same quantity that are vastly different
+        in size (such as high voltage circuitry combined with low voltage
+        control circuitry), you should consider specifying global option
+        `bin_relref=yes'.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+During simulation, the CPU load for active processors is :
+         0 (41.4 %)      1 (39.7 %)      2 (41.2 %)      3 (31.7 %)
+         4 (51.3 %)      5 (49.0 %)      6 (34.6 %)      7 (41.2 %)
+         8 (42.7 %)      9 (24.4 %)     10 (51.0 %)     11 (38.8 %)
+        12 (30.3 %)     13 (49.6 %)     14 (38.0 %)     15 (26.8 %)
+        16 (31.5 %)     17 (46.3 %)     18 (72.3 %)     19 (27.8 %)
+        20 (32.6 %)     21 (56.6 %)     22 (47.6 %)     23 (49.7 %)
+        24 (42.1 %)     25 (28.7 %)     26 (17.6 %)     27 (42.3 %)
+        28 (40.9 %)     29 (16.7 %)     30 (53.5 %)     31 (73.1 %)
+        32 (17.8 %)     33 (21.9 %)     34 (44.5 %)     35 (54.8 %)
+        36 (53.5 %)     37 (56.1 %)     38 (21.6 %)     39 (44.4 %)
+        40 (27.1 %)     41 (46.7 %)     42 (45.0 %)     43 (37.5 %)
+        44 (30.1 %)     45 (43.1 %)     46 (32.3 %)     47 (23.8 %)
+        48 (46.6 %)     49 (36.8 %)     50 (39.4 %)     51 (25.7 %)
+        52 (14.8 %)     53 (18.9 %)     54 (27.8 %)     55 (23.0 %)
+        56 (23.4 %)     57 (35.2 %)     58 (24.3 %)     59 (11.4 %)
+        60 (21.0 %)     61 (13.9 %)     62 (42.4 %)     63 (47.9 %)
+        64 (29.0 %)     65 (4.6 %)      66 (15.6 %)     67 (23.5 %)
+        68 (21.1 %)     69 (15.9 %)     70 (6.3 %)      71 (3.7 %)
+        72 (36.3 %)     73 (63.6 %)     74 (64.9 %)     75 (12.3 %)
+        76 (27.4 %)     77 (58.8 %)     78 (10.0 %)     79 (15.3 %)
+        80 (42.9 %)     81 (46.7 %)     82 (15.6 %)     83 (5.1 %)
+        84 (5.6 %)      85 (11.0 %)     86 (9.6 %)      87 (18.5 %)
+        88 (35.0 %)     89 (34.0 %)     90 (17.4 %)     91 (36.1 %)
+        92 (25.4 %)     93 (23.8 %)     94 (44.7 %)     95 (27.5 %)
+        Total: 3170.6%
+Initial condition solution time: CPU = 0.000000e+00 s, elapsed = 0.000000e+00
+        s.
+Intrinsic tran analysis time:    CPU = 2.879220e-01 s, elapsed = 2.879279e-01
+        s.
+Total time required for tran analysis `timeSweep': CPU = 2.897910e-01 s,
+        elapsed = 2.897959e-01 s, util. = 1.00e+02%.
+Time accumulated: CPU = 2.956159e+02 s (4m  55.6s), elapsed = 2.995799e+02 s
+        (4m  59.6s).
+Peak resident memory used = 2.75e+08 bytes.
+

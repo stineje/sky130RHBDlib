@@ -1,0 +1,55 @@
+* HSPICE file created from DFFQX1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt DFFQX1 Q D CLK VDD GND
+X0 GND x1/m1_2115_634 x2/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X3 x1/m1_191_783 CLK x2/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X4 VDD x1/m1_2115_634 x1/m1_191_783 VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X5 x1/m1_191_783 x1/m1_2115_634 VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X6 VDD CLK x1/m1_191_783 VDD sky130_fd_pr__pfet_01v8 ad=0.27u pd=0.011 as=46.4n ps=1.83m w=400 l=30
+X7 x1/m1_191_783 CLK VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X8 GND x1/m1_782_708 x9/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=71.6n pd=2.52m as=77.2n ps=2.61m w=602 l=30
+X10 m1_3533_667 Q x9/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=1p pd=-87u as=0 ps=0 w=602 l=30
+X11 VDD x1/m1_782_708 m1_3533_667 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X12 m1_3533_667 x1/m1_782_708 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X13 VDD Q m1_3533_667 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X14 m1_3533_667 Q VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X15 GND m1_3533_667 x16/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X17 Q x1/m1_191_783 x16/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=0 ps=0 w=602 l=30
+X18 VDD m1_3533_667 Q VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X19 Q m1_3533_667 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X20 VDD x1/m1_191_783 Q VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X21 Q x1/m1_191_783 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X22 GND x1/m1_191_783 x23/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=78.2n ps=2.61m w=602 l=30
+X24 x1/m1_782_708 x1/m1_635_634 x25/li_393_182 GND sky130_fd_pr__nfet_01v8 ad=-7.16n pd=-0.488m as=52.7n ps=1.92m w=602 l=30
+X26 x25/li_393_182 CLK x23/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.18n pd=0.106m as=16.2n ps=0.604m w=600 l=30
+X27 VDD x1/m1_191_783 x1/m1_782_708 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=69.6n ps=2.75m w=400 l=30
+X28 x1/m1_782_708 x1/m1_191_783 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X29 VDD CLK x1/m1_782_708 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X30 x1/m1_782_708 CLK VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X31 VDD x1/m1_635_634 x1/m1_782_708 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X32 x1/m1_782_708 x1/m1_635_634 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X33 GND x1/m1_782_708 x34/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X35 x1/m1_635_634 D x34/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=1p pd=-87u as=0 ps=0 w=602 l=30
+X36 VDD x1/m1_782_708 x1/m1_635_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X37 x1/m1_635_634 x1/m1_782_708 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X38 VDD D x1/m1_635_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X39 x1/m1_635_634 D VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X40 GND x1/m1_635_634 x41/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X42 x1/m1_2115_634 x1/m1_191_783 x41/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=1p pd=-87u as=0 ps=0 w=602 l=30
+X43 VDD x1/m1_635_634 x1/m1_2115_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X44 x1/m1_2115_634 x1/m1_635_634 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X45 VDD x1/m1_191_783 x1/m1_2115_634 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X46 x1/m1_2115_634 x1/m1_191_783 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	dffx1_pcell_0
+* x2	dffx1_pcell_0/nand2x1_pcell_2/nmos_bottom_0
+* x9	dffx1_pcell_0/nand2x1_pcell_3/nmos_bottom_0
+* x16	dffx1_pcell_0/nand2x1_pcell_4/nmos_bottom_0
+* x23	dffx1_pcell_0/nand3x1_pcell_0/nmos_bottom_0
+* x25	dffx1_pcell_0/nand3x1_pcell_0
+* x34	dffx1_pcell_0/nand2x1_pcell_0/nmos_bottom_0
+* x41	dffx1_pcell_0/nand2x1_pcell_1/nmos_bottom_0

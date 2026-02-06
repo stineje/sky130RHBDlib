@@ -1,0 +1,34 @@
+* HSPICE file created from AOA4X1.ext - technology: sky130A
+
+.option scale=5m
+
+.subckt AOA4X1 Y A B C D VDD GND
+X0 Y x1/m1_1818_485 GND GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.6n ps=0.592m w=602 l=30
+X2 VDD x1/m1_1818_485 Y VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X3 Y x1/m1_1818_485 VDD VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X4 GND A x5/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.7n ps=0.599m w=602 l=30
+X6 x7/m1_486_485 B x5/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=2.39n pd=0.111m as=15.8n ps=0.594m w=602 l=30
+X8 VDD A x7/m1_486_485 VDD sky130_fd_pr__pfet_01v8 ad=0.202u pd=8.21m as=46.4n ps=1.83m w=400 l=30
+X9 x7/m1_486_485 A VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X10 VDD B x7/m1_486_485 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X11 x7/m1_486_485 B VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X12 VDD x7/m1_486_485 x13/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=11.6n pd=0.458m as=22.4n ps=0.912m w=400 l=30
+X14 x13/a_317_1331 x7/m1_486_485 VDD VDD sky130_fd_pr__pfet_01v8 ad=21.6n pd=0.908m as=11.6n ps=0.458m w=400 l=30
+X15 x7/m1_1151_485 C x13/a_317_1331 VDD sky130_fd_pr__pfet_01v8 ad=23.2n pd=0.917m as=67.2n ps=2.74m w=400 l=30
+X16 x13/a_317_1331 C x7/m1_1151_485 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X17 x7/m1_1151_485 x7/m1_486_485 GND GND sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.229m as=0.152u ps=5.64m w=602 l=30
+X18 x7/m1_1151_485 C GND GND sky130_fd_pr__nfet_01v8 ad=2.4n pd=0.112m as=15.8n ps=0.594m w=602 l=30
+X19 GND x7/m1_1151_485 x20/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=0 pd=0 as=77.2n ps=2.61m w=602 l=30
+X21 x1/m1_1818_485 D x20/a_0_0 GND sky130_fd_pr__nfet_01v8 ad=7.16n pd=0.314m as=0 ps=0 w=602 l=30
+X22 VDD x7/m1_1151_485 x1/m1_1818_485 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=46.4n ps=1.83m w=400 l=30
+X23 x1/m1_1818_485 x7/m1_1151_485 VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X24 VDD D x1/m1_1818_485 VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+X25 x1/m1_1818_485 D VDD VDD sky130_fd_pr__pfet_01v8 ad=0 pd=0 as=0 ps=0 w=400 l=30
+.ends
+
+** hspice subcircuit dictionary
+* x1	aoa4x1_pcell_0
+* x5	aoa4x1_pcell_0/aoai4x1_pcell_0/nand2x1_pcell_0/nmos_bottom_0
+* x7	aoa4x1_pcell_0/aoai4x1_pcell_0
+* x13	aoa4x1_pcell_0/aoai4x1_pcell_0/nor2x1_pcell_0
+* x20	aoa4x1_pcell_0/aoai4x1_pcell_0/nand2x1_pcell_1/nmos_bottom_0

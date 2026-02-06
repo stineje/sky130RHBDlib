@@ -30,10 +30,10 @@ define_template -type constraint \
         -index_2  {0.1  0.90  1.80} \
         constraint_template
 
-set inputs  {A B C D E F S GATE GATE_N CIN}
-set outputs {Y Yn Q QN Qn SUM COUT}
+set inputs  {A0 A1 B C CIN CLK D GATE GATE_N S}
+set outputs {COUT Q QN SUM Y YN}
 set clocks  {CLK}
-set asyncs  {SN Sn RN Rn EN}
+set asyncs  {SN RN EN}
 
 define_cell \
         -input $inputs  -output $outputs  -clock $clocks  -async $asyncs \
