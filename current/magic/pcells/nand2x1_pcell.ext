@@ -1,0 +1,92 @@
+timestamp 1652323009
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 4400000 2200000 950000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12800 125 125 47 47 29 5
+use diff_ring_side diff_ring_side_1 1 0 0 0 1 0
+use nmos_bottom nmos_bottom_0 -1 0 360 0 1 73
+use pmos2 pmos2_0 1 0 43 0 1 1404
+use poly_li1_contact poly_li1_contact_0 0 1 223 -1 0 941
+use poly_li1_contact poly_li1_contact_1 0 1 223 -1 0 417
+use nmos_top_trim1 nmos_top_trim1_0 -1 0 554 0 1 73
+use pmos2 pmos2_1 1 0 219 0 1 1404
+use poly_li1_contact poly_li1_contact_2 0 -1 369 1 0 415
+use poly_li1_contact poly_li1_contact_3 0 1 377 -1 0 941
+use diff_ring_side diff_ring_side_0 1 0 666 0 1 0
+node "li_205_433#" 179 108.449 205 433 li 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16150 1018 0 0 0 0 0 0 0 0 0 0 0 0
+node "li_353_433#" 207 32.4362 353 433 li 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16182 1086 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_362_382#" 1446 16.9813 362 382 p 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30 62 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_168_375#" 61 40.3763 168 375 p 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1140 136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_229_1059#" 1635 220.892 229 1059 pdc 0 0 0 0 0 0 0 0 0 0 2312 272 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 43928 2652 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_141_1059#" 229 0.873112 141 1059 pdc 0 0 0 0 0 0 0 0 0 0 1156 136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2856 236 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_87_786#" 4387 1299.92 87 786 nw 0 0 0 0 375888 2512 0 0 67574 2618 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 40664 1332 40664 1332 0 0 0 0 0 0 0 0 0 0
+substrate "a_31_n30#" 0 0 31 -30 ppd 0 0 0 0 0 0 0 0 0 0 68228 2650 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 45558 1610 41036 1344 0 0 0 0 0 0 0 0 0 0
+cap "w_87_786#" "a_229_1059#" 204.551
+cap "a_141_1059#" "w_87_786#" 32.5063
+cap "a_362_382#" "a_168_375#" 0.097561
+cap "li_205_433#" "w_87_786#" 40.5278
+cap "w_87_786#" "li_353_433#" 21.0757
+cap "a_141_1059#" "a_229_1059#" 45.6536
+cap "li_205_433#" "a_229_1059#" 48.4483
+cap "li_353_433#" "a_229_1059#" 120.354
+cap "li_205_433#" "li_353_433#" 106.25
+cap "nmos_top_trim1_0/a_56_92#" "pmos2_0/a_174_n400#" 56.7543
+cap "nmos_top_trim1_0/a_56_92#" "diff_ring_side_1/a_n34_n34#" 31.1256
+cap "nmos_top_trim1_0/a_56_92#" "nmos_bottom_0/a_56_84#" 73.9655
+cap "nmos_top_trim1_0/a_56_92#" "diff_ring_side_1/w_n87_786#" 63.477
+cap "pmos2_0/a_174_n400#" "diff_ring_side_1/a_n34_n34#" 104.685
+cap "diff_ring_side_1/a_n34_n34#" "nmos_bottom_0/a_56_84#" 32.9408
+cap "pmos2_0/a_174_n400#" "nmos_bottom_0/a_56_84#" 24.1958
+cap "diff_ring_side_1/a_n34_n34#" "diff_ring_side_1/w_n87_786#" 0.704804
+cap "pmos2_0/a_174_n400#" "diff_ring_side_1/w_n87_786#" 164.148
+cap "nmos_top_trim1_0/a_56_92#" "nmos_bottom_0/a_0_0#" 3.52977
+cap "nmos_bottom_0/a_56_84#" "diff_ring_side_1/w_n87_786#" 54.6092
+cap "pmos2_0/a_174_n400#" "nmos_bottom_0/a_0_0#" 140.545
+cap "diff_ring_side_1/a_n34_n34#" "nmos_bottom_0/a_0_0#" 446.74
+cap "nmos_bottom_0/a_0_0#" "nmos_bottom_0/a_56_84#" 6.75691
+cap "nmos_bottom_0/a_0_0#" "diff_ring_side_1/w_n87_786#" 6.75255
+cap "nmos_bottom_0/a_56_84#" "nmos_top_trim1_0/a_56_92#" 14.6488
+cap "diff_ring_side_1/w_n87_786#" "nmos_top_trim1_0/a_56_92#" -6.52641
+cap "diff_ring_side_1/w_n87_786#" "nmos_bottom_0/a_0_0#" 3.40158
+cap "diff_ring_side_1/w_n87_786#" "pmos2_0/a_174_n400#" 46.7624
+cap "diff_ring_side_1/w_n87_786#" "nmos_bottom_0/a_56_84#" -4.82049
+cap "diff_ring_side_1/w_n87_786#" "diff_ring_side_1/a_n34_n34#" -0.905224
+merge "poly_li1_contact_1/a_n32_n28#" "nmos_bottom_0/a_56_84#" -312.313 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -47664 -294 0 0 46172 -170 0 0 0 0 0 0 0 0 0 0 0 0
+merge "nmos_bottom_0/a_56_84#" "a_168_375#"
+merge "a_168_375#" "poly_li1_contact_0/a_n32_n28#"
+merge "poly_li1_contact_0/a_n32_n28#" "li_205_433#"
+merge "li_205_433#" "pmos2_0/a_144_n461#"
+merge "diff_ring_side_0/m1_n34_1446#" "diff_ring_side_0/w_n87_786#" -1047.12 0 0 0 0 -283200 -6144 0 0 -343406 -452 4350 -1040 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -12240 -1282 -31008 -272 0 0 0 0 0 0 0 0 0 0
+merge "diff_ring_side_0/w_n87_786#" "pmos2_1/a_262_n400#"
+merge "pmos2_1/a_262_n400#" "pmos2_1/a_88_n400#"
+merge "pmos2_1/a_88_n400#" "pmos2_1/w_52_n436#"
+merge "pmos2_1/w_52_n436#" "pmos2_0/a_262_n400#"
+merge "pmos2_0/a_262_n400#" "pmos2_0/a_88_n400#"
+merge "pmos2_0/a_88_n400#" "a_141_1059#"
+merge "a_141_1059#" "pmos2_0/w_52_n436#"
+merge "pmos2_0/w_52_n436#" "diff_ring_side_1/m1_n34_1446#"
+merge "diff_ring_side_1/m1_n34_1446#" "diff_ring_side_1/w_n87_786#"
+merge "diff_ring_side_1/w_n87_786#" "w_87_786#"
+merge "diff_ring_side_0/m1_n34_n34#" "diff_ring_side_0/a_n34_n34#" 1522.78 0 0 0 0 0 0 0 0 0 0 861770 -484 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1144320 -370 1285012 -284 0 0 0 0 0 0 0 0 0 0
+merge "diff_ring_side_0/a_n34_n34#" "poly_li1_contact_3/VSUBS"
+merge "poly_li1_contact_3/VSUBS" "poly_li1_contact_2/VSUBS"
+merge "poly_li1_contact_2/VSUBS" "pmos2_1/VSUBS"
+merge "pmos2_1/VSUBS" "nmos_top_trim1_0/VSUBS"
+merge "nmos_top_trim1_0/VSUBS" "poly_li1_contact_1/VSUBS"
+merge "poly_li1_contact_1/VSUBS" "poly_li1_contact_0/VSUBS"
+merge "poly_li1_contact_0/VSUBS" "pmos2_0/VSUBS"
+merge "pmos2_0/VSUBS" "nmos_bottom_0/VSUBS"
+merge "nmos_bottom_0/VSUBS" "nmos_bottom_0/a_86_100#"
+merge "nmos_bottom_0/a_86_100#" "diff_ring_side_1/m1_n34_n34#"
+merge "diff_ring_side_1/m1_n34_n34#" "diff_ring_side_1/a_n34_n34#"
+merge "diff_ring_side_1/a_n34_n34#" "a_31_n30#"
+merge "pmos2_1/a_174_n400#" "nmos_top_trim1_0/a_86_108#" -53.1325 0 0 0 0 0 0 0 0 0 0 -51028 -272 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55794 -206 0 0 0 0 0 0 0 0 0 0 0 0
+merge "nmos_top_trim1_0/a_86_108#" "pmos2_0/a_174_n400#"
+merge "pmos2_0/a_174_n400#" "a_229_1059#"
+merge "nmos_top_trim1_0/a_0_0#" "nmos_bottom_0/a_0_0#" 287.021 0 0 0 0 0 0 0 0 294206 -660 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 339490 -620 0 0 0 0 0 0 0 0 0 0 0 0
+merge "poly_li1_contact_3/a_n32_n28#" "pmos2_1/a_144_n461#" -168.235 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7908 -260 0 0 32634 -226 0 0 0 0 0 0 0 0 0 0 0 0
+merge "pmos2_1/a_144_n461#" "poly_li1_contact_2/a_n32_n28#"
+merge "poly_li1_contact_2/a_n32_n28#" "li_353_433#"
+merge "li_353_433#" "nmos_top_trim1_0/a_56_92#"
+merge "nmos_top_trim1_0/a_56_92#" "a_362_382#"

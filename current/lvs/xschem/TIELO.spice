@@ -1,0 +1,11 @@
+** sch_path: /home/rjridle/OpenRadHardSCL/lib/xschem/TIELO.sch
+.subckt TIELO YN VDD GND
+*.PININFO YN:O
+XM1 YN net1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15u W=3u nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15u W=2u nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+.ends
+.end

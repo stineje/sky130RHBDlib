@@ -1,0 +1,45 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO FILL1
+  CLASS CORE SPACER ;
+  FOREIGN FILL1 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 1.110 BY 7.400 ;
+  SYMMETRY X Y R90 ;
+  SITE unitrh ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    SHAPE ABUTMENT ;
+    PORT
+      LAYER met1 ;
+        RECT -0.170 7.230 1.280 7.570 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    SHAPE ABUTMENT ;
+    PORT
+      LAYER met1 ;
+        RECT -0.170 -0.170 1.280 0.170 ;
+    END
+  END GND
+  OBS
+      LAYER nwell ;
+        RECT -0.435 3.930 1.545 7.750 ;
+      LAYER pwell ;
+        RECT -0.170 -0.170 1.280 2.720 ;
+      LAYER li1 ;
+        RECT -0.170 7.230 1.280 7.570 ;
+        RECT -0.170 4.110 0.170 7.230 ;
+        RECT 0.940 4.110 1.280 7.230 ;
+        RECT -0.170 0.170 0.170 2.720 ;
+        RECT 0.940 0.170 1.280 2.720 ;
+        RECT -0.170 -0.170 1.280 0.170 ;
+  END
+END FILL1
+END LIBRARY
+

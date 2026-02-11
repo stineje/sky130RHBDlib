@@ -1,0 +1,234 @@
+# Ryan's notes
+
+##DRC Rules and Guidelines to Follow:
+
+    rail height: 0.31
+        - rail must be both locali and metal1
+        - VDD rail contact consists of nwell, nsubdiffcont, and viali
+        - GND rail contact consists of psubdiffcont and viali
+
+    minimum poly width size: 0.15
+    minimum metal width size: 0.17
+
+    ndiff->locali contact (ndiffc) size: 0.17 x 0.20
+        - A 0.08 length of locali must extend from end of contact
+
+    pdiff->locali contact (pdiffc) size: 0.17 x 0.20
+        - A 0.08 length of locali must extend from end of contact
+
+    poly->locali contact (polycont) size: 0.17 x 0.17
+        - poly surrounds contact with 0.05 on sides and 0.08 top and bottom.
+
+    locali->metal1 contact (viali) size: 0.17 x 0.17
+        - metal 1 surrounds viali with 0.06 on sides and 0.03 on top and bottom.
+
+    *All labels must be placed on M1*
+
+    *Spacing between M1 lines is 37um pitch*
+
+##Library types:
+-------------------------------------------------------------------------------
+12T_ls
+12T_ms
+12T_hs
+
+    height: 4.44 (from bottom of GND rail to top of VDD rail)
+    NMOS sizing: L=0.15 W=0.55
+    PMOS sizing: L=0.15 W=1.26
+
+-------------------------------------------------------------------------------
+15T_ls
+15T_ms
+15T_hs
+
+    height: 5.55 (from bottom of gnd rail to top of vdd rail
+    NMOS sizing: L=0.15 W=0.64
+    PMOS sizing: L=0.15 W=2.00
+
+-------------------------------------------------------------------------------
+18T_ls
+18T_ms
+18T_hs
+
+    height: 6.66 (from bottom of gnd rail to top of vdd rail
+    NMOS sizing: L=0.15 W=1.00
+    PMOS sizing: L=0.15 W=3.00
+
+
+-------------------------------------------------------------------------------
+
+Allowable W/L for sky130:
+   NMOS
+  W    L
+----------
+1.26  0.15
+1.68  0.15
+1.0   1.0
+1.0   2.0
+1.0   4.0
+1.0   8.0
+1.0   0.15
+1.0   0.18
+1.0   0.25
+1.0   0.5
+2.0   0.15
+3.0   1.0
+3.0   2.0
+3.0   4.0
+3.0   8.0
+3.0   0.15
+3.0   0.18
+3.0   0.25
+3.0   0.5
+5.0   1.0
+5.0   2.0
+5.0   4.0
+5.0   8.0
+5.0   0.15
+5.0   0.18
+5.0   0.25
+5.0   0.5
+7.0   1.0
+7.0   2.0
+7.0   4.0
+7.0   8.0
+7.0   0.15
+7.0   0.18
+7.0   0.25
+7.0   0.5
+0.42  1.0
+0.42  20.0
+0.42  2.0
+0.42  4.0
+0.42  8.0
+0.42  0.15
+0.42  0.18
+0.42  0.5
+0.55  1.0
+0.55  2.0
+0.55  4.0
+0.55  8.0
+0.55  0.15
+0.55  0.5
+0.64  0.15
+0.84  0.15
+0.74  0.15
+0.36  0.15
+0.39  0.15
+0.52  0.15
+0.54  0.15
+0.58  0.15
+0.60  0.15
+0.61  0.15
+0.65  0.15
+0.65  0.18
+0.65  0.25
+0.65  0.5
+
+   PMOS
+  W    L  
+----------
+1.26  0.15
+1.68  0.15
+1.0   1.0
+1.0   2.0
+1.0   4.0
+1.0   8.0
+1.0   0.15
+1.0   0.18
+1.0   0.25
+1.0   0.5
+2.0   0.15
+3.0   1.0
+3.0   2.0
+3.0   4.0
+3.0   8.0
+3.0   0.15
+3.0   0.18
+3.0   0.25
+3.0   0.5
+5.0   1.0
+5.0   2.0
+5.0   4.0
+5.0   8.0
+5.0   0.15
+5.0   0.18
+5.0   0.25
+5.0   0.5
+7.0   1.0
+7.0   2.0
+7.0   4.0
+7.0   8.0
+7.0   0.15
+7.0   0.18
+7.0   0.25
+7.0   0.5
+0.42  1.0
+0.42  20.0
+0.42  2.0
+0.42  4.0
+0.42  8.0
+0.42  0.15
+0.42  0.18
+0.42  0.5
+0.55  1.0
+0.55  2.0
+0.55  4.0
+0.55  8.0
+0.55  0.15
+0.55  0.5
+0.64  0.15
+0.84  0.15
+1.65  0.15
+
+NMOS_elt_1 (W L):   2.885  0.15
+
+NMOS_elt_1_1 (W L): 2.895  0.15
+
+NMOS_elt_1_2 (W L): 2.91   0.15
+
+NMOS_elt_1_3 (W L): 2.92   0.15
+
+NMOS_elt_2 (W L):   2.895  0.15
+
+NMOS_elt_2_1 (W L): 2.905  0.15
+
+NMOS_elt_2_2 (W L): 2.92   0.15
+
+NMOS_elt_2_3 (W L): 2.93   0.15
+
+NMOS_elt_3 (W L):   2.905  0.15
+
+NMOS_elt_3_1 (W L): 2.915  0.15
+
+NMOS_elt_3_2 (W L): 2.93   0.15
+
+NMOS_elt_3_3 (W L): 2.94   0.15
+
+NMOS_elt_4 (W L):   2.915  0.15
+
+NMOS_elt_4_1 (W L): 2.925  0.15
+
+NMOS_elt_4_2 (W L): 2.94   0.15
+
+NMOS_elt_4_3 (W L): 2.95   0.15
+
+NMOS_elt_5 (W L):   2.925  0.15
+
+NMOS_elt_5_1 (W L): 2.935  0.15
+
+NMOS_elt_5_2 (W L): 2.95   0.15
+
+NMOS_elt_5_3 (W L): 2.96   0.15
+
+NMOS_elt_6 (W L):   2.935  0.15
+
+NMOS_elt_6_1 (W L): 2.945  0.15
+
+NMOS_elt_6_2 (W L): 2.96   0.15
+
+NMOS_elt_6_3 (W L): 2.97   0.15
+
+refEDA
+
+magic -> sue -> DRC -> netgen
