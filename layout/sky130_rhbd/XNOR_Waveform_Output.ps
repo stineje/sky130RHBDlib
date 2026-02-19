@@ -1,0 +1,110 @@
+%!PS-Adobe-2.0
+%%Pages: 1
+%%EndComments
+%!
+/MSAVE { /mStat save def } def
+/MRESTORE { mStat restore } def
+/SET { exch def } def
+/SF { /wi SET theFont [wi 0 0 FSIZE 0 0] makefont setfont } def
+/L { newpath moveto lineto stroke } def
+/VL { 2 index exch L } def
+/HL { 1 index L } def
+/BOX { /@yb SET /@xb SET /@yt SET /@xt SET newpath
+ @xb @yb moveto @xb @yt lineto @xt @yt lineto @xt @yb lineto closepath } def
+/SL { moveto show } def
+/SR { exch dup /@xr SET 2 index stringwidth pop sub dup
+ 0 le { pop 0 @xr 3 -1 roll SC } { exch FSIZE 2 div sub moveto show }
+ ifelse } def
+/SCP { /@s SET @s stringwidth pop /@sw SET @sw 2 div sub
+ dup @sw add maxX gt { pop maxX @sw sub } if exch moveto @s show } def
+/SC { FSIZE 2 div sub /@y SET /@x2 SET /@x1 SET /@s SET
+ /@l @x2 @x1 sub def /@x @x1 @x2 add 2 div def
+ /@w @s stringwidth pop def @l @w gt
+ { @y @x @s SCP }
+ { @l FSIZE mul @w 1 add div dup MINFSIZE lt
+ { pop } { /svf currentfont def SF @y @x @s SCP svf setfont } ifelse }ifelse
+} def
+/LE { exch GX GY FSIZE 2 div add SR /@x GX def
+ { dup stringwidth pop /@w SET /@x @x FSIZE add def @x @w add
+ 720 ge { /@x GX FSIZE add def /GY GY FSIZE 2 add sub def } if
+ @x GY SL /@x @x @w add def } repeat /GY GY FSIZE 4 add sub def } def
+/FSIZE 9 def /MINFSIZE 4 def /maxX 718 def
+612 0 translate
+90 rotate
+36 56 translate
+1 setlinecap 0.6 setlinewidth 
+/theFont /Helvetica findfont def FSIZE SF
+%%Page: 1 1
+%%PageOrientation: Landscape
+MSAVE
+0.82 setgray
+0 505 720 520 BOX fill
+0 setgray
+0 505 720 520 BOX stroke
+(XNOR_Waveform_Output)6 513 FSIZE 2 div sub SL
+(Fri Jan 30 11:15:50 2026
+) 716 513 SR
+0 -20 720 520 BOX stroke
+0 setlinewidth [1 3] 0 setdash /svfnt currentfont def
+theFont 0.7 FSIZE mul scalefont setfont
+(time \(ns\)) 0 -1 0 SC
+0 505 0 VL
+(0.00) 0 0 -10 SC
+59 505 0 VL
+(5.00) 0 118 -10 SC
+119 505 0 VL
+(10.00) 0 238 -10 SC
+179 505 0 VL
+(15.00) 0 358 -10 SC
+239 505 0 VL
+(20.00) 0 478 -10 SC
+299 505 0 VL
+(25.00) 0 598 -10 SC
+359 505 0 VL
+(30.00) 0 718 -10 SC
+418 505 0 VL
+(35.00) 0 836 -10 SC
+478 505 0 VL
+(40.00) 0 956 -10 SC
+538 505 0 VL
+(45.00) 0 1076 -10 SC
+597 505 0 VL
+(50.00) 0 1194 -10 SC
+657 505 0 VL
+(55.00) 0 1314 -10 SC
+717 505 0 VL
+(60.00) 0 1434 -10 SC
+0 0 718 HL
+0.6 setlinewidth [] 0 setdash svfnt setfont
+(A)717 495 SR
+(B)717 477 SR
+(Y)717 459 SR
+0.68 setgray
+0 503 0 487 BOX fill
+0 setgray
+0 487 503 VL
+0 487 119 HL
+119 487 503 VL
+119 503 478 HL
+478 487 503 VL
+478 487 717 HL
+0.68 setgray
+0 485 0 469 BOX fill
+0 setgray
+0 469 485 VL
+0 469 359 HL
+359 469 485 VL
+359 485 597 HL
+597 469 485 VL
+597 469 717 HL
+0.68 setgray
+0 467 0 451 BOX fill
+0 setgray
+0 451 467 VL
+0 467 119 HL
+119 451 467 VL
+119 451 597 HL
+597 451 467 VL
+597 467 717 HL
+showpage MRESTORE
+%%EOF
