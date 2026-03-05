@@ -1,4 +1,4 @@
-// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Fri Feb  6 13:50:25 2026 for SDF version 2.1
+// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Thu Mar  5 10:50:05 2026 for SDF version 2.1
 
 // type:  
 `timescale 1ns/10ps
@@ -133,10 +133,16 @@ endmodule
 // type:  
 `timescale 1ns/10ps
 `celldefine
-module BUFX1 (A);
+module BUFX1 (Y, A);
+	output Y;
 	input A;
+
+	// Function
+	buf (Y, A);
+
 	// Timing
 	specify
+		(A => Y) = 0;
 	endspecify
 endmodule
 `endcelldefine
@@ -1186,6 +1192,30 @@ endmodule
 // type:  
 `timescale 1ns/10ps
 `celldefine
+module NOR3X1 (Y, A, B, C);
+	output Y;
+	input A, B, C;
+
+	// Function
+	wire A__bar, B__bar, C__bar;
+
+	not (C__bar, C);
+	not (B__bar, B);
+	not (A__bar, A);
+	and (Y, A__bar, B__bar, C__bar);
+
+	// Timing
+	specify
+		(A => Y) = 0;
+		(B => Y) = 0;
+		(C => Y) = 0;
+	endspecify
+endmodule
+`endcelldefine
+
+// type:  
+`timescale 1ns/10ps
+`celldefine
 module OR2X1 (Y, A, B);
 	output Y;
 	input A, B;
@@ -1260,21 +1290,20 @@ module TMRDFFQNX1 (QN, D, CLK);
 	wire delayed_D, delayed_CLK;
 
 	// Function
-	wire delayed_D__bar, int_fwire_0, int_fwire_d;
-	wire int_fwire_IQN, xcr_0;
+	wire int_fwire_d, int_fwire_IQN, xcr_0;
 
-	and (int_fwire_0, delayed_D, int_fwire_IQN);
-	not (delayed_D__bar, delayed_D);
-	or (int_fwire_d, delayed_D__bar, int_fwire_0);
+	not (int_fwire_d, delayed_D);
 	altos_dff_err (xcr_0, delayed_CLK, int_fwire_d);
 	altos_dff (int_fwire_IQN, notifier, delayed_CLK, int_fwire_d, xcr_0);
 	buf (QN, int_fwire_IQN);
 
 	// Timing
 	specify
-		(posedge CLK => (QN+:((D && int_fwire_IQN) || (!D)))) = 0;
+		(posedge CLK => (QN+:!D)) = 0;
 		$setuphold (posedge CLK, posedge D, 0, 0, notifier,,, delayed_CLK, delayed_D);
 		$setuphold (posedge CLK, negedge D, 0, 0, notifier,,, delayed_CLK, delayed_D);
+		$width (posedge CLK &&& D, 0, 0, notifier);
+		$width (negedge CLK &&& D, 0, 0, notifier);
 		$width (posedge CLK &&& ~D, 0, 0, notifier);
 		$width (negedge CLK &&& ~D, 0, 0, notifier);
 	endspecify
@@ -1289,14 +1318,49 @@ module TMRDFFQX1 (Q, D, CLK);
 	input D, CLK;
 	reg notifier;
 	wire delayed_D, delayed_CLK;
-	// Missing function for pin Q
+
+	// Function
+	wire int_fwire_IQ, xcr_0;
+
+	altos_dff_err (xcr_0, delayed_CLK, delayed_D);
+	altos_dff (int_fwire_IQ, notifier, delayed_CLK, delayed_D, xcr_0);
+	buf (Q, int_fwire_IQ);
+
 	// Timing
 	specify
-		(posedge CLK => (Q-:CLK)) = 0;
+		(posedge CLK => (Q+:D)) = 0;
 		$setuphold (posedge CLK, posedge D, 0, 0, notifier,,, delayed_CLK, delayed_D);
 		$setuphold (posedge CLK, negedge D, 0, 0, notifier,,, delayed_CLK, delayed_D);
+		$width (posedge CLK &&& D, 0, 0, notifier);
+		$width (negedge CLK &&& D, 0, 0, notifier);
 		$width (posedge CLK &&& ~D, 0, 0, notifier);
 		$width (negedge CLK &&& ~D, 0, 0, notifier);
+	endspecify
+endmodule
+`endcelldefine
+
+// type:  
+`timescale 1ns/10ps
+`celldefine
+module TMRDFFRNQX1 (Q, D, RN, CLK);
+	output Q;
+	input D, RN, CLK;
+	reg notifier;
+	// Missing function for pin Q
+	// Timing
+
+	// Additional timing wires
+	wire adacond0, D__bar;
+
+
+	// Additional timing gates
+	not (D__bar, D);
+	and (adacond0, D__bar, RN);
+
+	specify
+		ifnone (posedge D => (Q-:1'b0)) = 0;
+		(negedge CLK => (Q+:CLK)) = 0;
+		$width (negedge CLK &&& adacond0, 0, 0, notifier);
 	endspecify
 endmodule
 `endcelldefine
@@ -1382,21 +1446,63 @@ module VOTER3X1 (Y, A, B, C);
 
 	// Timing
 	specify
-		if ((B & C))
-			(posedge A => (Y+:1'b1)) = 0;
 		if ((B & ~C))
 			(posedge A => (Y+:1'b1)) = 0;
 		if ((~B & C))
 			(posedge A => (Y+:1'b1)) = 0;
 		ifnone (A => Y) = 0;
 		if ((A & ~C))
-			(negedge B => (Y+:1'b0)) = 0;
+			(B => Y) = 0;
 		if ((~A & C))
-			(negedge B => (Y+:1'b0)) = 0;
+			(B => Y) = 0;
 		if ((~A & ~C))
 			(negedge B => (Y+:1'b0)) = 0;
 		ifnone (B => Y) = 0;
-		(C => Y) = 0;
+		if ((A & ~B))
+			(posedge C => (Y+:1'b1)) = 0;
+		if ((~A & B))
+			(posedge C => (Y+:1'b1)) = 0;
+		ifnone (C => Y) = 0;
+	endspecify
+endmodule
+`endcelldefine
+
+// type:  
+`timescale 1ns/10ps
+`celldefine
+module VOTERN3X1 (YN, A, B, C);
+	output YN;
+	input A, B, C;
+
+	// Function
+	wire A__bar, B__bar, C__bar;
+	wire int_fwire_0, int_fwire_1, int_fwire_2;
+
+	not (C__bar, C);
+	not (B__bar, B);
+	and (int_fwire_0, B__bar, C__bar);
+	not (A__bar, A);
+	and (int_fwire_1, A__bar, C__bar);
+	and (int_fwire_2, A__bar, B__bar);
+	or (YN, int_fwire_2, int_fwire_1, int_fwire_0);
+
+	// Timing
+	specify
+		if ((B & ~C))
+			(A => YN) = 0;
+		if ((~B & C))
+			(A => YN) = 0;
+		ifnone (A => YN) = 0;
+		if ((A & ~C))
+			(B => YN) = 0;
+		if ((~A & C))
+			(B => YN) = 0;
+		ifnone (B => YN) = 0;
+		if ((A & ~B))
+			(C => YN) = 0;
+		if ((~A & B))
+			(C => YN) = 0;
+		ifnone (C => YN) = 0;
 	endspecify
 endmodule
 `endcelldefine
