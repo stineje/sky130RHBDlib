@@ -1,4 +1,4 @@
-// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Mon Mar 16 05:17:48 2026 for SDF version 2.1
+// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Mon Mar 16 05:43:40 2026 for SDF version 2.1
 
 // type:  
 `timescale 1ns/10ps
@@ -1579,6 +1579,124 @@ module TMRDFFSNQX1 (Q, D, SN, CLK);
 		$width (negedge CLK &&& adacond4, 0, 0, notifier);
 		$width (posedge CLK &&& adacond5, 0, 0, notifier);
 		$width (negedge CLK &&& adacond5, 0, 0, notifier);
+	endspecify
+endmodule
+`endcelldefine
+
+// type:  
+`timescale 1ns/10ps
+`celldefine
+module TMRDFFSNRNQX1 (Q, D, RN, SN, CLK);
+	output Q;
+	input D, RN, SN, CLK;
+	reg notifier;
+	wire delayed_D, delayed_RN, delayed_SN, delayed_CLK;
+
+	// Function
+	wire int_fwire_IQ, int_fwire_r, int_fwire_s;
+	wire xcr_0;
+
+	not (int_fwire_s, delayed_SN);
+	not (int_fwire_r, delayed_RN);
+	altos_dff_sr_err (xcr_0, delayed_CLK, delayed_D, int_fwire_s, int_fwire_r);
+	altos_dff_sr_1 (int_fwire_IQ, notifier, delayed_CLK, delayed_D, int_fwire_s, int_fwire_r, xcr_0);
+	buf (Q, int_fwire_IQ);
+
+	// Timing
+
+	// Additional timing wires
+	wire adacond0, adacond1, adacond2;
+	wire adacond3, adacond4, adacond5;
+	wire adacond6, adacond7, adacond8;
+	wire adacond9, adacond10, adacond11;
+	wire adacond12, adacond13, adacond14;
+	wire adacond15, adacond16, CLK__bar;
+	wire D__bar;
+
+
+	// Additional timing gates
+	and (adacond0, RN, SN);
+	and (adacond1, D, SN);
+	and (adacond6, CLK, D, SN);
+	not (D__bar, D);
+	and (adacond7, CLK, D__bar, SN);
+	not (CLK__bar, CLK);
+	and (adacond8, CLK__bar, D, SN);
+	and (adacond9, CLK__bar, D__bar, SN);
+	and (adacond2, CLK, D);
+	and (adacond3, CLK, D__bar);
+	and (adacond4, CLK__bar, D);
+	and (adacond5, CLK__bar, D__bar);
+	and (adacond10, D__bar, RN);
+	and (adacond11, CLK, D, RN);
+	and (adacond12, CLK, D__bar, RN);
+	and (adacond13, CLK__bar, D, RN);
+	and (adacond14, CLK__bar, D__bar, RN);
+	and (adacond15, D, RN, SN);
+	and (adacond16, D__bar, RN, SN);
+
+	specify
+		if ((CLK & D & SN))
+			(negedge RN => (Q+:1'b0)) = 0;
+		if ((CLK & ~D & SN))
+			(negedge RN => (Q+:1'b0)) = 0;
+		if ((~CLK & D & SN))
+			(negedge RN => (Q+:1'b0)) = 0;
+		if ((~CLK & ~D & SN))
+			(negedge RN => (Q+:1'b0)) = 0;
+		ifnone (negedge RN => (Q+:1'b0)) = 0;
+		if ((CLK & ~RN))
+			(posedge SN => (Q+:1'b0)) = 0;
+		if ((~CLK & ~RN))
+			(posedge SN => (Q+:1'b0)) = 0;
+		ifnone (posedge SN => (Q+:1'b0)) = 0;
+		if ((CLK & D & RN))
+			(negedge SN => (Q+:1'b1)) = 0;
+		if ((CLK & ~RN))
+			(negedge SN => (Q+:1'b1)) = 0;
+		if ((CLK & ~D & RN))
+			(negedge SN => (Q+:1'b1)) = 0;
+		if ((~CLK & D & RN))
+			(negedge SN => (Q+:1'b1)) = 0;
+		if ((~CLK & ~RN))
+			(negedge SN => (Q+:1'b1)) = 0;
+		if ((~CLK & ~D & RN))
+			(negedge SN => (Q+:1'b1)) = 0;
+		ifnone (negedge SN => (Q+:1'b1)) = 0;
+		(posedge CLK => (Q+:D)) = 0;
+		$setuphold (posedge CLK &&& adacond0, posedge D &&& adacond0, 0, 0, notifier,,, delayed_CLK, delayed_D);
+		$setuphold (posedge CLK &&& adacond0, negedge D &&& adacond0, 0, 0, notifier,,, delayed_CLK, delayed_D);
+		$setuphold (posedge CLK, posedge D, 0, 0, notifier,,, delayed_CLK, delayed_D);
+		$setuphold (posedge CLK, negedge D, 0, 0, notifier,,, delayed_CLK, delayed_D);
+		$setuphold (posedge SN &&& adacond2, posedge RN &&& adacond2, 0, 0, notifier,,, delayed_SN, delayed_RN);
+		$setuphold (posedge SN &&& adacond3, posedge RN &&& adacond3, 0, 0, notifier,,, delayed_SN, delayed_RN);
+		$setuphold (posedge SN &&& adacond4, posedge RN &&& adacond4, 0, 0, notifier,,, delayed_SN, delayed_RN);
+		$setuphold (posedge SN &&& adacond5, posedge RN &&& adacond5, 0, 0, notifier,,, delayed_SN, delayed_RN);
+		$setuphold (posedge SN, posedge RN, 0, 0, notifier,,, delayed_SN, delayed_RN);
+		$setuphold (posedge RN &&& CLK, posedge SN &&& CLK, 0, 0, notifier,,, delayed_RN, delayed_SN);
+		$setuphold (posedge RN &&& adacond4, posedge SN &&& adacond4, 0, 0, notifier,,, delayed_RN, delayed_SN);
+		$setuphold (posedge RN &&& adacond5, posedge SN &&& adacond5, 0, 0, notifier,,, delayed_RN, delayed_SN);
+		$setuphold (posedge RN, posedge SN, 0, 0, notifier,,, delayed_RN, delayed_SN);
+		$recovery (posedge RN &&& adacond1, posedge CLK &&& adacond1, 0, notifier);
+		$recovery (posedge RN, posedge CLK, 0, notifier);
+		$hold (posedge CLK &&& adacond1, posedge RN &&& adacond1, 0, notifier);
+		$hold (posedge CLK, posedge RN, 0, notifier);
+		$recovery (posedge SN &&& adacond10, posedge CLK &&& adacond10, 0, notifier);
+		$recovery (posedge SN, posedge CLK, 0, notifier);
+		$hold (posedge CLK &&& adacond10, posedge SN &&& adacond10, 0, notifier);
+		$hold (posedge CLK, posedge SN, 0, notifier);
+		$width (negedge RN &&& adacond6, 0, 0, notifier);
+		$width (negedge RN &&& adacond7, 0, 0, notifier);
+		$width (negedge RN &&& adacond8, 0, 0, notifier);
+		$width (negedge RN &&& adacond9, 0, 0, notifier);
+		$width (negedge SN &&& adacond11, 0, 0, notifier);
+		$width (negedge SN &&& adacond12, 0, 0, notifier);
+		$width (negedge SN &&& adacond13, 0, 0, notifier);
+		$width (negedge SN &&& adacond14, 0, 0, notifier);
+		$width (posedge CLK &&& adacond15, 0, 0, notifier);
+		$width (negedge CLK &&& adacond15, 0, 0, notifier);
+		$width (posedge CLK &&& adacond16, 0, 0, notifier);
+		$width (negedge CLK &&& adacond16, 0, 0, notifier);
 	endspecify
 endmodule
 `endcelldefine
