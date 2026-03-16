@@ -1,4 +1,4 @@
-// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Sun Mar 15 13:21:41 2026 for SDF version 2.1
+// Verilog for library /import/yukari1/lrburle/sky130RHBDlib/char/liberate/VERILOG/sky130_rhbd_tt_1P8_25C.ccs created by Liberate 23.1.1.221.isr1 on Mon Mar 16 05:17:48 2026 for SDF version 2.1
 
 // type:  
 `timescale 1ns/10ps
@@ -1462,6 +1462,31 @@ module TMRDFFQX1 (Q, D, CLK);
 		$width (negedge CLK &&& D, 0, 0, notifier);
 		$width (posedge CLK &&& ~D, 0, 0, notifier);
 		$width (negedge CLK &&& ~D, 0, 0, notifier);
+	endspecify
+endmodule
+`endcelldefine
+
+// type:  
+`timescale 1ns/10ps
+`celldefine
+module TMRDFFRNQNX1 (QN, D, RN, CLK);
+	output QN;
+	input D, RN, CLK;
+	reg notifier;
+	// Missing function for pin QN
+	// Timing
+
+	// Additional timing wires
+	wire adacond0, D__bar;
+
+
+	// Additional timing gates
+	not (D__bar, D);
+	and (adacond0, D__bar, RN);
+
+	specify
+		(negedge CLK => (QN-:CLK)) = 0;
+		$width (negedge CLK &&& adacond0, 0, 0, notifier);
 	endspecify
 endmodule
 `endcelldefine
