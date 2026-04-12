@@ -20,15 +20,17 @@ GND=GND
 
 default: extract
 
-all: extract pex abstract liberate 
+all: extract pex abstract
 
 extract: 
 	cd layout/${DESIGN}/ && python3 ext4mag.py --move --lef --extract_ngspice ${PATTERN} && cd -; \
 	cd layout/xschem/${DESIGN} && python3 extspice.py --move ${PATTERN}.sch && cd -; \
 	mkdir -p ${LIBRARY_NAME}/gds; \
+	mkdir -p ${LIBRARY_NAME}/spice; \
 	mkdir -p ${LIBRARY_NAME}/lef; \
 	cp layout/${DESIGN}/merged.gds $(RUN_DIR)/${LIBRARY_NAME}/gds/${DESIGN}.gds; \
 	cp layout/${DESIGN}/gds/* $(RUN_DIR)/${LIBRARY_NAME}/gds/; \
+	cp layout/${DESIGN}/spice/* $(RUN_DIR)/${LIBRARY_NAME}/spice/; \
 	cp layout/${DESIGN}/merged.lef $(RUN_DIR)/${LIBRARY_NAME}/lef/${DESIGN}.lef
 
 lvs:
@@ -84,7 +86,6 @@ flow:
 
 purge:
 	cd layout/${DESIGN} && ${MAKE} -f Makefile purge && cd -; \
-	cd layout/xschem/${DESIGN} && ${MAKE} -f Makefile purge DESIGN=${DESIGN} && cd -; \
 	cd layout/xschem/${DESIGN} && ${MAKE} -f Makefile purge DESIGN=${DESIGN} && cd -; \
 	cd netgen && ${MAKE} -f Makefile purge DESIGN=${DESIGN} && cd -; \
 	cd calibre && ${MAKE} -f Makefile purge DESIGN=${DESIGN} && cd -; \
