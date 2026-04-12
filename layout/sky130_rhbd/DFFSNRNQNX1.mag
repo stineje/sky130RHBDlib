@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1769083581
+timestamp 1773595922
 << error_s >>
 rect 275 326 291 342
 rect 777 334 793 350
@@ -200,6 +200,10 @@ rect 1487 833 1521 867
 rect 1692 825 1698 877
 rect 1750 825 1756 877
 rect 1692 819 1756 825
+rect 2656 876 2720 882
+rect 2656 824 2662 876
+rect 2714 824 2720 876
+rect 2656 818 2720 824
 rect 3766 875 3830 881
 rect 3766 823 3772 875
 rect 3824 823 3830 875
@@ -297,6 +301,7 @@ rect 516 901 568 953
 rect 3623 919 3675 971
 rect 4363 921 4415 973
 rect 1698 825 1750 877
+rect 2662 824 2714 876
 rect 3772 823 3824 875
 rect 5548 823 5600 875
 rect 738 750 790 802
@@ -321,6 +326,7 @@ rect 510 953 574 959
 rect 510 901 516 953
 rect 568 941 574 953
 rect 1664 941 1784 945
+rect 2628 941 2748 944
 rect 3617 941 3623 971
 rect 568 919 3623 941
 rect 3675 941 3681 971
@@ -333,22 +339,31 @@ rect 3675 919 4421 921
 rect 568 915 4421 919
 rect 568 911 4415 915
 rect 568 907 1664 911
-rect 1784 909 4415 911
-rect 1784 907 3738 909
+rect 1784 910 4415 911
+rect 1784 907 2628 910
+rect 2748 909 4415 910
+rect 2748 907 3738 909
 rect 3858 907 4415 909
 rect 568 901 574 907
 rect 510 895 574 901
 rect 1692 877 1756 883
 rect 1692 825 1698 877
 rect 1750 867 1756 877
-rect 3766 875 3830 881
+rect 2656 876 2720 882
 rect 1812 867 1932 871
-rect 3766 867 3772 875
-rect 1750 837 3772 867
+rect 2656 867 2662 876
+rect 1750 837 2662 867
 rect 1750 833 1812 837
-rect 1932 833 3772 837
+rect 1932 833 2662 837
 rect 1750 825 1756 833
 rect 1692 819 1756 825
+rect 2656 824 2662 833
+rect 2714 867 2720 876
+rect 3766 875 3830 881
+rect 3766 867 3772 875
+rect 2714 833 3772 867
+rect 2714 824 2720 833
+rect 2656 818 2720 824
 rect 3766 823 3772 833
 rect 3824 867 3830 875
 rect 5542 875 5606 881
@@ -384,12 +399,15 @@ rect 1898 793 1904 803
 rect 4135 802 4199 808
 rect 3368 793 3489 795
 rect 4135 793 4141 802
-rect 1898 789 3738 793
+rect 1898 790 2628 793
+rect 2748 790 3738 793
+rect 1898 789 3738 790
 rect 3858 789 4141 793
 rect 1898 761 4141 789
 rect 1898 759 3368 761
 rect 3489 759 4141 761
 rect 1898 751 1904 759
+rect 2628 756 2748 759
 rect 3738 755 3858 759
 rect 1840 745 1904 751
 rect 4135 750 4141 759
@@ -611,8 +629,6 @@ rlabel metal1 1487 685 1521 719 1 CLK
 port 3 nsew signal input
 rlabel metal1 525 907 559 941 1 RN
 port 5 nsew signal input
-rlabel metal1 2449 537 2483 571 1 SN
-port 4 nsew signal input
 rlabel metal1 4743 611 4777 645 1 QN
 port 1 nsew signal output
 rlabel metal1 4743 463 4777 497 1 QN
@@ -624,10 +640,6 @@ port 1 nsew signal output
 rlabel metal1 5113 611 5147 645 1 QN
 port 1 nsew signal output
 rlabel metal1 5113 685 5147 719 1 QN
-port 1 nsew signal output
-rlabel metal1 5113 463 5147 497 1 QN
-port 1 nsew signal output
-rlabel metal1 5113 907 5147 941 1 QN
 port 1 nsew signal output
 rlabel metal1 303 685 337 719 1 D
 port 2 nsew signal input
@@ -667,14 +679,28 @@ rlabel metal1 4373 685 4407 719 1 RN
 port 5 nsew signal input
 rlabel metal1 4373 759 4407 793 1 RN
 port 5 nsew signal input
-rlabel metal1 4373 907 4407 941 1 RN
-port 5 nsew signal input
 rlabel metal1 0 1482 5968 1552 1 VDD
 port 6 nsew power bidirectional abutment
 rlabel metal1 0 0 5968 70 1 GND
 port 7 nsew ground bidirectional abutment
 rlabel metal1 3633 923 3667 957 1 RN
 port 5 nsew signal input
+rlabel metal1 2449 537 2483 571 1 SN
+port 4 nsew signal input
+rlabel metal1 4373 959 4407 993 1 RN
+port 5 nsew signal input
+rlabel metal1 5113 959 5147 993 1 QN
+port 1 nsew signal output
+rlabel metal1 5113 435 5147 469 1 QN
+port 1 nsew signal output
+rlabel metal1 5335 537 5369 571 1 SN
+port 4 nsew signal input
+rlabel metal1 5335 611 5369 645 1 SN
+port 4 nsew signal input
+rlabel metal1 5335 685 5369 719 1 SN
+port 4 nsew signal input
+rlabel metal1 5335 959 5369 993 1 SN
+port 4 nsew signal input
 << properties >>
 string FIXED_BBOX 0 0 5968 1552
 string LEFclass CORE
