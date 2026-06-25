@@ -7,11 +7,13 @@
 <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=100%>
 <TR ALIGN=LEFT VALIGN=TOP><TH><FONT SIZE=+2><B>Truth Table</B></FONT>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4>
-<TR valign=middle><TH colspan=2><font size=3>INPUT</font></TH>
+<TR valign=middle><TH colspan=3><font size=3>INPUT</font></TH>
 <TH colspan=1><font size=3>OUTPUT</font></TH>
-<TR><Th>B</Th><Th>C</Th><Th>Y</Th></TR>
-<TR><Th><font size=2>0</font></Th><Th><font size=2>x</font></Th><Th><font size=2>0</font></Th></TR>
-<TR><Th><font size=2>1</font></Th><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th></TR>
+<TR><Th>A</Th><Th>B</Th><Th>C</Th><Th>Y</Th></TR>
+<TR><Th><font size=2>0</font></Th><Th><font size=2>0</font></Th><Th><font size=2>x</font></Th><Th><font size=2>0</font></Th></TR>
+<TR><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th></TR>
+<TR><Th><font size=2>1</font></Th><Th><font size=2>0</font></Th><Th><font size=2>0</font></Th><Th><font size=2>0</font></Th></TR>
+<TR><Th><font size=2>1</font></Th><Th><font size=2>x</font></Th><Th><font size=2>1</font></Th><Th><font size=2>1</font></Th></TR>
 </TABLE>
 </TR></TABLE>
 <BR>
@@ -26,18 +28,20 @@
 <FONT SIZE=+2><B>Pin Capacitance Information</B></FONT>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
 <TR valign=middle><TH rowspan=2>Cell Name</TH>
-<TH colspan=2>Pin Cap(pf) </TH>
+<TH colspan=3>Pin Cap(pf) </TH>
 <TH colspan=1>Max Cap(pf) </TH>
 </TR>
 <TR>
+<TH>A</TH>
 <TH>B</TH>
 <TH>C</TH>
 <TH>Y</TH>
 </TR>
 <TR><Th><font>VOTER3X1</font></Th>
-<TD align=center>0.01987</TD>
-<TD align=center>0.01791</TD>
-<TD align=center>8.90702</TD>
+<TD align=center>0.02219</TD>
+<TD align=center>0.02088</TD>
+<TD align=center>0.02070</TD>
+<TD align=center>5.44865</TD>
 </TR>
 </TABLE>
 <BR>
@@ -48,8 +52,8 @@
 </TR><TR><TH>Min.</TH><TH>Avg</TH><TH>Max.</TH></TR>
 <TR><Th><font>VOTER3X1</font></Th>
 <TD align=center>0.00000</TD>
-<TD align=center>4.53811</TD>
-<TD align=center>4.67509</TD>
+<TD align=center>3.89005</TD>
+<TD align=center>10.36970</TD>
 </TABLE>
 <BR>
 <!--NewPage-->
@@ -57,16 +61,54 @@
 <FONT SIZE=+2><B>Delay Information</B></FONT>
 <BR>
 <BR>
+<FONT><B>Delay(ns) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH>
+<TH colspan=3>Delay(ns)</TH></TR><TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
+<BR>
+<TR><TH rowspan=3>VOTER3X1</TH>
+<Th><font>A->Y (RR)</font></Th>
+<TD align=center>0.08406</TD>
+<TD align=center>0.68135</TD>
+<TD align=center>6.73295</TD>
+</TR>
+<TR>
+<Th><font>B->Y (RR)</font></Th>
+<TD align=center>0.09325</TD>
+<TD align=center>0.66129</TD>
+<TD align=center>6.43137</TD>
+</TR>
+<TR>
+<Th><font>C->Y (RR)</font></Th>
+<TD align=center>0.09018</TD>
+<TD align=center>0.67295</TD>
+<TD align=center>6.68167</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
 <FONT><B>Delay(ns) to Y falling :</B></FONT>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
 <TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Timing Arc(Dir)</TH>
 <TH colspan=3>Delay(ns)</TH></TR><TR><TH>First</TH><TH>Mid</TH><TH>Last</TH></TR>
 <BR>
-<TR><TH rowspan=1>VOTER3X1</TH>
+<TR><TH rowspan=3>VOTER3X1</TH>
+<Th><font>A->Y (FF)</font></Th>
+<TD align=center>0.14296</TD>
+<TD align=center>0.69506</TD>
+<TD align=center>6.19532</TD>
+</TR>
+<TR>
 <Th><font>B->Y (FF)</font></Th>
-<TD align=center>0.16764</TD>
-<TD align=center>0.86937</TD>
-<TD align=center>9.29050</TD>
+<TD align=center>0.20123</TD>
+<TD align=center>0.81270</TD>
+<TD align=center>6.67688</TD>
+</TR>
+<TR>
+<Th><font>C->Y (FF)</font></Th>
+<TD align=center>0.17747</TD>
+<TD align=center>0.72865</TD>
+<TD align=center>6.38445</TD>
 </TR>
 </TABLE>
 <BR>
@@ -75,21 +117,190 @@
 <FONT SIZE=+2><B>Power Information</B></FONT>
 <BR>
 <BR>
+<FONT><B>Internal switching power(pJ) to Y rising :</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH>
+<TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=3>VOTER3X1</TH>
+<Th><font>A</font></Th>
+<TD align=center>5.10375</TD>
+<TD align=center>5.11049</TD>
+<TD align=center>5.28329</TD>
+</TR>
+<TR>
+<Th><font>B</font></Th>
+<TD align=center>1.62656</TD>
+<TD align=center>1.63119</TD>
+<TD align=center>1.78992</TD>
+</TR>
+<TR>
+<Th><font>C</font></Th>
+<TD align=center>5.10184</TD>
+<TD align=center>5.10593</TD>
+<TD align=center>5.27162</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
 <FONT><B>Internal switching power(pJ) to Y falling :</B></FONT>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
 <TR valign=middle><TH rowspan=2>Cell Name</TH><TH rowspan=2>Input</TH>
 <TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
-<TR><TH rowspan=2>VOTER3X1</TH>
-<Th><font>B</font></Th>
+<TR><TH rowspan=6>VOTER3X1</TH>
+<Th><font>A</font></Th>
 <TD align=center>-0.01415</TD>
-<TD align=center>-0.90331</TD>
-<TD align=center>-14.42940</TD>
+<TD align=center>-0.67262</TD>
+<TD align=center>-8.82681</TD>
+</TR>
+<TR>
+<Th><font>A</font></Th>
+<TD align=center>2.09455</TD>
+<TD align=center>2.10092</TD>
+<TD align=center>2.29680</TD>
 </TR>
 <TR>
 <Th><font>B</font></Th>
-<TD align=center>1.03460</TD>
-<TD align=center>1.03519</TD>
-<TD align=center>1.12978</TD>
+<TD align=center>-0.01415</TD>
+<TD align=center>-0.67262</TD>
+<TD align=center>-8.82681</TD>
+</TR>
+<TR>
+<Th><font>B</font></Th>
+<TD align=center>1.16497</TD>
+<TD align=center>1.16860</TD>
+<TD align=center>1.31089</TD>
+</TR>
+<TR>
+<Th><font>C</font></Th>
+<TD align=center>-0.01415</TD>
+<TD align=center>-0.67262</TD>
+<TD align=center>-8.82681</TD>
+</TR>
+<TR>
+<Th><font>C</font></Th>
+<TD align=center>2.10282</TD>
+<TD align=center>2.10884</TD>
+<TD align=center>2.31999</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for A rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH rowspan=2>When</TH>
+</TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=6>VOTER3X1</TH>
+<Th><font>(B * C * Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(B * C * Y)</font></Th>
+<TD align=center>0.01566</TD>
+<TD align=center>0.01542</TD>
+<TD align=center>0.01540</TD>
+</TR>
+<TR>
+<Th><font>(B * !C * Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(B * !C * Y)</font></Th>
+<TD align=center>0.11434</TD>
+<TD align=center>0.11259</TD>
+<TD align=center>0.11201</TD>
+</TR>
+<TR>
+<Th><font>(!B * !C * !Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!B * !C * !Y)</font></Th>
+<TD align=center>1.45968</TD>
+<TD align=center>1.45909</TD>
+<TD align=center>1.45905</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for A falling (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH rowspan=2>When</TH>
+</TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=6>VOTER3X1</TH>
+<Th><font>(B * C * Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(B * C * Y)</font></Th>
+<TD align=center>1.64146</TD>
+<TD align=center>1.64151</TD>
+<TD align=center>1.64166</TD>
+</TR>
+<TR>
+<Th><font>(B * !C * Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(B * !C * Y)</font></Th>
+<TD align=center>1868.73000</TD>
+<TD align=center>1844.81000</TD>
+<TD align=center>1839.36000</TD>
+</TR>
+<TR>
+<Th><font>(!B * !C * !Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!B * !C * !Y)</font></Th>
+<TD align=center>2.22151</TD>
+<TD align=center>2.22176</TD>
+<TD align=center>2.22183</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<FONT><B>Passive power(pJ) for B rising (conditional):</B></FONT>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=4 WIDTH=100%>
+<TR valign=middle><TH rowspan=2>Cell Name</TH>
+<TH rowspan=2>When</TH>
+</TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
+<TR><TH rowspan=4>VOTER3X1</TH>
+<Th><font>(A * C * Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(A * C * Y)</font></Th>
+<TD align=center>0.02719</TD>
+<TD align=center>0.02411</TD>
+<TD align=center>0.02353</TD>
+</TR>
+<TR>
+<Th><font>(!A * !C * !Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!A * !C * !Y)</font></Th>
+<TD align=center>3.99749</TD>
+<TD align=center>4.07056</TD>
+<TD align=center>4.15239</TD>
 </TR>
 </TABLE>
 <BR>
@@ -99,17 +310,29 @@
 <TR valign=middle><TH rowspan=2>Cell Name</TH>
 <TH rowspan=2>When</TH>
 </TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
-<TR><TH rowspan=2>VOTER3X1</TH>
-<Th><font>(C * Y)</font></Th>
+<TR><TH rowspan=4>VOTER3X1</TH>
+<Th><font>(A * C * Y)</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 </TR>
 <TR>
-<Th><font>(C * Y)</font></Th>
-<TD align=center>52909.00000</TD>
-<TD align=center>52908.10000</TD>
-<TD align=center>52908.60000</TD>
+<Th><font>(A * C * Y)</font></Th>
+<TD align=center>5.84834</TD>
+<TD align=center>5.84801</TD>
+<TD align=center>5.84806</TD>
+</TR>
+<TR>
+<Th><font>(!A * !C * !Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!A * !C * !Y)</font></Th>
+<TD align=center>2.21577</TD>
+<TD align=center>2.21416</TD>
+<TD align=center>2.21468</TD>
 </TR>
 </TABLE>
 <BR>
@@ -119,29 +342,41 @@
 <TR valign=middle><TH rowspan=2>Cell Name</TH>
 <TH rowspan=2>When</TH>
 </TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
-<TR><TH rowspan=4>VOTER3X1</TH>
-<Th><font>(B * Y)</font></Th>
+<TR><TH rowspan=6>VOTER3X1</TH>
+<Th><font>(A * B * Y)</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 </TR>
 <TR>
-<Th><font>(B * Y)</font></Th>
-<TD align=center>0.15803</TD>
-<TD align=center>0.15812</TD>
-<TD align=center>0.15804</TD>
+<Th><font>(A * B * Y)</font></Th>
+<TD align=center>0.01752</TD>
+<TD align=center>0.01749</TD>
+<TD align=center>0.01750</TD>
 </TR>
 <TR>
-<Th><font>(!B * !Y)</font></Th>
+<Th><font>(!A * B * Y)</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 </TR>
 <TR>
-<Th><font>(!B * !Y)</font></Th>
-<TD align=center>70298.10000</TD>
-<TD align=center>70356.30000</TD>
-<TD align=center>70361.30000</TD>
+<Th><font>(!A * B * Y)</font></Th>
+<TD align=center>1.25835</TD>
+<TD align=center>1.25813</TD>
+<TD align=center>1.25824</TD>
+</TR>
+<TR>
+<Th><font>(!A * !B * !Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!A * !B * !Y)</font></Th>
+<TD align=center>1.45749</TD>
+<TD align=center>1.45692</TD>
+<TD align=center>1.45627</TD>
 </TR>
 </TABLE>
 <BR>
@@ -151,17 +386,41 @@
 <TR valign=middle><TH rowspan=2>Cell Name</TH>
 <TH rowspan=2>When</TH>
 </TH><TH colspan=3>Power(pJ)</TH></TR><TR><TH>first</TH><TH>mid</TH><TH>last</TH></TR>
-<TR><TH rowspan=2>VOTER3X1</TH>
-<Th><font>(B * Y)</font></Th>
+<TR><TH rowspan=6>VOTER3X1</TH>
+<Th><font>(A * B * Y)</font></Th>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 <TD align=center>0.00000</TD>
 </TR>
 <TR>
-<Th><font>(B * Y)</font></Th>
-<TD align=center>1.58673</TD>
-<TD align=center>1.58672</TD>
-<TD align=center>1.58671</TD>
+<Th><font>(A * B * Y)</font></Th>
+<TD align=center>0.16843</TD>
+<TD align=center>0.16848</TD>
+<TD align=center>0.16851</TD>
+</TR>
+<TR>
+<Th><font>(!A * B * Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!A * B * Y)</font></Th>
+<TD align=center>1761.37000</TD>
+<TD align=center>1741.11000</TD>
+<TD align=center>1735.17000</TD>
+</TR>
+<TR>
+<Th><font>(!A * !B * !Y)</font></Th>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+<TD align=center>0.00000</TD>
+</TR>
+<TR>
+<Th><font>(!A * !B * !Y)</font></Th>
+<TD align=center>2.22025</TD>
+<TD align=center>2.21901</TD>
+<TD align=center>2.21920</TD>
 </TR>
 </TABLE>
 <BR>
@@ -169,8 +428,8 @@
 <HR>
 <TABLE BORDER=0 WIDTH=100%>
 <TR>
-<TD ALIGN=LEFT><TABLE BORDER=5><TD><em><A hREF="TMRDFFSNQX1.html">Prev (TMRDFFSNQX1)</A></em></TD></TABLE>
-<TD ALIGN=RIGHT></TD>
+<TD ALIGN=LEFT><TABLE BORDER=5><TD><em><A hREF="TMRDFFSNRNQX1.html">Prev (TMRDFFSNRNQX1)</A></em></TD></TABLE>
+<TD ALIGN=RIGHT><TABLE BORDER=5><TD><em><A hREF="VOTERN3X1.html">Next (VOTERN3X1)</A></em></TD></TABLE>
 </TR></TABLE>
 </DIV>
 </BODY>
